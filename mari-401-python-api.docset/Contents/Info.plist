@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIdentifier</key>
+	<string>mari401_python_api</string>
+	<key>CFBundleName</key>
+	<string>Mari 4.0v1 Python API</string>
+    <key>DashDocSetFamily</key>
+    <string>dashtoc</string>
+	<key>DocSetPlatformFamily</key>
+	<string>mari401</string>
+	<key>isDashDocset</key>
+	<true/>
+	<key>isJavascriptEnabled</key>
+	<true/>
+</dict>
+</plist>

@@ -1,0 +1,5 @@
+# Ignore build files and backup files
+backup/
+mari_401_python_api.docset/Contents/Resources/Documents/**
+*.pyc
+pydoc/
