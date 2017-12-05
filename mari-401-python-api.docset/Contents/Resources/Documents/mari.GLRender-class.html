@@ -1,0 +1,5406 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.GLRender
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+        Class&nbsp;GLRender
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.GLRender-class.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS DESCRIPTION ==================== -->
+  <h1 class="epydoc">
+   Class GLRender
+  </h1>
+  <p class="nomargin-top">
+   <span class="codelink">
+    <a href="mari-pysrc.html#GLRender">
+     source&nbsp;code
+    </a>
+   </span>
+  </p>
+  <pre class="base-tree">
+object --+
+         |
+        <strong class="uidshort">GLRender</strong>
+</pre>
+  <hr/>
+  <p>
+   Manages Mari's OpenGL Renderer and associated objects.
+  </p>
+  <p>
+   Mari uses OpenGL to render in 3D. This object gives access to this 
+  renderer, allowing configuration of available shaders and other 
+  settings.
+  </p>
+  <p>
+   <a class="link" href="mari.Shader-class.html">
+    Shader
+   </a>
+   modules can 
+  be applied using the appropriate methods on
+   <a class="link" href="mari.GeoEntity-class.html">
+    GeoEntity
+   </a>
+   objects.
+  </p>
+  <p>
+   <b>
+    Example Code
+   </b>
+  </p>
+  <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This example checks if color manager is applied</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>is_color_manager_ppplied = mari.gl_render.isPostProcessingEnabled()</pre>
+  <!-- ==================== NESTED CLASSES ==================== -->
+  <a name="section-NestedClasses">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Nested Classes
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.GLRender.ShaderCompileResult-class.html">
+      ShaderCompileResult
+     </a>
+     <br/>
+     These are used to define the various states a shader can be.
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== INSTANCE METHODS ==================== -->
+  <a name="section-InstanceMethods">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Instance Methods
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#applyFilter">
+          applyFilter
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Filter
+         </span>
+         )
+        </span>
+        <br/>
+        Applies a filter to current layer.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.applyFilter">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="clearError">
+         </a>
+         <span class="summary-sig-name">
+          clearError
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Makes a single call to OpenGL's 'glGetError()' and outputs the result
+      to the log if an error is detected.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.clearError">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.PostFilterCollection-class.html">
+       PostFilterCollection
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#createPostFilterCollection">
+          createPostFilterCollection
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         )
+        </span>
+        <br/>
+        Creates a new post process filter collection.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.createPostFilterCollection">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.GLSLFilter-class.html">
+       GLSLFilter
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#createQuickApplyGLSL">
+          createQuickApplyGLSL
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          DefinitionsSnippet
+         </span>
+         =
+         <span class="summary-sig-default">
+          <code class="variable-quote">
+           '
+          </code>
+          <code class="variable-string">
+          </code>
+          <code class="variable-quote">
+           '
+          </code>
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          BodySnippet
+         </span>
+         =
+         <span class="summary-sig-default">
+          <code class="variable-quote">
+           '
+          </code>
+          <code class="variable-string">
+          </code>
+          <code class="variable-quote">
+           '
+          </code>
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          IconPath
+         </span>
+         =
+         <span class="summary-sig-default">
+          <code class="variable-quote">
+           '
+          </code>
+          <code class="variable-string">
+          </code>
+          <code class="variable-quote">
+           '
+          </code>
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          DisplayMetadata
+         </span>
+         =
+         <span class="summary-sig-default">
+          True
+         </span>
+         )
+        </span>
+        <br/>
+        Creates a new GLSL post processing filter that can be applied to the 
+      viewport.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.createQuickApplyGLSL">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.PostFilterCollection-class.html">
+       PostFilterCollection
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#currentPostFilterCollection">
+          currentPostFilterCollection
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the currently active post process filter collection.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.currentPostFilterCollection">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#deletePostFilterCollection">
+          deletePostFilterCollection
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Collection
+         </span>
+         )
+        </span>
+        <br/>
+        Deletes a post process filter collection.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.deletePostFilterCollection">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.PostFilter-class.html">
+       PostFilter
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#findFilter">
+          findFilter
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         )
+        </span>
+        <br/>
+        Finds a filter.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.findFilter">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.PostFilterCollection-class.html">
+       PostFilterCollection
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#findPostFilterCollection">
+          findPostFilterCollection
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the post process filter collection of given name.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.findPostFilterCollection">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.PostFilter-class.html">
+       PostFilter
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#findQuickApplyFilter">
+          findQuickApplyFilter
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the first occurrence of a filter with the given name.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.findQuickApplyFilter">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#isCurrentGLShaderProgramValid">
+          isCurrentGLShaderProgramValid
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns whether the current GL shader program is compiled and linked 
+      fine.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.isCurrentGLShaderProgramValid">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#isPostProcessingEnabled">
+          isPostProcessingEnabled
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Indicates whether post processing color management is applied to the 
+      viewport.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.isPostProcessingEnabled">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#lutEnabled">
+          lutEnabled
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Indicates whether a display LUT is being applied to the viewport.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.lutEnabled">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      variant
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#platformInformation">
+          platformInformation
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns key/value pairs of OpenGL information obtained from the main 
+      OpenGL context
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.platformInformation">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#postFilterCollectionNames">
+          postFilterCollectionNames
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the names of all the post filter collections.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.postFilterCollectionNames">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of
+      <a class="link" href="mari.PostFilterCollection-class.html">
+       PostFilterCollection
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#postFilterCollections">
+          postFilterCollections
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns all the post filter collections.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.postFilterCollections">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#reloadXMLDefinitions">
+          reloadXMLDefinitions
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Reloads layer and shader definition files.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.reloadXMLDefinitions">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#removeQuickApplyFilter">
+          removeQuickApplyFilter
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Filter
+         </span>
+         )
+        </span>
+        <br/>
+        Deletes (removes) a filter.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.removeQuickApplyFilter">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#runGLSLCode">
+          runGLSLCode
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          GLSLCode
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Destination
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Source
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Mask
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          BlendMode
+         </span>
+         =
+         <span class="summary-sig-default">
+          <code class="variable-quote">
+           '
+          </code>
+          <code class="variable-string">
+          </code>
+          <code class="variable-quote">
+           '
+          </code>
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          BlendAmount
+         </span>
+         =
+         <span class="summary-sig-default">
+          1.0
+         </span>
+         )
+        </span>
+        <br/>
+        Runs the given GLSL code and writes the result into the given
+        <a class="link" href="mari.ImageSet-class.html">
+         ImageSet
+        </a>
+        .
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.runGLSLCode">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#setCustomLut">
+          setCustomLut
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Lut
+         </span>
+         )
+        </span>
+        <br/>
+        Set a custom 1D display LUT to use while rendering.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.setCustomLut">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#setLutEnabled">
+          setLutEnabled
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Enabled
+         </span>
+         )
+        </span>
+        <br/>
+        Enable and disable the display time LUT.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.setLutEnabled">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#setPostFilterCollection">
+          setPostFilterCollection
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Collection
+         </span>
+         )
+        </span>
+        <br/>
+        Sets a post process filter collection as the current.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.setPostFilterCollection">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#setPostProcessingEnabled">
+          setPostProcessingEnabled
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Enabled
+         </span>
+         )
+        </span>
+        <br/>
+        Enables or disables post processing color management in the viewport.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.setPostProcessingEnabled">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#upgradeExistingShadersAndLayers">
+          upgradeExistingShadersAndLayers
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Upgrades existing shaders and layers based on up-to-date XML 
+      definitions.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.upgradeExistingShadersAndLayers">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __delattr__
+      </code>
+      ,
+      <code>
+       __format__
+      </code>
+      ,
+      <code>
+       __getattribute__
+      </code>
+      ,
+      <code>
+       __hash__
+      </code>
+      ,
+      <code>
+       __init__
+      </code>
+      ,
+      <code>
+       __new__
+      </code>
+      ,
+      <code>
+       __reduce__
+      </code>
+      ,
+      <code>
+       __reduce_ex__
+      </code>
+      ,
+      <code>
+       __repr__
+      </code>
+      ,
+      <code>
+       __setattr__
+      </code>
+      ,
+      <code>
+       __sizeof__
+      </code>
+      ,
+      <code>
+       __str__
+      </code>
+      ,
+      <code>
+       __subclasshook__
+      </code>
+     </p>
+    </td>
+   </tr>
+   <tr bgcolor="#e8f0f8">
+    <th class="group-header" colspan="2">
+     &nbsp;&nbsp;&nbsp;&nbsp;Signals
+    </th>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="currentPostFilterCollectionModified">
+         </a>
+         <span class="summary-sig-name">
+          currentPostFilterCollectionModified
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted whenever the settings of any filter in the current 
+      post filter collection is changed.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.currentPostFilterCollectionModified">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#postFilterCollectionAdded">
+          postFilterCollectionAdded
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Collection
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted when a new post processing filter collection is 
+      added.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.postFilterCollectionAdded">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#postFilterCollectionRemoved">
+          postFilterCollectionRemoved
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted when a post processing filter collection is removed.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.postFilterCollectionRemoved">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#postProcessingEnabled">
+          postProcessingEnabled
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Enabled
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted when post processing is enabled or disabled.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.postProcessingEnabled">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#setCurrentPostFilterCollection">
+          setCurrentPostFilterCollection
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted just after the current post filter collection is 
+      changed.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.setCurrentPostFilterCollection">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#shaderCompileComplete">
+          shaderCompileComplete
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Result
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          ErrorMessage
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted whenever the current GL shader program is compiled 
+      and linked.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.shaderCompileComplete">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== STATIC METHODS ==================== -->
+  <a name="section-StaticMethods">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Static Methods
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#registerCustomAdjustmentLayerFromXMLFile">
+          registerCustomAdjustmentLayerFromXMLFile
+         </a>
+         (
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          FilePath
+         </span>
+         )
+        </span>
+        <br/>
+        Registers a new adjustment layer type from the given XML file path.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.registerCustomAdjustmentLayerFromXMLFile">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#registerCustomBlendMode">
+          registerCustomBlendMode
+         </a>
+         (
+         <span class="summary-sig-arg">
+          DisplayName
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          FunctionName
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          BlendModeCode
+         </span>
+         )
+        </span>
+        <br/>
+        Registers a new custom blend mode.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.registerCustomBlendMode">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#registerCustomCodeFile">
+          registerCustomCodeFile
+         </a>
+         (
+         <span class="summary-sig-arg">
+          UUID
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          FilePath
+         </span>
+         )
+        </span>
+        <br/>
+        Registers a new custom code file written in GLSL.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.registerCustomCodeFile">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#registerCustomDiffuseShaderFromXMLFile">
+          registerCustomDiffuseShaderFromXMLFile
+         </a>
+         (
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          FilePath
+         </span>
+         )
+        </span>
+        <br/>
+        Registers a new diffuse shader type from the given XML file path.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.registerCustomDiffuseShaderFromXMLFile">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#registerCustomHeaderFile">
+          registerCustomHeaderFile
+         </a>
+         (
+         <span class="summary-sig-arg">
+          UUID
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          FilePath
+         </span>
+         )
+        </span>
+        <br/>
+        Registers a new custom header file written in GLSL.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.registerCustomHeaderFile">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#registerCustomLayeredShaderFromXMLFile">
+          registerCustomLayeredShaderFromXMLFile
+         </a>
+         (
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          FilePath
+         </span>
+         )
+        </span>
+        <br/>
+        Registers a new layered shader type from the given XML file path.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.registerCustomLayeredShaderFromXMLFile">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#registerCustomNodeFromXMLFile">
+          registerCustomNodeFromXMLFile
+         </a>
+         (
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          FilePath
+         </span>
+         )
+        </span>
+        <br/>
+        Registers a new node type from the given XML file path.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.registerCustomNodeFromXMLFile">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#registerCustomProceduralLayerFromXMLFile">
+          registerCustomProceduralLayerFromXMLFile
+         </a>
+         (
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          FilePath
+         </span>
+         )
+        </span>
+        <br/>
+        Registers a new procedural layer type from the given XML file path.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.registerCustomProceduralLayerFromXMLFile">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#registerCustomSpecularShaderFromXMLFile">
+          registerCustomSpecularShaderFromXMLFile
+         </a>
+         (
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          FilePath
+         </span>
+         )
+        </span>
+        <br/>
+        Registers a new specular shader type from the given XML file path.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.registerCustomSpecularShaderFromXMLFile">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GLRender-class.html#registerCustomStandaloneShaderFromXMLFile">
+          registerCustomStandaloneShaderFromXMLFile
+         </a>
+         (
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          FilePath
+         </span>
+         )
+        </span>
+        <br/>
+        Registers a new standalone shader type from the given XML file path.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GLRender.registerCustomStandaloneShaderFromXMLFile">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS VARIABLES ==================== -->
+  <a name="section-ClassVariables">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Class Variables
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="SHADER_RELOAD_MACROS_FAILED">
+     </a>
+     <span class="summary-name">
+      SHADER_RELOAD_MACROS_FAILED
+     </span>
+     =
+     <code title="0">
+      0
+     </code>
+     <br/>
+     An error occurred during dynamic macro replacement.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.GLRender-class.html#SHADER_COMPILE_FAILED">
+      SHADER_COMPILE_FAILED
+     </a>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     The shader failed to compile.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.GLRender-class.html#SHADER_LINK_FAILED">
+      SHADER_LINK_FAILED
+     </a>
+     =
+     <code title="2">
+      2
+     </code>
+     <br/>
+     The shader failed to link.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="SHADER_LINK_SUCCESS">
+     </a>
+     <span class="summary-name">
+      SHADER_LINK_SUCCESS
+     </span>
+     =
+     <code title="3">
+      3
+     </code>
+     <br/>
+     The shader compiled and linked successfully and can be used.
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== PROPERTIES ==================== -->
+  <a name="section-Properties">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Properties
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __class__
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== METHOD DETAILS ==================== -->
+  <a name="section-MethodDetails">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Method Details
+     </span>
+    </td>
+   </tr>
+  </table>
+  <a name="applyFilter">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            applyFilter
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Filter
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.applyFilter">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Applies a filter to current layer.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Filter
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.PostFilter-class.html">
+           PostFilter
+          </a>
+          ) - The filter to apply
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: bool
+       </dt>
+       <dd>
+        True if filter successfully applied
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="createPostFilterCollection">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            createPostFilterCollection
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Name
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.createPostFilterCollection">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Creates a new post process filter collection.
+      </p>
+      <p>
+       The creates a new post process filter stack with given name, and sets 
+  it as current.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The name for the new post process filter collection.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.PostFilterCollection-class.html">
+         PostFilterCollection
+        </a>
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if a collection with the given name already exists.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.GLRender-class.html#findPostFilterCollection">
+         findPostFilterCollection()
+        </a>
+        ,
+        <a class="link" href="mari.GLRender-class.html#deletePostFilterCollection">
+         deletePostFilterCollection()
+        </a>
+        ,
+        <a class="link" href="mari.GLRender-class.html#currentPostFilterCollection">
+         currentPostFilterCollection()
+        </a>
+        ,
+        <a class="link" href="mari.GLRender-class.html#setPostFilterCollection">
+         setPostFilterCollection()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="createQuickApplyGLSL">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            createQuickApplyGLSL
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Name
+           </span>
+           ,
+           <span class="sig-arg">
+            DefinitionsSnippet
+           </span>
+           =
+           <span class="sig-default">
+            <code class="variable-quote">
+             '
+            </code>
+            <code class="variable-string">
+            </code>
+            <code class="variable-quote">
+             '
+            </code>
+           </span>
+           ,
+           <span class="sig-arg">
+            BodySnippet
+           </span>
+           =
+           <span class="sig-default">
+            <code class="variable-quote">
+             '
+            </code>
+            <code class="variable-string">
+            </code>
+            <code class="variable-quote">
+             '
+            </code>
+           </span>
+           ,
+           <span class="sig-arg">
+            IconPath
+           </span>
+           =
+           <span class="sig-default">
+            <code class="variable-quote">
+             '
+            </code>
+            <code class="variable-string">
+            </code>
+            <code class="variable-quote">
+             '
+            </code>
+           </span>
+           ,
+           <span class="sig-arg">
+            DisplayMetadata
+           </span>
+           =
+           <span class="sig-default">
+            True
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.createQuickApplyGLSL">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Creates a new GLSL post processing filter that can be applied to the 
+  viewport.
+      </p>
+      <p>
+       Mari supports post-render processing effects. These can be used to 
+  color-correct, blur, filter or warp the viewport display to achieve 
+  different effects.
+      </p>
+      <p>
+       Filters are implemented as two snippets of GLSL shader code:
+      </p>
+      <ul>
+       <li>
+        The
+        <code class="link">
+         DefinitionsSnippet
+        </code>
+        defines uniforms and
+      functions required for the filter
+       </li>
+       <li>
+        The
+        <code class="link">
+         BodySnippet
+        </code>
+        contains the implementation
+      of the filter itself
+       </li>
+      </ul>
+      <p>
+       As multiple instances of a filter can be created, we need to give each
+  instance a unique ID. To do this, all uniforms and function names in the 
+  shader should have a _$ID_ appended to their names. Mari takes this token
+  internally and adds a unique ID. This preventing name collisions in 
+  shaders. For example, a definitions snippet that looks like:
+      </p>
+      <p>
+       <code>
+        uniform float ScaleX_$ID_;
+       </code>
+      </p>
+      <p>
+       <code>
+        uniform float ScaleY_$ID_;
+       </code>
+      </p>
+      <p>
+       will be translated internally into:
+      </p>
+      <p>
+       <code>
+        uniform float ScaleX1;
+       </code>
+      </p>
+      <p>
+       <code>
+        uniform float ScaleY2;
+       </code>
+      </p>
+      <p>
+       Body snippets should be protected with braces, and can expect the 
+  color value of the pixel being processed to be available in a vec4 called
+  "Out".
+      </p>
+      <p>
+       If you wanted to simply multiply the viewport display pixels by a 
+  floating point value, for example, you could write something like:
+      </p>
+      <p>
+       <code>
+        definition_snippet = "uniform float 
+  ScaleValue_$ID_;"
+       </code>
+      </p>
+      <p>
+       <code>
+        body_snippet = "{ Out.rgb *= ScaleValue_$ID_; 
+  }"
+       </code>
+      </p>
+      <p>
+       The values passed into the shader can be controlled by modifying a 
+  metadata value on the
+       <a class="link" href="mari.PostFilter-class.html">
+        PostFilter
+       </a>
+       object. The metadata value should have the 
+  same name and type as the uniform, but should not include the _$ID_. In 
+  the scaling example above, we could add some metadata to the filter 
+  called ScaleValue, and this would then be passed into the shader 
+  automatically.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The name for the new filter
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            DefinitionsSnippet
+           </code>
+          </strong>
+          (str) - A snippet of GLSL code that defines the uniforms and functions 
+          used by this post process filter
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            BodySnippet
+           </code>
+          </strong>
+          (str) - A snippet of GLSL code that defines the body of the post process 
+          filter
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            IconPath
+           </code>
+          </strong>
+          (str) - Path of the icon used to represent the filter with
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            DisplayMetadata
+           </code>
+          </strong>
+          (bool) - If set to True the dialog will expose the metadata set on the 
+          filter allowing users to manipulate it
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.GLSLFilter-class.html">
+         GLSLFilter
+        </a>
+       </dt>
+       <dd>
+        A new post process filter object
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if a filter of the given name already exists.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="currentPostFilterCollection">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            currentPostFilterCollection
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.currentPostFilterCollection">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the currently active post process filter collection.
+      </p>
+      <p>
+       These post process filters are executed in order.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns:
+        <a class="link" href="mari.PostFilterCollection-class.html">
+         PostFilterCollection
+        </a>
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.GLRender-class.html#createPostFilterCollection">
+         createPostFilterCollection()
+        </a>
+        ,
+        <a class="link" href="mari.GLRender-class.html#findPostFilterCollection">
+         findPostFilterCollection()
+        </a>
+        ,
+        <a class="link" href="mari.GLRender-class.html#deletePostFilterCollection">
+         deletePostFilterCollection()
+        </a>
+        ,
+        <a class="link" href="mari.GLRender-class.html#setPostFilterCollection">
+         setPostFilterCollection()
+        </a>
+        ,
+        <a class="link" href="mari.GLRender-class.html#setCurrentPostFilterCollection">
+         setCurrentPostFilterCollection()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="deletePostFilterCollection">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            deletePostFilterCollection
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Collection
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.deletePostFilterCollection">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Deletes a post process filter collection.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Collection
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.PostFilterCollection-class.html">
+           PostFilterCollection
+          </a>
+          ) - The post filter collection to delete.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.GLRender-class.html#createPostFilterCollection">
+         createPostFilterCollection()
+        </a>
+        ,
+        <a class="link" href="mari.GLRender-class.html#findPostFilterCollection">
+         findPostFilterCollection()
+        </a>
+        ,
+        <a class="link" href="mari.GLRender-class.html#currentPostFilterCollection">
+         currentPostFilterCollection()
+        </a>
+        ,
+        <a class="link" href="mari.GLRender-class.html#setPostFilterCollection">
+         setPostFilterCollection()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="findFilter">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            findFilter
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Name
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.findFilter">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Finds a filter.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The name of filter required
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.PostFilter-class.html">
+         PostFilter
+        </a>
+       </dt>
+       <dd>
+        None if filter not found
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="findPostFilterCollection">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            findPostFilterCollection
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Name
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.findPostFilterCollection">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the post process filter collection of given name.
+      </p>
+      <p>
+       These post process filters are executed in order.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The name for the post process filter collection to find.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.PostFilterCollection-class.html">
+         PostFilterCollection
+        </a>
+       </dt>
+       <dd>
+        The post process filter collection with the given name, or None 
+          if no matching collection exists
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.GLRender-class.html#createPostFilterCollection">
+         createPostFilterCollection()
+        </a>
+        ,
+        <a class="link" href="mari.GLRender-class.html#deletePostFilterCollection">
+         deletePostFilterCollection()
+        </a>
+        ,
+        <a class="link" href="mari.GLRender-class.html#currentPostFilterCollection">
+         currentPostFilterCollection()
+        </a>
+        ,
+        <a class="link" href="mari.GLRender-class.html#setPostFilterCollection">
+         setPostFilterCollection()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="findQuickApplyFilter">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            findQuickApplyFilter
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Name
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.findQuickApplyFilter">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the first occurrence of a filter with the given name.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The name of filter to find
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.PostFilter-class.html">
+         PostFilter
+        </a>
+       </dt>
+       <dd>
+        A filter with the given name, or None if not found
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="isCurrentGLShaderProgramValid">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            isCurrentGLShaderProgramValid
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.isCurrentGLShaderProgramValid">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns whether the current GL shader program is compiled and linked 
+  fine.
+      </p>
+      <p>
+       Returns whether the current GL shader program is compiled and linked 
+  fine. If the current shader is built in the background, it will wait for 
+  the completion.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: bool
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="isPostProcessingEnabled">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            isPostProcessingEnabled
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.isPostProcessingEnabled">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Indicates whether post processing color management is applied to the 
+  viewport.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: bool
+       </dt>
+       <dd>
+        True if post processing is enabled, or False if not
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="lutEnabled">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            lutEnabled
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.lutEnabled">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Indicates whether a display LUT is being applied to the viewport.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: bool
+       </dt>
+       <dd>
+        True if the display-time LUT is enabled, or False otherwise
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         Deprecated:
+        </strong>
+        Please use
+        <a class="link" href="mari.GLRender-class.html#isPostProcessingEnabled">
+         isPostProcessingEnabled()
+        </a>
+        instead.
+       </p>
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.GLRender-class.html#setLutEnabled">
+         setLutEnabled()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="platformInformation">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            platformInformation
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.platformInformation">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns key/value pairs of OpenGL information obtained from the main 
+  OpenGL context
+      </p>
+      <p>
+       This can be due to system issues or running in terminal mode.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: variant
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="postFilterCollectionAdded">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            postFilterCollectionAdded
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Collection
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.postFilterCollectionAdded">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted when a new post processing filter collection is 
+  added.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Collection
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.PostFilterCollection-class.html">
+           PostFilterCollection
+          </a>
+          ) - The newly added post filter collection
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="postFilterCollectionNames">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            postFilterCollectionNames
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.postFilterCollectionNames">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the names of all the post filter collections.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: list of str
+       </dt>
+       <dd>
+        The names of all the post filter collections
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="postFilterCollectionRemoved">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            postFilterCollectionRemoved
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Name
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.postFilterCollectionRemoved">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted when a post processing filter collection is 
+  removed.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The name of the post filter collection that was removed
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="postFilterCollections">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            postFilterCollections
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.postFilterCollections">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns all the post filter collections.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: list of
+        <a class="link" href="mari.PostFilterCollection-class.html">
+         PostFilterCollection
+        </a>
+       </dt>
+       <dd>
+        All the post filter collections
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="postProcessingEnabled">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            postProcessingEnabled
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Enabled
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.postProcessingEnabled">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted when post processing is enabled or disabled.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Enabled
+           </code>
+          </strong>
+          (bool) - Whether of not post processing is enabled
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.GLRender-class.html#setPostProcessingEnabled">
+         setPostProcessingEnabled()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="registerCustomAdjustmentLayerFromXMLFile">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            registerCustomAdjustmentLayerFromXMLFile
+           </span>
+           (
+           <span class="sig-arg">
+            Name
+           </span>
+           ,
+           <span class="sig-arg">
+            FilePath
+           </span>
+           )
+          </span>
+          <br/>
+          <em class="fname">
+           Static Method
+          </em>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.registerCustomAdjustmentLayerFromXMLFile">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Registers a new adjustment layer type from the given XML file 
+  path.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The name of the layer. Paths separated by / in the name will 
+          appear as nested menu groups.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            FilePath
+           </code>
+          </strong>
+          (str) - The XML file path that defines the adjustment
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the given XML file does not contain a valid XML string
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the given Name exists
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            IOError
+           </strong>
+          </code>
+          - Raised if the given XML file does not exist
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="registerCustomBlendMode">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            registerCustomBlendMode
+           </span>
+           (
+           <span class="sig-arg">
+            DisplayName
+           </span>
+           ,
+           <span class="sig-arg">
+            FunctionName
+           </span>
+           ,
+           <span class="sig-arg">
+            BlendModeCode
+           </span>
+           )
+          </span>
+          <br/>
+          <em class="fname">
+           Static Method
+          </em>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.registerCustomBlendMode">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Registers a new custom blend mode.
+      </p>
+      <p>
+       Registers a new custom blend mode written in GLSL. The code must 
+  contain a function :
+      </p>
+      <ul>
+       <li>
+        that returns the result of blending in vec4
+       </li>
+       <li>
+        that takes in three arguments where the first argument is the base 
+      value in vec4, the second argument is the blended value in vec4, and 
+      the third argument is the blend amount
+       </li>
+       <li>
+        that has the function name matching the
+        <code class="link">
+         FunctionName
+        </code>
+        parameter
+       </li>
+      </ul>
+      <p>
+       <b>
+        Example Code
+       </b>
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This example registers a custom blend mode</span>
+<span class="py-prompt">&gt;&gt;&gt; </span>mari.gl_render.registerCustomBlendMode(<span class="py-string">"My Mix"</span>, <span class="py-string">"Comp_MyMix"</span>,<span class="py-string">'''</span>
+<span class="py-more">... </span><span class="py-string">vec4 Comp_MyMix(vec4 base, vec4 over, float blend_amount)</span>
+<span class="py-more">... </span><span class="py-string">{</span>
+<span class="py-more">... </span><span class="py-string">    //Blends using standard OpenGL mix for RGB with the blend_amount while the alpha is the max of base or over</span>
+<span class="py-more">... </span><span class="py-string">    return vec4( mix(base.rgb, over.rgb, blend_amount), max(base.a,over.a) );</span>
+<span class="py-more">... </span><span class="py-string">}</span>
+<span class="py-more">... </span><span class="py-string">'''</span>)</pre>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            DisplayName
+           </code>
+          </strong>
+          (str) - The name of the blend mode to display in the GUI.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            FunctionName
+           </code>
+          </strong>
+          (str) - The name of the GLSL function to call.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            BlendModeCode
+           </code>
+          </strong>
+          (str) - The blend mode logic written in GLSL.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="registerCustomCodeFile">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            registerCustomCodeFile
+           </span>
+           (
+           <span class="sig-arg">
+            UUID
+           </span>
+           ,
+           <span class="sig-arg">
+            FilePath
+           </span>
+           )
+          </span>
+          <br/>
+          <em class="fname">
+           Static Method
+          </em>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.registerCustomCodeFile">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Registers a new custom code file written in GLSL.
+      </p>
+      <p>
+       Registers a new custom code file written in GLSL. The text contents of
+  the given file will be included in the compilation of Mari's GLSL shader.
+  In combination with the header file registered with
+       <a class="link" href="mari.GLRender-class.html#registerCustomHeaderFile">
+        registerCustomHeaderFile()
+       </a>
+       , the functions defined in the
+  registered file will be available to custom layers and shaders. This 
+  behaves like .c file of C language. The
+       <code class="link">
+        UUID
+       </code>
+       uniquely identifies the file. Another path registered with the same
+       <code class="link">
+        UUID
+       </code>
+       is regarded as a new version for the file and 
+  replace the old one. The
+       <code class="link">
+        UUID
+       </code>
+       and path pair is 
+  also used to track missing files.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            UUID
+           </code>
+          </strong>
+          (str) - Unique ID of the file
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            FilePath
+           </code>
+          </strong>
+          (str) - The file path containing the GLSL
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            IOError
+           </strong>
+          </code>
+          - Raised if the given file does not exist
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="registerCustomDiffuseShaderFromXMLFile">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            registerCustomDiffuseShaderFromXMLFile
+           </span>
+           (
+           <span class="sig-arg">
+            Name
+           </span>
+           ,
+           <span class="sig-arg">
+            FilePath
+           </span>
+           )
+          </span>
+          <br/>
+          <em class="fname">
+           Static Method
+          </em>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.registerCustomDiffuseShaderFromXMLFile">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Registers a new diffuse shader type from the given XML file path.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The name of the layer.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            FilePath
+           </code>
+          </strong>
+          (str) - The XML file path that defines the diffuse shader
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the given XML file does not contain a valid XML string
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the given Name exists
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            IOError
+           </strong>
+          </code>
+          - Raised if the given XML file does not exist
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="registerCustomHeaderFile">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            registerCustomHeaderFile
+           </span>
+           (
+           <span class="sig-arg">
+            UUID
+           </span>
+           ,
+           <span class="sig-arg">
+            FilePath
+           </span>
+           )
+          </span>
+          <br/>
+          <em class="fname">
+           Static Method
+          </em>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.registerCustomHeaderFile">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Registers a new custom header file written in GLSL.
+      </p>
+      <p>
+       Registers a new custom header file written in GLSL. The text contents 
+  of the given file will be included in relevant parts of the shader 
+  system.
+       <a class="link" href="mari.Shader-class.html">
+        Shader
+       </a>
+       and 
+  layer GLSL code can access function declarations and variables declared 
+  in the header file. This behaves like .h file of C language. The
+       <code class="link">
+        UUID
+       </code>
+       uniquely identifies the file. Another path 
+  registered with the same
+       <code class="link">
+        UUID
+       </code>
+       is regarded as a 
+  new version for the file and replace the old one. The
+       <code class="link">
+        UUID
+       </code>
+       and path pair is also used to track missing 
+  files.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            UUID
+           </code>
+          </strong>
+          (str) - Unique ID of the file
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            FilePath
+           </code>
+          </strong>
+          (str) - The file path containing the GLSL
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            IOError
+           </strong>
+          </code>
+          - Raised if the given file does not exist
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="registerCustomLayeredShaderFromXMLFile">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            registerCustomLayeredShaderFromXMLFile
+           </span>
+           (
+           <span class="sig-arg">
+            Name
+           </span>
+           ,
+           <span class="sig-arg">
+            FilePath
+           </span>
+           )
+          </span>
+          <br/>
+          <em class="fname">
+           Static Method
+          </em>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.registerCustomLayeredShaderFromXMLFile">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Registers a new layered shader type from the given XML file path.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The name of the layered shader.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            FilePath
+           </code>
+          </strong>
+          (str) - The XML file path that defines the layered shader
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the given XML file does not contain a valid XML string
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the given Name exists
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            IOError
+           </strong>
+          </code>
+          - Raised if the given XML file does not exist
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="registerCustomNodeFromXMLFile">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            registerCustomNodeFromXMLFile
+           </span>
+           (
+           <span class="sig-arg">
+            Name
+           </span>
+           ,
+           <span class="sig-arg">
+            FilePath
+           </span>
+           )
+          </span>
+          <br/>
+          <em class="fname">
+           Static Method
+          </em>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.registerCustomNodeFromXMLFile">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Registers a new node type from the given XML file path.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The name of the node. Paths separated by / in the name will 
+          appear as nested menu groups.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            FilePath
+           </code>
+          </strong>
+          (str) - The XML file path that defines the adjustment
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the given XML file does not contain a valid XML string
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the given Name exists
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            IOError
+           </strong>
+          </code>
+          - Raised if the given XML file does not exist
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="registerCustomProceduralLayerFromXMLFile">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            registerCustomProceduralLayerFromXMLFile
+           </span>
+           (
+           <span class="sig-arg">
+            Name
+           </span>
+           ,
+           <span class="sig-arg">
+            FilePath
+           </span>
+           )
+          </span>
+          <br/>
+          <em class="fname">
+           Static Method
+          </em>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.registerCustomProceduralLayerFromXMLFile">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Registers a new procedural layer type from the given XML file 
+  path.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The name of the layer. Paths separated by / in the name will 
+          appear as nested menu groups.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            FilePath
+           </code>
+          </strong>
+          (str) - The XML file path that defines the procedural
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the given XML file does not contain a valid XML string
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the given Name exists
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            IOError
+           </strong>
+          </code>
+          - Raised if the given XML file does not exist
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="registerCustomSpecularShaderFromXMLFile">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            registerCustomSpecularShaderFromXMLFile
+           </span>
+           (
+           <span class="sig-arg">
+            Name
+           </span>
+           ,
+           <span class="sig-arg">
+            FilePath
+           </span>
+           )
+          </span>
+          <br/>
+          <em class="fname">
+           Static Method
+          </em>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.registerCustomSpecularShaderFromXMLFile">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Registers a new specular shader type from the given XML file path.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The name of the layer.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            FilePath
+           </code>
+          </strong>
+          (str) - The XML file path that defines the specular shader
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the given XML file does not contain a valid XML string
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the given Name exists
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            IOError
+           </strong>
+          </code>
+          - Raised if the given XML file does not exist
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="registerCustomStandaloneShaderFromXMLFile">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            registerCustomStandaloneShaderFromXMLFile
+           </span>
+           (
+           <span class="sig-arg">
+            Name
+           </span>
+           ,
+           <span class="sig-arg">
+            FilePath
+           </span>
+           )
+          </span>
+          <br/>
+          <em class="fname">
+           Static Method
+          </em>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.registerCustomStandaloneShaderFromXMLFile">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Registers a new standalone shader type from the given XML file 
+  path.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The name of the layer.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            FilePath
+           </code>
+          </strong>
+          (str) - The XML file path that defines the standlone shader
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the given XML file does not contain a valid XML string
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the given Name exists
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            IOError
+           </strong>
+          </code>
+          - Raised if the given XML file does not exist
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="reloadXMLDefinitions">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            reloadXMLDefinitions
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.reloadXMLDefinitions">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Reloads layer and shader definition files.
+      </p>
+      <p>
+       Reloads layer and shader definition files. A custom shader and layer 
+  developer can reload and test the shader and layer definition files 
+  without relaunching Mari by executing this function.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="removeQuickApplyFilter">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            removeQuickApplyFilter
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Filter
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.removeQuickApplyFilter">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Deletes (removes) a filter.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Filter
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.PostFilter-class.html">
+           PostFilter
+          </a>
+          ) - The filter to delete
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the filter is not a quick apply filter.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="runGLSLCode">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            runGLSLCode
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            GLSLCode
+           </span>
+           ,
+           <span class="sig-arg">
+            Destination
+           </span>
+           ,
+           <span class="sig-arg">
+            Source
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            Mask
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            BlendMode
+           </span>
+           =
+           <span class="sig-default">
+            <code class="variable-quote">
+             '
+            </code>
+            <code class="variable-string">
+            </code>
+            <code class="variable-quote">
+             '
+            </code>
+           </span>
+           ,
+           <span class="sig-arg">
+            BlendAmount
+           </span>
+           =
+           <span class="sig-default">
+            1.0
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.runGLSLCode">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Runs the given GLSL code and writes the result into the given
+       <a class="link" href="mari.ImageSet-class.html">
+        ImageSet
+       </a>
+       .
+      </p>
+      <p>
+       The GLSL code must write the result into the "Output" 
+  variable as vec4.
+      </p>
+      <p>
+       When
+       <code class="link">
+        Source
+       </code>
+       is provided, the GLSL code can 
+  use the values from the texture values in
+       <code class="link">
+        Source
+       </code>
+       by using the token, "#Input". The 
+  result will be blended onto the
+       <code class="link">
+        Source
+       </code>
+       <a class="link" href="mari.ImageSet-class.html">
+        ImageSet
+       </a>
+       with
+       <code class="link">
+        Mask
+       </code>
+       applied using the
+       <code class="link">
+        BlendMode
+       </code>
+       and
+       <code class="link">
+        BlendAmount
+       </code>
+      </p>
+      <p>
+       Examples :
+      </p>
+      <p>
+       This fills selected area in red and leave the rest black.
+       <code>
+        mari.gl_render.runGLSLCode("Output = 
+  vec4(_State.Selected,0,0,1);",DestImageSet)
+       </code>
+      </p>
+      <p>
+       This fills the selected area in red and blends it with
+       <code class="link">
+        Source
+       </code>
+       image set and writes the result into Dest
+       <code>
+        mari.gl_render.runGLSLCode("Output = 
+  vec4(1,0,0,_State.Selected);",DestImageSet,SourceImageSet)
+       </code>
+      </p>
+      <p>
+       This amplifies the red component of non-masked area of the
+       <code class="link">
+        Source
+       </code>
+       imageset and writes the result into Dest
+       <code>
+        mari.gl_render.runGLSLCode("Output = 
+  vec4(#Input.r*2.0,#Input.gba",DestImageSet,SourceImageSet,MaskImageSet)
+       </code>
+      </p>
+      <p>
+       This fills the selected area in transparency. Note that, in order to 
+  modify alpha component, you must use Comp_Copy blend mode
+       <code>
+        mari.gl_render.runGLSLCode("Output = mix(#Input, 
+  vec4(0,0,0,0), 
+  float(_State.Selected));",DestImageSet,SourceImageSet,None,"Comp_Copy")
+       </code>
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            GLSLCode
+           </code>
+          </strong>
+          (str)
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Destination
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          )
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Mask
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          )
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Source
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          )
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            BlendMode
+           </code>
+          </strong>
+          (str)
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            BlendAmount
+           </code>
+          </strong>
+          (float)
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setCurrentPostFilterCollection">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setCurrentPostFilterCollection
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.setCurrentPostFilterCollection">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted just after the current post filter collection is 
+  changed.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.GLRender-class.html#currentPostFilterCollection">
+         currentPostFilterCollection()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setCustomLut">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setCustomLut
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Lut
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.setCustomLut">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Set a custom 1D display LUT to use while rendering.
+      </p>
+      <p>
+       The LUT (lookup table) is used to transform incoming color values to a
+  new display value. This can be used to simulate different display 
+  devices, etc.
+      </p>
+      <p>
+       By default, an identity (no transform) LUT is used.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Lut
+           </code>
+          </strong>
+          (list of
+          <a class="link" href="mari.Color-class.html">
+           Color
+          </a>
+          ) - A vector of
+          <a class="link" href="mari.Colors-class.html">
+           Colors
+          </a>
+          . This should contain 1024 entries.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         Deprecated:
+        </strong>
+        Please use the
+        <a class="link" href="mari.PostFilterCollection-class.html">
+         PostFilterCollection
+        </a>
+        functions in conjunction with the
+        <a class="link" href="mari.CustomLUTFilter-class.html">
+         CustomLUTFilter
+        </a>
+        class instead of this function.
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setLutEnabled">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setLutEnabled
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Enabled
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.setLutEnabled">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Enable and disable the display time LUT.
+      </p>
+      <p>
+       If the LUT is disabled, no color transforms will be applied to the 
+  rendered image or textures before display.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Enabled
+           </code>
+          </strong>
+          (bool) - True will enable the application of a display time LUT; False 
+          will disable it.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         Deprecated:
+        </strong>
+        Please use
+        <a class="link" href="mari.GLRender-class.html#setPostProcessingEnabled">
+         setPostProcessingEnabled()
+        </a>
+        instead.
+       </p>
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.GLRender-class.html#lutEnabled">
+         lutEnabled()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setPostFilterCollection">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setPostFilterCollection
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Collection
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.setPostFilterCollection">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Sets a post process filter collection as the current.
+      </p>
+      <p>
+       Changes the current post process filter collection to another.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Collection
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.PostFilterCollection-class.html">
+           PostFilterCollection
+          </a>
+          ) - The post filter collection to set.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.GLRender-class.html#createPostFilterCollection">
+         createPostFilterCollection()
+        </a>
+        ,
+        <a class="link" href="mari.GLRender-class.html#findPostFilterCollection">
+         findPostFilterCollection()
+        </a>
+        ,
+        <a class="link" href="mari.GLRender-class.html#deletePostFilterCollection">
+         deletePostFilterCollection()
+        </a>
+        ,
+        <a class="link" href="mari.GLRender-class.html#currentPostFilterCollection">
+         currentPostFilterCollection()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setPostProcessingEnabled">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setPostProcessingEnabled
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Enabled
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.setPostProcessingEnabled">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Enables or disables post processing color management in the 
+  viewport.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Enabled
+           </code>
+          </strong>
+          (bool) - True to enable post processing, or False to disable it
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.GLRender-class.html#postProcessingEnabled">
+         postProcessingEnabled()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="shaderCompileComplete">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            shaderCompileComplete
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Result
+           </span>
+           ,
+           <span class="sig-arg">
+            ErrorMessage
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.shaderCompileComplete">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted whenever the current GL shader program is compiled and
+  linked.
+      </p>
+      <p>
+       <code>
+        # Print out result when current GL shader program 
+  compiles.
+       </code>
+      </p>
+      <p>
+       <code>
+        def printShaderCompileResult(result, error_message):
+       </code>
+      </p>
+      <p>
+       <code>
+        print 'Shader Compile SUCCEEDED' if result == 
+  mari.gl_render.SHADER_LINK_SUCCESS else 'Shader Compile 
+  FAILED'
+       </code>
+      </p>
+      <p>
+       <code>
+        if error_message:
+       </code>
+      </p>
+      <p>
+       <code>
+        print 'Error Message:\n', error_message
+       </code>
+      </p>
+      <p>
+       <code>
+        mari.utils.connect(mari.gl_render.shaderCompileComplete, 
+  printShaderCompileResult)
+       </code>
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Result
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.GLRender.ShaderCompileResult-class.html">
+           GLRender.ShaderCompileResult
+          </a>
+          ) - Whether the current GL shader program is compiled and linked 
+          successfully.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            ErrorMessage
+           </code>
+          </strong>
+          (str) - The associated error message if compilation or linking failed.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="upgradeExistingShadersAndLayers">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            upgradeExistingShadersAndLayers
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GLRender.upgradeExistingShadersAndLayers">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Upgrades existing shaders and layers based on up-to-date XML 
+  definitions.
+      </p>
+      <p>
+       Upgrades existing shaders and layers based on up-to-date XML 
+  definitions. A custom shader and layer developer can call this function 
+  after
+       <a class="link" href="mari.GLRender-class.html#reloadXMLDefinitions">
+        reloadXMLDefinitions()
+       </a>
+       to update existing shaders and 
+  layers with the new updated definitions.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <br/>
+  <!-- ==================== CLASS VARIABLE DETAILS ==================== -->
+  <a name="section-ClassVariableDetails">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Class Variable Details
+     </span>
+    </td>
+   </tr>
+  </table>
+  <a name="SHADER_COMPILE_FAILED">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       SHADER_COMPILE_FAILED
+      </h3>
+      <p>
+       The shader failed to compile. This is most likely due to syntax errors
+  in the GLSL code.
+      </p>
+      <dl class="fields">
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+1
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="SHADER_LINK_FAILED">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       SHADER_LINK_FAILED
+      </h3>
+      <p>
+       The shader failed to link. This can be for many reasons such as 
+  references to declared functions that are not defined.
+      </p>
+      <dl class="fields">
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+2
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

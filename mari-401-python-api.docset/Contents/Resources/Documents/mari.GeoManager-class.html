@@ -1,0 +1,3959 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.GeoManager
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+        Class&nbsp;GeoManager
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.GeoManager-class.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS DESCRIPTION ==================== -->
+  <h1 class="epydoc">
+   Class GeoManager
+  </h1>
+  <p class="nomargin-top">
+   <span class="codelink">
+    <a href="mari-pysrc.html#GeoManager">
+     source&nbsp;code
+    </a>
+   </span>
+  </p>
+  <pre class="base-tree">
+object --+
+         |
+        <strong class="uidshort">GeoManager</strong>
+</pre>
+  <hr/>
+  <p>
+   Manages geometry objects in the project.
+  </p>
+  <p>
+   Mari can handle many 3D objects at once. Each 3D object or entity can 
+  have multiple geometric representations.
+  </p>
+  <p>
+   This interface allows the user to query the internal object lists, add
+  objects, remove objects, and generally build up a scene.
+   <b>
+    Example 
+  Code
+   </b>
+  </p>
+  <p>
+   <code>
+    # This examples obtains the current geometry object
+   </code>
+  </p>
+  <p>
+   <code>
+    import mari
+   </code>
+  </p>
+  <p>
+   <code>
+    current_object = mari.geo.current()
+   </code>
+  </p>
+  <!-- ==================== NESTED CLASSES ==================== -->
+  <a name="section-NestedClasses">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Nested Classes
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.GeoManager.CreateSelectionSetOptions-class.html">
+      CreateSelectionSetOptions
+     </a>
+     <br/>
+     Options to create selection sets.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.GeoManager.GeometryImportFlags-class.html">
+      GeometryImportFlags
+     </a>
+     <br/>
+     These are various options of how an imported hierarchy of objects 
+        is to be selected and merged.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.GeoManager.MergeSelectionGroupWithSameNameType-class.html">
+      MergeSelectionGroupWithSameNameType
+     </a>
+     <br/>
+     Geometry selection group with same name merge type.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.GeoManager.MergeType-class.html">
+      MergeType
+     </a>
+     <br/>
+     Geometry merge type image data formats.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.GeoManager.NodeType-class.html">
+      NodeType
+     </a>
+     <br/>
+     These are various types of objects that we can load from a geometry
+        file.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.GeoManager.OpenSubdivisionBoundaryInterpolation-class.html">
+      OpenSubdivisionBoundaryInterpolation
+     </a>
+     <br/>
+     Enumerated type for vertex boundary interpolation rules.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.GeoManager.OpenSubdivisionCreasingMethod-class.html">
+      OpenSubdivisionCreasingMethod
+     </a>
+     <br/>
+     Enumerated type for edge crease methods.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.GeoManager.OpenSubdivisionFaceVaryingInterpolation-class.html">
+      OpenSubdivisionFaceVaryingInterpolation
+     </a>
+     <br/>
+     Enumerated type for face-varying interpolation rules.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.GeoManager.OpenSubdivisionSchemeType-class.html">
+      OpenSubdivisionSchemeType
+     </a>
+     <br/>
+     Enumerated type for all subdivisions schemes supported by 
+        OpenSubdiv.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.GeoManager.OpenSubdivisionTriangleSubdivision-class.html">
+      OpenSubdivisionTriangleSubdivision
+     </a>
+     <br/>
+     Enumerated type for the triangle subdivsion weights rule.
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== INSTANCE METHODS ==================== -->
+  <a name="section-InstanceMethods">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Instance Methods
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.LocatorEntity-class.html">
+       LocatorEntity
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoManager-class.html#addLocator">
+          addLocator
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          AddAsChildToSelectedObject
+         </span>
+         =
+         <span class="summary-sig-default">
+          False
+         </span>
+         )
+        </span>
+        <br/>
+        Add a locator to the project.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoManager.addLocator">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.GeoEntity-class.html">
+       GeoEntity
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoManager-class.html#current">
+          current
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the currently selected geoentity object.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoManager.current">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.LocatorEntity-class.html">
+       LocatorEntity
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoManager-class.html#currentLocator">
+          currentLocator
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the currently selected locator object.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoManager.currentLocator">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoManager-class.html#duplicateCurrentGeoEntity">
+          duplicateCurrentGeoEntity
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          DuplicateShaderNetwork
+         </span>
+         =
+         <span class="summary-sig-default">
+          True
+         </span>
+         )
+        </span>
+        <br/>
+        Duplicates the current selected
+        <a class="link" href="mari.GeoEntity-class.html">
+         GeoEntity
+        </a>
+        in the project.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoManager.duplicateCurrentGeoEntity">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoManager-class.html#duplicateGeoEntity">
+          duplicateGeoEntity
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Object
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          DuplicateShaderNetwork
+         </span>
+         =
+         <span class="summary-sig-default">
+          True
+         </span>
+         )
+        </span>
+        <br/>
+        Duplicates an input
+        <a class="link" href="mari.GeoEntity-class.html">
+         GeoEntity
+        </a>
+        in the project.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoManager.duplicateGeoEntity">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.GeoEntity-class.html">
+       GeoEntity
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoManager-class.html#find">
+          find
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         )
+        </span>
+        <br/>
+        Finds a geometry object from the scene, given the name of the entity.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoManager.find">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of
+      <a class="link" href="mari.GeometryOperation-class.html">
+       GeometryOperation
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoManager-class.html#geometryOperationList">
+          geometryOperationList
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Get a list of the geometry operations, registered by entity image 
+      manager.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoManager.geometryOperationList">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.GeoEntity-class.html">
+       GeoEntity
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoManager-class.html#get">
+          get
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         )
+        </span>
+        <br/>
+        Gets a geometry object from the scene, given the name of the entity.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoManager.get">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoManager-class.html#getAnimationTakes">
+          getAnimationTakes
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Path
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the names of animation takes from a file.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoManager.getAnimationTakes">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoManager-class.html#getDefaultAnimationTake">
+          getDefaultAnimationTake
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Path
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the name of the default take.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoManager.getDefaultAnimationTake">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      variant
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoManager-class.html#getFileContents">
+          getFileContents
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Path
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a list of objects, name and type, that can be loaded from a 
+      file.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoManager.getFileContents">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of  int
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoManager-class.html#getFileFrameRange">
+          getFileFrameRange
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Path
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Take
+         </span>
+         =
+         <span class="summary-sig-default">
+          <code class="variable-quote">
+           '
+          </code>
+          <code class="variable-string">
+          </code>
+          <code class="variable-quote">
+           '
+          </code>
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the start and end frames of a file.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoManager.getFileFrameRange">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.GeoEntity-class.html">
+       GeoEntity
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoManager-class.html#importFromArchive">
+          importFromArchive
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          DirPath
+         </span>
+         )
+        </span>
+        <br/>
+        Import the
+        <a class="link" href="mari.GeoEntity-class.html">
+         GeoEntity
+        </a>
+        from the geometry archive given in
+        <code class="link">
+         DirPath
+        </code>
+        .
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoManager.importFromArchive">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of
+      <a class="link" href="mari.GeoEntity-class.html">
+       GeoEntity
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoManager-class.html#list">
+          list
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a list of all objects in the project.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoManager.list">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of
+      <a class="link" href="mari.LocatorEntity-class.html">
+       LocatorEntity
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoManager-class.html#listLocators">
+          listLocators
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a list of all locators in the project.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoManager.listLocators">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of
+      <a class="link" href="mari.GeoEntity-class.html">
+       GeoEntity
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoManager-class.html#load">
+          load
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Path
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Options
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          ObjectsToLoad
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          LoadAsChild
+         </span>
+         =
+         <span class="summary-sig-default">
+          False
+         </span>
+         )
+        </span>
+        <br/>
+        Loads the given file as new geometry.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoManager.load">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoManager-class.html#names">
+          names
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a list of the names of the geometry objects in the current 
+      project.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoManager.names">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoManager-class.html#remove">
+          remove
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         )
+        </span>
+        <br/>
+        Removes a given entity from the project.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoManager.remove">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoManager-class.html#setCurrent">
+          setCurrent
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Object
+         </span>
+         )
+        </span>
+        <br/>
+        Sets the currently selected object.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoManager.setCurrent">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoManager-class.html#supportedReadFormats">
+          supportedReadFormats
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a string list of all object formats supported for reading.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoManager.supportedReadFormats">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __delattr__
+      </code>
+      ,
+      <code>
+       __format__
+      </code>
+      ,
+      <code>
+       __getattribute__
+      </code>
+      ,
+      <code>
+       __hash__
+      </code>
+      ,
+      <code>
+       __init__
+      </code>
+      ,
+      <code>
+       __new__
+      </code>
+      ,
+      <code>
+       __reduce__
+      </code>
+      ,
+      <code>
+       __reduce_ex__
+      </code>
+      ,
+      <code>
+       __repr__
+      </code>
+      ,
+      <code>
+       __setattr__
+      </code>
+      ,
+      <code>
+       __sizeof__
+      </code>
+      ,
+      <code>
+       __str__
+      </code>
+      ,
+      <code>
+       __subclasshook__
+      </code>
+     </p>
+    </td>
+   </tr>
+   <tr bgcolor="#e8f0f8">
+    <th class="group-header" colspan="2">
+     &nbsp;&nbsp;&nbsp;&nbsp;Signals
+    </th>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoManager-class.html#entityAdded">
+          entityAdded
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          pNewEntity
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted after a new geometry object has been added to the 
+      project.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoManager.entityAdded">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoManager-class.html#entityMadeCurrent">
+          entityMadeCurrent
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          pNewCurrent
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted after a new geometry object becomes current.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoManager.entityMadeCurrent">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoManager-class.html#entityRemoved">
+          entityRemoved
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          pOldEntity
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted after a new geometry object has been removed from the
+      project.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoManager.entityRemoved">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS VARIABLES ==================== -->
+  <a name="section-ClassVariables">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Class Variables
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="SELECTION_GROUPS_DONT_CREATE">
+     </a>
+     <span class="summary-name">
+      SELECTION_GROUPS_DONT_CREATE
+     </span>
+     =
+     <code title="0">
+      0
+     </code>
+     <br/>
+     Don't create selection groups.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="SELECTION_GROUPS_CREATE_FROM_FACE_GROUPS">
+     </a>
+     <span class="summary-name">
+      SELECTION_GROUPS_CREATE_FROM_FACE_GROUPS
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     Create selection sets from face groups.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="GEOMETRY_IMPORT_DONT_SELECT_CHILDREN">
+     </a>
+     <span class="summary-name">
+      GEOMETRY_IMPORT_DONT_SELECT_CHILDREN
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     Do not select children of the object.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="GEOMETRY_IMPORT_DONT_MERGE_CHILDREN">
+     </a>
+     <span class="summary-name">
+      GEOMETRY_IMPORT_DONT_MERGE_CHILDREN
+     </span>
+     =
+     <code title="2">
+      2
+     </code>
+     <br/>
+     Do not merge children of the object.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="MERGESELECTIONGROUP_DO_NOT_MERGE">
+     </a>
+     <span class="summary-name">
+      MERGESELECTIONGROUP_DO_NOT_MERGE
+     </span>
+     =
+     <code title="0">
+      0
+     </code>
+     <br/>
+     Do not merge selection groups that have the same name (default).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="MERGESELECTIONGROUP_MERGE_SELECTIONGROUP_HAVING_SAME_NAME">
+     </a>
+     <span class="summary-name">
+      MERGESELECTIONGROUP_MERGE_SELECTIONGROUP_HAVING_SAME_NAME
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     Merge selection groups that have the same name.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="MERGETYPE_JUST_MERGE_NODES">
+     </a>
+     <span class="summary-name">
+      MERGETYPE_JUST_MERGE_NODES
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     Semi merge type, where we preserve all the individual geometries 
+      within the geo entity.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="MERGETYPE_SINGLE_MESH">
+     </a>
+     <span class="summary-name">
+      MERGETYPE_SINGLE_MESH
+     </span>
+     =
+     <code title="2">
+      2
+     </code>
+     <br/>
+     Full merge type, where everything is collapsed into one single 
+      geometry within the geo entity.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="ROOT">
+     </a>
+     <span class="summary-name">
+      ROOT
+     </span>
+     =
+     <code title="0">
+      0
+     </code>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="GROUP">
+     </a>
+     <span class="summary-name">
+      GROUP
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="POLYMESH">
+     </a>
+     <span class="summary-name">
+      POLYMESH
+     </span>
+     =
+     <code title="2">
+      2
+     </code>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="FACESET">
+     </a>
+     <span class="summary-name">
+      FACESET
+     </span>
+     =
+     <code title="3">
+      3
+     </code>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="SUBDIV">
+     </a>
+     <span class="summary-name">
+      SUBDIV
+     </span>
+     =
+     <code title="4">
+      4
+     </code>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="CAMERA">
+     </a>
+     <span class="summary-name">
+      CAMERA
+     </span>
+     =
+     <code title="5">
+      5
+     </code>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="VTX_BOUNDARY_NONE">
+     </a>
+     <span class="summary-name">
+      VTX_BOUNDARY_NONE
+     </span>
+     =
+     <code title="0">
+      0
+     </code>
+     <br/>
+     do not interpolate boundaries
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="VTX_BOUNDARY_EDGE_ONLY">
+     </a>
+     <span class="summary-name">
+      VTX_BOUNDARY_EDGE_ONLY
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     sharpen edges
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="VTX_BOUNDARY_EDGE_AND_CORNER">
+     </a>
+     <span class="summary-name">
+      VTX_BOUNDARY_EDGE_AND_CORNER
+     </span>
+     =
+     <code title="2">
+      2
+     </code>
+     <br/>
+     sharpen edges and corners
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="CREASE_UNIFORM">
+     </a>
+     <span class="summary-name">
+      CREASE_UNIFORM
+     </span>
+     =
+     <code title="0">
+      0
+     </code>
+     <br/>
+     Catmark rule.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="CREASE_CHAIKIN">
+     </a>
+     <span class="summary-name">
+      CREASE_CHAIKIN
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     Chaikin rule.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="FVAR_LINEAR_NONE">
+     </a>
+     <span class="summary-name">
+      FVAR_LINEAR_NONE
+     </span>
+     =
+     <code title="0">
+      0
+     </code>
+     <br/>
+     smooth everywhere ("edge only")
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="FVAR_LINEAR_CORNERS_ONLY">
+     </a>
+     <span class="summary-name">
+      FVAR_LINEAR_CORNERS_ONLY
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     sharpen corners only
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="FVAR_LINEAR_CORNERS_PLUS1">
+     </a>
+     <span class="summary-name">
+      FVAR_LINEAR_CORNERS_PLUS1
+     </span>
+     =
+     <code title="2">
+      2
+     </code>
+     <br/>
+     ("edge corner")
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="FVAR_LINEAR_CORNERS_PLUS2">
+     </a>
+     <span class="summary-name">
+      FVAR_LINEAR_CORNERS_PLUS2
+     </span>
+     =
+     <code title="3">
+      3
+     </code>
+     <br/>
+     ("edge and corner + propagate corner")
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="FVAR_LINEAR_BOUNDARIES">
+     </a>
+     <span class="summary-name">
+      FVAR_LINEAR_BOUNDARIES
+     </span>
+     =
+     <code title="4">
+      4
+     </code>
+     <br/>
+     sharpen all boundaries ("always sharp")
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="FVAR_LINEAR_ALL">
+     </a>
+     <span class="summary-name">
+      FVAR_LINEAR_ALL
+     </span>
+     =
+     <code title="5">
+      5
+     </code>
+     <br/>
+     bilinear interpolation ("bilinear")
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="SCHEME_CATMARK">
+     </a>
+     <span class="summary-name">
+      SCHEME_CATMARK
+     </span>
+     =
+     <code title="0">
+      0
+     </code>
+     <br/>
+     Catmark clark.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="SCHEME_LOOP">
+     </a>
+     <span class="summary-name">
+      SCHEME_LOOP
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     Loop.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="SCHEME_BILINEAR">
+     </a>
+     <span class="summary-name">
+      SCHEME_BILINEAR
+     </span>
+     =
+     <code title="2">
+      2
+     </code>
+     <br/>
+     Bilinear.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="TRI_SUB_CATMARK">
+     </a>
+     <span class="summary-name">
+      TRI_SUB_CATMARK
+     </span>
+     =
+     <code title="0">
+      0
+     </code>
+     <br/>
+     Catmark weights (Catmark scheme only).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="TRI_SUB_SMOOTH">
+     </a>
+     <span class="summary-name">
+      TRI_SUB_SMOOTH
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     "smooth triangle" weights (Catmark scheme only)
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== PROPERTIES ==================== -->
+  <a name="section-Properties">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Properties
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __class__
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== METHOD DETAILS ==================== -->
+  <a name="section-MethodDetails">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Method Details
+     </span>
+    </td>
+   </tr>
+  </table>
+  <a name="addLocator">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            addLocator
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            AddAsChildToSelectedObject
+           </span>
+           =
+           <span class="sig-default">
+            False
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoManager.addLocator">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Add a locator to the project.
+      </p>
+      <p>
+       <code>
+        # Add root level locator
+       </code>
+      </p>
+      <p>
+       <code>
+        &gt;&gt;&gt; import mari
+       </code>
+      </p>
+      <p>
+       <code>
+        &gt;&gt;&gt; mari.geo.addLocator()
+       </code>
+      </p>
+      <p>
+       <code>
+        # Add another locator, parented to the locator created 
+  previously
+       </code>
+      </p>
+      <p>
+       <code>
+        &gt;&gt;&gt; mari.geo.addLocator(True)
+       </code>
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            AddAsChildToSelectedObject
+           </code>
+          </strong>
+          (bool) - Flag to speficy whether the locator is to be created at the root 
+          level or parented to the currently selected object in the objects
+          palette.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.LocatorEntity-class.html">
+         LocatorEntity
+        </a>
+       </dt>
+       <dd>
+        The newly-created locator.
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="current">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            current
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoManager.current">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the currently selected geoentity object.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns:
+        <a class="link" href="mari.GeoEntity-class.html">
+         GeoEntity
+        </a>
+       </dt>
+       <dd>
+        The currently selected geoentity object.
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.GeoManager-class.html#setCurrent">
+         setCurrent()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="currentLocator">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            currentLocator
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoManager.currentLocator">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the currently selected locator object.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns:
+        <a class="link" href="mari.LocatorEntity-class.html">
+         LocatorEntity
+        </a>
+       </dt>
+       <dd>
+        The currently selected locator object.
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="duplicateCurrentGeoEntity">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            duplicateCurrentGeoEntity
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            DuplicateShaderNetwork
+           </span>
+           =
+           <span class="sig-default">
+            True
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoManager.duplicateCurrentGeoEntity">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Duplicates the current selected
+       <a class="link" href="mari.GeoEntity-class.html">
+        GeoEntity
+       </a>
+       in the project.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            DuplicateShaderNetwork
+           </code>
+          </strong>
+          (bool) - Toggles whether to duplicate the shader network of the selected 
+          object as well.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if no project is opened.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="duplicateGeoEntity">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            duplicateGeoEntity
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Object
+           </span>
+           ,
+           <span class="sig-arg">
+            DuplicateShaderNetwork
+           </span>
+           =
+           <span class="sig-default">
+            True
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoManager.duplicateGeoEntity">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Duplicates an input
+       <a class="link" href="mari.GeoEntity-class.html">
+        GeoEntity
+       </a>
+       in the project.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Object
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.GeoEntity-class.html">
+           GeoEntity
+          </a>
+          ) - The object to duplicate.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            DuplicateShaderNetwork
+           </code>
+          </strong>
+          (bool) - Toggles whether to duplicate the shader network of the selected 
+          object as well.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if no project is opened.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="entityAdded">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            entityAdded
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            pNewEntity
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoManager.entityAdded">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted after a new geometry object has been added to the 
+  project.
+      </p>
+      <p>
+       This only includes manual addition (by menu or by script), however. It
+  will not be emitted when a project is loaded.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            pNewEntity
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.GeoEntity-class.html">
+           GeoEntity
+          </a>
+          ) - The newly-added geometry object
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="entityMadeCurrent">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            entityMadeCurrent
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            pNewCurrent
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoManager.entityMadeCurrent">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted after a new geometry object becomes current.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            pNewCurrent
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.GeoEntity-class.html">
+           GeoEntity
+          </a>
+          ) - The new current geometry object
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="entityRemoved">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            entityRemoved
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            pOldEntity
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoManager.entityRemoved">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted after a new geometry object has been removed from the 
+  project.
+      </p>
+      <p>
+       This only includes manual removal (by menu or by script), however. It 
+  will not be emitted when a project is closed.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            pOldEntity
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.GeoEntity-class.html">
+           GeoEntity
+          </a>
+          ) - The geometry object that was just removed
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="find">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            find
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Name
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoManager.find">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Finds a geometry object from the scene, given the name of the 
+  entity.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The name of the entity to look for
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.GeoEntity-class.html">
+         GeoEntity
+        </a>
+       </dt>
+       <dd>
+        The requested geometry object if found, or None otherwise
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.GeoManager-class.html#get">
+         get()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="geometryOperationList">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            geometryOperationList
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoManager.geometryOperationList">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Get a list of the geometry operations, registered by entity image 
+  manager.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: list of
+        <a class="link" href="mari.GeometryOperation-class.html">
+         GeometryOperation
+        </a>
+       </dt>
+       <dd>
+        A list of geometry operations.
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="get">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            get
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Name
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoManager.get">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Gets a geometry object from the scene, given the name of the 
+  entity.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The name of the entity to look for
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.GeoEntity-class.html">
+         GeoEntity
+        </a>
+       </dt>
+       <dd>
+        The requested geometry object
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if no entity with the given name was found.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.GeoManager-class.html#find">
+         find()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="getAnimationTakes">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            getAnimationTakes
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Path
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoManager.getAnimationTakes">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the names of animation takes from a file.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Path
+           </code>
+          </strong>
+          (str) - The file path to query
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: list of str
+       </dt>
+       <dd>
+        a list of takes
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the file cannot be loaded by Mari or we cannot have any 
+        take information
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="getDefaultAnimationTake">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            getDefaultAnimationTake
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Path
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoManager.getDefaultAnimationTake">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the name of the default take.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Path
+           </code>
+          </strong>
+          (str) - The file path to query
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: str
+       </dt>
+       <dd>
+        name of default take
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the file cannot be loaded by Mari or we cannot have any 
+        take information
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="getFileContents">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            getFileContents
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Path
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoManager.getFileContents">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns a list of objects, name and type, that can be loaded from a 
+  file.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Path
+           </code>
+          </strong>
+          (str) - The file path to query
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: variant
+       </dt>
+       <dd>
+        A list of objects that can be loaded, their names and types
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if file cannot be loaded by Mari or we cannot get the 
+        contents of the file
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="getFileFrameRange">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            getFileFrameRange
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Path
+           </span>
+           ,
+           <span class="sig-arg">
+            Take
+           </span>
+           =
+           <span class="sig-default">
+            <code class="variable-quote">
+             '
+            </code>
+            <code class="variable-string">
+            </code>
+            <code class="variable-quote">
+             '
+            </code>
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoManager.getFileFrameRange">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the start and end frames of a file.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Path
+           </code>
+          </strong>
+          (str) - The file path to query
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Take
+           </code>
+          </strong>
+          (str) - Optional take used to query specific animation range if the file 
+          supports the concept of takes
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: list of  int
+       </dt>
+       <dd>
+        a list of two items, which are the start and end frames
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the file cannot be loaded by Mari or the take is invalid 
+        or we cannot get a frame range from the file
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="importFromArchive">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            importFromArchive
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            DirPath
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoManager.importFromArchive">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Import the
+       <a class="link" href="mari.GeoEntity-class.html">
+        GeoEntity
+       </a>
+       from the geometry archive given in
+       <code class="link">
+        DirPath
+       </code>
+       .
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            DirPath
+           </code>
+          </strong>
+          (str) - The directory path from which the
+          <a class="link" href="mari.GeoEntity-class.html">
+           GeoEntity
+          </a>
+          is 
+          loaded.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.GeoEntity-class.html">
+         GeoEntity
+        </a>
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="list">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            list
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoManager.list">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns a list of all objects in the project.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: list of
+        <a class="link" href="mari.GeoEntity-class.html">
+         GeoEntity
+        </a>
+       </dt>
+       <dd>
+        All objects in the project.
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="listLocators">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            listLocators
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoManager.listLocators">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns a list of all locators in the project.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: list of
+        <a class="link" href="mari.LocatorEntity-class.html">
+         LocatorEntity
+        </a>
+       </dt>
+       <dd>
+        All locators in the project.
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="load">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            load
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Path
+           </span>
+           ,
+           <span class="sig-arg">
+            Options
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            ObjectsToLoad
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            LoadAsChild
+           </span>
+           =
+           <span class="sig-default">
+            False
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoManager.load">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Loads the given file as new geometry.
+      </p>
+      <p>
+       Requests for object loading are routed to the correct plugin based on 
+  file extension.
+      </p>
+      <p>
+       The settings for the geometry load can be controlled by the function 
+  parameter
+       <code class="link">
+        Options
+       </code>
+       . This parameter should be a 
+  dictionary, with strings for keys, and values. The geometry loader 
+  plug-in that interprets the mesh to be loaded will receive the options 
+  passed in here that it recognises, and the others will be ignored. A list
+  of the commonly used settings is as follows:
+      </p>
+      <ul>
+       <li>
+        "MappingScheme" - geometry mapping scheme (type 
+      MeshOptions).
+       </li>
+       <li>
+        "MultipleGeometries" - how to handle multiple geometries in
+      a single object (type MultipleGeometryOptions).
+       </li>
+       <li>
+        "PtexFaceSizeScheme" -
+        <a class="link" href="mari.Ptex-class.html">
+         Ptex
+        </a>
+        specific: scheme to use for face texture size 
+      calculations (type PtexFaceSizeScheme).
+       </li>
+       <li>
+        "PtexFaceSize" -
+        <a class="link" href="mari.Ptex-class.html">
+         Ptex
+        </a>
+        specific: size to use with the scheme above 
+      (type int).
+       </li>
+       <li>
+        "PtexImageFormat" -
+        <a class="link" href="mari.Ptex-class.html">
+         Ptex
+        </a>
+        specific: image data format (type PtexFormat).
+       </li>
+       <li>
+        "PtexFaceColor" -
+        <a class="link" href="mari.Ptex-class.html">
+         Ptex
+        </a>
+        specific: color to clear faces to (type
+        <a class="link" href="mari.Color-class.html">
+         Color
+        </a>
+        ).
+       </li>
+       <li>
+        "PtexImportFilename" -
+        <a class="link" href="mari.Ptex-class.html">
+         Ptex
+        </a>
+        specific: import an existing
+        <a class="link" href="mari.Ptex-class.html">
+         Ptex
+        </a>
+        file onto the .obj 
+      geoemtry (type string).
+       </li>
+       <li>
+        "PtexShowCreationDialog" -
+        <a class="link" href="mari.Ptex-class.html">
+         Ptex
+        </a>
+        specific: show the
+        <a class="link" href="mari.Ptex-class.html">
+         Ptex
+        </a>
+        creation dialog 
+      after mesh loading (type Bool; default is False from Python).
+       </li>
+       <li>
+        "EachMeshCreatesObject" - each mesh can either create an 
+      Object or each be a geometry within a single Object. This is 
+      currently
+        <a class="link" href="mari.Ptex-class.html">
+         Ptex
+        </a>
+        specific. (type Bool; default is True).
+       </li>
+       <li>
+        "MergeType" - merging of geometries can be either 
+      single-mesh or just-merge-nodes (type mari.GeoManager.MergeType).
+       </li>
+       <li>
+        "MergeSelectionGroupWithSameNameType" - merging of face 
+      selection groups that have the same name (type 
+      mari.GeoManager.MergeSelectionGroupWithSameNameType) - default is 
+      mari.GeoManager.MERGESELECTIONGROUP_DO_NOT_MERGE
+       </li>
+       <li>
+        "CreateSelectionSets" - specify whether to create selection
+      sets from face groups (type
+        <a class="link" href="mari.GeoManager.CreateSelectionSetOptions-class.html">
+         CreateSelectionSetOptions
+        </a>
+        ) - default value is 
+      mari.GeoManager.CREATE_FROM_FACE_GROUPS
+       </li>
+       <li>
+        "FrameOffset" - specify the start frame in Mari's timeline 
+      to import the geometry (default value is zero).
+       </li>
+      </ul>
+      <p>
+       There are two special options ('CreateChannels' and 'ImportChannels', 
+  with a list of
+       <a class="link" href="mari.ChannelInfo-class.html">
+        ChannelInfo
+       </a>
+       as values) that can optionally be passed in 
+  to allow the user to create/import channels when loading geometry; not 
+  passing these options results in default channels (diffuse) being 
+  created. Example usage of these would be as follows:
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># Example code on loading geometry and creating a channel</span>
+<span class="py-prompt">&gt;&gt;&gt; </span>mari.geo.load(<span class="py-string">'/tmp/test.abc'</span>, {<span class="py-string">'name'</span>:<span class="py-string">'test'</span>, <span class="py-string">'CreateChannels'</span>:[mari.ChannelInfo(<span class="py-string">'exampleChan'</span>, 2048, 2048, 16),]})
+<span class="py-prompt">&gt;&gt;&gt;</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># Example code to load a geometry and import a channel</span>
+<span class="py-prompt">&gt;&gt;&gt; </span>importChannel = mari.ChannelInfo(<span class="py-string">'test1'</span>, 2048, 2048, 16)
+<span class="py-prompt">&gt;&gt;&gt; </span>importChannel.setPath(<span class="py-string">'/tmp'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>importChannel.setFileTemplate(<span class="py-string">'/$PATH/test.tif'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>mari.geo.load(<span class="py-string">'/tmp/test.abc'</span>, {<span class="py-string">'name'</span>:<span class="py-string">'test'</span>, <span class="py-string">'ImportChannels'</span>:[importChannel,]})</pre>
+      <p>
+       When used in combination with the C API, this allows users to pass in 
+  parameters with specified names to a custom geometry loader. See the C 
+  API documentation for further details.
+      </p>
+      <p>
+       The
+       <code class="link">
+        Options
+       </code>
+       parameter can also be provided 
+  as a list of strings in
+       <i>
+        "name=value"
+       </i>
+       format. This usage 
+  is deprecated, but is provided for backwards compatibility.
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># Assuming the geometry loader for the 'abc' format understands the parameters 'size' and 'name'</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>try:
+<span class="py-more">... </span>    mari.geo.load(<span class="py-string">'/tmp/test.abc'</span>, {<span class="py-string">'size'</span>: 5, <span class="py-string">'name'</span>: <span class="py-string">'test'</span>})
+<span class="py-more">... </span><span class="py-keyword">except</span>:
+<span class="py-more">... </span>    <span class="py-keyword">pass</span></pre>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Path
+           </code>
+          </strong>
+          (str) - The path to the file to be loaded. A file may contain multiple 
+          entities.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Options
+           </code>
+          </strong>
+          (variant) - This is an optional parameter which can be used to pass options 
+          to the file loader.
+          <code class="link">
+           Options
+          </code>
+          should 
+          ideally be provided in dictionary format, as described above.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            ObjectsToLoad
+           </code>
+          </strong>
+          (variant) - This is a list of objects to load from the file. Each item of the
+          list is a dictionary that contains the name of the objects to 
+          load and various geometry import flags to specify whether the 
+          children of the current object are to be selected and whether 
+          they are to be merged as well. children underneath the current 
+          node onto 1 entity.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            LoadAsChild
+           </code>
+          </strong>
+          (bool) - A flag to indicate whether the newly added geometry will be 
+          parented to the currently selected object in the project or not.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: list of
+        <a class="link" href="mari.GeoEntity-class.html">
+         GeoEntity
+        </a>
+       </dt>
+       <dd>
+        A list of the entities loaded from the given file. This list may 
+          be empty if the load failed.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if no project is currently open, or if there was a general 
+        error with loading such as missing importers or channel creation 
+        failure.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the input file path is invalid.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if there was a problem interpreting the options.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         Deprecated:
+        </strong>
+        Please pass the Options parameter in
+        <code>
+         {'name': value}
+        </code>
+        dictionary format, instead of the old
+        <code>
+         ['name=value']
+        </code>
+        list 
+    format.
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="names">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            names
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoManager.names">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns a list of the names of the geometry objects in the current 
+  project.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: list of str
+       </dt>
+       <dd>
+        A list of the names of the geometry objects in the current 
+          project
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="remove">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            remove
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Name
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoManager.remove">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Removes a given entity from the project.
+      </p>
+      <p>
+       The given entity and all child entities will be removed and placed 
+  onto the undo stack.
+      </p>
+      <p>
+       You cannot remove the last entity from a project.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The name of the entity to be removed
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: bool
+       </dt>
+       <dd>
+        Always True. On failure, it raises an exception.
+        <i>
+         (See below - 
+          please do not use this return value)
+        </i>
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if no project was open, or if only one object remains in the
+        project.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if no object with the given name was found.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         Deprecated:
+        </strong>
+        Please do not use the return value of this function. It will be removed
+    in a future version, because it is unnecessary.
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setCurrent">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setCurrent
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Object
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoManager.setCurrent">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Sets the currently selected object.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Object
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.GeoEntity-class.html">
+           GeoEntity
+          </a>
+          ) - The object to make current
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if an invalid object was provided.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if no project was open.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.GeoManager-class.html#current">
+         current()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="supportedReadFormats">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            supportedReadFormats
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoManager.supportedReadFormats">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns a string list of all object formats supported for reading.
+      </p>
+      <p>
+       The list returned will be all unique lower case strings in ascending 
+  alphabetic order.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: list of str
+       </dt>
+       <dd>
+        A string list of all object formats supported for reading - e.g. 
+          ['obj, 'abc']
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

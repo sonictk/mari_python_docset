@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.system._particle_channel_transfer
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.system-module.html">
+       Package&nbsp;system
+      </a>
+      ::
+        Module&nbsp;_particle_channel_transfer
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.system._particle_channel_transfer-pysrc.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <h1 class="epydoc">
+   Source Code for
+   <a href="mari.system._particle_channel_transfer-module.html" onclick="show_private();">
+    Module mari.system._particle_channel_transfer
+   </a>
+  </h1>
+  <pre class="py-src">
+&iuml;&raquo;&iquest;#-------------------------------------------------------------------------------
+# Transfers channels between different geo entities and versions
+#
+# Copyright (c) 2014 The Foundry Visionmongers Ltd.  All Rights Reserved.
+#-------------------------------------------------------------------------------
+
+import mari
+from PySide2.QtGui import *
+from PySide2.QtCore import *
+from PySide2.QtWidgets import *
+from _particle_transfer import *
+
+version = "0.01"
+CHANNEL_TRANSFER_USER_ROLE = 35
+
+# ------------------------------------------------------------------------------
+# ChannelOptionsTab
+#-------------------------------------------------------------------------------
+
+class ChannelOptionsTab(OptionsTab):
+
+    sourceChannelsChanged = None if not mari.app.isRunning() else Signal()
+
+    #---------------------------------------------------------------------------
+
+    def __init__(self, parent = None):
+        super(ChannelOptionsTab, self).__init__(parent)
+
+        # Create source list widget.
+        self.source_list = ChannelTransferListWidget()
+        self.source_layout.addWidget(self.source_list, 4, 0, 1, 2)
+
+        # Create transfer list widget.
+        self.transfer_list = ChannelTransferListWidget()
+        self.destination_layout.addWidget(self.transfer_list, 4, 0, 1, 2)
+
+        # Create transfer size widget.
+        label_alignment = Qt.AlignRight | Qt.AlignVCenter
+        self.destination_size_label = QLabel('Size:')
+        self.destination_layout.addWidget(self.destination_size_label, 5, 0, label_alignment)
+
+        self.destination_size = QComboBox()
+        self.destination_layout.addWidget(self.destination_size, 5, 1)
+        self.destination_geo.currentIndexChanged.connect(self._populateDestinationSize)
+
+        # Link up the add and remove button signals and slots.
+        self.add_all_button.clicked.connect(self._showAll)
+        self.add_button.clicked.connect(self._showSelected)
+        self.remove_button.clicked.connect(self._hideSelected)
+        self.remove_all_button.clicked.connect(self._hideAll)
+
+        self._populateSourceLists()
+        self._populateDestinationLists()
+        self._populateTransferLists()
+
+        self.destination_size_index = 0
+        self._populateDestinationSize(new_index = -1, force_rebuild = True)
+
+    #---------------------------------------------------------------------------
+
+    def _populateDestinationSize(self, new_index, force_rebuild = False):
+        destination_geo = self.destination_geo.currentEntity()
+        now_ptex = destination_geo.isPtex()
+
+        # Determine whether we need to update the items in the combo box based.
+        if not force_rebuild:
+            was_ptex = not self.destination_size.isEnabled()
+            if now_ptex == was_ptex:
+                return
+
+        if now_ptex:
+            # Remember the current size selected by the user so we can restore it should they select another geo that's
+            # uv based.
+            self.destination_size_label.setEnabled(False)
+
+            self.destination_size_index = self.destination_size.currentIndex()
+
+            self.destination_size.clear()
+            self.destination_size.addItem('Ptex', mari.ImageSet.SIZE_NULL)
+            self.destination_size.setCurrentIndex(0)
+            self.destination_size.setEnabled(False)
+
+        else:
+            self.destination_size_label.setEnabled(True)
+
+            self.destination_size.clear()
+            self.destination_size.addItem('Same As Source', mari.ImageSet.SIZE_NULL)
+            self.destination_size.addItem(     '256 x 256', mari.ImageSet.SIZE_256)
+            self.destination_size.addItem(     '512 x 512', mari.ImageSet.SIZE_512)
+            self.destination_size.addItem(   '1024 x 1024', mari.ImageSet.SIZE_1024)
+            self.destination_size.addItem(   '2048 x 2048', mari.ImageSet.SIZE_2048)
+            self.destination_size.addItem(   '4096 x 4096', mari.ImageSet.SIZE_4096)
+            self.destination_size.addItem(   '8192 x 8192', mari.ImageSet.SIZE_8192)
+            self.destination_size.addItem( '16384 x 16384', mari.ImageSet.SIZE_16384)
+            self.destination_size.addItem( '32768 x 32768', mari.ImageSet.SIZE_32768)
+            self.destination_size.setCurrentIndex(self.destination_size_index)
+            self.destination_size.setEnabled(True)
+
+    #---------------------------------------------------------------------------
+
+    def _populateTransferLists(self):
+        self.source_list.clear()
+        self.transfer_list.clear()
+
+        source_channels = self.sourceGeo().channelList()
+        self.source_list.populateChannels(source_channels)
+        self.transfer_list.populateChannels(source_channels)
+        self.transfer_list.hideAll()
+
+    #---------------------------------------------------------------------------
+
+    def _showAll(self):
+        self.transfer_list.showAll()
+        self.sourceChannelsChanged.emit()
+
+    #---------------------------------------------------------------------------
+
+    def _showSelected(self):
+        self.transfer_list.showSelected(self.source_list)
+        self.sourceChannelsChanged.emit()
+
+    #---------------------------------------------------------------------------
+
+    def _hideSelected(self):
+        self.transfer_list.hideSelected()
+        self.sourceChannelsChanged.emit()
+
+    #---------------------------------------------------------------------------
+
+    def _hideAll(self):
+        self.transfer_list.hideAll()
+        self.sourceChannelsChanged.emit()
+
+    #---------------------------------------------------------------------------
+
+    def sourceChannels(self):
+        return self.transfer_list.channels()
+
+    #---------------------------------------------------------------------------
+
+    def destinationSize(self):
+        return mari.ImageSet.Size(self.destination_size.itemData(self.destination_size.currentIndex()))
+
+# ------------------------------------------------------------------------------
+# ChannelTransferDialog
+#-------------------------------------------------------------------------------
+
+class ChannelTransferDialog(TransferDialog):
+
+    def __init__(self, parent = None):
+        super(ChannelTransferDialog, self).__init__('Channel Transfer', parent)
+
+        # Create the options and advanced options tabs.
+        self.options_tab = ChannelOptionsTab()
+        self.advanced_options_tab = AdvancedTab(self.options_tab)
+        self.advanced_options_tab.loadSettings()
+        self.tab_widget.addTab(self.options_tab, 'Options')
+        self.tab_widget.addTab(self.advanced_options_tab, 'Advanced')
+
+        # Connect to the source channels changed signal so we can enable/disable the ok button based on whether or not
+        # we have channels to transfer.
+        self.options_tab.sourceChannelsChanged.connect(self._sourceChannelsChanged)
+        self._sourceChannelsChanged()
+
+        # Connect to the ok button clicked signal so we can save the current settings.
+        self.ok_button.clicked.connect(self._saveSettings)
+
+    #---------------------------------------------------------------------------
+
+    def _sourceChannelsChanged(self):
+        has_source_channels = len(self.options_tab.sourceChannels()) &gt; 0
+
+        self.ok_button.setEnabled(has_source_channels)
+
+        index = self.tab_widget.indexOf(self.advanced_options_tab)
+        if index != -1:
+            self.tab_widget.setTabEnabled(index, has_source_channels)
+
+    #---------------------------------------------------------------------------
+
+    def _saveSettings(self):
+        self.advanced_options_tab.saveSettings()
+
+#-------------------------------------------------------------------------------
+# ChannelTransferListWidgetItem
+#-------------------------------------------------------------------------------
+
+class ChannelTransferListWidgetItem(QListWidgetItem):
+
+    def __init__(self, channel):
+        super(ChannelTransferListWidgetItem, self).__init__(channel.name())
+        self.setData(CHANNEL_TRANSFER_USER_ROLE, channel)
+
+    #---------------------------------------------------------------------------
+
+    def channel(self):
+        return self.data(CHANNEL_TRANSFER_USER_ROLE)
+
+#-------------------------------------------------------------------------------
+# ChannelTransferListWidget
+#-------------------------------------------------------------------------------
+
+class ChannelTransferListWidget(QListWidget):
+
+    def __init__(self):
+        super(ChannelTransferListWidget, self).__init__()
+
+        self.setSelectionMode(self.ExtendedSelection)
+        self.setAlternatingRowColors(True)
+
+        style_sheet = self.styleSheet()
+        style_sheet += 'ChannelTransferListWidget { alternate-background-color: rgb(114, 114, 114); }\n'
+        self.setStyleSheet(style_sheet)
+
+    #---------------------------------------------------------------------------
+
+    def populateChannels(self, channels):
+        self.clear()
+
+        for channel in channels:
+            item = ChannelTransferListWidgetItem(channel)
+            self.addItem(item)
+
+    #---------------------------------------------------------------------------
+
+    def showAll(self):
+        for index in range(self.count()):
+            item = self.item(index)
+            item.setHidden(False)
+
+    #---------------------------------------------------------------------------
+
+    def showSelected(self, source):
+        for index in range(self.count()):
+            source_item = source.item(index)
+            if source_item.isSelected():
+                item = self.item(index)
+                item.setHidden(False)
+
+    #---------------------------------------------------------------------------
+
+    def hideSelected(self):
+        for item in self.selectedItems():
+            item.setHidden(True)
+
+    #---------------------------------------------------------------------------
+
+    def hideAll(self):
+        for index in range(self.count()):
+            item = self.item(index)
+            item.setHidden(True)
+
+    #---------------------------------------------------------------------------
+
+    def channels(self):
+        channels = []
+        for index in range(self.count()):
+            item = self.item(index)
+            if not item.isHidden():
+                channels.append(item.channel())
+        return channels
+
+#-------------------------------------------------------------------------------
+
+def showDialog():
+    dialog = ChannelTransferDialog()
+    if not dialog.exec_():
+        return
+
+    options = dialog.options()
+    source_channels = options.sourceChannels()
+    if not source_channels:
+        return
+
+    source_flags = 0
+    destination_flags = 0
+    advanced_options = dialog.advancedOptions()
+    if advanced_options.centerPositions():
+        destination_flags = destination_flags | mari.particle.IMPORT_CENTER_POSITIONS
+        source_flags = source_flags | mari.particle.EXPORT_CENTER_POSITIONS
+    if advanced_options.flatten():
+        destination_flags = destination_flags | mari.particle.IMPORT_FLATTEN
+    if advanced_options.bleedEdges():
+        destination_flags = destination_flags | mari.particle.IMPORT_BLEED_EDGES
+    if advanced_options.sourceVisibleOnly():
+        source_flags = source_flags | mari.particle.EXPORT_IGNORE_HIDDEN
+    if advanced_options.sourceSelectedOnly():
+        source_flags = source_flags | mari.particle.EXPORT_IGNORE_UNSELECTED
+    if advanced_options.destinationVisibleOnly():
+        destination_flags = destination_flags | mari.particle.IMPORT_IGNORE_HIDDEN
+    if advanced_options.destinationSelectedOnly():
+        destination_flags = destination_flags | mari.particle.IMPORT_IGNORE_UNSELECTED
+
+    source_frame         = advanced_options.sourceFrame()
+    destination_frame    = advanced_options.destinationFrame()
+    source_patches       = advanced_options.sourcePatches()
+    destination_geo      = options.destinationGeo()
+    destination_size     = options.destinationSize()
+    destination_patches  = advanced_options.destinationPatches()
+    interpolation_method = advanced_options.interpolationMethod()
+    source_version       = options.sourceVersion()
+    destination_version  = options.destinationVersion()
+    search_range         = advanced_options.searchRange()
+    search_units         = advanced_options.searchUnits()
+    fill_color           = advanced_options.fillColor()
+    search_method        = advanced_options.searchMethod()
+    sample_count         = advanced_options.sampleCount()
+
+    try:
+        mari.history.startMacro('Transfer Channels')
+
+        for source_channel in source_channels:
+            mari.particle.transferChannel(source_channel,
+                                          source_frame,
+                                          source_patches,
+                                          destination_geo,
+                                          destination_frame,
+                                          destination_patches,
+                                          interpolation_method,
+                                          destination_flags,
+                                          source_version,
+                                          destination_version,
+                                          search_range,
+                                          search_units,
+                                          fill_color,
+                                          search_method,
+                                          sample_count,
+                                          source_flags,
+                                          destination_size)
+
+        mari.history.stopMacro()
+
+    except Exception as error:
+        mari.history.stopMacro()
+        mari.history.undo()
+
+        mari.utils.misc.message(str(error),
+                                'Failure Transferring Channels',
+                                QMessageBox.StandardButton.Ok,
+                                QMessageBox.Icon.Critical)
+
+#-------------------------------------------------------------------------------
+
+if mari.app.isRunning():
+    # Add actions and icons for the method.
+    transfer = mari.actions.create('/Mari/Channels/Transfer', 'mari.system._particle_channel_transfer.showDialog()')
+    transfer.setIconPath(mari.resources.path(mari.resources.ICONS) + '/Transfer.png')
+    transfer.setEnabled(mari.projects.current() is not None)
+    mari.utils.connect(mari.projects.opened, lambda: transfer.setEnabled(True))
+    mari.utils.connect(mari.projects.closed, lambda: transfer.setEnabled(False))
+    
+    # Add the action to the desired menu.
+    mari.menus.addAction(transfer, 'MainWindow/&amp;Channels;', '-Cut')
+
+#-------------------------------------------------------------------------------
+<script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

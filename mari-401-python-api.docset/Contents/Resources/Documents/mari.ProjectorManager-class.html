@@ -1,0 +1,1529 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.ProjectorManager
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+        Class&nbsp;ProjectorManager
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.ProjectorManager-class.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS DESCRIPTION ==================== -->
+  <h1 class="epydoc">
+   Class ProjectorManager
+  </h1>
+  <p class="nomargin-top">
+   <span class="codelink">
+    <a href="mari-pysrc.html#ProjectorManager">
+     source&nbsp;code
+    </a>
+   </span>
+  </p>
+  <pre class="base-tree">
+object --+
+         |
+        <strong class="uidshort">ProjectorManager</strong>
+</pre>
+  <hr/>
+  <p>
+   This object manages projectors in the project, including creation and 
+  listing.
+  </p>
+  <p>
+   <b>
+    Example Code
+   </b>
+  </p>
+  <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This examples shows how to create a new projector</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>projector = mari.projectors.create(<span class="py-string">"Test Projector"</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> projector.name()
+<span class="py-output">Test Projector</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>mari.projectors.remove(projector.name())</pre>
+  <!-- ==================== INSTANCE METHODS ==================== -->
+  <a name="section-InstanceMethods">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Instance Methods
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Projector-class.html">
+       Projector
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectorManager-class.html#create">
+          create
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         )
+        </span>
+        <br/>
+        Creates a new projector with the given name.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectorManager.create">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Projector-class.html">
+       Projector
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectorManager-class.html#current">
+          current
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the currently selected projector.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectorManager.current">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Projector-class.html">
+       Projector
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectorManager-class.html#find">
+          find
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the projector with the given name, if found.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectorManager.find">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Projector-class.html">
+       Projector
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectorManager-class.html#get">
+          get
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the projector with the given name.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectorManager.get">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of
+      <a class="link" href="mari.Projector-class.html">
+       Projector
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectorManager-class.html#list">
+          list
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a list of all projectors in the project.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectorManager.list">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of
+      <a class="link" href="mari.Projector-class.html">
+       Projector
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectorManager-class.html#load">
+          load
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Path
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Options
+         </span>
+         =
+         <span class="summary-sig-default">
+          <code class="variable-group">
+           [
+          </code>
+          <code class="variable-group">
+           ]
+          </code>
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          CameraNames
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         )
+        </span>
+        <br/>
+        Loads a projector from the given file path.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectorManager.load">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectorManager-class.html#names">
+          names
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a list of the names of all projectors in the project.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectorManager.names">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.QuickProjector-class.html">
+       QuickProjector
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectorManager-class.html#quick">
+          quick
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the quick projection settings.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectorManager.quick">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectorManager-class.html#remove">
+          remove
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         )
+        </span>
+        <br/>
+        Removes, or deletes, the projector with the given name.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectorManager.remove">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of
+      <a class="link" href="mari.Projector-class.html">
+       Projector
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectorManager-class.html#selection">
+          selection
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a list of all projectors in the project that are selected.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectorManager.selection">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectorManager-class.html#setCurrent">
+          setCurrent
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Current
+         </span>
+         )
+        </span>
+        <br/>
+        Sets the current projector.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectorManager.setCurrent">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __delattr__
+      </code>
+      ,
+      <code>
+       __format__
+      </code>
+      ,
+      <code>
+       __getattribute__
+      </code>
+      ,
+      <code>
+       __hash__
+      </code>
+      ,
+      <code>
+       __init__
+      </code>
+      ,
+      <code>
+       __new__
+      </code>
+      ,
+      <code>
+       __reduce__
+      </code>
+      ,
+      <code>
+       __reduce_ex__
+      </code>
+      ,
+      <code>
+       __repr__
+      </code>
+      ,
+      <code>
+       __setattr__
+      </code>
+      ,
+      <code>
+       __sizeof__
+      </code>
+      ,
+      <code>
+       __str__
+      </code>
+      ,
+      <code>
+       __subclasshook__
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== PROPERTIES ==================== -->
+  <a name="section-Properties">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Properties
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __class__
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== METHOD DETAILS ==================== -->
+  <a name="section-MethodDetails">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Method Details
+     </span>
+    </td>
+   </tr>
+  </table>
+  <a name="create">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            create
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Name
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectorManager.create">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Creates a new projector with the given name.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The name of the new projector to create. This must be non-empty 
+          and unique.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.Projector-class.html">
+         Projector
+        </a>
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the name is empty, or if a projector with the given name 
+        already exists.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if no project is currently open.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="current">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            current
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectorManager.current">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the currently selected projector.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns:
+        <a class="link" href="mari.Projector-class.html">
+         Projector
+        </a>
+       </dt>
+       <dd>
+        The currently selected projector
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if no project is currently open.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ProjectorManager-class.html#setCurrent">
+         setCurrent()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="find">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            find
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Name
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectorManager.find">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the projector with the given name, if found.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The name of the projector to look for
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.Projector-class.html">
+         Projector
+        </a>
+       </dt>
+       <dd>
+        The projector if found, or None if not
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="get">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            get
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Name
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectorManager.get">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the projector with the given name.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The name of the projector to look for
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.Projector-class.html">
+         Projector
+        </a>
+       </dt>
+       <dd>
+        The projector with the given name
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if no projector with the given name exists
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="list">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            list
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectorManager.list">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns a list of all projectors in the project.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: list of
+        <a class="link" href="mari.Projector-class.html">
+         Projector
+        </a>
+       </dt>
+       <dd>
+        A list of all projectors in the project
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if no project is currently open.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="load">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            load
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Path
+           </span>
+           ,
+           <span class="sig-arg">
+            Options
+           </span>
+           =
+           <span class="sig-default">
+            <code class="variable-group">
+             [
+            </code>
+            <code class="variable-group">
+             ]
+            </code>
+           </span>
+           ,
+           <span class="sig-arg">
+            CameraNames
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectorManager.load">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Loads a projector from the given file path.
+      </p>
+      <p>
+       Requests for projector loading are routed to the correct plugin based 
+  on file extension.
+      </p>
+      <p>
+       The following is an example of loading a camera from an alembic file 
+  with some additional camera options:
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>filePath = <span class="py-string">"/tmp/test.abc"</span>
+<span class="py-prompt">&gt;&gt;&gt; </span>options = [<span class="py-string">"FrameOffset = 1"</span>, <span class="py-string">"StartFrame = 2"</span>, <span class="py-string">"EndFrame=4"</span>]
+<span class="py-prompt">&gt;&gt;&gt; </span>camerasToLoad = [<span class="py-string">"/CameraTopPersp/CameraTopPersp"</span>]
+<span class="py-prompt">&gt;&gt;&gt; </span>mari.projectors.load(filePath, options, camerasToLoad)</pre>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Path
+           </code>
+          </strong>
+          (str) - The path to the file to be loaded. A file may contain multiple 
+          projectors.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Options
+           </code>
+          </strong>
+          (list of str) - This is an optional parameter which can be used to pass options 
+          to the file loader.
+          <code class="link">
+           Options
+          </code>
+          should be 
+          in
+          <i>
+           name=value
+          </i>
+          format. Some examples are StartFrame, 
+          EndFrame and FrameOffset.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            CameraNames
+           </code>
+          </strong>
+          (variant) - This is an optional list of cameras to load from the file. Each 
+          item of the list is a string, corresponding to the name of the 
+          camera in the source file.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: list of
+        <a class="link" href="mari.Projector-class.html">
+         Projector
+        </a>
+       </dt>
+       <dd>
+        A list of the projectors loaded from the given file, empty list 
+          on failure
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if no project is currently open.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the options list contains invalid items.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="names">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            names
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectorManager.names">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns a list of the names of all projectors in the project.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: list of str
+       </dt>
+       <dd>
+        The names of all projectors in the project
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if no projet is currently open.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="quick">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            quick
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectorManager.quick">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the quick projection settings.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns:
+        <a class="link" href="mari.QuickProjector-class.html">
+         QuickProjector
+        </a>
+       </dt>
+       <dd>
+        The quick projection settings.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if no project is currently open.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="remove">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            remove
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Name
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectorManager.remove">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Removes, or deletes, the projector with the given name.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The name of the projector to remove
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="selection">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            selection
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectorManager.selection">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns a list of all projectors in the project that are selected.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: list of
+        <a class="link" href="mari.Projector-class.html">
+         Projector
+        </a>
+       </dt>
+       <dd>
+        A list of all selected projectors in the project
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if no project is currently open.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setCurrent">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setCurrent
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Current
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectorManager.setCurrent">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Sets the current projector.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Current
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Projector-class.html">
+           Projector
+          </a>
+          ) - The projector to make current
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.Projector-class.html#makeCurrent">
+         Projector.makeCurrent()
+        </a>
+        ,
+        <a class="link" href="mari.ProjectorManager-class.html#current">
+         current()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

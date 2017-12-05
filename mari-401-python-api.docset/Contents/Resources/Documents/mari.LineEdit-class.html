@@ -1,0 +1,2082 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.LineEdit
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+        Class&nbsp;LineEdit
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.LineEdit-class.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS DESCRIPTION ==================== -->
+  <h1 class="epydoc">
+   Class LineEdit
+  </h1>
+  <p class="nomargin-top">
+   <span class="codelink">
+    <a href="mari-pysrc.html#LineEdit">
+     source&nbsp;code
+    </a>
+   </span>
+  </p>
+  <pre class="base-tree">
+object --+
+         |
+        <strong class="uidshort">LineEdit</strong>
+</pre>
+  <hr/>
+  <p>
+   A numeric slider widget.
+  </p>
+  <p>
+   Provides a custom line edit widget, which accepts integers (the 
+  default) or floating point values.
+   <b>
+    Example Code
+   </b>
+  </p>
+  <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This example creates a new FloatSlider object, add it to a QWidget and show it</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> PySide
+<span class="py-prompt">&gt;&gt;&gt; </span>line_edit = mari.LineEdit()
+<span class="py-prompt">&gt;&gt;&gt; </span>container = PySide.QtGui.QWidget()
+<span class="py-prompt">&gt;&gt;&gt; </span>container.setLayout(PySide.QtGui.QHBoxLayout())
+<span class="py-prompt">&gt;&gt;&gt; </span>line_edit.addToLayout(container.layout())
+<span class="py-prompt">&gt;&gt;&gt; </span>container.show()</pre>
+  <!-- ==================== INSTANCE METHODS ==================== -->
+  <a name="section-InstanceMethods">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Instance Methods
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LineEdit-class.html#addFloatValidator">
+          addFloatValidator
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Minimum
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Maximum
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Precision
+         </span>
+         )
+        </span>
+        <br/>
+        Adds a validator to provided range checking of floating-point 
+      numbers.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LineEdit.addFloatValidator">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LineEdit-class.html#addToLayout">
+          addToLayout
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Layout
+         </span>
+         )
+        </span>
+        <br/>
+        Adds the line edit to the given layout.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LineEdit.addToLayout">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LineEdit-class.html#blockSignals">
+          blockSignals
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Block
+         </span>
+         )
+        </span>
+        <br/>
+        Disables or re-enables the emission of signals from the object.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LineEdit.blockSignals">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LineEdit-class.html#home">
+          home
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Mark
+         </span>
+         )
+        </span>
+        <br/>
+        Moves the text cursor to the beginning of the line unless it is 
+      already there.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LineEdit.home">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="isEnabled">
+         </a>
+         <span class="summary-sig-name">
+          isEnabled
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns whether the line edit is enabled.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LineEdit.isEnabled">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="isReadOnly">
+         </a>
+         <span class="summary-sig-name">
+          isReadOnly
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns whether the line edit is read only.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LineEdit.isReadOnly">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      int
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LineEdit-class.html#maximumHeight">
+          maximumHeight
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the maximum height in pixels.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LineEdit.maximumHeight">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      int
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LineEdit-class.html#maximumWidth">
+          maximumWidth
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the maximum width in pixels.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LineEdit.maximumWidth">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LineEdit-class.html#setEnabled">
+          setEnabled
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Enabled
+         </span>
+         )
+        </span>
+        <br/>
+        Sets whether the line edit is enabled.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LineEdit.setEnabled">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LineEdit-class.html#setMaximumHeight">
+          setMaximumHeight
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Maximum
+         </span>
+         )
+        </span>
+        <br/>
+        Sets the maximum height in pixels.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LineEdit.setMaximumHeight">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LineEdit-class.html#setMaximumWidth">
+          setMaximumWidth
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Maximum
+         </span>
+         )
+        </span>
+        <br/>
+        Sets the maximum width in pixels.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LineEdit.setMaximumWidth">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LineEdit-class.html#setRange">
+          setRange
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Range
+         </span>
+         )
+        </span>
+        <br/>
+        Sets the range of the line edit.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LineEdit.setRange">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LineEdit-class.html#setReadOnly">
+          setReadOnly
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          ReadOnly
+         </span>
+         )
+        </span>
+        <br/>
+        Sets whether the line edit is read only.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LineEdit.setReadOnly">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LineEdit-class.html#setText">
+          setText
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Text
+         </span>
+         )
+        </span>
+        <br/>
+        Sets the text entered in the line edit.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LineEdit.setText">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LineEdit-class.html#setValue">
+          setValue
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Value
+         </span>
+         )
+        </span>
+        <br/>
+        Sets the value of the slider.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LineEdit.setValue">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LineEdit-class.html#text">
+          text
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the entered text.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LineEdit.text">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.LineEdit-class.html">
+       LineEdit
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LineEdit-class.html#__init__">
+          __init__
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Parent
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Value
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Range
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         )
+        </span>
+        <br/>
+        Sets to the int slider specified by the given components.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LineEdit.__init__">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __delattr__
+      </code>
+      ,
+      <code>
+       __format__
+      </code>
+      ,
+      <code>
+       __getattribute__
+      </code>
+      ,
+      <code>
+       __hash__
+      </code>
+      ,
+      <code>
+       __new__
+      </code>
+      ,
+      <code>
+       __reduce__
+      </code>
+      ,
+      <code>
+       __reduce_ex__
+      </code>
+      ,
+      <code>
+       __repr__
+      </code>
+      ,
+      <code>
+       __setattr__
+      </code>
+      ,
+      <code>
+       __sizeof__
+      </code>
+      ,
+      <code>
+       __str__
+      </code>
+      ,
+      <code>
+       __subclasshook__
+      </code>
+     </p>
+    </td>
+   </tr>
+   <tr bgcolor="#e8f0f8">
+    <th class="group-header" colspan="2">
+     &nbsp;&nbsp;&nbsp;&nbsp;Signals
+    </th>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="lostFocus">
+         </a>
+         <span class="summary-sig-name">
+          lostFocus
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted when the line edit loses focus.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LineEdit.lostFocus">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LineEdit-class.html#movedMouse">
+          movedMouse
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          YPosition
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted when the mouse is dragged from the line edit.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LineEdit.movedMouse">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== PROPERTIES ==================== -->
+  <a name="section-Properties">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Properties
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __class__
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== METHOD DETAILS ==================== -->
+  <a name="section-MethodDetails">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Method Details
+     </span>
+    </td>
+   </tr>
+  </table>
+  <a name="addFloatValidator">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            addFloatValidator
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Minimum
+           </span>
+           ,
+           <span class="sig-arg">
+            Maximum
+           </span>
+           ,
+           <span class="sig-arg">
+            Precision
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LineEdit.addFloatValidator">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Adds a validator to provided range checking of floating-point 
+  numbers.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Minimum
+           </code>
+          </strong>
+          (float) - The minimum value accepted.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Maximum
+           </code>
+          </strong>
+          (float) - The maximum value accepted.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Precision
+           </code>
+          </strong>
+          (int) - The number of decimal places accepted.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="addToLayout">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            addToLayout
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Layout
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LineEdit.addToLayout">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Adds the line edit to the given layout.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Layout
+           </code>
+          </strong>
+          (QLayout) - The layout to add the line edit widget to
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the given layout is null.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="blockSignals">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            blockSignals
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Block
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LineEdit.blockSignals">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Disables or re-enables the emission of signals from the object.
+      </p>
+      <p>
+       If
+       <code class="link">
+        Block
+       </code>
+       is True, this will block the 
+  emission of signals from this object - i.e., emitting a signal will not 
+  invoke anything connected to it. If
+       <code class="link">
+        Block
+       </code>
+       is 
+  False, any previous blocking will be deactivated.
+      </p>
+      <p>
+       Signals are always enabled by default.
+      </p>
+      <p>
+       When using this function, you should store the return value, which is 
+  the previous setting for whether signals were blocked. When your 
+  processing has finished, you should call this function again with the 
+  previous value. This will ensure that signals will not be re-enabled 
+  earlier than intended.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Block
+           </code>
+          </strong>
+          (bool) - True to block signals, or False to unblock them - but see above 
+          for why this should generally be called with a stored value 
+          instead of an explicit False
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: bool
+       </dt>
+       <dd>
+        The previous value of whether signals were blocked.
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="home">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            home
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Mark
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LineEdit.home">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Moves the text cursor to the beginning of the line unless it is 
+  already there.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Mark
+           </code>
+          </strong>
+          (bool) - If True, text is selected towards the first position; otherwise, 
+          any selected text is unselected if the cursor is moved.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="maximumHeight">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            maximumHeight
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LineEdit.maximumHeight">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the maximum height in pixels.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: int
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.LineEdit-class.html#setMaximumHeight">
+         setMaximumHeight()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="maximumWidth">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            maximumWidth
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LineEdit.maximumWidth">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the maximum width in pixels.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: int
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.LineEdit-class.html#setMaximumWidth">
+         setMaximumWidth()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="movedMouse">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            movedMouse
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            YPosition
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LineEdit.movedMouse">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted when the mouse is dragged from the line edit.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            YPosition
+           </code>
+          </strong>
+          (int) - The relative y position of the cursor.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setEnabled">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setEnabled
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Enabled
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LineEdit.setEnabled">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Sets whether the line edit is enabled.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Enabled
+           </code>
+          </strong>
+          (bool)
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setMaximumHeight">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setMaximumHeight
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Maximum
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LineEdit.setMaximumHeight">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Sets the maximum height in pixels.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Maximum
+           </code>
+          </strong>
+          (int)
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.LineEdit-class.html#maximumHeight">
+         maximumHeight()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setMaximumWidth">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setMaximumWidth
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Maximum
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LineEdit.setMaximumWidth">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Sets the maximum width in pixels.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Maximum
+           </code>
+          </strong>
+          (int)
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.LineEdit-class.html#maximumWidth">
+         maximumWidth()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setRange">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setRange
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Range
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LineEdit.setRange">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Sets the range of the line edit.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Range
+           </code>
+          </strong>
+          (int) - The range to set on the line edit.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setReadOnly">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setReadOnly
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            ReadOnly
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LineEdit.setReadOnly">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Sets whether the line edit is read only.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            ReadOnly
+           </code>
+          </strong>
+          (bool)
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setText">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setText
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Text
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LineEdit.setText">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Sets the text entered in the line edit.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Text
+           </code>
+          </strong>
+          (str)
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.LineEdit-class.html#text">
+         text()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setValue">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setValue
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Value
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LineEdit.setValue">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Sets the value of the slider.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Value
+           </code>
+          </strong>
+          (int) - The value to set the slider to.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="text">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            text
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LineEdit.text">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the entered text.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: str
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.LineEdit-class.html#setText">
+         setText()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="__init__">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            __init__
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Parent
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            Value
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           ,
+           <span class="sig-arg">
+            Range
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           )
+          </span>
+          <br/>
+          <em class="fname">
+           (Constructor)
+          </em>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LineEdit.__init__">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Sets to the int slider specified by the given components.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Range
+           </code>
+          </strong>
+          (int)
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Value
+           </code>
+          </strong>
+          (int)
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Parent
+           </code>
+          </strong>
+          (QWidget)
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.LineEdit-class.html">
+         LineEdit
+        </a>
+       </dt>
+       <dt>
+        Overrides:
+        object.__init__
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

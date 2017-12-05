@@ -1,0 +1,807 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.system.snapshots
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.system-module.html">
+       Package&nbsp;system
+      </a>
+      ::
+        Module&nbsp;snapshots
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.system.snapshots-pysrc.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <h1 class="epydoc">
+   Source Code for
+   <a href="mari.system.snapshots-module.html">
+    Module mari.system.snapshots
+   </a>
+  </h1>
+  <pre class="py-src">
+&iuml;&raquo;&iquest;#-------------------------------------------------------------------------------
+# Snapshot related Mari scripts
+# coding: utf-8
+# Copyright (c) 2011 The Foundry Visionmongers Ltd.  All Rights Reserved.
+#-------------------------------------------------------------------------------
+
+import PySide2
+import sys
+import os
+import mari
+import uuid
+
+gui = PySide2.QtGui
+widgets = PySide2.QtWidgets
+from PySide2.QtCore import Qt as qt
+
+_preview_size = 64      #: size of the snapshot preview images in pixels
+
+CHANNELS_ALL = 1        #: snapshot all channels
+CHANNELS_CURRENT = 2    #: snapshot the current channel (on the current object)        
+
+# These two are for seamless transition from pre-2.0 style channel snapshots to post-2.0 style channel snapshots
+def _getChannels(obj):
+    #return obj.imageSetList(); #OLD
+    return obj.channelList(); #NEW
+
+def _isPtex(channel):
+    #return channel.isPtex(); #OLD
+    return False #NEW
+
+def _currentChannel():
+    #return mari.geo.current().currentImageSet(); #OLD
+    current = mari.geo.current()
+    if not current:
+        return None
+    return current.currentChannel(); #NEW
+
+#-------------------------------------------------------------------------------
+def getAllChannels():
+    """Returns a list of all channels in the project.
+    
+    If no project is open, it returns an empty list.
+    """
+    channels = []
+    if mari.projects.current() is not None:
+        [channels.append(chan) for obj in mari.geo.list() for chan in _getChannels(obj)]
+    return channels
+
+#-------------------------------------------------------------------------------
+def getAllUVChannels():
+    """Returns a list of all UV channels in the project - i.e. all channels
+    except Ptex channels.
+    
+    If no project is open, it returns an empty list.
+    """
+    channels = []
+    if mari.projects.current() is not None:
+        [channels.append(chan) for obj in mari.geo.list() for chan in _getChannels(obj) if not _isPtex(chan)]
+    return channels
+
+#-------------------------------------------------------------------------------
+def isPtexProject():
+    """Checks if the current project contains any Ptex channels.   
+    
+    @deprecated: This function will be deprecated, as a project can contain both
+                 Ptex and UV-based objects.
+             
+    @return: True if any of the channels in this project are Ptex channels, and
+             False if not.
+    """
+    mari.utils.deprecate("This function is deprecated, as a project can contain "
+                         "both Ptex and UV based objects. Please use the isPtex() "
+                         "method of the channels in the individual objects instead.")
+    channels = getAllChannels()
+    number_of_ptex_channels = sum(map(lambda c: _isPtex(c), channels))
+    return number_of_ptex_channels &gt; 0
+
+#-------------------------------------------------------------------------------
+def getShotsInAllChannels():
+    "Returns a list of the snapshots that are present in all channels."
+    channels = getAllUVChannels()    
+    # If there are less than two channels, the result is trivial
+    if channels == []:
+        return []
+    if len(channels) == 1:
+        return channels[0].snapshotList()
+    # Make sets of shot IDs so we can check which are in each channel
+    channel_shot_ids = [set([shot.id() for shot in chan.snapshotList()]) for chan in channels]
+    ids_in_all_channels = reduce(lambda s1, s2: s1.intersection(s2), channel_shot_ids)
+    return [shot for shot in channels[0].snapshotList() if shot.id() in ids_in_all_channels]
+
+#-------------------------------------------------------------------------------
+def snapshotChannels(channel_list, shot_name): 
+    """This creates a snapshot of a list of the channels in the scene.
+
+    A unique ID is created for the group of snapshots, and then a snapshot is created for each channel
+    with the given name and generated ID.
+    
+    Note that snapshots can only be created for UV channels. Future releases may
+    support snapshots for Ptex channels as well. Calling this function on Ptex channels
+    will result in a value error exception.
+    
+    @param channel_list: A list of channels to take snapshots of, or a single channel
+    @param shot_name: A descriptive name for the snapshot being taken
+    @return: The ID of the new group snapshot
+    """
+    
+    # Check that we're starting from a state where exporting channels is possible
+    if mari.projects.current() is None:
+        raise RuntimeError("No project currently loaded. Cannot create snapshot")
+    
+    if any(filter(lambda c: _isPtex(c), channel_list)):
+        raise ValueError("The channel list contains Ptex channels. Snapshots are not supported for Ptex channels.")
+        
+    # If the channel list parameter isn't a list or tuple, make it one
+    if type(channel_list) is not list and type(channel_list) is not tuple:
+        channel_list = [channel_list]
+
+    # set Mari into a processing state while we create the snapshot
+    mari.app.startProcessing('Creating Snapshot', len(channel_list))
+    mari.history.startMacro( 'Create Snapshot')
+
+    try:
+        # create a unique ID for this snapshot
+        id = str(uuid.uuid1())
+        
+        # Capture the current canvas and scale to the preview size
+        img = mari.canvases.current().captureImage(_preview_size, _preview_size)
+        # snapshot each channel in each object, passing in the name and the unique ID for this group snapshot 
+        for channel in channel_list:
+            if not _isPtex(channel):
+                shot = channel.createSnapshot(shot_name, id)
+                shot.setPreview(img)
+                mari.app.stepProgress()
+
+    finally:
+        mari.history.stopMacro()
+        mari.app.stopProcessing()
+
+    return id
+    
+#-------------------------------------------------------------------------------
+def snapshotAllChannels(shot_name):
+    """Calls L{snapshotChannels()} with all channels in the project.
+
+    Note that snapshots will only be created for UV channels. Future releases may
+    support snapshots for Ptex channels as well.
+    
+    @param shot_name: A descriptive name for the snapshot being taken
+    """
+    snapshotChannels(getAllUVChannels(), shot_name)
+    
+#-------------------------------------------------------------------------------
+def showNewSnapshotGUI(channels=CHANNELS_ALL, title='Snapshot All Channels'):
+    """This shows a GUI to create a snapshot of a set of channels in the project.
+
+    Note that snapshots will only be created for UV channels. Future releases may
+    support snapshots for Ptex channels as well.
+
+    @param channels: The channels to create a snapshot for, or CHANNELS_ALL or
+                     CHANNELS_CURRENT
+    @param title: The title for the dialog that requests a snapshot name from the user
+    """
+
+    # Check that we're starting from a state where exporting channels is possible
+    if mari.projects.current() is None:
+        mari.utils.message("No project currently loaded. Cannot create snapshot")
+        return
+    
+    try:
+        clearOrBakePaint()
+    except RuntimeError:
+        return      # user cancelled
+    
+    shot_name = widgets.QInputDialog.getText(None, title, 'Please provide a name for the snapshot:')
+    if shot_name[1]==False:
+        return
+    else:
+        shot_name =  shot_name[0]
+    
+    if channels == CHANNELS_ALL:
+        channels = getAllUVChannels()
+    elif channels == CHANNELS_CURRENT:
+        current_channel = _currentChannel()
+        channels = []
+        if not _isPtex(current_channel): 
+            channels.append(current_channel)
+    snapshotChannels(channels, shot_name)
+
+#-------------------------------------------------------------------------------
+def checkForAutosnapshot():
+    "Creates an autosnapshot of all channels without further prompting, if the 'snapshot on save' preference is set."
+    autosnapshot_setting = mari.prefs.get('Data/Channels/autosnapshotOnSave').lower()
+    if autosnapshot_setting == "disabled":
+        return
+    
+    try:
+        clearOrBakePaint()
+    except RuntimeError:
+        return      # snapshot cancelled
+    
+    autosnapshot_name = "saved"
+    
+    mari.history.startMacro("Autosnapshot")
+    try:
+        # Given that we're about to autosnapshot all channels, remove the oldest autosnapshots we have to make sure that the
+        # limit is adhered to.  We need to check on each channel individually, because otherwise adding a new channel will
+        # decrease the "shots on all channels" to zero and so implicitly remove the limit.
+        if autosnapshot_setting.find('unlimited') &lt; 0:
+            max = mari.prefs.get('Data/Channels/autosnapshotLimit') - 1     # one below the limit because we're about to create one
+            for channel in getAllUVChannels():
+                count = 0
+                for snapshot in reversed(channel.snapshotList()):
+                    if snapshot.name() == autosnapshot_name:
+                        if count &lt; max:
+                            count += 1
+                        else:
+                            channel.deleteSnapshot(snapshot)
+        
+        snapshotAllChannels(autosnapshot_name)
+        
+    finally:
+        mari.history.stopMacro()
+
+#-------------------------------------------------------------------------------
+def deleteAll(confirm=True):
+    "Deletes all snapshots in the project, after an optional confirmation dialog."
+    if confirm and \
+            mari.utils.messageResult("<b>This will delete all snapshots in the project!</b><p>Do you want to continue?",
+                                     title="Confirm Delete All Snapshots", buttons=widgets.QMessageBox.Ok | widgets.QMessageBox.Cancel,
+                                     icon=widgets.QMessageBox.Warning) != widgets.QMessageBox.Ok:
+        return
+    
+    mari.history.startMacro("Delete All Snapshots")
+    try:
+        for channel in getAllUVChannels():
+            [channel.deleteSnapshot(snapshot) for snapshot in channel.snapshotList()]
+    finally:
+        mari.history.stopMacro()
+    
+#-------------------------------------------------------------------------------
+def disconnectNoLogs(signal, response):
+    if not callable(response) or not hasattr(signal, "disconnect"):
+        return
+
+    try:
+        signal.disconnect(response)
+    except RuntimeError:
+        pass
+
+#-------------------------------------------------------------------------------
+class SnapshotUI(widgets.QWidget):
+    "Inspection and management of object snapshots"
+    
+    def __init__(self):
+        super(SnapshotUI, self).__init__()
+        self._snapshot_id_to_widget = dict();
+        # make the main layout and basic buttons
+        main_layout = widgets.QVBoxLayout()
+        main_layout.setContentsMargins(0, 0, 0, 0)
+        main_layout.setSpacing(0)
+        channel_layout = widgets.QHBoxLayout()
+        self.setWindowTitle("Manage Snapshots")
+
+        # Channel selector
+        label = widgets.QLabel("Channels: ")
+        label.setAlignment(qt.AlignRight | qt.AlignVCenter)
+        channel_layout.addWidget(label)
+        self._all_channels_btn = widgets.QPushButton("All")
+        self._all_channels_btn.setCheckable(True)
+        self._all_channels_btn.setChecked(True)
+        self._current_channel_btn = widgets.QPushButton("Current")
+        self._current_channel_btn.setCheckable(True)
+        channel_layout.addWidget(self._all_channels_btn)
+        channel_layout.addWidget(self._current_channel_btn)
+        
+        control_layout = widgets.QHBoxLayout()
+        control_layout.setContentsMargins(0, 0, 0, 0)
+        control_layout.setSpacing(0)
+        self._new = widgets.QPushButton("&amp;New;")
+
+        # store extract button so we can set it's visibility based on if 'All' channels is enabled
+        self._extract_btn = widgets.QPushButton("E&amp;xtract;")
+        self._extract_btn.setVisible(self._current_channel_btn.isChecked())
+
+        revert = widgets.QPushButton("&amp;Revert;")
+        delete = widgets.QPushButton("&amp;Delete;")
+        [control_layout.addWidget(w) for w in (self._new, self._extract_btn, revert, delete)]
+        
+        # make a tree widget to show the snapshots
+        self._snapshots_box = widgets.QTreeWidget()
+        self._snapshots_box.setSelectionMode(self._snapshots_box.ExtendedSelection)         # extended selection
+        self._snapshots_box.header().setSectionResizeMode(widgets.QHeaderView.ResizeToContents)
+        self._snapshots_box.setIconSize(PySide2.QtCore.QSize(_preview_size, _preview_size))
+        self._snapshots_box.setRootIsDecorated(False)
+        self._snapshots_box.setItemsExpandable(False)
+        
+        labels = ['Created', 'Preview', 'Name', 'User']
+        self._snapshots_box.setHeaderLabels(labels)
+        self._updateShotList()
+
+        main_layout.addLayout(channel_layout)
+        main_layout.addWidget(self._snapshots_box)
+        main_layout.addLayout(control_layout)
+        
+        self.setLayout(main_layout)
+        connect = mari.utils.connect
+        connect(self._new.clicked,                      self._newSnapshot)
+        connect(self._extract_btn.clicked,              self._extractSnapshot)
+        connect(revert.clicked,                         self._revertToSnapshot)
+        connect(delete.clicked,                         self._deleteSnapshots)
+        connect(self._all_channels_btn.clicked,         self._channelSelectionChanged)
+        connect(self._current_channel_btn.clicked,      self._channelSelectionChanged)
+        connect(mari.geo.entityMadeCurrent,             self._channelSelectionChanged)
+        
+        connect(self._all_channels_btn.clicked,         lambda: self._selectChannels(CHANNELS_ALL))
+        connect(self._current_channel_btn.clicked,      lambda: self._selectChannels(CHANNELS_CURRENT))
+        connect(self._snapshots_box.itemDoubleClicked,  self._revertToSnapshotItem)
+        
+        connect(mari.projects.openedProject,            lambda: self._setActive(True))
+        connect(mari.projects.aboutToCloseProject,      lambda: self._setActive(False))
+
+        self.setEnabled(False)
+
+    #-------------------------------------------------------------------------------
+    def _generateBoundFunc0(self, func, obj):
+        """Returns a function object that calls the given zero parameter function with an extra initial parameter.
+        
+        This forces the evaluation of the object now instead of at call time.
+        """
+        return lambda: func(obj)
+    
+    #-------------------------------------------------------------------------------
+    def _generateBoundFunc1(self, func, obj):
+        """Returns a function object that calls the given one parameter function with an extra initial parameter.
+        
+        This forces the evaluation of the object now instead of at call time.
+        """
+        return lambda x: func(obj, x)
+    
+    #-------------------------------------------------------------------------------
+    def _setActive(self, active):
+        "Sets snapshot processing to active or inactive, including setting up signal responses."
+        op = mari.utils.connect if active else mari.utils.disconnect
+        op(mari.geo.entityAdded, self._processAddedEntity)
+        op(mari.geo.entityRemoved, self._updateShotsIfAllChannels)
+        [self._applyEntitySignals(obj, op, active) for obj in mari.geo.list()]
+        self._channelSelectionChanged()
+        self._updateShotList(allow_shots=active)
+        self.setEnabled(active)
+        
+    #-------------------------------------------------------------------------------
+    def _applyEntitySignals(self, entity, op, active):
+        op(entity.channelMadeCurrent, self._channelSelectionChanged)
+        op(entity.channelAdded, self._channelSelectionChanged)
+        op(entity.channelRemoved, self._channelSelectionChanged)
+        if active:
+            self._applyChannelSignals(entity, op)
+
+    #-------------------------------------------------------------------------------
+    def _applyChannelSignals(self, entity, op):
+        for chan in _getChannels(entity):
+            op(chan.snapshotAdded, self._updateShotListAdded)
+            op(chan.snapshotRemoved, self._updateShotListRemoved)
+
+    #-------------------------------------------------------------------------------
+    def _channelSelectionChanged(self):
+        if mari.projects.current() is not None:
+            # Ptex snapshots aren't supported, so we can't make new snapshots when only Ptex channels would be affected.
+            disabled = not getAllUVChannels() \
+                       or (_currentChannel() and _isPtex(_currentChannel()) and self._current_channel_btn.isChecked())
+            self._new.setEnabled(not disabled)
+            
+            # disconnect all channel signals...
+            op = disconnectNoLogs
+            [self._applyChannelSignals(obj, op) for obj in mari.geo.list()]
+            
+            # ... and now reconnect to make sure new channels' signals are picked up
+            op = mari.utils.connect
+            [self._applyChannelSignals(obj, op) for obj in mari.geo.list()]
+            
+            # Do not update the list if all channels are in use. It will produce the same result.
+            # This improves GUI response times.
+            if self._all_channels_btn.isChecked():
+                return
+            self._updateShotList()
+
+
+    #-------------------------------------------------------------------------------
+    def _processAddedEntity(self, entity):
+        self._applyEntitySignals(entity, op=mari.utils.connect, active=True)
+        self._updateShotsIfAllChannels()
+        
+    #-------------------------------------------------------------------------------
+    def _updateShotsIfAllChannels(self):
+        if self._all_channels_btn.isChecked():
+            self._updateShotList()
+    
+    #-------------------------------------------------------------------------------
+    def _selectedChannels(self):
+        "Returns a list of the UV channels currently selected for processing."
+        if self._all_channels_btn.isChecked():
+            return getAllUVChannels()
+        channels = []
+        current_channel = _currentChannel()
+        if not _isPtex(current_channel):
+            channels.append(current_channel)
+        return channels
+    
+    #-------------------------------------------------------------------------------
+    def _selectedChannelShotPairsWithID(self, id):
+        """Returns a list of pairs of selected channels and snapshots with the given ID.
+        
+        This looks through the list of selected channels for snapshots with the given ID.
+        Those that are found are returned as tuples of (channel, snapshot).
+        """
+        channels_and_shots = []
+        for channel in self._selectedChannels():
+            shot = channel.findSnapshotWithID(id)
+            if shot is not None:
+                channels_and_shots.append((channel, shot))
+        return channels_and_shots
+    
+    #-------------------------------------------------------------------------------
+    def _selectChannels(self, channels):
+        self._all_channels_btn.setChecked(channels == CHANNELS_ALL)
+        self._current_channel_btn.setChecked(channels == CHANNELS_CURRENT)
+        self._extract_btn.setVisible(channels == CHANNELS_CURRENT)
+        self._updateShotList()
+
+    #-------------------------------------------------------------------------------
+    def _updateShotListAddSnapshot(self, snapshot):
+        if self._snapshot_id_to_widget.has_key( snapshot.id()):
+            mari.utils.connect(snapshot.previewChanged, self._updateShotListPreviewChanged)   # update the list again if the preview changes
+            return
+
+        item = widgets.QTreeWidgetItem(self._snapshots_box)
+        item.setText(0, snapshot.creationDate().toString("yyyy.MM.dd hh:mm:ss"))
+        if snapshot.hasPreview():
+            icon = gui.QIcon(snapshot.preview().scaled(_preview_size, _preview_size))
+            item.setIcon(1, icon)
+        item.setText(2, snapshot.name())
+        item.setText(3, snapshot.creator())
+        item.setData(0, 32, snapshot)
+
+        self._snapshot_id_to_widget[ snapshot.id()] = item
+
+        mari.utils.connect(snapshot.previewChanged, self._updateShotListPreviewChanged)   # update the list again if the preview changes
+
+    #-------------------------------------------------------------------------------
+    def _updateShotListPreviewChanged(self, snapshot):
+        if snapshot == None:
+            return
+
+        if not snapshot.hasPreview():
+            return
+
+        if not self._snapshot_id_to_widget.has_key( snapshot.id()):
+            return
+
+        item = self._snapshot_id_to_widget[ snapshot.id()]
+
+        #This check causes NotImplementedError due to PySide bug 74. item cannot be None object, so working around it
+        #if item == None:
+        if type(item) == type(None):
+            return
+
+        icon = gui.QIcon(snapshot.preview().scaled(_preview_size, _preview_size))
+
+        item.setIcon(1, icon)
+        return
+
+    #-------------------------------------------------------------------------------
+    def _updateShotListAdded(self, snapshot):
+        self._updateShotListAddSnapshot( snapshot)
+
+    #-------------------------------------------------------------------------------
+    def _getShotsForCurrentChannel(self):
+        """Gets all snapshots for the current channel. 
+        If the channel is a Ptex channel, it will return an empty list."""
+        current_channel = _currentChannel()
+        if _isPtex(current_channel):
+            return []
+        return current_channel.snapshotList()
+        
+
+    #-------------------------------------------------------------------------------
+    def _updateShotListRemoveId(self, snapshot_id):
+        if not self._snapshot_id_to_widget.has_key( snapshot_id):
+            return
+
+        item = self._snapshot_id_to_widget[ snapshot_id]
+
+        #This check causes NotImplementedError due to PySide bug 74. item cannot be None object, so working around it
+        #if item == None:
+        if type(item) == type(None):
+            return
+
+        # Work out which shots to show
+        if self._all_channels_btn.isChecked():
+            shots = getShotsInAllChannels()
+        else:
+            shots = self._getShotsForCurrentChannel()
+
+        if snapshot_id in shots:
+            return
+
+        #Actually remove the row(and  hence item)
+        index = self._snapshots_box.indexOfTopLevelItem(item)
+        if index &gt; -1:
+            self._snapshots_box.model().removeRow( index)
+
+        self._snapshot_id_to_widget.pop( snapshot_id)
+
+    #-------------------------------------------------------------------------------
+    def _updateShotListRemoved(self, snapshot):
+        if snapshot == None:
+            return
+
+        self._updateShotListRemoveId( snapshot.id())
+
+    #-------------------------------------------------------------------------------
+    def _updateShotList(self, allow_shots=True):
+        """Fills in the tree list with the snapshots from the currently selected channel.
+        
+        @param allow_shots: Set to False to prevent shots being added to the list
+        """
+            
+        if not allow_shots or mari.projects.current() is None:
+            # Remove unused
+            for snapshot_id in self._snapshot_id_to_widget.keys():
+                self._updateShotListRemoveId( snapshot_id)
+
+            self._snapshot_id_to_widget = dict()
+            return
+
+        # Work out which shots to show
+        if self._all_channels_btn.isChecked():
+            shots = getShotsInAllChannels()
+        else:
+            shots = self._getShotsForCurrentChannel()
+
+        self._snapshots_box.setSortingEnabled(False)
+        
+        # iterate over all of the snapshots and add a tree list widget for them
+        # NOTE: Due to a current reference counting bug in PySide we have to store all of the tree widget items
+        # in a member variable list and clear that.  If we hand the created items over to Qt without storing them,
+        # PySide still thinks it owns them and deletes them as soon as the locals go out of scope.
+
+        shots_ids = set()
+        for snapshot in shots:
+            # Process all
+            snapshot_id = snapshot.id()
+            shots_ids.add( snapshot_id)
+
+            # Add new
+            if self._snapshot_id_to_widget.has_key( snapshot_id):
+                continue
+            self._updateShotListAddSnapshot( snapshot)
+
+        # Remove unused
+        for snapshot_id in shots_ids.symmetric_difference( self._snapshot_id_to_widget.keys()):
+            self._updateShotListRemoveId( snapshot_id)
+
+        self._snapshots_box.setSortingEnabled(True)
+
+
+    #-------------------------------------------------------------------------------
+    def _onChannelChanged(self):
+        # Do not update the list if all channels are in use. It will produce the same result.
+        # This improves GUI response times.
+        if self._all_channels_btn.isChecked():
+            return
+        self._updateShotList()
+
+    #-------------------------------------------------------------------------------
+    def _newSnapshot(self):
+        "Asks for parameters to create a new snapshot, and then does so if required."
+        if self._all_channels_btn.isChecked():
+            showNewSnapshotGUI(channels=CHANNELS_ALL, title="Snapshot All Channels")
+        else:
+            showNewSnapshotGUI(channels=CHANNELS_CURRENT, title="Snapshot Channel")
+
+    #-------------------------------------------------------------------------------
+    def _extractSnapshot(self):
+        for item in self._snapshots_box.selectedItems():
+            shot = item.data(0, 32)
+            while True:
+                name = widgets.QInputDialog.getText(None, 'Extract Snapshot',
+                                                "Please provide a name for the new channel to extract snapshot '" + shot.name() + "' into:")
+                if name[1]==False:
+                    return
+                else:
+                    name =  name[0]
+
+                try:
+                    shot.extract(name)
+                    break
+                except ValueError as exc:       # probably a duplicate channel name
+                    mari.utils.message(exc)
+    
+    #-------------------------------------------------------------------------------
+    def _revertToSnapshot(self):
+        item = self._snapshots_box.currentItem()
+        if item is None:
+            return
+        # Show a confirmation box if they've selected more than one item to indicate which snapshot will be used
+        selected_shot = item.data(0, 32)
+        if len(self._snapshots_box.selectedItems()) &gt; 1:
+            result = widgets.QMessageBox.question(None, "Revert to Snapshot?",
+                                                  "Multiple snapshots are highlighted. Do you want to revert to '" + selected_shot.name() + "'?",
+                                                  widgets.QMessageBox.Ok, widgets.QMessageBox.Cancel)
+            if result != widgets.QMessageBox.Ok:
+                return
+        self._revertToSnapshotObject(selected_shot)
+
+    #-------------------------------------------------------------------------------
+    def _revertToSnapshotItem(self, item, column):
+        self._revertToSnapshotObject(item.data(0, 32))
+
+    #-------------------------------------------------------------------------------
+    def _revertToSnapshotObject(self, snapshot):
+        mari.history.startMacro( 'Use Snapshot')
+        try:
+            id = snapshot.id()
+            [channel.revertToSnapshot(shot) for channel, shot in self._selectedChannelShotPairsWithID(id)]
+        finally:
+            mari.history.stopMacro()
+            mari.projects.current().updatePatchResolutionInfo();
+
+    #-------------------------------------------------------------------------------
+    def _deleteSnapshots(self):
+        selected_items = self._snapshots_box.selectedItems()
+        if len(selected_items) == 0:
+            return
+        shot_list = [item.data(0, 32) for item in selected_items]
+
+        if len(shot_list) == 1:
+            message = "Do you want to permanently delete snapshot '" + shot_list[0].name() + "'?"
+        else:
+            message = "Do you want to permanently delete the selected snapshots?"
+        result = widgets.QMessageBox.question(None, "Delete Snapshot?", message, widgets.QMessageBox.Ok, widgets.QMessageBox.Cancel)
+        if result != widgets.QMessageBox.Ok:
+            return
+
+        mari.history.startMacro( 'Delete Snapshot')
+
+        try:
+            for id in [shot.id() for shot in shot_list]:
+                [channel.deleteSnapshot(snapshot) for channel, snapshot in self._selectedChannelShotPairsWithID(id)]
+        finally:
+            mari.history.stopMacro()
+
+#-------------------------------------------------------------------------------
+def clearOrBakePaint():
+    """If the paint buffer is dirty, this asks the user to clear or bake it.
+    
+    The clearing or baking will be performed if requested.  The user may cancel this operation,
+    in which case an exception is raised.
+    
+    We need to do this during snapshots because otherwise the actual data that the snapshot is
+    performed on will not match the visible buffer state, which is misleading.
+    
+    @raise RuntimeError: The user cancelled the operation.
+    """
+    paint_buf = mari.canvases.paintBuffer()
+    if not paint_buf.isDirty():
+        return
+    
+    if all((_isPtex(chan) for chan in getAllChannels() )):
+        return
+
+    mb = widgets.QMessageBox(widgets.QMessageBox.Question, "Clear or Bake Paint Buffer",
+                             "Taking a snapshot requires the paint buffer to be cleared.\n\nWould you like to clear or bake the buffer?")
+    bake_button = mb.addButton("Bake", widgets.QMessageBox.YesRole)
+    mb.addButton("Clear", widgets.QMessageBox.NoRole)
+    mb.addButton(widgets.QMessageBox.Cancel)
+    if mari.utils.execDialog(mb) == widgets.QMessageBox.Cancel:
+        raise RuntimeError("Cancelled")
+    if mb.clickedButton() == bake_button:
+        # clear the buffer after baking to ensure manual buffer do not stay dirty.
+        paint_buf.bakeAndClear()
+    else:
+        paint_buf.clear()
+    mari.app.processEvents()    # ensure the canvas is redrawn to handle the paint buffer changes
+
+#-------------------------------------------------------------------------------
+def _makeSnapshotActions():
+    """This registers actions associated with creating and managing snapshots.
+    
+    Snapshots are copies of objects in time. Object snapshots can be taken individually, or combined together into groups. Examples
+    of this are creating a snapshot of an individual channel to try out an idea, or of all channels to mark an approved version.
+    """
+    # Create the palette if it doesn't exist; if it does, we don't need to do any more initialisation here
+    try:
+        pal = mari.palettes.createWithIcon('Snapshots', mari.resources.path(mari.resources.ICONS) + '/Snapshots.png', SnapshotUI())
+    except ValueError:
+        return
+
+    # Add in a key that triggers context sensitive help for this palette
+    pal.setCSHKey("snapshots_palette")
+    
+    mari.utils.connect(mari.projects.aboutToSaveProject, checkForAutosnapshot)     # only connect this once - when the palette is created
+    
+    menu_path = "MainWindow/&amp;Channels;/&amp;Snapshots;"
+    icon_path = mari.resources.path(mari.resources.ICONS)
+    snapshot_all = mari.actions.create('Snapshot &amp;All; Channels',
+                                       'mari.system.snapshots.showNewSnapshotGUI(mari.system.snapshots.CHANNELS_ALL, title="Snapshot All Channels")')
+    snapshot_all.setIconPath(icon_path + "/SnapshotAll.png")
+    snapshot_current = mari.actions.create('Snapshot &amp;Current; Channel',
+                                           'mari.system.snapshots.showNewSnapshotGUI(mari.system.snapshots.CHANNELS_CURRENT, title="Snapshot Channel")')
+    snapshot_current.setIconPath(icon_path + "/SnapshotCurrent.png")
+    manage_snapshots = mari.actions.create('&amp;Manage; Snapshots', 'mari.palettes.get("Snapshots").showInFront()')
+    manage_snapshots.setIconPath(icon_path + "/SnapshotManage.png")
+    delete_all_snapshots = mari.actions.create('&amp;Delete; All Snapshots', 'mari.system.snapshots.deleteAll(confirm=True)')
+    delete_all_snapshots.setIconPath(icon_path + "/DeleteItem.png")
+    
+    for action in (snapshot_all, snapshot_current, manage_snapshots, delete_all_snapshots):
+        mari.actions.addToSet("PatchOnly", action)
+        mari.actions.addToSet("RequiresProject", action)
+        mari.menus.addAction(action, menu_path)
+    
+#-------------------------------------------------------------------------------
+
+if mari.app.isRunning():
+    _makeSnapshotActions()
+<script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</p></pre>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

@@ -1,0 +1,1866 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.Palette
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+        Class&nbsp;Palette
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.Palette-class.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS DESCRIPTION ==================== -->
+  <h1 class="epydoc">
+   Class Palette
+  </h1>
+  <p class="nomargin-top">
+   <span class="codelink">
+    <a href="mari-pysrc.html#Palette">
+     source&nbsp;code
+    </a>
+   </span>
+  </p>
+  <pre class="base-tree">
+object --+
+         |
+        <strong class="uidshort">Palette</strong>
+</pre>
+  <hr/>
+  <p>
+   A dockable widget class.
+  </p>
+  <p>
+   Palettes are dockable widgets that can be moved around and configured 
+  by the user.
+  </p>
+  <p>
+   You can access palettes through the
+   <a class="link" href="mari.PaletteManager-class.html">
+    PaletteManager
+   </a>
+   - 
+  for example:
+   <code>
+    mari.palettes.list()
+   </code>
+  </p>
+  <p>
+   <b>
+    Example Code
+   </b>
+  </p>
+  <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This example shows how to create a palette with a label</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari, PySide
+<span class="py-prompt">&gt;&gt;&gt; </span>label = PySide.QtGui.QLabel(<span class="py-string">"Hello World"</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>new_palette = mari.palettes.create(<span class="py-string">"Hello World Palette"</span>,<span class="py-string">""</span>,label)
+<span class="py-prompt">&gt;&gt;&gt; </span>mari.palettes.remove(new_palette.name());</pre>
+  <!-- ==================== INSTANCE METHODS ==================== -->
+  <a name="section-InstanceMethods">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Instance Methods
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Palette-class.html#bringToFront">
+          bringToFront
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Brings the palette to the front of the other windows.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Palette.bringToFront">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Palette-class.html#disable">
+          disable
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Disables interaction with the palette.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Palette.disable">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Palette-class.html#enable">
+          enable
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Enables interaction with the palette.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Palette.enable">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Palette-class.html#fullName">
+          fullName
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the full name displayed on the palette title.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Palette.fullName">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Palette-class.html#hide">
+          hide
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Hides the palette.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Palette.hide">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Palette-class.html#name">
+          name
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the full name displayed on the palette title.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Palette.name">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Palette-class.html#setBodyWidget">
+          setBodyWidget
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          pBody
+         </span>
+         )
+        </span>
+        <br/>
+        Sets the body widget of the palette.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Palette.setBodyWidget">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Palette-class.html#setCSHKey">
+          setCSHKey
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Key
+         </span>
+         )
+        </span>
+        <br/>
+        Sets the context sensitive key, that is appended to the online 
+      documentation when the CSH button on this palette is triggered.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Palette.setCSHKey">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Palette-class.html#setEnabled">
+          setEnabled
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Enabled
+         </span>
+         )
+        </span>
+        <br/>
+        Enables or disables interaction with the palette.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Palette.setEnabled">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Palette-class.html#setFullName">
+          setFullName
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          rName
+         </span>
+         )
+        </span>
+        <br/>
+        Sets the full name to be displayed on the palette title.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Palette.setFullName">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Palette-class.html#setShortName">
+          setShortName
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          rName
+         </span>
+         )
+        </span>
+        <br/>
+        Sets the short name to be displayed on the palettes tab.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Palette.setShortName">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Palette-class.html#setVisibility">
+          setVisibility
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Visible
+         </span>
+         )
+        </span>
+        <br/>
+        Sets the visibility state of the palette.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Palette.setVisibility">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Palette-class.html#shortName">
+          shortName
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the short name displayed on the palettes tab.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Palette.shortName">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Palette-class.html#show">
+          show
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Shows the palette.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Palette.show">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Palette-class.html#showInFront">
+          showInFront
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Shows the palette and brings it to the front of other windows.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Palette.showInFront">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Palette-class.html">
+       Palette
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Palette-class.html#__init__">
+          __init__
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          rName
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          pBodyWidget
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         )
+        </span>
+        <br/>
+        Creates a new palette with the given name.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Palette.__init__">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __delattr__
+      </code>
+      ,
+      <code>
+       __format__
+      </code>
+      ,
+      <code>
+       __getattribute__
+      </code>
+      ,
+      <code>
+       __hash__
+      </code>
+      ,
+      <code>
+       __new__
+      </code>
+      ,
+      <code>
+       __reduce__
+      </code>
+      ,
+      <code>
+       __reduce_ex__
+      </code>
+      ,
+      <code>
+       __repr__
+      </code>
+      ,
+      <code>
+       __setattr__
+      </code>
+      ,
+      <code>
+       __sizeof__
+      </code>
+      ,
+      <code>
+       __str__
+      </code>
+      ,
+      <code>
+       __subclasshook__
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== PROPERTIES ==================== -->
+  <a name="section-Properties">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Properties
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __class__
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== METHOD DETAILS ==================== -->
+  <a name="section-MethodDetails">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Method Details
+     </span>
+    </td>
+   </tr>
+  </table>
+  <a name="bringToFront">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            bringToFront
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Palette.bringToFront">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Brings the palette to the front of the other windows.
+      </p>
+      <p>
+       This can be used to bring the palette to the front of the group of 
+  palettes it is docked with, or to raise a floating palette above anything
+  else it might currently be behind.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.Palette-class.html#showInFront">
+         showInFront()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="disable">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            disable
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Palette.disable">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Disables interaction with the palette.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.Palette-class.html#setEnabled">
+         setEnabled()
+        </a>
+        ,
+        <a class="link" href="mari.Palette-class.html#enable">
+         enable()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="enable">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            enable
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Palette.enable">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Enables interaction with the palette.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.Palette-class.html#disable">
+         disable()
+        </a>
+        ,
+        <a class="link" href="mari.Palette-class.html#setEnabled">
+         setEnabled()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="fullName">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            fullName
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Palette.fullName">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the full name displayed on the palette title.
+      </p>
+      <p>
+       This is the same as
+       <a class="link" href="mari.Palette-class.html#name">
+        name()
+       </a>
+       .
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: str
+       </dt>
+       <dd>
+        The full name displayed on the palette title.
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.Palette-class.html#setFullName">
+         setFullName()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="hide">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            hide
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Palette.hide">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Hides the palette.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.Palette-class.html#setVisibility">
+         setVisibility()
+        </a>
+        ,
+        <a class="link" href="mari.Palette-class.html#show">
+         show()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="name">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            name
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Palette.name">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the full name displayed on the palette title.
+      </p>
+      <p>
+       This is the same as
+       <a class="link" href="mari.Palette-class.html#fullName">
+        fullName()
+       </a>
+       .
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: str
+       </dt>
+       <dd>
+        The full name displayed on the palette title.
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setBodyWidget">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setBodyWidget
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            pBody
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Palette.setBodyWidget">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Sets the body widget of the palette.
+      </p>
+      <p>
+       This is the widget that holds everything to display for the 
+  palette.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            pBody
+           </code>
+          </strong>
+          (QWidget) - The widget that holds everything to display for the palette
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setCSHKey">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setCSHKey
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Key
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Palette.setCSHKey">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Sets the context sensitive key, that is appended to the online 
+  documentation when the CSH button on this palette is triggered.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Key
+           </code>
+          </strong>
+          (str) - The context sensitive key.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setEnabled">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setEnabled
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Enabled
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Palette.setEnabled">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Enables or disables interaction with the palette.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Enabled
+           </code>
+          </strong>
+          (bool)
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.Palette-class.html#disable">
+         disable()
+        </a>
+        ,
+        <a class="link" href="mari.Palette-class.html#enable">
+         enable()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setFullName">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setFullName
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            rName
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Palette.setFullName">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Sets the full name to be displayed on the palette title.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            rName
+           </code>
+          </strong>
+          (str) - The full name to be displayed on the palette title.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.Palette-class.html#fullName">
+         fullName()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setShortName">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setShortName
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            rName
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Palette.setShortName">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Sets the short name to be displayed on the palettes tab.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            rName
+           </code>
+          </strong>
+          (str) - The short name to be displayed on the palettes tab.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.Palette-class.html#shortName">
+         shortName()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setVisibility">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setVisibility
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Visible
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Palette.setVisibility">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Sets the visibility state of the palette.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Visible
+           </code>
+          </strong>
+          (bool) - True to show, or False to hide.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.Palette-class.html#show">
+         show()
+        </a>
+        ,
+        <a class="link" href="mari.Palette-class.html#hide">
+         hide()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="shortName">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            shortName
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Palette.shortName">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the short name displayed on the palettes tab.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: str
+       </dt>
+       <dd>
+        The short name displayed on the palettes tab.
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.Palette-class.html#setShortName">
+         setShortName()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="show">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            show
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Palette.show">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Shows the palette.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.Palette-class.html#setVisibility">
+         setVisibility()
+        </a>
+        ,
+        <a class="link" href="mari.Palette-class.html#hide">
+         hide()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="showInFront">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            showInFront
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Palette.showInFront">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Shows the palette and brings it to the front of other windows.
+      </p>
+      <p>
+       This is the equivalent of calling
+       <a class="link" href="mari.Palette-class.html#show">
+        show()
+       </a>
+       and then
+       <a class="link" href="mari.Palette-class.html#bringToFront">
+        bringToFront()
+       </a>
+       .
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="__init__">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            __init__
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            rName
+           </span>
+           ,
+           <span class="sig-arg">
+            pBodyWidget
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           )
+          </span>
+          <br/>
+          <em class="fname">
+           (Constructor)
+          </em>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Palette.__init__">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Creates a new palette with the given name.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            rName
+           </code>
+          </strong>
+          (str) - The name of the new palette to create. This must be non-empty and
+          unique, or the function will raise an exception. The name will be
+          initially used as both the full and short name for the palette.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            pBodyWidget
+           </code>
+          </strong>
+          (QWidget) - The widget to set as the palette's body - i.e. the one that holds
+          everything to display for the palette.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.Palette-class.html">
+         Palette
+        </a>
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Throws a value error if the name is empty, of if a palette with the
+        given name already exists.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Overrides:
+        object.__init__
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

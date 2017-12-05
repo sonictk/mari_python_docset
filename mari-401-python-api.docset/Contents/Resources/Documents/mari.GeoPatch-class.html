@@ -1,0 +1,1995 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.GeoPatch
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+        Class&nbsp;GeoPatch
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.GeoPatch-class.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS DESCRIPTION ==================== -->
+  <h1 class="epydoc">
+   Class GeoPatch
+  </h1>
+  <p class="nomargin-top">
+   <span class="codelink">
+    <a href="mari-pysrc.html#GeoPatch">
+     source&nbsp;code
+    </a>
+   </span>
+  </p>
+  <pre class="base-tree">
+object --+        
+         |        
+  <a href="mari.Metadata-class.html">Metadata</a> --+    
+             |    
+      <a href="mari.Lockable-class.html">Lockable</a> --+
+                 |
+                <strong class="uidshort">GeoPatch</strong>
+</pre>
+  <hr/>
+  <p>
+   A geometry patch is section of a
+   <a class="link" href="mari.GeoEntity-class.html">
+    GeoEntity
+   </a>
+   that occupies a single UV square.
+  </p>
+  <p>
+   Geometry can be broken into multiple patches. Each patch may have 
+  multiple textures associated with it.
+  </p>
+  <p>
+   An
+   <a class="link" href="mari.ImageSet-class.html">
+    ImageSet
+   </a>
+   contains one texture for each
+   <a class="link" href="mari.GeoPatch-class.html">
+    GeoPatch
+   </a>
+   in a
+   <a class="link" href="mari.GeoEntity-class.html">
+    GeoEntity
+   </a>
+   .
+  </p>
+  <p>
+   Patches may be named, and can have associated metadata. They may also 
+  be locked or hidden.
+  </p>
+  <p>
+   You can access geometry patches through a
+   <a class="link" href="mari.GeoEntity-class.html">
+    GeoEntity
+   </a>
+   - for 
+  example:
+   <code>
+    mari.geo.current().patchList()
+   </code>
+   <b>
+    Example 
+  Code
+   </b>
+  </p>
+  <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This examples obtains the patch with UDIM 1001 of current geometry object</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>patch_1001 = mari.geo.current().patch(0)</pre>
+  <!-- ==================== NESTED CLASSES ==================== -->
+  <a name="section-NestedClasses">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Nested Classes
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata.MetadataFlag-class.html">
+        MetadataFlag
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata.MetadataGroupHint-class.html">
+        MetadataGroupHint
+       </a>
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== INSTANCE METHODS ==================== -->
+  <a name="section-InstanceMethods">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Instance Methods
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoPatch-class.html#isLocked">
+          isLocked
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the locked status of the patch.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoPatch.isLocked">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoPatch-class.html#isSelected">
+          isSelected
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Indicates whether the patch is currently selected.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoPatch.isSelected">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoPatch-class.html#isValid">
+          isValid
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Indicates whether the patch is valid.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoPatch.isValid">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoPatch-class.html#isVisible">
+          isVisible
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the visible status of the patch.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoPatch.isVisible">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoPatch-class.html#name">
+          name
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the name of the patch.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoPatch.name">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoPatch-class.html#setLocked">
+          setLocked
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Locked
+         </span>
+         )
+        </span>
+        <br/>
+        Changes the locked state of the patch.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoPatch.setLocked">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoPatch-class.html#setName">
+          setName
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         )
+        </span>
+        <br/>
+        Sets the name of the patch.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoPatch.setName">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoPatch-class.html#setSelected">
+          setSelected
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Selected
+         </span>
+         )
+        </span>
+        <br/>
+        Changes the selection state of the patch.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoPatch.setSelected">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoPatch-class.html#setVisibility">
+          setVisibility
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Visible
+         </span>
+         )
+        </span>
+        <br/>
+        Shows or hides the patch.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoPatch.setVisibility">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      int
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoPatch-class.html#u">
+          u
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the U location of the patch.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoPatch.u">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      int
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoPatch-class.html#udim">
+          udim
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the UDIM of the patch.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoPatch.udim">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      QPoint
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoPatch-class.html#uv">
+          uv
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the UV location of the patch.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoPatch.uv">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      int
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoPatch-class.html#uvIndex">
+          uvIndex
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the UV index of the patch.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoPatch.uvIndex">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      int
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.GeoPatch-class.html#v">
+          v
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the V location of the patch.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#GeoPatch.v">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Lockable-class.html">
+         Lockable
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Lockable-class.html#hide">
+        hide
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Lockable-class.html#lock">
+        lock
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Lockable-class.html#show">
+        show
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Lockable-class.html#unlock">
+        unlock
+       </a>
+      </code>
+     </p>
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata-class.html#hasMetadata">
+        hasMetadata
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadata">
+        metadata
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataAsImage">
+        metadataAsImage
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataDefault">
+        metadataDefault
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataDescription">
+        metadataDescription
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataDisplayName">
+        metadataDisplayName
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataFlags">
+        metadataFlags
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataIsEnabled">
+        metadataIsEnabled
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataItemList">
+        metadataItemList
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataMax">
+        metadataMax
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataMin">
+        metadataMin
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataNames">
+        metadataNames
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataStep">
+        metadataStep
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#removeMetadata">
+        removeMetadata
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadata">
+        setMetadata
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataDefault">
+        setMetadataDefault
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataDescription">
+        setMetadataDescription
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataDisplayName">
+        setMetadataDisplayName
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataEnabled">
+        setMetadataEnabled
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataFlags">
+        setMetadataFlags
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataGroupHints">
+        setMetadataGroupHints
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataItemList">
+        setMetadataItemList
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataRange">
+        setMetadataRange
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataStep">
+        setMetadataStep
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#uuid">
+        uuid
+       </a>
+      </code>
+     </p>
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __delattr__
+      </code>
+      ,
+      <code>
+       __format__
+      </code>
+      ,
+      <code>
+       __getattribute__
+      </code>
+      ,
+      <code>
+       __hash__
+      </code>
+      ,
+      <code>
+       __init__
+      </code>
+      ,
+      <code>
+       __new__
+      </code>
+      ,
+      <code>
+       __reduce__
+      </code>
+      ,
+      <code>
+       __reduce_ex__
+      </code>
+      ,
+      <code>
+       __repr__
+      </code>
+      ,
+      <code>
+       __setattr__
+      </code>
+      ,
+      <code>
+       __sizeof__
+      </code>
+      ,
+      <code>
+       __str__
+      </code>
+      ,
+      <code>
+       __subclasshook__
+      </code>
+     </p>
+    </td>
+   </tr>
+   <tr bgcolor="#e8f0f8">
+    <th class="group-header" colspan="2">
+     &nbsp;&nbsp;&nbsp;&nbsp;Signals
+    </th>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Lockable-class.html">
+         Lockable
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Lockable-class.html#lockedChanged">
+        lockedChanged
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Lockable-class.html#visibilityChanged">
+        visibilityChanged
+       </a>
+      </code>
+     </p>
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata-class.html#metadataCreated">
+        metadataCreated
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataRemoved">
+        metadataRemoved
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataValueChanged">
+        metadataValueChanged
+       </a>
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== STATIC METHODS ==================== -->
+  <a name="section-StaticMethods">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Static Methods
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata-class.html#isSupportedMetadataType">
+        isSupportedMetadataType
+       </a>
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS VARIABLES ==================== -->
+  <a name="section-ClassVariables">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Class Variables
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_EDITABLE">
+        METADATA_EDITABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_GROUP_HINT_DISPLAY">
+        METADATA_GROUP_HINT_DISPLAY
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_GROUP_HINT_SORTABLE">
+        METADATA_GROUP_HINT_SORTABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_REMOVABLE">
+        METADATA_REMOVABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_REMOVEABLE">
+        METADATA_REMOVEABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_SAVED">
+        METADATA_SAVED
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_UNDOABLE">
+        METADATA_UNDOABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_VISIBLE">
+        METADATA_VISIBLE
+       </a>
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== PROPERTIES ==================== -->
+  <a name="section-Properties">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Properties
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __class__
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== METHOD DETAILS ==================== -->
+  <a name="section-MethodDetails">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Method Details
+     </span>
+    </td>
+   </tr>
+  </table>
+  <a name="isLocked">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            isLocked
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoPatch.isLocked">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the locked status of the patch.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: bool
+       </dt>
+       <dd>
+        True if the patch is locked, or False (the default) otherwise
+       </dd>
+       <dt>
+        Overrides:
+        <a href="mari.Lockable-class.html#isLocked">
+         Lockable.isLocked
+        </a>
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.GeoPatch-class.html#setLocked">
+         setLocked()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="isSelected">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            isSelected
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoPatch.isSelected">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Indicates whether the patch is currently selected.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: bool
+       </dt>
+       <dd>
+        True if the patch is selected, or False if not
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="isValid">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            isValid
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoPatch.isValid">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Indicates whether the patch is valid.
+      </p>
+      <p>
+       For a patch to be valid, its U and V location must be greater than 
+  zero. Mari does not support negative UVs which lead to invalid patches. 
+  If a patch is invalid,
+       <a class="link" href="mari.GeoPatch-class.html#uvIndex">
+        uvIndex()
+       </a>
+       may not return a useful index and
+       <a class="link" href="mari.GeoPatch-class.html#udim">
+        udim()
+       </a>
+       will return 
+  a value less than 1001. Invalid patches may not have images associated 
+  with them.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: bool
+       </dt>
+       <dd>
+        True if the patch is valid, or False if not.
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.GeoPatch-class.html#uvIndex">
+         uvIndex()
+        </a>
+        ,
+        <a class="link" href="mari.GeoPatch-class.html#udim">
+         udim()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="isVisible">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            isVisible
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoPatch.isVisible">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the visible status of the patch.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: bool
+       </dt>
+       <dd>
+        True if the patch is visible; False if hidden
+       </dd>
+       <dt>
+        Overrides:
+        <a href="mari.Lockable-class.html#isVisible">
+         Lockable.isVisible
+        </a>
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="name">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            name
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoPatch.name">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the name of the patch.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: str
+       </dt>
+       <dd>
+        The name of this patch
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.GeoPatch-class.html#setName">
+         setName()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setLocked">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setLocked
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Locked
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoPatch.setLocked">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Changes the locked state of the patch.
+      </p>
+      <p>
+       Patches may be locked to prevent painting on or applying filters to 
+  them. They may still be exported when locked.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Locked
+           </code>
+          </strong>
+          (bool) - The new locked status of the Patch. If True, the patch will be 
+          locked and cannot be edited
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Overrides:
+        <a href="mari.Lockable-class.html#setLocked">
+         Lockable.setLocked
+        </a>
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setName">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setName
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Name
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoPatch.setName">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Sets the name of the patch.
+      </p>
+      <p>
+       The name is used in the UV view and the patch view.
+      </p>
+      <p>
+       The default name for a patch is its UDIM.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The new name for the patch
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.GeoPatch-class.html#name">
+         name()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setSelected">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setSelected
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Selected
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoPatch.setSelected">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Changes the selection state of the patch.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Selected
+           </code>
+          </strong>
+          (bool) - True to select the patch, or False to deselect it
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setVisibility">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setVisibility
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Visible
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoPatch.setVisibility">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Shows or hides the patch.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Visible
+           </code>
+          </strong>
+          (bool) - True to show the patch, or False to hide it
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Overrides:
+        <a href="mari.Lockable-class.html#setVisibility">
+         Lockable.setVisibility
+        </a>
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="u">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            u
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoPatch.u">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the U location of the patch.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: int
+       </dt>
+       <dd>
+        The integer U coordinate of the lower left corner of the patch in
+          UV space
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="udim">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            udim
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoPatch.udim">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the UDIM of the patch.
+      </p>
+      <p>
+       UDIM values identify the integer position of a patch in a channel. 
+  Each patch represents a square of dimensions 1x1 in U-V space with 
+  integer boundaries. There may be up to ten patches across, and any number
+  of patches upwards - so the U index of a patch must be in the range [0, 
+  9], and the V index can be zero or any positive integer.
+      </p>
+      <p>
+       The UDIM value for a patch can be calculated using the following 
+  formula:
+      </p>
+      <p>
+       <code>
+        udim = 1001 + u + (10 * v)
+       </code>
+      </p>
+      <p>
+       For example, the UDIM of the bottom left patch, which represents the 
+  U-V space region (0, 0) to (1, 1), will be 1001. The next patch to the 
+  right of that will have UDIM 1002, and the patch directly above the 
+  bottom left will be 1011. If there are ten patches across, the one on the
+  bottom row at the far right, representing the region (9, 0) to (10, 1), 
+  will have UDIM 1010.
+      </p>
+      <p>
+       The U index limit of ten is currently hard-wired.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: int
+       </dt>
+       <dd>
+        The UDIM of the patch, as specified above
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="uv">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            uv
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoPatch.uv">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the UV location of the patch.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: QPoint
+       </dt>
+       <dd>
+        The integer U and V coordinates of the lower left corner of the 
+          patch in UV space
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="uvIndex">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            uvIndex
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoPatch.uvIndex">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the UV index of the patch.
+      </p>
+      <p>
+       This provides a 0-based index of the patch, which can be used with
+       <a class="link" href="mari.ImageSet-class.html#image">
+        ImageSet.image()
+       </a>
+       to find the image in a channel that will be applied to the patch.
+      </p>
+      <p>
+       The UDIM of the patch will be this value plus 1001.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: int
+       </dt>
+       <dd>
+        The integer UV index of the patch.
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="v">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            v
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#GeoPatch.v">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the V location of the patch.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: int
+       </dt>
+       <dd>
+        The integer V coordinate of the lower left corner of the patch in
+          UV space
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

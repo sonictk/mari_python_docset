@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.examples.linked_patches
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.examples-module.html">
+       Package&nbsp;examples
+      </a>
+      ::
+        Module&nbsp;linked_patches
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.examples.linked_patches-pysrc.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <h1 class="epydoc">
+   Source Code for
+   <a href="mari.examples.linked_patches-module.html">
+    Module mari.examples.linked_patches
+   </a>
+  </h1>
+  <pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"># Patch linking examples</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment"># coding: utf-8</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment"># Copyright (c) 2012 The Foundry Visionmongers Ltd.  All Rights Reserved.</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-comment"># This example demonstrates copying and pasting of linked patches between ImageSets.</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name" id="link-0" targets="Package mari=mari-module.html"><a class="py-name" href="#" onclick="return doclink('link-0', 'mari', 'link-0');" title="mari">mari</a></tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">PySide2</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-comment"># Global for storing the list of udims for the patches that need to be linked</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-name" id="link-1" targets="Variable mari.examples.linked_patches._clipboard=mari.examples.linked_patches-module.html#_clipboard"><a class="py-name" href="#" onclick="return doclink('link-1', '_clipboard', 'link-1');" title="mari.examples.linked_patches._clipboard">_clipboard</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="getCurrentLinkedPatches"></a><div id="getCurrentLinkedPatches-def"><a name="L16"></a><tt class="py-lineno"> 16</tt> <a class="py-toggle" href="#" id="getCurrentLinkedPatches-toggle" onclick="return toggle('getCurrentLinkedPatches');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.linked_patches-module.html#getCurrentLinkedPatches">getCurrentLinkedPatches</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="getCurrentLinkedPatches-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="getCurrentLinkedPatches-expanded"><a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line">    <tt class="py-docstring">"""Gets the linked patches on the current ImageSet</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-docstring">    @return: Dictionary containing named groups of linked patches.</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">    <tt class="py-name" id="link-2" targets="Function mari.current.geo()=mari.current-module.html#geo,Variable mari.examples.c_api_channel_export.geo=mari.examples.c_api_channel_export-module.html#geo"><a class="py-name" href="#" onclick="return doclink('link-2', 'geo', 'link-2');" title="mari.current.geo
+mari.examples.c_api_channel_export.geo">geo</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-3"><a class="py-name" href="#" onclick="return doclink('link-3', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-4"><a class="py-name" href="#" onclick="return doclink('link-4', 'geo', 'link-2');" title="mari.current.geo
+mari.examples.c_api_channel_export.geo">geo</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-5" targets="Method mari.CanvasManager.current()=mari.CanvasManager-class.html#current,Method mari.GeoManager.current()=mari.GeoManager-class.html#current,Method mari.LightManager.current()=mari.LightManager-class.html#current,Method mari.ProjectManager.current()=mari.ProjectManager-class.html#current,Method mari.ProjectorManager.current()=mari.ProjectorManager-class.html#current,Method mari.SelectionGroupManager.current()=mari.SelectionGroupManager-class.html#current,Method mari.ToolManager.current()=mari.ToolManager-class.html#current,Package mari.current=mari.current-module.html"><a class="py-name" href="#" onclick="return doclink('link-5', 'current', 'link-5');" title="mari.CanvasManager.current
+mari.GeoManager.current
+mari.LightManager.current
+mari.ProjectManager.current
+mari.ProjectorManager.current
+mari.SelectionGroupManager.current
+mari.ToolManager.current
+mari.current">current</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">    <tt class="py-name">image_set</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-6"><a class="py-name" href="#" onclick="return doclink('link-6', 'geo', 'link-2');" title="mari.current.geo
+mari.examples.c_api_channel_export.geo">geo</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-7" targets="Method mari.GeoEntity.currentImageSet()=mari.GeoEntity-class.html#currentImageSet"><a class="py-name" href="#" onclick="return doclink('link-7', 'currentImageSet', 'link-7');" title="mari.GeoEntity.currentImageSet">currentImageSet</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">    <tt class="py-name">group_names</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-8"><a class="py-name" href="#" onclick="return doclink('link-8', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-9" targets="Variable mari.patch_links=mari-module.html#patch_links"><a class="py-name" href="#" onclick="return doclink('link-9', 'patch_links', 'link-9');" title="mari.patch_links">patch_links</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-10" targets="Method mari.PatchLinksManager.groupNamesForImageSet()=mari.PatchLinksManager-class.html#groupNamesForImageSet"><a class="py-name" href="#" onclick="return doclink('link-10', 'groupNamesForImageSet', 'link-10');" title="mari.PatchLinksManager.groupNamesForImageSet">groupNamesForImageSet</a></tt><tt class="py-op">(</tt><tt class="py-name">image_set</tt><tt class="py-op">)</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">    <tt class="py-name" id="link-11"><a class="py-name" href="#" onclick="return doclink('link-11', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-12" targets="Package mari.utils=mari.utils-module.html"><a class="py-name" href="#" onclick="return doclink('link-12', 'utils', 'link-12');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-13" targets="Function mari.utils.misc.messageAndLog()=mari.utils.misc-module.html#messageAndLog"><a class="py-name" href="#" onclick="return doclink('link-13', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[getCurrentLinkedPatches] Current image set '%s' has %d groups of linked patches"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">image_set</tt><tt class="py-op">.</tt><tt class="py-name" id="link-14" targets="Method mari.Action.name()=mari.Action-class.html#name,Method mari.Camera.name()=mari.Camera-class.html#name,Method mari.Channel.name()=mari.Channel-class.html#name,Method mari.ChannelInfo.name()=mari.ChannelInfo-class.html#name,Method mari.GeoEntity.name()=mari.GeoEntity-class.html#name,Method mari.GeoEntityVersion.name()=mari.GeoEntityVersion-class.html#name,Method mari.GeoPatch.name()=mari.GeoPatch-class.html#name,Method mari.GeometryOperation.name()=mari.GeometryOperation-class.html#name,Method mari.ImageOperation.name()=mari.ImageOperation-class.html#name,Method mari.ImageSet.name()=mari.ImageSet-class.html#name,Method mari.Layer.name()=mari.Layer-class.html#name,Method mari.LayerStack.name()=mari.LayerStack-class.html#name,Method mari.Light.name()=mari.Light-class.html#name,Method mari.LocatorEntity.name()=mari.LocatorEntity-class.html#name,Method mari.Node.name()=mari.Node-class.html#name,Method mari.Palette.name()=mari.Palette-class.html#name,Method mari.ParticleOp.name()=mari.ParticleOp-class.html#name,Method mari.PostFilter.name()=mari.PostFilter-class.html#name,Method mari.PostFilterCollection.name()=mari.PostFilterCollection-class.html#name,Method mari.Project.name()=mari.Project-class.html#name,Method mari.ProjectInfo.name()=mari.ProjectInfo-class.html#name,Method mari.Projector.name()=mari.Projector-class.html#name,Method mari.SelectionGroup.name()=mari.SelectionGroup-class.html#name,Method mari.Shader.name()=mari.Shader-class.html#name,Method mari.Shelf.name()=mari.Shelf-class.html#name,Method mari.Snapshot.name()=mari.Snapshot-class.html#name,Method mari.Tool.name()=mari.Tool-class.html#name"><a class="py-name" href="#" onclick="return doclink('link-14', 'name', 'link-14');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">group_names</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">    <tt class="py-name">patch_groups</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name" id="link-15"><a class="py-name" href="#" onclick="return doclink('link-15', 'name', 'link-14');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">group_names</tt><tt class="py-op">:</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">        <tt class="py-name">patch_groups</tt><tt class="py-op">[</tt><tt class="py-name" id="link-16"><a class="py-name" href="#" onclick="return doclink('link-16', 'name', 'link-14');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-17"><a class="py-name" href="#" onclick="return doclink('link-17', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-18"><a class="py-name" href="#" onclick="return doclink('link-18', 'patch_links', 'link-9');" title="mari.patch_links">patch_links</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-19" targets="Method mari.PatchLinksManager.patches()=mari.PatchLinksManager-class.html#patches"><a class="py-name" href="#" onclick="return doclink('link-19', 'patches', 'link-19');" title="mari.PatchLinksManager.patches">patches</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-20"><a class="py-name" href="#" onclick="return doclink('link-20', 'name', 'link-14');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">,</tt> <tt class="py-name">image_set</tt><tt class="py-op">)</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">patch_groups</tt> </tt>
+</div><a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="lookupUdimsFromPatches"></a><div id="lookupUdimsFromPatches-def"><a name="L32"></a><tt class="py-lineno"> 32</tt> <a class="py-toggle" href="#" id="lookupUdimsFromPatches-toggle" onclick="return toggle('lookupUdimsFromPatches');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.linked_patches-module.html#lookupUdimsFromPatches">lookupUdimsFromPatches</a><tt class="py-op">(</tt><tt class="py-param">patches</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="lookupUdimsFromPatches-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="lookupUdimsFromPatches-expanded"><a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">    <tt class="py-docstring">"""@return: List of udims for the input list of patches."""</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-keyword">lambda</tt> <tt class="py-name" id="link-21" targets="Method mari.GeoEntity.patch()=mari.GeoEntity-class.html#patch"><a class="py-name" href="#" onclick="return doclink('link-21', 'patch', 'link-21');" title="mari.GeoEntity.patch">patch</a></tt><tt class="py-op">:</tt> <tt class="py-name" id="link-22"><a class="py-name" href="#" onclick="return doclink('link-22', 'patch', 'link-21');" title="mari.GeoEntity.patch">patch</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-23" targets="Method mari.GeoPatch.udim()=mari.GeoPatch-class.html#udim"><a class="py-name" href="#" onclick="return doclink('link-23', 'udim', 'link-23');" title="mari.GeoPatch.udim">udim</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-24"><a class="py-name" href="#" onclick="return doclink('link-24', 'patches', 'link-19');" title="mari.PatchLinksManager.patches">patches</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="lookupPatchesFromUdims"></a><div id="lookupPatchesFromUdims-def"><a name="L37"></a><tt class="py-lineno"> 37</tt> <a class="py-toggle" href="#" id="lookupPatchesFromUdims-toggle" onclick="return toggle('lookupPatchesFromUdims');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.linked_patches-module.html#lookupPatchesFromUdims">lookupPatchesFromUdims</a><tt class="py-op">(</tt><tt class="py-param">udims</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="lookupPatchesFromUdims-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="lookupPatchesFromUdims-expanded"><a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">    <tt class="py-docstring">"""Returns the patches associated with the input udims on the current geometry.</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"><tt class="py-docstring">    Invalid udims are skipped, but otherwise the list of patches is in the same order</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-docstring">    as the input list of udims.</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-docstring">    @return: List of patches."""</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">    <tt class="py-name" id="link-25"><a class="py-name" href="#" onclick="return doclink('link-25', 'patches', 'link-19');" title="mari.PatchLinksManager.patches">patches</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-26"><a class="py-name" href="#" onclick="return doclink('link-26', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-27"><a class="py-name" href="#" onclick="return doclink('link-27', 'geo', 'link-2');" title="mari.current.geo
+mari.examples.c_api_channel_export.geo">geo</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-28"><a class="py-name" href="#" onclick="return doclink('link-28', 'current', 'link-5');" title="mari.CanvasManager.current
+mari.GeoManager.current
+mari.LightManager.current
+mari.ProjectManager.current
+mari.ProjectorManager.current
+mari.SelectionGroupManager.current
+mari.ToolManager.current
+mari.current">current</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name" id="link-29" targets="Method mari.GeoEntity.patchList()=mari.GeoEntity-class.html#patchList,Method mari.GeoEntityVersion.patchList()=mari.GeoEntityVersion-class.html#patchList,Method mari.PatchSelectionGroup.patchList()=mari.PatchSelectionGroup-class.html#patchList"><a class="py-name" href="#" onclick="return doclink('link-29', 'patchList', 'link-29');" title="mari.GeoEntity.patchList
+mari.GeoEntityVersion.patchList
+mari.PatchSelectionGroup.patchList">patchList</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name" id="link-30" targets="Method mari.FileList.filter()=mari.FileList-class.html#filter,Variable mari.system._ocio_filter.filter=mari.system._ocio_filter-module.html#filter"><a class="py-name" href="#" onclick="return doclink('link-30', 'filter', 'link-30');" title="mari.FileList.filter
+mari.system._ocio_filter.filter">filter</a></tt><tt class="py-op">(</tt><tt class="py-keyword">lambda</tt> <tt class="py-name" id="link-31"><a class="py-name" href="#" onclick="return doclink('link-31', 'patch', 'link-21');" title="mari.GeoEntity.patch">patch</a></tt><tt class="py-op">:</tt> <tt class="py-name" id="link-32"><a class="py-name" href="#" onclick="return doclink('link-32', 'patch', 'link-21');" title="mari.GeoEntity.patch">patch</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-33"><a class="py-name" href="#" onclick="return doclink('link-33', 'udim', 'link-23');" title="mari.GeoPatch.udim">udim</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-keyword">in</tt> <tt class="py-name">udims</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-34"><a class="py-name" href="#" onclick="return doclink('link-34', 'patches', 'link-19');" title="mari.PatchLinksManager.patches">patches</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">     </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">     </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="copyLinksFromCurrentImageSet"></a><div id="copyLinksFromCurrentImageSet-def"><a name="L47"></a><tt class="py-lineno"> 47</tt> <a class="py-toggle" href="#" id="copyLinksFromCurrentImageSet-toggle" onclick="return toggle('copyLinksFromCurrentImageSet');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.linked_patches-module.html#copyLinksFromCurrentImageSet">copyLinksFromCurrentImageSet</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="copyLinksFromCurrentImageSet-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="copyLinksFromCurrentImageSet-expanded"><a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">    <tt class="py-docstring">"""Copies patch links from the current ImageSet."""</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">    <tt class="py-keyword">global</tt> <tt class="py-name" id="link-35"><a class="py-name" href="#" onclick="return doclink('link-35', '_clipboard', 'link-1');" title="mari.examples.linked_patches._clipboard">_clipboard</a></tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">    <tt class="py-name" id="link-36"><a class="py-name" href="#" onclick="return doclink('link-36', '_clipboard', 'link-1');" title="mari.examples.linked_patches._clipboard">_clipboard</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">    <tt class="py-name">patch_groups</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-37" targets="Function mari.examples.linked_patches.getCurrentLinkedPatches()=mari.examples.linked_patches-module.html#getCurrentLinkedPatches"><a class="py-name" href="#" onclick="return doclink('link-37', 'getCurrentLinkedPatches', 'link-37');" title="mari.examples.linked_patches.getCurrentLinkedPatches">getCurrentLinkedPatches</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name" id="link-38"><a class="py-name" href="#" onclick="return doclink('link-38', 'name', 'link-14');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">,</tt> <tt class="py-name" id="link-39"><a class="py-name" href="#" onclick="return doclink('link-39', 'patches', 'link-19');" title="mari.PatchLinksManager.patches">patches</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">patch_groups</tt><tt class="py-op">.</tt><tt class="py-name">items</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt class="py-name">udims</tt> <tt class="py-op">=</tt> <tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-keyword">lambda</tt> <tt class="py-name" id="link-40"><a class="py-name" href="#" onclick="return doclink('link-40', 'patch', 'link-21');" title="mari.GeoEntity.patch">patch</a></tt><tt class="py-op">:</tt> <tt class="py-name" id="link-41"><a class="py-name" href="#" onclick="return doclink('link-41', 'patch', 'link-21');" title="mari.GeoEntity.patch">patch</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-42"><a class="py-name" href="#" onclick="return doclink('link-42', 'udim', 'link-23');" title="mari.GeoPatch.udim">udim</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-43"><a class="py-name" href="#" onclick="return doclink('link-43', 'patches', 'link-19');" title="mari.PatchLinksManager.patches">patches</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt class="py-name">udimList</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-44" targets="Function mari.examples.linked_patches.lookupUdimsFromPatches()=mari.examples.linked_patches-module.html#lookupUdimsFromPatches"><a class="py-name" href="#" onclick="return doclink('link-44', 'lookupUdimsFromPatches', 'link-44');" title="mari.examples.linked_patches.lookupUdimsFromPatches">lookupUdimsFromPatches</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-45"><a class="py-name" href="#" onclick="return doclink('link-45', 'patches', 'link-19');" title="mari.PatchLinksManager.patches">patches</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">        <tt class="py-name" id="link-46"><a class="py-name" href="#" onclick="return doclink('link-46', '_clipboard', 'link-1');" title="mari.examples.linked_patches._clipboard">_clipboard</a></tt><tt class="py-op">[</tt><tt class="py-name" id="link-47"><a class="py-name" href="#" onclick="return doclink('link-47', 'name', 'link-14');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">udimList</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">        <tt class="py-name" id="link-48"><a class="py-name" href="#" onclick="return doclink('link-48', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-49"><a class="py-name" href="#" onclick="return doclink('link-49', 'utils', 'link-12');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-50"><a class="py-name" href="#" onclick="return doclink('link-50', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[copyLinksFromCurrentImageSet] Group %s has %d udims"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-51"><a class="py-name" href="#" onclick="return doclink('link-51', 'name', 'link-14');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">,</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">udimList</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">    <tt class="py-name" id="link-52"><a class="py-name" href="#" onclick="return doclink('link-52', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-53"><a class="py-name" href="#" onclick="return doclink('link-53', 'utils', 'link-12');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-54"><a class="py-name" href="#" onclick="return doclink('link-54', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[copyLinksFromCurrentImageSet] Copied %d patch groups to the clipboard"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">patch_groups</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="getMaximumResolution"></a><div id="getMaximumResolution-def"><a name="L60"></a><tt class="py-lineno"> 60</tt> <a class="py-toggle" href="#" id="getMaximumResolution-toggle" onclick="return toggle('getMaximumResolution');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.linked_patches-module.html#getMaximumResolution">getMaximumResolution</a><tt class="py-op">(</tt><tt class="py-param">images</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="getMaximumResolution-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="getMaximumResolution-expanded"><a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">    <tt class="py-docstring">"""Gets the maximum resolution of the list of input images.</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"><tt class="py-docstring">    @param images: List of images.</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"><tt class="py-docstring">    @return: QSize object containing the result.</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">    <tt class="py-comment"># images in ImageSets are square, so we only need to check one dimension</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">    <tt class="py-name">max</tt> <tt class="py-op">=</tt> <tt class="py-name">reduce</tt><tt class="py-op">(</tt><tt class="py-keyword">lambda</tt> <tt class="py-name" id="link-55" targets="Method mari.VectorN.x()=mari.VectorN-class.html#x"><a class="py-name" href="#" onclick="return doclink('link-55', 'x', 'link-55');" title="mari.VectorN.x">x</a></tt><tt class="py-op">,</tt><tt class="py-name" id="link-56" targets="Method mari.VectorN.y()=mari.VectorN-class.html#y"><a class="py-name" href="#" onclick="return doclink('link-56', 'y', 'link-56');" title="mari.VectorN.y">y</a></tt><tt class="py-op">:</tt> <tt class="py-name" id="link-57"><a class="py-name" href="#" onclick="return doclink('link-57', 'x', 'link-55');" title="mari.VectorN.x">x</a></tt> <tt class="py-keyword">if</tt> <tt class="py-name" id="link-58"><a class="py-name" href="#" onclick="return doclink('link-58', 'x', 'link-55');" title="mari.VectorN.x">x</a></tt> <tt class="py-op">&gt;</tt> <tt class="py-name" id="link-59"><a class="py-name" href="#" onclick="return doclink('link-59', 'y', 'link-56');" title="mari.VectorN.y">y</a></tt> <tt class="py-keyword">else</tt> <tt class="py-name" id="link-60"><a class="py-name" href="#" onclick="return doclink('link-60', 'y', 'link-56');" title="mari.VectorN.y">y</a></tt><tt class="py-op">,</tt>  <tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-keyword">lambda</tt> <tt class="py-name">i</tt><tt class="py-op">:</tt> <tt class="py-name">i</tt><tt class="py-op">.</tt><tt class="py-name" id="link-61" targets="Method mari.Channel.width()=mari.Channel-class.html#width,Method mari.ChannelInfo.width()=mari.ChannelInfo-class.html#width,Method mari.Image.width()=mari.Image-class.html#width,Method mari.Projector.width()=mari.Projector-class.html#width,Method mari.QuickProjector.width()=mari.QuickProjector-class.html#width,Method mari.system._modo_ui.ResolutionCombobox.width()=mari.system._modo_ui.ResolutionCombobox-class.html#width"><a class="py-name" href="#" onclick="return doclink('link-61', 'width', 'link-61');" title="mari.Channel.width
+mari.ChannelInfo.width
+mari.Image.width
+mari.Projector.width
+mari.QuickProjector.width
+mari.system._modo_ui.ResolutionCombobox.width">width</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-62" targets="Method mari.PatchLinksManager.images()=mari.PatchLinksManager-class.html#images,Variable mari.examples.c_api_channel_export.images=mari.examples.c_api_channel_export-module.html#images"><a class="py-name" href="#" onclick="return doclink('link-62', 'images', 'link-62');" title="mari.PatchLinksManager.images
+mari.examples.c_api_channel_export.images">images</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">PySide2</tt><tt class="py-op">.</tt><tt class="py-name">QtCore</tt><tt class="py-op">.</tt><tt class="py-name">QSize</tt><tt class="py-op">(</tt><tt class="py-name">max</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="resizeImages"></a><div id="resizeImages-def"><a name="L71"></a><tt class="py-lineno"> 71</tt> <a class="py-toggle" href="#" id="resizeImages-toggle" onclick="return toggle('resizeImages');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.linked_patches-module.html#resizeImages">resizeImages</a><tt class="py-op">(</tt><tt class="py-param">images</tt><tt class="py-op">,</tt> <tt class="py-param">size</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="resizeImages-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="resizeImages-expanded"><a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">    <tt class="py-docstring">"""Resizes the input list of images to the specified resolution.</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"><tt class="py-docstring">    @param images: List of images to resize.</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"><tt class="py-docstring">    @param size: QSize object specifying the desired resolution."""</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">    <tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-keyword">lambda</tt> <tt class="py-name" id="link-63" targets="Method mari.ImageSet.image()=mari.ImageSet-class.html#image"><a class="py-name" href="#" onclick="return doclink('link-63', 'image', 'link-63');" title="mari.ImageSet.image">image</a></tt><tt class="py-op">:</tt> <tt class="py-name" id="link-64"><a class="py-name" href="#" onclick="return doclink('link-64', 'image', 'link-63');" title="mari.ImageSet.image">image</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-65" targets="Method mari.Channel.resize()=mari.Channel-class.html#resize,Method mari.Image.resize()=mari.Image-class.html#resize,Method mari.ImageSet.resize()=mari.ImageSet-class.html#resize"><a class="py-name" href="#" onclick="return doclink('link-65', 'resize', 'link-65');" title="mari.Channel.resize
+mari.Image.resize
+mari.ImageSet.resize">resize</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-66" targets="Method mari.Canvas.size()=mari.Canvas-class.html#size,Method mari.CanvasManager.size()=mari.CanvasManager-class.html#size,Method mari.ChannelInfo.size()=mari.ChannelInfo-class.html#size,Method mari.Image.size()=mari.Image-class.html#size,Method mari.PostFilterCollection.size()=mari.PostFilterCollection-class.html#size,Method mari.VectorN.size()=mari.VectorN-class.html#size"><a class="py-name" href="#" onclick="return doclink('link-66', 'size', 'link-66');" title="mari.Canvas.size
+mari.CanvasManager.size
+mari.ChannelInfo.size
+mari.Image.size
+mari.PostFilterCollection.size
+mari.VectorN.size">size</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-67"><a class="py-name" href="#" onclick="return doclink('link-67', 'images', 'link-62');" title="mari.PatchLinksManager.images
+mari.examples.c_api_channel_export.images">images</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="pasteLinksToCurrentImageSet"></a><div id="pasteLinksToCurrentImageSet-def"><a name="L79"></a><tt class="py-lineno"> 79</tt> <a class="py-toggle" href="#" id="pasteLinksToCurrentImageSet-toggle" onclick="return toggle('pasteLinksToCurrentImageSet');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.linked_patches-module.html#pasteLinksToCurrentImageSet">pasteLinksToCurrentImageSet</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="pasteLinksToCurrentImageSet-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="pasteLinksToCurrentImageSet-expanded"><a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">    <tt class="py-docstring">"""Pastes patch links into the current ImageSet."""</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">    <tt class="py-keyword">global</tt> <tt class="py-name" id="link-68"><a class="py-name" href="#" onclick="return doclink('link-68', '_clipboard', 'link-1');" title="mari.examples.linked_patches._clipboard">_clipboard</a></tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">    <tt class="py-name">patch_groups</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name" id="link-69"><a class="py-name" href="#" onclick="return doclink('link-69', 'name', 'link-14');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">,</tt> <tt class="py-name">udims</tt> <tt class="py-keyword">in</tt> <tt class="py-name" id="link-70"><a class="py-name" href="#" onclick="return doclink('link-70', '_clipboard', 'link-1');" title="mari.examples.linked_patches._clipboard">_clipboard</a></tt><tt class="py-op">.</tt><tt class="py-name">items</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">        <tt class="py-name">patch_groups</tt><tt class="py-op">[</tt><tt class="py-name" id="link-71"><a class="py-name" href="#" onclick="return doclink('link-71', 'name', 'link-14');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-72" targets="Function mari.examples.linked_patches.lookupPatchesFromUdims()=mari.examples.linked_patches-module.html#lookupPatchesFromUdims"><a class="py-name" href="#" onclick="return doclink('link-72', 'lookupPatchesFromUdims', 'link-72');" title="mari.examples.linked_patches.lookupPatchesFromUdims">lookupPatchesFromUdims</a></tt><tt class="py-op">(</tt><tt class="py-name">udims</tt><tt class="py-op">)</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">    <tt class="py-name" id="link-73"><a class="py-name" href="#" onclick="return doclink('link-73', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-74"><a class="py-name" href="#" onclick="return doclink('link-74', 'utils', 'link-12');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-75"><a class="py-name" href="#" onclick="return doclink('link-75', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[pasteLinksToCurrentImageSet] Found %d patch groups from the clipboard"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">patch_groups</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">    <tt class="py-name" id="link-76"><a class="py-name" href="#" onclick="return doclink('link-76', 'geo', 'link-2');" title="mari.current.geo
+mari.examples.c_api_channel_export.geo">geo</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-77"><a class="py-name" href="#" onclick="return doclink('link-77', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-78"><a class="py-name" href="#" onclick="return doclink('link-78', 'geo', 'link-2');" title="mari.current.geo
+mari.examples.c_api_channel_export.geo">geo</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-79"><a class="py-name" href="#" onclick="return doclink('link-79', 'current', 'link-5');" title="mari.CanvasManager.current
+mari.GeoManager.current
+mari.LightManager.current
+mari.ProjectManager.current
+mari.ProjectorManager.current
+mari.SelectionGroupManager.current
+mari.ToolManager.current
+mari.current">current</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">    <tt class="py-name">image_set</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-80"><a class="py-name" href="#" onclick="return doclink('link-80', 'geo', 'link-2');" title="mari.current.geo
+mari.examples.c_api_channel_export.geo">geo</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-81"><a class="py-name" href="#" onclick="return doclink('link-81', 'currentImageSet', 'link-7');" title="mari.GeoEntity.currentImageSet">currentImageSet</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">    <tt class="py-name" id="link-82"><a class="py-name" href="#" onclick="return doclink('link-82', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-83"><a class="py-name" href="#" onclick="return doclink('link-83', 'utils', 'link-12');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-84"><a class="py-name" href="#" onclick="return doclink('link-84', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[pasteLinksToCurrentImageSet] Current Geo %s, current image set %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-85"><a class="py-name" href="#" onclick="return doclink('link-85', 'geo', 'link-2');" title="mari.current.geo
+mari.examples.c_api_channel_export.geo">geo</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-86"><a class="py-name" href="#" onclick="return doclink('link-86', 'name', 'link-14');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">image_set</tt><tt class="py-op">.</tt><tt class="py-name" id="link-87"><a class="py-name" href="#" onclick="return doclink('link-87', 'name', 'link-14');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">    <tt class="py-name">patches_to_unlink</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">group</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-88"><a class="py-name" href="#" onclick="return doclink('link-88', 'patches', 'link-19');" title="mari.PatchLinksManager.patches">patches</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">patch_groups</tt><tt class="py-op">.</tt><tt class="py-name">items</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name" id="link-89"><a class="py-name" href="#" onclick="return doclink('link-89', 'patch', 'link-21');" title="mari.GeoEntity.patch">patch</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name" id="link-90"><a class="py-name" href="#" onclick="return doclink('link-90', 'patches', 'link-19');" title="mari.PatchLinksManager.patches">patches</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name" id="link-91"><a class="py-name" href="#" onclick="return doclink('link-91', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-92"><a class="py-name" href="#" onclick="return doclink('link-92', 'patch_links', 'link-9');" title="mari.patch_links">patch_links</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-93" targets="Method mari.PatchLinksManager.isPatchLinked()=mari.PatchLinksManager-class.html#isPatchLinked"><a class="py-name" href="#" onclick="return doclink('link-93', 'isPatchLinked', 'link-93');" title="mari.PatchLinksManager.isPatchLinked">isPatchLinked</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-94"><a class="py-name" href="#" onclick="return doclink('link-94', 'patch', 'link-21');" title="mari.GeoEntity.patch">patch</a></tt><tt class="py-op">,</tt> <tt class="py-name">image_set</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">                <tt class="py-name">patches_to_unlink</tt><tt class="py-op">.</tt><tt class="py-name" id="link-95" targets="Method mari.FileList.append()=mari.FileList-class.html#append"><a class="py-name" href="#" onclick="return doclink('link-95', 'append', 'link-95');" title="mari.FileList.append">append</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-96"><a class="py-name" href="#" onclick="return doclink('link-96', 'patch', 'link-21');" title="mari.GeoEntity.patch">patch</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">    <tt class="py-name" id="link-97"><a class="py-name" href="#" onclick="return doclink('link-97', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-98"><a class="py-name" href="#" onclick="return doclink('link-98', 'utils', 'link-12');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-99"><a class="py-name" href="#" onclick="return doclink('link-99', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[pasteLinksToCurrentImageSet] Found %d patches to unlink"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">patches_to_unlink</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">    <tt class="py-name">unlink_patches</tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">patches_to_unlink</tt><tt class="py-op">:</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">        <tt class="py-name">message_text</tt> <tt class="py-op">=</tt> <tt class="py-string">"Some of the patches you are trying to link have existing links in the "</tt> \ </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">                       <tt class="py-string">"current paint target. "</tt> \ </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">                       <tt class="py-string">"Would you like to overwrite the existing links or cancel linking?"</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">        <tt class="py-name">answer</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-100"><a class="py-name" href="#" onclick="return doclink('link-100', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-101"><a class="py-name" href="#" onclick="return doclink('link-101', 'utils', 'link-12');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-102" targets="Function mari.utils.misc.messageResult()=mari.utils.misc-module.html#messageResult"><a class="py-name" href="#" onclick="return doclink('link-102', 'messageResult', 'link-102');" title="mari.utils.misc.messageResult">messageResult</a></tt><tt class="py-op">(</tt><tt class="py-name">message_text</tt><tt class="py-op">,</tt>  </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">                        <tt class="py-name">title</tt><tt class="py-op">=</tt><tt class="py-string">"Overwrite existing links"</tt><tt class="py-op">,</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">                        <tt class="py-name">buttons</tt><tt class="py-op">=</tt><tt class="py-name">PySide2</tt><tt class="py-op">.</tt><tt class="py-name">QtWidgets</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">Ok</tt> <tt class="py-op">|</tt> <tt class="py-name">PySide2</tt><tt class="py-op">.</tt><tt class="py-name">QtWidgets</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">Cancel</tt><tt class="py-op">,</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">                        <tt class="py-name" id="link-103" targets="Method mari.Tool.icon()=mari.Tool-class.html#icon"><a class="py-name" href="#" onclick="return doclink('link-103', 'icon', 'link-103');" title="mari.Tool.icon">icon</a></tt><tt class="py-op">=</tt><tt class="py-name">PySide2</tt><tt class="py-op">.</tt><tt class="py-name">QtWidgets</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">Question</tt><tt class="py-op">)</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">answer</tt> <tt class="py-op">==</tt> <tt class="py-name">PySide2</tt><tt class="py-op">.</tt><tt class="py-name">QtWidgets</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">Ok</tt><tt class="py-op">:</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">            <tt class="py-name">unlink_patches</tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">     </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">    <tt class="py-name">update_resolutions</tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">group</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-104"><a class="py-name" href="#" onclick="return doclink('link-104', 'patches', 'link-19');" title="mari.PatchLinksManager.patches">patches</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">patch_groups</tt><tt class="py-op">.</tt><tt class="py-name">items</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name" id="link-105"><a class="py-name" href="#" onclick="return doclink('link-105', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-106"><a class="py-name" href="#" onclick="return doclink('link-106', 'patch_links', 'link-9');" title="mari.patch_links">patch_links</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-107" targets="Method mari.PatchLinksManager.canLinkPatchInternals()=mari.PatchLinksManager-class.html#canLinkPatchInternals"><a class="py-name" href="#" onclick="return doclink('link-107', 'canLinkPatchInternals', 'link-107');" title="mari.PatchLinksManager.canLinkPatchInternals">canLinkPatchInternals</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-108"><a class="py-name" href="#" onclick="return doclink('link-108', 'patches', 'link-19');" title="mari.PatchLinksManager.patches">patches</a></tt><tt class="py-op">,</tt> <tt class="py-name">image_set</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">            <tt class="py-comment"># We only need to mention resolutions, because this example only applies changes to the current</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">            <tt class="py-comment"># image set (so all images will already have the same bit depth unless a developer has explicitly</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">            <tt class="py-comment"># changed the bit depth via the Python API, in which case an exception will be raised by mari.patch_links)</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">            <tt class="py-name">message_text</tt> <tt class="py-op">=</tt> <tt class="py-string">"Some of the patches you are trying to link have different resolutions. "</tt>\ </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">                           <tt class="py-string">"Would you like to resize them all to the highest resolution or cancel linking?"</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">            <tt class="py-name">answer</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-109"><a class="py-name" href="#" onclick="return doclink('link-109', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-110"><a class="py-name" href="#" onclick="return doclink('link-110', 'utils', 'link-12');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-111"><a class="py-name" href="#" onclick="return doclink('link-111', 'messageResult', 'link-102');" title="mari.utils.misc.messageResult">messageResult</a></tt><tt class="py-op">(</tt><tt class="py-name">message_text</tt><tt class="py-op">,</tt>  </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">                            <tt class="py-name">title</tt><tt class="py-op">=</tt><tt class="py-string">"Resolution mismatch"</tt><tt class="py-op">,</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">                            <tt class="py-name">buttons</tt><tt class="py-op">=</tt><tt class="py-name">PySide2</tt><tt class="py-op">.</tt><tt class="py-name">QtWidgets</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">Ok</tt> <tt class="py-op">|</tt> <tt class="py-name">PySide2</tt><tt class="py-op">.</tt><tt class="py-name">QtWidgets</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">Cancel</tt><tt class="py-op">,</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">                            <tt class="py-name" id="link-112"><a class="py-name" href="#" onclick="return doclink('link-112', 'icon', 'link-103');" title="mari.Tool.icon">icon</a></tt><tt class="py-op">=</tt><tt class="py-name">PySide2</tt><tt class="py-op">.</tt><tt class="py-name">QtWidgets</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">Question</tt><tt class="py-op">)</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">answer</tt> <tt class="py-op">==</tt> <tt class="py-name">PySide2</tt><tt class="py-op">.</tt><tt class="py-name">QtWidgets</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">Ok</tt><tt class="py-op">:</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">                <tt class="py-name">update_resolutions</tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">                <tt class="py-keyword">break</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">     </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">unlink_patches</tt><tt class="py-op">:</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">        <tt class="py-name" id="link-113"><a class="py-name" href="#" onclick="return doclink('link-113', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-114"><a class="py-name" href="#" onclick="return doclink('link-114', 'utils', 'link-12');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-115"><a class="py-name" href="#" onclick="return doclink('link-115', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[pasteLinksToCurrentImageSet] Unlinking patches"</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">        <tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-keyword">lambda</tt> <tt class="py-name">p</tt><tt class="py-op">:</tt> <tt class="py-name" id="link-116"><a class="py-name" href="#" onclick="return doclink('link-116', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-117"><a class="py-name" href="#" onclick="return doclink('link-117', 'patch_links', 'link-9');" title="mari.patch_links">patch_links</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-118" targets="Method mari.PatchLinksManager.unlinkPatch()=mari.PatchLinksManager-class.html#unlinkPatch"><a class="py-name" href="#" onclick="return doclink('link-118', 'unlinkPatch', 'link-118');" title="mari.PatchLinksManager.unlinkPatch">unlinkPatch</a></tt><tt class="py-op">(</tt><tt class="py-name">p</tt><tt class="py-op">,</tt> <tt class="py-name">image_set</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">patches_to_unlink</tt><tt class="py-op">)</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line"> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">update_resolutions</tt><tt class="py-op">:</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">        <tt class="py-name" id="link-119"><a class="py-name" href="#" onclick="return doclink('link-119', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-120"><a class="py-name" href="#" onclick="return doclink('link-120', 'utils', 'link-12');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-121"><a class="py-name" href="#" onclick="return doclink('link-121', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[pasteLinksToCurrentImageSet] Need to resize patches"</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">group</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-122"><a class="py-name" href="#" onclick="return doclink('link-122', 'patches', 'link-19');" title="mari.PatchLinksManager.patches">patches</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">patch_groups</tt><tt class="py-op">.</tt><tt class="py-name">items</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">            <tt class="py-name" id="link-123"><a class="py-name" href="#" onclick="return doclink('link-123', 'images', 'link-62');" title="mari.PatchLinksManager.images
+mari.examples.c_api_channel_export.images">images</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name" id="link-124"><a class="py-name" href="#" onclick="return doclink('link-124', 'patch', 'link-21');" title="mari.GeoEntity.patch">patch</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name" id="link-125"><a class="py-name" href="#" onclick="return doclink('link-125', 'patches', 'link-19');" title="mari.PatchLinksManager.patches">patches</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">                <tt class="py-name" id="link-126"><a class="py-name" href="#" onclick="return doclink('link-126', 'images', 'link-62');" title="mari.PatchLinksManager.images
+mari.examples.c_api_channel_export.images">images</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-127"><a class="py-name" href="#" onclick="return doclink('link-127', 'append', 'link-95');" title="mari.FileList.append">append</a></tt><tt class="py-op">(</tt><tt class="py-name">image_set</tt><tt class="py-op">.</tt><tt class="py-name" id="link-128"><a class="py-name" href="#" onclick="return doclink('link-128', 'image', 'link-63');" title="mari.ImageSet.image">image</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-129"><a class="py-name" href="#" onclick="return doclink('link-129', 'patch', 'link-21');" title="mari.GeoEntity.patch">patch</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-130" targets="Method mari.GeoPatch.uvIndex()=mari.GeoPatch-class.html#uvIndex,Method mari.ImageSet.uvIndex()=mari.ImageSet-class.html#uvIndex"><a class="py-name" href="#" onclick="return doclink('link-130', 'uvIndex', 'link-130');" title="mari.GeoPatch.uvIndex
+mari.ImageSet.uvIndex">uvIndex</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">            <tt class="py-name">max_res</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-131" targets="Function mari.examples.linked_patches.getMaximumResolution()=mari.examples.linked_patches-module.html#getMaximumResolution"><a class="py-name" href="#" onclick="return doclink('link-131', 'getMaximumResolution', 'link-131');" title="mari.examples.linked_patches.getMaximumResolution">getMaximumResolution</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-132"><a class="py-name" href="#" onclick="return doclink('link-132', 'images', 'link-62');" title="mari.PatchLinksManager.images
+mari.examples.c_api_channel_export.images">images</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">            <tt class="py-name" id="link-133" targets="Function mari.examples.linked_patches.resizeImages()=mari.examples.linked_patches-module.html#resizeImages"><a class="py-name" href="#" onclick="return doclink('link-133', 'resizeImages', 'link-133');" title="mari.examples.linked_patches.resizeImages">resizeImages</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-134"><a class="py-name" href="#" onclick="return doclink('link-134', 'images', 'link-62');" title="mari.PatchLinksManager.images
+mari.examples.c_api_channel_export.images">images</a></tt><tt class="py-op">,</tt> <tt class="py-name">max_res</tt><tt class="py-op">)</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">     </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">    <tt class="py-name" id="link-135"><a class="py-name" href="#" onclick="return doclink('link-135', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-136"><a class="py-name" href="#" onclick="return doclink('link-136', 'utils', 'link-12');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-137"><a class="py-name" href="#" onclick="return doclink('link-137', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[pasteLinksToCurrentImageSet] About to link %d items"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">patch_groups</tt><tt class="py-op">.</tt><tt class="py-name">items</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">group</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-138"><a class="py-name" href="#" onclick="return doclink('link-138', 'patches', 'link-19');" title="mari.PatchLinksManager.patches">patches</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">patch_groups</tt><tt class="py-op">.</tt><tt class="py-name">items</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">        <tt class="py-name" id="link-139"><a class="py-name" href="#" onclick="return doclink('link-139', 'name', 'link-14');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-140"><a class="py-name" href="#" onclick="return doclink('link-140', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-141"><a class="py-name" href="#" onclick="return doclink('link-141', 'patch_links', 'link-9');" title="mari.patch_links">patch_links</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-142" targets="Method mari.PatchLinksManager.generateUniqueGroupName()=mari.PatchLinksManager-class.html#generateUniqueGroupName"><a class="py-name" href="#" onclick="return doclink('link-142', 'generateUniqueGroupName', 'link-142');" title="mari.PatchLinksManager.generateUniqueGroupName">generateUniqueGroupName</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">        <tt class="py-name" id="link-143"><a class="py-name" href="#" onclick="return doclink('link-143', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-144"><a class="py-name" href="#" onclick="return doclink('link-144', 'patch_links', 'link-9');" title="mari.patch_links">patch_links</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-145" targets="Method mari.PatchLinksManager.linkPatches()=mari.PatchLinksManager-class.html#linkPatches"><a class="py-name" href="#" onclick="return doclink('link-145', 'linkPatches', 'link-145');" title="mari.PatchLinksManager.linkPatches">linkPatches</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-146"><a class="py-name" href="#" onclick="return doclink('link-146', 'patches', 'link-19');" title="mari.PatchLinksManager.patches">patches</a></tt><tt class="py-op">,</tt> <tt class="py-name" id="link-147"><a class="py-name" href="#" onclick="return doclink('link-147', 'name', 'link-14');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">,</tt> <tt class="py-name">image_set</tt><tt class="py-op">)</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">        <tt class="py-name" id="link-148"><a class="py-name" href="#" onclick="return doclink('link-148', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-149"><a class="py-name" href="#" onclick="return doclink('link-149', 'utils', 'link-12');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-150"><a class="py-name" href="#" onclick="return doclink('link-150', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[pasteLinksToCurrentImageSet] Created new link patch group '%s'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-151"><a class="py-name" href="#" onclick="return doclink('link-151', 'name', 'link-14');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">         </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="onCopyLinks"></a><div id="onCopyLinks-def"><a name="L148"></a><tt class="py-lineno">148</tt> <a class="py-toggle" href="#" id="onCopyLinks-toggle" onclick="return toggle('onCopyLinks');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.linked_patches-module.html#onCopyLinks">onCopyLinks</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="onCopyLinks-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="onCopyLinks-expanded"><a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">    <tt class="py-docstring">"""Function to trigger for copying a patch links setup."""</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name" id="link-152"><a class="py-name" href="#" onclick="return doclink('link-152', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-153"><a class="py-name" href="#" onclick="return doclink('link-153', 'utils', 'link-12');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-154" targets="Function mari.utils.misc.checkProjectAndGeoValidity()=mari.utils.misc-module.html#checkProjectAndGeoValidity"><a class="py-name" href="#" onclick="return doclink('link-154', 'checkProjectAndGeoValidity', 'link-154');" title="mari.utils.misc.checkProjectAndGeoValidity">checkProjectAndGeoValidity</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">    <tt class="py-name" id="link-155" targets="Function mari.examples.linked_patches.copyLinksFromCurrentImageSet()=mari.examples.linked_patches-module.html#copyLinksFromCurrentImageSet"><a class="py-name" href="#" onclick="return doclink('link-155', 'copyLinksFromCurrentImageSet', 'link-155');" title="mari.examples.linked_patches.copyLinksFromCurrentImageSet">copyLinksFromCurrentImageSet</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="onPasteLinks"></a><div id="onPasteLinks-def"><a name="L155"></a><tt class="py-lineno">155</tt> <a class="py-toggle" href="#" id="onPasteLinks-toggle" onclick="return toggle('onPasteLinks');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.linked_patches-module.html#onPasteLinks">onPasteLinks</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="onPasteLinks-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="onPasteLinks-expanded"><a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">    <tt class="py-docstring">"""Function to trigger for pasting a previously copied patch links setup."""</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name" id="link-156"><a class="py-name" href="#" onclick="return doclink('link-156', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-157"><a class="py-name" href="#" onclick="return doclink('link-157', 'utils', 'link-12');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-158"><a class="py-name" href="#" onclick="return doclink('link-158', 'checkProjectAndGeoValidity', 'link-154');" title="mari.utils.misc.checkProjectAndGeoValidity">checkProjectAndGeoValidity</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">         </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name" id="link-159"><a class="py-name" href="#" onclick="return doclink('link-159', '_clipboard', 'link-1');" title="mari.examples.linked_patches._clipboard">_clipboard</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">        <tt class="py-name" id="link-160"><a class="py-name" href="#" onclick="return doclink('link-160', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-161"><a class="py-name" href="#" onclick="return doclink('link-161', 'utils', 'link-12');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-162"><a class="py-name" href="#" onclick="return doclink('link-162', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[onPasteLinks] There are no patch links to paste. Please copy "</tt>\ </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">                <tt class="py-string">"a few patch links first and then try again."</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">    <tt class="py-name" id="link-163" targets="Function mari.examples.linked_patches.pasteLinksToCurrentImageSet()=mari.examples.linked_patches-module.html#pasteLinksToCurrentImageSet"><a class="py-name" href="#" onclick="return doclink('link-163', 'pasteLinksToCurrentImageSet', 'link-163');" title="mari.examples.linked_patches.pasteLinksToCurrentImageSet">pasteLinksToCurrentImageSet</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line"> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line"><tt class="py-comment">#-------------------------------------------------------------------------------</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name" id="link-164"><a class="py-name" href="#" onclick="return doclink('link-164', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-165" targets="Variable mari.app=mari-module.html#app"><a class="py-name" href="#" onclick="return doclink('link-165', 'app', 'link-165');" title="mari.app">app</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-166" targets="Method mari.Application.isRunning()=mari.Application-class.html#isRunning"><a class="py-name" href="#" onclick="return doclink('link-166', 'isRunning', 'link-166');" title="mari.Application.isRunning">isRunning</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">    <tt class="py-comment"># Make a menu item for copying patch links</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">    <tt class="py-name" id="link-167" targets="Variable mari.examples.linked_patches.copy_action=mari.examples.linked_patches-module.html#copy_action"><a class="py-name" href="#" onclick="return doclink('link-167', 'copy_action', 'link-167');" title="mari.examples.linked_patches.copy_action">copy_action</a></tt><tt class="py-op">=</tt> <tt class="py-name" id="link-168"><a class="py-name" href="#" onclick="return doclink('link-168', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-169" targets="Method mari.MenuManager.actions()=mari.MenuManager-class.html#actions,Variable mari.actions=mari-module.html#actions"><a class="py-name" href="#" onclick="return doclink('link-169', 'actions', 'link-169');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-170" targets="Method mari.ActionManager.create()=mari.ActionManager-class.html#create,Method mari.PaletteManager.create()=mari.PaletteManager-class.html#create,Method mari.ProjectManager.create()=mari.ProjectManager-class.html#create,Method mari.ProjectorManager.create()=mari.ProjectorManager-class.html#create"><a class="py-name" href="#" onclick="return doclink('link-170', 'create', 'link-170');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt><tt class="py-string">'Copy Patch Links'</tt><tt class="py-op">,</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">                                     <tt class="py-string">'mari.examples.linked_patches.onCopyLinks()'</tt><tt class="py-op">)</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">    <tt class="py-name" id="link-171"><a class="py-name" href="#" onclick="return doclink('link-171', 'copy_action', 'link-167');" title="mari.examples.linked_patches.copy_action">copy_action</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-172" targets="Method mari.Action.setToolTip()=mari.Action-class.html#setToolTip"><a class="py-name" href="#" onclick="return doclink('link-172', 'setToolTip', 'link-172');" title="mari.Action.setToolTip">setToolTip</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">        <tt class="py-string">"Copies patch links from the current paintable layer or layer mask"</tt><tt class="py-op">)</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">    <tt class="py-name" id="link-173"><a class="py-name" href="#" onclick="return doclink('link-173', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-174" targets="Variable mari.menus=mari-module.html#menus"><a class="py-name" href="#" onclick="return doclink('link-174', 'menus', 'link-174');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-175" targets="Method mari.MenuManager.addAction()=mari.MenuManager-class.html#addAction,Method mari.ToolBar.addAction()=mari.ToolBar-class.html#addAction,Function mari.examples.vector_brush.addAction()=mari.examples.vector_brush-module.html#addAction"><a class="py-name" href="#" onclick="return doclink('link-175', 'addAction', 'link-175');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-176"><a class="py-name" href="#" onclick="return doclink('link-176', 'copy_action', 'link-167');" title="mari.examples.linked_patches.copy_action">copy_action</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">                         <tt class="py-string">"MainWindow/P&amp;ython/&amp;Examples/Linked Patches"</tt><tt class="py-op">)</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">                      </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">    <tt class="py-comment"># Make a menu item for pasting patch links</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">    <tt class="py-name" id="link-177" targets="Variable mari.examples.linked_patches.paste_action=mari.examples.linked_patches-module.html#paste_action"><a class="py-name" href="#" onclick="return doclink('link-177', 'paste_action', 'link-177');" title="mari.examples.linked_patches.paste_action">paste_action</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-178"><a class="py-name" href="#" onclick="return doclink('link-178', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-179"><a class="py-name" href="#" onclick="return doclink('link-179', 'actions', 'link-169');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-180"><a class="py-name" href="#" onclick="return doclink('link-180', 'create', 'link-170');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt><tt class="py-string">'Paste Patch Links'</tt><tt class="py-op">,</tt>  </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line">                                       <tt class="py-string">'mari.examples.linked_patches.onPasteLinks()'</tt><tt class="py-op">)</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">    <tt class="py-name" id="link-181"><a class="py-name" href="#" onclick="return doclink('link-181', 'paste_action', 'link-177');" title="mari.examples.linked_patches.paste_action">paste_action</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-182"><a class="py-name" href="#" onclick="return doclink('link-182', 'setToolTip', 'link-172');" title="mari.Action.setToolTip">setToolTip</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line">        <tt class="py-string">"Pastes the patch links into the current paintable layer or layer mask"</tt><tt class="py-op">)</tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line">    <tt class="py-name" id="link-183"><a class="py-name" href="#" onclick="return doclink('link-183', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-184"><a class="py-name" href="#" onclick="return doclink('link-184', 'menus', 'link-174');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-185"><a class="py-name" href="#" onclick="return doclink('link-185', 'addAction', 'link-175');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-186"><a class="py-name" href="#" onclick="return doclink('link-186', 'paste_action', 'link-177');" title="mari.examples.linked_patches.paste_action">paste_action</a></tt><tt class="py-op">,</tt>  </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line">                         <tt class="py-string">"MainWindow/P&amp;ython/&amp;Examples/Linked Patches"</tt><tt class="py-op">)</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

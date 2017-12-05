@@ -1,0 +1,5451 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.ProjectManager
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+        Class&nbsp;ProjectManager
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.ProjectManager-class.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS DESCRIPTION ==================== -->
+  <h1 class="epydoc">
+   Class ProjectManager
+  </h1>
+  <p class="nomargin-top">
+   <span class="codelink">
+    <a href="mari-pysrc.html#ProjectManager">
+     source&nbsp;code
+    </a>
+   </span>
+  </p>
+  <pre class="base-tree">
+object --+
+         |
+        <strong class="uidshort">ProjectManager</strong>
+</pre>
+  <hr/>
+  <p>
+   Handles opening, closing, and general manipulation of projects.
+  </p>
+  <p>
+   Information about the available projects can be obtained using the
+   <a class="link" href="mari.ProjectManager-class.html#list">
+    list()
+   </a>
+   method. This returns
+   <a class="link" href="mari.ProjectInfo-class.html">
+    ProjectInfo
+   </a>
+   objects to describe the projects can be 
+  opened. These projects will only be available as
+   <a class="link" href="mari.Project-class.html">
+    Project
+   </a>
+   objects after 
+  opening.
+  </p>
+  <p>
+   <b>
+    Example Code
+   </b>
+  </p>
+  <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This example shows how to obtain the Project object representing the current project</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>project = mari.projects.current()</pre>
+  <!-- ==================== NESTED CLASSES ==================== -->
+  <a name="section-NestedClasses">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Nested Classes
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ProjectManager.AllowedVersions-class.html">
+      AllowedVersions
+     </a>
+     <br/>
+     Determines the versions of project that can be loaded.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ProjectManager.MeshOptions-class.html">
+      MeshOptions
+     </a>
+     <br/>
+     Mesh options for choosing the texturing method in projects.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ProjectManager.MultipleGeometryOptions-class.html">
+      MultipleGeometryOptions
+     </a>
+     <br/>
+     Multiple geometry options for importing obj files.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ProjectManager.PtexFaceSizeScheme-class.html">
+      PtexFaceSizeScheme
+     </a>
+     <br/>
+     <a class="link" href="mari.Ptex-class.html">
+      Ptex
+     </a>
+     schemes for 
+        setting face sizes.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ProjectManager.PtexFormat-class.html">
+      PtexFormat
+     </a>
+     <br/>
+     <a class="link" href="mari.Ptex-class.html">
+      Ptex
+     </a>
+     image data 
+        formats.
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== INSTANCE METHODS ==================== -->
+  <a name="section-InstanceMethods">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Instance Methods
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#archive">
+          archive
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          rUUIDOrName
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          rTargetFileName
+         </span>
+         )
+        </span>
+        <br/>
+        Archives the project with the given UUID or name into a .mra file.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.archive">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#cachePath">
+          cachePath
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the path to the Mari cache directory, where the projects are 
+      stored.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.cachePath">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#close">
+          close
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          ConfirmIfModified
+         </span>
+         =
+         <span class="summary-sig-default">
+          True
+         </span>
+         )
+        </span>
+        <br/>
+        Closes the project.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.close">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#copy">
+          copy
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          rUUIDOrName
+         </span>
+         )
+        </span>
+        <br/>
+        Makes a duplicate of the project with the given UUID or name.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.copy">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#create">
+          create
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          MeshPaths
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          ChannelsToCreate
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          ChannelsToImport
+         </span>
+         =
+         <span class="summary-sig-default">
+          <code class="variable-group">
+           [
+          </code>
+          <code class="variable-group">
+           ]
+          </code>
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          ProjectMetaOptions
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          ObjectsToLoad
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          ColorspaceSettings
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         )
+        </span>
+        <br/>
+        Creates and opens a new project with the parameters supplied.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.create">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Project-class.html">
+       Project
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#current">
+          current
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the interface to the current project, or None if nothing is 
+      loaded.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.current">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#duplicate">
+          duplicate
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          rUUIDOrName
+         </span>
+         )
+        </span>
+        <br/>
+        Makes a duplicate of the project with the given UUID or name.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.duplicate">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.ProjectInfo-class.html">
+       ProjectInfo
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#extract">
+          extract
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          rFileName
+         </span>
+         )
+        </span>
+        <br/>
+        Extracts a .mra project archive into a usable project.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.extract">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.ProjectInfo-class.html">
+       ProjectInfo
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#find">
+          find
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          rUUIDOrName
+         </span>
+         )
+        </span>
+        <br/>
+        Returns information about the project with the given UUID or name, if
+      one exists.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.find">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.ProjectInfo-class.html">
+       ProjectInfo
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#get">
+          get
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          rUUIDOrName
+         </span>
+         )
+        </span>
+        <br/>
+        Returns information about the project with the given UUID or name.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.get">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of
+      <a class="link" href="mari.ProjectInfo-class.html">
+       ProjectInfo
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#list">
+          list
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a list of
+        <a class="link" href="mari.ProjectInfo-class.html">
+         ProjectInfo
+        </a>
+        objects, which contain information about
+      the available projects.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.list">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#names">
+          names
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the names of the available projects.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.names">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Project-class.html">
+       Project
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#open">
+          open
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          rUUIDOrName
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Allowed
+         </span>
+         =
+         <span class="summary-sig-default">
+          1
+         </span>
+         )
+        </span>
+        <br/>
+        Opens the project with the given UUID or name.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.open">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#remove">
+          remove
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          rUUIDOrName
+         </span>
+         )
+        </span>
+        <br/>
+        Removes, or deletes, the project with the given UUID or name.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.remove">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#rename">
+          rename
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          OldName
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          NewName
+         </span>
+         )
+        </span>
+        <br/>
+        Changes the name of a project.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.rename">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="showCreateDialog">
+         </a>
+         <span class="summary-sig-name">
+          showCreateDialog
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Displays the project creation dialog box.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.showCreateDialog">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __delattr__
+      </code>
+      ,
+      <code>
+       __format__
+      </code>
+      ,
+      <code>
+       __getattribute__
+      </code>
+      ,
+      <code>
+       __hash__
+      </code>
+      ,
+      <code>
+       __init__
+      </code>
+      ,
+      <code>
+       __new__
+      </code>
+      ,
+      <code>
+       __reduce__
+      </code>
+      ,
+      <code>
+       __reduce_ex__
+      </code>
+      ,
+      <code>
+       __repr__
+      </code>
+      ,
+      <code>
+       __setattr__
+      </code>
+      ,
+      <code>
+       __sizeof__
+      </code>
+      ,
+      <code>
+       __str__
+      </code>
+      ,
+      <code>
+       __subclasshook__
+      </code>
+     </p>
+    </td>
+   </tr>
+   <tr bgcolor="#e8f0f8">
+    <th class="group-header" colspan="2">
+     &nbsp;&nbsp;&nbsp;&nbsp;Signals
+    </th>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#aboutToArchive">
+          aboutToArchive
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          UUID
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted just before a project is archived.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.aboutToArchive">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#aboutToClose">
+          aboutToClose
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          CurrentProject
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted just before a project is closed.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.aboutToClose">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#aboutToCloseProject">
+          aboutToCloseProject
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          CurrentProject
+         </span>
+         )
+        </span>
+        <br/>
+        (Deprecated) This is emitted just before a project is closed.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.aboutToCloseProject">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#aboutToExport">
+          aboutToExport
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted just before an export operation.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.aboutToExport">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#aboutToOpen">
+          aboutToOpen
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          UUID
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted just before a new project is opened.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.aboutToOpen">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#aboutToOpenProject">
+          aboutToOpenProject
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          UUID
+         </span>
+         )
+        </span>
+        <br/>
+        (Deprecated) This is emitted just before a new project is opened.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.aboutToOpenProject">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#aboutToSave">
+          aboutToSave
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          ProjectToSave
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted just before a project is saved.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.aboutToSave">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#aboutToSaveNew">
+          aboutToSaveNew
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          NewProject
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted when a new project has been created, and is about to 
+      be saved.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.aboutToSaveNew">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#aboutToSaveNewProject">
+          aboutToSaveNewProject
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          NewProject
+         </span>
+         )
+        </span>
+        <br/>
+        (Deprecated) This is emitted when a new project has been created, and
+      is about to be saved.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.aboutToSaveNewProject">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#aboutToSaveProject">
+          aboutToSaveProject
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          ProjectToSave
+         </span>
+         )
+        </span>
+        <br/>
+        (Deprecated) This is emitted just before a project is saved.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.aboutToSaveProject">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#archived">
+          archived
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          UUID
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted after a project is successfully archived.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.archived">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#closed">
+          closed
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted after a project is closed.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.closed">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#created">
+          created
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          NewProject
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted when a new project has been created, after it has 
+      been saved.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.created">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#exported">
+          exported
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted just after an export operation.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.exported">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#exportedSummary">
+          exportedSummary
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Summary
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted just after an export operation.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.exportedSummary">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#opened">
+          opened
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          NewProject
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          NewlyCreated
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted just after a project is opened.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.opened">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#openedProject">
+          openedProject
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          NewProject
+         </span>
+         )
+        </span>
+        <br/>
+        (Deprecated) This is emitted just after a project is opened.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.openedProject">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#projectClosed">
+          projectClosed
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        (Deprecated) This is emitted after a project is closed.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.projectClosed">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#projectCreated">
+          projectCreated
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          NewProject
+         </span>
+         )
+        </span>
+        <br/>
+        (Deprecated) This is emitted when a new project has been created, 
+      after it has been saved.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.projectCreated">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#projectSaved">
+          projectSaved
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SavedProject
+         </span>
+         )
+        </span>
+        <br/>
+        (Deprecated) This is emitted just after a project is saved.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.projectSaved">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ProjectManager-class.html#saved">
+          saved
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SavedProject
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted just after a project is saved.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ProjectManager.saved">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS VARIABLES ==================== -->
+  <a name="section-ClassVariables">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Class Variables
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXACT">
+     </a>
+     <span class="summary-name">
+      EXACT
+     </span>
+     =
+     <code title="0">
+      0
+     </code>
+     <br/>
+     Only projects from exactly this version of Mari can be loaded.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="OLDER_OR_EXACT">
+     </a>
+     <span class="summary-name">
+      OLDER_OR_EXACT
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     Projects from older versions or the current version can be loaded.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="ANY">
+     </a>
+     <span class="summary-name">
+      ANY
+     </span>
+     =
+     <code title="2">
+      2
+     </code>
+     <br/>
+     Projects from any version of Mari can be loaded (be careful with 
+      this).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="ASK">
+     </a>
+     <span class="summary-name">
+      ASK
+     </span>
+     =
+     <code title="3">
+      3
+     </code>
+     <br/>
+     Ask the user with message boxes whether they want to load other 
+      project versions.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="UV_OR_PTEX">
+     </a>
+     <span class="summary-name">
+      UV_OR_PTEX
+     </span>
+     =
+     <code title="0">
+      0
+     </code>
+     <br/>
+     Use UVs if they exist, or
+     <a class="link" href="mari.Ptex-class.html">
+      Ptex
+     </a>
+     if there are none; this is the default value.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="FORCE_PTEX">
+     </a>
+     <span class="summary-name">
+      FORCE_PTEX
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     Force
+     <a class="link" href="mari.Ptex-class.html">
+      Ptex
+     </a>
+     mode.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="MERGE_GEOMETRIES">
+     </a>
+     <span class="summary-name">
+      MERGE_GEOMETRIES
+     </span>
+     =
+     <code title="0">
+      0
+     </code>
+     <br/>
+     Merge multiple surfaces in the obj file into one Mari geometry in a 
+      single object; this is the default value.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="KEEP_SEPARATE">
+     </a>
+     <span class="summary-name">
+      KEEP_SEPARATE
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     Keep multiple surfaces as separate Mari geometries in a single object
+      (
+     <a class="link" href="mari.Ptex-class.html">
+      Ptex
+     </a>
+     only).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ProjectManager-class.html#PTEX_UNIFORM_SIZE">
+      PTEX_UNIFORM_SIZE
+     </a>
+     =
+     <code title="0">
+      0
+     </code>
+     <br/>
+     All faces all have a uniform texture size.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ProjectManager-class.html#PTEX_WORLD_SPACE_DENSITY_SIZE">
+      PTEX_WORLD_SPACE_DENSITY_SIZE
+     </a>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     Faces have texture sizes proportional to their model sizes.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="PTEXFORMAT_BYTE">
+     </a>
+     <span class="summary-name">
+      PTEXFORMAT_BYTE
+     </span>
+     =
+     <code title="0">
+      0
+     </code>
+     <br/>
+     Unsigned byte image data.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="PTEXFORMAT_HALF">
+     </a>
+     <span class="summary-name">
+      PTEXFORMAT_HALF
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     Half float image data.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="PTEXFORMAT_FLOAT">
+     </a>
+     <span class="summary-name">
+      PTEXFORMAT_FLOAT
+     </span>
+     =
+     <code title="2">
+      2
+     </code>
+     <br/>
+     Float image data.
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== PROPERTIES ==================== -->
+  <a name="section-Properties">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Properties
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __class__
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== METHOD DETAILS ==================== -->
+  <a name="section-MethodDetails">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Method Details
+     </span>
+    </td>
+   </tr>
+  </table>
+  <a name="aboutToArchive">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            aboutToArchive
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            UUID
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.aboutToArchive">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted just before a project is archived.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            UUID
+           </code>
+          </strong>
+          (str) - The unique identifier of the project
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ProjectManager-class.html#archived">
+         archived()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="aboutToClose">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            aboutToClose
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            CurrentProject
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.aboutToClose">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted just before a project is closed.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            CurrentProject
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Project-class.html">
+           Project
+          </a>
+          ) - The project Mari is about to close
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ProjectManager-class.html#closed">
+         closed()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="aboutToCloseProject">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            aboutToCloseProject
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            CurrentProject
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.aboutToCloseProject">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       (Deprecated) This is emitted just before a project is closed.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            CurrentProject
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Project-class.html">
+           Project
+          </a>
+          ) - The project Mari is about to close
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         Deprecated:
+        </strong>
+        This signal is deprecated, and will be removed in a future version. 
+    Please use
+        <a class="link" href="mari.ProjectManager-class.html#aboutToClose">
+         aboutToClose()
+        </a>
+        instead.
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="aboutToExport">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            aboutToExport
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.aboutToExport">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted just before an export operation.
+      </p>
+      <p>
+       This signal is emitted before an export operation, and allows message 
+  hooks to be attached to Images, for example.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="aboutToOpen">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            aboutToOpen
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            UUID
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.aboutToOpen">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted just before a new project is opened.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            UUID
+           </code>
+          </strong>
+          (str) - The unique identifier of the project Mari is about to open
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ProjectManager-class.html#opened">
+         opened()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="aboutToOpenProject">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            aboutToOpenProject
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            UUID
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.aboutToOpenProject">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       (Deprecated) This is emitted just before a new project is opened.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            UUID
+           </code>
+          </strong>
+          (str) - The unique identifier of the project Mari is about to open
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         Deprecated:
+        </strong>
+        This signal is deprecated, and will be removed in a future version. 
+    Please use
+        <a class="link" href="mari.ProjectManager-class.html#aboutToOpen">
+         aboutToOpen()
+        </a>
+        instead.
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="aboutToSave">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            aboutToSave
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            ProjectToSave
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.aboutToSave">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted just before a project is saved.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            ProjectToSave
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Project-class.html">
+           Project
+          </a>
+          ) - The project about to be saved
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ProjectManager-class.html#saved">
+         saved()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="aboutToSaveNew">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            aboutToSaveNew
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            NewProject
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.aboutToSaveNew">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted when a new project has been created, and is about to 
+  be saved.
+      </p>
+      <p>
+       This can be used to apply modifications to a project before its 
+  initial save, for example.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            NewProject
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Project-class.html">
+           Project
+          </a>
+          ) - The newly-created project
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ProjectManager-class.html#created">
+         created()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="aboutToSaveNewProject">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            aboutToSaveNewProject
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            NewProject
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.aboutToSaveNewProject">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       (Deprecated) This is emitted when a new project has been created, and 
+  is about to be saved.
+      </p>
+      <p>
+       This can be used to apply modifications to a project before its 
+  initial save, for example.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            NewProject
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Project-class.html">
+           Project
+          </a>
+          ) - The newly-created project
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         Deprecated:
+        </strong>
+        This signal is deprecated, and will be removed in a future version. 
+    Please use
+        <a class="link" href="mari.ProjectManager-class.html#aboutToSaveNew">
+         aboutToSaveNew()
+        </a>
+        instead.
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="aboutToSaveProject">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            aboutToSaveProject
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            ProjectToSave
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.aboutToSaveProject">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       (Deprecated) This is emitted just before a project is saved.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            ProjectToSave
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Project-class.html">
+           Project
+          </a>
+          ) - The project about to be saved
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         Deprecated:
+        </strong>
+        This signal is deprecated, and will be removed in a future version. 
+    Please use
+        <a class="link" href="mari.ProjectManager-class.html#aboutToSave">
+         aboutToSave()
+        </a>
+        instead.
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="archive">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            archive
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            rUUIDOrName
+           </span>
+           ,
+           <span class="sig-arg">
+            rTargetFileName
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.archive">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Archives the project with the given UUID or name into a .mra file.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            rUUIDOrName
+           </code>
+          </strong>
+          (str) - The UUID or name of the project to archive. This is checked in 
+          the same way as in
+          <a class="link" href="mari.ProjectManager-class.html#open">
+           open()
+          </a>
+          .
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            rTargetFileName
+           </code>
+          </strong>
+          (str) - The file name of the archive to create.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the user cancelled the operation.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if no project with the given UUID or name could be found.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the project could not be archived because it was open.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            IOError
+           </strong>
+          </code>
+          - Raised if an I/O error occurred during the archiving process.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="archived">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            archived
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            UUID
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.archived">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted after a project is successfully archived.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            UUID
+           </code>
+          </strong>
+          (str) - The unique identifier of the project
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ProjectManager-class.html#aboutToArchive">
+         aboutToArchive()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="cachePath">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            cachePath
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.cachePath">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the path to the Mari cache directory, where the projects are 
+  stored.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: str
+       </dt>
+       <dd>
+        The absolute path to the cache
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="close">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            close
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            ConfirmIfModified
+           </span>
+           =
+           <span class="sig-default">
+            True
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.close">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Closes the project.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            ConfirmIfModified
+           </code>
+          </strong>
+          (bool) - Set to False to suppress the confirmation dialog that normally 
+          appears if the project has been modified.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="closed">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            closed
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.closed">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted after a project is closed.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ProjectManager-class.html#aboutToClose">
+         aboutToClose()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="copy">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            copy
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            rUUIDOrName
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.copy">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Makes a duplicate of the project with the given UUID or name.
+      </p>
+      <p>
+       This is the same as
+       <a class="link" href="mari.ProjectManager-class.html#duplicate">
+        duplicate()
+       </a>
+       .
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            rUUIDOrName
+           </code>
+          </strong>
+          (str) - The UUID or name of the project to archive. This is checked in 
+          the same way as in
+          <a class="link" href="mari.ProjectManager-class.html#open">
+           open()
+          </a>
+          .
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the user cancelled the operation.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if no project with the given UUID or name could be found.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the project could not be archived because it was open or 
+        in use.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            IOError
+           </strong>
+          </code>
+          - Raised if an I/O error occurred during the duplication process.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ProjectManager-class.html#duplicate">
+         duplicate
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="create">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            create
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Name
+           </span>
+           ,
+           <span class="sig-arg">
+            MeshPaths
+           </span>
+           ,
+           <span class="sig-arg">
+            ChannelsToCreate
+           </span>
+           ,
+           <span class="sig-arg">
+            ChannelsToImport
+           </span>
+           =
+           <span class="sig-default">
+            <code class="variable-group">
+             [
+            </code>
+            <code class="variable-group">
+             ]
+            </code>
+           </span>
+           ,
+           <span class="sig-arg">
+            ProjectMetaOptions
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            ObjectsToLoad
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            ColorspaceSettings
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.create">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Creates and opens a new project with the parameters supplied.
+      </p>
+      <p>
+       Many parameters of the channels that are imported are ignored, such as
+  the size and bit depth, which are read from the file.
+      </p>
+      <p>
+       At least one channel must be created or imported. If not, an exception
+  will be raised.
+      </p>
+      <p>
+       Projects currently cannot be created while another project is 
+  open.
+      </p>
+      <p>
+       Options controlling the geometry load can be passed to the function in
+  the dictionary parameter
+       <code class="link">
+        ProjectMetaOptions
+       </code>
+       . 
+  The dictionary keys must be strings, and the values can be any simple 
+  type (i.e., no lists or other containers). The geometry loader plug-in 
+  that interprets the mesh to be loaded will receive the options passed in 
+  here that it recognises, and the others will be ignored.
+      </p>
+      <p>
+       When used in combination with the C API, this allows users to pass in 
+  parameters with specified names to a custom geometry loader. See the C 
+  API documentation for further details.
+      </p>
+      <p>
+       For the built-in geometry types, the meta keys currently supported 
+  are:
+      </p>
+      <ul>
+       <li>
+        "MappingScheme" - geometry mapping scheme (type
+        <a class="link" href="mari.ProjectManager.MeshOptions-class.html">
+         MeshOptions
+        </a>
+        ).
+       </li>
+       <li>
+        "MultipleGeometries" - how to handle multiple geometries in
+      a single object (type
+        <a class="link" href="mari.ProjectManager.MultipleGeometryOptions-class.html">
+         MultipleGeometryOptions
+        </a>
+        ).
+       </li>
+       <li>
+        "PtexFaceSizeScheme" -
+        <a class="link" href="mari.Ptex-class.html">
+         Ptex
+        </a>
+        specific: scheme to use for face texture size 
+      calculations (type
+        <a class="link" href="mari.ProjectManager.PtexFaceSizeScheme-class.html">
+         PtexFaceSizeScheme
+        </a>
+        ).
+       </li>
+       <li>
+        "PtexFaceSize" -
+        <a class="link" href="mari.Ptex-class.html">
+         Ptex
+        </a>
+        specific: size to use with the scheme above 
+      (type int).
+       </li>
+       <li>
+        "PtexImageFormat" -
+        <a class="link" href="mari.Ptex-class.html">
+         Ptex
+        </a>
+        specific: image data format (type
+        <a class="link" href="mari.ProjectManager.PtexFormat-class.html">
+         PtexFormat
+        </a>
+        ).
+       </li>
+       <li>
+        "PtexFaceColor" -
+        <a class="link" href="mari.Ptex-class.html">
+         Ptex
+        </a>
+        specific: color to clear faces to (type
+        <a class="link" href="mari.Color-class.html">
+         Color
+        </a>
+        ).
+       </li>
+       <li>
+        "PtexImportFilename" -
+        <a class="link" href="mari.Ptex-class.html">
+         Ptex
+        </a>
+        specific: import an existing
+        <a class="link" href="mari.Ptex-class.html">
+         Ptex
+        </a>
+        file onto the .obj 
+      geoemtry (type string).
+       </li>
+       <li>
+        "PtexShowCreationDialog" -
+        <a class="link" href="mari.Ptex-class.html">
+         Ptex
+        </a>
+        specific: show the
+        <a class="link" href="mari.Ptex-class.html">
+         Ptex
+        </a>
+        creation dialog 
+      after mesh loading (type Bool; default is False from Python).
+       </li>
+       <li>
+        "EachMeshCreatesObject" - each mesh can either create an 
+      Object or each be a geometry within a single Object. This is 
+      currently
+        <a class="link" href="mari.Ptex-class.html">
+         Ptex
+        </a>
+        specific. (type Bool; default is True).
+       </li>
+       <li>
+        "MergeType" - merging of geometries can be either 
+      single-mesh or just-merge-nodes (
+        <a class="link" href="mari.GeoManager.MergeType-class.html">
+         GeoManager.MergeType
+        </a>
+        ).
+       </li>
+       <li>
+        "MergeSelectionGroupWithSameNameType" - merging of face 
+      selection groups that have the same name (
+        <a class="link" href="mari.GeoManager.MergeSelectionGroupWithSameNameType-class.html">
+         GeoManager.MergeSelectionGroupWithSameNameType
+        </a>
+        ) - 
+      default is
+        <a class="link" href="mari.GeoManager-class.html#MERGESELECTIONGROUP_DO_NOT_MERGE">
+         GeoManager.MERGESELECTIONGROUP_DO_NOT_MERGE
+        </a>
+       </li>
+       <li>
+        "CreateSelectionSets" - specify whether to create selection
+      sets from face groups (
+        <a class="link" href="mari.GeoManager.CreateSelectionSetOptions-class.html">
+         GeoManager.CreateSelectionSetOptions
+        </a>
+        ) - default 
+      value is
+        <a class="link" href="mari.GeoManager-class.html#SELECTION_GROUPS_CREATE_FROM_FACE_GROUPS">
+         GeoManager.SELECTION_GROUPS_CREATE_FROM_FACE_GROUPS
+        </a>
+       </li>
+       <li>
+        "FrameOffset" - specify the start frame in Mari's timeline 
+      to import the geometry (default value is zero).
+       </li>
+      </ul>
+      <p>
+       Here is an example of creating a
+       <a class="link" href="mari.Ptex-class.html">
+        Ptex
+       </a>
+       project that does not show the
+       <a class="link" href="mari.Ptex-class.html">
+        Ptex
+       </a>
+       creation dialog after 
+  mesh loading:
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari, os
+<span class="py-prompt">&gt;&gt;&gt; </span>EmptyChannels = []
+<span class="py-prompt">&gt;&gt;&gt; </span>project_meta_options = dict()
+<span class="py-prompt">&gt;&gt;&gt; </span>project_meta_options[<span class="py-string">"MappingScheme"</span>] = mari.projects.FORCE_PTEX
+<span class="py-prompt">&gt;&gt;&gt; </span>project_meta_options[<span class="py-string">"MultipleGeometries"</span>] = mari.projects.MERGE_GEOMETRIES
+<span class="py-prompt">&gt;&gt;&gt; </span>project_meta_options[<span class="py-string">"PtexFaceSizeScheme"</span>] = mari.projects.PTEX_WORLD_SPACE_DENSITY_SIZE
+<span class="py-prompt">&gt;&gt;&gt; </span>project_meta_options[<span class="py-string">"PtexFaceSize"</span>] = 16
+<span class="py-prompt">&gt;&gt;&gt; </span>project_meta_options[<span class="py-string">"PtexImageFormat"</span>] = mari.projects.PTEXFORMAT_HALF
+<span class="py-prompt">&gt;&gt;&gt; </span>project_meta_options[<span class="py-string">"PtexFaceColor"</span>] = mari.Color(1, 0.25, 1, 1)
+<span class="py-prompt">&gt;&gt;&gt; </span>project_meta_options[<span class="py-string">"MergeType"</span>] = mari.geo.MERGETYPE_SINGLE_MESH
+<span class="py-prompt">&gt;&gt;&gt; </span>project_meta_options[<span class="py-string">"CreateSelectionSets"</span>] = mari.geo.SELECTION_GROUPS_CREATE_FROM_FACE_GROUPS
+<span class="py-prompt">&gt;&gt;&gt; </span>obj_file = os.path.join(mari.resources.path(mari.resources.EXAMPLES),<span class="py-string">"Objects"</span>,<span class="py-string">"cube.obj"</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>try:
+<span class="py-more">... </span>    mari.projects.create(<span class="py-string">"ptex_example"</span>, obj_file, EmptyChannels, EmptyChannels, project_meta_options)
+<span class="py-more">... </span><span class="py-keyword">except</span>:
+<span class="py-more">... </span>    <span class="py-keyword">pass</span></pre>
+      <p>
+       Here is an example of creating a
+       <a class="link" href="mari.Ptex-class.html">
+        Ptex
+       </a>
+       project from a number of .ptx files, treating each 
+  as a geometry within a single Object:
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>ptxFiles = [ <span class="py-string">"body.ptx"</span>, <span class="py-string">"head.ptx"</span>, <span class="py-string">"larm.ptx"</span>, <span class="py-string">"rarm.ptx"</span> ]
+<span class="py-prompt">&gt;&gt;&gt; </span>EmptyChannels = []
+<span class="py-prompt">&gt;&gt;&gt; </span>project_meta_options = dict()
+<span class="py-prompt">&gt;&gt;&gt; </span>project_meta_options[<span class="py-string">"EachMeshCreatesObject"</span>] = False
+<span class="py-prompt">&gt;&gt;&gt; </span>try:
+<span class="py-more">... </span>    mari.projects.create(<span class="py-string">"ptexoneobjmanygeos"</span>, ptxFiles, EmptyChannels, EmptyChannels, project_meta_options)
+<span class="py-more">... </span><span class="py-keyword">except</span>:
+<span class="py-more">... </span>    <span class="py-keyword">pass</span></pre>
+      <p>
+       Here is an example of creating a project with frames 1 to 10 of an 
+  animated geometry, starting at frame 1001 on the timeline:
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>EmptyChannels = []
+<span class="py-prompt">&gt;&gt;&gt; </span>project_meta_options = dict()
+<span class="py-prompt">&gt;&gt;&gt; </span>project_meta_options[<span class="py-string">"StartFrame"</span>] = 1
+<span class="py-prompt">&gt;&gt;&gt; </span>project_meta_options[<span class="py-string">"EndFrame"</span>] = 10
+<span class="py-prompt">&gt;&gt;&gt; </span>project_meta_options[<span class="py-string">"FrameOffset"</span>] = 1000
+<span class="py-prompt">&gt;&gt;&gt; </span>try:
+<span class="py-more">... </span>    mari.projects.create(<span class="py-string">"test"</span>, <span class="py-string">"/tmp/animatedGeo.abc"</span>, EmptyChannels, EmptyChannels, project_meta_options)
+<span class="py-more">... </span><span class="py-keyword">except</span>:
+<span class="py-more">... </span>    <span class="py-keyword">pass</span></pre>
+      <p>
+       Creating an alembic project is slightly different, in the sense that 
+  you can additionally pass in a list of items/nodes/objects to load from 
+  the file. The latter is a list of dictionary items, each dictionary 
+  having the name of the object to load as key and flags to specify whether
+  children of the object should be selected as well and whether the 
+  children objects should be merged or not (using the enum type 
+  GeometryImportFlags); the latter has all of its children and merged by 
+  default.
+      </p>
+      <p>
+       Here is an example of creating a project from an alembic file, with 
+  everything merged (by default)
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>EmptyChannels = []
+<span class="py-prompt">&gt;&gt;&gt; </span>project_meta_options = dict()
+<span class="py-prompt">&gt;&gt;&gt; </span>mari.projects.create(<span class="py-string">"test"</span>, <span class="py-string">"/tmp/animatedGeo.abc"</span>, EmptyChannels, EmptyChannels, project_meta_options)</pre>
+      <p>
+       Here is an example of creating a project from an alembic file, with 
+  root object(and its children) un-merged
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>EmptyChannels = []
+<span class="py-prompt">&gt;&gt;&gt; </span>project_meta_options = dict()
+<span class="py-prompt">&gt;&gt;&gt; </span>mari.projects.create(<span class="py-string">"test"</span>, <span class="py-string">"/tmp/animatedGeo.abc"</span>, EmptyChannels, EmptyChannels, project_meta_options, [{<span class="py-string">"/"</span>:mari.geo.GEOMETRY_IMPORT_DONT_MERGE_CHILDREN}, ])</pre>
+      <p>
+       Here is an example of creating a project from an alembic file, with a 
+  child object (and its children) selected and merged. Please note that 
+  passing None as value to the dictionary of the object to load will set 
+  its value to defaults, which is select and merge of of its children 
+  objects.
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>project_meta_options = dict()
+<span class="py-prompt">&gt;&gt;&gt; </span>mari.projects.create(<span class="py-string">"test"</span>, <span class="py-string">"/tmp/village.abc"</span>, [], [], project_meta_options, [{<span class="py-string">"/Person/Head"</span>:None}, ])</pre>
+      <p>
+       Merging of objects can be of two types, namely SINGLE_MESH or 
+  JUST_MERGE_NODES. While both of the latters combine multiple geometries 
+  into one GeoEnity, the former (the default one as well) goes an extra 
+  step further to combine the various geometries into one single geometry 
+  inside that
+       <a class="link" href="mari.GeoEntity-class.html">
+        GeoEntity
+       </a>
+       ; this can lead to more efficient patch layout 
+  in the case of PTex. The merge type can be passed in as part of the 
+  project_meta_options, as follows:
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>project_meta_options = dict()
+<span class="py-prompt">&gt;&gt;&gt; </span>project_meta_options[<span class="py-string">"MergeType"</span>] = mari.geo.MERGETYPE_JUST_MERGE_NODES
+<span class="py-prompt">&gt;&gt;&gt; </span>mari.projects.create(<span class="py-string">"test"</span>, <span class="py-string">"/tmp/animatedGeo.abc"</span>, [], [], project_meta_options)</pre>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The name of the project to create.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            MeshPaths
+           </code>
+          </strong>
+          (variant) - A single path or list of paths to the object file(s) that the 
+          project should load.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            ChannelsToCreate
+           </code>
+          </strong>
+          (list of
+          <a class="link" href="mari.ChannelInfo-class.html">
+           ChannelInfo
+          </a>
+          ) - A list of
+          <a class="link" href="mari.ChannelInfo-class.html">
+           ChannelInfo
+          </a>
+          objects that contain information 
+          about the channels to create - such as their size, color depth, 
+          and other properties. Generally the channels in this list will 
+          not also be imported.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            ChannelsToImport
+           </code>
+          </strong>
+          (list of
+          <a class="link" href="mari.ChannelInfo-class.html">
+           ChannelInfo
+          </a>
+          ) - A list of
+          <a class="link" href="mari.ChannelInfo-class.html">
+           ChannelInfo
+          </a>
+          objects that specify information on 
+          the channels that should be imported. These should include valid 
+          paths and file template so the textures can be loaded correctly. 
+          Imported channels do not need to be included in the 
+          rChannelsToCreate list.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            ProjectMetaOptions
+           </code>
+          </strong>
+          (variant) - A dictionary of project creation meta options (see above).
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            ObjectsToLoad
+           </code>
+          </strong>
+          (variant) - This is a list of objects to load from the file. Each item of the
+          list is a dictionary that contains the name of the objects to 
+          load and various geometry import flags to specify whether the 
+          children of the current object are to be selected and whether 
+          they are to be merged as well.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            ColorspaceSettings
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.ColorspaceDefaults-class.html">
+           ColorspaceDefaults
+          </a>
+          ) - The global colorspace settings of the project.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if no mesh paths were supplied.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if invalid colorspace settings were supplied.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            TypeError
+           </strong>
+          </code>
+          - Raised if the mesh paths parameter was not a string or list of 
+        strings.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if another project is already open.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the mesh types are invalid for project creation.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="created">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            created
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            NewProject
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.created">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted when a new project has been created, after it has been
+  saved.
+      </p>
+      <p>
+       This can be used to perform responses to the successful save of a new 
+  project.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            NewProject
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Project-class.html">
+           Project
+          </a>
+          ) - The newly-created project
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ProjectManager-class.html#aboutToSaveNew">
+         aboutToSaveNew()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="current">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            current
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.current">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the interface to the current project, or None if nothing is 
+  loaded.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns:
+        <a class="link" href="mari.Project-class.html">
+         Project
+        </a>
+       </dt>
+       <dd>
+        The currently open project, or None if no project is open
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="duplicate">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            duplicate
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            rUUIDOrName
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.duplicate">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Makes a duplicate of the project with the given UUID or name.
+      </p>
+      <p>
+       This is the same as
+       <a class="link" href="mari.ProjectManager-class.html#copy">
+        copy()
+       </a>
+       .
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            rUUIDOrName
+           </code>
+          </strong>
+          (str) - The UUID or name of the project to archive. This is checked in 
+          the same way as in
+          <a class="link" href="mari.ProjectManager-class.html#open">
+           open()
+          </a>
+          .
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the user cancelled the operation.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if no project with the given UUID or name could be found.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the project could not be archived because it was open or 
+        in use.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            IOError
+           </strong>
+          </code>
+          - Raised if an I/O error occurred during the duplication process.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ProjectManager-class.html#copy">
+         copy
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="exported">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            exported
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.exported">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted just after an export operation.
+      </p>
+      <p>
+       This signal is emitted after an export operation, and allows for 
+  post-processing or cleanup after export.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="exportedSummary">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            exportedSummary
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Summary
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.exportedSummary">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted just after an export operation.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Summary
+           </code>
+          </strong>
+          (str) - A string containing a summary of what has been exported. This 
+          signal is emitted just after an export operation, and includes a 
+          summary of what has been exported.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="extract">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            extract
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            rFileName
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.extract">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Extracts a .mra project archive into a usable project.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            rFileName
+           </code>
+          </strong>
+          (str) - The file name of the archive to extract
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.ProjectInfo-class.html">
+         ProjectInfo
+        </a>
+       </dt>
+       <dd>
+        An object with information about the newly extracted project
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the user cancelled the operation.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if no project with the given UUID or name could be found, or
+        if the supplied file name is invalid.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            IOError
+           </strong>
+          </code>
+          - Raised if an I/O error occurred during the extraction process.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="find">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            find
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            rUUIDOrName
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.find">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns information about the project with the given UUID or name, if 
+  one exists.
+      </p>
+      <p>
+       This function first tries to find and open a project with the given 
+  string as a UUID, and if that fails, it tries again looking for the 
+  string as a project name.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            rUUIDOrName
+           </code>
+          </strong>
+          (str) - The UUID or name of the project to look for.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.ProjectInfo-class.html">
+         ProjectInfo
+        </a>
+       </dt>
+       <dd>
+        An object describing the project with the given UUID or name if 
+          found, or None if not.
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ProjectManager-class.html#get">
+         get()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="get">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            get
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            rUUIDOrName
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.get">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns information about the project with the given UUID or name.
+      </p>
+      <p>
+       This function first tries to find and open a project with the given 
+  string as a UUID, and if that fails, it tries again looking for the 
+  string as a project name.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            rUUIDOrName
+           </code>
+          </strong>
+          (str) - The UUID or name of the project to look for.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.ProjectInfo-class.html">
+         ProjectInfo
+        </a>
+       </dt>
+       <dd>
+        An object describing the project with the given UUID or name.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if no project matching the given UUID or name was found.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ProjectManager-class.html#find">
+         find()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="list">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            list
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.list">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns a list of
+       <a class="link" href="mari.ProjectInfo-class.html">
+        ProjectInfo
+       </a>
+       objects, which contain information about the
+  available projects.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: list of
+        <a class="link" href="mari.ProjectInfo-class.html">
+         ProjectInfo
+        </a>
+       </dt>
+       <dd>
+        A list of objects describing the available projects
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="names">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            names
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.names">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the names of the available projects.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: list of str
+       </dt>
+       <dd>
+        The names of the available projects
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="open">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            open
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            rUUIDOrName
+           </span>
+           ,
+           <span class="sig-arg">
+            Allowed
+           </span>
+           =
+           <span class="sig-default">
+            1
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.open">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Opens the project with the given UUID or name.
+      </p>
+      <p>
+       This function first tries to find and open a project with the given 
+  string as a UUID, and if that fails, it tries again looking for the 
+  string as a project name.
+      </p>
+      <p>
+       If both attempts fail, it raises an exception.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            rUUIDOrName
+           </code>
+          </strong>
+          (str) - The UUID or name of the project to open.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Allowed
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.ProjectManager.AllowedVersions-class.html">
+           AllowedVersions
+          </a>
+          ) - Determines the project versions of Mari that can be loaded. The 
+          default is to only allow loading projects that were saved in 
+          older versions of Mari or the current one.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.Project-class.html">
+         Project
+        </a>
+       </dt>
+       <dd>
+        The newly opened project.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if no project with the given UUID or name could be found.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            IOError
+           </strong>
+          </code>
+          - Raised if the project was found, but there was an error opening it 
+        - including if the project was from a different version of Mari to 
+        those specified as allowed.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if there was already a project open, since only one can be 
+        open at a time.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="opened">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            opened
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            NewProject
+           </span>
+           ,
+           <span class="sig-arg">
+            NewlyCreated
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.opened">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted just after a project is opened.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            NewProject
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Project-class.html">
+           Project
+          </a>
+          ) - The newly-opened project
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            NewlyCreated
+           </code>
+          </strong>
+          (bool) - True if the project has just been created, or False otherwise
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ProjectManager-class.html#aboutToOpen">
+         aboutToOpen()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="openedProject">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            openedProject
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            NewProject
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.openedProject">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       (Deprecated) This is emitted just after a project is opened.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            NewProject
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Project-class.html">
+           Project
+          </a>
+          ) - The newly-opened project
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         Deprecated:
+        </strong>
+        This signal is deprecated, and will be removed in a future version. 
+    Please use
+        <a class="link" href="mari.ProjectManager-class.html#opened">
+         opened()
+        </a>
+        instead.
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="projectClosed">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            projectClosed
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.projectClosed">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       (Deprecated) This is emitted after a project is closed.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         Deprecated:
+        </strong>
+        This signal is deprecated, and will be removed in a future version. 
+    Please use
+        <a class="link" href="mari.ProjectManager-class.html#closed">
+         closed()
+        </a>
+        instead.
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="projectCreated">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            projectCreated
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            NewProject
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.projectCreated">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       (Deprecated) This is emitted when a new project has been created, 
+  after it has been saved.
+      </p>
+      <p>
+       This can be used to perform responses to the successful save of a new 
+  project.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            NewProject
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Project-class.html">
+           Project
+          </a>
+          ) - The newly-created project
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         Deprecated:
+        </strong>
+        This signal is deprecated, and will be removed in a future version. 
+    Please use
+        <a class="link" href="mari.ProjectManager-class.html#created">
+         created()
+        </a>
+        instead.
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="projectSaved">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            projectSaved
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            SavedProject
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.projectSaved">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       (Deprecated) This is emitted just after a project is saved.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            SavedProject
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Project-class.html">
+           Project
+          </a>
+          ) - The project that was saved
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         Deprecated:
+        </strong>
+        This signal is deprecated, and will be removed in a future version. 
+    Please use
+        <a class="link" href="mari.ProjectManager-class.html#saved">
+         saved()
+        </a>
+        instead.
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="remove">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            remove
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            rUUIDOrName
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.remove">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Removes, or deletes, the project with the given UUID or name.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            rUUIDOrName
+           </code>
+          </strong>
+          (str) - The UUID or name of the project to remove. This is checked in the
+          same way as in
+          <a class="link" href="mari.ProjectManager-class.html#open">
+           open()
+          </a>
+          .
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if no project with the given UUID or name could be found.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the project could not be removed because it was open or 
+        in use, or if the user cancelled the operation.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="rename">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            rename
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            OldName
+           </span>
+           ,
+           <span class="sig-arg">
+            NewName
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.rename">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Changes the name of a project.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            OldName
+           </code>
+          </strong>
+          (str) - The UUID or name of the project to modify
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            NewName
+           </code>
+          </strong>
+          (str) - The new name for the project. This must not be an empty string.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if no project with the given name exists, or if the new name
+        was empty.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="saved">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            saved
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            SavedProject
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ProjectManager.saved">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted just after a project is saved.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            SavedProject
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Project-class.html">
+           Project
+          </a>
+          ) - The project that was saved
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ProjectManager-class.html#aboutToSave">
+         aboutToSave()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <br/>
+  <!-- ==================== CLASS VARIABLE DETAILS ==================== -->
+  <a name="section-ClassVariableDetails">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Class Variable Details
+     </span>
+    </td>
+   </tr>
+  </table>
+  <a name="PTEX_UNIFORM_SIZE">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       PTEX_UNIFORM_SIZE
+      </h3>
+      <p>
+       All faces all have a uniform texture size. The size is specified in 
+  the value of the PtexFaceSize meta option.
+      </p>
+      <dl class="fields">
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+0
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="PTEX_WORLD_SPACE_DENSITY_SIZE">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       PTEX_WORLD_SPACE_DENSITY_SIZE
+      </h3>
+      <p>
+       Faces have texture sizes proportional to their model sizes. The texel 
+  density is specified in the value of the PtexFaceSize meta option.
+      </p>
+      <dl class="fields">
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+1
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

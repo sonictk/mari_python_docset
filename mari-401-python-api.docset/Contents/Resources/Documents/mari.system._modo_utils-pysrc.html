@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.system._modo_utils
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.system-module.html">
+       Package&nbsp;system
+      </a>
+      ::
+        Module&nbsp;_modo_utils
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.system._modo_utils-pysrc.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <h1 class="epydoc">
+   Source Code for
+   <a href="mari.system._modo_utils-module.html" onclick="show_private();">
+    Module mari.system._modo_utils
+   </a>
+  </h1>
+  <pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">sys</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name" id="link-0" targets="Method mari.AppVersion.time()=mari.AppVersion-class.html#time,Method mari.Clock.time()=mari.Clock-class.html#time"><a class="py-name" href="#" onclick="return doclink('link-0', 'time', 'link-0');" title="mari.AppVersion.time
+mari.Clock.time">time</a></tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">platform</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">multiprocessing</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">subprocess</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"> </tt>
+<a name="isProcessRunning"></a><div id="isProcessRunning-def"><a name="L8"></a><tt class="py-lineno"> 8</tt> <a class="py-toggle" href="#" id="isProcessRunning-toggle" onclick="return toggle('isProcessRunning');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.system._modo_utils-module.html#isProcessRunning">isProcessRunning</a><tt class="py-op">(</tt><tt class="py-param">pid</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="isProcessRunning-collapsed" indent="++++" pad="++" style="display:none;"></div><div id="isProcessRunning-expanded"><a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line">    <tt class="py-docstring">""" Returns whether the process specified by pid is running """</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">platform</tt><tt class="py-op">.</tt><tt class="py-name" id="link-1" targets="Package mari.system=mari.system-module.html"><a class="py-name" href="#" onclick="return doclink('link-1', 'system', 'link-1');" title="mari.system">system</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">==</tt><tt class="py-string">"Windows"</tt><tt class="py-op">:</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line">        <tt class="py-name">cmd</tt> <tt class="py-op">=</tt> <tt class="py-string">'WMIC PROCESS get Processid'</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">        <tt class="py-name">proc</tt> <tt class="py-op">=</tt> <tt class="py-name">subprocess</tt><tt class="py-op">.</tt><tt class="py-name">Popen</tt><tt class="py-op">(</tt><tt class="py-name">cmd</tt><tt class="py-op">,</tt> <tt class="py-name">shell</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">,</tt> <tt class="py-name">stdout</tt><tt class="py-op">=</tt><tt class="py-name">subprocess</tt><tt class="py-op">.</tt><tt class="py-name">PIPE</tt><tt class="py-op">)</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">line</tt> <tt class="py-keyword">in</tt> <tt class="py-name">proc</tt><tt class="py-op">.</tt><tt class="py-name">stdout</tt><tt class="py-op">:</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">line</tt><tt class="py-op">.</tt><tt class="py-name">strip</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">==</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">pid</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">            <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">kill</tt><tt class="py-op">(</tt><tt class="py-name">pid</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">OSError</tt><tt class="py-op">:</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+</div><a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"> </tt>
+<a name="monitorAndTeminateProcess"></a><div id="monitorAndTeminateProcess-def"><a name="L24"></a><tt class="py-lineno">24</tt> <a class="py-toggle" href="#" id="monitorAndTeminateProcess-toggle" onclick="return toggle('monitorAndTeminateProcess');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.system._modo_utils-module.html#monitorAndTeminateProcess">monitorAndTeminateProcess</a><tt class="py-op">(</tt><tt class="py-param">parentPID</tt><tt class="py-op">,</tt> <tt class="py-param">childPID</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="monitorAndTeminateProcess-collapsed" indent="++++" pad="++" style="display:none;"></div><div id="monitorAndTeminateProcess-expanded"><a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">    <tt class="py-docstring">""" Monitors the process specified by parentPID and make sure to kill the process specified by child PID """</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">    <tt class="py-keyword">while</tt> <tt class="py-name">True</tt><tt class="py-op">:</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name" id="link-2" targets="Function mari.system._modo_utils.isProcessRunning()=mari.system._modo_utils-module.html#isProcessRunning"><a class="py-name" href="#" onclick="return doclink('link-2', 'isProcessRunning', 'link-2');" title="mari.system._modo_utils.isProcessRunning">isProcessRunning</a></tt><tt class="py-op">(</tt><tt class="py-name">parentPID</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">            <tt class="py-keyword">break</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name" id="link-3"><a class="py-name" href="#" onclick="return doclink('link-3', 'isProcessRunning', 'link-2');" title="mari.system._modo_utils.isProcessRunning">isProcessRunning</a></tt><tt class="py-op">(</tt><tt class="py-name">childPID</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">            <tt class="py-keyword">break</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">        <tt class="py-name" id="link-4"><a class="py-name" href="#" onclick="return doclink('link-4', 'time', 'link-0');" title="mari.AppVersion.time
+mari.Clock.time">time</a></tt><tt class="py-op">.</tt><tt class="py-name">sleep</tt><tt class="py-op">(</tt><tt class="py-number">2.0</tt><tt class="py-op">)</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-5"><a class="py-name" href="#" onclick="return doclink('link-5', 'isProcessRunning', 'link-2');" title="mari.system._modo_utils.isProcessRunning">isProcessRunning</a></tt><tt class="py-op">(</tt><tt class="py-name">childPID</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">        <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">kill</tt><tt class="py-op">(</tt><tt class="py-name">childPID</tt><tt class="py-op">,</tt><tt class="py-number">9</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"> </tt>
+<a name="_spawnDetached"></a><div id="_spawnDetached-def"><a name="L38"></a><tt class="py-lineno">38</tt> <a class="py-toggle" href="#" id="_spawnDetached-toggle" onclick="return toggle('_spawnDetached');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.system._modo_utils-module.html#_spawnDetached">_spawnDetached</a><tt class="py-op">(</tt><tt class="py-param">function</tt><tt class="py-op">,</tt><tt class="py-op">*</tt><tt class="py-param">arg</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="_spawnDetached-collapsed" indent="++++" pad="++" style="display:none;"></div><div id="_spawnDetached-expanded"><a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">    <tt class="py-name">p</tt> <tt class="py-op">=</tt> <tt class="py-name">multiprocessing</tt><tt class="py-op">.</tt><tt class="py-name">current_process</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">    <tt class="py-name">cc</tt> <tt class="py-op">=</tt> <tt class="py-name">multiprocessing</tt><tt class="py-op">.</tt><tt class="py-name">Process</tt><tt class="py-op">(</tt><tt class="py-name">target</tt><tt class="py-op">=</tt><tt class="py-name">function</tt><tt class="py-op">,</tt><tt class="py-name">args</tt><tt class="py-op">=</tt><tt class="py-name">arg</tt><tt class="py-op">)</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">    <tt class="py-name">cc</tt><tt class="py-op">.</tt><tt class="py-name">daemon</tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">    <tt class="py-name">cc</tt><tt class="py-op">.</tt><tt class="py-name">start</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"> </tt>
+<a name="callDetached"></a><div id="callDetached-def"><a name="L44"></a><tt class="py-lineno">44</tt> <a class="py-toggle" href="#" id="callDetached-toggle" onclick="return toggle('callDetached');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.system._modo_utils-module.html#callDetached">callDetached</a><tt class="py-op">(</tt><tt class="py-param">function</tt><tt class="py-op">,</tt><tt class="py-op">*</tt><tt class="py-param">arg</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="callDetached-collapsed" indent="++++" pad="++" style="display:none;"></div><div id="callDetached-expanded"><a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">    <tt class="py-docstring">""" Calls a given funnction in a detached process """</tt>  </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line"> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">    <tt class="py-name">d</tt> <tt class="py-op">=</tt> <tt class="py-name">multiprocessing</tt><tt class="py-op">.</tt><tt class="py-name">Process</tt><tt class="py-op">(</tt><tt class="py-name">target</tt><tt class="py-op">=</tt><tt class="py-name">_spawnDetached</tt><tt class="py-op">,</tt><tt class="py-name">args</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-name">function</tt><tt class="py-op">]</tt><tt class="py-op">+</tt><tt class="py-name" id="link-6" targets="Method mari.ActionManager.list()=mari.ActionManager-class.html#list,Method mari.CanvasManager.list()=mari.CanvasManager-class.html#list,Method mari.GeoManager.list()=mari.GeoManager-class.html#list,Method mari.ImageManager.list()=mari.ImageManager-class.html#list,Method mari.LightManager.list()=mari.LightManager-class.html#list,Method mari.PaletteManager.list()=mari.PaletteManager-class.html#list,Method mari.Preferences.list()=mari.Preferences-class.html#list,Method mari.ProjectManager.list()=mari.ProjectManager-class.html#list,Method mari.ProjectorManager.list()=mari.ProjectorManager-class.html#list,Method mari.SelectionGroupManager.list()=mari.SelectionGroupManager-class.html#list,Method mari.ShelfManager.list()=mari.ShelfManager-class.html#list"><a class="py-name" href="#" onclick="return doclink('link-6', 'list', 'link-6');" title="mari.ActionManager.list
+mari.CanvasManager.list
+mari.GeoManager.list
+mari.ImageManager.list
+mari.LightManager.list
+mari.PaletteManager.list
+mari.Preferences.list
+mari.ProjectManager.list
+mari.ProjectorManager.list
+mari.SelectionGroupManager.list
+mari.ShelfManager.list">list</a></tt><tt class="py-op">(</tt><tt class="py-name">arg</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">    <tt class="py-name">d</tt><tt class="py-op">.</tt><tt class="py-name">daemon</tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">    <tt class="py-name">d</tt><tt class="py-op">.</tt><tt class="py-name">start</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">    <tt class="py-name" id="link-7"><a class="py-name" href="#" onclick="return doclink('link-7', 'time', 'link-0');" title="mari.AppVersion.time
+mari.Clock.time">time</a></tt><tt class="py-op">.</tt><tt class="py-name">sleep</tt><tt class="py-op">(</tt><tt class="py-number">0.1</tt><tt class="py-op">)</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">    <tt class="py-name">d</tt><tt class="py-op">.</tt><tt class="py-name">terminate</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

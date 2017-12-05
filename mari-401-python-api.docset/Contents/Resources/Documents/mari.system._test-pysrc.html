@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.system._test
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.system-module.html">
+       Package&nbsp;system
+      </a>
+      ::
+        Module&nbsp;_test
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.system._test-pysrc.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <h1 class="epydoc">
+   Source Code for
+   <a href="mari.system._test-module.html" onclick="show_private();">
+    Module mari.system._test
+   </a>
+  </h1>
+  <pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment">#-------------------------------------------------------------------------------</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"># Script containing various testing functionalities</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-comment"># coding: utf-8</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-comment"># Copyright (c) 2013 The Foundry Visionmongers Ltd.  All Rights Reserved.</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-comment">#-------------------------------------------------------------------------------</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">doctest</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name" id="link-0" targets="Package mari=mari-module.html"><a class="py-name" href="#" onclick="return doclink('link-0', 'mari', 'link-0');" title="mari">mari</a></tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"> </tt>
+<a name="docExampleTests"></a><div id="docExampleTests-def"><a name="L11"></a><tt class="py-lineno">11</tt> <a class="py-toggle" href="#" id="docExampleTests-toggle" onclick="return toggle('docExampleTests');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.system._test-module.html#docExampleTests">docExampleTests</a><tt class="py-op">(</tt><tt class="py-param">className</tt><tt class="py-op">=</tt><tt class="py-string">""</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="docExampleTests-collapsed" indent="++++" pad="++" style="display:none;"></div><div id="docExampleTests-expanded"><a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">    <tt class="py-docstring">""" This function runs all example code in the API doc as tests"""</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">    <tt class="py-name">alreadyOpen</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-1"><a class="py-name" href="#" onclick="return doclink('link-1', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-2" targets="Variable mari.projects=mari-module.html#projects"><a class="py-name" href="#" onclick="return doclink('link-2', 'projects', 'link-2');" title="mari.projects">projects</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-3" targets="Method mari.CanvasManager.current()=mari.CanvasManager-class.html#current,Method mari.GeoManager.current()=mari.GeoManager-class.html#current,Method mari.LightManager.current()=mari.LightManager-class.html#current,Method mari.ProjectManager.current()=mari.ProjectManager-class.html#current,Method mari.ProjectorManager.current()=mari.ProjectorManager-class.html#current,Method mari.SelectionGroupManager.current()=mari.SelectionGroupManager-class.html#current,Method mari.ToolManager.current()=mari.ToolManager-class.html#current,Package mari.current=mari.current-module.html"><a class="py-name" href="#" onclick="return doclink('link-3', 'current', 'link-3');" title="mari.CanvasManager.current
+mari.GeoManager.current
+mari.LightManager.current
+mari.ProjectManager.current
+mari.ProjectorManager.current
+mari.SelectionGroupManager.current
+mari.ToolManager.current
+mari.current">current</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">!=</tt><tt class="py-name">None</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">alreadyOpen</tt><tt class="py-op">:</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">        <tt class="py-name">examplePath</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name" id="link-4" targets="Method mari.Action.path()=mari.Action-class.html#path,Method mari.ChannelInfo.path()=mari.ChannelInfo-class.html#path,Method mari.GeoEntityVersion.path()=mari.GeoEntityVersion-class.html#path,Method mari.QuickProjector.path()=mari.QuickProjector-class.html#path,Method mari.ResourceInfo.path()=mari.ResourceInfo-class.html#path"><a class="py-name" href="#" onclick="return doclink('link-4', 'path', 'link-4');" title="mari.Action.path
+mari.ChannelInfo.path
+mari.GeoEntityVersion.path
+mari.QuickProjector.path
+mari.ResourceInfo.path">path</a></tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name" id="link-5"><a class="py-name" href="#" onclick="return doclink('link-5', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-6" targets="Variable mari.resources=mari-module.html#resources"><a class="py-name" href="#" onclick="return doclink('link-6', 'resources', 'link-6');" title="mari.resources">resources</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-7"><a class="py-name" href="#" onclick="return doclink('link-7', 'path', 'link-4');" title="mari.Action.path
+mari.ChannelInfo.path
+mari.GeoEntityVersion.path
+mari.QuickProjector.path
+mari.ResourceInfo.path">path</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-8"><a class="py-name" href="#" onclick="return doclink('link-8', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-9"><a class="py-name" href="#" onclick="return doclink('link-9', 'resources', 'link-6');" title="mari.resources">resources</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-10" targets="Variable mari.ResourceInfo.EXAMPLES=mari.ResourceInfo-class.html#EXAMPLES"><a class="py-name" href="#" onclick="return doclink('link-10', 'EXAMPLES', 'link-10');" title="mari.ResourceInfo.EXAMPLES">EXAMPLES</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-string">"Archives"</tt><tt class="py-op">,</tt><tt class="py-string">"Example Project.mra"</tt><tt class="py-op">)</tt>  </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">        <tt class="py-name">exampleProject</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-11"><a class="py-name" href="#" onclick="return doclink('link-11', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-12"><a class="py-name" href="#" onclick="return doclink('link-12', 'projects', 'link-2');" title="mari.projects">projects</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-13" targets="Method mari.ChannelSnapshot.extract()=mari.ChannelSnapshot-class.html#extract,Method mari.ProjectManager.extract()=mari.ProjectManager-class.html#extract"><a class="py-name" href="#" onclick="return doclink('link-13', 'extract', 'link-13');" title="mari.ChannelSnapshot.extract
+mari.ProjectManager.extract">extract</a></tt><tt class="py-op">(</tt><tt class="py-name">examplePath</tt><tt class="py-op">)</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">        <tt class="py-name" id="link-14"><a class="py-name" href="#" onclick="return doclink('link-14', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-15"><a class="py-name" href="#" onclick="return doclink('link-15', 'projects', 'link-2');" title="mari.projects">projects</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-16" targets="Method mari.ImageManager.open()=mari.ImageManager-class.html#open,Method mari.ProjectInfo.open()=mari.ProjectInfo-class.html#open,Method mari.ProjectManager.open()=mari.ProjectManager-class.html#open"><a class="py-name" href="#" onclick="return doclink('link-16', 'open', 'link-16');" title="mari.ImageManager.open
+mari.ProjectInfo.open
+mari.ProjectManager.open">open</a></tt><tt class="py-op">(</tt><tt class="py-name">exampleProject</tt><tt class="py-op">.</tt><tt class="py-name" id="link-17" targets="Method mari.Metadata.uuid()=mari.Metadata-class.html#uuid,Method mari.Project.uuid()=mari.Project-class.html#uuid,Method mari.ProjectInfo.uuid()=mari.ProjectInfo-class.html#uuid"><a class="py-name" href="#" onclick="return doclink('link-17', 'uuid', 'link-17');" title="mari.Metadata.uuid
+mari.Project.uuid
+mari.ProjectInfo.uuid">uuid</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">className</tt><tt class="py-op">==</tt><tt class="py-string">""</tt><tt class="py-op">:</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">        <tt class="py-name">doctest</tt><tt class="py-op">.</tt><tt class="py-name">testmod</tt><tt class="py-op">(</tt><tt class="py-name" id="link-18"><a class="py-name" href="#" onclick="return doclink('link-18', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name">_api_doc</tt><tt class="py-op">)</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">        <tt class="py-name">doctest</tt><tt class="py-op">.</tt><tt class="py-name">run_docstring_examples</tt><tt class="py-op">(</tt><tt class="py-name">getattr</tt><tt class="py-op">(</tt><tt class="py-name" id="link-19"><a class="py-name" href="#" onclick="return doclink('link-19', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name">_api_doc</tt><tt class="py-op">,</tt><tt class="py-name">className</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-op">{</tt><tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">    <tt class="py-name" id="link-20"><a class="py-name" href="#" onclick="return doclink('link-20', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-21" targets="Variable mari.app=mari-module.html#app"><a class="py-name" href="#" onclick="return doclink('link-21', 'app', 'link-21');" title="mari.app">app</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-22" targets="Method mari.Application.processEvents()=mari.Application-class.html#processEvents"><a class="py-name" href="#" onclick="return doclink('link-22', 'processEvents', 'link-22');" title="mari.Application.processEvents">processEvents</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">alreadyOpen</tt><tt class="py-op">:</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">        <tt class="py-name" id="link-23"><a class="py-name" href="#" onclick="return doclink('link-23', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-24"><a class="py-name" href="#" onclick="return doclink('link-24', 'projects', 'link-2');" title="mari.projects">projects</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-25" targets="Method mari.Image.close()=mari.Image-class.html#close,Method mari.Layer.close()=mari.Layer-class.html#close,Method mari.Project.close()=mari.Project-class.html#close,Method mari.ProjectInfo.close()=mari.ProjectInfo-class.html#close,Method mari.ProjectManager.close()=mari.ProjectManager-class.html#close,Method mari.system._modo_session.ModoSockLogger.close()=mari.system._modo_session.ModoSockLogger-class.html#close,Method mari.utils.redirector.StreamRedirector.close()=mari.utils.redirector.StreamRedirector-class.html#close"><a class="py-name" href="#" onclick="return doclink('link-25', 'close', 'link-25');" title="mari.Image.close
+mari.Layer.close
+mari.Project.close
+mari.ProjectInfo.close
+mari.ProjectManager.close
+mari.system._modo_session.ModoSockLogger.close
+mari.utils.redirector.StreamRedirector.close">close</a></tt><tt class="py-op">(</tt><tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">        <tt class="py-name" id="link-26"><a class="py-name" href="#" onclick="return doclink('link-26', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-27"><a class="py-name" href="#" onclick="return doclink('link-27', 'projects', 'link-2');" title="mari.projects">projects</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-28" targets="Method mari.GeoManager.remove()=mari.GeoManager-class.html#remove,Method mari.ImageManager.remove()=mari.ImageManager-class.html#remove,Method mari.PaletteManager.remove()=mari.PaletteManager-class.html#remove,Method mari.PostFilterCollection.remove()=mari.PostFilterCollection-class.html#remove,Method mari.Preferences.remove()=mari.Preferences-class.html#remove,Method mari.ProjectManager.remove()=mari.ProjectManager-class.html#remove,Method mari.ProjectorManager.remove()=mari.ProjectorManager-class.html#remove"><a class="py-name" href="#" onclick="return doclink('link-28', 'remove', 'link-28');" title="mari.GeoManager.remove
+mari.ImageManager.remove
+mari.PaletteManager.remove
+mari.PostFilterCollection.remove
+mari.Preferences.remove
+mari.ProjectManager.remove
+mari.ProjectorManager.remove">remove</a></tt><tt class="py-op">(</tt><tt class="py-name">exampleProject</tt><tt class="py-op">.</tt><tt class="py-name" id="link-29"><a class="py-name" href="#" onclick="return doclink('link-29', 'uuid', 'link-17');" title="mari.Metadata.uuid
+mari.Project.uuid
+mari.ProjectInfo.uuid">uuid</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

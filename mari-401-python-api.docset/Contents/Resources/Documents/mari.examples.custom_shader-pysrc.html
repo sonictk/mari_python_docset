@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.examples.custom_shader
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.examples-module.html">
+       Package&nbsp;examples
+      </a>
+      ::
+        Module&nbsp;custom_shader
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.examples.custom_shader-pysrc.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <h1 class="epydoc">
+   Source Code for
+   <a href="mari.examples.custom_shader-module.html">
+    Module mari.examples.custom_shader
+   </a>
+  </h1>
+  <pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"># Custom shader usage examples</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-comment"># coding: utf-8</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-comment"># Copyright (c) 2013 The Foundry Visionmongers Ltd.  All Rights Reserved.</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name" id="link-0" targets="Package mari=mari-module.html"><a class="py-name" href="#" onclick="return doclink('link-0', 'mari', 'link-0');" title="mari">mari</a></tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"> </tt>
+<a name="registerCustomDiffuseShader"></a><div id="registerCustomDiffuseShader-def"><a name="L11"></a><tt class="py-lineno">11</tt> <a class="py-toggle" href="#" id="registerCustomDiffuseShader-toggle" onclick="return toggle('registerCustomDiffuseShader');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.custom_shader-module.html#registerCustomDiffuseShader">registerCustomDiffuseShader</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="registerCustomDiffuseShader-collapsed" indent="++++" pad="++" style="display:none;"></div><div id="registerCustomDiffuseShader-expanded"><a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">    <tt class="py-name" id="link-1"><a class="py-name" href="#" onclick="return doclink('link-1', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name">gl_render</tt><tt class="py-op">.</tt><tt class="py-name" id="link-2" targets="Static Method mari.GLRender.registerCustomDiffuseShaderFromXMLFile()=mari.GLRender-class.html#registerCustomDiffuseShaderFromXMLFile"><a class="py-name" href="#" onclick="return doclink('link-2', 'registerCustomDiffuseShaderFromXMLFile', 'link-2');" title="mari.GLRender.registerCustomDiffuseShaderFromXMLFile">registerCustomDiffuseShaderFromXMLFile</a></tt><tt class="py-op">(</tt><tt class="py-string">"Cel Diffuse"</tt><tt class="py-op">,</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">            <tt class="py-name" id="link-3"><a class="py-name" href="#" onclick="return doclink('link-3', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-4" targets="Variable mari.resources=mari-module.html#resources"><a class="py-name" href="#" onclick="return doclink('link-4', 'resources', 'link-4');" title="mari.resources">resources</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-5" targets="Method mari.Action.path()=mari.Action-class.html#path,Method mari.ChannelInfo.path()=mari.ChannelInfo-class.html#path,Method mari.GeoEntityVersion.path()=mari.GeoEntityVersion-class.html#path,Method mari.QuickProjector.path()=mari.QuickProjector-class.html#path,Method mari.ResourceInfo.path()=mari.ResourceInfo-class.html#path"><a class="py-name" href="#" onclick="return doclink('link-5', 'path', 'link-5');" title="mari.Action.path
+mari.ChannelInfo.path
+mari.GeoEntityVersion.path
+mari.QuickProjector.path
+mari.ResourceInfo.path">path</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-6"><a class="py-name" href="#" onclick="return doclink('link-6', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-7"><a class="py-name" href="#" onclick="return doclink('link-7', 'resources', 'link-4');" title="mari.resources">resources</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-8" targets="Variable mari.ResourceInfo.EXAMPLES=mari.ResourceInfo-class.html#EXAMPLES"><a class="py-name" href="#" onclick="return doclink('link-8', 'EXAMPLES', 'link-8');" title="mari.ResourceInfo.EXAMPLES">EXAMPLES</a></tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">"/Nodes/CelDiffuse.xml"</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"> </tt>
+<a name="registerCustomSpecularShader"></a><div id="registerCustomSpecularShader-def"><a name="L15"></a><tt class="py-lineno">15</tt> <a class="py-toggle" href="#" id="registerCustomSpecularShader-toggle" onclick="return toggle('registerCustomSpecularShader');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.custom_shader-module.html#registerCustomSpecularShader">registerCustomSpecularShader</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="registerCustomSpecularShader-collapsed" indent="++++" pad="++" style="display:none;"></div><div id="registerCustomSpecularShader-expanded"><a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">    <tt class="py-name" id="link-9"><a class="py-name" href="#" onclick="return doclink('link-9', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name">gl_render</tt><tt class="py-op">.</tt><tt class="py-name" id="link-10" targets="Static Method mari.GLRender.registerCustomSpecularShaderFromXMLFile()=mari.GLRender-class.html#registerCustomSpecularShaderFromXMLFile"><a class="py-name" href="#" onclick="return doclink('link-10', 'registerCustomSpecularShaderFromXMLFile', 'link-10');" title="mari.GLRender.registerCustomSpecularShaderFromXMLFile">registerCustomSpecularShaderFromXMLFile</a></tt><tt class="py-op">(</tt><tt class="py-string">"Cel Specular"</tt><tt class="py-op">,</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">            <tt class="py-name" id="link-11"><a class="py-name" href="#" onclick="return doclink('link-11', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-12"><a class="py-name" href="#" onclick="return doclink('link-12', 'resources', 'link-4');" title="mari.resources">resources</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-13"><a class="py-name" href="#" onclick="return doclink('link-13', 'path', 'link-5');" title="mari.Action.path
+mari.ChannelInfo.path
+mari.GeoEntityVersion.path
+mari.QuickProjector.path
+mari.ResourceInfo.path">path</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-14"><a class="py-name" href="#" onclick="return doclink('link-14', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-15"><a class="py-name" href="#" onclick="return doclink('link-15', 'resources', 'link-4');" title="mari.resources">resources</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-16"><a class="py-name" href="#" onclick="return doclink('link-16', 'EXAMPLES', 'link-8');" title="mari.ResourceInfo.EXAMPLES">EXAMPLES</a></tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">"/Nodes/CelSpecular.xml"</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"> </tt>
+<a name="registerCustomStandaloneShader"></a><div id="registerCustomStandaloneShader-def"><a name="L19"></a><tt class="py-lineno">19</tt> <a class="py-toggle" href="#" id="registerCustomStandaloneShader-toggle" onclick="return toggle('registerCustomStandaloneShader');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.custom_shader-module.html#registerCustomStandaloneShader">registerCustomStandaloneShader</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="registerCustomStandaloneShader-collapsed" indent="++++" pad="++" style="display:none;"></div><div id="registerCustomStandaloneShader-expanded"><a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">    <tt class="py-name" id="link-17"><a class="py-name" href="#" onclick="return doclink('link-17', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name">gl_render</tt><tt class="py-op">.</tt><tt class="py-name" id="link-18" targets="Static Method mari.GLRender.registerCustomStandaloneShaderFromXMLFile()=mari.GLRender-class.html#registerCustomStandaloneShaderFromXMLFile"><a class="py-name" href="#" onclick="return doclink('link-18', 'registerCustomStandaloneShaderFromXMLFile', 'link-18');" title="mari.GLRender.registerCustomStandaloneShaderFromXMLFile">registerCustomStandaloneShaderFromXMLFile</a></tt><tt class="py-op">(</tt><tt class="py-string">"Albedo Checker"</tt><tt class="py-op">,</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">            <tt class="py-name" id="link-19"><a class="py-name" href="#" onclick="return doclink('link-19', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-20"><a class="py-name" href="#" onclick="return doclink('link-20', 'resources', 'link-4');" title="mari.resources">resources</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-21"><a class="py-name" href="#" onclick="return doclink('link-21', 'path', 'link-5');" title="mari.Action.path
+mari.ChannelInfo.path
+mari.GeoEntityVersion.path
+mari.QuickProjector.path
+mari.ResourceInfo.path">path</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-22"><a class="py-name" href="#" onclick="return doclink('link-22', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-23"><a class="py-name" href="#" onclick="return doclink('link-23', 'resources', 'link-4');" title="mari.resources">resources</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-24"><a class="py-name" href="#" onclick="return doclink('link-24', 'EXAMPLES', 'link-8');" title="mari.ResourceInfo.EXAMPLES">EXAMPLES</a></tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">"/Nodes/AlbedoChecker.xml"</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt class="py-name" id="link-25" targets="Variable mari.examples.custom_layer._layers_path=mari.examples.custom_layer-module.html#_layers_path,Variable mari.examples.custom_shader._layers_path=mari.examples.custom_shader-module.html#_layers_path,Variable mari.examples.layers._layers_path=mari.examples.layers-module.html#_layers_path,Variable mari.examples.layers_NPMA_tiled_RGB._layers_path=mari.examples.layers_NPMA_tiled_RGB-module.html#_layers_path,Variable mari.examples.layers_disable_all_amount_values._layers_path=mari.examples.layers_disable_all_amount_values-module.html#_layers_path"><a class="py-name" href="#" onclick="return doclink('link-25', '_layers_path', 'link-25');" title="mari.examples.custom_layer._layers_path
+mari.examples.custom_shader._layers_path
+mari.examples.layers._layers_path
+mari.examples.layers_NPMA_tiled_RGB._layers_path
+mari.examples.layers_disable_all_amount_values._layers_path">_layers_path</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"MainWindow/P&amp;ython/&amp;Examples/Custom Shader"</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"><tt class="py-name" id="link-26"><a class="py-name" href="#" onclick="return doclink('link-26', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-27" targets="Variable mari.menus=mari-module.html#menus"><a class="py-name" href="#" onclick="return doclink('link-27', 'menus', 'link-27');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-28" targets="Method mari.MenuManager.addAction()=mari.MenuManager-class.html#addAction,Method mari.ToolBar.addAction()=mari.ToolBar-class.html#addAction,Function mari.examples.vector_brush.addAction()=mari.examples.vector_brush-module.html#addAction"><a class="py-name" href="#" onclick="return doclink('link-28', 'addAction', 'link-28');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-29"><a class="py-name" href="#" onclick="return doclink('link-29', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-30" targets="Method mari.MenuManager.actions()=mari.MenuManager-class.html#actions,Variable mari.actions=mari-module.html#actions"><a class="py-name" href="#" onclick="return doclink('link-30', 'actions', 'link-30');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-31" targets="Method mari.ActionManager.create()=mari.ActionManager-class.html#create,Method mari.PaletteManager.create()=mari.PaletteManager-class.html#create,Method mari.ProjectManager.create()=mari.ProjectManager-class.html#create,Method mari.ProjectorManager.create()=mari.ProjectorManager-class.html#create"><a class="py-name" href="#" onclick="return doclink('link-31', 'create', 'link-31');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt> <tt class="py-string">'Register Custom Diffuse Shader'</tt><tt class="py-op">,</tt> <tt class="py-string">'mari.examples.custom_shader.registerCustomDiffuseShader()'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-32"><a class="py-name" href="#" onclick="return doclink('link-32', '_layers_path', 'link-25');" title="mari.examples.custom_layer._layers_path
+mari.examples.custom_shader._layers_path
+mari.examples.layers._layers_path
+mari.examples.layers_NPMA_tiled_RGB._layers_path
+mari.examples.layers_disable_all_amount_values._layers_path">_layers_path</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"><tt class="py-name" id="link-33"><a class="py-name" href="#" onclick="return doclink('link-33', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-34"><a class="py-name" href="#" onclick="return doclink('link-34', 'menus', 'link-27');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-35"><a class="py-name" href="#" onclick="return doclink('link-35', 'addAction', 'link-28');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-36"><a class="py-name" href="#" onclick="return doclink('link-36', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-37"><a class="py-name" href="#" onclick="return doclink('link-37', 'actions', 'link-30');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-38"><a class="py-name" href="#" onclick="return doclink('link-38', 'create', 'link-31');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt> <tt class="py-string">'Register Custom Specular Shader'</tt><tt class="py-op">,</tt> <tt class="py-string">'mari.examples.custom_shader.registerCustomSpecularShader()'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-39"><a class="py-name" href="#" onclick="return doclink('link-39', '_layers_path', 'link-25');" title="mari.examples.custom_layer._layers_path
+mari.examples.custom_shader._layers_path
+mari.examples.layers._layers_path
+mari.examples.layers_NPMA_tiled_RGB._layers_path
+mari.examples.layers_disable_all_amount_values._layers_path">_layers_path</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"><tt class="py-name" id="link-40"><a class="py-name" href="#" onclick="return doclink('link-40', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-41"><a class="py-name" href="#" onclick="return doclink('link-41', 'menus', 'link-27');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-42"><a class="py-name" href="#" onclick="return doclink('link-42', 'addAction', 'link-28');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-43"><a class="py-name" href="#" onclick="return doclink('link-43', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-44"><a class="py-name" href="#" onclick="return doclink('link-44', 'actions', 'link-30');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-45"><a class="py-name" href="#" onclick="return doclink('link-45', 'create', 'link-31');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt> <tt class="py-string">'Register Custom Standalone Shader'</tt><tt class="py-op">,</tt> <tt class="py-string">'mari.examples.custom_shader.registerCustomStandaloneShader()'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-46"><a class="py-name" href="#" onclick="return doclink('link-46', '_layers_path', 'link-25');" title="mari.examples.custom_layer._layers_path
+mari.examples.custom_shader._layers_path
+mari.examples.layers._layers_path
+mari.examples.layers_NPMA_tiled_RGB._layers_path
+mari.examples.layers_disable_all_amount_values._layers_path">_layers_path</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

@@ -1,0 +1,4843 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.Image
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+        Class&nbsp;Image
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.Image-class.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS DESCRIPTION ==================== -->
+  <h1 class="epydoc">
+   Class Image
+  </h1>
+  <p class="nomargin-top">
+   <span class="codelink">
+    <a href="mari-pysrc.html#Image">
+     source&nbsp;code
+    </a>
+   </span>
+  </p>
+  <pre class="base-tree">
+object --+    
+         |    
+  <a href="mari.Metadata-class.html">Metadata</a> --+
+             |
+            <strong class="uidshort">Image</strong>
+</pre>
+  <hr/>
+  <p>
+   These objects contain individual 2D images.
+  </p>
+  <p>
+   You can access images either from an
+   <a class="link" href="mari.ImageSet-class.html">
+    ImageSet
+   </a>
+   or through the
+   <a class="link" href="mari.ImageManager-class.html">
+    ImageManager
+   </a>
+   - 
+  for example:
+  </p>
+  <p>
+   <code>
+    mari.images.list()
+   </code>
+  </p>
+  <p>
+   <b>
+    Example Code
+   </b>
+  </p>
+  <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This example obtains the image of UDIM 1001 from the current layer of the current channel</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>layer = mari.geo.current().currentChannel().currentLayer()
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">if</span> layer.isPaintableLayer():
+<span class="py-more">... </span>    image_set = layer.imageSet()
+<span class="py-more">... </span>    image = image_set.image(0)</pre>
+  <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This examples opens an image through ImageManager and obtains the Image object</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> os
+<span class="py-prompt">&gt;&gt;&gt; </span>imagePath = os.path.join(mari.resources.path(mari.resources.IMAGES),<span class="py-string">"NoThumb.png"</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>image = mari.images.load(imagePath)</pre>
+  <!-- ==================== NESTED CLASSES ==================== -->
+  <a name="section-NestedClasses">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Nested Classes
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Image.ColorSpace-class.html">
+      ColorSpace
+     </a>
+     <br/>
+     These are the colorspaces supported by by images and image sets.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Image.Depth-class.html">
+      Depth
+     </a>
+     <br/>
+     These are the bit depths supported by images and image sets.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Image.FileSpace-class.html">
+      FileSpace
+     </a>
+     <br/>
+     These are the file spaces supported by by images and image sets.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Image.SaveOptions-class.html">
+      SaveOptions
+     </a>
+     <br/>
+     Specifies optional behavior for image saving.
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata.MetadataFlag-class.html">
+        MetadataFlag
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata.MetadataGroupHint-class.html">
+        MetadataGroupHint
+       </a>
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== INSTANCE METHODS ==================== -->
+  <a name="section-InstanceMethods">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Instance Methods
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#close">
+          close
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Closes the image, removing it from the image manager.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.close">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.ColorspaceConfig-class.html">
+       ColorspaceConfig
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#colorspaceConfig">
+          colorspaceConfig
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the colorspace configuration of the image.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.colorspaceConfig">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#convertDepth">
+          convertDepth
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Depth
+         </span>
+         )
+        </span>
+        <br/>
+        Converts the depth of the image.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.convertDepth">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#copyFrom">
+          copyFrom
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SourceImage
+         </span>
+         )
+        </span>
+        <br/>
+        Copies the contents of another image into this one.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.copyFrom">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Image.Depth-class.html">
+       Image.Depth
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="depth">
+         </a>
+         <span class="summary-sig-name">
+          depth
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the bit depth of the image.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.depth">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#filePath">
+          filePath
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the path to the file that the image was loaded from.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.filePath">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Image.FileSpace-class.html">
+       Image.FileSpace
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#fileSpace">
+          fileSpace
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the file space the image will import and export data as.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.fileSpace">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#fill">
+          fill
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          FillColor
+         </span>
+         )
+        </span>
+        <br/>
+        Fills the image entirely with a given color.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.fill">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#hash">
+          hash
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a unique identifier for this image.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.hash">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      int
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#height">
+          height
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          MipMapLevel
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the height of a mip-map level in the image.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.height">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#isUniform">
+          isUniform
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns whether the given image is all a single color.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.isUniform">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#lastExportPath">
+          lastExportPath
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the last path the image was saved to.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.lastExportPath">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      QDateTime
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#lastExportTime">
+          lastExportTime
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the date and time at which the image was last exported.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.lastExportTime">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#lastImportPath">
+          lastImportPath
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the path to the last file that was imported into the image.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.lastImportPath">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      QDateTime
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#lastImportTime">
+          lastImportTime
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the date and time at which the image was last imported.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.lastImportTime">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="makeThumbnail">
+         </a>
+         <span class="summary-sig-name">
+          makeThumbnail
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Makes a thumbnail image from the current image contents for use by 
+      the GUI.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.makeThumbnail">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      int
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#mipMapCount">
+          mipMapCount
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the number of mip-maps in the image.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.mipMapCount">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#mostRelevantPath">
+          mostRelevantPath
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a best guess as to which file on disk represents this 
+      texture.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.mostRelevantPath">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#resize">
+          resize
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          NewSize
+         </span>
+         )
+        </span>
+        <br/>
+        Resizes the image.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.resize">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#saveAs">
+          saveAs
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          FileName
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Options
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SaveOpts
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         )
+        </span>
+        <br/>
+        Saves the image to the given file name.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.saveAs">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#setColorspaceConfig">
+          setColorspaceConfig
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Config
+         </span>
+         )
+        </span>
+        <br/>
+        Sets the colorspace configuration of the image.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.setColorspaceConfig">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#setFileSpace">
+          setFileSpace
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          FileSpace
+         </span>
+         )
+        </span>
+        <br/>
+        Set the file space the image will import and export data as.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.setFileSpace">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#setUniformColor">
+          setUniformColor
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          pUniformColor
+         </span>
+         )
+        </span>
+        <br/>
+        Fills the image entirely with the given color.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.setUniformColor">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of  int
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#size">
+          size
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          MipMapLevel
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the size of a mip-map level in the image.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.size">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      QImage
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="thumbnail">
+         </a>
+         <span class="summary-sig-name">
+          thumbnail
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Get thumbnail.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.thumbnail">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#transform">
+          transform
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Collection
+         </span>
+         )
+        </span>
+        <br/>
+        Transform the image entirely with a given filter.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.transform">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Color-class.html">
+       Color
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#uniformColor">
+          uniformColor
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the single color that fills the entire image, if applicable.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.uniformColor">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      int
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#width">
+          width
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          MipMapLevel
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the width of a mip-map level in the image.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.width">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata-class.html#hasMetadata">
+        hasMetadata
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadata">
+        metadata
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataAsImage">
+        metadataAsImage
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataDefault">
+        metadataDefault
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataDescription">
+        metadataDescription
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataDisplayName">
+        metadataDisplayName
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataFlags">
+        metadataFlags
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataIsEnabled">
+        metadataIsEnabled
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataItemList">
+        metadataItemList
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataMax">
+        metadataMax
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataMin">
+        metadataMin
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataNames">
+        metadataNames
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataStep">
+        metadataStep
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#removeMetadata">
+        removeMetadata
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadata">
+        setMetadata
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataDefault">
+        setMetadataDefault
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataDescription">
+        setMetadataDescription
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataDisplayName">
+        setMetadataDisplayName
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataEnabled">
+        setMetadataEnabled
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataFlags">
+        setMetadataFlags
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataGroupHints">
+        setMetadataGroupHints
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataItemList">
+        setMetadataItemList
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataRange">
+        setMetadataRange
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataStep">
+        setMetadataStep
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#uuid">
+        uuid
+       </a>
+      </code>
+     </p>
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __delattr__
+      </code>
+      ,
+      <code>
+       __format__
+      </code>
+      ,
+      <code>
+       __getattribute__
+      </code>
+      ,
+      <code>
+       __hash__
+      </code>
+      ,
+      <code>
+       __init__
+      </code>
+      ,
+      <code>
+       __new__
+      </code>
+      ,
+      <code>
+       __reduce__
+      </code>
+      ,
+      <code>
+       __reduce_ex__
+      </code>
+      ,
+      <code>
+       __repr__
+      </code>
+      ,
+      <code>
+       __setattr__
+      </code>
+      ,
+      <code>
+       __sizeof__
+      </code>
+      ,
+      <code>
+       __str__
+      </code>
+      ,
+      <code>
+       __subclasshook__
+      </code>
+     </p>
+    </td>
+   </tr>
+   <tr bgcolor="#e8f0f8">
+    <th class="group-header" colspan="2">
+     &nbsp;&nbsp;&nbsp;&nbsp;Signals
+    </th>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="aboutToClose">
+         </a>
+         <span class="summary-sig-name">
+          aboutToClose
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted just before the image is closed.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.aboutToClose">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#aboutToExport">
+          aboutToExport
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Path
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted when the user is about to export the image.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.aboutToExport">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#aboutToImport">
+          aboutToImport
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Path
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted when the user is about to import into the image.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.aboutToImport">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#colorspaceConfigChanged">
+          colorspaceConfigChanged
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Config
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted after the colorspace config is modified for this 
+      object.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.colorspaceConfigChanged">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#exported">
+          exported
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Path
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted after the image is exported.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.exported">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#imported">
+          imported
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Path
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted after the image is imported.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.imported">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata-class.html#metadataCreated">
+        metadataCreated
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataRemoved">
+        metadataRemoved
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataValueChanged">
+        metadataValueChanged
+       </a>
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== STATIC METHODS ==================== -->
+  <a name="section-StaticMethods">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Static Methods
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      int
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Image-class.html#depthAsInternalFormat">
+          depthAsInternalFormat
+         </a>
+         (
+         <span class="summary-sig-arg">
+          Depth
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the OpenGL integer representation of Internal Format of the 
+      given
+        <a class="link" href="mari.Image.Depth-class.html">
+         Depth
+        </a>
+        .
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Image.depthAsInternalFormat">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata-class.html#isSupportedMetadataType">
+        isSupportedMetadataType
+       </a>
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS VARIABLES ==================== -->
+  <a name="section-ClassVariables">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Class Variables
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="COLORSPACE_COLOR">
+     </a>
+     <span class="summary-name">
+      COLORSPACE_COLOR
+     </span>
+     =
+     <code title="0">
+      0
+     </code>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="COLORSPACE_SCALAR">
+     </a>
+     <span class="summary-name">
+      COLORSPACE_SCALAR
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="DEPTH_BYTE">
+     </a>
+     <span class="summary-name">
+      DEPTH_BYTE
+     </span>
+     =
+     <code title="8">
+      8
+     </code>
+     <br/>
+     Standard eight bit depth.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="DEPTH_HALF">
+     </a>
+     <span class="summary-name">
+      DEPTH_HALF
+     </span>
+     =
+     <code title="16">
+      16
+     </code>
+     <br/>
+     Half-float depth.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="DEPTH_FLOAT">
+     </a>
+     <span class="summary-name">
+      DEPTH_FLOAT
+     </span>
+     =
+     <code title="32">
+      32
+     </code>
+     <br/>
+     Full float depth.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="FILESPACE_NORMAL">
+     </a>
+     <span class="summary-name">
+      FILESPACE_NORMAL
+     </span>
+     =
+     <code title="0">
+      0
+     </code>
+     <br/>
+     Copy Values.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Image-class.html#FILESPACE_VECTOR">
+      FILESPACE_VECTOR
+     </a>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     Values [0,1] get mapped to [-1,+1] for float and half formats.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Image-class.html#FILESPACE_VECTOR_Y_FLIP">
+      FILESPACE_VECTOR_Y_FLIP
+     </a>
+     =
+     <code title="2">
+      2
+     </code>
+     <br/>
+     Same as VECTOR but Y component of vector is flipped, i.e.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Image-class.html#FILESPACE_NORMAL_Y_FLIP">
+      FILESPACE_NORMAL_Y_FLIP
+     </a>
+     =
+     <code title="3">
+      3
+     </code>
+     <br/>
+     Same as NORMAL but Y vector is flipped, i.e.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="DEFAULT_OPTIONS">
+     </a>
+     <span class="summary-name">
+      DEFAULT_OPTIONS
+     </span>
+     =
+     <code title="0">
+      0
+     </code>
+     <br/>
+     None of the other options are set.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="DISABLE_SMALL_UNIFORMS">
+     </a>
+     <span class="summary-name">
+      DISABLE_SMALL_UNIFORMS
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     Turns off "small uniforms" (exporting blank textures as 
+      8x8).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Image-class.html#ENABLE_FULL_PATCH_BLEED">
+      ENABLE_FULL_PATCH_BLEED
+     </a>
+     =
+     <code title="2">
+      2
+     </code>
+     <br/>
+     Turns on "full texture bleed" (full patch texture bleed is 
+      generated).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="REMOVE_ALPHA">
+     </a>
+     <span class="summary-name">
+      REMOVE_ALPHA
+     </span>
+     =
+     <code title="4">
+      4
+     </code>
+     <br/>
+     Remove the alpha channel (convert RGBA to RGB).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Image-class.html#BACKGROUND_EXPORT">
+      BACKGROUND_EXPORT
+     </a>
+     =
+     <code title="8">
+      8
+     </code>
+     <br/>
+     When set saveAs will return immediately and exporting will occur as a
+      background job.
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_EDITABLE">
+        METADATA_EDITABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_GROUP_HINT_DISPLAY">
+        METADATA_GROUP_HINT_DISPLAY
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_GROUP_HINT_SORTABLE">
+        METADATA_GROUP_HINT_SORTABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_REMOVABLE">
+        METADATA_REMOVABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_REMOVEABLE">
+        METADATA_REMOVEABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_SAVED">
+        METADATA_SAVED
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_UNDOABLE">
+        METADATA_UNDOABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_VISIBLE">
+        METADATA_VISIBLE
+       </a>
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== PROPERTIES ==================== -->
+  <a name="section-Properties">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Properties
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __class__
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== METHOD DETAILS ==================== -->
+  <a name="section-MethodDetails">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Method Details
+     </span>
+    </td>
+   </tr>
+  </table>
+  <a name="aboutToExport">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            aboutToExport
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Path
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.aboutToExport">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted when the user is about to export the image.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Path
+           </code>
+          </strong>
+          (str) - The path the image will be exported to
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="aboutToImport">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            aboutToImport
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Path
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.aboutToImport">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted when the user is about to import into the image.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Path
+           </code>
+          </strong>
+          (str) - The path the image will be imported from
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="close">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            close
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.close">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Closes the image, removing it from the image manager.
+      </p>
+      <p>
+       If the image is open in the image manager, it will be closed and 
+  removed. Not all images can be closed in this way. If the image is a 
+  member of an image set, the image set "owns" the image and will
+  not allow it to be closed. To remove such an image, remove the image set 
+  that owns it.
+      </p>
+      <p>
+       This method can be called on all images, but images that are not in 
+  the image manager will not be closed, and an exception will be 
+  raised.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the image is not owned by the image manager and cannot be
+        closed.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         Note:
+        </strong>
+        If this function successfully closes the image, the image object 
+        will become invalid.
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="colorspaceConfig">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            colorspaceConfig
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.colorspaceConfig">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the colorspace configuration of the image.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns:
+        <a class="link" href="mari.ColorspaceConfig-class.html">
+         ColorspaceConfig
+        </a>
+       </dt>
+       <dd>
+        The colorspace configuration.
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.Image-class.html#setColorspaceConfig">
+         setColorspaceConfig()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="colorspaceConfigChanged">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            colorspaceConfigChanged
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Config
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.colorspaceConfigChanged">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted after the colorspace config is modified for this 
+  object.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Config
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.ColorspaceConfig-class.html">
+           ColorspaceConfig
+          </a>
+          )
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="convertDepth">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            convertDepth
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Depth
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.convertDepth">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Converts the depth of the image.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Depth
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Image.Depth-class.html">
+           Image.Depth
+          </a>
+          ) - The new bit depth for the image.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="copyFrom">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            copyFrom
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            SourceImage
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.copyFrom">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Copies the contents of another image into this one.
+      </p>
+      <p>
+       Mari allows very quick copying and duplication of image data. This 
+  method allows the contents of another image to be copied into this one. 
+  The image must have the same dimensions (width and height) and format as 
+  the source image, otherwise an exception will be raised. As the API does 
+  not yet allow you to alter the format of an image directly, this method 
+  is useful only when the images already have the same format (e.g. images 
+  from the same
+       <a class="link" href="mari.ImageSet-class.html">
+        ImageSet
+       </a>
+       ). This operation is effectively free in terms 
+  of memory usage and the user should not worry about copying large amounts
+  of data using this method.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            SourceImage
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Image-class.html">
+           Image
+          </a>
+          ) - The image to copy from
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the source or destination image is invalid, or if they 
+        are both the same image object, or if the destination image does 
+        not have the same dimensions and format as the source image.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="depthAsInternalFormat">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            depthAsInternalFormat
+           </span>
+           (
+           <span class="sig-arg">
+            Depth
+           </span>
+           )
+          </span>
+          <br/>
+          <em class="fname">
+           Static Method
+          </em>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.depthAsInternalFormat">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the OpenGL integer representation of Internal Format of the 
+  given
+       <a class="link" href="mari.Image.Depth-class.html">
+        Depth
+       </a>
+       .
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Depth
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Image.Depth-class.html">
+           Image.Depth
+          </a>
+          ) - The
+          <a class="link" href="mari.Image.Depth-class.html">
+           Depth
+          </a>
+          that corresponds to the returned Internal Format.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: int
+       </dt>
+       <dd>
+        The Internal Format as the OpenGL integer
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="exported">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            exported
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Path
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.exported">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted after the image is exported.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Path
+           </code>
+          </strong>
+          (str) - The path the image was exported to
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="filePath">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            filePath
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.filePath">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the path to the file that the image was loaded from.
+      </p>
+      <p>
+       This path will be valid for images loaded from disk into the image 
+  manager. Images that are contained in channels will have a blank file 
+  path.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: str
+       </dt>
+       <dd>
+        The path that the image was loaded from, or a blank string if not
+          available
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.Image-class.html#lastImportPath">
+         lastImportPath()
+        </a>
+        ,
+        <a class="link" href="mari.Image-class.html#lastExportPath">
+         lastExportPath()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="fileSpace">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            fileSpace
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.fileSpace">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the file space the image will import and export data as.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns:
+        <a class="link" href="mari.Image.FileSpace-class.html">
+         Image.FileSpace
+        </a>
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.Image-class.html#setFileSpace">
+         setFileSpace()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="fill">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            fill
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            FillColor
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.fill">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Fills the image entirely with a given color.
+      </p>
+      <p>
+       This function is the same as
+       <a class="link" href="mari.Image-class.html#setUniformColor">
+        setUniformColor()
+       </a>
+       .
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            FillColor
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Color-class.html">
+           Color
+          </a>
+          ) - The color to fill the patch with. RGB images will ignore the 
+          alpha component.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the color provided was invalid.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.Image-class.html#uniformColor">
+         uniformColor()
+        </a>
+        ,
+        <a class="link" href="mari.Image-class.html#setUniformColor">
+         setUniformColor()
+        </a>
+        ,
+        <a class="link" href="mari.Image-class.html#isUniform">
+         isUniform()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="hash">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            hash
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.hash">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns a unique identifier for this image.
+      </p>
+      <p>
+       Mari maintains hashes of images for internal book-keeping. These 
+  hashes are assumed to be universally unique (256bit skein hash). These 
+  hashes can be used to determine if an image has changed since some given 
+  checkpoint. A different hash means a different image.
+      </p>
+      <p>
+       The hash of an image is calculated from its resolution (which 
+  determines the number of tiles it uses), bit depth, and tile data. Any 
+  metadata for the image is not included. Multiple images that store the 
+  same data will have the same hash and reference the same underlying data 
+  block, which means that the
+       <a class="link" href="mari.DDI-class.html">
+        DDI
+       </a>
+       can save memory and disk space by storing the same 
+  block of data only once.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: str
+       </dt>
+       <dd>
+        A hash string that uniquely identifies this version of this 
+          image, or an empty string on failure.
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="height">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            height
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            MipMapLevel
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.height">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the height of a mip-map level in the image.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            MipMapLevel
+           </code>
+          </strong>
+          (int) - Mip-map level, in the range [0 to Count - 1], where 0 is the 
+          original size
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: int
+       </dt>
+       <dd>
+        The height of the mip-map level in pixels
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the mip-map level was out of range.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="imported">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            imported
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Path
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.imported">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted after the image is imported.
+      </p>
+      <p>
+       <code class="link">
+        Path
+       </code>
+       The path the image was imported 
+  from
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Path
+           </code>
+          </strong>
+          (str)
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="isUniform">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            isUniform
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.isUniform">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns whether the given image is all a single color.
+      </p>
+      <p>
+       Mari makes storing large uniform color images very efficent 
+  internally. It is often useful to know if an image is all a single color 
+  on export.
+      </p>
+      <p>
+       This method indicates whether the image is uniform - i.e. all a single
+  color. This can help to decide whether an image should be exported.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: bool
+       </dt>
+       <dd>
+        True if this image is a uniform color, or False if it contains 
+          any pixels that are different colors.
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.Image-class.html#uniformColor">
+         uniformColor()
+        </a>
+        ,
+        <a class="link" href="mari.Image-class.html#setUniformColor">
+         setUniformColor()
+        </a>
+        ,
+        <a class="link" href="mari.Image-class.html#fill">
+         fill()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="lastExportPath">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            lastExportPath
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.lastExportPath">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the last path the image was saved to.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: str
+       </dt>
+       <dd>
+        The path that the image was last saved to. This will be an empty 
+          string if the image has not been saved yet
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.Image-class.html#lastImportPath">
+         lastImportPath()
+        </a>
+        ,
+        <a class="link" href="mari.Image-class.html#filePath">
+         filePath()
+        </a>
+        ,
+        <a class="link" href="mari.Image-class.html#lastExportTime">
+         lastExportTime()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="lastExportTime">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            lastExportTime
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.lastExportTime">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the date and time at which the image was last exported.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: QDateTime
+       </dt>
+       <dd>
+        The date and time of the last export, or an empty DateTime object
+          if never exported
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.Image-class.html#lastExportPath">
+         lastExportPath()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="lastImportPath">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            lastImportPath
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.lastImportPath">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the path to the last file that was imported into the 
+  image.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: str
+       </dt>
+       <dd>
+        The path of the last file imported into the image. This will be 
+          an empty string if nothing has been imported into the image
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.Image-class.html#lastImportTime">
+         lastImportTime()
+        </a>
+        ,
+        <a class="link" href="mari.Image-class.html#lastExportPath">
+         lastExportPath()
+        </a>
+        ,
+        <a class="link" href="mari.Image-class.html#filePath">
+         filePath()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="lastImportTime">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            lastImportTime
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.lastImportTime">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the date and time at which the image was last imported.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: QDateTime
+       </dt>
+       <dd>
+        The date and time of the last import, or an empty DateTime object
+          if never imported
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.Image-class.html#lastImportPath">
+         lastImportPath()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="mipMapCount">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            mipMapCount
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.mipMapCount">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the number of mip-maps in the image.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: int
+       </dt>
+       <dd>
+        The number mip-maps in the image
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="mostRelevantPath">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            mostRelevantPath
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.mostRelevantPath">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns a best guess as to which file on disk represents this 
+  texture.
+      </p>
+      <p>
+       Mari keeps track of when files are imported and exported. It uses a 
+  basic heuristic to guess which file on disk represents a given Mari
+       <a class="link" href="mari.Image-class.html">
+        Image
+       </a>
+       .
+      </p>
+      <p>
+       The time and date of each import and export is recorded. If an image 
+  was imported more recently than Mari exported, the import image is 
+  presumed to be most relevant. If Mari exported more recently than 
+  importing, the exported version is presumed to be more relevant.
+      </p>
+      <p>
+       A couple of quick examples:
+      </p>
+      <ul>
+       <li>
+        Mari import from a.png
+       </li>
+       <li>
+        User paints some more detail
+       </li>
+       <li>
+        Mari exports to b.png
+       </li>
+      </ul>
+      <p>
+       In this case, b.png is presumed to be most relevant and will be 
+  returned by this method.
+      </p>
+      <ul>
+       <li>
+        Mari exports to a.png
+       </li>
+       <li>
+        User paints some more detail
+       </li>
+       <li>
+        User decides they don't like the changes
+       </li>
+       <li>
+        Mari imports from a-version2.png
+       </li>
+      </ul>
+      <p>
+       In this case, a-version2.png will be returned.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: str
+       </dt>
+       <dd>
+        The most relevant path or and empty string if neither importing 
+          or exporting has occured
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="resize">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            resize
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            NewSize
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.resize">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Resizes the image.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            NewSize
+           </code>
+          </strong>
+          (QSize) - the desired size for the image.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the size provided was invalid.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="saveAs">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            saveAs
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            FileName
+           </span>
+           ,
+           <span class="sig-arg">
+            Options
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            SaveOpts
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.saveAs">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Saves the image to the given file name.
+      </p>
+      <p>
+       The
+       <i>
+        options
+       </i>
+       parameter can be used to pass options to the file 
+  writer, in dictionary format. For example:
+      </p>
+      <p>
+       <code>
+        img.saveAs('/tmp/test.jpg', {'IntegerSetting': 1, 
+  'StringSetting': 'Hello'})
+       </code>
+      </p>
+      <p>
+       These options are currently only used by custom image writers. Please 
+  refer to the C API documentation - specifically, the MriImageReaderPlugin
+  type and the attribute system - for details of how to develop a plug-in 
+  and read the values passed into it from this function.
+      </p>
+      <p>
+       Saving may occur in the background. If this is enabled (via the 
+  BACKGROUND_EXPORT enum from
+       <a class="link" href="mari.Image.SaveOptions-class.html">
+        SaveOptions
+       </a>
+       ) then saveAs will return instantly and the 
+  image will be exported on a background thread.By default background 
+  exporting is disabled and saveAs will only return when the image has been
+  exported. When exporting in the background, errors and exceptions may not
+  be raised on failure to save. An example of using background export would
+  be:
+      </p>
+      <p>
+       <code>
+        img.saveAs('/tmp/test.jpg', {}, 
+  mari.Image.BACKGROUND_EXPORT)
+       </code>
+      </p>
+      <p>
+       When background exporting the source image is copied internally and 
+  can be closed or modified without disrupting the background job.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            FileName
+           </code>
+          </strong>
+          (str) - The absolute path, file name, and extension to save the image to.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Options
+           </code>
+          </strong>
+          (variant) - This is an optional parameter which can be used to pass options 
+          to the file writer. See above for details.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            SaveOpts
+           </code>
+          </strong>
+          (int) - Pass in a value other than the default to turn on an option, such
+          as disabling "small uniforms". See
+          <a class="link" href="mari.Image.SaveOptions-class.html">
+           SaveOptions
+          </a>
+          .
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            IOError
+           </strong>
+          </code>
+          - Raised if there is a problem saving the file.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            TypeError
+           </strong>
+          </code>
+          - Raised if the options parameter is not a dict.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setColorspaceConfig">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setColorspaceConfig
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Config
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.setColorspaceConfig">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Sets the colorspace configuration of the image.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Config
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.ColorspaceConfig-class.html">
+           ColorspaceConfig
+          </a>
+          ) - The colorspace configuration.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the colorspace configuration is invalid.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.Image-class.html#colorspaceConfig">
+         colorspaceConfig()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setFileSpace">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setFileSpace
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            FileSpace
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.setFileSpace">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Set the file space the image will import and export data as.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            FileSpace
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Image.FileSpace-class.html">
+           Image.FileSpace
+          </a>
+          )
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.Image-class.html#fileSpace">
+         fileSpace()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setUniformColor">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setUniformColor
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            pUniformColor
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.setUniformColor">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Fills the image entirely with the given color.
+      </p>
+      <p>
+       This function is the same as
+       <a class="link" href="mari.Image-class.html#fill">
+        fill()
+       </a>
+       .
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            pUniformColor
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Color-class.html">
+           Color
+          </a>
+          ) - The color to fill this patch with. RGB images will ignore the 
+          alpha component.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the color provided was invalid.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.Image-class.html#uniformColor">
+         uniformColor()
+        </a>
+        ,
+        <a class="link" href="mari.Image-class.html#isUniform">
+         isUniform()
+        </a>
+        ,
+        <a class="link" href="mari.Image-class.html#fill">
+         fill()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="size">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            size
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            MipMapLevel
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.size">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the size of a mip-map level in the image.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            MipMapLevel
+           </code>
+          </strong>
+          (int) - Mip-map level, in the range [0 to Count - 1], where 0 is the 
+          original size
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: list of  int
+       </dt>
+       <dd>
+        The size of the image in pixels, in the format: (width, height)
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the mip-map level was out of range.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="transform">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            transform
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Collection
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.transform">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Transform the image entirely with a given filter.
+      </p>
+      <p>
+       This function allows an image to be quickly tranformed with the given
+       <a class="link" href="mari.PostFilterCollection-class.html">
+        PostFilterCollection
+       </a>
+       object.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Collection
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.PostFilterCollection-class.html">
+           PostFilterCollection
+          </a>
+          ) - A filter collection object.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: bool
+       </dt>
+       <dd>
+        True on success
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the input filter is invalid.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="uniformColor">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            uniformColor
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.uniformColor">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the single color that fills the entire image, if 
+  applicable.
+      </p>
+      <p>
+       Storing large images that are uniform - i.e., consist entirely of a 
+  single color - is very efficient. This function returns that single 
+  color, for an image that is uniform.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns:
+        <a class="link" href="mari.Color-class.html">
+         Color
+        </a>
+       </dt>
+       <dd>
+        The uniform color of the image
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the image was not all of a single color.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.Image-class.html#setUniformColor">
+         setUniformColor()
+        </a>
+        ,
+        <a class="link" href="mari.Image-class.html#isUniform">
+         isUniform()
+        </a>
+        ,
+        <a class="link" href="mari.Image-class.html#fill">
+         fill()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="width">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            width
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            MipMapLevel
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Image.width">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the width of a mip-map level in the image.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            MipMapLevel
+           </code>
+          </strong>
+          (int) - Mip-map level, in the range [0 to Count - 1], where 0 is the 
+          original size
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: int
+       </dt>
+       <dd>
+        The width of the mip-map level in pixels
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the mip-map level was out of range.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <br/>
+  <!-- ==================== CLASS VARIABLE DETAILS ==================== -->
+  <a name="section-ClassVariableDetails">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Class Variable Details
+     </span>
+    </td>
+   </tr>
+  </table>
+  <a name="FILESPACE_VECTOR">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       FILESPACE_VECTOR
+      </h3>
+      <p>
+       Values [0,1] get mapped to [-1,+1] for float and half formats. No 
+  conversion for bytes.
+      </p>
+      <dl class="fields">
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+1
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="FILESPACE_VECTOR_Y_FLIP">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       FILESPACE_VECTOR_Y_FLIP
+      </h3>
+      <p>
+       Same as VECTOR but Y component of vector is flipped, i.e. [-1,+1] is 
+  mapped to [+1,-1] for Y.
+      </p>
+      <dl class="fields">
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+2
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="FILESPACE_NORMAL_Y_FLIP">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       FILESPACE_NORMAL_Y_FLIP
+      </h3>
+      <p>
+       Same as NORMAL but Y vector is flipped, i.e. [0,1] is mapped to [1,0] 
+  for Y.
+      </p>
+      <dl class="fields">
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+3
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="ENABLE_FULL_PATCH_BLEED">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       ENABLE_FULL_PATCH_BLEED
+      </h3>
+      <p>
+       Turns on "full texture bleed" (full patch texture bleed is 
+  generated). This takes effect only for exporting textures.
+      </p>
+      <dl class="fields">
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+2
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="BACKGROUND_EXPORT">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       BACKGROUND_EXPORT
+      </h3>
+      <p>
+       When set saveAs will return immediately and exporting will occur as a 
+  background job. Background jobs may not report errors or raise 
+  exceptions.
+      </p>
+      <dl class="fields">
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+8
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

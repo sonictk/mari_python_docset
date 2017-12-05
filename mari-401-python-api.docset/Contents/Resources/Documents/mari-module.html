@@ -1,0 +1,3456 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      Package&nbsp;mari
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari-module.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== PACKAGE DESCRIPTION ==================== -->
+  <h1 class="epydoc">
+   Package mari
+  </h1>
+  <p class="nomargin-top">
+   <span class="codelink">
+    <a href="mari-pysrc.html">
+     source&nbsp;code
+    </a>
+   </span>
+  </p>
+  <p>
+   Welcome to the Mari Python API documentation.
+  </p>
+  <p>
+   If you are new to Python, you should definitely check out the on-line 
+  tutorial:
+  </p>
+  <ul>
+   <li>
+    <a href="http://docs.python.org/release/2.7.3/tutorial/index.html" target="_top">
+     http://docs.python.org/release/2.7.3/tutorial/index.html
+    </a>
+   </li>
+  </ul>
+  <p>
+   Mari's Python console works in a very similar way to a standard Python
+  interpreter.  For more details, please see "Python &rarr; 
+  Readme" on the menu in Mari.
+  </p>
+  <h1 class="heading">
+   Mari Python Quick Start
+  </h1>
+  <p>
+   If you understand the basics of Python and want to try using it to 
+    get Mari to do something, here are some examples of how to perform some
+    common tasks.
+  </p>
+  <ul>
+   <li>
+    To open a project:
+    <p>
+     <code>
+      <a class="link" href="mari.ProjectManager-class.html#open">
+       mari.projects.open
+      </a>
+      ('your_project_name')
+     </code>
+    </p>
+   </li>
+   <li>
+    To get a list of the available projects:
+    <p>
+     <code>
+      <a class="link" href="mari.ProjectManager-class.html#list">
+       mari.projects.list
+      </a>
+      ()
+     </code>
+    </p>
+   </li>
+   <li>
+    To get the currently selected geometry object:
+    <p>
+     <code>
+      <a class="link" href="mari.GeoManager-class.html#current">
+       mari.geo.current
+      </a>
+      ()
+     </code>
+    </p>
+   </li>
+   <li>
+    To get a list of the image sets on the current geometry object:
+    <p>
+     <code>
+      mari.geo.current().
+      <a class="link" href="mari.GeoEntity-class.html#imageSetList">
+       imageSetList
+      </a>
+      ()
+     </code>
+    </p>
+   </li>
+   <li>
+    To undo the last action:
+    <p>
+     <code>
+      <a class="link" href="mari.History-class.html#undo">
+       mari.history.undo
+      </a>
+      ()
+     </code>
+    </p>
+   </li>
+   <li>
+    To add a Python script to the menu:
+    <p>
+     <code>
+      <a class="link" href="mari.MenuManager-class.html#addAction">
+       mari.menus.addAction
+      </a>
+      (
+      <a class="link" href="mari.ActionManager-class.html#create">
+       mari.actions.create
+      </a>
+      ('Test Action', 
+        'mari.utils.message("Hello")'), 'MainWindow/Test 
+        Menu')
+     </code>
+    </p>
+   </li>
+   <li>
+    To get access to the current camera:
+    <p>
+     <code>
+      <a class="link" href="mari.CanvasManager-class.html#current">
+       mari.canvases.current
+      </a>
+      ().
+      <a class="link" href="mari.Canvas-class.html#camera">
+       camera
+      </a>
+      ()
+     </code>
+    </p>
+   </li>
+   <li>
+    To get access to the paint buffer:
+    <p>
+     <code>
+      <a class="link" href="mari.CanvasManager-class.html#paintBuffer">
+       mari.canvases.paintBuffer
+      </a>
+      ()
+     </code>
+    </p>
+   </li>
+   <li>
+    To create an example PySide widget:
+    <p>
+     <code>
+      button =
+      <a href="http://doc.qt.io/qt-4.8/qpushbutton.html" target="_top">
+       PySide.QtGui.QPushButton
+      </a>
+      ('Push Me')
+     </code>
+    </p>
+    <p>
+     <code>
+      button.show()
+     </code>
+    </p>
+   </li>
+  </ul>
+  <p>
+   There are also a considerable number of example scripts documented 
+    in the
+   <a class="link" href="mari.examples-module.html">
+    mari.examples
+   </a>
+   module.  You can look at the source code
+    of these to get some further ideas.  Please note though that the source
+    code is only useful for the examples; the source code for the 
+    "mari" module is simply a set of generated function stubs 
+    with doc strings provided for structural reasons.
+  </p>
+  <p>
+   Most functions in Mari are performed by using a manager object, as 
+    above.  These managers perform many operations themselves, and also 
+    provide access to other types of objects.  For example, the project 
+    manager object is
+   <a class="link" href="mari-module.html#projects">
+    mari.projects
+   </a>
+   , and calling its
+   <a class="link" href="mari.ProjectManager-class.html#list">
+    list
+   </a>
+   () 
+    method provides
+   <a class="link" href="mari.ProjectInfo-class.html">
+    ProjectInfo
+   </a>
+   objects to describe the projects that are 
+    available.  The manager objects are listed in the Variables section 
+    below.
+  </p>
+  <p>
+   Mari's Python API uses PySide.  Reference documentation can be found
+    at:
+  </p>
+  <ul>
+   <li>
+    <a href="https://pypi.python.org/pypi/PySide" target="_top">
+     https://pypi.python.org/pypi/PySide
+    </a>
+    (the PySide 
+        project)
+   </li>
+   <li>
+    <a href="http://doc.qt.io/qt-4.8" target="_top">
+     http://doc.qt.io/qt-4.8
+    </a>
+    (the Qt library)
+   </li>
+  </ul>
+  <hr/>
+  <div class="fields">
+   <p>
+    <strong>
+     Version:
+    </strong>
+    4.0v1.000316b
+   </p>
+   <p>
+    <strong>
+     Date:
+    </strong>
+    2017/10/13
+   </p>
+   <p>
+    <strong>
+     Copyright:
+    </strong>
+    2017 The Foundry Visionmongers Inc.  All rights reserved.
+   </p>
+  </div>
+  <!-- ==================== SUBMODULES ==================== -->
+  <a name="section-Submodules">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Submodules
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary">
+     <ul class="nomargin">
+      <li>
+       <strong class="uidlink">
+        <a href="mari.current-module.html">
+         mari.current
+        </a>
+       </strong>
+       :
+       <em class="summary">
+        Contains convenience functions for easy access to currently-active 
+        elements.
+       </em>
+      </li>
+      <li>
+       <strong class="uidlink">
+        <a href="mari.examples-module.html">
+         mari.examples
+        </a>
+       </strong>
+       :
+       <em class="summary">
+        Contains example functionality implemented to demonstrate the use 
+        of the API.
+       </em>
+       <ul>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.action_manager-module.html">
+           mari.examples.action_manager
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.asset_management-module.html">
+           mari.examples.asset_management
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.c_api_channel_export-module.html">
+           mari.examples.c_api_channel_export
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.cameras-module.html">
+           mari.examples.cameras
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.channels-module.html">
+           mari.examples.channels
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.colorspace-module.html">
+           mari.examples.colorspace
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.command_port-module.html">
+           mari.examples.command_port
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.convert_channel-module.html">
+           mari.examples.convert_channel
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.create_blacksmith_project-module.html">
+           mari.examples.create_blacksmith_project
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.create_project-module.html">
+           mari.examples.create_project
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.custom_layer-module.html">
+           mari.examples.custom_layer
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.custom_shader-module.html">
+           mari.examples.custom_shader
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.export_dialog-module.html">
+           mari.examples.export_dialog
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.export_shelf-module.html">
+           mari.examples.export_shelf
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.filters-module.html">
+           mari.examples.filters
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.image_filters-module.html">
+           mari.examples.image_filters
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.layered_channels_for_layered_shaders-module.html">
+           mari.examples.layered_channels_for_layered_shaders
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.layered_channels_from_layered_shaders-module.html">
+           mari.examples.layered_channels_from_layered_shaders
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.layers-module.html">
+           mari.examples.layers
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.layers_NPMA_tiled_RGB-module.html">
+           mari.examples.layers_NPMA_tiled_RGB
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.layers_disable_all_amount_values-module.html">
+           mari.examples.layers_disable_all_amount_values
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.lights-module.html">
+           mari.examples.lights
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.linked_patches-module.html">
+           mari.examples.linked_patches
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.mGo-module.html">
+           mari.examples.mGo
+          </a>
+         </strong>
+         :
+         <em class="summary">
+          import mGo_MayaUI; mGo_MayaUI.UI()
+         </em>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.mGo_Materialiser-module.html">
+           mari.examples.mGo_Materialiser
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.mGo_Shortcut_Actions-module.html">
+           mari.examples.mGo_Shortcut_Actions
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.maya_export-module.html">
+           mari.examples.maya_export
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.nodes-module.html">
+           mari.examples.nodes
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.paint_buffer-module.html">
+           mari.examples.paint_buffer
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.post_processing_filters-module.html">
+           mari.examples.post_processing_filters
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.projectors-module.html">
+           mari.examples.projectors
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.resource_info-module.html">
+           mari.examples.resource_info
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.selection_groups-module.html">
+           mari.examples.selection_groups
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.shaders-module.html">
+           mari.examples.shaders
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.shaderstacks-module.html">
+           mari.examples.shaderstacks
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.vector_brush-module.html">
+           mari.examples.vector_brush
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.examples.vector_channel-module.html">
+           mari.examples.vector_channel
+          </a>
+         </strong>
+        </li>
+       </ul>
+      </li>
+      <li>
+       <strong class="uidlink">
+        <a href="mari.system-module.html">
+         mari.system
+        </a>
+       </strong>
+       :
+       <em class="summary">
+        Contains larger chunks of standard Mari functionality.
+       </em>
+       <ul>
+        <li class="private">
+         <strong class="uidlink">
+          <a href="mari.system._finalise-module.html" onclick="show_private();">
+           mari.system._finalise
+          </a>
+         </strong>
+        </li>
+        <li class="private">
+         <strong class="uidlink">
+          <a href="mari.system._modo_contexts-module.html" onclick="show_private();">
+           mari.system._modo_contexts
+          </a>
+         </strong>
+        </li>
+        <li class="private">
+         <strong class="uidlink">
+          <a href="mari.system._modo_session-module.html" onclick="show_private();">
+           mari.system._modo_session
+          </a>
+         </strong>
+        </li>
+        <li class="private">
+         <strong class="uidlink">
+          <a href="mari.system._modo_ui-module.html" onclick="show_private();">
+           mari.system._modo_ui
+          </a>
+         </strong>
+        </li>
+        <li class="private">
+         <strong class="uidlink">
+          <a href="mari.system._modo_utils-module.html" onclick="show_private();">
+           mari.system._modo_utils
+          </a>
+         </strong>
+        </li>
+        <li class="private">
+         <strong class="uidlink">
+          <a href="mari.system._ocio_filter-module.html" onclick="show_private();">
+           mari.system._ocio_filter
+          </a>
+         </strong>
+        </li>
+        <li class="private">
+         <strong class="uidlink">
+          <a href="mari.system._ocio_toolbar-module.html" onclick="show_private();">
+           mari.system._ocio_toolbar
+          </a>
+         </strong>
+        </li>
+        <li class="private">
+         <strong class="uidlink">
+          <a href="mari.system._particle_channel_transfer-module.html" onclick="show_private();">
+           mari.system._particle_channel_transfer
+          </a>
+         </strong>
+        </li>
+        <li class="private">
+         <strong class="uidlink">
+          <a href="mari.system._particle_layer_transfer-module.html" onclick="show_private();">
+           mari.system._particle_layer_transfer
+          </a>
+         </strong>
+        </li>
+        <li class="private">
+         <strong class="uidlink">
+          <a href="mari.system._particle_ops-module.html" onclick="show_private();">
+           mari.system._particle_ops
+          </a>
+         </strong>
+        </li>
+        <li class="private">
+         <strong class="uidlink">
+          <a href="mari.system._particle_transfer-module.html" onclick="show_private();">
+           mari.system._particle_transfer
+          </a>
+         </strong>
+        </li>
+        <li class="private">
+         <strong class="uidlink">
+          <a href="mari.system._setup-module.html" onclick="show_private();">
+           mari.system._setup
+          </a>
+         </strong>
+        </li>
+        <li class="private">
+         <strong class="uidlink">
+          <a href="mari.system._test-module.html" onclick="show_private();">
+           mari.system._test
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.system.bake_new_layer-module.html">
+           mari.system.bake_new_layer
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.system.batch_export_dialog-module.html">
+           mari.system.batch_export_dialog
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.system.enable_server_connection-module.html">
+           mari.system.enable_server_connection
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.system.megascans-module.html">
+           mari.system.megascans
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.system.modo_bridge-module.html">
+           mari.system.modo_bridge
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.system.nuke_bridge-module.html">
+           mari.system.nuke_bridge
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.system.snapshots-module.html">
+           mari.system.snapshots
+          </a>
+         </strong>
+        </li>
+       </ul>
+      </li>
+      <li>
+       <strong class="uidlink">
+        <a href="mari.utils-module.html">
+         mari.utils
+        </a>
+       </strong>
+       :
+       <em class="summary">
+        Contains small utility functions for use by all other areas of 
+        Python functionality.
+       </em>
+       <ul>
+        <li class="private">
+         <strong class="uidlink">
+          <a href="mari.utils.__init_weta__-module.html">
+           mari.utils.__init_weta__
+          </a>
+         </strong>
+         :
+         <em class="summary">
+          Contains small utility functions for use by all other areas of 
+        Python functionality.
+         </em>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.utils.misc-module.html">
+           mari.utils.misc
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.utils.node_generator-module.html">
+           mari.utils.node_generator
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.utils.ocio-module.html">
+           mari.utils.ocio
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.utils.ocio_weta-module.html">
+           mari.utils.ocio_weta
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.utils.redirector-module.html">
+           mari.utils.redirector
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.utils.show_help-module.html">
+           mari.utils.show_help
+          </a>
+         </strong>
+        </li>
+        <li>
+         <strong class="uidlink">
+          <a href="mari.utils.signal_helpers-module.html">
+           mari.utils.signal_helpers
+          </a>
+         </strong>
+        </li>
+       </ul>
+      </li>
+     </ul>
+    </td>
+   </tr>
+  </table>
+  <br/>
+  <!-- ==================== CLASSES ==================== -->
+  <a name="section-Classes">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Classes
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Canvas-class.html">
+      Canvas
+     </a>
+     <br/>
+     A canvas is a Mari viewport.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ColorspaceDefaults-class.html">
+      ColorspaceDefaults
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.SelectionGroupManager-class.html">
+      SelectionGroupManager
+     </a>
+     <br/>
+     Manages the selection groups in the scene.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ExportManager-class.html">
+      ExportManager
+     </a>
+     <br/>
+     Manages export functionality of Mari.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Event-class.html">
+      Event
+     </a>
+     <br/>
+     Provides a method for sending events to the system.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.PatchLinksManager-class.html">
+      PatchLinksManager
+     </a>
+     <br/>
+     Handles patch image linking.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Preferences-class.html">
+      Preferences
+     </a>
+     <br/>
+     Manages retrieval and modification of user preferences.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Clock-class.html">
+      Clock
+     </a>
+     <br/>
+     Controls for Mari's internal animation clock.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.EventWorker-class.html">
+      EventWorker
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Application-class.html">
+      Application
+     </a>
+     <br/>
+     This object handles basic operations to be performed on the entire 
+        application.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.LookUpTable-class.html">
+      LookUpTable
+     </a>
+     <br/>
+     Objects of this class holds 1-dimensional look up table curve.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.FileList-class.html">
+      FileList
+     </a>
+     <br/>
+     Stores a list of files and directories that can be used for custom 
+        attributes.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Metadata-class.html">
+      Metadata
+     </a>
+     <br/>
+     An interface for dealing with metadata associated with Mari 
+        objects.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ExportItem-class.html">
+      ExportItem
+     </a>
+     <br/>
+     Represents the data model of export item.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Node-class.html">
+      Node
+     </a>
+     <br/>
+     Provides shader node graph functionality.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Settings-class.html">
+      Settings
+     </a>
+     <br/>
+     A group of settings.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Light-class.html">
+      Light
+     </a>
+     <br/>
+     An object for creating lighting effects on a 3D mesh.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.AppVersion-class.html">
+      AppVersion
+     </a>
+     <br/>
+     This class contains detailed version information for Mari.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.GLRender-class.html">
+      GLRender
+     </a>
+     <br/>
+     Manages Mari's OpenGL Renderer and associated objects.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.DDI-class.html">
+      DDI
+     </a>
+     <br/>
+     This class gives access to some of the functionality of Mari's 
+        Dynamic Data Interface.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.MenuManager-class.html">
+      MenuManager
+     </a>
+     <br/>
+     Manages creation and manipulation of menu entries.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.GeoManager-class.html">
+      GeoManager
+     </a>
+     <br/>
+     Manages geometry objects in the project.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.NodeGraph-class.html">
+      NodeGraph
+     </a>
+     <br/>
+     Provides shader node graph functionality.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Image-class.html">
+      Image
+     </a>
+     <br/>
+     These objects contain individual 2D images.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Matrix-class.html">
+      Matrix
+     </a>
+     <br/>
+     Objects of this class hold a matrix 4x4.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.QuickProjector-class.html">
+      QuickProjector
+     </a>
+     <br/>
+     Projectors store the specific camera details of a particular view.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.LineEdit-class.html">
+      LineEdit
+     </a>
+     <br/>
+     A numeric slider widget.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.GeometryOperation-class.html">
+      GeometryOperation
+     </a>
+     <br/>
+     This encapsulates a geometry operation that can be performed on a 
+        Geo Entity.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Ptex-class.html">
+      Ptex
+     </a>
+     <br/>
+     Provides
+     <a class="link" href="mari.Ptex-class.html">
+      Ptex
+     </a>
+     image
+        set scripting.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ResourceInfo-class.html">
+      ResourceInfo
+     </a>
+     <br/>
+     This provides access to Mari's resource paths and some related 
+        system functions.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ColorspaceConfig-class.html">
+      ColorspaceConfig
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.WrappedEvent-class.html">
+      WrappedEvent
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.SliderBase-class.html">
+      SliderBase
+     </a>
+     <br/>
+     Base class for a slider widget.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ToolManager-class.html">
+      ToolManager
+     </a>
+     <br/>
+     Provides access to the various interactive user tools.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.PointLight-class.html">
+      PointLight
+     </a>
+     <br/>
+     An object for creating lighting effects on a 3D mesh.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Action-class.html">
+      Action
+     </a>
+     <br/>
+     An action that can be assigned to a menu and/or shortcut.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.History-class.html">
+      History
+     </a>
+     <br/>
+     Provides access to the Mari editing history, or undo stack.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.LightManager-class.html">
+      LightManager
+     </a>
+     <br/>
+     Manages the lights in the scene.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Colors-class.html">
+      Colors
+     </a>
+     <br/>
+     Provides access to various color-related functionality.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ShelfManager-class.html">
+      ShelfManager
+     </a>
+     <br/>
+     This manages the available shelves, or sets of item bookmarks.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.IntSlider-class.html">
+      IntSlider
+     </a>
+     <br/>
+     An integer slider widget.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Palette-class.html">
+      Palette
+     </a>
+     <br/>
+     A dockable widget class.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.BakePointNode-class.html">
+      BakePointNode
+     </a>
+     <br/>
+     Represents node speciailizing in baking result of intermediate 
+        point in the
+     <a class="link" href="mari.NodeGraph-class.html">
+      NodeGraph
+     </a>
+     .
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ProjectManager-class.html">
+      ProjectManager
+     </a>
+     <br/>
+     Handles opening, closing, and general manipulation of projects.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ToolBar-class.html">
+      ToolBar
+     </a>
+     <br/>
+     A tool bar widget.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ActionManager-class.html">
+      ActionManager
+     </a>
+     <br/>
+     Manages creation and manipulation of actions.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.NodeContext-class.html">
+      NodeContext
+     </a>
+     <br/>
+     Provides shader node graph context functionality.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ProjectorManager-class.html">
+      ProjectorManager
+     </a>
+     <br/>
+     This object manages projectors in the project, including creation 
+        and listing.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.VectorN-class.html">
+      VectorN
+     </a>
+     <br/>
+     Objects of this class hold multi-dimensional coordinates.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Shader-class.html">
+      Shader
+     </a>
+     <br/>
+     Provides access to Mari's real-time layer based display shaders.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.NodeManager-class.html">
+      NodeManager
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ImageManager-class.html">
+      ImageManager
+     </a>
+     <br/>
+     Handles the images available in the application.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Color-class.html">
+      Color
+     </a>
+     <br/>
+     Objects of this class hold information about an individual color 
+        value.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.OpenColorIO-class.html">
+      OpenColorIO
+     </a>
+     <br/>
+     Handles the
+     <a class="link" href="mari.OpenColorIO-class.html">
+      OpenColorIO
+     </a>
+     colorspace transforms in the 
+        application.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Snapshot-class.html">
+      Snapshot
+     </a>
+     <br/>
+     A copy of the state of an object at a particular time.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.PaletteManager-class.html">
+      PaletteManager
+     </a>
+     <br/>
+     Manages creation and manipulation of palettes (dockable widgets).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Projector-class.html">
+      Projector
+     </a>
+     <br/>
+     Projectors store the specific camera details of a particular view.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.GroupNode-class.html">
+      GroupNode
+     </a>
+     <br/>
+     Represents an group node.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.EnvironmentLight-class.html">
+      EnvironmentLight
+     </a>
+     <br/>
+     An object for creating lighting effects on a 3D mesh.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.GeoEntityVersion-class.html">
+      GeoEntityVersion
+     </a>
+     <br/>
+     Provides access to an individual version of a geometry entity.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.PropertySource-class.html">
+      PropertySource
+     </a>
+     <br/>
+     This API provides functionality for objects that expose a number of
+        built in properties.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Shelf-class.html">
+      Shelf
+     </a>
+     <br/>
+     A shelf is a place where the user can bookmark objects such as 
+        brushes, images, and colors.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Lockable-class.html">
+      Lockable
+     </a>
+     <br/>
+     Provides an interface to objects within Mari that are lockable and 
+        hidable.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ProjectInfo-class.html">
+      ProjectInfo
+     </a>
+     <br/>
+     Holds preview information about an available project.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ImageProtocolHandler-class.html">
+      ImageProtocolHandler
+     </a>
+     <br/>
+     Abstract class for implementing a custom
+     <a class="link" href="mari.ImageProtocolHandler-class.html">
+      ImageProtocolHandler
+     </a>
+     .
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Project-class.html">
+      Project
+     </a>
+     <br/>
+     Provides access to a currently open project.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ImageOperation-class.html">
+      ImageOperation
+     </a>
+     <br/>
+     These objects are image operations that can be performed on a layer
+        list.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Layer-class.html">
+      Layer
+     </a>
+     <br/>
+     A layer in a
+     <a class="link" href="mari.Channel-class.html">
+      Channel
+     </a>
+     is an image data operation that can be 
+        stacked on top of another layer.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.FloatSlider-class.html">
+      FloatSlider
+     </a>
+     <br/>
+     A floating-point slider widget.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.SelectionGroup-class.html">
+      SelectionGroup
+     </a>
+     <br/>
+     A selection group object.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.PaintNode-class.html">
+      PaintNode
+     </a>
+     <br/>
+     Represents an image set node.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Camera-class.html">
+      Camera
+     </a>
+     <br/>
+     Provides 3D camera settings.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.PostFilterCollection-class.html">
+      PostFilterCollection
+     </a>
+     <br/>
+     A collection of post processing, image space filters.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Tool-class.html">
+      Tool
+     </a>
+     <br/>
+     This is the base API for Mari's viewport tools.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ScriptAction-class.html">
+      ScriptAction
+     </a>
+     <br/>
+     An action to run a Python script, which can be assigned to a menu 
+        and/or shortcut.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Snapshotable-class.html">
+      Snapshotable
+     </a>
+     <br/>
+     An object that can have copies of its state taken at particular 
+        times.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ChannelInfo-class.html">
+      ChannelInfo
+     </a>
+     <br/>
+     Provides information about a channel to create or import.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.AdjustableLayer-class.html">
+      AdjustableLayer
+     </a>
+     <br/>
+     Adjustable layers can be set to apply an adjustment stack to their 
+        image data.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ChannelLayer-class.html">
+      ChannelLayer
+     </a>
+     <br/>
+     <a class="link" href="mari.Channel-class.html">
+      Channel
+     </a>
+     layers 
+        add the image output of a
+     <a class="link" href="mari.Channel-class.html">
+      Channel
+     </a>
+     into another stack as a layer.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ImageSet-class.html">
+      ImageSet
+     </a>
+     <br/>
+     A collection of one or more images or
+     <a class="link" href="mari.Ptex-class.html">
+      Ptex
+     </a>
+     face textures to 
+        be manipulated as a group.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.PostFilter-class.html">
+      PostFilter
+     </a>
+     <br/>
+     A post processing, image space color management filter.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.GraphLayer-class.html">
+      GraphLayer
+     </a>
+     <br/>
+     Graph layers contain an image for each patch that can be painted 
+        directly.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.BakePointLayer-class.html">
+      BakePointLayer
+     </a>
+     <br/>
+     BakePoint layers contain an image for each patch that can be 
+        painted directly.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.GeoPatch-class.html">
+      GeoPatch
+     </a>
+     <br/>
+     A geometry patch is section of a
+     <a class="link" href="mari.GeoEntity-class.html">
+      GeoEntity
+     </a>
+     that 
+        occupies a single UV square.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.PaintBuffer-class.html">
+      PaintBuffer
+     </a>
+     <br/>
+     The paint buffer is the screen aligned plane that users paint onto.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.LocatorEntity-class.html">
+      LocatorEntity
+     </a>
+     <br/>
+     These are the locator object in the "Objects" Gui.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ObjectSelectionGroup-class.html">
+      ObjectSelectionGroup
+     </a>
+     <br/>
+     A specialised selection group that consists of objects.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ShaderLayer-class.html">
+      ShaderLayer
+     </a>
+     <br/>
+     <a class="link" href="mari.Shader-class.html">
+      Shader
+     </a>
+     layers 
+        contain a shader objects in a layer stack.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.AdjustmentLayer-class.html">
+      AdjustmentLayer
+     </a>
+     <br/>
+     Adjustment layers modify the data from the layers below them in the
+        layer stack.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ProjectionManager-class.html">
+      ProjectionManager
+     </a>
+     <br/>
+     Handles settings used to project the paint buffer into a scene.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ChannelSnapshot-class.html">
+      ChannelSnapshot
+     </a>
+     <br/>
+     A copy of the state of a channel at a particular time.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.CanvasManager-class.html">
+      CanvasManager
+     </a>
+     <br/>
+     This object handles the list of canvases, or viewports, available 
+        in the project.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.GroupLayer-class.html">
+      GroupLayer
+     </a>
+     <br/>
+     Group layers contain a stack of other layers to be processed as a 
+        separate unit.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.PatchSelectionGroup-class.html">
+      PatchSelectionGroup
+     </a>
+     <br/>
+     A specialised selection group that consists of patches.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.FileLUTFilter-class.html">
+      FileLUTFilter
+     </a>
+     <br/>
+     A post processing filter that reads a 1D LUT from a file.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ParticleOp-class.html">
+      ParticleOp
+     </a>
+     <br/>
+     Provides
+     <a class="link" href="mari.Particle-class.html">
+      Particle
+     </a>
+     operations chain scripting.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.LayerStack-class.html">
+      LayerStack
+     </a>
+     <br/>
+     This is the interface for creating, traversing and destroying 
+        layers on any part of the layer system that has layer stacks.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.GeoEntity-class.html">
+      GeoEntity
+     </a>
+     <br/>
+     These are the geometric meshes referred to as "Objects" 
+        in the GUI.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ProceduralLayer-class.html">
+      ProceduralLayer
+     </a>
+     <br/>
+     Procedural layers use GPU processing operations to generate image 
+        data.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.CustomLUTFilter-class.html">
+      CustomLUTFilter
+     </a>
+     <br/>
+     A post processing filter that applies a LUT from custom provided 
+        color values.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.FaceSelectionGroup-class.html">
+      FaceSelectionGroup
+     </a>
+     <br/>
+     A specialised selection group that consists of faces.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Channel-class.html">
+      Channel
+     </a>
+     <br/>
+     Channels are collections of layers that combine sets of image data 
+        to display using
+     <a class="link" href="mari.Shader-class.html">
+      Shader
+     </a>
+     objects.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Particle-class.html">
+      Particle
+     </a>
+     <br/>
+     Provides
+     <a class="link" href="mari.Particle-class.html">
+      Particle
+     </a>
+     scripting.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.GLSLFilter-class.html">
+      GLSLFilter
+     </a>
+     <br/>
+     A post processing filter that runs custom GLSL code.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.PaintableLayer-class.html">
+      PaintableLayer
+     </a>
+     <br/>
+     Paintable layers contain an image for each patch that can be 
+        painted directly.
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== VARIABLES ==================== -->
+  <a name="section-Variables">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Variables
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.PatchLinksManager-class.html">
+       PatchLinksManager
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari-module.html#patch_links">
+      patch_links
+     </a>
+     =
+     <code title="PatchLinksManager()">
+      PatchLinksManager()
+     </code>
+     <br/>
+     Handles patch image linking.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Preferences-class.html">
+       Preferences
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari-module.html#prefs">
+      prefs
+     </a>
+     =
+     <code title="Preferences()">
+      Preferences()
+     </code>
+     <br/>
+     Manages retrieval and modification of user preferences.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Application-class.html">
+       Application
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari-module.html#app">
+      app
+     </a>
+     =
+     <code title="Application()">
+      Application()
+     </code>
+     <br/>
+     This object handles basic operations to be performed on the entire 
+      application.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.MenuManager-class.html">
+       MenuManager
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari-module.html#menus">
+      menus
+     </a>
+     =
+     <code title="MenuManager()">
+      MenuManager()
+     </code>
+     <br/>
+     Manages creation and manipulation of menu entries.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.ResourceInfo-class.html">
+       ResourceInfo
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari-module.html#resources">
+      resources
+     </a>
+     =
+     <code title="ResourceInfo()">
+      ResourceInfo()
+     </code>
+     <br/>
+     This provides access to Mari's resource paths and some related system
+      functions.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.ToolManager-class.html">
+       ToolManager
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari-module.html#tools">
+      tools
+     </a>
+     =
+     <code title="ToolManager()">
+      ToolManager()
+     </code>
+     <br/>
+     Provides access to the various interactive user tools.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.ShelfManager-class.html">
+       ShelfManager
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari-module.html#shelves">
+      shelves
+     </a>
+     =
+     <code title="ShelfManager()">
+      ShelfManager()
+     </code>
+     <br/>
+     This manages the available shelves, or sets of item bookmarks.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.ProjectManager-class.html">
+       ProjectManager
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari-module.html#projects">
+      projects
+     </a>
+     =
+     <code title="ProjectManager()">
+      ProjectManager()
+     </code>
+     <br/>
+     Handles opening, closing, and general manipulation of projects.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.ActionManager-class.html">
+       ActionManager
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari-module.html#actions">
+      actions
+     </a>
+     =
+     <code title="ActionManager()">
+      ActionManager()
+     </code>
+     <br/>
+     Manages creation and manipulation of actions.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.ProjectorManager-class.html">
+       ProjectorManager
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari-module.html#projectors">
+      projectors
+     </a>
+     =
+     <code title="ProjectorManager()">
+      ProjectorManager()
+     </code>
+     <br/>
+     This object manages projectors in the project, including creation and
+      listing.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.PaletteManager-class.html">
+       PaletteManager
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari-module.html#palettes">
+      palettes
+     </a>
+     =
+     <code title="PaletteManager()">
+      PaletteManager()
+     </code>
+     <br/>
+     Manages creation and manipulation of palettes (dockable widgets).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.ProjectionManager-class.html">
+       ProjectionManager
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <a name="projection">
+     </a>
+     <span class="summary-name">
+      projection
+     </span>
+     =
+     <code title="ProjectionManager()">
+      ProjectionManager()
+     </code>
+     <br/>
+     Handles settings used to project the paint buffer into a scene.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.CanvasManager-class.html">
+       CanvasManager
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari-module.html#canvases">
+      canvases
+     </a>
+     =
+     <code title="CanvasManager()">
+      CanvasManager()
+     </code>
+     <br/>
+     This object handles the list of canvases, or viewports, available in 
+      the project.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="__package__">
+     </a>
+     <span class="summary-name">
+      __package__
+     </span>
+     =
+     <code title="'mari'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       mari
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== VARIABLES DETAILS ==================== -->
+  <a name="section-VariablesDetails">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Variables Details
+     </span>
+    </td>
+   </tr>
+  </table>
+  <a name="patch_links">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       patch_links
+      </h3>
+      Handles patch image linking.
+      <p>
+       Using this manager, you can create and managed named groups of linked 
+  images. Linked patches share their underlying image contents, so if you 
+  paint on one linked patch, all other linked patches are updated.
+      </p>
+      <p>
+       Currently, the API restricts linkage to
+       <a class="link" href="mari.Image-class.html">
+        Image
+       </a>
+       objects on the same
+       <a class="link" href="mari.ImageSet-class.html">
+        ImageSet
+       </a>
+       . At some 
+  point in the future, which restriction will be removed. Some methods 
+  require an seemingly redundant
+       <a class="link" href="mari.ImageSet-class.html">
+        ImageSet
+       </a>
+       parameter to make provision for such a 
+  change.
+      </p>
+      <p>
+       <b>
+        Example Code
+       </b>
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This example creates a patch link between 1001 and 1011</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>geo = mari.geo.current()
+<span class="py-prompt">&gt;&gt;&gt; </span>patch_1001 = geo.patch(0)
+<span class="py-prompt">&gt;&gt;&gt; </span>patch_1011 = geo.patch(10)
+<span class="py-prompt">&gt;&gt;&gt; </span>layer = geo.currentChannel().createPaintableLayer(<span class="py-string">"Test"</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>mari.patch_links.linkPatches([patch_1001,patch_1011],<span class="py-string">"Test Link"</span>,layer.imageSet())
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> mari.patch_links.groupNamesForImageSet(layer.imageSet())[0]
+<span class="py-output">Test Link</span></pre>
+      <dl class="fields">
+       <dt>
+        Type:
+       </dt>
+       <dd>
+        <a class="link" href="mari.PatchLinksManager-class.html">
+         PatchLinksManager
+        </a>
+       </dd>
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+PatchLinksManager()
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="prefs">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       prefs
+      </h3>
+      Manages retrieval and modification of user preferences.
+      <p>
+       Mari separates preferences in groups and subgroups. In the preference 
+  dialog, a group is represented by a tab, and a subgroup by a group 
+  box.
+      </p>
+      <p>
+       Preference groups and individual preferences are accessed in a similar
+  way to a folder and file structure. For example, calling
+       <code>
+        list()
+       </code>
+       might return
+       <code>
+        ('Data/', 'Scripts/')
+       </code>
+       , and
+  their subgroups could be displayed by calling
+       <code>
+        list('Data')
+       </code>
+       .
+      </p>
+      <p>
+       All preferences have a group and subgroup, so values will always be 
+  accessed in the form:
+      </p>
+      <p>
+       <b>
+        Example Code
+       </b>
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>original_autosave_interval = mari.prefs.get(<span class="py-string">'Data/Autosave/autosaveInterval'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>mari.prefs.set(<span class="py-string">'Data/Autosave/autosaveInterval'</span>,15)
+<span class="py-prompt">&gt;&gt;&gt; </span>mari.prefs.get(<span class="py-string">'Data/Autosave/autosaveInterval'</span>)
+<span class="py-output">15</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>mari.prefs.set(<span class="py-string">'Data/Autosave/autosaveInterval'</span>,original_autosave_interval)</pre>
+      <dl class="fields">
+       <dt>
+        Type:
+       </dt>
+       <dd>
+        <a class="link" href="mari.Preferences-class.html">
+         Preferences
+        </a>
+       </dd>
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+Preferences()
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="app">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       app
+      </h3>
+      This object handles basic operations to be performed on the entire 
+  application.
+      <p>
+       <b>
+        Example Code
+       </b>
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This example prints out "Hello World" to the application log</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>mari.app.log(<span class="py-string">"Hello World"</span>)</pre>
+      <dl class="fields">
+       <dt>
+        Type:
+       </dt>
+       <dd>
+        <a class="link" href="mari.Application-class.html">
+         Application
+        </a>
+       </dd>
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+Application()
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="menus">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       menus
+      </h3>
+      Manages creation and manipulation of menu entries.
+      <p>
+       The menu manager creates and manipulates entries on the menus.
+      </p>
+      <p>
+       Menu paths are all split into three components: the "set" 
+  (e.g. "MainWindow" for the main window menu), the 
+  "root" (e.g. "File", potentially with an 
+  "&amp;" in it for the shortcut key), and the 
+  "submenu" (an optional menu under that, such as 
+  "Open", also possibly containing "&amp;" characters).
+  This split will be made automatically by the various menu functions, but 
+  it is necessary to supply at least a set and a root to add an action.
+      </p>
+      <p>
+       Path elements should be separated by slashes, and any leading slash is
+  ignored - so using either "MainWindow/File" or 
+  "/MainWindow/File" is equivalent.
+      </p>
+      <p>
+       <b>
+        Example Code
+       </b>
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This example finds the "Print Hello" action from registered actions and add it to the menus</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>action = mari.actions.find(<span class="py-string">"Mari/Scripts/MyCustomActions/Print Hello"</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment">#mari.menus.addAction(action,"MainWindow/P&amp;ython/&amp;Examples")</span></pre>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This example removes the "Print Hello" action from the menus</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment">#mari.menus.removeAction("MainWindow/P&amp;ython/&amp;Examples/Print Hello")</span></pre>
+      <dl class="fields">
+       <dt>
+        Type:
+       </dt>
+       <dd>
+        <a class="link" href="mari.MenuManager-class.html">
+         MenuManager
+        </a>
+       </dd>
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+MenuManager()
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="resources">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       resources
+      </h3>
+      This provides access to Mari's resource paths and some related system 
+  functions.
+      <p>
+       The paths supplied should be accessed using a string identifier 
+  returned from one of the appropriate functions. Note that new paths 
+  cannot currently be registered through scripting.
+      </p>
+      <p>
+       The current value of a path can be accessed with code like the 
+  following:
+       <code>
+        mari.resources.path(mari.resources.USER_SCRIPTS)
+       </code>
+      </p>
+      <p>
+       Many paths can be overridden by environment variables that match their
+  string identifiers. For example,
+       <code>
+        mari.resources.USER_SCRIPTS
+       </code>
+       is set to the string "MARI_SCRIPT_PATH", and if an environment 
+  variable with that name is found when Mari launches, the user scripts 
+  path will be set to its contents.
+      </p>
+      <p>
+       The paths that can be modified by users will generally have string 
+  identifiers that begin with "MARI_", which also makes the 
+  environment variables clearer. Alternatively, an individual path can be 
+  checked for modifiability by calling
+       <code>
+        mari.scripts.setPath()
+       </code>
+       on it; the function will raise an exception if the path is not 
+  user-modifiable.
+      </p>
+      <p>
+       <b>
+        Example Code
+       </b>
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This example shows how to obtain the path to example directory</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>example_dir_path = mari.resources.path(mari.resources.EXAMPLES)</pre>
+      <dl class="fields">
+       <dt>
+        Type:
+       </dt>
+       <dd>
+        <a class="link" href="mari.ResourceInfo-class.html">
+         ResourceInfo
+        </a>
+       </dd>
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+ResourceInfo()
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="tools">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       tools
+      </h3>
+      Provides access to the various interactive user tools.
+      <p>
+       <b>
+        Example Code
+       </b>
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This example shows how to print the name of the current tool</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> mari.tools.current()
+<span class="py-output">Paint (P)</span></pre>
+      <dl class="fields">
+       <dt>
+        Type:
+       </dt>
+       <dd>
+        <a class="link" href="mari.ToolManager-class.html">
+         ToolManager
+        </a>
+       </dd>
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+ToolManager()
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="shelves">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       shelves
+      </h3>
+      This manages the available shelves, or sets of item bookmarks.
+      <p>
+       <b>
+        Example Code
+       </b>
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This example shows how to obtain the "Personal" shelf</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>personal_shelf = mari.shelves.find(<span class="py-string">"Personal"</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> personal_shelf.className()
+<span class="py-output">Shelf</span></pre>
+      <dl class="fields">
+       <dt>
+        Type:
+       </dt>
+       <dd>
+        <a class="link" href="mari.ShelfManager-class.html">
+         ShelfManager
+        </a>
+       </dd>
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+ShelfManager()
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="projects">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       projects
+      </h3>
+      Handles opening, closing, and general manipulation of projects.
+      <p>
+       Information about the available projects can be obtained using the
+       <code class="link">
+        list()
+       </code>
+       method. This returns
+       <a class="link" href="mari.ProjectInfo-class.html">
+        ProjectInfo
+       </a>
+       objects 
+  to describe the projects can be opened. These projects will only be 
+  available as
+       <a class="link" href="mari.Project-class.html">
+        Project
+       </a>
+       objects after opening.
+      </p>
+      <p>
+       <b>
+        Example Code
+       </b>
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This example shows how to obtain the Project object representing the current project</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>project = mari.projects.current()</pre>
+      <dl class="fields">
+       <dt>
+        Type:
+       </dt>
+       <dd>
+        <a class="link" href="mari.ProjectManager-class.html">
+         ProjectManager
+        </a>
+       </dd>
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+ProjectManager()
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="actions">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       actions
+      </h3>
+      Manages creation and manipulation of actions.
+      <p>
+       This class creates and manipulates Mari actions, which are used as 
+  menu commands, and can have shortcut keys bound to them. By default, any 
+  action created through scripting will be in the "/Mari/Scripts"
+  path, but this can be customized if there is any need to avoid 
+  clashes.
+      </p>
+      <p>
+       Mari stores all of the available actions in a tree, and actions are 
+  identified by their path within this tree. For example, 
+  "/Mari/Tools/TestTool" refers to an action called TestTool in a
+  subsection called Tools.
+      </p>
+      <p>
+       <b>
+        Example Code
+       </b>
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This example creates an action through mari.actions(ActionManager singleton instance) to print "Hello World" to the log and executes the action</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>action = mari.actions.create(<span class="py-string">"MyCustomActions/Print Hello"</span>,<span class="py-string">"mari.app.log('Hello World')"</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>action.trigger()</pre>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This example finds the action and executes it</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>action = mari.actions.find(<span class="py-string">"Mari/Scripts/MyCustomActions/Print Hello"</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>action.trigger()</pre>
+      <dl class="fields">
+       <dt>
+        Type:
+       </dt>
+       <dd>
+        <a class="link" href="mari.ActionManager-class.html">
+         ActionManager
+        </a>
+       </dd>
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+ActionManager()
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="projectors">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       projectors
+      </h3>
+      This object manages projectors in the project, including creation and 
+  listing.
+      <p>
+       <b>
+        Example Code
+       </b>
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This examples shows how to create a new projector</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>projector = mari.projectors.create(<span class="py-string">"Test Projector"</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> projector.name()
+<span class="py-output">Test Projector</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>mari.projectors.remove(projector.name())</pre>
+      <dl class="fields">
+       <dt>
+        Type:
+       </dt>
+       <dd>
+        <a class="link" href="mari.ProjectorManager-class.html">
+         ProjectorManager
+        </a>
+       </dd>
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+ProjectorManager()
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="palettes">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       palettes
+      </h3>
+      Manages creation and manipulation of palettes (dockable widgets).
+      <p>
+       Palettes are dockable widgets that can be moved around and configured 
+  by the user.
+      </p>
+      <p>
+       <b>
+        Example Code
+       </b>
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This example shows how to create a palette with a label</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari, PySide
+<span class="py-prompt">&gt;&gt;&gt; </span>label = PySide.QtGui.QLabel(<span class="py-string">"Hello World"</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>new_palette = mari.palettes.create(<span class="py-string">"Hello Palette"</span>,label)
+<span class="py-prompt">&gt;&gt;&gt; </span>mari.palettes.remove(new_palette.name());</pre>
+      <dl class="fields">
+       <dt>
+        Type:
+       </dt>
+       <dd>
+        <a class="link" href="mari.PaletteManager-class.html">
+         PaletteManager
+        </a>
+       </dd>
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+PaletteManager()
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="canvases">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       canvases
+      </h3>
+      This object handles the list of canvases, or viewports, available in the 
+  project.
+      <p>
+       <b>
+        Example Code:
+       </b>
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This example shows how to access the current canvas object and to print canvas size to the application log</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>canvas = mari.canvases.current()
+<span class="py-prompt">&gt;&gt;&gt; </span>mari.app.log(str(canvas.size()))</pre>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This example show hot obtain the list of canvases</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>canvases = mari.canvases.list()</pre>
+      <dl class="fields">
+       <dt>
+        Type:
+       </dt>
+       <dd>
+        <a class="link" href="mari.CanvasManager-class.html">
+         CanvasManager
+        </a>
+       </dd>
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+CanvasManager()
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

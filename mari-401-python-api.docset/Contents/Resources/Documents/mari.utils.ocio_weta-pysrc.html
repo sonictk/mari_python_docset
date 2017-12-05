@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.utils.ocio_weta
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.utils-module.html">
+       Package&nbsp;utils
+      </a>
+      ::
+        Module&nbsp;ocio_weta
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.utils.ocio_weta-pysrc.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <h1 class="epydoc">
+   Source Code for
+   <a href="mari.utils.ocio_weta-module.html">
+    Module mari.utils.ocio_weta
+   </a>
+  </h1>
+  <pre class="py-src">
+&iuml;&raquo;&iquest;#-------------------------------------------------------------------------------
+# OpenColorIO (color management) related Weta scripts
+# coding: utf-8
+# Copyright (c) 2016 The Foundry Visionmongers Ltd.  All Rights Reserved.
+#-------------------------------------------------------------------------------
+
+import PySide2.QtWidgets, sys, os, mari
+
+from signal_helpers import connect, disconnect
+
+#---------------------------------------------------------------------------------------------
+
+def onColorspaceConfigChanged(var):
+    channel = mari.current.channel()
+    color_space = "wetaWideGamut"
+    if channel.depth() == mari.Image.DEPTH_BYTE and channel.colorspaceConfig().raw():
+        color_space = "sRGB_wetaWideGamut"
+    mari.system._ocio_toolbar.toolbar._color_space = color_space
+    mari.system._ocio_toolbar.toolbar._rebuildDisplayFilter()
+
+#---------------------------------------------------------------------------------------------
+
+prev_ch = None
+def onChannelMadeCurrent(channel):
+    channel = mari.current.channel()
+    global prev_ch
+    if prev_ch is not None:
+        disconnect(prev_ch.colorspaceConfigChanged, onColorspaceConfigChanged)
+    prev_ch = channel
+    connect(channel.colorspaceConfigChanged, onColorspaceConfigChanged)
+    onColorspaceConfigChanged(channel)
+
+#---------------------------------------------------------------------------------------------
+
+prev_geo = None
+def onEntityMadeCurrent(entity):
+    geo = mari.geo.current()
+    global prev_geo
+    if prev_geo is not None:
+        disconnect(prev_geo.channelMadeCurrent, onChannelMadeCurrent)
+    prev_geo = geo
+    connect( geo.channelMadeCurrent, onChannelMadeCurrent)
+    channel = mari.current.channel()
+    if channel is not None:
+        onChannelMadeCurrent(channel)
+
+#---------------------------------------------------------------------------------------------
+
+prev_proj = None
+def projectMadeCurrent( project ):
+    proj = mari.current.project()
+    global prev_proj
+    if prev_proj is not None:
+        disconnect(mari.geo.entityMadeCurrent, onEntityMadeCurrent)
+    prev_proj = proj
+    connect(mari.geo.entityMadeCurrent, onEntityMadeCurrent)
+    geo = mari.geo.current()
+    if geo is not None:
+        onEntityMadeCurrent(geo)
+
+    checkChromaticities()
+
+#---------------------------------------------------------------------------------------------
+
+def saveChromaticity(colorspace, name, c):
+    chromaticity_x = c.r() / (c.r()+c.g() + c.b())
+    chromaticity_y = c.g() / (c.r()+c.g() + c.b())
+    p = mari.current.project()
+    p.setMetadata(colorspace + "." + name + ".x", chromaticity_x)
+    p.setMetadataFlags(colorspace + "." + name + ".x", mari.Metadata.METADATA_SAVED | mari.Metadata.METADATA_VISIBLE)
+    p.setMetadata(colorspace + "." + name + ".y", chromaticity_y)
+
+#---------------------------------------------------------------------------------------------
+
+def saveChromaticities():
+    colorspaceList = []
+    for ch in mari.geo.current().channelList():
+        csc = ch.colorspaceConfig()
+        cs = csc.resolveColorspace(mari.ColorspaceConfig.COLORSPACE_STAGE_NATIVE)
+        colorspaceList.append(cs)
+
+    colorspaceList = set(colorspaceList)
+
+    for cs in colorspaceList:
+        p = mari.current.project()
+        ocio_file = p.colorspaceDefaults().fileName()
+        c = mari.ocio.transformColor(ocio_file, cs, "XYZGamut", mari.Color(1, 0, 0))
+        saveChromaticity(cs, 'red', c)
+        c = mari.ocio.transformColor(ocio_file, cs, "XYZGamut", mari.Color(0, 1, 0))
+        saveChromaticity(cs, 'blue', c)
+        c = mari.ocio.transformColor(ocio_file, cs, "XYZGamut", mari.Color(0, 0, 1))
+        saveChromaticity(cs, 'green', c)
+        c = mari.ocio.transformColor(ocio_file, cs, "XYZGamut", mari.Color(1, 1, 1))
+        saveChromaticity(cs, 'white', c)
+
+#---------------------------------------------------------------------------------------------
+
+def checkChromaticity(colorspace, name, c):
+    chromaticity_x = c.r() / (c.r()+c.g() + c.b())
+    chromaticity_y = c.g() / (c.r()+c.g() + c.b())
+
+    p = mari.current.project()
+
+    if not p.hasMetadata(colorspace + "." + name + "." + "x"):
+        return True
+    chromaticity_x_stored = p.metadata(colorspace + "." + name + "." + "x")
+
+    if not p.hasMetadata(colorspace + "." + name + "." + "y"):
+        return True
+    chromaticity_y_stored = p.metadata(colorspace + "." + name + "." + "y")
+
+    if str(chromaticity_x_stored) == str(chromaticity_x) and str(chromaticity_y_stored) == str(chromaticity_y):
+        return True
+    else:
+        return False
+
+#---------------------------------------------------------------------------------------------
+
+def checkChromaticities():
+    colorspaceList = []
+    for ch in mari.geo.current().channelList():
+        csc = ch.colorspaceConfig()
+        cs = csc.resolveColorspace(mari.ColorspaceConfig.COLORSPACE_STAGE_NATIVE)
+        colorspaceList.append(cs)
+
+    colorspaceList = set(colorspaceList)
+
+    p = mari.current.project()
+
+    ocio_file = p.colorspaceDefaults().fileName()
+
+    for cs in colorspaceList:
+        c = mari.ocio.transformColor(ocio_file, cs, "XYZGamut", mari.Color(1, 0, 0))
+        all_good = checkChromaticity(cs, 'red', c)
+        c = mari.ocio.transformColor(ocio_file, cs, "XYZGamut", mari.Color(0, 1, 0))
+        changed = all_good and checkChromaticity(cs, 'blue', c)
+        c = mari.ocio.transformColor(ocio_file, cs, "XYZGamut", mari.Color(0, 0, 1))
+        changed = all_good and checkChromaticity(cs, 'green', c)
+        c = mari.ocio.transformColor(ocio_file, cs, "XYZGamut", mari.Color(1, 1, 1))
+        changed = all_good and checkChromaticity(cs, 'white', c)
+
+        if not all_good:
+            warning_msg = 'chromaticities have changed for: ' + cs
+            printMessage(MessageType.WARNING, warning_msg)
+            if not mari.app.inTerminalMode():
+                PySide2.QtWidgets.QMessageBox.warning(None, 'Colorspace', warning_msg)
+
+#---------------------------------------------------------------------------------------------
+
+if mari.app.isRunning():
+    connect(mari.projects.opened,             projectMadeCurrent)
+    connect(mari.projects.aboutToSaveProject, saveChromaticities)
+<script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

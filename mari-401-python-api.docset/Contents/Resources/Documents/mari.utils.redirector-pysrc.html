@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.utils.redirector
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.utils-module.html">
+       Package&nbsp;utils
+      </a>
+      ::
+        Module&nbsp;redirector
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.utils.redirector-pysrc.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <h1 class="epydoc">
+   Source Code for
+   <a href="mari.utils.redirector-module.html">
+    Module mari.utils.redirector
+   </a>
+  </h1>
+  <pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"># Stream redirection (for stdin, etc)</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-comment"># coding: utf-8</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-comment"># Copyright (c) 2010 The Foundry Visionmongers Ltd.  All Rights Reserved.</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="StreamRedirector"></a><div id="StreamRedirector-def"><a name="L8"></a><tt class="py-lineno"> 8</tt> <a class="py-toggle" href="#" id="StreamRedirector-toggle" onclick="return toggle('StreamRedirector');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="mari.utils.redirector.StreamRedirector-class.html">StreamRedirector</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StreamRedirector-collapsed" indent="++++" pad="++" style="display:none;"></div><div id="StreamRedirector-expanded"><a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line">    <tt class="py-docstring">"This class redirects specific methods of the given stream."</tt> </tt>
+<a name="StreamRedirector.__init__"></a><div id="StreamRedirector.__init__-def"><a name="L10"></a><tt class="py-lineno">10</tt> <a class="py-toggle" href="#" id="StreamRedirector.__init__-toggle" onclick="return toggle('StreamRedirector.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.utils.redirector.StreamRedirector-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">stream</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StreamRedirector.__init__-collapsed" indent="++++++++" pad="++" style="display:none;"></div><div id="StreamRedirector.__init__-expanded"><a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line">        <tt class="py-name">file_methods</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'fileno'</tt><tt class="py-op">,</tt> <tt class="py-string">'flush'</tt><tt class="py-op">,</tt> <tt class="py-string">'isatty'</tt><tt class="py-op">,</tt> <tt class="py-string">'read'</tt><tt class="py-op">,</tt> <tt class="py-string">'readline'</tt><tt class="py-op">,</tt> <tt class="py-string">'readlines'</tt><tt class="py-op">,</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">                        <tt class="py-string">'seek'</tt><tt class="py-op">,</tt> <tt class="py-string">'tell'</tt><tt class="py-op">,</tt> <tt class="py-string">'write'</tt><tt class="py-op">,</tt> <tt class="py-string">'writelines'</tt><tt class="py-op">,</tt> <tt class="py-string">'xreadlines'</tt><tt class="py-op">,</tt> <tt class="py-string">'__iter__'</tt><tt class="py-op">)</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">method</tt> <tt class="py-keyword">in</tt> <tt class="py-name">file_methods</tt><tt class="py-op">:</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">hasattr</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">method</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> <tt class="py-name">hasattr</tt><tt class="py-op">(</tt><tt class="py-name" id="link-0" targets="Method mari.utils.redirector.StreamRedirector.stream()=mari.utils.redirector.StreamRedirector-class.html#stream"><a class="py-name" href="#" onclick="return doclink('link-0', 'stream', 'link-0');" title="mari.utils.redirector.StreamRedirector.stream">stream</a></tt><tt class="py-op">,</tt> <tt class="py-name">method</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">                <tt class="py-name">setattr</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">method</tt><tt class="py-op">,</tt> <tt class="py-name">getattr</tt><tt class="py-op">(</tt><tt class="py-name" id="link-1"><a class="py-name" href="#" onclick="return doclink('link-1', 'stream', 'link-0');" title="mari.utils.redirector.StreamRedirector.stream">stream</a></tt><tt class="py-op">,</tt> <tt class="py-name">method</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">saved_stream</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-2"><a class="py-name" href="#" onclick="return doclink('link-2', 'stream', 'link-0');" title="mari.utils.redirector.StreamRedirector.stream">stream</a></tt> </tt>
+</div><a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">     </tt>
+<a name="StreamRedirector.close"></a><div id="StreamRedirector.close-def"><a name="L18"></a><tt class="py-lineno">18</tt> <a class="py-toggle" href="#" id="StreamRedirector.close-toggle" onclick="return toggle('StreamRedirector.close');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.utils.redirector.StreamRedirector-class.html#close">close</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StreamRedirector.close-collapsed" indent="++++++++" pad="++" style="display:none;"></div><div id="StreamRedirector.close-expanded"><a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">flush</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="StreamRedirector.stream"></a><div id="StreamRedirector.stream-def"><a name="L20"></a><tt class="py-lineno">20</tt> <a class="py-toggle" href="#" id="StreamRedirector.stream-toggle" onclick="return toggle('StreamRedirector.stream');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.utils.redirector.StreamRedirector-class.html#stream">stream</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StreamRedirector.stream-collapsed" indent="++++++++" pad="++" style="display:none;"></div><div id="StreamRedirector.stream-expanded"><a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">saved_stream</tt> </tt>
+</div></div><a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="InputStreamRedirector"></a><div id="InputStreamRedirector-def"><a name="L24"></a><tt class="py-lineno">24</tt> <a class="py-toggle" href="#" id="InputStreamRedirector-toggle" onclick="return toggle('InputStreamRedirector');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="mari.utils.redirector.InputStreamRedirector-class.html">InputStreamRedirector</a><tt class="py-op">(</tt><tt class="py-base-class">StreamRedirector</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="InputStreamRedirector-collapsed" indent="++++" pad="++" style="display:none;"></div><div id="InputStreamRedirector-expanded"><a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">    <tt class="py-docstring">"This class prevents an input stream from reading any line data."</tt> </tt>
+<a name="InputStreamRedirector.readline"></a><div id="InputStreamRedirector.readline-def"><a name="L26"></a><tt class="py-lineno">26</tt> <a class="py-toggle" href="#" id="InputStreamRedirector.readline-toggle" onclick="return toggle('InputStreamRedirector.readline');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.utils.redirector.InputStreamRedirector-class.html#readline">readline</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="InputStreamRedirector.readline-collapsed" indent="++++++++" pad="++" style="display:none;"></div><div id="InputStreamRedirector.readline-expanded"><a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-string">''</tt> </tt>
+</div></div><a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

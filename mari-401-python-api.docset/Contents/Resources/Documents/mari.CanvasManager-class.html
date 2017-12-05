@@ -1,0 +1,1530 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.CanvasManager
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+        Class&nbsp;CanvasManager
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.CanvasManager-class.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS DESCRIPTION ==================== -->
+  <h1 class="epydoc">
+   Class CanvasManager
+  </h1>
+  <p class="nomargin-top">
+   <span class="codelink">
+    <a href="mari-pysrc.html#CanvasManager">
+     source&nbsp;code
+    </a>
+   </span>
+  </p>
+  <pre class="base-tree">
+object --+        
+         |        
+  <a href="mari.Metadata-class.html">Metadata</a> --+    
+             |    
+<a href="mari.PropertySource-class.html">PropertySource</a> --+
+                 |
+                <strong class="uidshort">CanvasManager</strong>
+</pre>
+  <hr/>
+  <p>
+   This object handles the list of canvases, or viewports, available in 
+  the project.
+  </p>
+  <p>
+   <b>
+    Example Code:
+   </b>
+  </p>
+  <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This example shows how to access the current canvas object and to print canvas size to the application log</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>canvas = mari.canvases.current()
+<span class="py-prompt">&gt;&gt;&gt; </span>mari.app.log(str(canvas.size()))</pre>
+  <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This example show hot obtain the list of canvases</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>canvases = mari.canvases.list()</pre>
+  <!-- ==================== NESTED CLASSES ==================== -->
+  <a name="section-NestedClasses">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Nested Classes
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata.MetadataFlag-class.html">
+        MetadataFlag
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata.MetadataGroupHint-class.html">
+        MetadataGroupHint
+       </a>
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== INSTANCE METHODS ==================== -->
+  <a name="section-InstanceMethods">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Instance Methods
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Canvas-class.html">
+       Canvas
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.CanvasManager-class.html#current">
+          current
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the interface to the current canvas.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#CanvasManager.current">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      float
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.CanvasManager-class.html#fps">
+          fps
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the current frame rate.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#CanvasManager.fps">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of
+      <a class="link" href="mari.Canvas-class.html">
+       Canvas
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.CanvasManager-class.html#list">
+          list
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a list of the available canvases as
+        <a class="link" href="mari.Canvas-class.html">
+         Canvas
+        </a>
+        objects.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#CanvasManager.list">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.PaintBuffer-class.html">
+       PaintBuffer
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.CanvasManager-class.html#paintBuffer">
+          paintBuffer
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the current paint buffer.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#CanvasManager.paintBuffer">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.CanvasManager-class.html#setPauseShaderCompiles">
+          setPauseShaderCompiles
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Pause
+         </span>
+         )
+        </span>
+        <br/>
+        Toggles shader compilation on the canvas.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#CanvasManager.setPauseShaderCompiles">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of  int
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.CanvasManager-class.html#size">
+          size
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the dimensions of every canvas, in pixels.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#CanvasManager.size">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.PropertySource-class.html">
+         PropertySource
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.PropertySource-class.html#canResetProperty">
+        canResetProperty
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.PropertySource-class.html#getProperty">
+        getProperty
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.PropertySource-class.html#propertiesList">
+        propertiesList
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.PropertySource-class.html#propertyDisplayName">
+        propertyDisplayName
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.PropertySource-class.html#propertyEnumValues">
+        propertyEnumValues
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.PropertySource-class.html#propertyHasMinMax">
+        propertyHasMinMax
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.PropertySource-class.html#propertyIsEnum">
+        propertyIsEnum
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.PropertySource-class.html#propertyIsReadOnly">
+        propertyIsReadOnly
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.PropertySource-class.html#propertyMinMax">
+        propertyMinMax
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.PropertySource-class.html#propertyTooltip">
+        propertyTooltip
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.PropertySource-class.html#resetProperty">
+        resetProperty
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.PropertySource-class.html#setProperty">
+        setProperty
+       </a>
+      </code>
+     </p>
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata-class.html#hasMetadata">
+        hasMetadata
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadata">
+        metadata
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataAsImage">
+        metadataAsImage
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataDefault">
+        metadataDefault
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataDescription">
+        metadataDescription
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataDisplayName">
+        metadataDisplayName
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataFlags">
+        metadataFlags
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataIsEnabled">
+        metadataIsEnabled
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataItemList">
+        metadataItemList
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataMax">
+        metadataMax
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataMin">
+        metadataMin
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataNames">
+        metadataNames
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataStep">
+        metadataStep
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#removeMetadata">
+        removeMetadata
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadata">
+        setMetadata
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataDefault">
+        setMetadataDefault
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataDescription">
+        setMetadataDescription
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataDisplayName">
+        setMetadataDisplayName
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataEnabled">
+        setMetadataEnabled
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataFlags">
+        setMetadataFlags
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataGroupHints">
+        setMetadataGroupHints
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataItemList">
+        setMetadataItemList
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataRange">
+        setMetadataRange
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataStep">
+        setMetadataStep
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#uuid">
+        uuid
+       </a>
+      </code>
+     </p>
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __delattr__
+      </code>
+      ,
+      <code>
+       __format__
+      </code>
+      ,
+      <code>
+       __getattribute__
+      </code>
+      ,
+      <code>
+       __hash__
+      </code>
+      ,
+      <code>
+       __init__
+      </code>
+      ,
+      <code>
+       __new__
+      </code>
+      ,
+      <code>
+       __reduce__
+      </code>
+      ,
+      <code>
+       __reduce_ex__
+      </code>
+      ,
+      <code>
+       __repr__
+      </code>
+      ,
+      <code>
+       __setattr__
+      </code>
+      ,
+      <code>
+       __sizeof__
+      </code>
+      ,
+      <code>
+       __str__
+      </code>
+      ,
+      <code>
+       __subclasshook__
+      </code>
+     </p>
+    </td>
+   </tr>
+   <tr bgcolor="#e8f0f8">
+    <th class="group-header" colspan="2">
+     &nbsp;&nbsp;&nbsp;&nbsp;Signals
+    </th>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.CanvasManager-class.html#aboutToRenderCanvas">
+          aboutToRenderCanvas
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          CanvasToDraw
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted when a canvas is about to be drawn.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#CanvasManager.aboutToRenderCanvas">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.CanvasManager-class.html#renderError">
+          renderError
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          ErrorCanvas
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          ErrorMessages
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted whenever a rendering error occurs in one of the 
+      canvases.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#CanvasManager.renderError">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.CanvasManager-class.html#renderedCanvas">
+          renderedCanvas
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          CanvasDrawn
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted when a canvas has just been drawn.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#CanvasManager.renderedCanvas">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata-class.html#metadataCreated">
+        metadataCreated
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataRemoved">
+        metadataRemoved
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataValueChanged">
+        metadataValueChanged
+       </a>
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== STATIC METHODS ==================== -->
+  <a name="section-StaticMethods">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Static Methods
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata-class.html#isSupportedMetadataType">
+        isSupportedMetadataType
+       </a>
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS VARIABLES ==================== -->
+  <a name="section-ClassVariables">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Class Variables
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_EDITABLE">
+        METADATA_EDITABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_GROUP_HINT_DISPLAY">
+        METADATA_GROUP_HINT_DISPLAY
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_GROUP_HINT_SORTABLE">
+        METADATA_GROUP_HINT_SORTABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_REMOVABLE">
+        METADATA_REMOVABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_REMOVEABLE">
+        METADATA_REMOVEABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_SAVED">
+        METADATA_SAVED
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_UNDOABLE">
+        METADATA_UNDOABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_VISIBLE">
+        METADATA_VISIBLE
+       </a>
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== PROPERTIES ==================== -->
+  <a name="section-Properties">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Properties
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __class__
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== METHOD DETAILS ==================== -->
+  <a name="section-MethodDetails">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Method Details
+     </span>
+    </td>
+   </tr>
+  </table>
+  <a name="aboutToRenderCanvas">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            aboutToRenderCanvas
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            CanvasToDraw
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#CanvasManager.aboutToRenderCanvas">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted when a canvas is about to be drawn.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            CanvasToDraw
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Canvas-class.html">
+           Canvas
+          </a>
+          ) - The canvas about to be drawn
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="current">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            current
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#CanvasManager.current">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the interface to the current canvas.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns:
+        <a class="link" href="mari.Canvas-class.html">
+         Canvas
+        </a>
+       </dt>
+       <dd>
+        The currently active canvas, or None if no canvas is active.
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="fps">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            fps
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#CanvasManager.fps">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the current frame rate.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: float
+       </dt>
+       <dd>
+        The rate at which the canvas is being updated, in frames per 
+          second
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="list">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            list
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#CanvasManager.list">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns a list of the available canvases as
+       <a class="link" href="mari.Canvas-class.html">
+        Canvas
+       </a>
+       objects.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: list of
+        <a class="link" href="mari.Canvas-class.html">
+         Canvas
+        </a>
+       </dt>
+       <dd>
+        A list of objects describing the available canvases
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="paintBuffer">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            paintBuffer
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#CanvasManager.paintBuffer">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the current paint buffer.
+      </p>
+      <p>
+       The paint buffer is the transparent, screen-aligned plane that users 
+  paint into.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns:
+        <a class="link" href="mari.PaintBuffer-class.html">
+         PaintBuffer
+        </a>
+       </dt>
+       <dd>
+        The current paint buffer
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="renderError">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            renderError
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            ErrorCanvas
+           </span>
+           ,
+           <span class="sig-arg">
+            ErrorMessages
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#CanvasManager.renderError">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted whenever a rendering error occurs in one of the 
+  canvases.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            ErrorCanvas
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Canvas-class.html">
+           Canvas
+          </a>
+          ) - The canvas where the errors have occurred
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            ErrorMessages
+           </code>
+          </strong>
+          (list of str) - The descriptions of the errors that have occurred
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="renderedCanvas">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            renderedCanvas
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            CanvasDrawn
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#CanvasManager.renderedCanvas">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       This is emitted when a canvas has just been drawn.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            CanvasDrawn
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Canvas-class.html">
+           Canvas
+          </a>
+          ) - The canvas about to be drawn
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setPauseShaderCompiles">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setPauseShaderCompiles
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Pause
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#CanvasManager.setPauseShaderCompiles">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Toggles shader compilation on the canvas.
+      </p>
+      <p>
+       The canvas rendering uses a shader and it gets compiled on occasions.
+       <a class="link" href="mari.Shader-class.html">
+        Shader
+       </a>
+       compilation can 
+  be expensive, so it is useful to pause shader compilation during long 
+  operation such as baking nodes, flattening layers or converting 
+  procedural to paintable. This function provides the ability to pause and 
+  unpause shader compilation on the canvas.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Pause
+           </code>
+          </strong>
+          (bool) - Flag to pause shader compilation.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="size">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            size
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#CanvasManager.size">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the dimensions of every canvas, in pixels.
+      </p>
+      <p>
+       All canvases have the same dimensions, so the function
+       <a class="link" href="mari.Canvas-class.html#size">
+        Canvas.size()
+       </a>
+       will 
+  return the same value.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: list of  int
+       </dt>
+       <dd>
+        The dimensions of every canvas, in pixels, in the format: (width,
+          height)
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

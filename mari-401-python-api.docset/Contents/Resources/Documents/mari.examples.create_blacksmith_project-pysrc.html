@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.examples.create_blacksmith_project
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.examples-module.html">
+       Package&nbsp;examples
+      </a>
+      ::
+        Module&nbsp;create_blacksmith_project
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.examples.create_blacksmith_project-pysrc.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <h1 class="epydoc">
+   Source Code for
+   <a href="mari.examples.create_blacksmith_project-module.html">
+    Module mari.examples.create_blacksmith_project
+   </a>
+  </h1>
+  <pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment"># Sample project creation function</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name" id="link-0" targets="Package mari=mari-module.html"><a class="py-name" href="#" onclick="return doclink('link-0', 'mari', 'link-0');" title="mari">mari</a></tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">PySide2</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="createImportChannelInfo"></a><div id="createImportChannelInfo-def"><a name="L11"></a><tt class="py-lineno"> 11</tt> <a class="py-toggle" href="#" id="createImportChannelInfo-toggle" onclick="return toggle('createImportChannelInfo');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.create_blacksmith_project-module.html#createImportChannelInfo">createImportChannelInfo</a><tt class="py-op">(</tt> <tt class="py-param">channel_name</tt><tt class="py-op">,</tt> <tt class="py-param">channel_path</tt><tt class="py-op">,</tt> <tt class="py-param">channel_template</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="createImportChannelInfo-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="createImportChannelInfo-expanded"><a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line">    <tt class="py-name">import_channel</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-1"><a class="py-name" href="#" onclick="return doclink('link-1', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-2" targets="Class mari.ChannelInfo=mari.ChannelInfo-class.html"><a class="py-name" href="#" onclick="return doclink('link-2', 'ChannelInfo', 'link-2');" title="mari.ChannelInfo">ChannelInfo</a></tt><tt class="py-op">(</tt> <tt class="py-name">channel_name</tt><tt class="py-op">)</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line">    <tt class="py-name">import_channel</tt><tt class="py-op">.</tt><tt class="py-name" id="link-3" targets="Method mari.ChannelInfo.setPath()=mari.ChannelInfo-class.html#setPath,Method mari.GeoEntityVersion.setPath()=mari.GeoEntityVersion-class.html#setPath,Method mari.QuickProjector.setPath()=mari.QuickProjector-class.html#setPath,Method mari.ResourceInfo.setPath()=mari.ResourceInfo-class.html#setPath"><a class="py-name" href="#" onclick="return doclink('link-3', 'setPath', 'link-3');" title="mari.ChannelInfo.setPath
+mari.GeoEntityVersion.setPath
+mari.QuickProjector.setPath
+mari.ResourceInfo.setPath">setPath</a></tt><tt class="py-op">(</tt> <tt class="py-name">channel_path</tt><tt class="py-op">)</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line">    <tt class="py-name">import_channel</tt><tt class="py-op">.</tt><tt class="py-name" id="link-4" targets="Method mari.ChannelInfo.setFileTemplate()=mari.ChannelInfo-class.html#setFileTemplate,Method mari.ExportItem.setFileTemplate()=mari.ExportItem-class.html#setFileTemplate"><a class="py-name" href="#" onclick="return doclink('link-4', 'setFileTemplate', 'link-4');" title="mari.ChannelInfo.setFileTemplate
+mari.ExportItem.setFileTemplate">setFileTemplate</a></tt><tt class="py-op">(</tt> <tt class="py-name">channel_template</tt><tt class="py-op">)</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">import_channel</tt> </tt>
+</div><a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="loadObject"></a><div id="loadObject-def"><a name="L19"></a><tt class="py-lineno"> 19</tt> <a class="py-toggle" href="#" id="loadObject-toggle" onclick="return toggle('loadObject');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.create_blacksmith_project-module.html#loadObject">loadObject</a><tt class="py-op">(</tt> <tt class="py-param">object_path</tt><tt class="py-op">,</tt> <tt class="py-param">channel_import_list</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">channel_create_list</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="loadObject-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="loadObject-expanded"><a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line">    <tt class="py-name" id="link-5" targets="Method mari.GeoEntityVersion.settings()=mari.GeoEntityVersion-class.html#settings"><a class="py-name" href="#" onclick="return doclink('link-5', 'settings', 'link-5');" title="mari.GeoEntityVersion.settings">settings</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">"StartFrame=1"</tt><tt class="py-op">,</tt> <tt class="py-string">"EndFrame=1"</tt><tt class="py-op">]</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">channel_import_list</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">        <tt class="py-name" id="link-6"><a class="py-name" href="#" onclick="return doclink('link-6', 'settings', 'link-5');" title="mari.GeoEntityVersion.settings">settings</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-7" targets="Method mari.FileList.append()=mari.FileList-class.html#append"><a class="py-name" href="#" onclick="return doclink('link-7', 'append', 'link-7');" title="mari.FileList.append">append</a></tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-string">"ImportChannels"</tt><tt class="py-op">,</tt> <tt class="py-name">channel_import_list</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">channel_create_list</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">        <tt class="py-name" id="link-8"><a class="py-name" href="#" onclick="return doclink('link-8', 'settings', 'link-5');" title="mari.GeoEntityVersion.settings">settings</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-9"><a class="py-name" href="#" onclick="return doclink('link-9', 'append', 'link-7');" title="mari.FileList.append">append</a></tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-string">"CreateChannels"</tt><tt class="py-op">,</tt> <tt class="py-name">channel_create_list</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">    <tt class="py-name">object_list</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-10"><a class="py-name" href="#" onclick="return doclink('link-10', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-11" targets="Function mari.current.geo()=mari.current-module.html#geo,Variable mari.examples.c_api_channel_export.geo=mari.examples.c_api_channel_export-module.html#geo"><a class="py-name" href="#" onclick="return doclink('link-11', 'geo', 'link-11');" title="mari.current.geo
+mari.examples.c_api_channel_export.geo">geo</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-12" targets="Method mari.GeoEntityVersion.load()=mari.GeoEntityVersion-class.html#load,Method mari.GeoManager.load()=mari.GeoManager-class.html#load,Method mari.ImageManager.load()=mari.ImageManager-class.html#load,Method mari.ImageProtocolHandler.load()=mari.ImageProtocolHandler-class.html#load,Method mari.NodeGraph.load()=mari.NodeGraph-class.html#load,Method mari.ProjectorManager.load()=mari.ProjectorManager-class.html#load"><a class="py-name" href="#" onclick="return doclink('link-12', 'load', 'link-12');" title="mari.GeoEntityVersion.load
+mari.GeoManager.load
+mari.ImageManager.load
+mari.ImageProtocolHandler.load
+mari.NodeGraph.load
+mari.ProjectorManager.load">load</a></tt><tt class="py-op">(</tt><tt class="py-name">object_path</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-13"><a class="py-name" href="#" onclick="return doclink('link-13', 'settings', 'link-5');" title="mari.GeoEntityVersion.settings">settings</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">     </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">    <tt class="py-comment"># Workaround for shaders not being set up until objects become current</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">    <tt class="py-op">[</tt><tt class="py-name" id="link-14"><a class="py-name" href="#" onclick="return doclink('link-14', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-15"><a class="py-name" href="#" onclick="return doclink('link-15', 'geo', 'link-11');" title="mari.current.geo
+mari.examples.c_api_channel_export.geo">geo</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-16" targets="Method mari.GeoManager.setCurrent()=mari.GeoManager-class.html#setCurrent,Method mari.ProjectorManager.setCurrent()=mari.ProjectorManager-class.html#setCurrent,Method mari.ToolManager.setCurrent()=mari.ToolManager-class.html#setCurrent"><a class="py-name" href="#" onclick="return doclink('link-16', 'setCurrent', 'link-16');" title="mari.GeoManager.setCurrent
+mari.ProjectorManager.setCurrent
+mari.ToolManager.setCurrent">setCurrent</a></tt><tt class="py-op">(</tt><tt class="py-name">obj</tt><tt class="py-op">.</tt><tt class="py-name" id="link-17" targets="Method mari.Action.name()=mari.Action-class.html#name,Method mari.Camera.name()=mari.Camera-class.html#name,Method mari.Channel.name()=mari.Channel-class.html#name,Method mari.ChannelInfo.name()=mari.ChannelInfo-class.html#name,Method mari.GeoEntity.name()=mari.GeoEntity-class.html#name,Method mari.GeoEntityVersion.name()=mari.GeoEntityVersion-class.html#name,Method mari.GeoPatch.name()=mari.GeoPatch-class.html#name,Method mari.GeometryOperation.name()=mari.GeometryOperation-class.html#name,Method mari.ImageOperation.name()=mari.ImageOperation-class.html#name,Method mari.ImageSet.name()=mari.ImageSet-class.html#name,Method mari.Layer.name()=mari.Layer-class.html#name,Method mari.LayerStack.name()=mari.LayerStack-class.html#name,Method mari.Light.name()=mari.Light-class.html#name,Method mari.LocatorEntity.name()=mari.LocatorEntity-class.html#name,Method mari.Node.name()=mari.Node-class.html#name,Method mari.Palette.name()=mari.Palette-class.html#name,Method mari.ParticleOp.name()=mari.ParticleOp-class.html#name,Method mari.PostFilter.name()=mari.PostFilter-class.html#name,Method mari.PostFilterCollection.name()=mari.PostFilterCollection-class.html#name,Method mari.Project.name()=mari.Project-class.html#name,Method mari.ProjectInfo.name()=mari.ProjectInfo-class.html#name,Method mari.Projector.name()=mari.Projector-class.html#name,Method mari.SelectionGroup.name()=mari.SelectionGroup-class.html#name,Method mari.Shader.name()=mari.Shader-class.html#name,Method mari.Shelf.name()=mari.Shelf-class.html#name,Method mari.Snapshot.name()=mari.Snapshot-class.html#name,Method mari.Tool.name()=mari.Tool-class.html#name"><a class="py-name" href="#" onclick="return doclink('link-17', 'name', 'link-17');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> <tt class="py-keyword">for</tt> <tt class="py-name">obj</tt> <tt class="py-keyword">in</tt> <tt class="py-name">object_list</tt><tt class="py-op">]</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">     </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">object_list</tt> </tt>
+</div><a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="importNewChannel"></a><div id="importNewChannel-def"><a name="L36"></a><tt class="py-lineno"> 36</tt> <a class="py-toggle" href="#" id="importNewChannel-toggle" onclick="return toggle('importNewChannel');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.create_blacksmith_project-module.html#importNewChannel">importNewChannel</a><tt class="py-op">(</tt><tt class="py-param">obj</tt><tt class="py-op">,</tt> <tt class="py-param">channel_name</tt><tt class="py-op">,</tt> <tt class="py-param">template</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="importNewChannel-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="importNewChannel-expanded"><a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">    <tt class="py-comment"># Create with default settings, then update on import</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">    <tt class="py-name">chan</tt> <tt class="py-op">=</tt> <tt class="py-name">obj</tt><tt class="py-op">.</tt><tt class="py-name" id="link-18" targets="Method mari.GeoEntity.createChannel()=mari.GeoEntity-class.html#createChannel"><a class="py-name" href="#" onclick="return doclink('link-18', 'createChannel', 'link-18');" title="mari.GeoEntity.createChannel">createChannel</a></tt><tt class="py-op">(</tt><tt class="py-name">channel_name</tt><tt class="py-op">,</tt> <tt class="py-number">2048</tt><tt class="py-op">,</tt> <tt class="py-number">2048</tt><tt class="py-op">,</tt> <tt class="py-number">8</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">    <tt class="py-name">chan</tt><tt class="py-op">.</tt><tt class="py-name" id="link-19" targets="Method mari.ImageSet.importImages()=mari.ImageSet-class.html#importImages,Method mari.LayerStack.importImages()=mari.LayerStack-class.html#importImages,Method mari.PaintableLayer.importImages()=mari.PaintableLayer-class.html#importImages"><a class="py-name" href="#" onclick="return doclink('link-19', 'importImages', 'link-19');" title="mari.ImageSet.importImages
+mari.LayerStack.importImages
+mari.PaintableLayer.importImages">importImages</a></tt><tt class="py-op">(</tt><tt class="py-name">template</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-20"><a class="py-name" href="#" onclick="return doclink('link-20', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-21" targets="Class mari.ImageSet=mari.ImageSet-class.html"><a class="py-name" href="#" onclick="return doclink('link-21', 'ImageSet', 'link-21');" title="mari.ImageSet">ImageSet</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-22" targets="Variable mari.ImageSet.SCALE_THE_PATCH=mari.ImageSet-class.html#SCALE_THE_PATCH,Variable mari.ImageSet.ScaleChoice.SCALE_THE_PATCH=mari.ImageSet.ScaleChoice-class.html#SCALE_THE_PATCH"><a class="py-name" href="#" onclick="return doclink('link-22', 'SCALE_THE_PATCH', 'link-22');" title="mari.ImageSet.SCALE_THE_PATCH
+mari.ImageSet.ScaleChoice.SCALE_THE_PATCH">SCALE_THE_PATCH</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="createBlacksmithProject"></a><div id="createBlacksmithProject-def"><a name="L42"></a><tt class="py-lineno"> 42</tt> <a class="py-toggle" href="#" id="createBlacksmithProject-toggle" onclick="return toggle('createBlacksmithProject');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.create_blacksmith_project-module.html#createBlacksmithProject">createBlacksmithProject</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="createBlacksmithProject-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="createBlacksmithProject-expanded"><a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">    <tt class="py-docstring">"""This creates a project using the BlackSmith assets from the web site.</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"><tt class="py-docstring">    At the time of writing, the assets for this script can be downloaded from:</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"><tt class="py-docstring">    http://www.thefoundry.co.uk/products/mari/training/#blacksmith</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt class="py-docstring">    The assets should be extracted from the zip files into a directory, which should end up looking like this:</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"><tt class="py-docstring">      - Anvil</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt class="py-docstring">      - Apron</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"><tt class="py-docstring">      - blacksmith</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"><tt class="py-docstring">      - blacksmith_eyes</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"><tt class="py-docstring">      - blacksmithObjects</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"><tt class="py-docstring">      - Goggles</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"><tt class="py-docstring">      - Hammer</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"><tt class="py-docstring">      - Tongs</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"><tt class="py-docstring">    Please ensure the assets are set up correctly before running the script.</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">    <tt class="py-comment"># Reuse the doc string for the message</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">    <tt class="py-name">qmb</tt> <tt class="py-op">=</tt> <tt class="py-name">PySide2</tt><tt class="py-op">.</tt><tt class="py-name">QtWidgets</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-23"><a class="py-name" href="#" onclick="return doclink('link-23', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-24" targets="Package mari.utils=mari.utils-module.html"><a class="py-name" href="#" onclick="return doclink('link-24', 'utils', 'link-24');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-25" targets="Function mari.utils.misc.messageResult()=mari.utils.misc-module.html#messageResult"><a class="py-name" href="#" onclick="return doclink('link-25', 'messageResult', 'link-25');" title="mari.utils.misc.messageResult">messageResult</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-26" targets="Function mari.examples.create_blacksmith_project.createBlacksmithProject()=mari.examples.create_blacksmith_project-module.html#createBlacksmithProject"><a class="py-name" href="#" onclick="return doclink('link-26', 'createBlacksmithProject', 'link-26');" title="mari.examples.create_blacksmith_project.createBlacksmithProject">createBlacksmithProject</a></tt><tt class="py-op">.</tt><tt class="py-name">__doc__</tt><tt class="py-op">,</tt> <tt class="py-string">"Create Blacksmith Project"</tt><tt class="py-op">,</tt> <tt class="py-name">qmb</tt><tt class="py-op">.</tt><tt class="py-name">Ok</tt> <tt class="py-op">|</tt> <tt class="py-name">qmb</tt><tt class="py-op">.</tt><tt class="py-name">Cancel</tt><tt class="py-op">)</tt> <tt class="py-op">!=</tt> <tt class="py-name">qmb</tt><tt class="py-op">.</tt><tt class="py-name">Ok</tt><tt class="py-op">:</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">    <tt class="py-name" id="link-27"><a class="py-name" href="#" onclick="return doclink('link-27', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-28" targets="Variable mari.projects=mari-module.html#projects"><a class="py-name" href="#" onclick="return doclink('link-28', 'projects', 'link-28');" title="mari.projects">projects</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-29" targets="Method mari.Image.close()=mari.Image-class.html#close,Method mari.Layer.close()=mari.Layer-class.html#close,Method mari.Project.close()=mari.Project-class.html#close,Method mari.ProjectInfo.close()=mari.ProjectInfo-class.html#close,Method mari.ProjectManager.close()=mari.ProjectManager-class.html#close,Method mari.system._modo_session.ModoSockLogger.close()=mari.system._modo_session.ModoSockLogger-class.html#close,Method mari.utils.redirector.StreamRedirector.close()=mari.utils.redirector.StreamRedirector-class.html#close"><a class="py-name" href="#" onclick="return doclink('link-29', 'close', 'link-29');" title="mari.Image.close
+mari.Layer.close
+mari.Project.close
+mari.ProjectInfo.close
+mari.ProjectManager.close
+mari.system._modo_session.ModoSockLogger.close
+mari.utils.redirector.StreamRedirector.close">close</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">    <tt class="py-name">example_path</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-30"><a class="py-name" href="#" onclick="return doclink('link-30', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-31"><a class="py-name" href="#" onclick="return doclink('link-31', 'utils', 'link-24');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-32" targets="Function mari.utils.misc.getExistingDirectory()=mari.utils.misc-module.html#getExistingDirectory"><a class="py-name" href="#" onclick="return doclink('link-32', 'getExistingDirectory', 'link-32');" title="mari.utils.misc.getExistingDirectory">getExistingDirectory</a></tt><tt class="py-op">(</tt><tt class="py-name">caption</tt><tt class="py-op">=</tt><tt class="py-string">'Select the directory containing the Blacksmith assets'</tt><tt class="py-op">)</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">example_path</tt> <tt class="py-op">==</tt> <tt class="py-string">""</tt><tt class="py-op">:</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">    <tt class="py-name">blacksmith_template</tt> <tt class="py-op">=</tt> <tt class="py-string">'$PATH/blacksmith/$CHANNEL/blacksmith_$CHANNEL.$UDIM.tif'</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">    <tt class="py-name">blacksmith_channel_names</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'color'</tt><tt class="py-op">,</tt> <tt class="py-string">'dirtColor'</tt><tt class="py-op">,</tt> <tt class="py-string">'dirtMask'</tt><tt class="py-op">,</tt> <tt class="py-string">'dispFine'</tt><tt class="py-op">,</tt> <tt class="py-string">'dispMid'</tt><tt class="py-op">,</tt> <tt class="py-string">'hairDisp'</tt><tt class="py-op">,</tt> <tt class="py-string">'specGain'</tt><tt class="py-op">,</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">                                <tt class="py-string">'specGain_dirt_sweat'</tt><tt class="py-op">,</tt> <tt class="py-string">'sweatMask'</tt><tt class="py-op">,</tt> <tt class="py-string">'tattooColor'</tt><tt class="py-op">,</tt> <tt class="py-string">'tattooMask'</tt><tt class="py-op">,</tt> <tt class="py-string">'veinColor'</tt><tt class="py-op">,</tt> <tt class="py-string">'veinMask'</tt><tt class="py-op">)</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">    <tt class="py-name">import_channel_list</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-name" id="link-33" targets="Function mari.examples.create_blacksmith_project.createImportChannelInfo()=mari.examples.create_blacksmith_project-module.html#createImportChannelInfo"><a class="py-name" href="#" onclick="return doclink('link-33', 'createImportChannelInfo', 'link-33');" title="mari.examples.create_blacksmith_project.createImportChannelInfo">createImportChannelInfo</a></tt><tt class="py-op">(</tt><tt class="py-name">chan_name</tt><tt class="py-op">,</tt> <tt class="py-name">example_path</tt><tt class="py-op">,</tt> <tt class="py-name">blacksmith_template</tt><tt class="py-op">)</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">                           <tt class="py-keyword">for</tt> <tt class="py-name">chan_name</tt> <tt class="py-keyword">in</tt> <tt class="py-name">blacksmith_channel_names</tt><tt class="py-op">]</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">    <tt class="py-comment"># Create the project and the main object (the blacksmith body)</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">    <tt class="py-name" id="link-34"><a class="py-name" href="#" onclick="return doclink('link-34', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-35"><a class="py-name" href="#" onclick="return doclink('link-35', 'projects', 'link-28');" title="mari.projects">projects</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-36" targets="Method mari.ActionManager.create()=mari.ActionManager-class.html#create,Method mari.PaletteManager.create()=mari.PaletteManager-class.html#create,Method mari.ProjectManager.create()=mari.ProjectManager-class.html#create,Method mari.ProjectorManager.create()=mari.ProjectorManager-class.html#create"><a class="py-name" href="#" onclick="return doclink('link-36', 'create', 'link-36');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt><tt class="py-string">'blacksmith'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">example_path</tt> <tt class="py-op">+</tt> <tt class="py-string">'/blacksmithObjects/blacksmith_body.obj'</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">import_channel_list</tt><tt class="py-op">,</tt> <tt class="py-name">import_channel_list</tt><tt class="py-op">)</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-37"><a class="py-name" href="#" onclick="return doclink('link-37', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-38"><a class="py-name" href="#" onclick="return doclink('link-38', 'projects', 'link-28');" title="mari.projects">projects</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-39" targets="Method mari.CanvasManager.current()=mari.CanvasManager-class.html#current,Method mari.GeoManager.current()=mari.GeoManager-class.html#current,Method mari.LightManager.current()=mari.LightManager-class.html#current,Method mari.ProjectManager.current()=mari.ProjectManager-class.html#current,Method mari.ProjectorManager.current()=mari.ProjectorManager-class.html#current,Method mari.SelectionGroupManager.current()=mari.SelectionGroupManager-class.html#current,Method mari.ToolManager.current()=mari.ToolManager-class.html#current,Package mari.current=mari.current-module.html"><a class="py-name" href="#" onclick="return doclink('link-39', 'current', 'link-39');" title="mari.CanvasManager.current
+mari.GeoManager.current
+mari.LightManager.current
+mari.ProjectManager.current
+mari.ProjectorManager.current
+mari.SelectionGroupManager.current
+mari.ToolManager.current
+mari.current">current</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt>      <tt class="py-comment"># failed</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">     </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">    <tt class="py-name">blacksmith</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-40"><a class="py-name" href="#" onclick="return doclink('link-40', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-41"><a class="py-name" href="#" onclick="return doclink('link-41', 'geo', 'link-11');" title="mari.current.geo
+mari.examples.c_api_channel_export.geo">geo</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-42"><a class="py-name" href="#" onclick="return doclink('link-42', 'current', 'link-39');" title="mari.CanvasManager.current
+mari.GeoManager.current
+mari.LightManager.current
+mari.ProjectManager.current
+mari.ProjectorManager.current
+mari.SelectionGroupManager.current
+mari.ToolManager.current
+mari.current">current</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">    <tt class="py-name">blacksmith</tt><tt class="py-op">.</tt><tt class="py-name" id="link-43" targets="Method mari.GeoEntity.setCurrentChannel()=mari.GeoEntity-class.html#setCurrentChannel"><a class="py-name" href="#" onclick="return doclink('link-43', 'setCurrentChannel', 'link-43');" title="mari.GeoEntity.setCurrentChannel">setCurrentChannel</a></tt><tt class="py-op">(</tt><tt class="py-name">blacksmith</tt><tt class="py-op">.</tt><tt class="py-name" id="link-44" targets="Method mari.ChannelLayer.channel()=mari.ChannelLayer-class.html#channel,Method mari.GeoEntity.channel()=mari.GeoEntity-class.html#channel,Function mari.current.channel()=mari.current-module.html#channel,Variable mari.examples.c_api_channel_export.channel=mari.examples.c_api_channel_export-module.html#channel,Method mari.system._particle_channel_transfer.ChannelTransferListWidgetItem.channel()=mari.system._particle_channel_transfer.ChannelTransferListWidgetItem-class.html#channel"><a class="py-name" href="#" onclick="return doclink('link-44', 'channel', 'link-44');" title="mari.ChannelLayer.channel
+mari.GeoEntity.channel
+mari.current.channel
+mari.examples.c_api_channel_export.channel
+mari.system._particle_channel_transfer.ChannelTransferListWidgetItem.channel">channel</a></tt><tt class="py-op">(</tt><tt class="py-string">'color'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">    <tt class="py-comment"># Eyes</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">    <tt class="py-name">eyes</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-45" targets="Function mari.examples.create_blacksmith_project.loadObject()=mari.examples.create_blacksmith_project-module.html#loadObject"><a class="py-name" href="#" onclick="return doclink('link-45', 'loadObject', 'link-45');" title="mari.examples.create_blacksmith_project.loadObject">loadObject</a></tt><tt class="py-op">(</tt><tt class="py-name">example_path</tt> <tt class="py-op">+</tt> <tt class="py-string">'/blacksmithObjects/blacksmith_eyes.obj'</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">    <tt class="py-name" id="link-46" targets="Function mari.examples.create_blacksmith_project.importNewChannel()=mari.examples.create_blacksmith_project-module.html#importNewChannel"><a class="py-name" href="#" onclick="return doclink('link-46', 'importNewChannel', 'link-46');" title="mari.examples.create_blacksmith_project.importNewChannel">importNewChannel</a></tt><tt class="py-op">(</tt><tt class="py-name">eyes</tt><tt class="py-op">,</tt> <tt class="py-string">'color'</tt><tt class="py-op">,</tt> <tt class="py-name">example_path</tt> <tt class="py-op">+</tt> <tt class="py-string">'/blacksmith_eyes/eyes_$CHANNEL.$UDIM.tif'</tt><tt class="py-op">)</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">    <tt class="py-comment"># Anvil</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">    <tt class="py-name">anvil</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-47"><a class="py-name" href="#" onclick="return doclink('link-47', 'loadObject', 'link-45');" title="mari.examples.create_blacksmith_project.loadObject">loadObject</a></tt><tt class="py-op">(</tt><tt class="py-name">example_path</tt> <tt class="py-op">+</tt> <tt class="py-string">'/blacksmithObjects/anvil.obj'</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">    <tt class="py-name">anvil_template</tt> <tt class="py-op">=</tt> <tt class="py-name">example_path</tt> <tt class="py-op">+</tt> <tt class="py-string">'/Anvil/$CHANNEL/blacksmithAnvil_$CHANNEL.$UDIM.tif'</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">chan_name</tt> <tt class="py-keyword">in</tt> <tt class="py-op">(</tt><tt class="py-string">'color'</tt><tt class="py-op">,</tt> <tt class="py-string">'dispBroad1'</tt><tt class="py-op">,</tt> <tt class="py-string">'dispBroadInverted'</tt><tt class="py-op">,</tt> <tt class="py-string">'dispFine'</tt><tt class="py-op">,</tt> <tt class="py-string">'dispMask'</tt><tt class="py-op">,</tt> <tt class="py-string">'specGain'</tt><tt class="py-op">,</tt> <tt class="py-string">'specRoughness'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">        <tt class="py-name" id="link-48"><a class="py-name" href="#" onclick="return doclink('link-48', 'importNewChannel', 'link-46');" title="mari.examples.create_blacksmith_project.importNewChannel">importNewChannel</a></tt><tt class="py-op">(</tt><tt class="py-name">anvil</tt><tt class="py-op">,</tt> <tt class="py-name">chan_name</tt><tt class="py-op">,</tt> <tt class="py-name">anvil_template</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-comment"># Register new actions with the action manager, and add them to a Python menu</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt class="py-name" id="link-49"><a class="py-name" href="#" onclick="return doclink('link-49', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-50" targets="Variable mari.menus=mari-module.html#menus"><a class="py-name" href="#" onclick="return doclink('link-50', 'menus', 'link-50');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-51" targets="Method mari.MenuManager.addAction()=mari.MenuManager-class.html#addAction,Method mari.ToolBar.addAction()=mari.ToolBar-class.html#addAction,Function mari.examples.vector_brush.addAction()=mari.examples.vector_brush-module.html#addAction"><a class="py-name" href="#" onclick="return doclink('link-51', 'addAction', 'link-51');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-52"><a class="py-name" href="#" onclick="return doclink('link-52', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-53" targets="Method mari.MenuManager.actions()=mari.MenuManager-class.html#actions,Variable mari.actions=mari-module.html#actions"><a class="py-name" href="#" onclick="return doclink('link-53', 'actions', 'link-53');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-54"><a class="py-name" href="#" onclick="return doclink('link-54', 'create', 'link-36');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt><tt class="py-string">'Create Blacksmith Project'</tt><tt class="py-op">,</tt> <tt class="py-string">'mari.examples.create_blacksmith_project.createBlacksmithProject()'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">"MainWindow/P&amp;ython/&amp;Examples"</tt><tt class="py-op">)</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

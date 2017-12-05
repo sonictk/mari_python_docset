@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.system._setup
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.system-module.html">
+       Package&nbsp;system
+      </a>
+      ::
+        Module&nbsp;_setup
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.system._setup-pysrc.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <h1 class="epydoc">
+   Source Code for
+   <a href="mari.system._setup-module.html" onclick="show_private();">
+    Module mari.system._setup
+   </a>
+  </h1>
+  <pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment">#-------------------------------------------------------------------------------</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"># Script to set up initial Python system configuration</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-comment"># coding: utf-8</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-comment"># Copyright (c) 2011 The Foundry Visionmongers Ltd.  All Rights Reserved.</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-comment">#-------------------------------------------------------------------------------</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name" id="link-0" targets="Package mari=mari-module.html"><a class="py-name" href="#" onclick="return doclink('link-0', 'mari', 'link-0');" title="mari">mari</a></tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-comment">#-------------------------------------------------------------------------------</tt> </tt>
+<a name="setUp"></a><div id="setUp-def"><a name="L11"></a><tt class="py-lineno">11</tt> <a class="py-toggle" href="#" id="setUp-toggle" onclick="return toggle('setUp');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.system._setup-module.html#setUp">setUp</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="setUp-collapsed" indent="++++" pad="++" style="display:none;"></div><div id="setUp-expanded"><a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">    <tt class="py-name">custom_shader_api_cmd</tt> <tt class="py-op">=</tt> <tt class="py-string">'mari.examples.resource_info.showCustomShaderAPIHelp()'</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">    <tt class="py-name">example_plugins_dir</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-1"><a class="py-name" href="#" onclick="return doclink('link-1', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-2" targets="Variable mari.resources=mari-module.html#resources"><a class="py-name" href="#" onclick="return doclink('link-2', 'resources', 'link-2');" title="mari.resources">resources</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-3" targets="Method mari.Action.path()=mari.Action-class.html#path,Method mari.ChannelInfo.path()=mari.ChannelInfo-class.html#path,Method mari.GeoEntityVersion.path()=mari.GeoEntityVersion-class.html#path,Method mari.QuickProjector.path()=mari.QuickProjector-class.html#path,Method mari.ResourceInfo.path()=mari.ResourceInfo-class.html#path"><a class="py-name" href="#" onclick="return doclink('link-3', 'path', 'link-3');" title="mari.Action.path
+mari.ChannelInfo.path
+mari.GeoEntityVersion.path
+mari.QuickProjector.path
+mari.ResourceInfo.path">path</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-4"><a class="py-name" href="#" onclick="return doclink('link-4', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-5"><a class="py-name" href="#" onclick="return doclink('link-5', 'resources', 'link-2');" title="mari.resources">resources</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-6" targets="Variable mari.ResourceInfo.SYSTEM_SCRIPTS=mari.ResourceInfo-class.html#SYSTEM_SCRIPTS"><a class="py-name" href="#" onclick="return doclink('link-6', 'SYSTEM_SCRIPTS', 'link-6');" title="mari.ResourceInfo.SYSTEM_SCRIPTS">SYSTEM_SCRIPTS</a></tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">"/Mari/examples"</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">    <tt class="py-name">add_python</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name" id="link-7"><a class="py-name" href="#" onclick="return doclink('link-7', 'path', 'link-3');" title="mari.Action.path
+mari.ChannelInfo.path
+mari.GeoEntityVersion.path
+mari.QuickProjector.path
+mari.ResourceInfo.path">path</a></tt><tt class="py-op">.</tt><tt class="py-name">exists</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name" id="link-8"><a class="py-name" href="#" onclick="return doclink('link-8', 'path', 'link-3');" title="mari.Action.path
+mari.ChannelInfo.path
+mari.GeoEntityVersion.path
+mari.QuickProjector.path
+mari.ResourceInfo.path">path</a></tt><tt class="py-op">.</tt><tt class="py-name">abspath</tt><tt class="py-op">(</tt><tt class="py-name">example_plugins_dir</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">    <tt class="py-comment"># In the case of minion build, the CAPI_EXAMPLES property returns an empty path which we can then use to not add capi menus here</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">    <tt class="py-name">add_c_api</tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name" id="link-9"><a class="py-name" href="#" onclick="return doclink('link-9', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-10"><a class="py-name" href="#" onclick="return doclink('link-10', 'resources', 'link-2');" title="mari.resources">resources</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-11" targets="Variable mari.ResourceInfo.CAPI_EXAMPLES=mari.ResourceInfo-class.html#CAPI_EXAMPLES"><a class="py-name" href="#" onclick="return doclink('link-11', 'CAPI_EXAMPLES', 'link-11');" title="mari.ResourceInfo.CAPI_EXAMPLES">CAPI_EXAMPLES</a></tt><tt class="py-op">)</tt> <tt class="py-op">!=</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">        <tt class="py-name">capi_example_plugins_dir</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-12"><a class="py-name" href="#" onclick="return doclink('link-12', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-13"><a class="py-name" href="#" onclick="return doclink('link-13', 'resources', 'link-2');" title="mari.resources">resources</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-14"><a class="py-name" href="#" onclick="return doclink('link-14', 'path', 'link-3');" title="mari.Action.path
+mari.ChannelInfo.path
+mari.GeoEntityVersion.path
+mari.QuickProjector.path
+mari.ResourceInfo.path">path</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-15"><a class="py-name" href="#" onclick="return doclink('link-15', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-16"><a class="py-name" href="#" onclick="return doclink('link-16', 'resources', 'link-2');" title="mari.resources">resources</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-17"><a class="py-name" href="#" onclick="return doclink('link-17', 'CAPI_EXAMPLES', 'link-11');" title="mari.ResourceInfo.CAPI_EXAMPLES">CAPI_EXAMPLES</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">        <tt class="py-name">add_c_api</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name" id="link-18"><a class="py-name" href="#" onclick="return doclink('link-18', 'path', 'link-3');" title="mari.Action.path
+mari.ChannelInfo.path
+mari.GeoEntityVersion.path
+mari.QuickProjector.path
+mari.ResourceInfo.path">path</a></tt><tt class="py-op">.</tt><tt class="py-name">exists</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name" id="link-19"><a class="py-name" href="#" onclick="return doclink('link-19', 'path', 'link-3');" title="mari.Action.path
+mari.ChannelInfo.path
+mari.GeoEntityVersion.path
+mari.QuickProjector.path
+mari.ResourceInfo.path">path</a></tt><tt class="py-op">.</tt><tt class="py-name">abspath</tt><tt class="py-op">(</tt><tt class="py-name">capi_example_plugins_dir</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-20"><a class="py-name" href="#" onclick="return doclink('link-20', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-21" targets="Variable mari.app=mari-module.html#app"><a class="py-name" href="#" onclick="return doclink('link-21', 'app', 'link-21');" title="mari.app">app</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-22" targets="Method mari.Application.inRestrictedVersion()=mari.Application-class.html#inRestrictedVersion"><a class="py-name" href="#" onclick="return doclink('link-22', 'inRestrictedVersion', 'link-22');" title="mari.Application.inRestrictedVersion">inRestrictedVersion</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">        <tt class="py-comment"># Don't register any python or capi menus for non commercial</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">        <tt class="py-name">add_python</tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">        <tt class="py-name">add_c_api</tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">    <tt class="py-name">open_c_examples_action</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">add_python</tt><tt class="py-op">:</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">      <tt class="py-comment"># Create an action to open the Python examples folder, and put it at the top of a new Python/Examples  menu</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">      <tt class="py-name">open_python_examples_action</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-23"><a class="py-name" href="#" onclick="return doclink('link-23', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-24" targets="Method mari.MenuManager.actions()=mari.MenuManager-class.html#actions,Variable mari.actions=mari-module.html#actions"><a class="py-name" href="#" onclick="return doclink('link-24', 'actions', 'link-24');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-25" targets="Method mari.ActionManager.create()=mari.ActionManager-class.html#create,Method mari.PaletteManager.create()=mari.PaletteManager-class.html#create,Method mari.ProjectManager.create()=mari.ProjectManager-class.html#create,Method mari.ProjectorManager.create()=mari.ProjectorManager-class.html#create"><a class="py-name" href="#" onclick="return doclink('link-25', 'create', 'link-25');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt><tt class="py-string">'Python/Open Examples &amp;Folder'</tt><tt class="py-op">,</tt> <tt class="py-string">'mari.resources.showURL("%s")'</tt><tt class="py-op">%</tt><tt class="py-op">(</tt><tt class="py-name">example_plugins_dir</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">      <tt class="py-name">examples_menu_path</tt> <tt class="py-op">=</tt> <tt class="py-string">"MainWindow/P&amp;ython/&amp;Examples"</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">      <tt class="py-name" id="link-26"><a class="py-name" href="#" onclick="return doclink('link-26', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-27" targets="Variable mari.menus=mari-module.html#menus"><a class="py-name" href="#" onclick="return doclink('link-27', 'menus', 'link-27');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-28" targets="Method mari.MenuManager.addAction()=mari.MenuManager-class.html#addAction,Method mari.ToolBar.addAction()=mari.ToolBar-class.html#addAction,Function mari.examples.vector_brush.addAction()=mari.examples.vector_brush-module.html#addAction"><a class="py-name" href="#" onclick="return doclink('link-28', 'addAction', 'link-28');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name">open_python_examples_action</tt><tt class="py-op">,</tt> <tt class="py-name">examples_menu_path</tt><tt class="py-op">)</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">      <tt class="py-name" id="link-29"><a class="py-name" href="#" onclick="return doclink('link-29', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-30"><a class="py-name" href="#" onclick="return doclink('link-30', 'menus', 'link-27');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-31" targets="Method mari.MenuManager.addSeparator()=mari.MenuManager-class.html#addSeparator,Method mari.ToolBar.addSeparator()=mari.ToolBar-class.html#addSeparator,Method mari.system.nuke_bridge.ProjectionSettingsUI.addSeparator()=mari.system.nuke_bridge.ProjectionSettingsUI-class.html#addSeparator"><a class="py-name" href="#" onclick="return doclink('link-31', 'addSeparator', 'link-31');" title="mari.MenuManager.addSeparator
+mari.ToolBar.addSeparator
+mari.system.nuke_bridge.ProjectionSettingsUI.addSeparator">addSeparator</a></tt><tt class="py-op">(</tt><tt class="py-name">examples_menu_path</tt><tt class="py-op">)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">     </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">      <tt class="py-comment"># Create the main actions on the Python menu</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">      <tt class="py-name">python_api_help_action</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-32"><a class="py-name" href="#" onclick="return doclink('link-32', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-33"><a class="py-name" href="#" onclick="return doclink('link-33', 'actions', 'link-24');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-34"><a class="py-name" href="#" onclick="return doclink('link-34', 'create', 'link-25');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt><tt class="py-string">'Python/&amp;Documentation'</tt><tt class="py-op">,</tt> <tt class="py-string">'mari.examples.resource_info.showAPIHelp()'</tt><tt class="py-op">)</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">      <tt class="py-name" id="link-35"><a class="py-name" href="#" onclick="return doclink('link-35', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-36"><a class="py-name" href="#" onclick="return doclink('link-36', 'menus', 'link-27');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-37"><a class="py-name" href="#" onclick="return doclink('link-37', 'addAction', 'link-28');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name">python_api_help_action</tt><tt class="py-op">,</tt> <tt class="py-string">"MainWindow/P&amp;ython"</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">      <tt class="py-name" id="link-38"><a class="py-name" href="#" onclick="return doclink('link-38', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-39"><a class="py-name" href="#" onclick="return doclink('link-39', 'menus', 'link-27');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-40"><a class="py-name" href="#" onclick="return doclink('link-40', 'addSeparator', 'link-31');" title="mari.MenuManager.addSeparator
+mari.ToolBar.addSeparator
+mari.system.nuke_bridge.ProjectionSettingsUI.addSeparator">addSeparator</a></tt><tt class="py-op">(</tt><tt class="py-string">"MainWindow/&amp;Help"</tt><tt class="py-op">)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line"> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">add_c_api</tt><tt class="py-op">:</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">      <tt class="py-name">open_c_examples_action</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-41"><a class="py-name" href="#" onclick="return doclink('link-41', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-42"><a class="py-name" href="#" onclick="return doclink('link-42', 'actions', 'link-24');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-43"><a class="py-name" href="#" onclick="return doclink('link-43', 'create', 'link-25');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt><tt class="py-string">'C API/Open Examples &amp;Folder'</tt><tt class="py-op">,</tt> <tt class="py-string">'mari.resources.showURL("%s")'</tt><tt class="py-op">%</tt><tt class="py-op">(</tt><tt class="py-name">capi_example_plugins_dir</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">    <tt class="py-comment"># Create the Help/SDK menu</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">add_python</tt><tt class="py-op">:</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">        <tt class="py-name" id="link-44"><a class="py-name" href="#" onclick="return doclink('link-44', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-45"><a class="py-name" href="#" onclick="return doclink('link-45', 'menus', 'link-27');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-46"><a class="py-name" href="#" onclick="return doclink('link-46', 'addAction', 'link-28');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-47"><a class="py-name" href="#" onclick="return doclink('link-47', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-48"><a class="py-name" href="#" onclick="return doclink('link-48', 'actions', 'link-24');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-49"><a class="py-name" href="#" onclick="return doclink('link-49', 'create', 'link-25');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt><tt class="py-string">'Custom Shader API'</tt><tt class="py-op">,</tt> <tt class="py-name">custom_shader_api_cmd</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">"MainWindow/&amp;Help/&amp;SDK"</tt><tt class="py-op">)</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">        <tt class="py-name" id="link-50"><a class="py-name" href="#" onclick="return doclink('link-50', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-51"><a class="py-name" href="#" onclick="return doclink('link-51', 'menus', 'link-27');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-52"><a class="py-name" href="#" onclick="return doclink('link-52', 'addSeparator', 'link-31');" title="mari.MenuManager.addSeparator
+mari.ToolBar.addSeparator
+mari.system.nuke_bridge.ProjectionSettingsUI.addSeparator">addSeparator</a></tt><tt class="py-op">(</tt><tt class="py-string">"MainWindow/&amp;Help/&amp;SDK"</tt><tt class="py-op">)</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">        <tt class="py-op">[</tt><tt class="py-name" id="link-53"><a class="py-name" href="#" onclick="return doclink('link-53', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-54"><a class="py-name" href="#" onclick="return doclink('link-54', 'menus', 'link-27');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-55"><a class="py-name" href="#" onclick="return doclink('link-55', 'addAction', 'link-28');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-56" targets="Variable mari.system.batch_export_dialog.action=mari.system.batch_export_dialog-module.html#action"><a class="py-name" href="#" onclick="return doclink('link-56', 'action', 'link-56');" title="mari.system.batch_export_dialog.action">action</a></tt><tt class="py-op">,</tt> <tt class="py-string">"MainWindow/&amp;Help/&amp;SDK/&amp;Python"</tt><tt class="py-op">)</tt> <tt class="py-keyword">for</tt> <tt class="py-name" id="link-57"><a class="py-name" href="#" onclick="return doclink('link-57', 'action', 'link-56');" title="mari.system.batch_export_dialog.action">action</a></tt> <tt class="py-keyword">in</tt> <tt class="py-op">(</tt><tt class="py-name">python_api_help_action</tt><tt class="py-op">,</tt> <tt class="py-name">open_python_examples_action</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">add_c_api</tt><tt class="py-op">:</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">      <tt class="py-name">c_api_help_action</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-58"><a class="py-name" href="#" onclick="return doclink('link-58', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-59"><a class="py-name" href="#" onclick="return doclink('link-59', 'actions', 'link-24');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-60"><a class="py-name" href="#" onclick="return doclink('link-60', 'create', 'link-25');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt><tt class="py-string">'C API/&amp;Documentation'</tt><tt class="py-op">,</tt> <tt class="py-string">'mari.examples.resource_info.showCAPIHelp()'</tt><tt class="py-op">)</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">      <tt class="py-comment"># Note that we can't open a URL with a '..' in it on Windows, so make it an absolute path first</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line">      <tt class="py-op">[</tt><tt class="py-name" id="link-61"><a class="py-name" href="#" onclick="return doclink('link-61', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-62"><a class="py-name" href="#" onclick="return doclink('link-62', 'menus', 'link-27');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-63"><a class="py-name" href="#" onclick="return doclink('link-63', 'addAction', 'link-28');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-64"><a class="py-name" href="#" onclick="return doclink('link-64', 'action', 'link-56');" title="mari.system.batch_export_dialog.action">action</a></tt><tt class="py-op">,</tt> <tt class="py-string">"MainWindow/&amp;Help/&amp;SDK/&amp;C API"</tt><tt class="py-op">)</tt> <tt class="py-keyword">for</tt> <tt class="py-name" id="link-65"><a class="py-name" href="#" onclick="return doclink('link-65', 'action', 'link-56');" title="mari.system.batch_export_dialog.action">action</a></tt> <tt class="py-keyword">in</tt> <tt class="py-op">(</tt><tt class="py-name">c_api_help_action</tt><tt class="py-op">,</tt> <tt class="py-name">open_c_examples_action</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">     </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">add_python</tt><tt class="py-op">:</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line">      <tt class="py-comment"># Create a menu option to show the Python palette</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line">      <tt class="py-name">show_console_action</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-66"><a class="py-name" href="#" onclick="return doclink('link-66', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-67"><a class="py-name" href="#" onclick="return doclink('link-67', 'actions', 'link-24');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-68" targets="Method mari.ActionManager.find()=mari.ActionManager-class.html#find,Method mari.GeoManager.find()=mari.GeoManager-class.html#find,Method mari.PaletteManager.find()=mari.PaletteManager-class.html#find,Method mari.PostFilterCollection.find()=mari.PostFilterCollection-class.html#find,Method mari.ProjectManager.find()=mari.ProjectManager-class.html#find,Method mari.ProjectorManager.find()=mari.ProjectorManager-class.html#find,Method mari.ShelfManager.find()=mari.ShelfManager-class.html#find"><a class="py-name" href="#" onclick="return doclink('link-68', 'find', 'link-68');" title="mari.ActionManager.find
+mari.GeoManager.find
+mari.PaletteManager.find
+mari.PostFilterCollection.find
+mari.ProjectManager.find
+mari.ProjectorManager.find
+mari.ShelfManager.find">find</a></tt><tt class="py-op">(</tt><tt class="py-string">"/Mari/Scripts/Show &amp;Console"</tt><tt class="py-op">)</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line">      <tt class="py-keyword">if</tt> <tt class="py-name">show_console_action</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line">          <tt class="py-name">show_console_action</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-69"><a class="py-name" href="#" onclick="return doclink('link-69', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-70"><a class="py-name" href="#" onclick="return doclink('link-70', 'actions', 'link-24');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-71"><a class="py-name" href="#" onclick="return doclink('link-71', 'create', 'link-25');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt><tt class="py-string">"Show &amp;Console"</tt><tt class="py-op">,</tt> <tt class="py-string">"mari.palettes.get('Python Console').showInFront()"</tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line">          <tt class="py-name">show_console_action</tt><tt class="py-op">.</tt><tt class="py-name" id="link-72" targets="Method mari.Action.setShortcut()=mari.Action-class.html#setShortcut,Method mari.ActionManager.setShortcut()=mari.ActionManager-class.html#setShortcut"><a class="py-name" href="#" onclick="return doclink('link-72', 'setShortcut', 'link-72');" title="mari.Action.setShortcut
+mari.ActionManager.setShortcut">setShortcut</a></tt><tt class="py-op">(</tt><tt class="py-string">"Ctrl+Alt+P"</tt><tt class="py-op">)</tt> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line">          <tt class="py-name" id="link-73"><a class="py-name" href="#" onclick="return doclink('link-73', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-74"><a class="py-name" href="#" onclick="return doclink('link-74', 'menus', 'link-27');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-75"><a class="py-name" href="#" onclick="return doclink('link-75', 'addAction', 'link-28');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name">show_console_action</tt><tt class="py-op">,</tt> <tt class="py-string">"MainWindow/P&amp;ython"</tt><tt class="py-op">)</tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line">     </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line">    <tt class="py-comment"># Disable any of the paths whose values are read from the environment, if we are in SAFE MODE</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-76"><a class="py-name" href="#" onclick="return doclink('link-76', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-77"><a class="py-name" href="#" onclick="return doclink('link-77', 'app', 'link-21');" title="mari.app">app</a></tt><tt class="py-op">.</tt><tt class="py-name">isSafeFeature_BypassUserEnvironmentResourceKeys_Enabled</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line">        <tt class="py-name" id="link-78"><a class="py-name" href="#" onclick="return doclink('link-78', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-79"><a class="py-name" href="#" onclick="return doclink('link-79', 'resources', 'link-2');" title="mari.resources">resources</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-80" targets="Method mari.ResourceInfo.disableEnviromentKeyValues()=mari.ResourceInfo-class.html#disableEnviromentKeyValues"><a class="py-name" href="#" onclick="return doclink('link-80', 'disableEnviromentKeyValues', 'link-80');" title="mari.ResourceInfo.disableEnviromentKeyValues">disableEnviromentKeyValues</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line">        <tt class="py-comment"># Refresh paths from environment variables to handle any changes made by sitecustomize.py (see bug 19142)</tt> </tt>
+<a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line">        <tt class="py-name" id="link-81"><a class="py-name" href="#" onclick="return doclink('link-81', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-82"><a class="py-name" href="#" onclick="return doclink('link-82', 'resources', 'link-2');" title="mari.resources">resources</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-83" targets="Method mari.ResourceInfo.refreshAllPaths()=mari.ResourceInfo-class.html#refreshAllPaths"><a class="py-name" href="#" onclick="return doclink('link-83', 'refreshAllPaths', 'link-83');" title="mari.ResourceInfo.refreshAllPaths">refreshAllPaths</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line"> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line"><tt class="py-comment">#-------------------------------------------------------------------------------</tt> </tt>
+<a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line"> </tt>
+<a name="L71"></a><tt class="py-lineno">71</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name" id="link-84"><a class="py-name" href="#" onclick="return doclink('link-84', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-85"><a class="py-name" href="#" onclick="return doclink('link-85', 'app', 'link-21');" title="mari.app">app</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-86" targets="Method mari.Application.isRunning()=mari.Application-class.html#isRunning"><a class="py-name" href="#" onclick="return doclink('link-86', 'isRunning', 'link-86');" title="mari.Application.isRunning">isRunning</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line">    <tt class="py-name" id="link-87" targets="Method mari.Camera.setUp()=mari.Camera-class.html#setUp,Function mari.system._setup.setUp()=mari.system._setup-module.html#setUp"><a class="py-name" href="#" onclick="return doclink('link-87', 'setUp', 'link-87');" title="mari.Camera.setUp
+mari.system._setup.setUp">setUp</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

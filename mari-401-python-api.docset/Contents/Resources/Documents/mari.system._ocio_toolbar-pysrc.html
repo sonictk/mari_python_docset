@@ -1,0 +1,1867 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.system._ocio_toolbar
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.system-module.html">
+       Package&nbsp;system
+      </a>
+      ::
+        Module&nbsp;_ocio_toolbar
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.system._ocio_toolbar-pysrc.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <h1 class="epydoc">
+   Source Code for
+   <a href="mari.system._ocio_toolbar-module.html" onclick="show_private();">
+    Module mari.system._ocio_toolbar
+   </a>
+  </h1>
+  <pre class="py-src">
+&iuml;&raquo;&iquest;#-------------------------------------------------------------------------------
+# Post processing (color management) related Mari scripts
+# coding: utf-8
+# Copyright (c) 2011 The Foundry Visionmongers Ltd.  All Rights Reserved.
+#-------------------------------------------------------------------------------
+
+import mari, time, PySide2, os, math, re
+QtCore    = PySide2.QtCore
+QtWidgets = PySide2.QtWidgets
+ocio      = mari.utils.ocio
+
+##############################################################################################
+
+GAIN_GROUP_MAX_WIDTH = 312
+FSTOP_MAX_WIDTH      = 50
+EXPOSURE_MAX_WIDTH   = 102
+GAIN_MAX_WIDTH       = 80
+GAMMA_MAX_WIDTH      = 200
+TOOLBAR_SPACING      = 3
+SEPARATOR_TEXT       = '---------------'
+
+class OcioToolBar():
+
+    #-----------------------------------------------------------------------------------------
+
+    def __init__(self):
+        # Default all members...
+        self._project                  = None
+
+        self._config_file_list         = mari.FileList(ocio.CONFIG_FILE_LIST_DEFAULT)
+        self._config                   = ocio.CONFIG_DEFAULT
+        self._input_colorspace         = ocio.INPUT_COLORSPACE_DEFAULT
+        self._lut_file_list            = mari.FileList(ocio.LUT_FILE_LIST_DEFAULT)
+        self._extrapolate              = ocio.EXTRAPOLATE_DEFAULT
+        self._display                  = ocio.DISPLAY_DEFAULT
+        self._view                     = ocio.VIEW_DEFAULT
+        self._swizzle                  = ocio.SWIZZLE_DEFAULT
+        self._gain                     = ocio.GAIN_DEFAULT
+        self._gamma                    = ocio.GAMMA_DEFAULT
+
+        self._filter_collection        = None
+
+        self._gain_filter              = None
+        self._gain_filter_cache_id     = None
+        self._gain_texture_cache_id    = None
+        self._gain_sampler_name        = None
+
+        self._lut_enabled              = self._lut_file_list.isEmpty()
+        self._lut_filter               = None
+        self._lut_filter_cache_id      = None
+        self._lut_texture_cache_id     = None
+        self._lut_sampler_name         = None
+
+        self._display_filter           = None
+        self._display_filter_cache_id  = None
+        self._display_texture_cache_id = None
+        self._display_sampler_name     = None
+
+        self._input_colorspace_widget  = None
+        self._extrapolate_widget       = None
+        self._display_widget           = None
+        self._view_widget              = None
+        self._swizzle_widget           = None
+        self._fstop_widget             = None
+        self._fstop_decrement_widget   = None
+        self._fstop_increment_widget   = None
+        self._gain_widget              = None
+        self._exposure_widget          = None
+        self._gain_reset_widget        = None
+        self._gamma_widget             = None
+        self._gamma_reset_widget       = None
+
+        self._buildWidgets()
+
+        # Enable/disable color management.
+        mari.gl_render.setPostProcessingEnabled(self.isColorManagementEnabled())
+
+        # *** IMPORTANT *** The following post filter collections are previous versions that we need to check for on
+        # startup and remove it if found.
+        delete_filter_collection = mari.gl_render.findPostFilterCollection('OpenColorIO')
+        if delete_filter_collection is not None:
+            mari.gl_render.deletePostFilterCollection(delete_filter_collection)
+        delete_filter_collection = mari.gl_render.findPostFilterCollection('Color Space')
+        if delete_filter_collection is not None:
+            mari.gl_render.deletePostFilterCollection(delete_filter_collection)
+        delete_filter_collection = mari.gl_render.findPostFilterCollection('OCIO')
+        if delete_filter_collection is not None:
+            mari.gl_render.deletePostFilterCollection(delete_filter_collection)
+
+        # Create the OCIO post filter collection if not present.
+        self._filter_collection = mari.gl_render.findPostFilterCollection('Colorspace')
+        if self._filter_collection is None:
+            ocio.printMessage(ocio.MessageType.DEBUG, '+++ collection = CREATE +++')
+            self._filter_collection = mari.gl_render.createPostFilterCollection('Colorspace')
+        else:
+            ocio.printMessage(ocio.MessageType.DEBUG, '+++ collection = FOUND +++')
+
+        # The following removes the POSTFILTERCOLLECTION_REMOVABLE and POSTFILTERCOLLECTION_RENAMABLE flags so stops the
+        # user from being able to delete and rename it.
+        self._filter_collection.setFlags(self._filter_collection.POSTFILTERCOLLECTION_EDITABLE)
+
+        # Clear out any existing OCIO filters and start from scratch.
+        self._gain_filter = self._filter_collection.find('Gain')
+        if self._gain_filter is not None:
+            self._filter_collection.remove(self._gain_filter)
+
+        self._lut_filter = self._filter_collection.find('LUT')
+        if self._lut_filter is not None:
+            self._filter_collection.remove(self._lut_filter)
+
+        self._display_filter = self._filter_collection.find('Display')
+        if self._display_filter is not None:
+            self._filter_collection.remove(self._display_filter)
+
+        self._dither_filter = self._filter_collection.find('Dither')
+        if self._dither_filter is not None:
+            self._filter_collection.remove(self._dither_filter)
+
+        self._createFilters()
+
+        # Set the default color management filter stack as the current.
+        filter_collection = mari.gl_render.findPostFilterCollection(ocio.PROFILE_DEFAULT)
+        mari.gl_render.setPostFilterCollection(filter_collection)
+
+        # Attach ourselves to the applications toolbar created signal so we can rebuild the toolbar when it's been
+        # destroyed.
+        mari.utils.connect(mari.app.toolBarsCreated, self._toolBarsCreated)
+
+        # Attach ourselves to the appropriate GL signals so we can enable and disable widgets.
+        mari.utils.connect(mari.gl_render.postProcessingEnabled,          self._postProcessingEnabled)
+        mari.utils.connect(mari.gl_render.setCurrentPostFilterCollection, self._setCurrentPostFilterCollection)
+
+        # Attach ourselves to the appropriate project signals so we can load and save settings.
+        mari.utils.connect(mari.projects.opened,             self._openedProject)
+        mari.utils.connect(mari.projects.aboutToSaveProject, self._aboutToSaveProject)
+        mari.utils.connect(mari.projects.projectClosed,      self._closedProject)
+        mari.utils.connect(mari.app.exiting,                 self._exiting)
+
+        # Update the UI to match the current project, if we have one.
+        current_project = mari.projects.current()
+        if current_project is not None:
+            self._openedProject(current_project, False)
+        else:
+            self._enableWidgets(self.isEnabled(filter_collection))
+
+    #-----------------------------------------------------------------------------------------
+
+    def isColorManagementEnabled(self):
+        return self._toggle_color_management_action.isChecked()
+
+    #-----------------------------------------------------------------------------------------
+
+    def isEnabled(self, filter_collection = None):
+        if filter_collection is None:
+            filter_collection = mari.gl_render.currentPostFilterCollection()
+            if filter_collection is None:
+                return True
+        return (filter_collection.name() == 'Colorspace' and self._toggle_color_management_action.isChecked())
+
+    #-----------------------------------------------------------------------------------------
+
+    def setColorspaceDefaults(self, value):
+        if value.colorManagementEnabled():
+            config_path = value.fileName()
+            if not value.isFileCustom():
+                config_path = mari.resources.path(mari.resources.COLOR) + '/OpenColorIO/' + config_path + '/config.ocio'
+            self.setConfigPath(value = config_path, update_metadata = True, display_message_box = False)
+
+            input_colorspace = value.colorspace(value.COLORSPACE_TARGET_WORKING)
+            self.setInputColorspace(input_colorspace)
+
+        else:
+            # Make the input color-space match the native color-space of the current image set so the colors stay
+            # the same onscreen.
+            # NOTE: We don't use the current channel as the project may be node based and not have any.
+            geo = mari.current.geo()
+            if geo is not None:
+                image_set = geo.currentImageSet()
+                if image_set is not None:
+                    images = image_set.imageList()
+                    if images:
+                        image = images[0]
+                        config = image.colorspaceConfig()
+                        input_colorspace = config.resolveColorspace(config.COLORSPACE_STAGE_NATIVE)
+                        self.setInputColorspace(input_colorspace)
+
+        # Enable/disable color management.
+        mari.gl_render.setPostProcessingEnabled(value.colorManagementEnabled())
+
+        if self._config is not None:
+            self._enableWidgets(self.isEnabled())
+
+            self._display_filter.disconnect(QtCore.SIGNAL('metadataValueChanged(QString, QVariant)'), metadataValueChanged)
+            self._updateDisplayMetadata()
+            self._display_filter.connect(QtCore.SIGNAL('metadataValueChanged(QString, QVariant)'), metadataValueChanged)
+        else:
+            self._enableWidgets(False)
+
+    #-----------------------------------------------------------------------------------------
+
+    def setConfigPath(self, value, update_metadata = True, display_message_box = True):
+        if value != self.configPath():
+            self._config_file_list.clear()
+            self._config = ocio.loadConfig(value, display_message_box)
+
+            if self._config is not None:
+                self._config_file_list.append(value)
+                self._config_file_list.setPickedFile(value)
+
+                self._updateDisplayWidgets()
+                if self._gain_filter is not None:
+                    self._updateFilters()
+                else:
+                    self._createFilters()
+
+            else:
+                self._updateDisplayWidgets()
+                if self._gain_filter is not None:
+                    self._removeFilters()
+                self._enableWidgets(False)
+
+            ocio.printMessage(ocio.MessageType.DEBUG, 'Changed config to \'%s\'' % self.configPath())
+
+    #-----------------------------------------------------------------------------------------
+
+    def configPath(self):
+        return '' if self._config_file_list.isEmpty() else self._config_file_list.at(0)
+
+    #-----------------------------------------------------------------------------------------
+
+    def selectConfig(self):
+        config_path = mari.utils.misc.getOpenFileName(None,
+                                                      'Select OCIO Configuration File',
+                                                      self.configPath(),
+                                                      ocio.configFileFilter(),
+                                                      None,
+                                                      0)
+        if os.path.isfile(config_path):
+            self.setConfigPath(config_path)
+
+    #-----------------------------------------------------------------------------------------
+
+    def setInputColorspace(self, value, update_widget = True, update_metadata = True):
+        if value != self._input_colorspace:
+            self._input_colorspace = value
+
+            if update_widget:
+                block = self._input_colorspace_widget.blockSignals(True)
+                pretty_name = self.resolvePrettyName(self._input_colorspace)
+                index = self._input_colorspace_widget.findText(pretty_name)
+                self._input_colorspace_widget.setCurrentIndex(index)
+                self._input_colorspace_widget.blockSignals(block)
+
+            if update_metadata:
+                self._display_filter.disconnect(QtCore.SIGNAL('metadataValueChanged(QString, QVariant)'), metadataValueChanged)
+                self._display_filter.setMetadata('InputColorspace', self._input_colorspace)
+                self._display_filter.connect(QtCore.SIGNAL('metadataValueChanged(QString, QVariant)'), metadataValueChanged)
+
+            self._rebuildDisplayFilter()
+
+            ocio.printMessage(ocio.MessageType.DEBUG, 'Changed input color space to \'%s\'' % self._input_colorspace)
+
+    #-----------------------------------------------------------------------------------------
+
+    def resolveInputColorspace(self):
+        match = re.match('.+ \((.+)\)', self._input_colorspace)
+        if match:
+            return match.group(1)
+        return self._input_colorspace
+
+    #-----------------------------------------------------------------------------------------
+
+    def inputColorspaceDefault(self, defaults):
+        return defaults.colorspace(mari.ColorspaceDefaults.COLORSPACE_TARGET_WORKING)
+
+    #-----------------------------------------------------------------------------------------
+
+    def rolePrettyName(self, role_name):
+        colorspace = self._config.getColorSpace(role_name)
+        return '%s (%s)' % (role_name, colorspace.getName())
+
+    #-----------------------------------------------------------------------------------------
+
+    def resolvePrettyName(self, name):
+        if self._config is not None:
+            # Determine whether the given name is a role or colorspace so we can adjust the final name.
+            role_count = self._config.getNumRoles()
+            for index in range(0, role_count):
+                role_name = self._config.getRoleName(index)
+                if role_name == name:
+                    return self.rolePrettyName(name)
+
+        # If we get to here then we must have a standard colorspace or an invalid config.
+        return name
+
+    #-----------------------------------------------------------------------------------------
+
+    def inputColorspaces(self, defaults, include_separator = True):
+        list = []
+
+        if self._config is not None:
+            role_count = self._config.getNumRoles()
+            if role_count &gt; 0:
+                if include_separator and len(list) &gt; 0:
+                    list.extend([SEPARATOR_TEXT])
+                for index in range(0, role_count):
+                    role_name = self._config.getRoleName(index)
+                    pretty_name = self.rolePrettyName(role_name)
+                    list.extend([pretty_name])
+
+            colorspace_count = self._config.getNumColorSpaces()
+            if colorspace_count &gt; 0:
+                if include_separator and len(list) &gt; 0:
+                    list.extend([SEPARATOR_TEXT])
+                list.extend([self._config.getColorSpaceNameByIndex(index) for index in range(0, colorspace_count)])
+
+        return list
+
+    #-----------------------------------------------------------------------------------------
+
+    def setLUTPath(self, value, update_metadata = True, force_shader_build = False):
+        if value != self.lutPath():
+            self._lut_file_list.clear()
+
+            if value:
+                self._lut_file_list.append(value)
+                self._lut_file_list.setPickedFile(value)
+
+                self._clear_lut_action.setEnabled(True)
+                self._extrapolate_widget.setEnabled(True)
+
+            else:
+                self._clear_lut_action.setEnabled(False)
+                self._extrapolate_widget.setEnabled(False)
+
+            if update_metadata:
+                self._lut_filter.disconnect(QtCore.SIGNAL('metadataValueChanged(QString, QVariant)'), metadataValueChanged)
+                self._lut_filter.setMetadata('LUTPath', self._lut_file_list)
+                self._lut_filter.connect(QtCore.SIGNAL('metadataValueChanged(QString, QVariant)'), metadataValueChanged)
+
+            self._rebuildLUTFilter(force_shader_build)
+
+            ocio.printMessage(ocio.MessageType.DEBUG, 'Changed LUT to \'%s\'' % value)
+
+    #-----------------------------------------------------------------------------------------
+
+    def lutPath(self):
+        return '' if self._lut_file_list.isEmpty() else self._lut_file_list.at(0)
+
+    #-----------------------------------------------------------------------------------------
+
+    def resetLUT(self, force_shader_build = False):
+        self.setLUTPath(value = ocio.LUT_PATH_DEFAULT, update_metadata = True, force_shader_build = force_shader_build)
+
+    #-----------------------------------------------------------------------------------------
+
+    def selectLUT(self):
+        lut_path = mari.misc.getOpenFileName(None,
+                                             'Select LUT File',
+                                             self.lutPath(),
+                                             ocio.lutFileFilter(),
+                                             None,
+                                             0)
+        if os.path.isfile(lut_path):
+            self.setLUTPath(lut_path)
+
+    #-----------------------------------------------------------------------------------------
+
+    def setExtrapolateEnabled(self, value, update_widget = True, update_metadata = True):
+        if value != self._extrapolate:
+            self._extrapolate = value
+
+            if update_widget:
+                block = self._extrapolate_widget.blockSignals(True)
+                self._extrapolate_widget.setChecked(self._extrapolate)
+                self._extrapolate_widget.blockSignals(block)
+
+            if update_metadata:
+                self._lut_filter.disconnect(QtCore.SIGNAL('metadataValueChanged(QString, QVariant)'), metadataValueChanged)
+                self._lut_filter.setMetadata('Extrapolate', self._extrapolate)
+                self._lut_filter.connect(QtCore.SIGNAL('metadataValueChanged(QString, QVariant)'), metadataValueChanged)
+
+            self._rebuildLUTFilter(force_shader_build = True)
+
+            ocio.printMessage(ocio.MessageType.DEBUG, 'Changed extrapolate to \'%s\'' % self._extrapolate)
+
+    #-----------------------------------------------------------------------------------------
+
+    def setDisplay(self, value, update_widget = True, update_metadata = True):
+        if value != self._display:
+            self._display = value
+
+            if update_widget:
+                block = self._display_widget.blockSignals(True)
+                index = self._display_widget.findText(self._display)
+                self._display_widget.setCurrentIndex(index)
+                self._display_widget.blockSignals(block)
+
+            if update_metadata:
+                self._display_filter.disconnect(QtCore.SIGNAL('metadataValueChanged(QString, QVariant)'), metadataValueChanged)
+                self._display_filter.setMetadata('Display', self._display)
+                self._display_filter.connect(QtCore.SIGNAL('metadataValueChanged(QString, QVariant)'), metadataValueChanged)
+
+            self.setView(self._config.getDefaultView(self._display), update_widget, update_metadata)
+
+            self._rebuildDisplayFilter()
+
+            ocio.printMessage(ocio.MessageType.DEBUG, 'Changed display to \'%s\'' % self._display)
+
+    #-----------------------------------------------------------------------------------------
+
+    def setView(self, value, update_widget = True, update_metadata = True):
+        if value != self._view:
+            self._view = value
+
+            if update_widget:
+                block = self._view_widget.blockSignals(True)
+                index = self._view_widget.findText(self._view)
+                self._view_widget.setCurrentIndex(index)
+                self._view_widget.blockSignals(block)
+
+            if update_metadata:
+                self._display_filter.disconnect(QtCore.SIGNAL('metadataValueChanged(QString, QVariant)'), metadataValueChanged)
+                self._display_filter.setMetadata('View', self._view)
+                self._display_filter.connect(QtCore.SIGNAL('metadataValueChanged(QString, QVariant)'), metadataValueChanged)
+
+            self._rebuildDisplayFilter()
+
+            ocio.printMessage(ocio.MessageType.DEBUG, 'Changed view to \'%s\'' % self._view)
+
+    #-----------------------------------------------------------------------------------------
+
+    def setSwizzle(self, value, update_widget = True, update_metadata = True):
+        if value != self._swizzle:
+            self._swizzle = value
+
+            if update_widget:
+                block = self._swizzle_widget.blockSignals(True)
+                index = self._swizzle_widget.findText(self._swizzle)
+                self._swizzle_widget.setCurrentIndex(index)
+                self._swizzle_widget.blockSignals(block)
+
+            if update_metadata:
+                self._display_filter.disconnect(QtCore.SIGNAL('metadataValueChanged(QString, QVariant)'), metadataValueChanged)
+                self._display_filter.setMetadata('Swizzle', self._swizzle)
+                self._display_filter.connect(QtCore.SIGNAL('metadataValueChanged(QString, QVariant)'), metadataValueChanged)
+
+            self._rebuildDisplayFilter()
+
+            ocio.printMessage(ocio.MessageType.DEBUG, 'Changed swizzle to \'%s\'' % self._swizzle)
+
+    #-----------------------------------------------------------------------------------------
+
+    def setGain(self, value, update_widget = True, update_metadata = True):
+        if value != self._gain:
+            self._gain = value
+
+            if update_widget:
+                self._updateGainWidgets()
+
+            if update_metadata:
+                self._gain_filter.disconnect(QtCore.SIGNAL('metadataValueChanged(QString, QVariant)'), metadataValueChanged)
+                self._gain_filter.setMetadata('Gain', self._gain)
+                self._gain_filter.connect(QtCore.SIGNAL('metadataValueChanged(QString, QVariant)'), metadataValueChanged)
+
+            self._rebuildGainFilter()
+
+            ocio.printMessage(ocio.MessageType.DEBUG, 'Changed gain to \'%s\'' % self._gain)
+
+    #-----------------------------------------------------------------------------------------
+
+    def setGamma(self, value, update_widget = True, update_metadata = True):
+        if value != self._gamma:
+            self._gamma = value
+
+            if update_widget:
+                block = self._gamma_widget.blockSignals(True)
+                self._gamma_widget.setValue(self._gamma)
+                self._gamma_widget.blockSignals(block)
+
+            if update_metadata:
+                self._display_filter.disconnect(QtCore.SIGNAL('metadataValueChanged(QString, QVariant)'), metadataValueChanged)
+                self._display_filter.setMetadata('Gamma', self._gamma)
+                self._display_filter.connect(QtCore.SIGNAL('metadataValueChanged(QString, QVariant)'), metadataValueChanged)
+
+            self._rebuildDisplayFilter()
+
+            ocio.printMessage(ocio.MessageType.DEBUG, 'Changed gamma to \'%s\'' % self._gamma)
+
+    #-----------------------------------------------------------------------------------------
+
+    def updateLUTSize(self):
+        ocio.printMessage(ocio.MessageType.DEBUG, 'Updating LUT size...')
+
+        self._clearGainFilterCache()
+        self._clearLUTFilterCache()
+        self._clearDisplayFilterCache()
+
+        self._rebuildGainFilter(force_shader_build = True)
+        self._rebuildLUTFilter(force_shader_build = True)
+        self._rebuildDisplayFilter(force_shader_build = True)
+
+    #-----------------------------------------------------------------------------------------
+
+    def updateFStopCenter(self):
+        ocio.printMessage(ocio.MessageType.DEBUG, 'Updating f-stop center...')
+
+        fstop = ocio.convertGainToFStop(self._gain)
+        self._updateFStopWidgetText(fstop)
+
+    #-----------------------------------------------------------------------------------------
+
+    def activeDisplays(self):
+        if 'OCIO_ACTIVE_DISPLAYS' in os.environ:
+            return re.split(':', os.environ['OCIO_ACTIVE_DISPLAYS'])
+
+        displays = self._config.getActiveDisplays()
+        if len(displays) &gt; 0:
+            return re.split(', *', displays)
+
+        return self._config.getDisplays()
+
+    #-----------------------------------------------------------------------------------------
+
+    def activeViews(self):
+        if 'OCIO_ACTIVE_VIEWS' in os.environ:
+            return re.split(':', os.environ['OCIO_ACTIVE_VIEWS'])
+
+        views = self._config.getActiveViews()
+        if len(views) &gt; 0:
+            return re.split(', *', views)
+
+        return self._config.getViews(self._display)
+
+    #-----------------------------------------------------------------------------------------
+    # Widgets:
+    #-----------------------------------------------------------------------------------------
+
+    def _buildWidgets(self):
+        mari.app.deleteToolBar('Colorspace')
+        self._toolbar = mari.app.createToolBar('Colorspace', mari.app.BOTTOM_TOOLBAR_AREA)
+        self._toolbar.setLocked(True)
+        self._toolbar.setSpacing(TOOLBAR_SPACING)
+
+        # Toggle Color Management:
+        self._toggle_color_management_action = self._addAction(
+            self._toggleColorManagement,
+            'ColorManager.png',
+            'Toggle on/off color management',
+            'Toggle color management')
+        self._toggle_color_management_action.setCheckable(True)
+        self._toggle_color_management_action.setChecked(ocio.ENABLED_DEFAULT)
+        self._toolbar.addActionObject(self._toggle_color_management_action)
+
+        self._toolbar.addSeparator()
+
+        # Select Config:
+        self._select_config_action = self._addAction(
+            self.selectConfig,
+            'LoadColorConfig.png',
+            'Select OCIO configuration file',
+            'Select config')
+        self._toolbar.addActionObject(self._select_config_action)
+
+        # Input Color-Space:
+        defaults = mari.ocio.currentColorspaceDefaults()
+        self._input_colorspace_widget = self._addComboBox(
+            'Input Colorspace',
+            self.inputColorspaces(defaults),
+            self.resolvePrettyName(self._input_colorspace),
+            self.inputColorspaceDefault(defaults),
+            None,
+            lambda value: self.setInputColorspace(value = value, update_widget = False, update_metadata = True))
+        self._input_colorspace = self._input_colorspace_widget.currentText()
+
+        self._toolbar.addSeparator()
+
+        # Select LUT:
+        self._select_lut_action = self._addAction(
+            self.selectLUT,
+            'LoadLookupTable.png',
+            'Select LUT file',
+            'Select LUT')
+        self._toolbar.addActionObject(self._select_lut_action)
+
+        # Clear LUT:
+        self._clear_lut_action = self._addAction(
+            self._clearLUT,
+            'ClearLookupTable.png',
+            'Clear current LUT',
+            'Clear LUT')
+        self._toolbar.addActionObject(self._clear_lut_action)
+
+        # Extrapolate:
+        self._toolbar.addWidget(QtWidgets.QLabel('Extrapolate'))
+        self._extrapolate_widget = QtWidgets.QCheckBox()
+        self._extrapolate_widget.setToolTip('Extrapolate if outside LUT range')
+        self._extrapolate_widget.setChecked(self._extrapolate)
+        self._extrapolate_widget.connect(
+            QtCore.SIGNAL('toggled(bool)'),
+            lambda value: self.setExtrapolateEnabled(value = value, update_widget = False, update_metadata = True))
+        self._toolbar.addWidget(self._extrapolate_widget)
+
+        self._toolbar.addSeparator()
+
+        # Display:
+        self._display_widget = self._addComboBox(
+            'Display Device',
+            self.activeDisplays(),
+            self._display,
+            ocio.DISPLAY_DEFAULT,
+            None,
+            lambda value: self.setDisplay(value = value, update_widget = False, update_metadata = True))
+        self._display = self._display_widget.currentText()
+
+        # View:
+        self._view_widget = self._addComboBox(
+            'View Transform',
+            self.activeViews(),
+            self._view,
+            ocio.VIEW_DEFAULT,
+            None,
+            lambda value: self.setView(value = value, update_widget = False, update_metadata = True))
+        self._view = self._view_widget.currentText()
+
+        # Swizzle:
+        self._swizzle_widget = self._addComboBox(
+            'Component',
+            ocio.SWIZZLE_TYPES,
+            self._swizzle,
+            ocio.SWIZZLE_DEFAULT,
+            None,
+            lambda value: self.setSwizzle(value = value, update_widget = False, update_metadata = True))
+        self._swizzle = self._swizzle_widget.currentText()
+
+        # Gain Group:
+        group_widget, layout = self._addWidgetGroup()
+        group_widget.setMaximumWidth(GAIN_GROUP_MAX_WIDTH)
+
+        layout.addWidget(QtWidgets.QLabel('Gain'))
+
+        # F-Stop:
+        subgroup_widget = QtWidgets.QWidget()
+        layout.addWidget(subgroup_widget)
+
+        sublayout = QtWidgets.QHBoxLayout()
+        sublayout.setSpacing(0)
+        sublayout.setContentsMargins(0, 0, 0, 0)
+        subgroup_widget.setLayout(sublayout)
+
+        exposure     = ocio.convertGainToExposure(self._gain)
+        fstop        = ocio.convertExposureToFStop(exposure)
+        scale        = (exposure - ocio.EXPOSURE_MIN) / ocio.EXPOSURE_DELTA
+        widget_max   = int(math.ceil(ocio.EXPOSURE_DELTA / ocio.FSTOP_STEP_SIZE))
+        widget_value = scale * widget_max
+        self._fstop_widget = mari.LineEdit()
+        self._fstop_widget.setRange(widget_max)
+        self._fstop_widget.setMaximumWidth(FSTOP_MAX_WIDTH)
+        self._fstop_widget.setReadOnly(True)
+        self._updateFStopWidgetText(fstop)
+        self._fstop_widget.setValue(widget_value)
+        mari.utils.connect(self._fstop_widget.movedMouse, self._fstopMovedMouse)
+        self._fstop_widget.addToLayout(sublayout)
+
+        self._fstop_decrement_widget = self._addSmallButtom(
+            sublayout,
+            '-',
+            'Decrease gain 1/2 stop',
+            lambda: self.setGain(ocio.convertExposureToGain(ocio.convertGainToExposure(self._gain) - 0.5)))
+        self._fstop_increment_widget = self._addSmallButtom(
+            sublayout,
+            '+',
+            'Increase gain 1/2 stop',
+            lambda: self.setGain(ocio.convertExposureToGain(ocio.convertGainToExposure(self._gain) + 0.5)))
+
+        mari.utils.connect(mari.ocio.lutSizeChanged, self.updateLUTSize)
+        ocio.registerFStopCenterChanged(self.updateFStopCenter)
+
+        # Gain:
+        subgroup_widget = QtWidgets.QWidget()
+        layout.addWidget(subgroup_widget)
+
+        sublayout = QtWidgets.QHBoxLayout()
+        sublayout.setSpacing(3)
+        sublayout.setContentsMargins(0, 0, 0, 0)
+        subgroup_widget.setLayout(sublayout)
+
+        widget_max   = int(math.ceil(ocio.EXPOSURE_DELTA / ocio.EXPOSURE_STEP_SIZE))
+        widget_value = scale * widget_max
+        self._gain_widget = mari.LineEdit()
+        self._gain_widget.setRange(widget_max)
+        self._gain_widget.addFloatValidator(ocio.GAIN_MIN, ocio.GAIN_MAX, ocio.GAIN_PRECISION)
+        self._gain_widget.setMaximumWidth(GAIN_MAX_WIDTH)
+        self._updateGainWidgetText()
+        self._gain_widget.setValue(widget_value)
+        mari.utils.connect(
+            self._gain_widget.lostFocus,
+            lambda: self.setGain(max(min(float(self._gain_widget.text()), ocio.GAIN_MAX), ocio.GAIN_MIN)))
+        mari.utils.connect(self._gain_widget.movedMouse, self._gainMovedMouse)
+        self._gain_widget.addToLayout(sublayout)
+
+        # Exposure:
+        self._exposure_widget = QtWidgets.QSlider()
+        self._exposure_widget.setOrientation(QtCore.Qt.Horizontal) 
+        self._exposure_widget.setMaximum(widget_max)
+        self._exposure_widget.setValue(widget_value)
+        self._exposure_widget.setMinimumWidth(EXPOSURE_MAX_WIDTH)
+        self._exposure_widget.setMaximumWidth(EXPOSURE_MAX_WIDTH)
+        mari.utils.connect(self._exposure_widget.valueChanged, self._exposureChanged)
+        sublayout.addWidget(self._exposure_widget)
+
+        self._gain_reset_widget = self._addSmallButtom(
+            layout,
+            'R',
+            'Reset gain to default',
+            lambda: self.setGain(value = ocio.GAIN_DEFAULT, update_widget = True, update_metadata = True))
+
+        # Gamma:
+        group_widget, layout = self._addWidgetGroup()
+        group_widget.setMaximumWidth(GAMMA_MAX_WIDTH)
+
+        layout.addWidget(QtWidgets.QLabel('Gamma'))
+
+        self._gamma_widget = mari.FloatSlider()
+        self._gamma_widget.setRange(ocio.GAMMA_MIN, ocio.GAMMA_MAX)
+        self._gamma_widget.setStepSize(ocio.GAMMA_STEP_SIZE)
+        self._gamma_widget.setPrecision(ocio.GAMMA_PRECISION)
+        self._gamma_widget.setValue(self._gamma)
+        mari.utils.connect(
+            self._gamma_widget.valueChanged,
+            lambda value: self.setGamma(value = value, update_widget = False, update_metadata = True))
+        self._gamma_widget.addToLayout(layout)
+
+        self._gamma_reset_widget = self._addSmallButtom(
+            layout,
+            'R',
+            'Reset gamma to default',
+            lambda: self.setGamma(value = ocio.GAMMA_DEFAULT, update_widget = True, update_metadata = True))
+
+    #-----------------------------------------------------------------------------------------
+
+    def _updateDisplayWidgets(self):
+        defaults = mari.ocio.currentColorspaceDefaults()
+        self._updateComboBox(
+            self._input_colorspace_widget,
+            self.inputColorspaces(defaults),
+            self.resolvePrettyName(self._input_colorspace),
+            self.inputColorspaceDefault(defaults))
+        self._input_colorspace = self._input_colorspace_widget.currentText()
+
+        if self._config is not None:
+            self._updateComboBox(self._display_widget, self.activeDisplays(), self._display, self._config.getDefaultDisplay())
+            self._display = self._display_widget.currentText()
+
+            self._updateComboBox(self._view_widget, self.activeViews(), self._view, self._config.getDefaultView(self._display))
+            self._view = self._view_widget.currentText()
+        else:
+            self._updateComboBox(self._display_widget, [], '', '')
+            self._display = ''
+
+            self._updateComboBox(self._view_widget, [], '', '')
+            self._view = ''
+
+        self._updateComboBox(self._swizzle_widget, ocio.SWIZZLE_TYPES, self._swizzle, ocio.SWIZZLE_DEFAULT)
+        self._swizzle = self._swizzle_widget.currentText()
+
+        self._updateGainWidgets()
+
+        self._gamma_widget.setValue(self._gamma)
+
+    #-----------------------------------------------------------------------------------------
+
+    def _enableWidgets(self, enable):
+        self._enableGainWidgets(enable and self.isGainFilterEnabled())
+        self._enableLUTWidgets(enable and self.isLUTFilterEnabled())
+        self._enableDisplayWidgets(enable and self.isDisplayFilterEnabled())
+
+    #-----------------------------------------------------------------------------------------
+
+    def _enableGainWidgets(self, enable):
+        self._fstop_widget.setEnabled(enable)
+        self._fstop_decrement_widget.setEnabled(enable)
+        self._fstop_increment_widget.setEnabled(enable)
+        self._gain_widget.setEnabled(enable)
+        self._exposure_widget.setEnabled(enable)
+        self._gain_reset_widget.setEnabled(enable)
+
+    #-----------------------------------------------------------------------------------------
+
+    def _enableLUTWidgets(self, enable):
+        self._select_lut_action.setEnabled(enable)
+        lut_enable = enable and not self._lut_file_list.isEmpty()
+        self._clear_lut_action.setEnabled(lut_enable)
+        self._extrapolate_widget.setEnabled(lut_enable)
+
+    #-----------------------------------------------------------------------------------------
+
+    def _enableDisplayWidgets(self, enable):
+        defaults = mari.ocio.currentColorspaceDefaults()
+        self._select_config_action.setEnabled(enable and not defaults.colorManagementEnabled() and os.getenv('OCIO') is None)
+        self._input_colorspace_widget.setEnabled(enable and not defaults.colorManagementEnabled())
+
+        self._display_widget.setEnabled(enable)
+        self._view_widget.setEnabled(enable)
+        self._swizzle_widget.setEnabled(enable)
+        self._gamma_widget.setEnabled(enable)
+        self._gamma_reset_widget.setEnabled(enable)
+
+    #-----------------------------------------------------------------------------------------
+
+    def _addAction(self, triggered, icon_filename, tip, whats_this):
+        icon_path = mari.resources.path(mari.resources.ICONS) + '/' + icon_filename
+        action = QtWidgets.QAction(mari.misc.createIconFromPath(icon_path), '', None)
+
+        action.setStatusTip(tip)
+        action.setToolTip(tip)
+        action.setWhatsThis(whats_this)
+
+        action.connect(QtCore.SIGNAL('triggered()'), triggered)
+        
+        return action
+
+    #-----------------------------------------------------------------------------------------
+
+    def _addWidgetGroup(self, before = None):
+        group_widget = QtWidgets.QWidget()
+        if before is None:
+            self._toolbar.addWidget(group_widget)
+        else:
+            self._toolbar.insertWidget(before, group_widget)
+
+        layout = QtWidgets.QHBoxLayout(group_widget)
+        layout.setSpacing(1)
+        layout.setContentsMargins(1, 1, 1, 1)
+        group_widget.setLayout(layout)
+
+        # This somehow solves the issue of PySide deleting the C++ object of its widget.
+        group_widget.parent()
+
+        return (group_widget, layout)
+
+    #-----------------------------------------------------------------------------------------
+
+    def _addComboBox(self, label, items, value, default, before, value_changed, *args):
+        group_widget, layout = self._addWidgetGroup(before)
+
+        layout.addWidget(QtWidgets.QLabel(label))
+
+        widget = QtWidgets.QComboBox()
+        self._updateComboBox(widget, items, value, default)
+        widget.connect(QtCore.SIGNAL('currentIndexChanged(const QString &amp;)'), value_changed)
+        layout.addWidget(widget)
+
+        return widget
+
+    #-----------------------------------------------------------------------------------------
+
+    def _updateComboBox(self, widget, items, value, default):
+        block = widget.blockSignals(True)
+
+        widget.clear()
+        for index, item in enumerate(items):
+            if item == SEPARATOR_TEXT:
+                widget.insertSeparator(index)
+            else:
+                widget.insertItem(index, item)
+
+        if items.count(value) != 0:
+            widget.setCurrentIndex(items.index(value))
+        elif items.count(default) != 0:
+            widget.setCurrentIndex(items.index(default))
+
+        widget.blockSignals(block)
+
+    #-----------------------------------------------------------------------------------------
+
+    def _addSmallButtom(self, layout, label, tool_tip, value_changed, *args):
+        widget = QtWidgets.QPushButton(label)
+        widget.setToolTip(tool_tip)
+        widget.setFixedHeight(16)
+        widget.setFixedWidth(16)
+        widget.connect(QtCore.SIGNAL('released()'), value_changed)
+        layout.addWidget(widget)
+
+        return widget
+
+    #-----------------------------------------------------------------------------------------
+
+    def _convertFStopWidgetValueToGain(self, value):
+        widget_max = int(math.ceil(ocio.EXPOSURE_DELTA / ocio.FSTOP_STEP_SIZE))
+        scale      = float(value) / float(widget_max)
+        exposure   = ocio.EXPOSURE_MIN + scale * ocio.EXPOSURE_DELTA
+        return ocio.convertExposureToGain(exposure)
+
+    #-----------------------------------------------------------------------------------------
+
+    def _convertExposureWidgetValueToGain(self, value):
+        widget_max = int(math.ceil(ocio.EXPOSURE_DELTA / ocio.EXPOSURE_STEP_SIZE))
+        scale      = float(value) / float(widget_max)
+        exposure   = ocio.EXPOSURE_MIN + scale * ocio.EXPOSURE_DELTA
+        return ocio.convertExposureToGain(exposure)
+
+    #-----------------------------------------------------------------------------------------
+
+    def _updateFStopWidgetText(self, fstop):
+        block = self._fstop_widget.blockSignals(True)
+        if fstop &lt; 10.0:
+            # Floor the value to one decimal place and only display the decimal point if necessary
+            text = '%f' % fstop
+            index = text.index('.')
+            if text[index + 1] == '0':
+                text = text[:index]
+            else:
+                text = text[:index + 2]
+            self._fstop_widget.setText('f/%s' % text)
+        else:
+            self._fstop_widget.setText('f/%d' % int(fstop))
+        self._fstop_widget.blockSignals(block)
+
+    #-----------------------------------------------------------------------------------------
+
+    def _updateGainWidgetText(self):
+        block = self._gain_widget.blockSignals(True)
+        self._gain_widget.setText(('%.' + ('%d' % ocio.GAIN_PRECISION) + 'f') % self._gain)
+        self._gain_widget.home(False)
+        self._gain_widget.blockSignals(block)
+
+    #-----------------------------------------------------------------------------------------
+
+    def _updateGainWidgets(self):
+        exposure = ocio.convertGainToExposure(self._gain)
+        fstop    = ocio.convertExposureToFStop(exposure)
+        self._updateFStopWidgetText(fstop)
+
+        scale        = (exposure - ocio.EXPOSURE_MIN) / ocio.EXPOSURE_DELTA
+        widget_max   = int(math.ceil(ocio.EXPOSURE_DELTA / ocio.FSTOP_STEP_SIZE))
+        widget_value = int(round(scale * float(widget_max)))
+        block = self._fstop_widget.blockSignals(True)
+        self._fstop_widget.setValue(widget_value)
+        self._fstop_widget.blockSignals(block)
+
+        self._updateGainWidgetText()
+
+        widget_max   = int(math.ceil(ocio.EXPOSURE_DELTA / ocio.EXPOSURE_STEP_SIZE))
+        widget_value = int(round(scale * float(widget_max)))
+        block = self._gain_widget.blockSignals(True)
+        self._gain_widget.setValue(widget_value)
+        self._gain_widget.blockSignals(block)
+        block = self._exposure_widget.blockSignals(True)
+        self._exposure_widget.setValue(widget_value)
+        self._exposure_widget.blockSignals(block)
+
+    #-----------------------------------------------------------------------------------------
+
+    def _toggleColorManagement(self):
+        enabled = self.isColorManagementEnabled()
+        mari.gl_render.setPostProcessingEnabled(enabled)
+
+        if self._config is not None:
+            filter_collection = mari.gl_render.currentPostFilterCollection()
+            if filter_collection is not None and filter_collection.name() == 'Colorspace':
+                self._enableWidgets(enabled)
+
+        ocio.printMessage(ocio.MessageType.DEBUG, 'Toggled color management to \'%s\'' % ('on' if enabled else 'off'))
+
+    #-----------------------------------------------------------------------------------------
+
+    def _clearLUT(self):
+        self.setLUTPath('')
+        ocio.printMessage(ocio.MessageType.DEBUG, 'Cleared lut')
+
+    #-----------------------------------------------------------------------------------------
+
+    def _fstopMovedMouse(self, value):
+        self.setGain(self._convertFStopWidgetValueToGain(float(value)), False)
+
+        exposure = ocio.convertGainToExposure(self._gain)
+        fstop    = ocio.convertExposureToFStop(exposure)
+        self._updateFStopWidgetText(fstop)
+
+        self._updateGainWidgetText()
+
+        widget_max = int(math.ceil(ocio.EXPOSURE_DELTA / ocio.EXPOSURE_STEP_SIZE))
+        scale      = (exposure - ocio.EXPOSURE_MIN) / ocio.EXPOSURE_DELTA
+        value      = int(round(scale * float(widget_max)))
+        self._gain_widget.setValue(value)
+
+        value = max(min(value, widget_max), 0)
+        self._exposure_widget.setValue(value)
+
+    #-----------------------------------------------------------------------------------------
+
+    def _gainMovedMouse(self, value):
+        self.setGain(self._convertExposureWidgetValueToGain(float(value)), False)
+
+        self._updateGainWidgetText()
+
+        widget_max = int(math.ceil(ocio.EXPOSURE_DELTA / ocio.EXPOSURE_STEP_SIZE))
+        value      = max(min(value, widget_max), 0)
+        self._exposure_widget.setValue(value)
+
+        exposure = ocio.convertGainToExposure(self._gain)
+        fstop    = ocio.convertExposureToFStop(exposure)
+        self._updateFStopWidgetText(fstop)
+
+        scale      = (exposure - ocio.EXPOSURE_MIN) / ocio.EXPOSURE_DELTA
+        widget_max = int(math.ceil(ocio.EXPOSURE_DELTA / ocio.FSTOP_STEP_SIZE))
+        value      = int(round(scale * float(widget_max)))
+        self._fstop_widget.setValue(value)
+
+    #-----------------------------------------------------------------------------------------
+
+    def _exposureChanged(self, value):
+        self.setGain(value = self._convertExposureWidgetValueToGain(float(value)),
+                     update_widget = False,
+                     update_metadata = True)
+
+        self._updateGainWidgetText()
+
+        self._gain_widget.setValue(value)
+
+        exposure = ocio.convertGainToExposure(self._gain)
+        fstop    = ocio.convertExposureToFStop(exposure)
+        self._updateFStopWidgetText(fstop)
+
+        scale      = (exposure - ocio.EXPOSURE_MIN) / ocio.EXPOSURE_DELTA
+        widget_max = int(math.ceil(ocio.EXPOSURE_DELTA / ocio.FSTOP_STEP_SIZE))
+        value      = int(round(scale * float(widget_max)))
+        self._fstop_widget.setValue(value)
+
+    #-----------------------------------------------------------------------------------------
+    # Metadata:
+    #-----------------------------------------------------------------------------------------
+
+    def _buildGainMetadata(self):
+        self._updateGainMetadata()
+
+        flags = self._gain_filter.METADATA_VISIBLE | self._gain_filter.METADATA_EDITABLE
+
+        self._gain_filter.setMetadataDefault('Gain', ocio.GAIN_DEFAULT)
+        self._gain_filter.setMetadataRange('Gain', ocio.GAIN_MIN, ocio.GAIN_MAX)
+        self._gain_filter.setMetadataStep('Gain', ocio.GAIN_STEP_SIZE)
+        self._gain_filter.setMetadataFlags('Gain', flags)
+
+    #-----------------------------------------------------------------------------------------
+
+    def _buildLUTMetadata(self):
+        self._updateLUTMetadata()
+
+        flags = self._lut_filter.METADATA_VISIBLE | self._lut_filter.METADATA_EDITABLE
+
+        self._lut_filter.setMetadataDisplayName('LUTPath', 'LUT File')
+        self._lut_filter.setMetadataFlags('LUTPath', flags)
+
+        self._lut_filter.setMetadataFlags('Extrapolate', flags)
+
+    #-----------------------------------------------------------------------------------------
+
+    def _buildDisplayMetadata(self):
+        self._updateDisplayMetadata()
+
+        self._display_filter.setMetadataDisplayName('ConfigPath', 'OCIO Config')
+        self._display_filter.setMetadataDisplayName('InputColorspace', 'Input Colorspace')
+
+        flags = self._display_filter.METADATA_VISIBLE | self._display_filter.METADATA_EDITABLE
+
+        self._display_filter.setMetadataDisplayName('Display', 'Display Device')
+        self._display_filter.setMetadataFlags('Display', flags)
+
+        self._display_filter.setMetadataDisplayName('View', 'View Transform')
+        self._display_filter.setMetadataFlags('View', flags)
+
+        self._display_filter.setMetadataDisplayName('Swizzle', 'Component')
+        self._display_filter.setMetadataFlags('Swizzle', flags)
+
+        self._display_filter.setMetadataDefault('Gamma', ocio.GAMMA_DEFAULT)
+        self._display_filter.setMetadataRange('Gamma', ocio.GAMMA_MIN, ocio.GAMMA_MAX)
+        self._display_filter.setMetadataStep('Gamma', ocio.GAMMA_STEP_SIZE)
+        self._display_filter.setMetadataFlags('Gamma', flags)
+
+    #-----------------------------------------------------------------------------------------
+
+    def _updateGainMetadata(self):
+        self._gain_filter.setMetadata('Gain', self._gain)
+
+    #-----------------------------------------------------------------------------------------
+
+    def _updateLUTMetadata(self):
+        self._lut_filter.setMetadata('LUTPath', self._lut_file_list)
+
+        self._lut_filter.setMetadata('Extrapolate', self._extrapolate)
+
+    #-----------------------------------------------------------------------------------------
+
+    def _updateDisplayMetadata(self):
+        defaults = mari.ocio.currentColorspaceDefaults()
+
+        self._display_filter.setMetadata('ConfigPath', self._config_file_list)
+        if not defaults.colorManagementEnabled() and not ocio.OCIO_ENV_VAR_SET:
+            ocio.printMessage(ocio.MessageType.DEBUG, 'ConfigPath editable')
+            flags = self._display_filter.METADATA_VISIBLE | self._display_filter.METADATA_EDITABLE
+        else:
+            ocio.printMessage(ocio.MessageType.DEBUG, 'ConfigPath readonly')
+            flags = self._display_filter.METADATA_VISIBLE
+        self._display_filter.setMetadataFlags('ConfigPath', flags)
+
+        self._display_filter.setMetadata('InputColorspace', self._input_colorspace)
+        self._display_filter.setMetadataItemList('InputColorspace', self.inputColorspaces(defaults, False))
+        if not defaults.colorManagementEnabled():
+            ocio.printMessage(ocio.MessageType.DEBUG, 'InputColorspace editable')
+            flags = self._display_filter.METADATA_VISIBLE | self._display_filter.METADATA_EDITABLE
+        else:
+            ocio.printMessage(ocio.MessageType.DEBUG, 'InputColorspace readonly')
+            flags = self._display_filter.METADATA_VISIBLE
+        self._display_filter.setMetadataFlags('InputColorspace', flags)
+
+        self._display_filter.setMetadata('Display', self._display)
+        self._display_filter.setMetadataItemList('Display', self.activeDisplays())
+
+        self._display_filter.setMetadata('View', self._view)
+        self._display_filter.setMetadataItemList('View', self.activeViews())
+
+        self._display_filter.setMetadata('Swizzle', self._swizzle)
+        self._display_filter.setMetadataItemList('Swizzle', ocio.SWIZZLE_TYPES)
+
+        self._display_filter.setMetadata('Gamma', self._gamma)
+
+    #-----------------------------------------------------------------------------------------
+    # External Connections:
+    #-----------------------------------------------------------------------------------------
+
+    def _openedProject(self, project, newly_created):
+        ocio.printMessage(ocio.MessageType.DEBUG, 'Loading settings for project \'%s\'' % project.name())
+
+        # Load the settings stored as metadata on the project...
+        self._project = project
+        mari.utils.connect(self._project.colorspaceDefaultsChanged, self.setColorspaceDefaults)
+
+        self._toggle_color_management_action.setChecked(self._project.metadata('ColorEnabled') if self._project.hasMetadata('ColorEnabled') else ocio.ENABLED_DEFAULT)
+
+        filter_collection = None
+        if self._project.hasMetadata('ColorProfile'):
+            # *** IMPORTANT *** The following post filter collections are previous versions that we need to check for
+            # correct for it.
+            name = self._project.metadata('ColorProfile')
+            if name == 'OpenColorIO' or name == 'Color Space' or name == 'OCIO':
+                name = ocio.PROFILE_DEFAULT
+            filter_collection = mari.gl_render.findPostFilterCollection(name)
+
+        # Default the color management filter stack if the working one doesn't exist.
+        if filter_collection is None:
+            filter_collection = mari.gl_render.findPostFilterCollection(ocio.PROFILE_DEFAULT)
+
+        mari.gl_render.setPostFilterCollection(filter_collection)
+
+        # Determine the configuration path and input colorspace from the associated metadata stored on the project.
+        defaults = self._project.colorspaceDefaults()
+        if not defaults.colorManagementEnabled():
+            config_path = os.getenv('OCIO')
+            if config_path is None:
+                # Make sure we check for the configuration path from earlier versions as the project upgrade system will
+                # have triggered a project save before getting here meaning that the newer path will also exist and be
+                # referencing the default.
+                if self._project.hasMetadata('OcioConfigPath'):
+                    config_path = ocio.buildLoadPath(self._project.metadata('OcioConfigPath'))
+                elif self._project.hasMetadata('OcioConfigPathV2'):
+                    config_path = ocio.buildLoadPath(self._project.metadata('OcioConfigPathV2'))
+                else:
+                    config_path = ocio.CONFIG_PATH_DEFAULT
+
+            # Make sure we check for the input colorspace from earlier versions as the project upgrade system will have
+            # triggered a project save before getting here meaning that the newer colorspace will also exist and be
+            # referencing the default.
+            if self._project.hasMetadata('OcioColorSpace'):
+                self._input_colorspace = self._project.metadata('OcioColorSpace')
+            elif self._project.hasMetadata('OcioInputColorspace'):
+                self._input_colorspace = self._project.metadata('OcioInputColorspace')
+            else:
+                self._input_colorspace = self.inputColorspaceDefault(defaults)
+
+        else:
+            config_path = defaults.fileName()
+            if mari.ocio.isStandardConfig(config_path):
+                config_path = mari.ocio.standardConfigPath(config_path)
+
+            self._input_colorspace = defaults.colorspace(defaults.COLORSPACE_TARGET_WORKING)
+
+        # Attempt to load a configuration file.
+        self._config_file_list.clear()
+        self._config = ocio.loadConfig(config_path)
+        if self._config is not None:
+            self._config_file_list.append(config_path)
+            self._config_file_list.setPickedFile(config_path)
+
+        # Extract the remaining properties from the metadata stored on the project.
+        extrapolate = self._project.metadata('OcioExtrapolate') if self._project.hasMetadata('OcioExtrapolate') else ocio.EXTRAPOLATE_DEFAULT
+        force_shader_build = extrapolate != self._extrapolate
+        self._extrapolate = extrapolate
+
+        if self._project.hasMetadata('OcioLutPath'):
+            lut_path = ocio.buildLoadPath(self._project.metadata('OcioLutPath'))
+            self.setLUTPath(value = lut_path, update_metadata = True, force_shader_build = force_shader_build)
+        else:
+            self.resetLUT(force_shader_build)
+
+        self._display = self._project.metadata(     'OcioDisplay') if self._project.hasMetadata('OcioDisplay') else ocio.DISPLAY_DEFAULT
+        self._view    = self._project.metadata(        'OcioView') if self._project.hasMetadata(   'OcioView') else ocio.VIEW_DEFAULT
+        self._swizzle = self._project.metadata(     'OcioSwizzle') if self._project.hasMetadata('OcioSwizzle') else ocio.SWIZZLE_DEFAULT
+        self._gain    = max(min(self._project.metadata('OcioGain'),
+                                ocio.GAIN_MAX),
+                                ocio.GAIN_MIN)                     if self._project.hasMetadata(   'OcioGain') else ocio.GAIN_DEFAULT
+        self._gamma   = self._project.metadata(       'OcioGamma') if self._project.hasMetadata(  'OcioGamma') else ocio.GAMMA_DEFAULT
+
+        # Setup the widgets and filters to match the new values.
+        if self._config is not None:
+            self._extrapolate_widget.setChecked(self._extrapolate)
+            self._enableWidgets(self.isEnabled(filter_collection))
+
+            self._updateDisplayWidgets()
+            if self._gain_filter is not None:
+                self._updateFilters()
+            else:
+                self._createFilters()
+
+        else:
+            self._enableWidgets(False)
+
+            self._updateDisplayWidgets()
+            if self._gain_filter is not None:
+                self._removeFilters()
+
+        # Remove any redundant and deprecated metadata.
+        if self._project.hasMetadata('OcioConfigPath'):
+            ocio.printMessage(ocio.MessageType.DEBUG, 'Removing \'OcioConfigPath\' metadata with value \'%s\'' % self._project.metadata('OcioConfigPath'))
+            self._project.removeMetadata('OcioConfigPath')
+        if self._project.hasMetadata('OcioColorSpace'):
+            ocio.printMessage(ocio.MessageType.DEBUG, 'Removing \'OcioColorSpace\' metadata with value \'%s\'' % self._project.metadata('OcioColorSpace'))
+            self._project.removeMetadata('OcioColorSpace')
+
+        # Enable/disable color management (MUST be done after modifications to 'self._toggle_color_management_action'.
+        mari.gl_render.setPostProcessingEnabled(self.isColorManagementEnabled())
+
+        self._printLog()
+
+    #-----------------------------------------------------------------------------------------
+
+    def _aboutToSaveProject(self, project):
+        ocio.printMessage(ocio.MessageType.DEBUG, 'Saving settings for project \'%s\'' % project.name())
+
+        # Store the settings as metadata on the project.
+        project.setMetadata(       'ColorEnabled', self.isColorManagementEnabled())
+        filter_collection = mari.gl_render.currentPostFilterCollection()
+        if filter_collection is not None:
+            project.setMetadata(   'ColorProfile', filter_collection.name())
+        project.setMetadata(   'OcioConfigPathV2', '' if self._config_file_list.isEmpty() else ocio.buildSavePath(self._config_file_list.at(0)))
+        project.setMetadata('OcioInputColorspace', self._input_colorspace)
+        project.setMetadata(        'OcioLutPath', '' if self._lut_file_list.isEmpty() else ocio.buildSavePath(self._lut_file_list.at(0)))
+        project.setMetadata(    'OcioExtrapolate', self._extrapolate)
+        project.setMetadata(        'OcioDisplay', self._display)
+        project.setMetadata(           'OcioView', self._view)
+        project.setMetadata(        'OcioSwizzle', self._swizzle)
+        project.setMetadata(           'OcioGain', self._gain)
+        project.setMetadata(          'OcioGamma', self._gamma)
+
+    #-----------------------------------------------------------------------------------------
+
+    def _closedProject(self):
+        ocio.printMessage(ocio.MessageType.DEBUG, 'Reseting settings to their default')
+
+        self._toggle_color_management_action.setChecked(ocio.ENABLED_DEFAULT)
+
+        # Enable/disable color management (MUST be done after modifications to 'self._toggle_color_management_action'.
+        mari.gl_render.setPostProcessingEnabled(self.isColorManagementEnabled())
+
+        filter_collection = mari.gl_render.findPostFilterCollection(ocio.PROFILE_DEFAULT)
+        mari.gl_render.setPostFilterCollection(filter_collection)
+
+        self._config_file_list = mari.FileList(ocio.CONFIG_FILE_LIST_DEFAULT)
+        self._config           = ocio.CONFIG_DEFAULT
+        self._input_colorspace = ocio.INPUT_COLORSPACE_DEFAULT
+
+        extrapolate            = ocio.EXTRAPOLATE_DEFAULT
+        force_shader_build     = extrapolate != self._extrapolate
+        self._extrapolate      = extrapolate
+
+        self.resetLUT(force_shader_build)
+
+        self._display          = ocio.DISPLAY_DEFAULT
+        self._view             = ocio.VIEW_DEFAULT
+        self._swizzle          = ocio.SWIZZLE_DEFAULT
+        self._gain             = ocio.GAIN_DEFAULT
+        self._gamma            = ocio.GAMMA_DEFAULT
+
+        self._extrapolate_widget.setChecked(self._extrapolate)
+        self._updateDisplayWidgets()
+        self._enableWidgets(self.isEnabled(filter_collection))
+
+        if self._gain_filter is not None:
+            self._updateFilters()
+        else:
+            self._createFilters()
+
+        self._printLog()
+
+    #-----------------------------------------------------------------------------------------
+
+    def _exiting(self):
+        ocio.printMessage(ocio.MessageType.DEBUG, 'Saving toolbar settings...')
+
+        if self._config is not None:
+            settings = mari.Settings()
+            settings.beginGroup('OpenColorIO_Toolbar')
+
+            settings.setValue(   'gainIndex', self._filter_collection.indexOf(self._gain_filter))
+            settings.setValue(    'lutIndex', self._filter_collection.indexOf(self._lut_filter))
+            settings.setValue('displayIndex', self._filter_collection.indexOf(self._display_filter))
+            settings.setValue( 'ditherIndex', self._filter_collection.indexOf(self._dither_filter))
+
+            settings.endGroup()
+
+    #-----------------------------------------------------------------------------------------
+
+    def _toolBarsCreated(self):
+        # Things like deleting Mari's configuration file and reseting the layout to the default will destroy the toolbar
+        # so we need to detect if this is the case and rebuild it!
+        toolbar = mari.app.findToolBar('Colorspace')
+        if toolbar is None:
+            ocio.printMessage(ocio.MessageType.DEBUG, 'Rebuilding missing toolbar...')
+
+            self._buildWidgets()
+
+            self._enableWidgets(self.isEnabled())
+
+    #-----------------------------------------------------------------------------------------
+
+    def _postProcessingEnabled(self, enabled):
+        self._toggle_color_management_action.setChecked(enabled)
+
+        if self._config is not None:
+            filter_collection = mari.gl_render.currentPostFilterCollection()
+            if filter_collection is not None and filter_collection.name() == 'Colorspace':
+                self._enableWidgets(enabled)
+
+    #-----------------------------------------------------------------------------------------
+
+    def _setCurrentPostFilterCollection(self):
+        if self._config is None or not self.isEnabled():
+            ocio.printMessage(ocio.MessageType.DEBUG, 'Disabling colorspace toolbar')
+            self._enableWidgets(False)
+        else:
+            ocio.printMessage(ocio.MessageType.DEBUG, 'Enabling colorspace toolbar')
+            self._enableWidgets(True)
+
+    #-----------------------------------------------------------------------------------------
+    # Filter:
+    #-----------------------------------------------------------------------------------------
+
+    def gainFilterFlagsChanged(self, flags):
+        enable = (flags &amp; mari.PostFilter.POSTFILTER_ENABLED)
+        self._enableGainWidgets(enable and self.isEnabled())
+
+    #-----------------------------------------------------------------------------------------
+
+    def lutFilterFlagsChanged(self, flags):
+        enable = (flags &amp; mari.PostFilter.POSTFILTER_ENABLED)
+        self._enableLUTWidgets(enable and self.isEnabled())
+
+    #-----------------------------------------------------------------------------------------
+
+    def displayFilterFlagsChanged(self, flags):
+        enable = (flags &amp; mari.PostFilter.POSTFILTER_ENABLED)
+        self._enableDisplayWidgets(enable and self.isEnabled())
+
+    #-----------------------------------------------------------------------------------------
+
+    def isGainFilterEnabled(self):
+        return (self._gain_filter.flags() &amp; mari.PostFilter.POSTFILTER_ENABLED) if self._gain_filter is not None else False
+
+    #-----------------------------------------------------------------------------------------
+
+    def isLUTFilterEnabled(self):
+        return (self._lut_filter.flags() &amp; mari.PostFilter.POSTFILTER_ENABLED) if self._lut_filter is not None else False
+
+    #-----------------------------------------------------------------------------------------
+
+    def isDisplayFilterEnabled(self):
+        return (self._display_filter.flags() &amp; mari.PostFilter.POSTFILTER_ENABLED) if self._display_filter is not None else False
+
+    #-----------------------------------------------------------------------------------------
+
+    def _connectFilters(self):
+        # NOTE: The following method of connecting signals doesn't work under PySide in some cases so was switched to
+        #       to the standard method.
+        #mari.utils.connect(self._gain_filter.metadataValueChanged, metadataValueChanged)
+        #mari.utils.connect(self._lut_filter.metadataValueChanged, metadataValueChanged)
+        #mari.utils.connect(self._display_filter.metadataValueChanged, metadataValueChanged)
+        self._gain_filter.connect(QtCore.SIGNAL('metadataValueChanged(QString, QVariant)'), metadataValueChanged)
+        self._lut_filter.connect(QtCore.SIGNAL('metadataValueChanged(QString, QVariant)'), metadataValueChanged)
+        self._display_filter.connect(QtCore.SIGNAL('metadataValueChanged(QString, QVariant)'), metadataValueChanged)
+
+    #-----------------------------------------------------------------------------------------
+
+    def _disconnectFilters(self):
+        # NOTE: The following method of disconnecting signals doesn't work under PySide in some cases so was switched
+        #       to the standard method.
+        #mari.utils.disconnect(self._gain_filter.metadataValueChanged, metadataValueChanged)
+        #mari.utils.disconnect(self._lut_filter.metadataValueChanged, metadataValueChanged)
+        #mari.utils.disconnect(self._display_filter.metadataValueChanged, metadataValueChanged)
+        self._gain_filter.disconnect(QtCore.SIGNAL('metadataValueChanged(QString, QVariant)'), metadataValueChanged)
+        self._lut_filter.disconnect(QtCore.SIGNAL('metadataValueChanged(QString, QVariant)'), metadataValueChanged)
+        self._display_filter.disconnect(QtCore.SIGNAL('metadataValueChanged(QString, QVariant)'), metadataValueChanged)
+
+    #-----------------------------------------------------------------------------------------
+
+    def _createFilters(self):
+        self._gain_filter    = self._filter_collection.createGLSL('Gain')
+        self._lut_filter     = self._filter_collection.createGLSL('LUT')
+        self._display_filter = self._filter_collection.createGLSL('Display')
+        self._dither_filter  = self._filter_collection.createGLSL('Dither')
+
+        # Determine the order in which to insert the filters into the collection. These will have been saved out to the
+        # settings on a previous session. If this is the first time or they're missing then we use defaults.
+        settings = mari.Settings()
+        settings.beginGroup('OpenColorIO_Toolbar')
+
+        gain_index    = 0
+        lut_index     = 1
+        display_index = 2
+        dither_index  = 3
+
+        try:
+            gain_index    = int(settings.value(   'gainIndex', gain_index))
+            lut_index     = int(settings.value(    'lutIndex', lut_index))
+            display_index = int(settings.value('displayIndex', display_index))
+            dither_index  = int(settings.value( 'ditherIndex', dither_index))
+
+        except ValueError, e:
+            printMessage(MessageType.ERROR, 'Failed to load preferences \'%s\'' % e)
+
+        settings.endGroup()
+
+        self._filter_collection.move(self._gain_filter, gain_index)
+        self._filter_collection.move(self._lut_filter, lut_index)
+        self._filter_collection.move(self._display_filter, display_index)
+        self._filter_collection.move(self._dither_filter, dither_index)
+
+        # The following removes the POSTFILTER_REMOVABLE flag so stops the user from being able to remove them from the
+        # collection.
+        self._gain_filter.setFlags(self._gain_filter.POSTFILTER_ENABLED)
+        self._lut_filter.setFlags(self._lut_filter.POSTFILTER_ENABLED)
+        self._display_filter.setFlags(self._display_filter.POSTFILTER_ENABLED)
+        self._dither_filter.setFlags(self._dither_filter.POSTFILTER_ENABLED)
+
+        self._rebuildGainFilter(force_shader_build = True)
+        self._rebuildLUTFilter(force_shader_build = True)
+        self._rebuildDisplayFilter(force_shader_build = True)
+        self._rebuildDitherFilter()
+
+        self._buildGainMetadata()
+        self._buildLUTMetadata()
+        self._buildDisplayMetadata()
+
+        self._connectFilters()
+
+        self._gain_filter.connect(QtCore.SIGNAL('flagsChanged(int)'), self.gainFilterFlagsChanged)
+        self._lut_filter.connect(QtCore.SIGNAL('flagsChanged(int)'), self.lutFilterFlagsChanged)
+        self._display_filter.connect(QtCore.SIGNAL('flagsChanged(int)'), self.displayFilterFlagsChanged)
+
+    #-----------------------------------------------------------------------------------------
+
+    def _updateFilters(self):
+        self._disconnectFilters()
+
+        self._updateGainMetadata()
+        self._updateLUTMetadata()
+        self._updateDisplayMetadata()
+
+        self._connectFilters()
+
+        self._rebuildGainFilter()
+        self._rebuildLUTFilter()
+        self._rebuildDisplayFilter()
+
+    #-----------------------------------------------------------------------------------------
+
+    def _removeFilters(self):
+        self._disconnectFilters()
+
+        settings = mari.Settings()
+        settings.beginGroup('OpenColorIO_Toolbar')
+
+        settings.setValue(   'gainIndex', self._filter_collection.indexOf(self._gain_filter))
+        settings.setValue(    'lutIndex', self._filter_collection.indexOf(self._lut_filter))
+        settings.setValue('displayIndex', self._filter_collection.indexOf(self._display_filter))
+        settings.setValue( 'ditherIndex', self._filter_collection.indexOf(self._dither_filter))
+
+        settings.endGroup()
+
+        self._clearGainFilterCache()
+        self._clearLUTFilterCache()
+        self._clearDisplayFilterCache()
+
+        self._filter_collection.remove(self._gain_filter)
+        self._filter_collection.remove(self._lut_filter)
+        self._filter_collection.remove(self._display_filter)
+        self._filter_collection.remove(self._dither_filter)
+
+        self._gain_filter    = None
+        self._lut_filter     = None
+        self._display_filter = None
+        self._dither_filter  = None
+
+    #-----------------------------------------------------------------------------------------
+
+    def _clearGainFilterCache(self):
+        ocio.printMessage(ocio.MessageType.DEBUG, 'Clearing gain filter cache')
+
+        if self._gain_sampler_name is not None:
+            self._gain_filter.deleteTexture(self._gain_sampler_name)
+            self._gain_sampler_name = None
+
+        self._gain_filter_cache_id  = None
+        self._gain_texture_cache_id = None
+
+    #-----------------------------------------------------------------------------------------
+
+    def _clearLUTFilterCache(self):
+        ocio.printMessage(ocio.MessageType.DEBUG, 'Clearing LUT filter cache')
+
+        if self._lut_sampler_name is not None:
+            self._lut_filter.deleteTexture(self._lut_sampler_name)
+            self._lut_sampler_name = None
+
+        self._lut_filter_cache_id  = None
+        self._lut_texture_cache_id = None
+
+    #-----------------------------------------------------------------------------------------
+
+    def _clearDisplayFilterCache(self):
+        ocio.printMessage(ocio.MessageType.DEBUG, 'Clearing display filter cache')
+
+        if self._display_sampler_name is not None:
+            self._display_filter.deleteTexture(self._display_sampler_name)
+            self._display_sampler_name = None
+
+        self._display_filter_cache_id  = None
+        self._display_texture_cache_id = None
+
+    #-----------------------------------------------------------------------------------------
+
+    def _rebuildGainFilter(self, force_shader_build = False):
+        try:
+            gain_transform = ocio.PyOpenColorIO.CDLTransform()
+            gain_transform.setSlope((self._gain, self._gain, self._gain))
+
+            processor = self._config.getProcessor(gain_transform)
+
+            self._gain_filter_cache_id, self._gain_texture_cache_id, self._gain_sampler_name = ocio.buildProcessorFilter(
+                processor,
+                self._gain_filter,
+                self._gain_filter_cache_id,
+                self._gain_texture_cache_id,
+                mari.ocio.lutSize(),
+                False,
+                force_shader_build)
+
+            current_canvas = mari.canvases.current()
+            if current_canvas is not None:
+                current_canvas.requestRepaint()
+
+        except Exception, e:
+            message = 'Failed to build gain filter due to \'%s\'' % e
+            ocio.printMessage(ocio.MessageType.ERROR, '%s' % message)
+            if not mari.app.inTerminalMode():
+                mari.utils.misc.message(message, 'Colorspace Toolbar', QtWidgets.QMessageBox.Ok, QtWidgets.QMessageBox.Warning)
+
+    #-----------------------------------------------------------------------------------------
+
+    def _rebuildLUTFilter(self, force_shader_build = False):
+        # The following code detects whether their has been a change in the LUT. If this is the case we must flush
+        # out the current filter and rebuld it from scratch. This is due to the way that OpenColorIO's caching
+        # system works. This looks like a bug in their system?
+        if self._lut_file_list.isEmpty() == self._lut_enabled:
+            self._clearLUTFilterCache()
+            self._lut_enabled = not self._lut_enabled
+
+        try:
+            if not self._lut_file_list.isEmpty():
+                lut_transform = ocio.PyOpenColorIO.FileTransform()
+                lut_transform.setSrc(self._lut_file_list.at(0))
+                lut_transform.setInterpolation('linear')
+
+                processor = self._config.getProcessor(lut_transform)
+
+                self._lut_filter_cache_id, self._lut_texture_cache_id, self._lut_sampler_name = ocio.buildProcessorFilter(
+                    processor,
+                    self._lut_filter,
+                    self._lut_filter_cache_id,
+                    self._lut_texture_cache_id,
+                    mari.ocio.lutSize(),
+                    self._extrapolate,
+                    force_shader_build)
+            else:
+                ocio.buildEmptyFilter(self._lut_filter)
+
+            current_canvas = mari.canvases.current()
+            if current_canvas is not None:
+                current_canvas.requestRepaint()
+
+        except Exception, e:
+            message = 'Failed to build LUT filter due to \'%s\'' % e
+            ocio.printMessage(ocio.MessageType.ERROR, '%s' % message)
+            if not mari.app.inTerminalMode():
+                mari.utils.misc.message(message, 'Colorspace Toolbar', QtWidgets.QMessageBox.Ok, QtWidgets.QMessageBox.Warning)
+
+    #-----------------------------------------------------------------------------------------
+
+    def _rebuildDisplayFilter(self, force_shader_build = False):
+        try:
+            display_transform = ocio.PyOpenColorIO.DisplayTransform()
+            display_transform.setInputColorSpaceName(self.resolveInputColorspace())
+
+            if hasattr(display_transform, 'setDisplay'):
+                # OCIO 1.0+
+                display_transform.setDisplay(self._display)
+                display_transform.setView(self._view)
+            else:
+                # OCIO 0.8.X
+                display_color_space = self._config.getDisplayColorSpaceName(self._display, self._view)
+                display_transform.setDisplayColorSpaceName(display_color_space)
+
+            # Add the channel sizzle.
+            luma_coefs = self._config.getDefaultLumaCoefs()
+            mtx, offset = ocio.PyOpenColorIO.MatrixTransform.View(ocio.SWIZZLE_VALUES[self._swizzle], luma_coefs)
+
+            transform = ocio.PyOpenColorIO.MatrixTransform()
+            transform.setValue(mtx, offset)
+            display_transform.setChannelView(transform)
+
+            # Add the post-display CC.
+            transform = ocio.PyOpenColorIO.ExponentTransform()
+            transform.setValue([1.0 / max(1e-6, v) for v in (self._gamma, self._gamma, self._gamma, self._gamma)])
+            display_transform.setDisplayCC(transform)
+
+            processor = self._config.getProcessor(display_transform)
+
+            self._display_filter_cache_id, self._display_texture_cache_id, self._display_sampler_name = ocio.buildProcessorFilter(
+                processor,
+                self._display_filter,
+                self._display_filter_cache_id,
+                self._display_texture_cache_id,
+                mari.ocio.lutSize(),
+                False,
+                force_shader_build)
+
+            current_canvas = mari.canvases.current()
+            if current_canvas is not None:
+                current_canvas.requestRepaint()
+
+        except Exception, e:
+            message = 'Failed to build display filter due to \'%s\'' % e
+            ocio.printMessage(ocio.MessageType.ERROR, '%s' % message)
+            if not mari.app.inTerminalMode():
+                mari.utils.misc.message(message, 'Colorspace Toolbar', QtWidgets.QMessageBox.Ok, QtWidgets.QMessageBox.Warning)
+
+    #-----------------------------------------------------------------------------------------
+
+    def _rebuildDitherFilter(self):
+        body  = '{\n'
+        body += '    const vec3 frag_accuracy = vec3(256.0); // for 8 bits\n'
+        body += '\n'
+        body += '    const float dither_pattern[16] = float[16](\n'
+        body += '         1.0 / 17.0,  9.0 / 17.0,  3.0 / 17.0, 11.0 / 17.0,\n'
+        body += '        13.0 / 17.0,  5.0 / 17.0, 15.0 / 17.0,  7.0 / 17.0,\n'
+        body += '         4.0 / 17.0, 12.0 / 17.0,  2.0 / 17.0, 10.0 / 17.0,\n'
+        body += '        16.0 / 17.0,  8.0 / 17.0, 14.0 / 17.0,  6.0 / 17.0\n'
+        body += '        );\n'
+        body += '\n'
+        body += '    vec3 frag_scaled = Out.rgb * frag_accuracy.rgb;\n'
+        body += '    vec3 frag_fract = fract(frag_scaled.rgb);\n'
+        body += '    vec3 frag_floor = floor(frag_scaled.rgb);\n'
+        body += '    vec3 frag_dither = vec3(dither_pattern[(int(gl_FragCoord.x) % 4) + (4 * (int(gl_FragCoord.y) % 4))]);\n'
+        body += '\n'
+        body += '    bvec3 frag_high = greaterThan(frag_fract, frag_dither);\n'
+        body += '\n'
+        body += '    frag_floor += mix(vec3(0.0), vec3(1.0), frag_high);\n'
+        body += '\n'
+        body += '    Out.rgb = frag_floor.rgb / frag_accuracy.rgb;\n'
+        body += '}\n'
+
+        self._dither_filter.setDefinitionsSnippet('')
+        self._dither_filter.setBodySnippet(body)
+
+        current_canvas = mari.canvases.current()
+        if current_canvas is not None:
+            current_canvas.requestRepaint()
+
+    #-----------------------------------------------------------------------------------------
+    # Debugging:
+    #-----------------------------------------------------------------------------------------
+
+    def _printLog(self):
+        ocio.printMessage(    ocio.MessageType.INFO, '==============================================================')
+        ocio.printMessage(    ocio.MessageType.INFO, 'Configuration:')
+        ocio.printMessage(    ocio.MessageType.INFO, '==============================================================')
+        ocio.printMessage(    ocio.MessageType.INFO, '          Enabled: %s; Default: %s'             % (mari.gl_render.isPostProcessingEnabled(), ocio.ENABLED_DEFAULT))
+        filter_collection = mari.gl_render.currentPostFilterCollection()
+        if filter_collection is not None:
+            ocio.printMessage(ocio.MessageType.INFO, '          Profile: %s; Default: %s'             % (filter_collection.name(),                 ocio.PROFILE_DEFAULT))
+        else:
+            ocio.printMessage(ocio.MessageType.INFO, '          Profile: None; Default: %s'           % (                                          ocio.PROFILE_DEFAULT))
+        ocio.printMessage(    ocio.MessageType.INFO, '      Config Path: %s; Default: %s'             % (self.configPath(),                        ocio.CONFIG_PATH_DEFAULT))
+        defaults = mari.ocio.currentColorspaceDefaults()
+        ocio.printMessage(    ocio.MessageType.INFO, ' Input Colorspace: %s; Default: %s'             % (self._input_colorspace,                   self.inputColorspaceDefault(defaults)))
+        ocio.printMessage(    ocio.MessageType.INFO, '         LUT Path: %s; Default: %s'             % (self.lutPath(),                           ocio.LUT_PATH_DEFAULT))
+        ocio.printMessage(    ocio.MessageType.INFO, '      Extrapolate: %s; Default: %s'             % (self._extrapolate,                        ocio.EXTRAPOLATE_DEFAULT))
+        ocio.printMessage(    ocio.MessageType.INFO, '          Display: %s; Default: %s'             % (self._display,                            ocio.DISPLAY_DEFAULT))
+        ocio.printMessage(    ocio.MessageType.INFO, '             View: %s; Default: %s'             % (self._view,                               ocio.VIEW_DEFAULT))
+        ocio.printMessage(    ocio.MessageType.INFO, '          Swizzle: %s; Default: %s'             % (self._swizzle,                            ocio.SWIZZLE_DEFAULT))
+        ocio.printMessage(    ocio.MessageType.INFO, '           F-Stop: %f; Default: %f; Center: %f' % (ocio.convertGainToFStop(self._gain),      ocio.convertGainToFStop(ocio.GAIN_DEFAULT), ocio.FSTOP_CENTER))
+        ocio.printMessage(    ocio.MessageType.INFO, '             Gain: %f; Default: %f'             % (self._gain,                               ocio.GAIN_DEFAULT))
+        ocio.printMessage(    ocio.MessageType.INFO, '            Gamma: %f; Default: %f'             % (self._gamma,                              ocio.GAMMA_DEFAULT))
+        ocio.printMessage(    ocio.MessageType.INFO, '==============================================================')
+
+##############################################################################################
+# The following function CAN'T be part of the toolbar class as a potential bug in PySide
+# causes the disconnect function to fail
+
+def metadataValueChanged(name, value):
+    global toolbar
+
+    ocio.printMessage(ocio.MessageType.DEBUG, 'Metadata \'%s\' changed to \'%s\'' % (name, value))
+
+    if name == 'ConfigPath':
+        toolbar.setConfigPath(value = '' if value.isEmpty() else value.at(0), update_metadata = False)
+
+    elif name == 'InputColorspace':
+        toolbar.setInputColorspace(value = value, update_widget = True, update_metadata = False)
+
+    elif name == 'LUTPath':
+        toolbar.setLUTPath(value = '' if value.isEmpty() else value.at(0),
+                           update_metadata = False,
+                           force_shader_build = False)
+
+    elif name == 'Extrapolate':
+        toolbar.setExtrapolateEnabled(value = value, update_widget = True, update_metadata = False)
+
+    elif name == 'Display':
+        toolbar.setDisplay(value = value, update_widget = True, update_metadata = False)
+
+    elif name == 'View':
+        toolbar.setView(value = value, update_widget = True, update_metadata = False)
+
+    elif name == 'Swizzle':
+        toolbar.setSwizzle(value = value, update_widget = True, update_metadata = False)
+
+    elif name == 'Gain':
+        toolbar.setGain(value = value, update_widget = True, update_metadata = False)
+
+    elif name == 'Gamma':
+        toolbar.setGamma(value = value, update_widget = True, update_metadata = False)
+
+##############################################################################################
+
+# Prevent module reloading from recreating the toolbar. It would be nice if it did reload but we would need to invest
+# alot more time in making sure the old instance cleaned itself up. Basically it's more trouble than it's currently
+# worth to fix properly.
+if mari.app.findToolBar('Colorspace') is None:
+    # Make sure we add the new instance of the toolbar as a global variable.
+    globals()['toolbar'] = None
+
+    if mari.app.isRunning():
+        if not hasattr(mari.gl_render, 'createPostFilterCollection'):
+            ocio.printMessage(ocio.MessageType.ERROR, 'This version of Mari does not support the mari.gl_render.createPostFilterCollection API')
+        else:
+            if ocio is not None and ocio.CONFIG_DEFAULT is not None:
+                import PyOpenColorIO
+                toolbar = OcioToolBar()
+            else:
+                # Destroy the OCIO post filter collection if present to prevent the user trying to use it.
+                filter_collection = mari.gl_render.findPostFilterCollection('Colorspace')
+                if filter_collection is not None:
+                    mari.gl_render.deletePostFilterCollection(filter_collection)
+
+                # Destroy the toolbar to prevent the user trying to use it.
+                mari.app.deleteToolBar('Colorspace')
+<script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

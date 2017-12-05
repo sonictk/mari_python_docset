@@ -1,0 +1,1078 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.examples.cameras
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.examples-module.html">
+       Package&nbsp;examples
+      </a>
+      ::
+        Module&nbsp;cameras
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.examples.cameras-pysrc.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <h1 class="epydoc">
+   Source Code for
+   <a href="mari.examples.cameras-module.html">
+    Module mari.examples.cameras
+   </a>
+  </h1>
+  <pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"># Camera Examples</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment"># coding: utf-8</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment"># Copyright (c) 2016 The Foundry Visionmongers Ltd.  All Rights Reserved.</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name" id="link-0" targets="Package mari=mari-module.html"><a class="py-name" href="#" onclick="return doclink('link-0', 'mari', 'link-0');" title="mari">mari</a></tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="changeCurrentCameraPerspective"></a><div id="changeCurrentCameraPerspective-def"><a name="L10"></a><tt class="py-lineno"> 10</tt> <a class="py-toggle" href="#" id="changeCurrentCameraPerspective-toggle" onclick="return toggle('changeCurrentCameraPerspective');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.cameras-module.html#changeCurrentCameraPerspective">changeCurrentCameraPerspective</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="changeCurrentCameraPerspective-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="changeCurrentCameraPerspective-expanded"><a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line">    <tt class="py-docstring">"""Changes the current camera to perspective."""</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name" id="link-1"><a class="py-name" href="#" onclick="return doclink('link-1', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-2" targets="Package mari.utils=mari.utils-module.html"><a class="py-name" href="#" onclick="return doclink('link-2', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-3" targets="Function mari.utils.misc.checkProjectAndGeoValidity()=mari.utils.misc-module.html#checkProjectAndGeoValidity"><a class="py-name" href="#" onclick="return doclink('link-3', 'checkProjectAndGeoValidity', 'link-3');" title="mari.utils.misc.checkProjectAndGeoValidity">checkProjectAndGeoValidity</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line">    <tt class="py-name" id="link-4" targets="Function mari.current.canvas()=mari.current-module.html#canvas"><a class="py-name" href="#" onclick="return doclink('link-4', 'canvas', 'link-4');" title="mari.current.canvas">canvas</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-5"><a class="py-name" href="#" onclick="return doclink('link-5', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-6" targets="Variable mari.canvases=mari-module.html#canvases"><a class="py-name" href="#" onclick="return doclink('link-6', 'canvases', 'link-6');" title="mari.canvases">canvases</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-7" targets="Method mari.CanvasManager.current()=mari.CanvasManager-class.html#current,Method mari.GeoManager.current()=mari.GeoManager-class.html#current,Method mari.LightManager.current()=mari.LightManager-class.html#current,Method mari.ProjectManager.current()=mari.ProjectManager-class.html#current,Method mari.ProjectorManager.current()=mari.ProjectorManager-class.html#current,Method mari.SelectionGroupManager.current()=mari.SelectionGroupManager-class.html#current,Method mari.ToolManager.current()=mari.ToolManager-class.html#current,Package mari.current=mari.current-module.html"><a class="py-name" href="#" onclick="return doclink('link-7', 'current', 'link-7');" title="mari.CanvasManager.current
+mari.GeoManager.current
+mari.LightManager.current
+mari.ProjectManager.current
+mari.ProjectorManager.current
+mari.SelectionGroupManager.current
+mari.ToolManager.current
+mari.current">current</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-8"><a class="py-name" href="#" onclick="return doclink('link-8', 'canvas', 'link-4');" title="mari.current.canvas">canvas</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line">    <tt class="py-name" id="link-9" targets="Method mari.Canvas.camera()=mari.Canvas-class.html#camera,Method mari.Projector.camera()=mari.Projector-class.html#camera"><a class="py-name" href="#" onclick="return doclink('link-9', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-10"><a class="py-name" href="#" onclick="return doclink('link-10', 'canvas', 'link-4');" title="mari.current.canvas">canvas</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-11"><a class="py-name" href="#" onclick="return doclink('link-11', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-12"><a class="py-name" href="#" onclick="return doclink('link-12', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">    <tt class="py-name" id="link-13"><a class="py-name" href="#" onclick="return doclink('link-13', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-14"><a class="py-name" href="#" onclick="return doclink('link-14', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-15" targets="Function mari.utils.misc.messageAndLog()=mari.utils.misc-module.html#messageAndLog"><a class="py-name" href="#" onclick="return doclink('link-15', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[changeCurrentCameraPerspective] About to change current camera '%s' to perspective"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-16"><a class="py-name" href="#" onclick="return doclink('link-16', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-17" targets="Method mari.Action.name()=mari.Action-class.html#name,Method mari.Camera.name()=mari.Camera-class.html#name,Method mari.Channel.name()=mari.Channel-class.html#name,Method mari.ChannelInfo.name()=mari.ChannelInfo-class.html#name,Method mari.GeoEntity.name()=mari.GeoEntity-class.html#name,Method mari.GeoEntityVersion.name()=mari.GeoEntityVersion-class.html#name,Method mari.GeoPatch.name()=mari.GeoPatch-class.html#name,Method mari.GeometryOperation.name()=mari.GeometryOperation-class.html#name,Method mari.ImageOperation.name()=mari.ImageOperation-class.html#name,Method mari.ImageSet.name()=mari.ImageSet-class.html#name,Method mari.Layer.name()=mari.Layer-class.html#name,Method mari.LayerStack.name()=mari.LayerStack-class.html#name,Method mari.Light.name()=mari.Light-class.html#name,Method mari.LocatorEntity.name()=mari.LocatorEntity-class.html#name,Method mari.Node.name()=mari.Node-class.html#name,Method mari.Palette.name()=mari.Palette-class.html#name,Method mari.ParticleOp.name()=mari.ParticleOp-class.html#name,Method mari.PostFilter.name()=mari.PostFilter-class.html#name,Method mari.PostFilterCollection.name()=mari.PostFilterCollection-class.html#name,Method mari.Project.name()=mari.Project-class.html#name,Method mari.ProjectInfo.name()=mari.ProjectInfo-class.html#name,Method mari.Projector.name()=mari.Projector-class.html#name,Method mari.SelectionGroup.name()=mari.SelectionGroup-class.html#name,Method mari.Shader.name()=mari.Shader-class.html#name,Method mari.Shelf.name()=mari.Shelf-class.html#name,Method mari.Snapshot.name()=mari.Snapshot-class.html#name,Method mari.Tool.name()=mari.Tool-class.html#name"><a class="py-name" href="#" onclick="return doclink('link-17', 'name', 'link-17');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">    <tt class="py-name" id="link-18"><a class="py-name" href="#" onclick="return doclink('link-18', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-19" targets="Method mari.Camera.setName()=mari.Camera-class.html#setName,Method mari.Channel.setName()=mari.Channel-class.html#setName,Method mari.ChannelInfo.setName()=mari.ChannelInfo-class.html#setName,Method mari.GeoEntity.setName()=mari.GeoEntity-class.html#setName,Method mari.GeoEntityVersion.setName()=mari.GeoEntityVersion-class.html#setName,Method mari.GeoPatch.setName()=mari.GeoPatch-class.html#setName,Method mari.ImageSet.setName()=mari.ImageSet-class.html#setName,Method mari.Layer.setName()=mari.Layer-class.html#setName,Method mari.LocatorEntity.setName()=mari.LocatorEntity-class.html#setName,Method mari.Node.setName()=mari.Node-class.html#setName,Method mari.Projector.setName()=mari.Projector-class.html#setName,Method mari.Shader.setName()=mari.Shader-class.html#setName,Method mari.Shelf.setName()=mari.Shelf-class.html#setName,Method mari.Snapshot.setName()=mari.Snapshot-class.html#setName,Method mari.system.megascans.Megascan.setName()=mari.system.megascans.Megascan-class.html#setName,Method mari.utils.node_generator.Node.setName()=mari.utils.node_generator.Node-class.html#setName"><a class="py-name" href="#" onclick="return doclink('link-19', 'setName', 'link-19');" title="mari.Camera.setName
+mari.Channel.setName
+mari.ChannelInfo.setName
+mari.GeoEntity.setName
+mari.GeoEntityVersion.setName
+mari.GeoPatch.setName
+mari.ImageSet.setName
+mari.Layer.setName
+mari.LocatorEntity.setName
+mari.Node.setName
+mari.Projector.setName
+mari.Shader.setName
+mari.Shelf.setName
+mari.Snapshot.setName
+mari.system.megascans.Megascan.setName
+mari.utils.node_generator.Node.setName">setName</a></tt><tt class="py-op">(</tt> <tt class="py-string">'ExamplePerspective'</tt><tt class="py-op">)</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">    <tt class="py-name" id="link-20"><a class="py-name" href="#" onclick="return doclink('link-20', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-21"><a class="py-name" href="#" onclick="return doclink('link-21', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-22"><a class="py-name" href="#" onclick="return doclink('link-22', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[changeCurrentCameraPerspective] Set name of current camera to '%s'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-23"><a class="py-name" href="#" onclick="return doclink('link-23', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-24"><a class="py-name" href="#" onclick="return doclink('link-24', 'name', 'link-17');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">    <tt class="py-name" id="link-25"><a class="py-name" href="#" onclick="return doclink('link-25', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-26" targets="Method mari.Camera.setType()=mari.Camera-class.html#setType,Method mari.FileList.setType()=mari.FileList-class.html#setType"><a class="py-name" href="#" onclick="return doclink('link-26', 'setType', 'link-26');" title="mari.Camera.setType
+mari.FileList.setType">setType</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-27"><a class="py-name" href="#" onclick="return doclink('link-27', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-28" targets="Variable mari.Camera.PERSPECTIVE=mari.Camera-class.html#PERSPECTIVE,Variable mari.Camera.Type.PERSPECTIVE=mari.Camera.Type-class.html#PERSPECTIVE"><a class="py-name" href="#" onclick="return doclink('link-28', 'PERSPECTIVE', 'link-28');" title="mari.Camera.PERSPECTIVE
+mari.Camera.Type.PERSPECTIVE">PERSPECTIVE</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">    <tt class="py-name" id="link-29"><a class="py-name" href="#" onclick="return doclink('link-29', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-30"><a class="py-name" href="#" onclick="return doclink('link-30', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-31"><a class="py-name" href="#" onclick="return doclink('link-31', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[changeCurrentCameraPerspective] Set type of camera '%s' to 'PERSPECTIVE'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-32"><a class="py-name" href="#" onclick="return doclink('link-32', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-33"><a class="py-name" href="#" onclick="return doclink('link-33', 'name', 'link-17');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">    <tt class="py-name" id="link-34"><a class="py-name" href="#" onclick="return doclink('link-34', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-35" targets="Method mari.Camera.setFieldOfView()=mari.Camera-class.html#setFieldOfView"><a class="py-name" href="#" onclick="return doclink('link-35', 'setFieldOfView', 'link-35');" title="mari.Camera.setFieldOfView">setFieldOfView</a></tt><tt class="py-op">(</tt> <tt class="py-number">30</tt><tt class="py-op">)</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">    <tt class="py-name" id="link-36"><a class="py-name" href="#" onclick="return doclink('link-36', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-37"><a class="py-name" href="#" onclick="return doclink('link-37', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-38"><a class="py-name" href="#" onclick="return doclink('link-38', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[changeCurrentCameraPerspective] Set FOV of camera '%s' to '30'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-39"><a class="py-name" href="#" onclick="return doclink('link-39', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-40"><a class="py-name" href="#" onclick="return doclink('link-40', 'name', 'link-17');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">    <tt class="py-name" id="link-41"><a class="py-name" href="#" onclick="return doclink('link-41', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-42" targets="Method mari.Camera.setFieldOfViewX()=mari.Camera-class.html#setFieldOfViewX"><a class="py-name" href="#" onclick="return doclink('link-42', 'setFieldOfViewX', 'link-42');" title="mari.Camera.setFieldOfViewX">setFieldOfViewX</a></tt><tt class="py-op">(</tt> <tt class="py-number">40</tt><tt class="py-op">)</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">    <tt class="py-name" id="link-43"><a class="py-name" href="#" onclick="return doclink('link-43', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-44"><a class="py-name" href="#" onclick="return doclink('link-44', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-45"><a class="py-name" href="#" onclick="return doclink('link-45', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[changeCurrentCameraPerspective] Set FOV X of camera '%s' to '40'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-46"><a class="py-name" href="#" onclick="return doclink('link-46', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-47"><a class="py-name" href="#" onclick="return doclink('link-47', 'name', 'link-17');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">    <tt class="py-name" id="link-48"><a class="py-name" href="#" onclick="return doclink('link-48', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-49" targets="Method mari.Camera.setFieldOfViewY()=mari.Camera-class.html#setFieldOfViewY"><a class="py-name" href="#" onclick="return doclink('link-49', 'setFieldOfViewY', 'link-49');" title="mari.Camera.setFieldOfViewY">setFieldOfViewY</a></tt><tt class="py-op">(</tt> <tt class="py-number">20</tt><tt class="py-op">)</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">    <tt class="py-name" id="link-50"><a class="py-name" href="#" onclick="return doclink('link-50', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-51"><a class="py-name" href="#" onclick="return doclink('link-51', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-52"><a class="py-name" href="#" onclick="return doclink('link-52', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[changeCurrentCameraPerspective] Set FOV Y of camera '%s' to '20'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-53"><a class="py-name" href="#" onclick="return doclink('link-53', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-54"><a class="py-name" href="#" onclick="return doclink('link-54', 'name', 'link-17');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">    <tt class="py-name" id="link-55"><a class="py-name" href="#" onclick="return doclink('link-55', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-56" targets="Method mari.Camera.setNearClip()=mari.Camera-class.html#setNearClip"><a class="py-name" href="#" onclick="return doclink('link-56', 'setNearClip', 'link-56');" title="mari.Camera.setNearClip">setNearClip</a></tt><tt class="py-op">(</tt> <tt class="py-number">10</tt><tt class="py-op">)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">    <tt class="py-name" id="link-57"><a class="py-name" href="#" onclick="return doclink('link-57', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-58"><a class="py-name" href="#" onclick="return doclink('link-58', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-59"><a class="py-name" href="#" onclick="return doclink('link-59', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[changeCurrentCameraPerspective] Set near clip of camera '%s' to '10'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-60"><a class="py-name" href="#" onclick="return doclink('link-60', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-61"><a class="py-name" href="#" onclick="return doclink('link-61', 'name', 'link-17');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">    <tt class="py-name" id="link-62"><a class="py-name" href="#" onclick="return doclink('link-62', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-63" targets="Method mari.Camera.setFarClip()=mari.Camera-class.html#setFarClip"><a class="py-name" href="#" onclick="return doclink('link-63', 'setFarClip', 'link-63');" title="mari.Camera.setFarClip">setFarClip</a></tt><tt class="py-op">(</tt> <tt class="py-number">50</tt><tt class="py-op">)</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">    <tt class="py-name" id="link-64"><a class="py-name" href="#" onclick="return doclink('link-64', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-65"><a class="py-name" href="#" onclick="return doclink('link-65', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-66"><a class="py-name" href="#" onclick="return doclink('link-66', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[changeCurrentCameraPerspective] Set far clip of camera '%s' to '50'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-67"><a class="py-name" href="#" onclick="return doclink('link-67', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-68"><a class="py-name" href="#" onclick="return doclink('link-68', 'name', 'link-17');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">    <tt class="py-name" id="link-69"><a class="py-name" href="#" onclick="return doclink('link-69', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-70" targets="Method mari.Camera.setUp()=mari.Camera-class.html#setUp,Function mari.system._setup.setUp()=mari.system._setup-module.html#setUp"><a class="py-name" href="#" onclick="return doclink('link-70', 'setUp', 'link-70');" title="mari.Camera.setUp
+mari.system._setup.setUp">setUp</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-71"><a class="py-name" href="#" onclick="return doclink('link-71', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-72" targets="Class mari.VectorN=mari.VectorN-class.html"><a class="py-name" href="#" onclick="return doclink('link-72', 'VectorN', 'link-72');" title="mari.VectorN">VectorN</a></tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">1</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">    <tt class="py-name" id="link-73"><a class="py-name" href="#" onclick="return doclink('link-73', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-74"><a class="py-name" href="#" onclick="return doclink('link-74', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-75"><a class="py-name" href="#" onclick="return doclink('link-75', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[changeCurrentCameraPerspective] Set Up of camera '%s' to '(0, 1, 0)'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-76"><a class="py-name" href="#" onclick="return doclink('link-76', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-77"><a class="py-name" href="#" onclick="return doclink('link-77', 'name', 'link-17');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">    <tt class="py-name" id="link-78"><a class="py-name" href="#" onclick="return doclink('link-78', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-79" targets="Method mari.Camera.setLookAt()=mari.Camera-class.html#setLookAt"><a class="py-name" href="#" onclick="return doclink('link-79', 'setLookAt', 'link-79');" title="mari.Camera.setLookAt">setLookAt</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-80"><a class="py-name" href="#" onclick="return doclink('link-80', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-81"><a class="py-name" href="#" onclick="return doclink('link-81', 'VectorN', 'link-72');" title="mari.VectorN">VectorN</a></tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">    <tt class="py-name" id="link-82"><a class="py-name" href="#" onclick="return doclink('link-82', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-83"><a class="py-name" href="#" onclick="return doclink('link-83', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-84"><a class="py-name" href="#" onclick="return doclink('link-84', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[changeCurrentCameraPerspective] Set LooAt of camera '%s' to '(0, 0, 0)'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-85"><a class="py-name" href="#" onclick="return doclink('link-85', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-86"><a class="py-name" href="#" onclick="return doclink('link-86', 'name', 'link-17');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">    <tt class="py-name" id="link-87"><a class="py-name" href="#" onclick="return doclink('link-87', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-88" targets="Method mari.Camera.setTranslation()=mari.Camera-class.html#setTranslation,Method mari.PaintBuffer.setTranslation()=mari.PaintBuffer-class.html#setTranslation,Method mari.Projector.setTranslation()=mari.Projector-class.html#setTranslation"><a class="py-name" href="#" onclick="return doclink('link-88', 'setTranslation', 'link-88');" title="mari.Camera.setTranslation
+mari.PaintBuffer.setTranslation
+mari.Projector.setTranslation">setTranslation</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-89"><a class="py-name" href="#" onclick="return doclink('link-89', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-90"><a class="py-name" href="#" onclick="return doclink('link-90', 'VectorN', 'link-72');" title="mari.VectorN">VectorN</a></tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">10</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">    <tt class="py-name" id="link-91"><a class="py-name" href="#" onclick="return doclink('link-91', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-92"><a class="py-name" href="#" onclick="return doclink('link-92', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-93"><a class="py-name" href="#" onclick="return doclink('link-93', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[changeCurrentCameraPerspective] Set Translation of camera '%s' to '(0, 0, 10)'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-94"><a class="py-name" href="#" onclick="return doclink('link-94', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-95"><a class="py-name" href="#" onclick="return doclink('link-95', 'name', 'link-17');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">    <tt class="py-name" id="link-96"><a class="py-name" href="#" onclick="return doclink('link-96', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-97" targets="Method mari.Camera.setScale()=mari.Camera-class.html#setScale,Method mari.PaintBuffer.setScale()=mari.PaintBuffer-class.html#setScale,Method mari.Projector.setScale()=mari.Projector-class.html#setScale"><a class="py-name" href="#" onclick="return doclink('link-97', 'setScale', 'link-97');" title="mari.Camera.setScale
+mari.PaintBuffer.setScale
+mari.Projector.setScale">setScale</a></tt><tt class="py-op">(</tt> <tt class="py-number">10</tt><tt class="py-op">)</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">    <tt class="py-name" id="link-98"><a class="py-name" href="#" onclick="return doclink('link-98', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-99"><a class="py-name" href="#" onclick="return doclink('link-99', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-100"><a class="py-name" href="#" onclick="return doclink('link-100', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[changeCurrentCameraPerspective] Set Scale of camera '%s' to '10'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-101"><a class="py-name" href="#" onclick="return doclink('link-101', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-102"><a class="py-name" href="#" onclick="return doclink('link-102', 'name', 'link-17');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="changeCurrentCameraOrthographic"></a><div id="changeCurrentCameraOrthographic-def"><a name="L50"></a><tt class="py-lineno"> 50</tt> <a class="py-toggle" href="#" id="changeCurrentCameraOrthographic-toggle" onclick="return toggle('changeCurrentCameraOrthographic');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.cameras-module.html#changeCurrentCameraOrthographic">changeCurrentCameraOrthographic</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="changeCurrentCameraOrthographic-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="changeCurrentCameraOrthographic-expanded"><a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">    <tt class="py-docstring">"""Changes the current camera to orthographic."""</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name" id="link-103"><a class="py-name" href="#" onclick="return doclink('link-103', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-104"><a class="py-name" href="#" onclick="return doclink('link-104', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-105"><a class="py-name" href="#" onclick="return doclink('link-105', 'checkProjectAndGeoValidity', 'link-3');" title="mari.utils.misc.checkProjectAndGeoValidity">checkProjectAndGeoValidity</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">    <tt class="py-name" id="link-106"><a class="py-name" href="#" onclick="return doclink('link-106', 'canvas', 'link-4');" title="mari.current.canvas">canvas</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-107"><a class="py-name" href="#" onclick="return doclink('link-107', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-108"><a class="py-name" href="#" onclick="return doclink('link-108', 'canvases', 'link-6');" title="mari.canvases">canvases</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-109"><a class="py-name" href="#" onclick="return doclink('link-109', 'current', 'link-7');" title="mari.CanvasManager.current
+mari.GeoManager.current
+mari.LightManager.current
+mari.ProjectManager.current
+mari.ProjectorManager.current
+mari.SelectionGroupManager.current
+mari.ToolManager.current
+mari.current">current</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-110"><a class="py-name" href="#" onclick="return doclink('link-110', 'canvas', 'link-4');" title="mari.current.canvas">canvas</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">    <tt class="py-name" id="link-111"><a class="py-name" href="#" onclick="return doclink('link-111', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-112"><a class="py-name" href="#" onclick="return doclink('link-112', 'canvas', 'link-4');" title="mari.current.canvas">canvas</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-113"><a class="py-name" href="#" onclick="return doclink('link-113', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-114"><a class="py-name" href="#" onclick="return doclink('link-114', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">    <tt class="py-name" id="link-115"><a class="py-name" href="#" onclick="return doclink('link-115', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-116"><a class="py-name" href="#" onclick="return doclink('link-116', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-117"><a class="py-name" href="#" onclick="return doclink('link-117', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[changeCurrentCameraOrthographic] About to change current camera '%s' to orthographic"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-118"><a class="py-name" href="#" onclick="return doclink('link-118', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-119"><a class="py-name" href="#" onclick="return doclink('link-119', 'name', 'link-17');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">    <tt class="py-name" id="link-120"><a class="py-name" href="#" onclick="return doclink('link-120', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-121"><a class="py-name" href="#" onclick="return doclink('link-121', 'setName', 'link-19');" title="mari.Camera.setName
+mari.Channel.setName
+mari.ChannelInfo.setName
+mari.GeoEntity.setName
+mari.GeoEntityVersion.setName
+mari.GeoPatch.setName
+mari.ImageSet.setName
+mari.Layer.setName
+mari.LocatorEntity.setName
+mari.Node.setName
+mari.Projector.setName
+mari.Shader.setName
+mari.Shelf.setName
+mari.Snapshot.setName
+mari.system.megascans.Megascan.setName
+mari.utils.node_generator.Node.setName">setName</a></tt><tt class="py-op">(</tt> <tt class="py-string">'ExampleOrthographic'</tt><tt class="py-op">)</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">    <tt class="py-name" id="link-122"><a class="py-name" href="#" onclick="return doclink('link-122', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-123"><a class="py-name" href="#" onclick="return doclink('link-123', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-124"><a class="py-name" href="#" onclick="return doclink('link-124', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[changeCurrentCameraOrthographic] Set name of current camera to '%s'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-125"><a class="py-name" href="#" onclick="return doclink('link-125', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-126"><a class="py-name" href="#" onclick="return doclink('link-126', 'name', 'link-17');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">    <tt class="py-name" id="link-127"><a class="py-name" href="#" onclick="return doclink('link-127', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-128"><a class="py-name" href="#" onclick="return doclink('link-128', 'setType', 'link-26');" title="mari.Camera.setType
+mari.FileList.setType">setType</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-129"><a class="py-name" href="#" onclick="return doclink('link-129', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-130" targets="Variable mari.Camera.ORTHOGRAPHIC=mari.Camera-class.html#ORTHOGRAPHIC,Variable mari.Camera.Type.ORTHOGRAPHIC=mari.Camera.Type-class.html#ORTHOGRAPHIC"><a class="py-name" href="#" onclick="return doclink('link-130', 'ORTHOGRAPHIC', 'link-130');" title="mari.Camera.ORTHOGRAPHIC
+mari.Camera.Type.ORTHOGRAPHIC">ORTHOGRAPHIC</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">    <tt class="py-name" id="link-131"><a class="py-name" href="#" onclick="return doclink('link-131', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-132"><a class="py-name" href="#" onclick="return doclink('link-132', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-133"><a class="py-name" href="#" onclick="return doclink('link-133', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[changeCurrentCameraOrthographic] Set type of camera '%s' to 'ORTHOGRAPHIC'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-134"><a class="py-name" href="#" onclick="return doclink('link-134', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-135"><a class="py-name" href="#" onclick="return doclink('link-135', 'name', 'link-17');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">    <tt class="py-name" id="link-136"><a class="py-name" href="#" onclick="return doclink('link-136', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-137"><a class="py-name" href="#" onclick="return doclink('link-137', 'setNearClip', 'link-56');" title="mari.Camera.setNearClip">setNearClip</a></tt><tt class="py-op">(</tt> <tt class="py-number">10</tt><tt class="py-op">)</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">    <tt class="py-name" id="link-138"><a class="py-name" href="#" onclick="return doclink('link-138', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-139"><a class="py-name" href="#" onclick="return doclink('link-139', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-140"><a class="py-name" href="#" onclick="return doclink('link-140', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[changeCurrentCameraOrthographic] Set near clip of camera '%s' to '10'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-141"><a class="py-name" href="#" onclick="return doclink('link-141', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-142"><a class="py-name" href="#" onclick="return doclink('link-142', 'name', 'link-17');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">    <tt class="py-name" id="link-143"><a class="py-name" href="#" onclick="return doclink('link-143', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-144"><a class="py-name" href="#" onclick="return doclink('link-144', 'setFarClip', 'link-63');" title="mari.Camera.setFarClip">setFarClip</a></tt><tt class="py-op">(</tt> <tt class="py-number">50</tt><tt class="py-op">)</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">    <tt class="py-name" id="link-145"><a class="py-name" href="#" onclick="return doclink('link-145', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-146"><a class="py-name" href="#" onclick="return doclink('link-146', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-147"><a class="py-name" href="#" onclick="return doclink('link-147', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[changeCurrentCameraOrthographic] Set far clip of camera '%s' to '50'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-148"><a class="py-name" href="#" onclick="return doclink('link-148', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-149"><a class="py-name" href="#" onclick="return doclink('link-149', 'name', 'link-17');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">    <tt class="py-name" id="link-150"><a class="py-name" href="#" onclick="return doclink('link-150', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-151"><a class="py-name" href="#" onclick="return doclink('link-151', 'setUp', 'link-70');" title="mari.Camera.setUp
+mari.system._setup.setUp">setUp</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-152"><a class="py-name" href="#" onclick="return doclink('link-152', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-153"><a class="py-name" href="#" onclick="return doclink('link-153', 'VectorN', 'link-72');" title="mari.VectorN">VectorN</a></tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">1</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">    <tt class="py-name" id="link-154"><a class="py-name" href="#" onclick="return doclink('link-154', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-155"><a class="py-name" href="#" onclick="return doclink('link-155', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-156"><a class="py-name" href="#" onclick="return doclink('link-156', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[changeCurrentCameraOrthographic] Set Up of camera '%s' to '(0, 1, 0)'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-157"><a class="py-name" href="#" onclick="return doclink('link-157', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-158"><a class="py-name" href="#" onclick="return doclink('link-158', 'name', 'link-17');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">    <tt class="py-name" id="link-159"><a class="py-name" href="#" onclick="return doclink('link-159', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-160"><a class="py-name" href="#" onclick="return doclink('link-160', 'setLookAt', 'link-79');" title="mari.Camera.setLookAt">setLookAt</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-161"><a class="py-name" href="#" onclick="return doclink('link-161', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-162"><a class="py-name" href="#" onclick="return doclink('link-162', 'VectorN', 'link-72');" title="mari.VectorN">VectorN</a></tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">    <tt class="py-name" id="link-163"><a class="py-name" href="#" onclick="return doclink('link-163', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-164"><a class="py-name" href="#" onclick="return doclink('link-164', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-165"><a class="py-name" href="#" onclick="return doclink('link-165', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[changeCurrentCameraOrthographic] Set LooAt of camera '%s' to '(0, 0, 0)'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-166"><a class="py-name" href="#" onclick="return doclink('link-166', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-167"><a class="py-name" href="#" onclick="return doclink('link-167', 'name', 'link-17');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">    <tt class="py-name" id="link-168"><a class="py-name" href="#" onclick="return doclink('link-168', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-169"><a class="py-name" href="#" onclick="return doclink('link-169', 'setTranslation', 'link-88');" title="mari.Camera.setTranslation
+mari.PaintBuffer.setTranslation
+mari.Projector.setTranslation">setTranslation</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-170"><a class="py-name" href="#" onclick="return doclink('link-170', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-171"><a class="py-name" href="#" onclick="return doclink('link-171', 'VectorN', 'link-72');" title="mari.VectorN">VectorN</a></tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">10</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">    <tt class="py-name" id="link-172"><a class="py-name" href="#" onclick="return doclink('link-172', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-173"><a class="py-name" href="#" onclick="return doclink('link-173', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-174"><a class="py-name" href="#" onclick="return doclink('link-174', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[changeCurrentCameraOrthographic] Set Translation of camera '%s' to '(0, 0, 10)'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-175"><a class="py-name" href="#" onclick="return doclink('link-175', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-176"><a class="py-name" href="#" onclick="return doclink('link-176', 'name', 'link-17');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">    <tt class="py-name" id="link-177"><a class="py-name" href="#" onclick="return doclink('link-177', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-178"><a class="py-name" href="#" onclick="return doclink('link-178', 'setScale', 'link-97');" title="mari.Camera.setScale
+mari.PaintBuffer.setScale
+mari.Projector.setScale">setScale</a></tt><tt class="py-op">(</tt> <tt class="py-number">10</tt><tt class="py-op">)</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">    <tt class="py-name" id="link-179"><a class="py-name" href="#" onclick="return doclink('link-179', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-180"><a class="py-name" href="#" onclick="return doclink('link-180', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-181"><a class="py-name" href="#" onclick="return doclink('link-181', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[changeCurrentCameraOrthographic] Set Scale of camera '%s' to '10'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-182"><a class="py-name" href="#" onclick="return doclink('link-182', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-183"><a class="py-name" href="#" onclick="return doclink('link-183', 'name', 'link-17');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="printAllCanvasesCameraInfo"></a><div id="printAllCanvasesCameraInfo-def"><a name="L84"></a><tt class="py-lineno"> 84</tt> <a class="py-toggle" href="#" id="printAllCanvasesCameraInfo-toggle" onclick="return toggle('printAllCanvasesCameraInfo');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.cameras-module.html#printAllCanvasesCameraInfo">printAllCanvasesCameraInfo</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="printAllCanvasesCameraInfo-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="printAllCanvasesCameraInfo-expanded"><a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">    <tt class="py-docstring">"""Prints information about all the cameras."""</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name" id="link-184"><a class="py-name" href="#" onclick="return doclink('link-184', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-185"><a class="py-name" href="#" onclick="return doclink('link-185', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-186"><a class="py-name" href="#" onclick="return doclink('link-186', 'checkProjectAndGeoValidity', 'link-3');" title="mari.utils.misc.checkProjectAndGeoValidity">checkProjectAndGeoValidity</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">    <tt class="py-name" id="link-187"><a class="py-name" href="#" onclick="return doclink('link-187', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-188"><a class="py-name" href="#" onclick="return doclink('link-188', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-189"><a class="py-name" href="#" onclick="return doclink('link-189', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[printAllCanvasesCameraInfo] %d cameras found"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name" id="link-190"><a class="py-name" href="#" onclick="return doclink('link-190', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-191"><a class="py-name" href="#" onclick="return doclink('link-191', 'canvases', 'link-6');" title="mari.canvases">canvases</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-192" targets="Method mari.ActionManager.list()=mari.ActionManager-class.html#list,Method mari.CanvasManager.list()=mari.CanvasManager-class.html#list,Method mari.GeoManager.list()=mari.GeoManager-class.html#list,Method mari.ImageManager.list()=mari.ImageManager-class.html#list,Method mari.LightManager.list()=mari.LightManager-class.html#list,Method mari.PaletteManager.list()=mari.PaletteManager-class.html#list,Method mari.Preferences.list()=mari.Preferences-class.html#list,Method mari.ProjectManager.list()=mari.ProjectManager-class.html#list,Method mari.ProjectorManager.list()=mari.ProjectorManager-class.html#list,Method mari.SelectionGroupManager.list()=mari.SelectionGroupManager-class.html#list,Method mari.ShelfManager.list()=mari.ShelfManager-class.html#list"><a class="py-name" href="#" onclick="return doclink('link-192', 'list', 'link-192');" title="mari.ActionManager.list
+mari.CanvasManager.list
+mari.GeoManager.list
+mari.ImageManager.list
+mari.LightManager.list
+mari.PaletteManager.list
+mari.Preferences.list
+mari.ProjectManager.list
+mari.ProjectorManager.list
+mari.SelectionGroupManager.list
+mari.ShelfManager.list">list</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name" id="link-193"><a class="py-name" href="#" onclick="return doclink('link-193', 'canvas', 'link-4');" title="mari.current.canvas">canvas</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name" id="link-194"><a class="py-name" href="#" onclick="return doclink('link-194', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-195"><a class="py-name" href="#" onclick="return doclink('link-195', 'canvases', 'link-6');" title="mari.canvases">canvases</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-196"><a class="py-name" href="#" onclick="return doclink('link-196', 'list', 'link-192');" title="mari.ActionManager.list
+mari.CanvasManager.list
+mari.GeoManager.list
+mari.ImageManager.list
+mari.LightManager.list
+mari.PaletteManager.list
+mari.Preferences.list
+mari.ProjectManager.list
+mari.ProjectorManager.list
+mari.SelectionGroupManager.list
+mari.ShelfManager.list">list</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">        <tt class="py-name" id="link-197"><a class="py-name" href="#" onclick="return doclink('link-197', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-198"><a class="py-name" href="#" onclick="return doclink('link-198', 'canvas', 'link-4');" title="mari.current.canvas">canvas</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-199"><a class="py-name" href="#" onclick="return doclink('link-199', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">None</tt> <tt class="py-op">==</tt> <tt class="py-name" id="link-200"><a class="py-name" href="#" onclick="return doclink('link-200', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt> <tt class="py-op">:</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">           <tt class="py-keyword">continue</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">        <tt class="py-name" id="link-201"><a class="py-name" href="#" onclick="return doclink('link-201', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-202"><a class="py-name" href="#" onclick="return doclink('link-202', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-203"><a class="py-name" href="#" onclick="return doclink('link-203', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[printAllCanvasesCameraInfo] Querying the camera info for canvas '%s'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-204"><a class="py-name" href="#" onclick="return doclink('link-204', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-205"><a class="py-name" href="#" onclick="return doclink('link-205', 'name', 'link-17');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">        <tt class="py-name" id="link-206" targets="Function mari.examples.cameras.printCameraInfo()=mari.examples.cameras-module.html#printCameraInfo"><a class="py-name" href="#" onclick="return doclink('link-206', 'printCameraInfo', 'link-206');" title="mari.examples.cameras.printCameraInfo">printCameraInfo</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-207"><a class="py-name" href="#" onclick="return doclink('link-207', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="printCameraInfo"></a><div id="printCameraInfo-def"><a name="L99"></a><tt class="py-lineno"> 99</tt> <a class="py-toggle" href="#" id="printCameraInfo-toggle" onclick="return toggle('printCameraInfo');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.cameras-module.html#printCameraInfo">printCameraInfo</a><tt class="py-op">(</tt><tt class="py-param">camera</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="printCameraInfo-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="printCameraInfo-expanded"><a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">    <tt class="py-docstring">"""Prints information about a camera."""</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-208"><a class="py-name" href="#" onclick="return doclink('link-208', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">    <tt class="py-name">is_animated</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-209"><a class="py-name" href="#" onclick="return doclink('link-209', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-210" targets="Method mari.Camera.isAnimated()=mari.Camera-class.html#isAnimated,Method mari.ImageSet.isAnimated()=mari.ImageSet-class.html#isAnimated"><a class="py-name" href="#" onclick="return doclink('link-210', 'isAnimated', 'link-210');" title="mari.Camera.isAnimated
+mari.ImageSet.isAnimated">isAnimated</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">    <tt class="py-name" id="link-211"><a class="py-name" href="#" onclick="return doclink('link-211', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-212"><a class="py-name" href="#" onclick="return doclink('link-212', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-213"><a class="py-name" href="#" onclick="return doclink('link-213', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"Name: %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-214"><a class="py-name" href="#" onclick="return doclink('link-214', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-215"><a class="py-name" href="#" onclick="return doclink('link-215', 'name', 'link-17');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">    <tt class="py-name" id="link-216"><a class="py-name" href="#" onclick="return doclink('link-216', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-217"><a class="py-name" href="#" onclick="return doclink('link-217', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-218"><a class="py-name" href="#" onclick="return doclink('link-218', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"  Animated: %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name">is_animated</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">    <tt class="py-name" id="link-219"><a class="py-name" href="#" onclick="return doclink('link-219', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-220"><a class="py-name" href="#" onclick="return doclink('link-220', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-221"><a class="py-name" href="#" onclick="return doclink('link-221', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"  Viewport: %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name" id="link-222"><a class="py-name" href="#" onclick="return doclink('link-222', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-223" targets="Method mari.Camera.viewport()=mari.Camera-class.html#viewport"><a class="py-name" href="#" onclick="return doclink('link-223', 'viewport', 'link-223');" title="mari.Camera.viewport">viewport</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">    <tt class="py-name" id="link-224"><a class="py-name" href="#" onclick="return doclink('link-224', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-225"><a class="py-name" href="#" onclick="return doclink('link-225', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-226"><a class="py-name" href="#" onclick="return doclink('link-226', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"  Viewport Aspect: %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name" id="link-227"><a class="py-name" href="#" onclick="return doclink('link-227', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-228" targets="Method mari.Camera.viewportAspectRatio()=mari.Camera-class.html#viewportAspectRatio"><a class="py-name" href="#" onclick="return doclink('link-228', 'viewportAspectRatio', 'link-228');" title="mari.Camera.viewportAspectRatio">viewportAspectRatio</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">    <tt class="py-name" id="link-229"><a class="py-name" href="#" onclick="return doclink('link-229', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-230"><a class="py-name" href="#" onclick="return doclink('link-230', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-231"><a class="py-name" href="#" onclick="return doclink('link-231', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"  Mode: %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name" id="link-232"><a class="py-name" href="#" onclick="return doclink('link-232', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-233" targets="Method mari.Camera.type()=mari.Camera-class.html#type,Method mari.FileList.type()=mari.FileList-class.html#type"><a class="py-name" href="#" onclick="return doclink('link-233', 'type', 'link-233');" title="mari.Camera.type
+mari.FileList.type">type</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line"> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">    <tt class="py-name">frameStart</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">    <tt class="py-name">frameEnd</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">    <tt class="py-name">frameInc</tt> <tt class="py-op">=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">is_animated</tt><tt class="py-op">:</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">        <tt class="py-name">clock</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-234"><a class="py-name" href="#" onclick="return doclink('link-234', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name">clock</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">        <tt class="py-name">frameStart</tt> <tt class="py-op">=</tt> <tt class="py-name">clock</tt><tt class="py-op">.</tt><tt class="py-name" id="link-235" targets="Method mari.Clock.startFrame()=mari.Clock-class.html#startFrame"><a class="py-name" href="#" onclick="return doclink('link-235', 'startFrame', 'link-235');" title="mari.Clock.startFrame">startFrame</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">        <tt class="py-name">frameEnd</tt> <tt class="py-op">=</tt> <tt class="py-name">clock</tt><tt class="py-op">.</tt><tt class="py-name" id="link-236" targets="Method mari.Clock.stopFrame()=mari.Clock-class.html#stopFrame"><a class="py-name" href="#" onclick="return doclink('link-236', 'stopFrame', 'link-236');" title="mari.Clock.stopFrame">stopFrame</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">        <tt class="py-name" id="link-237"><a class="py-name" href="#" onclick="return doclink('link-237', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-238"><a class="py-name" href="#" onclick="return doclink('link-238', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-239"><a class="py-name" href="#" onclick="return doclink('link-239', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"  Animation Range: %s:%s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name">frameStart</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name">frameEnd</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name" id="link-240" targets="Method mari.Clock.frame()=mari.Clock-class.html#frame"><a class="py-name" href="#" onclick="return doclink('link-240', 'frame', 'link-240');" title="mari.Clock.frame">frame</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name" id="link-241" targets="Method mari.SliderBase.range()=mari.SliderBase-class.html#range"><a class="py-name" href="#" onclick="return doclink('link-241', 'range', 'link-241');" title="mari.SliderBase.range">range</a></tt><tt class="py-op">(</tt> <tt class="py-name">frameStart</tt><tt class="py-op">,</tt> <tt class="py-name">frameEnd</tt> <tt class="py-op">+</tt> <tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">frameInc</tt><tt class="py-op">)</tt> <tt class="py-op">:</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">is_animated</tt><tt class="py-op">:</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">            <tt class="py-name" id="link-242"><a class="py-name" href="#" onclick="return doclink('link-242', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-243"><a class="py-name" href="#" onclick="return doclink('link-243', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-244"><a class="py-name" href="#" onclick="return doclink('link-244', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"    Frame: %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name" id="link-245"><a class="py-name" href="#" onclick="return doclink('link-245', 'frame', 'link-240');" title="mari.Clock.frame">frame</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name" id="link-246"><a class="py-name" href="#" onclick="return doclink('link-246', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-247"><a class="py-name" href="#" onclick="return doclink('link-247', 'PERSPECTIVE', 'link-28');" title="mari.Camera.PERSPECTIVE
+mari.Camera.Type.PERSPECTIVE">PERSPECTIVE</a></tt> <tt class="py-op">==</tt> <tt class="py-name" id="link-248"><a class="py-name" href="#" onclick="return doclink('link-248', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-249"><a class="py-name" href="#" onclick="return doclink('link-249', 'type', 'link-233');" title="mari.Camera.type
+mari.FileList.type">type</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">            <tt class="py-name" id="link-250"><a class="py-name" href="#" onclick="return doclink('link-250', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-251"><a class="py-name" href="#" onclick="return doclink('link-251', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-252"><a class="py-name" href="#" onclick="return doclink('link-252', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"      FOV: %s (%s,%s) @ %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name" id="link-253"><a class="py-name" href="#" onclick="return doclink('link-253', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-254" targets="Method mari.Camera.fieldOfView()=mari.Camera-class.html#fieldOfView"><a class="py-name" href="#" onclick="return doclink('link-254', 'fieldOfView', 'link-254');" title="mari.Camera.fieldOfView">fieldOfView</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-255"><a class="py-name" href="#" onclick="return doclink('link-255', 'frame', 'link-240');" title="mari.Clock.frame">frame</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name" id="link-256"><a class="py-name" href="#" onclick="return doclink('link-256', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-257" targets="Method mari.Camera.fieldOfViewX()=mari.Camera-class.html#fieldOfViewX"><a class="py-name" href="#" onclick="return doclink('link-257', 'fieldOfViewX', 'link-257');" title="mari.Camera.fieldOfViewX">fieldOfViewX</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-258"><a class="py-name" href="#" onclick="return doclink('link-258', 'frame', 'link-240');" title="mari.Clock.frame">frame</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name" id="link-259"><a class="py-name" href="#" onclick="return doclink('link-259', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-260" targets="Method mari.Camera.fieldOfViewY()=mari.Camera-class.html#fieldOfViewY"><a class="py-name" href="#" onclick="return doclink('link-260', 'fieldOfViewY', 'link-260');" title="mari.Camera.fieldOfViewY">fieldOfViewY</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-261"><a class="py-name" href="#" onclick="return doclink('link-261', 'frame', 'link-240');" title="mari.Clock.frame">frame</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name" id="link-262"><a class="py-name" href="#" onclick="return doclink('link-262', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-263" targets="Method mari.Camera.perspectiveAspectRatio()=mari.Camera-class.html#perspectiveAspectRatio"><a class="py-name" href="#" onclick="return doclink('link-263', 'perspectiveAspectRatio', 'link-263');" title="mari.Camera.perspectiveAspectRatio">perspectiveAspectRatio</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">        <tt class="py-name" id="link-264"><a class="py-name" href="#" onclick="return doclink('link-264', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-265"><a class="py-name" href="#" onclick="return doclink('link-265', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-266"><a class="py-name" href="#" onclick="return doclink('link-266', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"      Clip: %s %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name" id="link-267"><a class="py-name" href="#" onclick="return doclink('link-267', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-268" targets="Method mari.Camera.nearClip()=mari.Camera-class.html#nearClip"><a class="py-name" href="#" onclick="return doclink('link-268', 'nearClip', 'link-268');" title="mari.Camera.nearClip">nearClip</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-269"><a class="py-name" href="#" onclick="return doclink('link-269', 'frame', 'link-240');" title="mari.Clock.frame">frame</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name" id="link-270"><a class="py-name" href="#" onclick="return doclink('link-270', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-271" targets="Method mari.Camera.farClip()=mari.Camera-class.html#farClip"><a class="py-name" href="#" onclick="return doclink('link-271', 'farClip', 'link-271');" title="mari.Camera.farClip">farClip</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-272"><a class="py-name" href="#" onclick="return doclink('link-272', 'frame', 'link-240');" title="mari.Clock.frame">frame</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">        <tt class="py-name" id="link-273" targets="Method mari.Camera.lookAt()=mari.Camera-class.html#lookAt"><a class="py-name" href="#" onclick="return doclink('link-273', 'lookAt', 'link-273');" title="mari.Camera.lookAt">lookAt</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-274"><a class="py-name" href="#" onclick="return doclink('link-274', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-275"><a class="py-name" href="#" onclick="return doclink('link-275', 'lookAt', 'link-273');" title="mari.Camera.lookAt">lookAt</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-276"><a class="py-name" href="#" onclick="return doclink('link-276', 'frame', 'link-240');" title="mari.Clock.frame">frame</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">        <tt class="py-name" id="link-277"><a class="py-name" href="#" onclick="return doclink('link-277', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-278"><a class="py-name" href="#" onclick="return doclink('link-278', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-279"><a class="py-name" href="#" onclick="return doclink('link-279', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"      LooAt: %s %s %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name" id="link-280"><a class="py-name" href="#" onclick="return doclink('link-280', 'lookAt', 'link-273');" title="mari.Camera.lookAt">lookAt</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-281" targets="Method mari.VectorN.x()=mari.VectorN-class.html#x"><a class="py-name" href="#" onclick="return doclink('link-281', 'x', 'link-281');" title="mari.VectorN.x">x</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name" id="link-282"><a class="py-name" href="#" onclick="return doclink('link-282', 'lookAt', 'link-273');" title="mari.Camera.lookAt">lookAt</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-283" targets="Method mari.VectorN.y()=mari.VectorN-class.html#y"><a class="py-name" href="#" onclick="return doclink('link-283', 'y', 'link-283');" title="mari.VectorN.y">y</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name" id="link-284"><a class="py-name" href="#" onclick="return doclink('link-284', 'lookAt', 'link-273');" title="mari.Camera.lookAt">lookAt</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-285" targets="Method mari.VectorN.z()=mari.VectorN-class.html#z"><a class="py-name" href="#" onclick="return doclink('link-285', 'z', 'link-285');" title="mari.VectorN.z">z</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">        <tt class="py-name" id="link-286" targets="Method mari.Camera.up()=mari.Camera-class.html#up"><a class="py-name" href="#" onclick="return doclink('link-286', 'up', 'link-286');" title="mari.Camera.up">up</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-287"><a class="py-name" href="#" onclick="return doclink('link-287', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-288"><a class="py-name" href="#" onclick="return doclink('link-288', 'up', 'link-286');" title="mari.Camera.up">up</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-289"><a class="py-name" href="#" onclick="return doclink('link-289', 'frame', 'link-240');" title="mari.Clock.frame">frame</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">        <tt class="py-name" id="link-290"><a class="py-name" href="#" onclick="return doclink('link-290', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-291"><a class="py-name" href="#" onclick="return doclink('link-291', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-292"><a class="py-name" href="#" onclick="return doclink('link-292', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"      Up: %s %s %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name" id="link-293"><a class="py-name" href="#" onclick="return doclink('link-293', 'up', 'link-286');" title="mari.Camera.up">up</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-294"><a class="py-name" href="#" onclick="return doclink('link-294', 'x', 'link-281');" title="mari.VectorN.x">x</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name" id="link-295"><a class="py-name" href="#" onclick="return doclink('link-295', 'up', 'link-286');" title="mari.Camera.up">up</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-296"><a class="py-name" href="#" onclick="return doclink('link-296', 'y', 'link-283');" title="mari.VectorN.y">y</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name" id="link-297"><a class="py-name" href="#" onclick="return doclink('link-297', 'up', 'link-286');" title="mari.Camera.up">up</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-298"><a class="py-name" href="#" onclick="return doclink('link-298', 'z', 'link-285');" title="mari.VectorN.z">z</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">        <tt class="py-name" id="link-299" targets="Method mari.Camera.translation()=mari.Camera-class.html#translation,Method mari.GeoEntity.translation()=mari.GeoEntity-class.html#translation,Method mari.LocatorEntity.translation()=mari.LocatorEntity-class.html#translation,Method mari.PaintBuffer.translation()=mari.PaintBuffer-class.html#translation,Method mari.Projector.translation()=mari.Projector-class.html#translation"><a class="py-name" href="#" onclick="return doclink('link-299', 'translation', 'link-299');" title="mari.Camera.translation
+mari.GeoEntity.translation
+mari.LocatorEntity.translation
+mari.PaintBuffer.translation
+mari.Projector.translation">translation</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-300"><a class="py-name" href="#" onclick="return doclink('link-300', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-301"><a class="py-name" href="#" onclick="return doclink('link-301', 'translation', 'link-299');" title="mari.Camera.translation
+mari.GeoEntity.translation
+mari.LocatorEntity.translation
+mari.PaintBuffer.translation
+mari.Projector.translation">translation</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-302"><a class="py-name" href="#" onclick="return doclink('link-302', 'frame', 'link-240');" title="mari.Clock.frame">frame</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">        <tt class="py-name" id="link-303"><a class="py-name" href="#" onclick="return doclink('link-303', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-304"><a class="py-name" href="#" onclick="return doclink('link-304', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-305"><a class="py-name" href="#" onclick="return doclink('link-305', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"      Location: %s %s %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name" id="link-306"><a class="py-name" href="#" onclick="return doclink('link-306', 'translation', 'link-299');" title="mari.Camera.translation
+mari.GeoEntity.translation
+mari.LocatorEntity.translation
+mari.PaintBuffer.translation
+mari.Projector.translation">translation</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-307"><a class="py-name" href="#" onclick="return doclink('link-307', 'x', 'link-281');" title="mari.VectorN.x">x</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name" id="link-308"><a class="py-name" href="#" onclick="return doclink('link-308', 'translation', 'link-299');" title="mari.Camera.translation
+mari.GeoEntity.translation
+mari.LocatorEntity.translation
+mari.PaintBuffer.translation
+mari.Projector.translation">translation</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-309"><a class="py-name" href="#" onclick="return doclink('link-309', 'y', 'link-283');" title="mari.VectorN.y">y</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name" id="link-310"><a class="py-name" href="#" onclick="return doclink('link-310', 'translation', 'link-299');" title="mari.Camera.translation
+mari.GeoEntity.translation
+mari.LocatorEntity.translation
+mari.PaintBuffer.translation
+mari.Projector.translation">translation</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-311"><a class="py-name" href="#" onclick="return doclink('link-311', 'z', 'link-285');" title="mari.VectorN.z">z</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">        <tt class="py-name" id="link-312"><a class="py-name" href="#" onclick="return doclink('link-312', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-313"><a class="py-name" href="#" onclick="return doclink('link-313', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-314"><a class="py-name" href="#" onclick="return doclink('link-314', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"      Scale: %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name" id="link-315"><a class="py-name" href="#" onclick="return doclink('link-315', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-316" targets="Method mari.Camera.scale()=mari.Camera-class.html#scale,Method mari.PaintBuffer.scale()=mari.PaintBuffer-class.html#scale,Method mari.Projector.scale()=mari.Projector-class.html#scale"><a class="py-name" href="#" onclick="return doclink('link-316', 'scale', 'link-316');" title="mari.Camera.scale
+mari.PaintBuffer.scale
+mari.Projector.scale">scale</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line"> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="printCurrentCameraInfo"></a><div id="printCurrentCameraInfo-def"><a name="L138"></a><tt class="py-lineno">138</tt> <a class="py-toggle" href="#" id="printCurrentCameraInfo-toggle" onclick="return toggle('printCurrentCameraInfo');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.cameras-module.html#printCurrentCameraInfo">printCurrentCameraInfo</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="printCurrentCameraInfo-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="printCurrentCameraInfo-expanded"><a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">    <tt class="py-docstring">"""Prints information about the current camera."""</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name" id="link-317"><a class="py-name" href="#" onclick="return doclink('link-317', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-318"><a class="py-name" href="#" onclick="return doclink('link-318', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-319"><a class="py-name" href="#" onclick="return doclink('link-319', 'checkProjectAndGeoValidity', 'link-3');" title="mari.utils.misc.checkProjectAndGeoValidity">checkProjectAndGeoValidity</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line"> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">    <tt class="py-name" id="link-320"><a class="py-name" href="#" onclick="return doclink('link-320', 'canvas', 'link-4');" title="mari.current.canvas">canvas</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-321"><a class="py-name" href="#" onclick="return doclink('link-321', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-322"><a class="py-name" href="#" onclick="return doclink('link-322', 'canvases', 'link-6');" title="mari.canvases">canvases</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-323"><a class="py-name" href="#" onclick="return doclink('link-323', 'current', 'link-7');" title="mari.CanvasManager.current
+mari.GeoManager.current
+mari.LightManager.current
+mari.ProjectManager.current
+mari.ProjectorManager.current
+mari.SelectionGroupManager.current
+mari.ToolManager.current
+mari.current">current</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-324"><a class="py-name" href="#" onclick="return doclink('link-324', 'canvas', 'link-4');" title="mari.current.canvas">canvas</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">        <tt class="py-name" id="link-325"><a class="py-name" href="#" onclick="return doclink('link-325', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-326"><a class="py-name" href="#" onclick="return doclink('link-326', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-327"><a class="py-name" href="#" onclick="return doclink('link-327', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[printCurrentCameraInfo] No canvas selected"</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">    <tt class="py-name" id="link-328"><a class="py-name" href="#" onclick="return doclink('link-328', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-329"><a class="py-name" href="#" onclick="return doclink('link-329', 'canvas', 'link-4');" title="mari.current.canvas">canvas</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-330"><a class="py-name" href="#" onclick="return doclink('link-330', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-331"><a class="py-name" href="#" onclick="return doclink('link-331', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">        <tt class="py-name" id="link-332"><a class="py-name" href="#" onclick="return doclink('link-332', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-333"><a class="py-name" href="#" onclick="return doclink('link-333', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-334"><a class="py-name" href="#" onclick="return doclink('link-334', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[printCurrentCameraInfo] No camera selected"</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line"> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">    <tt class="py-name" id="link-335"><a class="py-name" href="#" onclick="return doclink('link-335', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-336"><a class="py-name" href="#" onclick="return doclink('link-336', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-337"><a class="py-name" href="#" onclick="return doclink('link-337', 'messageAndLog', 'link-15');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[printCurrentCameraInfo] Querying the current camera info for canvas '%s'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-338"><a class="py-name" href="#" onclick="return doclink('link-338', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-339"><a class="py-name" href="#" onclick="return doclink('link-339', 'name', 'link-17');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">    <tt class="py-name" id="link-340"><a class="py-name" href="#" onclick="return doclink('link-340', 'printCameraInfo', 'link-206');" title="mari.examples.cameras.printCameraInfo">printCameraInfo</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-341"><a class="py-name" href="#" onclick="return doclink('link-341', 'camera', 'link-9');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line"> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line"> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line"><tt class="py-comment"># Register new actions with the action manager, and add them to the menu</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line"><tt class="py-name" id="link-342"><a class="py-name" href="#" onclick="return doclink('link-342', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-343" targets="Variable mari.menus=mari-module.html#menus"><a class="py-name" href="#" onclick="return doclink('link-343', 'menus', 'link-343');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-344" targets="Method mari.MenuManager.addAction()=mari.MenuManager-class.html#addAction,Method mari.ToolBar.addAction()=mari.ToolBar-class.html#addAction,Function mari.examples.vector_brush.addAction()=mari.examples.vector_brush-module.html#addAction"><a class="py-name" href="#" onclick="return doclink('link-344', 'addAction', 'link-344');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-345"><a class="py-name" href="#" onclick="return doclink('link-345', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-346" targets="Method mari.MenuManager.actions()=mari.MenuManager-class.html#actions,Variable mari.actions=mari-module.html#actions"><a class="py-name" href="#" onclick="return doclink('link-346', 'actions', 'link-346');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-347" targets="Method mari.ActionManager.create()=mari.ActionManager-class.html#create,Method mari.PaletteManager.create()=mari.PaletteManager-class.html#create,Method mari.ProjectManager.create()=mari.ProjectManager-class.html#create,Method mari.ProjectorManager.create()=mari.ProjectorManager-class.html#create"><a class="py-name" href="#" onclick="return doclink('link-347', 'create', 'link-347');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt><tt class="py-string">'Change Camera to Perspective'</tt><tt class="py-op">,</tt> <tt class="py-string">'mari.examples.cameras.changeCurrentCameraPerspective()'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">"MainWindow/P&amp;ython/&amp;Examples/&amp;Cameras"</tt><tt class="py-op">)</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line"><tt class="py-name" id="link-348"><a class="py-name" href="#" onclick="return doclink('link-348', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-349"><a class="py-name" href="#" onclick="return doclink('link-349', 'menus', 'link-343');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-350"><a class="py-name" href="#" onclick="return doclink('link-350', 'addAction', 'link-344');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-351"><a class="py-name" href="#" onclick="return doclink('link-351', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-352"><a class="py-name" href="#" onclick="return doclink('link-352', 'actions', 'link-346');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-353"><a class="py-name" href="#" onclick="return doclink('link-353', 'create', 'link-347');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt><tt class="py-string">'Change Camera to Orthographic'</tt><tt class="py-op">,</tt> <tt class="py-string">'mari.examples.cameras.changeCurrentCameraOrthographic()'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">"MainWindow/P&amp;ython/&amp;Examples/&amp;Cameras"</tt><tt class="py-op">)</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line"><tt class="py-name" id="link-354"><a class="py-name" href="#" onclick="return doclink('link-354', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-355"><a class="py-name" href="#" onclick="return doclink('link-355', 'menus', 'link-343');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-356"><a class="py-name" href="#" onclick="return doclink('link-356', 'addAction', 'link-344');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-357"><a class="py-name" href="#" onclick="return doclink('link-357', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-358"><a class="py-name" href="#" onclick="return doclink('link-358', 'actions', 'link-346');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-359"><a class="py-name" href="#" onclick="return doclink('link-359', 'create', 'link-347');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt><tt class="py-string">'Print Camera Info'</tt><tt class="py-op">,</tt> <tt class="py-string">'mari.examples.cameras.printCurrentCameraInfo()'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">"MainWindow/P&amp;ython/&amp;Examples/&amp;Cameras"</tt><tt class="py-op">)</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line"><tt class="py-name" id="link-360"><a class="py-name" href="#" onclick="return doclink('link-360', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-361"><a class="py-name" href="#" onclick="return doclink('link-361', 'menus', 'link-343');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-362"><a class="py-name" href="#" onclick="return doclink('link-362', 'addAction', 'link-344');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-363"><a class="py-name" href="#" onclick="return doclink('link-363', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-364"><a class="py-name" href="#" onclick="return doclink('link-364', 'actions', 'link-346');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-365"><a class="py-name" href="#" onclick="return doclink('link-365', 'create', 'link-347');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt><tt class="py-string">'Print All Camera Info'</tt><tt class="py-op">,</tt> <tt class="py-string">'mari.examples.cameras.printAllCanvasesCameraInfo()'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">"MainWindow/P&amp;ython/&amp;Examples/&amp;Cameras"</tt><tt class="py-op">)</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

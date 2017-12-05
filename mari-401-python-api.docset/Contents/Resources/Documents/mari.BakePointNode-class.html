@@ -1,0 +1,1767 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.BakePointNode
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+        Class&nbsp;BakePointNode
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.BakePointNode-class.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS DESCRIPTION ==================== -->
+  <h1 class="epydoc">
+   Class BakePointNode
+  </h1>
+  <p class="nomargin-top">
+   <span class="codelink">
+    <a href="mari-pysrc.html#BakePointNode">
+     source&nbsp;code
+    </a>
+   </span>
+  </p>
+  <pre class="base-tree">
+object --+        
+         |        
+  <a href="mari.Metadata-class.html">Metadata</a> --+    
+             |    
+          <a href="mari.Node-class.html">Node</a> --+
+                 |
+                <strong class="uidshort">BakePointNode</strong>
+</pre>
+  <hr/>
+  <p>
+   Represents node speciailizing in baking result of intermediate point 
+  in the
+   <a class="link" href="mari.NodeGraph-class.html">
+    NodeGraph
+   </a>
+   .
+  </p>
+  <p>
+   <b>
+    Example Code
+   </b>
+  </p>
+  <p>
+   This example shows how to create a
+   <a class="link" href="mari.BakePointNode-class.html">
+    BakePointNode
+   </a>
+  </p>
+  <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>nodeGraph = mari.geo.current().nodeGraph()
+<span class="py-prompt">&gt;&gt;&gt; </span>paintNode = nodeGraph.createBakePointNode( 1024, 1024, 8, mari.Color(1.0,1.0,0.0,1.0) )</pre>
+  <p>
+   This example obtains a
+   <a class="link" href="mari.BakePointNode-class.html">
+    BakePointNode
+   </a>
+   from the node graph of the current geo 
+  entity and
+  </p>
+  <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">for</span> node <span class="py-keyword">in</span> nodeGraph.nodeList():
+<span class="py-more">... </span>  <span class="py-keyword">if</span> node.isBakePointNode():
+<span class="py-more">... </span>    mari.app.log( <span class="py-string">"Found BakePointNode : "</span>+node.nodeName() )</pre>
+  <!-- ==================== NESTED CLASSES ==================== -->
+  <a name="section-NestedClasses">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Nested Classes
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata.MetadataFlag-class.html">
+        MetadataFlag
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata.MetadataGroupHint-class.html">
+        MetadataGroupHint
+       </a>
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== INSTANCE METHODS ==================== -->
+  <a name="section-InstanceMethods">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Instance Methods
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.BakePointNode-class.html#bake">
+          bake
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Bakes the result at this node into the image set.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#BakePointNode.bake">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.ImageSet-class.html">
+       ImageSet
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.BakePointNode-class.html#bakedResult">
+          bakedResult
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the image set of baked result.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#BakePointNode.bakedResult">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="deleteBakedResult">
+         </a>
+         <span class="summary-sig-name">
+          deleteBakedResult
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Deletes the baked result.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#BakePointNode.deleteBakedResult">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Image.Depth-class.html">
+       Image.Depth
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.BakePointNode-class.html#depth">
+          depth
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the depth of this BakePoint node.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#BakePointNode.depth">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.BakePointNode-class.html#exportPath">
+          exportPath
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the export path, where the baked textures will be exported 
+      to.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#BakePointNode.exportPath">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="hasBakedResult">
+         </a>
+         <span class="summary-sig-name">
+          hasBakedResult
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns whether there is baked result.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#BakePointNode.hasBakedResult">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.BakePointNode-class.html#isBakePointNode">
+          isBakePointNode
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns whether this node is a
+        <a class="link" href="mari.BakePointNode-class.html">
+         BakePointNode
+        </a>
+        .
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#BakePointNode.isBakePointNode">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.BakePointNode-class.html#isBakedResultUpToDate">
+          isBakedResultUpToDate
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns whether the baked result is up to date.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#BakePointNode.isBakedResultUpToDate">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.BakePointNode-class.html#setExportPath">
+          setExportPath
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Path
+         </span>
+         )
+        </span>
+        <br/>
+        Sets the export path, where the baked textures will be exported to.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#BakePointNode.setExportPath">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.BakePointNode-class.html#setUseBaked">
+          setUseBaked
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          UseBaked
+         </span>
+         )
+        </span>
+        <br/>
+        Sets whether this node should use the baked result if available.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#BakePointNode.setUseBaked">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.BakePointNode-class.html#useBaked">
+          useBaked
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns whether this node should use the baked result or not.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#BakePointNode.useBaked">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Node-class.html">
+         Node
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Node-class.html#addNodeContext">
+        addNodeContext
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#addTag">
+        addTag
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#attachViewer">
+        attachViewer
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#bypassInput">
+        bypassInput
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#hasTag">
+        hasTag
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#hash">
+        hash
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#inputNode">
+        inputNode
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#inputPortCount">
+        inputPortCount
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#inputPortName">
+        inputPortName
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#inputPortNames">
+        inputPortNames
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#isGroupNode">
+        isGroupNode
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#isPaintNode">
+        isPaintNode
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#isSelected">
+        isSelected
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#name">
+        name
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#nodeContext">
+        nodeContext
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#nodeContextNames">
+        nodeContextNames
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#nodeInformation">
+        nodeInformation
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#nodeName">
+        nodeName
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#parentNodeGraph">
+        parentNodeGraph
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#printVersionHashSource">
+        printVersionHashSource
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#removeNodeContext">
+        removeNodeContext
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#removeTag">
+        removeTag
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#setBypassInput">
+        setBypassInput
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#setInputNode">
+        setInputNode
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#setMetadata">
+        setMetadata
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#setName">
+        setName
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#setNodeName">
+        setNodeName
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#setSelected">
+        setSelected
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#setTypeID">
+        setTypeID
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#tagList">
+        tagList
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Node-class.html#typeID">
+        typeID
+       </a>
+      </code>
+     </p>
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata-class.html#hasMetadata">
+        hasMetadata
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadata">
+        metadata
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataAsImage">
+        metadataAsImage
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataDefault">
+        metadataDefault
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataDescription">
+        metadataDescription
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataDisplayName">
+        metadataDisplayName
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataFlags">
+        metadataFlags
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataIsEnabled">
+        metadataIsEnabled
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataItemList">
+        metadataItemList
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataMax">
+        metadataMax
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataMin">
+        metadataMin
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataNames">
+        metadataNames
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataStep">
+        metadataStep
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#removeMetadata">
+        removeMetadata
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataDefault">
+        setMetadataDefault
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataDescription">
+        setMetadataDescription
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataDisplayName">
+        setMetadataDisplayName
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataEnabled">
+        setMetadataEnabled
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataFlags">
+        setMetadataFlags
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataGroupHints">
+        setMetadataGroupHints
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataItemList">
+        setMetadataItemList
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataRange">
+        setMetadataRange
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataStep">
+        setMetadataStep
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#uuid">
+        uuid
+       </a>
+      </code>
+     </p>
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __delattr__
+      </code>
+      ,
+      <code>
+       __format__
+      </code>
+      ,
+      <code>
+       __getattribute__
+      </code>
+      ,
+      <code>
+       __hash__
+      </code>
+      ,
+      <code>
+       __init__
+      </code>
+      ,
+      <code>
+       __new__
+      </code>
+      ,
+      <code>
+       __reduce__
+      </code>
+      ,
+      <code>
+       __reduce_ex__
+      </code>
+      ,
+      <code>
+       __repr__
+      </code>
+      ,
+      <code>
+       __setattr__
+      </code>
+      ,
+      <code>
+       __sizeof__
+      </code>
+      ,
+      <code>
+       __str__
+      </code>
+      ,
+      <code>
+       __subclasshook__
+      </code>
+     </p>
+    </td>
+   </tr>
+   <tr bgcolor="#e8f0f8">
+    <th class="group-header" colspan="2">
+     &nbsp;&nbsp;&nbsp;&nbsp;Signals
+    </th>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata-class.html#metadataCreated">
+        metadataCreated
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataRemoved">
+        metadataRemoved
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataValueChanged">
+        metadataValueChanged
+       </a>
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== STATIC METHODS ==================== -->
+  <a name="section-StaticMethods">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Static Methods
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata-class.html#isSupportedMetadataType">
+        isSupportedMetadataType
+       </a>
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS VARIABLES ==================== -->
+  <a name="section-ClassVariables">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Class Variables
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_EDITABLE">
+        METADATA_EDITABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_GROUP_HINT_DISPLAY">
+        METADATA_GROUP_HINT_DISPLAY
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_GROUP_HINT_SORTABLE">
+        METADATA_GROUP_HINT_SORTABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_REMOVABLE">
+        METADATA_REMOVABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_REMOVEABLE">
+        METADATA_REMOVEABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_SAVED">
+        METADATA_SAVED
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_UNDOABLE">
+        METADATA_UNDOABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_VISIBLE">
+        METADATA_VISIBLE
+       </a>
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== PROPERTIES ==================== -->
+  <a name="section-Properties">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Properties
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __class__
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== METHOD DETAILS ==================== -->
+  <a name="section-MethodDetails">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Method Details
+     </span>
+    </td>
+   </tr>
+  </table>
+  <a name="bake">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            bake
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#BakePointNode.bake">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Bakes the result at this node into the image set.
+      </p>
+      <p>
+       Bakes the result at this node into the image set.
+      </p>
+      <p>
+       The result of baking can be obtained by
+       <a class="link" href="mari.BakePointNode-class.html#bakedResult">
+        bakedResult()
+       </a>
+       .
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Width
+           </code>
+          </strong>
+          - The default width of the
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          (ignored for
+          <a class="link" href="mari.Ptex-class.html">
+           Ptex
+          </a>
+          )
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Height
+           </code>
+          </strong>
+          - The default height of the (ignored for
+          <a class="link" href="mari.Ptex-class.html">
+           Ptex
+          </a>
+          )
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Depth
+           </code>
+          </strong>
+          - The default bit depth of the
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the PainNode could not be created
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Overrides:
+        <a href="mari.Node-class.html#bake">
+         Node.bake
+        </a>
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="bakedResult">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            bakedResult
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#BakePointNode.bakedResult">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the image set of baked result.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns:
+        <a class="link" href="mari.ImageSet-class.html">
+         ImageSet
+        </a>
+       </dt>
+       <dd>
+        The image set this node holds as baked result.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the image set cannot be found.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="depth">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            depth
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#BakePointNode.depth">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the depth of this BakePoint node.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns:
+        <a class="link" href="mari.Image.Depth-class.html">
+         Image.Depth
+        </a>
+       </dt>
+       <dd>
+        The depth of this BakePoint node
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="exportPath">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            exportPath
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#BakePointNode.exportPath">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the export path, where the baked textures will be exported 
+  to.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: str
+       </dt>
+       <dd>
+        The export path, where the baked textures will be exported to
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.BakePointNode-class.html#setExportPath">
+         setExportPath()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="isBakePointNode">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            isBakePointNode
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#BakePointNode.isBakePointNode">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns whether this node is a
+       <a class="link" href="mari.BakePointNode-class.html">
+        BakePointNode
+       </a>
+       .
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: bool
+       </dt>
+       <dd>
+        Whether this node is a
+        <a class="link" href="mari.BakePointNode-class.html">
+         BakePointNode
+        </a>
+       </dd>
+       <dt>
+        Overrides:
+        <a href="mari.Node-class.html#isBakePointNode">
+         Node.isBakePointNode
+        </a>
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="isBakedResultUpToDate">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            isBakedResultUpToDate
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#BakePointNode.isBakedResultUpToDate">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns whether the baked result is up to date.
+      </p>
+      <p>
+       Returns whether the baked result is up to date.
+      </p>
+      <p>
+       If there is no baked result yet, this will return False.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: bool
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setExportPath">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setExportPath
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Path
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#BakePointNode.setExportPath">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Sets the export path, where the baked textures will be exported 
+  to.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Path
+           </code>
+          </strong>
+          (str) - The export path, where the baked textures will be exported to
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.BakePointNode-class.html#exportPath">
+         exportPath()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setUseBaked">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setUseBaked
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            UseBaked
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#BakePointNode.setUseBaked">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Sets whether this node should use the baked result if available.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            UseBaked
+           </code>
+          </strong>
+          (bool)
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.BakePointNode-class.html#useBaked">
+         useBaked()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="useBaked">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            useBaked
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#BakePointNode.useBaked">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns whether this node should use the baked result or not.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: bool
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.BakePointNode-class.html#setUseBaked">
+         setUseBaked()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

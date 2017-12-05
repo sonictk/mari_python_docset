@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.examples.asset_management
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.examples-module.html">
+       Package&nbsp;examples
+      </a>
+      ::
+        Module&nbsp;asset_management
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.examples.asset_management-pysrc.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <h1 class="epydoc">
+   Source Code for
+   <a href="mari.examples.asset_management-module.html">
+    Module mari.examples.asset_management
+   </a>
+  </h1>
+  <pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"># These are some testing methods that might be relevant to people implementing </tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment"># asset management integration with Mari. It mainly hooks into the signals emitted</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment"># by Mari on project creation, opening, closing, importing and exporting to </tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment"># inspect projects and look for metadata. These hooks can be used to talk to databases </tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-comment"># or inspect data on disk to see if assets are out of date or need updating.</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-comment"># </tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-comment"># coding: utf-8</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-comment"># Copyright (c) 2010 The Foundry Visionmongers Ltd.  All Rights Reserved.</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name" id="link-0" targets="Package mari=mari-module.html"><a class="py-name" href="#" onclick="return doclink('link-0', 'mari', 'link-0');" title="mari">mari</a></tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">PySide2</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name" id="link-1" targets="Method mari.Metadata.uuid()=mari.Metadata-class.html#uuid,Method mari.Project.uuid()=mari.Project-class.html#uuid,Method mari.ProjectInfo.uuid()=mari.ProjectInfo-class.html#uuid"><a class="py-name" href="#" onclick="return doclink('link-1', 'uuid', 'link-1');" title="mari.Metadata.uuid
+mari.Project.uuid
+mari.ProjectInfo.uuid">uuid</a></tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">random</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-name">core</tt> <tt class="py-op">=</tt> <tt class="py-name">PySide2</tt><tt class="py-op">.</tt><tt class="py-name">QtCore</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-name">widgets</tt> <tt class="py-op">=</tt> <tt class="py-name">PySide2</tt><tt class="py-op">.</tt><tt class="py-name">QtWidgets</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="checkProjectAssetIDs"></a><div id="checkProjectAssetIDs-def"><a name="L21"></a><tt class="py-lineno"> 21</tt> <a class="py-toggle" href="#" id="checkProjectAssetIDs-toggle" onclick="return toggle('checkProjectAssetIDs');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.asset_management-module.html#checkProjectAssetIDs">checkProjectAssetIDs</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="checkProjectAssetIDs-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="checkProjectAssetIDs-expanded"><a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">    <tt class="py-docstring">"Finds the objects in this project and looks for example metadata giving asset management version information."</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">    <tt class="py-comment"># check to see if we have a valid project, we should have, but if we don't exit</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-2"><a class="py-name" href="#" onclick="return doclink('link-2', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-3" targets="Variable mari.projects=mari-module.html#projects"><a class="py-name" href="#" onclick="return doclink('link-3', 'projects', 'link-3');" title="mari.projects">projects</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-4" targets="Method mari.CanvasManager.current()=mari.CanvasManager-class.html#current,Method mari.GeoManager.current()=mari.GeoManager-class.html#current,Method mari.LightManager.current()=mari.LightManager-class.html#current,Method mari.ProjectManager.current()=mari.ProjectManager-class.html#current,Method mari.ProjectorManager.current()=mari.ProjectorManager-class.html#current,Method mari.SelectionGroupManager.current()=mari.SelectionGroupManager-class.html#current,Method mari.ToolManager.current()=mari.ToolManager-class.html#current,Package mari.current=mari.current-module.html"><a class="py-name" href="#" onclick="return doclink('link-4', 'current', 'link-4');" title="mari.CanvasManager.current
+mari.GeoManager.current
+mari.LightManager.current
+mari.ProjectManager.current
+mari.ProjectorManager.current
+mari.SelectionGroupManager.current
+mari.ToolManager.current
+mari.current">current</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">    <tt class="py-comment"># iterate over all of the objects in the scene and find their example UUID</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">obj</tt> <tt class="py-keyword">in</tt> <tt class="py-name" id="link-5"><a class="py-name" href="#" onclick="return doclink('link-5', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-6" targets="Function mari.current.geo()=mari.current-module.html#geo,Variable mari.examples.c_api_channel_export.geo=mari.examples.c_api_channel_export-module.html#geo"><a class="py-name" href="#" onclick="return doclink('link-6', 'geo', 'link-6');" title="mari.current.geo
+mari.examples.c_api_channel_export.geo">geo</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-7" targets="Method mari.ActionManager.list()=mari.ActionManager-class.html#list,Method mari.CanvasManager.list()=mari.CanvasManager-class.html#list,Method mari.GeoManager.list()=mari.GeoManager-class.html#list,Method mari.ImageManager.list()=mari.ImageManager-class.html#list,Method mari.LightManager.list()=mari.LightManager-class.html#list,Method mari.PaletteManager.list()=mari.PaletteManager-class.html#list,Method mari.Preferences.list()=mari.Preferences-class.html#list,Method mari.ProjectManager.list()=mari.ProjectManager-class.html#list,Method mari.ProjectorManager.list()=mari.ProjectorManager-class.html#list,Method mari.SelectionGroupManager.list()=mari.SelectionGroupManager-class.html#list,Method mari.ShelfManager.list()=mari.ShelfManager-class.html#list"><a class="py-name" href="#" onclick="return doclink('link-7', 'list', 'link-7');" title="mari.ActionManager.list
+mari.CanvasManager.list
+mari.GeoManager.list
+mari.ImageManager.list
+mari.LightManager.list
+mari.PaletteManager.list
+mari.Preferences.list
+mari.ProjectManager.list
+mari.ProjectorManager.list
+mari.SelectionGroupManager.list
+mari.ShelfManager.list">list</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">obj</tt><tt class="py-op">.</tt><tt class="py-name" id="link-8" targets="Method mari.Metadata.hasMetadata()=mari.Metadata-class.html#hasMetadata"><a class="py-name" href="#" onclick="return doclink('link-8', 'hasMetadata', 'link-8');" title="mari.Metadata.hasMetadata">hasMetadata</a></tt><tt class="py-op">(</tt><tt class="py-string">'Example_UUID'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">            <tt class="py-comment"># get the values of the madeup UUID and version number</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">            <tt class="py-name" id="link-9"><a class="py-name" href="#" onclick="return doclink('link-9', 'uuid', 'link-1');" title="mari.Metadata.uuid
+mari.Project.uuid
+mari.ProjectInfo.uuid">uuid</a></tt> <tt class="py-op">=</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">obj</tt><tt class="py-op">.</tt><tt class="py-name" id="link-10" targets="Method mari.Metadata.metadata()=mari.Metadata-class.html#metadata"><a class="py-name" href="#" onclick="return doclink('link-10', 'metadata', 'link-10');" title="mari.Metadata.metadata">metadata</a></tt><tt class="py-op">(</tt><tt class="py-string">'Example_UUID'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">            <tt class="py-name">ver_num</tt> <tt class="py-op">=</tt>  <tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">obj</tt><tt class="py-op">.</tt><tt class="py-name" id="link-11"><a class="py-name" href="#" onclick="return doclink('link-11', 'metadata', 'link-10');" title="mari.Metadata.metadata">metadata</a></tt><tt class="py-op">(</tt><tt class="py-string">'Example_Version'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">            <tt class="py-comment"># at this point we could query a database to find out the latest version of this asset, and prompt the user</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">            <tt class="py-comment"># This prompt would inform the user of any later versions and could offer to load  new versions automatically</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">            <tt class="py-comment"># but as we have no database, we'll just print out the values and increment the version number</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-string">'Name '</tt> <tt class="py-op">+</tt> <tt class="py-name">obj</tt><tt class="py-op">.</tt><tt class="py-name" id="link-12" targets="Method mari.Action.name()=mari.Action-class.html#name,Method mari.Camera.name()=mari.Camera-class.html#name,Method mari.Channel.name()=mari.Channel-class.html#name,Method mari.ChannelInfo.name()=mari.ChannelInfo-class.html#name,Method mari.GeoEntity.name()=mari.GeoEntity-class.html#name,Method mari.GeoEntityVersion.name()=mari.GeoEntityVersion-class.html#name,Method mari.GeoPatch.name()=mari.GeoPatch-class.html#name,Method mari.GeometryOperation.name()=mari.GeometryOperation-class.html#name,Method mari.ImageOperation.name()=mari.ImageOperation-class.html#name,Method mari.ImageSet.name()=mari.ImageSet-class.html#name,Method mari.Layer.name()=mari.Layer-class.html#name,Method mari.LayerStack.name()=mari.LayerStack-class.html#name,Method mari.Light.name()=mari.Light-class.html#name,Method mari.LocatorEntity.name()=mari.LocatorEntity-class.html#name,Method mari.Node.name()=mari.Node-class.html#name,Method mari.Palette.name()=mari.Palette-class.html#name,Method mari.ParticleOp.name()=mari.ParticleOp-class.html#name,Method mari.PostFilter.name()=mari.PostFilter-class.html#name,Method mari.PostFilterCollection.name()=mari.PostFilterCollection-class.html#name,Method mari.Project.name()=mari.Project-class.html#name,Method mari.ProjectInfo.name()=mari.ProjectInfo-class.html#name,Method mari.Projector.name()=mari.Projector-class.html#name,Method mari.SelectionGroup.name()=mari.SelectionGroup-class.html#name,Method mari.Shader.name()=mari.Shader-class.html#name,Method mari.Shelf.name()=mari.Shelf-class.html#name,Method mari.Snapshot.name()=mari.Snapshot-class.html#name,Method mari.Tool.name()=mari.Tool-class.html#name"><a class="py-name" href="#" onclick="return doclink('link-12', 'name', 'link-12');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-string">'Asset ID '</tt> <tt class="py-op">+</tt> <tt class="py-name" id="link-13"><a class="py-name" href="#" onclick="return doclink('link-13', 'uuid', 'link-1');" title="mari.Metadata.uuid
+mari.Project.uuid
+mari.ProjectInfo.uuid">uuid</a></tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-string">'Version Number '</tt> <tt class="py-op">+</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">ver_num</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">            <tt class="py-name">obj</tt><tt class="py-op">.</tt><tt class="py-name" id="link-14" targets="Method mari.ImageManager.setMetadata()=mari.ImageManager-class.html#setMetadata,Method mari.Metadata.setMetadata()=mari.Metadata-class.html#setMetadata,Method mari.Node.setMetadata()=mari.Node-class.html#setMetadata"><a class="py-name" href="#" onclick="return doclink('link-14', 'setMetadata', 'link-14');" title="mari.ImageManager.setMetadata
+mari.Metadata.setMetadata
+mari.Node.setMetadata">setMetadata</a></tt><tt class="py-op">(</tt><tt class="py-string">'Example_Version'</tt><tt class="py-op">,</tt> <tt class="py-name">ver_num</tt><tt class="py-op">+</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-string">'Object does not have version information attached'</tt> </tt>
+</div><a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="printExportPath"></a><div id="printExportPath-def"><a name="L44"></a><tt class="py-lineno"> 44</tt> <a class="py-toggle" href="#" id="printExportPath-toggle" onclick="return toggle('printExportPath');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.asset_management-module.html#printExportPath">printExportPath</a><tt class="py-op">(</tt><tt class="py-param">Image</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="printExportPath-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="printExportPath-expanded"><a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">    <tt class="py-docstring">"Prints out the export path, but could be used to perform a tex make etc."</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'Image was exported to ('</tt> <tt class="py-op">+</tt> <tt class="py-name" id="link-15" targets="Class mari.Image=mari.Image-class.html"><a class="py-name" href="#" onclick="return doclink('link-15', 'Image', 'link-15');" title="mari.Image">Image</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-16" targets="Method mari.Image.lastExportPath()=mari.Image-class.html#lastExportPath"><a class="py-name" href="#" onclick="return doclink('link-16', 'lastExportPath', 'link-16');" title="mari.Image.lastExportPath">lastExportPath</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">') !'</tt> </tt>
+</div><a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="printImportPath"></a><div id="printImportPath-def"><a name="L49"></a><tt class="py-lineno"> 49</tt> <a class="py-toggle" href="#" id="printImportPath-toggle" onclick="return toggle('printImportPath');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.asset_management-module.html#printImportPath">printImportPath</a><tt class="py-op">(</tt><tt class="py-param">Image</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="printImportPath-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="printImportPath-expanded"><a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">    <tt class="py-docstring">"Prints out the import path, but could be used to perform a tex make etc."</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'Image was imported from ('</tt> <tt class="py-op">+</tt> <tt class="py-name" id="link-17"><a class="py-name" href="#" onclick="return doclink('link-17', 'Image', 'link-15');" title="mari.Image">Image</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-18" targets="Method mari.Image.lastImportPath()=mari.Image-class.html#lastImportPath"><a class="py-name" href="#" onclick="return doclink('link-18', 'lastImportPath', 'link-18');" title="mari.Image.lastImportPath">lastImportPath</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">') !'</tt> </tt>
+</div><a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="processingImage"></a><div id="processingImage-def"><a name="L54"></a><tt class="py-lineno"> 54</tt> <a class="py-toggle" href="#" id="processingImage-toggle" onclick="return toggle('processingImage');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.asset_management-module.html#processingImage">processingImage</a><tt class="py-op">(</tt><tt class="py-param">Image</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="processingImage-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="processingImage-expanded"><a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'About to process ('</tt> <tt class="py-op">+</tt> <tt class="py-name" id="link-19"><a class="py-name" href="#" onclick="return doclink('link-19', 'Image', 'link-15');" title="mari.Image">Image</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-20" targets="Method mari.Image.mostRelevantPath()=mari.Image-class.html#mostRelevantPath"><a class="py-name" href="#" onclick="return doclink('link-20', 'mostRelevantPath', 'link-20');" title="mari.Image.mostRelevantPath">mostRelevantPath</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">') !'</tt> </tt>
+</div><a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="exportCallbackFactory"></a><div id="exportCallbackFactory-def"><a name="L58"></a><tt class="py-lineno"> 58</tt> <a class="py-toggle" href="#" id="exportCallbackFactory-toggle" onclick="return toggle('exportCallbackFactory');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.asset_management-module.html#exportCallbackFactory">exportCallbackFactory</a><tt class="py-op">(</tt><tt class="py-param">m</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="exportCallbackFactory-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="exportCallbackFactory-expanded"><a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-keyword">lambda</tt><tt class="py-op">:</tt> <tt class="py-name" id="link-21" targets="Function mari.examples.asset_management.printExportPath()=mari.examples.asset_management-module.html#printExportPath"><a class="py-name" href="#" onclick="return doclink('link-21', 'printExportPath', 'link-21');" title="mari.examples.asset_management.printExportPath">printExportPath</a></tt><tt class="py-op">(</tt><tt class="py-name">m</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="importCallbackFactory"></a><div id="importCallbackFactory-def"><a name="L62"></a><tt class="py-lineno"> 62</tt> <a class="py-toggle" href="#" id="importCallbackFactory-toggle" onclick="return toggle('importCallbackFactory');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.asset_management-module.html#importCallbackFactory">importCallbackFactory</a><tt class="py-op">(</tt><tt class="py-param">m</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="importCallbackFactory-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="importCallbackFactory-expanded"><a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-keyword">lambda</tt><tt class="py-op">:</tt> <tt class="py-name" id="link-22" targets="Function mari.examples.asset_management.printImportPath()=mari.examples.asset_management-module.html#printImportPath"><a class="py-name" href="#" onclick="return doclink('link-22', 'printImportPath', 'link-22');" title="mari.examples.asset_management.printImportPath">printImportPath</a></tt><tt class="py-op">(</tt><tt class="py-name">m</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="aboutToProcessFactory"></a><div id="aboutToProcessFactory-def"><a name="L66"></a><tt class="py-lineno"> 66</tt> <a class="py-toggle" href="#" id="aboutToProcessFactory-toggle" onclick="return toggle('aboutToProcessFactory');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.asset_management-module.html#aboutToProcessFactory">aboutToProcessFactory</a><tt class="py-op">(</tt><tt class="py-param">m</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="aboutToProcessFactory-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="aboutToProcessFactory-expanded"><a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-keyword">lambda</tt><tt class="py-op">:</tt> <tt class="py-name" id="link-23" targets="Function mari.examples.asset_management.processingImage()=mari.examples.asset_management-module.html#processingImage"><a class="py-name" href="#" onclick="return doclink('link-23', 'processingImage', 'link-23');" title="mari.examples.asset_management.processingImage">processingImage</a></tt><tt class="py-op">(</tt><tt class="py-name">m</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="installIOHooks"></a><div id="installIOHooks-def"><a name="L70"></a><tt class="py-lineno"> 70</tt> <a class="py-toggle" href="#" id="installIOHooks-toggle" onclick="return toggle('installIOHooks');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.asset_management-module.html#installIOHooks">installIOHooks</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="installIOHooks-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="installIOHooks-expanded"><a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">    <tt class="py-docstring">"""Iterates over all channels and installs a hook that will be called when the images in that channel are exported and imported.</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"><tt class="py-docstring">    This can be used to do fun things like post export tex makes etc.</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">    <tt class="py-name" id="link-24" targets="Method mari.Projector.project()=mari.Projector-class.html#project,Function mari.current.project()=mari.current-module.html#project"><a class="py-name" href="#" onclick="return doclink('link-24', 'project', 'link-24');" title="mari.Projector.project
+mari.current.project">project</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-25"><a class="py-name" href="#" onclick="return doclink('link-25', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-26"><a class="py-name" href="#" onclick="return doclink('link-26', 'projects', 'link-3');" title="mari.projects">projects</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-27"><a class="py-name" href="#" onclick="return doclink('link-27', 'current', 'link-4');" title="mari.CanvasManager.current
+mari.GeoManager.current
+mari.LightManager.current
+mari.ProjectManager.current
+mari.ProjectorManager.current
+mari.SelectionGroupManager.current
+mari.ToolManager.current
+mari.current">current</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-28"><a class="py-name" href="#" onclick="return doclink('link-28', 'project', 'link-24');" title="mari.Projector.project
+mari.current.project">project</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">        <tt class="py-name" id="link-29"><a class="py-name" href="#" onclick="return doclink('link-29', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-30" targets="Package mari.utils=mari.utils-module.html"><a class="py-name" href="#" onclick="return doclink('link-30', 'utils', 'link-30');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-31" targets="Function mari.utils.misc.message()=mari.utils.misc-module.html#message,Variable mari.utils.ocio.message=mari.utils.ocio-module.html#message"><a class="py-name" href="#" onclick="return doclink('link-31', 'message', 'link-31');" title="mari.utils.misc.message
+mari.utils.ocio.message">message</a></tt><tt class="py-op">(</tt><tt class="py-string">'Please open a project first.'</tt><tt class="py-op">)</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">    <tt class="py-name" id="link-32"><a class="py-name" href="#" onclick="return doclink('link-32', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-33"><a class="py-name" href="#" onclick="return doclink('link-33', 'utils', 'link-30');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-34"><a class="py-name" href="#" onclick="return doclink('link-34', 'message', 'link-31');" title="mari.utils.misc.message
+mari.utils.ocio.message">message</a></tt><tt class="py-op">(</tt><tt class="py-string">"Installing post-export hooks. These will be called when Channels are exported."</tt><tt class="py-op">)</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">    <tt class="py-comment"># for all of the loaded entities</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">obj</tt> <tt class="py-keyword">in</tt> <tt class="py-name" id="link-35"><a class="py-name" href="#" onclick="return doclink('link-35', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-36"><a class="py-name" href="#" onclick="return doclink('link-36', 'geo', 'link-6');" title="mari.current.geo
+mari.examples.c_api_channel_export.geo">geo</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-37"><a class="py-name" href="#" onclick="return doclink('link-37', 'list', 'link-7');" title="mari.ActionManager.list
+mari.CanvasManager.list
+mari.GeoManager.list
+mari.ImageManager.list
+mari.LightManager.list
+mari.PaletteManager.list
+mari.Preferences.list
+mari.ProjectManager.list
+mari.ProjectorManager.list
+mari.SelectionGroupManager.list
+mari.ShelfManager.list">list</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">        <tt class="py-name" id="link-38" targets="Module mari.examples.channels=mari.examples.channels-module.html,Method mari.system._particle_channel_transfer.ChannelTransferListWidget.channels()=mari.system._particle_channel_transfer.ChannelTransferListWidget-class.html#channels"><a class="py-name" href="#" onclick="return doclink('link-38', 'channels', 'link-38');" title="mari.examples.channels
+mari.system._particle_channel_transfer.ChannelTransferListWidget.channels">channels</a></tt> <tt class="py-op">=</tt> <tt class="py-name">obj</tt><tt class="py-op">.</tt><tt class="py-name" id="link-39" targets="Method mari.GeoEntity.imageSetList()=mari.GeoEntity-class.html#imageSetList"><a class="py-name" href="#" onclick="return doclink('link-39', 'imageSetList', 'link-39');" title="mari.GeoEntity.imageSetList">imageSetList</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">        <tt class="py-comment"># then for each channel</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">chan</tt> <tt class="py-keyword">in</tt> <tt class="py-name" id="link-40"><a class="py-name" href="#" onclick="return doclink('link-40', 'channels', 'link-38');" title="mari.examples.channels
+mari.system._particle_channel_transfer.ChannelTransferListWidget.channels">channels</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">            <tt class="py-name" id="link-41" targets="Method mari.PatchLinksManager.images()=mari.PatchLinksManager-class.html#images,Variable mari.examples.c_api_channel_export.images=mari.examples.c_api_channel_export-module.html#images"><a class="py-name" href="#" onclick="return doclink('link-41', 'images', 'link-41');" title="mari.PatchLinksManager.images
+mari.examples.c_api_channel_export.images">images</a></tt> <tt class="py-op">=</tt> <tt class="py-name">chan</tt><tt class="py-op">.</tt><tt class="py-name" id="link-42" targets="Method mari.ImageSet.imageList()=mari.ImageSet-class.html#imageList"><a class="py-name" href="#" onclick="return doclink('link-42', 'imageList', 'link-42');" title="mari.ImageSet.imageList">imageList</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">            <tt class="py-comment"># for each image in the channel</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">img</tt> <tt class="py-keyword">in</tt> <tt class="py-name" id="link-43"><a class="py-name" href="#" onclick="return doclink('link-43', 'images', 'link-41');" title="mari.PatchLinksManager.images
+mari.examples.c_api_channel_export.images">images</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">                <tt class="py-name" id="link-44"><a class="py-name" href="#" onclick="return doclink('link-44', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-45"><a class="py-name" href="#" onclick="return doclink('link-45', 'utils', 'link-30');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-46" targets="Function mari.utils.signal_helpers.connect()=mari.utils.signal_helpers-module.html#connect"><a class="py-name" href="#" onclick="return doclink('link-46', 'connect', 'link-46');" title="mari.utils.signal_helpers.connect">connect</a></tt><tt class="py-op">(</tt><tt class="py-name">img</tt><tt class="py-op">.</tt><tt class="py-name" id="link-47" targets="Method mari.Image.exported()=mari.Image-class.html#exported,Method mari.ProjectManager.exported()=mari.ProjectManager-class.html#exported"><a class="py-name" href="#" onclick="return doclink('link-47', 'exported', 'link-47');" title="mari.Image.exported
+mari.ProjectManager.exported">exported</a></tt><tt class="py-op">,</tt> <tt class="py-name" id="link-48" targets="Function mari.examples.asset_management.exportCallbackFactory()=mari.examples.asset_management-module.html#exportCallbackFactory"><a class="py-name" href="#" onclick="return doclink('link-48', 'exportCallbackFactory', 'link-48');" title="mari.examples.asset_management.exportCallbackFactory">exportCallbackFactory</a></tt><tt class="py-op">(</tt><tt class="py-name">img</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">                <tt class="py-name" id="link-49"><a class="py-name" href="#" onclick="return doclink('link-49', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-50"><a class="py-name" href="#" onclick="return doclink('link-50', 'utils', 'link-30');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-51"><a class="py-name" href="#" onclick="return doclink('link-51', 'connect', 'link-46');" title="mari.utils.signal_helpers.connect">connect</a></tt><tt class="py-op">(</tt><tt class="py-name">img</tt><tt class="py-op">.</tt><tt class="py-name" id="link-52" targets="Method mari.Image.imported()=mari.Image-class.html#imported"><a class="py-name" href="#" onclick="return doclink('link-52', 'imported', 'link-52');" title="mari.Image.imported">imported</a></tt><tt class="py-op">,</tt> <tt class="py-name" id="link-53" targets="Function mari.examples.asset_management.importCallbackFactory()=mari.examples.asset_management-module.html#importCallbackFactory"><a class="py-name" href="#" onclick="return doclink('link-53', 'importCallbackFactory', 'link-53');" title="mari.examples.asset_management.importCallbackFactory">importCallbackFactory</a></tt><tt class="py-op">(</tt><tt class="py-name">img</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">                <tt class="py-name" id="link-54"><a class="py-name" href="#" onclick="return doclink('link-54', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-55"><a class="py-name" href="#" onclick="return doclink('link-55', 'utils', 'link-30');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-56"><a class="py-name" href="#" onclick="return doclink('link-56', 'connect', 'link-46');" title="mari.utils.signal_helpers.connect">connect</a></tt><tt class="py-op">(</tt><tt class="py-name">img</tt><tt class="py-op">.</tt><tt class="py-name" id="link-57" targets="Method mari.Image.aboutToExport()=mari.Image-class.html#aboutToExport,Method mari.ProjectManager.aboutToExport()=mari.ProjectManager-class.html#aboutToExport"><a class="py-name" href="#" onclick="return doclink('link-57', 'aboutToExport', 'link-57');" title="mari.Image.aboutToExport
+mari.ProjectManager.aboutToExport">aboutToExport</a></tt><tt class="py-op">,</tt> <tt class="py-name" id="link-58" targets="Function mari.examples.asset_management.aboutToProcessFactory()=mari.examples.asset_management-module.html#aboutToProcessFactory"><a class="py-name" href="#" onclick="return doclink('link-58', 'aboutToProcessFactory', 'link-58');" title="mari.examples.asset_management.aboutToProcessFactory">aboutToProcessFactory</a></tt><tt class="py-op">(</tt><tt class="py-name">img</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">                <tt class="py-name" id="link-59"><a class="py-name" href="#" onclick="return doclink('link-59', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-60"><a class="py-name" href="#" onclick="return doclink('link-60', 'utils', 'link-30');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-61"><a class="py-name" href="#" onclick="return doclink('link-61', 'connect', 'link-46');" title="mari.utils.signal_helpers.connect">connect</a></tt><tt class="py-op">(</tt><tt class="py-name">img</tt><tt class="py-op">.</tt><tt class="py-name" id="link-62" targets="Method mari.Image.aboutToImport()=mari.Image-class.html#aboutToImport"><a class="py-name" href="#" onclick="return doclink('link-62', 'aboutToImport', 'link-62');" title="mari.Image.aboutToImport">aboutToImport</a></tt><tt class="py-op">,</tt> <tt class="py-name" id="link-63"><a class="py-name" href="#" onclick="return doclink('link-63', 'aboutToProcessFactory', 'link-58');" title="mari.examples.asset_management.aboutToProcessFactory">aboutToProcessFactory</a></tt><tt class="py-op">(</tt><tt class="py-name">img</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">     </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="addAssetIDs"></a><div id="addAssetIDs-def"><a name="L96"></a><tt class="py-lineno"> 96</tt> <a class="py-toggle" href="#" id="addAssetIDs-toggle" onclick="return toggle('addAssetIDs');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.asset_management-module.html#addAssetIDs">addAssetIDs</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="addAssetIDs-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="addAssetIDs-expanded"><a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">    <tt class="py-docstring">"Adds made up asset management information to all objects in the scene."</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-64"><a class="py-name" href="#" onclick="return doclink('link-64', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-65"><a class="py-name" href="#" onclick="return doclink('link-65', 'projects', 'link-3');" title="mari.projects">projects</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-66"><a class="py-name" href="#" onclick="return doclink('link-66', 'current', 'link-4');" title="mari.CanvasManager.current
+mari.GeoManager.current
+mari.LightManager.current
+mari.ProjectManager.current
+mari.ProjectorManager.current
+mari.SelectionGroupManager.current
+mari.ToolManager.current
+mari.current">current</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">        <tt class="py-name" id="link-67"><a class="py-name" href="#" onclick="return doclink('link-67', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-68"><a class="py-name" href="#" onclick="return doclink('link-68', 'utils', 'link-30');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-69"><a class="py-name" href="#" onclick="return doclink('link-69', 'message', 'link-31');" title="mari.utils.misc.message
+mari.utils.ocio.message">message</a></tt><tt class="py-op">(</tt><tt class="py-string">"Please open a project before adding asset ids."</tt><tt class="py-op">)</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">    <tt class="py-comment"># iterate over all of the objects in the scene, adding asset ids and version ids if they don't already have them</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">obj</tt> <tt class="py-keyword">in</tt> <tt class="py-name" id="link-70"><a class="py-name" href="#" onclick="return doclink('link-70', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-71"><a class="py-name" href="#" onclick="return doclink('link-71', 'geo', 'link-6');" title="mari.current.geo
+mari.examples.c_api_channel_export.geo">geo</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-72"><a class="py-name" href="#" onclick="return doclink('link-72', 'list', 'link-7');" title="mari.ActionManager.list
+mari.CanvasManager.list
+mari.GeoManager.list
+mari.ImageManager.list
+mari.LightManager.list
+mari.PaletteManager.list
+mari.Preferences.list
+mari.ProjectManager.list
+mari.ProjectorManager.list
+mari.SelectionGroupManager.list
+mari.ShelfManager.list">list</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">obj</tt><tt class="py-op">.</tt><tt class="py-name" id="link-73"><a class="py-name" href="#" onclick="return doclink('link-73', 'hasMetadata', 'link-8');" title="mari.Metadata.hasMetadata">hasMetadata</a></tt><tt class="py-op">(</tt><tt class="py-string">'Example_UUID'</tt><tt class="py-op">)</tt><tt class="py-op">==</tt><tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">            <tt class="py-comment"># this object does not have asset ids, some make some up</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">            <tt class="py-name">obj</tt><tt class="py-op">.</tt><tt class="py-name" id="link-74"><a class="py-name" href="#" onclick="return doclink('link-74', 'setMetadata', 'link-14');" title="mari.ImageManager.setMetadata
+mari.Metadata.setMetadata
+mari.Node.setMetadata">setMetadata</a></tt><tt class="py-op">(</tt><tt class="py-string">'Example_UUID'</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name" id="link-75"><a class="py-name" href="#" onclick="return doclink('link-75', 'uuid', 'link-1');" title="mari.Metadata.uuid
+mari.Project.uuid
+mari.ProjectInfo.uuid">uuid</a></tt><tt class="py-op">.</tt><tt class="py-name">uuid4</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">            <tt class="py-name">obj</tt><tt class="py-op">.</tt><tt class="py-name" id="link-76"><a class="py-name" href="#" onclick="return doclink('link-76', 'setMetadata', 'link-14');" title="mari.ImageManager.setMetadata
+mari.Metadata.setMetadata
+mari.Node.setMetadata">setMetadata</a></tt><tt class="py-op">(</tt><tt class="py-string">'Example_Version'</tt><tt class="py-op">,</tt> <tt class="py-name">random</tt><tt class="py-op">.</tt><tt class="py-name">randrange</tt><tt class="py-op">(</tt><tt class="py-number">1</tt><tt class="py-op">,</tt><tt class="py-number">100</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line"> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="managedAddVersion"></a><div id="managedAddVersion-def"><a name="L110"></a><tt class="py-lineno">110</tt> <a class="py-toggle" href="#" id="managedAddVersion-toggle" onclick="return toggle('managedAddVersion');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.asset_management-module.html#managedAddVersion">managedAddVersion</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="managedAddVersion-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="managedAddVersion-expanded"><a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">    <tt class="py-docstring">"""This is an example of a managed add geo version.</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line"><tt class="py-docstring">    It loads a geometry object from file, tagging our asset IDs onto it.</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line"><tt class="py-docstring">    It shows that each version can be managed individually with metadata tagged onto objects.</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-77"><a class="py-name" href="#" onclick="return doclink('link-77', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-78"><a class="py-name" href="#" onclick="return doclink('link-78', 'projects', 'link-3');" title="mari.projects">projects</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-79"><a class="py-name" href="#" onclick="return doclink('link-79', 'current', 'link-4');" title="mari.CanvasManager.current
+mari.GeoManager.current
+mari.LightManager.current
+mari.ProjectManager.current
+mari.ProjectorManager.current
+mari.SelectionGroupManager.current
+mari.ToolManager.current
+mari.current">current</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">        <tt class="py-name" id="link-80"><a class="py-name" href="#" onclick="return doclink('link-80', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-81"><a class="py-name" href="#" onclick="return doclink('link-81', 'utils', 'link-30');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-82"><a class="py-name" href="#" onclick="return doclink('link-82', 'message', 'link-31');" title="mari.utils.misc.message
+mari.utils.ocio.message">message</a></tt><tt class="py-op">(</tt><tt class="py-string">"Please open a project before add a new version."</tt><tt class="py-op">)</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line"> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">    <tt class="py-comment"># get a handle to the currently selected geometry</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">    <tt class="py-name">obj</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-83"><a class="py-name" href="#" onclick="return doclink('link-83', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-84"><a class="py-name" href="#" onclick="return doclink('link-84', 'geo', 'link-6');" title="mari.current.geo
+mari.examples.c_api_channel_export.geo">geo</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-85"><a class="py-name" href="#" onclick="return doclink('link-85', 'current', 'link-4');" title="mari.CanvasManager.current
+mari.GeoManager.current
+mari.LightManager.current
+mari.ProjectManager.current
+mari.ProjectorManager.current
+mari.SelectionGroupManager.current
+mari.ToolManager.current
+mari.current">current</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">    <tt class="py-comment"># display a file open dialog and get the filename to add. This could be done using a different asset management GUI</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">    <tt class="py-name">FileName</tt> <tt class="py-op">=</tt> <tt class="py-name">widgets</tt><tt class="py-op">.</tt><tt class="py-name">QFileDialog</tt><tt class="py-op">.</tt><tt class="py-name" id="link-86" targets="Function mari.utils.misc.getOpenFileName()=mari.utils.misc-module.html#getOpenFileName"><a class="py-name" href="#" onclick="return doclink('link-86', 'getOpenFileName', 'link-86');" title="mari.utils.misc.getOpenFileName">getOpenFileName</a></tt><tt class="py-op">(</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-string">"Select a .obj file"</tt><tt class="py-op">,</tt> <tt class="py-string">"/"</tt><tt class="py-op">,</tt> <tt class="py-string">"*.obj"</tt><tt class="py-op">)</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">    <tt class="py-comment"># if the user didn't select an path, then quit</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">FileName</tt><tt class="py-op">)</tt><tt class="py-op">==</tt><tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt><tt class="py-op">;</tt>  </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line"> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">    <tt class="py-comment">#PySide returns the tuple of (file_name,the used filter i.e. *.obj)</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">    <tt class="py-name">FileName</tt> <tt class="py-op">=</tt> <tt class="py-name">FileName</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">FileName</tt><tt class="py-op">)</tt><tt class="py-op">==</tt><tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt><tt class="py-op">;</tt>  </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">    <tt class="py-comment"># version the version number from the object</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">    <tt class="py-name">ver_num</tt> <tt class="py-op">=</tt>  <tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">obj</tt><tt class="py-op">.</tt><tt class="py-name" id="link-87"><a class="py-name" href="#" onclick="return doclink('link-87', 'metadata', 'link-10');" title="mari.Metadata.metadata">metadata</a></tt><tt class="py-op">(</tt><tt class="py-string">'Example_Version'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">    <tt class="py-comment"># increment it and make a name for the new asset version</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">    <tt class="py-name">ver_num</tt> <tt class="py-op">+=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">    <tt class="py-name">NewName</tt> <tt class="py-op">=</tt> <tt class="py-string">'Version '</tt> <tt class="py-op">+</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">ver_num</tt><tt class="py-op">)</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">    <tt class="py-comment"># update the metadata so the version numbers increment</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">    <tt class="py-name">obj</tt><tt class="py-op">.</tt><tt class="py-name" id="link-88"><a class="py-name" href="#" onclick="return doclink('link-88', 'setMetadata', 'link-14');" title="mari.ImageManager.setMetadata
+mari.Metadata.setMetadata
+mari.Node.setMetadata">setMetadata</a></tt><tt class="py-op">(</tt><tt class="py-string">'Example_Version'</tt><tt class="py-op">,</tt> <tt class="py-name">ver_num</tt><tt class="py-op">)</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">    <tt class="py-comment"># add the version</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">    <tt class="py-name">obj</tt><tt class="py-op">.</tt><tt class="py-name" id="link-89" targets="Method mari.GeoEntity.addVersion()=mari.GeoEntity-class.html#addVersion"><a class="py-name" href="#" onclick="return doclink('link-89', 'addVersion', 'link-89');" title="mari.GeoEntity.addVersion">addVersion</a></tt><tt class="py-op">(</tt><tt class="py-name">FileName</tt><tt class="py-op">,</tt><tt class="py-name">NewName</tt><tt class="py-op">)</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">    <tt class="py-comment"># get a handle to the new version object</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">    <tt class="py-name" id="link-90" targets="Method mari.Application.version()=mari.Application-class.html#version,Method mari.GeoEntity.version()=mari.GeoEntity-class.html#version,Method mari.ProjectInfo.version()=mari.ProjectInfo-class.html#version,Variable mari.examples.maya_export.version=mari.examples.maya_export-module.html#version,Variable mari.system._particle_channel_transfer.version=mari.system._particle_channel_transfer-module.html#version,Variable mari.system._particle_layer_transfer.version=mari.system._particle_layer_transfer-module.html#version,Variable mari.system._particle_ops.version=mari.system._particle_ops-module.html#version,Variable mari.system._particle_transfer.version=mari.system._particle_transfer-module.html#version"><a class="py-name" href="#" onclick="return doclink('link-90', 'version', 'link-90');" title="mari.Application.version
+mari.GeoEntity.version
+mari.ProjectInfo.version
+mari.examples.maya_export.version
+mari.system._particle_channel_transfer.version
+mari.system._particle_layer_transfer.version
+mari.system._particle_ops.version
+mari.system._particle_transfer.version">version</a></tt> <tt class="py-op">=</tt> <tt class="py-name">obj</tt><tt class="py-op">.</tt><tt class="py-name" id="link-91"><a class="py-name" href="#" onclick="return doclink('link-91', 'version', 'link-90');" title="mari.Application.version
+mari.GeoEntity.version
+mari.ProjectInfo.version
+mari.examples.maya_export.version
+mari.system._particle_channel_transfer.version
+mari.system._particle_layer_transfer.version
+mari.system._particle_ops.version
+mari.system._particle_transfer.version">version</a></tt><tt class="py-op">(</tt><tt class="py-name">NewName</tt><tt class="py-op">)</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">    <tt class="py-comment"># if we can't get hold of the version object then quit</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-92"><a class="py-name" href="#" onclick="return doclink('link-92', 'version', 'link-90');" title="mari.Application.version
+mari.GeoEntity.version
+mari.ProjectInfo.version
+mari.examples.maya_export.version
+mari.system._particle_channel_transfer.version
+mari.system._particle_layer_transfer.version
+mari.system._particle_ops.version
+mari.system._particle_transfer.version">version</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line"> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">    <tt class="py-comment"># otherwise, set the new version as current</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">    <tt class="py-name">obj</tt><tt class="py-op">.</tt><tt class="py-name" id="link-93" targets="Method mari.GeoEntity.setCurrentVersion()=mari.GeoEntity-class.html#setCurrentVersion"><a class="py-name" href="#" onclick="return doclink('link-93', 'setCurrentVersion', 'link-93');" title="mari.GeoEntity.setCurrentVersion">setCurrentVersion</a></tt><tt class="py-op">(</tt><tt class="py-name">NewName</tt><tt class="py-op">)</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">    <tt class="py-comment"># and tag the version itself with some metadata</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">    <tt class="py-name" id="link-94"><a class="py-name" href="#" onclick="return doclink('link-94', 'version', 'link-90');" title="mari.Application.version
+mari.GeoEntity.version
+mari.ProjectInfo.version
+mari.examples.maya_export.version
+mari.system._particle_channel_transfer.version
+mari.system._particle_layer_transfer.version
+mari.system._particle_ops.version
+mari.system._particle_transfer.version">version</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-95"><a class="py-name" href="#" onclick="return doclink('link-95', 'setMetadata', 'link-14');" title="mari.ImageManager.setMetadata
+mari.Metadata.setMetadata
+mari.Node.setMetadata">setMetadata</a></tt><tt class="py-op">(</tt><tt class="py-string">'Version_UUID'</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name" id="link-96"><a class="py-name" href="#" onclick="return doclink('link-96', 'uuid', 'link-1');" title="mari.Metadata.uuid
+mari.Project.uuid
+mari.ProjectInfo.uuid">uuid</a></tt><tt class="py-op">.</tt><tt class="py-name">uuid4</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">    <tt class="py-name" id="link-97"><a class="py-name" href="#" onclick="return doclink('link-97', 'version', 'link-90');" title="mari.Application.version
+mari.GeoEntity.version
+mari.ProjectInfo.version
+mari.examples.maya_export.version
+mari.system._particle_channel_transfer.version
+mari.system._particle_layer_transfer.version
+mari.system._particle_ops.version
+mari.system._particle_transfer.version">version</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-98"><a class="py-name" href="#" onclick="return doclink('link-98', 'setMetadata', 'link-14');" title="mari.ImageManager.setMetadata
+mari.Metadata.setMetadata
+mari.Node.setMetadata">setMetadata</a></tt><tt class="py-op">(</tt><tt class="py-string">'Version_NUM'</tt><tt class="py-op">,</tt> <tt class="py-name">ver_num</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line"> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line"> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="checkForUpdates"></a><div id="checkForUpdates-def"><a name="L160"></a><tt class="py-lineno">160</tt> <a class="py-toggle" href="#" id="checkForUpdates-toggle" onclick="return toggle('checkForUpdates');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.asset_management-module.html#checkForUpdates">checkForUpdates</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="checkForUpdates-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="checkForUpdates-expanded"><a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">    <tt class="py-docstring">"Iterates over all of the objects in the scene and pretends to check with a database to see if a later version is available."</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-99"><a class="py-name" href="#" onclick="return doclink('link-99', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-100"><a class="py-name" href="#" onclick="return doclink('link-100', 'projects', 'link-3');" title="mari.projects">projects</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-101"><a class="py-name" href="#" onclick="return doclink('link-101', 'current', 'link-4');" title="mari.CanvasManager.current
+mari.GeoManager.current
+mari.LightManager.current
+mari.ProjectManager.current
+mari.ProjectorManager.current
+mari.SelectionGroupManager.current
+mari.ToolManager.current
+mari.current">current</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">        <tt class="py-name" id="link-102"><a class="py-name" href="#" onclick="return doclink('link-102', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-103"><a class="py-name" href="#" onclick="return doclink('link-103', 'utils', 'link-30');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-104"><a class="py-name" href="#" onclick="return doclink('link-104', 'message', 'link-31');" title="mari.utils.misc.message
+mari.utils.ocio.message">message</a></tt><tt class="py-op">(</tt><tt class="py-string">"Please open a project before checking for updates."</tt><tt class="py-op">)</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line"> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">    <tt class="py-comment"># iterate over all of the objects in the scene, getting the assets IDs of objects and pretend to check against a DB</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">obj</tt> <tt class="py-keyword">in</tt> <tt class="py-name" id="link-105"><a class="py-name" href="#" onclick="return doclink('link-105', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-106"><a class="py-name" href="#" onclick="return doclink('link-106', 'geo', 'link-6');" title="mari.current.geo
+mari.examples.c_api_channel_export.geo">geo</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-107"><a class="py-name" href="#" onclick="return doclink('link-107', 'list', 'link-7');" title="mari.ActionManager.list
+mari.CanvasManager.list
+mari.GeoManager.list
+mari.ImageManager.list
+mari.LightManager.list
+mari.PaletteManager.list
+mari.Preferences.list
+mari.ProjectManager.list
+mari.ProjectorManager.list
+mari.SelectionGroupManager.list
+mari.ShelfManager.list">list</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">obj</tt><tt class="py-op">.</tt><tt class="py-name" id="link-108"><a class="py-name" href="#" onclick="return doclink('link-108', 'hasMetadata', 'link-8');" title="mari.Metadata.hasMetadata">hasMetadata</a></tt><tt class="py-op">(</tt><tt class="py-string">'Example_UUID'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">            <tt class="py-name" id="link-109"><a class="py-name" href="#" onclick="return doclink('link-109', 'uuid', 'link-1');" title="mari.Metadata.uuid
+mari.Project.uuid
+mari.ProjectInfo.uuid">uuid</a></tt> <tt class="py-op">=</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">obj</tt><tt class="py-op">.</tt><tt class="py-name" id="link-110"><a class="py-name" href="#" onclick="return doclink('link-110', 'metadata', 'link-10');" title="mari.Metadata.metadata">metadata</a></tt><tt class="py-op">(</tt><tt class="py-string">'Example_UUID'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">            <tt class="py-name">ver_num</tt> <tt class="py-op">=</tt>  <tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">obj</tt><tt class="py-op">.</tt><tt class="py-name" id="link-111"><a class="py-name" href="#" onclick="return doclink('link-111', 'metadata', 'link-10');" title="mari.Metadata.metadata">metadata</a></tt><tt class="py-op">(</tt><tt class="py-string">'Example_Version'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">            <tt class="py-comment"># just pick a random number here and if it is larger than the current version number, show a dialog box and update the version</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">            <tt class="py-comment"># in reality this should check with the asset management database to get the new version number</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">            <tt class="py-name">new_ver_num</tt> <tt class="py-op">=</tt> <tt class="py-name">random</tt><tt class="py-op">.</tt><tt class="py-name">randrange</tt><tt class="py-op">(</tt><tt class="py-number">1</tt><tt class="py-op">,</tt><tt class="py-number">100</tt><tt class="py-op">)</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">new_ver_num</tt> <tt class="py-op">&gt;</tt> <tt class="py-name">ver_num</tt><tt class="py-op">:</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">                <tt class="py-comment"># tell the user what is going on </tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">                <tt class="py-name" id="link-112"><a class="py-name" href="#" onclick="return doclink('link-112', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-113"><a class="py-name" href="#" onclick="return doclink('link-113', 'utils', 'link-30');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-114"><a class="py-name" href="#" onclick="return doclink('link-114', 'message', 'link-31');" title="mari.utils.misc.message
+mari.utils.ocio.message">message</a></tt><tt class="py-op">(</tt><tt class="py-string">'A later version ('</tt> <tt class="py-op">+</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">ver_num</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">'--&gt;'</tt> <tt class="py-op">+</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">new_ver_num</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">' of '</tt> <tt class="py-op">+</tt> <tt class="py-name">obj</tt><tt class="py-op">.</tt><tt class="py-name" id="link-115"><a class="py-name" href="#" onclick="return doclink('link-115', 'name', 'link-12');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">') is available. Updating to that version.'</tt><tt class="py-op">)</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">                <tt class="py-comment"># and then just update the version number</tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line">                <tt class="py-name">obj</tt><tt class="py-op">.</tt><tt class="py-name" id="link-116"><a class="py-name" href="#" onclick="return doclink('link-116', 'setMetadata', 'link-14');" title="mari.ImageManager.setMetadata
+mari.Metadata.setMetadata
+mari.Node.setMetadata">setMetadata</a></tt><tt class="py-op">(</tt><tt class="py-string">'Example_Version'</tt><tt class="py-op">,</tt> <tt class="py-name">new_ver_num</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">                <tt class="py-comment"># here you could use mari.geo.current().addVersion() and setCurrentVersion() to load the geometry for the new version </tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line">                <tt class="py-comment"># but we will just return </tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line">       </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="installHooks"></a><div id="installHooks-def"><a name="L183"></a><tt class="py-lineno">183</tt> <a class="py-toggle" href="#" id="installHooks-toggle" onclick="return toggle('installHooks');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.asset_management-module.html#installHooks">installHooks</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="installHooks-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="installHooks-expanded"><a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line">    <tt class="py-comment"># let the user know what is going on</tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line">    <tt class="py-name" id="link-117"><a class="py-name" href="#" onclick="return doclink('link-117', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-118"><a class="py-name" href="#" onclick="return doclink('link-118', 'utils', 'link-30');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-119"><a class="py-name" href="#" onclick="return doclink('link-119', 'message', 'link-31');" title="mari.utils.misc.message
+mari.utils.ocio.message">message</a></tt><tt class="py-op">(</tt><tt class="py-string">"Installed example asset management hooks. These show some of the signals Mari emits and how they can be used."</tt><tt class="py-op">)</tt> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line">    <tt class="py-comment"># hook into the project opened method and look for metadata on the opened project giving us version information</tt> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name" id="link-120"><a class="py-name" href="#" onclick="return doclink('link-120', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-121"><a class="py-name" href="#" onclick="return doclink('link-121', 'utils', 'link-30');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-122"><a class="py-name" href="#" onclick="return doclink('link-122', 'connect', 'link-46');" title="mari.utils.signal_helpers.connect">connect</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-123"><a class="py-name" href="#" onclick="return doclink('link-123', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-124"><a class="py-name" href="#" onclick="return doclink('link-124', 'projects', 'link-3');" title="mari.projects">projects</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-125" targets="Method mari.ProjectManager.openedProject()=mari.ProjectManager-class.html#openedProject"><a class="py-name" href="#" onclick="return doclink('link-125', 'openedProject', 'link-125');" title="mari.ProjectManager.openedProject">openedProject</a></tt><tt class="py-op">,</tt> <tt class="py-keyword">lambda</tt><tt class="py-op">:</tt><tt class="py-name" id="link-126" targets="Function mari.examples.asset_management.checkProjectAssetIDs()=mari.examples.asset_management-module.html#checkProjectAssetIDs"><a class="py-name" href="#" onclick="return doclink('link-126', 'checkProjectAssetIDs', 'link-126');" title="mari.examples.asset_management.checkProjectAssetIDs">checkProjectAssetIDs</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line">        <tt class="py-name" id="link-127"><a class="py-name" href="#" onclick="return doclink('link-127', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-128"><a class="py-name" href="#" onclick="return doclink('link-128', 'utils', 'link-30');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-129"><a class="py-name" href="#" onclick="return doclink('link-129', 'message', 'link-31');" title="mari.utils.misc.message
+mari.utils.ocio.message">message</a></tt><tt class="py-op">(</tt><tt class="py-string">"Project open connection failed!"</tt><tt class="py-op">)</tt> </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line"> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line">    <tt class="py-comment"># add a new menu on the main menu bar and add some asset management type options to it</tt> </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line">    <tt class="py-name" id="link-130"><a class="py-name" href="#" onclick="return doclink('link-130', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-131" targets="Variable mari.menus=mari-module.html#menus"><a class="py-name" href="#" onclick="return doclink('link-131', 'menus', 'link-131');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-132" targets="Method mari.MenuManager.addAction()=mari.MenuManager-class.html#addAction,Method mari.ToolBar.addAction()=mari.ToolBar-class.html#addAction,Function mari.examples.vector_brush.addAction()=mari.examples.vector_brush-module.html#addAction"><a class="py-name" href="#" onclick="return doclink('link-132', 'addAction', 'link-132');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-133"><a class="py-name" href="#" onclick="return doclink('link-133', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-134" targets="Method mari.MenuManager.actions()=mari.MenuManager-class.html#actions,Variable mari.actions=mari-module.html#actions"><a class="py-name" href="#" onclick="return doclink('link-134', 'actions', 'link-134');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-135" targets="Method mari.ActionManager.create()=mari.ActionManager-class.html#create,Method mari.PaletteManager.create()=mari.PaletteManager-class.html#create,Method mari.ProjectManager.create()=mari.ProjectManager-class.html#create,Method mari.ProjectorManager.create()=mari.ProjectorManager-class.html#create"><a class="py-name" href="#" onclick="return doclink('link-135', 'create', 'link-135');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt><tt class="py-string">'&amp;Check For Updates'</tt><tt class="py-op">,</tt> <tt class="py-string">'mari.examples.asset_management.checkForUpdates()'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'MainWindow/Asset &amp;Management'</tt><tt class="py-op">)</tt> </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line">    <tt class="py-name" id="link-136"><a class="py-name" href="#" onclick="return doclink('link-136', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-137"><a class="py-name" href="#" onclick="return doclink('link-137', 'menus', 'link-131');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-138"><a class="py-name" href="#" onclick="return doclink('link-138', 'addAction', 'link-132');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-139"><a class="py-name" href="#" onclick="return doclink('link-139', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-140"><a class="py-name" href="#" onclick="return doclink('link-140', 'actions', 'link-134');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-141"><a class="py-name" href="#" onclick="return doclink('link-141', 'create', 'link-135');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt><tt class="py-string">'&amp;Add IDs'</tt><tt class="py-op">,</tt> <tt class="py-string">'mari.examples.asset_management.addAssetIDs()'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'MainWindow/Asset &amp;Management'</tt><tt class="py-op">)</tt> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line">    <tt class="py-name" id="link-142"><a class="py-name" href="#" onclick="return doclink('link-142', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-143"><a class="py-name" href="#" onclick="return doclink('link-143', 'menus', 'link-131');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-144"><a class="py-name" href="#" onclick="return doclink('link-144', 'addAction', 'link-132');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-145"><a class="py-name" href="#" onclick="return doclink('link-145', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-146"><a class="py-name" href="#" onclick="return doclink('link-146', 'actions', 'link-134');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-147"><a class="py-name" href="#" onclick="return doclink('link-147', 'create', 'link-135');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt><tt class="py-string">'&amp;Add Version'</tt><tt class="py-op">,</tt> <tt class="py-string">'mari.examples.asset_management.managedAddVersion()'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'MainWindow/Asset &amp;Management'</tt><tt class="py-op">)</tt> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line">    <tt class="py-name" id="link-148"><a class="py-name" href="#" onclick="return doclink('link-148', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-149"><a class="py-name" href="#" onclick="return doclink('link-149', 'menus', 'link-131');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-150"><a class="py-name" href="#" onclick="return doclink('link-150', 'addAction', 'link-132');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-151"><a class="py-name" href="#" onclick="return doclink('link-151', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-152"><a class="py-name" href="#" onclick="return doclink('link-152', 'actions', 'link-134');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-153"><a class="py-name" href="#" onclick="return doclink('link-153', 'create', 'link-135');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt><tt class="py-string">'&amp;Export Hooks'</tt><tt class="py-op">,</tt> <tt class="py-string">'mari.examples.asset_management.installIOHooks()'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'MainWindow/Asset &amp;Management'</tt><tt class="py-op">)</tt> </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line">    <tt class="py-comment"># This adds OUR add version option to the right click menu for objects.  Now asset managed versions will be added</tt> </tt>
+<a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line">    <tt class="py-name" id="link-154"><a class="py-name" href="#" onclick="return doclink('link-154', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-155"><a class="py-name" href="#" onclick="return doclink('link-155', 'menus', 'link-131');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-156"><a class="py-name" href="#" onclick="return doclink('link-156', 'addAction', 'link-132');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-157"><a class="py-name" href="#" onclick="return doclink('link-157', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-158"><a class="py-name" href="#" onclick="return doclink('link-158', 'actions', 'link-134');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-159" targets="Method mari.ActionManager.find()=mari.ActionManager-class.html#find,Method mari.GeoManager.find()=mari.GeoManager-class.html#find,Method mari.PaletteManager.find()=mari.PaletteManager-class.html#find,Method mari.PostFilterCollection.find()=mari.PostFilterCollection-class.html#find,Method mari.ProjectManager.find()=mari.ProjectManager-class.html#find,Method mari.ProjectorManager.find()=mari.ProjectorManager-class.html#find,Method mari.ShelfManager.find()=mari.ShelfManager-class.html#find"><a class="py-name" href="#" onclick="return doclink('link-159', 'find', 'link-159');" title="mari.ActionManager.find
+mari.GeoManager.find
+mari.PaletteManager.find
+mari.PostFilterCollection.find
+mari.ProjectManager.find
+mari.ProjectorManager.find
+mari.ShelfManager.find">find</a></tt><tt class="py-op">(</tt><tt class="py-string">'/Mari/Scripts/&amp;Add Version'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'MriGeoEntity/ItemContext'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line">   </tt>
+<a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line"> </tt>
+<a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line"><tt class="py-comment"># register an action and automatically put it into the Shading menu on the main window</tt> </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line"><tt class="py-name" id="link-160"><a class="py-name" href="#" onclick="return doclink('link-160', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-161"><a class="py-name" href="#" onclick="return doclink('link-161', 'menus', 'link-131');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-162"><a class="py-name" href="#" onclick="return doclink('link-162', 'addAction', 'link-132');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-163"><a class="py-name" href="#" onclick="return doclink('link-163', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-164"><a class="py-name" href="#" onclick="return doclink('link-164', 'actions', 'link-134');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-165"><a class="py-name" href="#" onclick="return doclink('link-165', 'create', 'link-135');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt><tt class="py-string">'&amp;Asset Management'</tt><tt class="py-op">,</tt> <tt class="py-string">'mari.examples.asset_management.installHooks()'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'MainWindow/P&amp;ython/&amp;Examples'</tt><tt class="py-op">)</tt> </tt>
+<a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

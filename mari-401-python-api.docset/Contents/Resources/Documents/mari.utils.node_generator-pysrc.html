@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.utils.node_generator
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.utils-module.html">
+       Package&nbsp;utils
+      </a>
+      ::
+        Module&nbsp;node_generator
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.utils.node_generator-pysrc.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <h1 class="epydoc">
+   Source Code for
+   <a href="mari.utils.node_generator-module.html">
+    Module mari.utils.node_generator
+   </a>
+  </h1>
+  <pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name" id="link-0" targets="Package mari=mari-module.html"><a class="py-name" href="#" onclick="return doclink('link-0', 'mari', 'link-0');" title="mari">mari</a></tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">PySide2</tt> <tt class="py-keyword">import</tt> <tt class="py-name">QtWidgets</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"> </tt>
+<a name="Node"></a><div id="Node-def"><a name="L6"></a><tt class="py-lineno"> 6</tt> <a class="py-toggle" href="#" id="Node-toggle" onclick="return toggle('Node');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="mari.utils.node_generator.Node-class.html">Node</a><tt class="py-op">:</tt> </tt>
+</div><div id="Node-collapsed" indent="++++" pad="++" style="display:none;"></div><div id="Node-expanded"><a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line">    <tt class="py-docstring">"This class generates an xml description of a shader network node."</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line">     </tt>
+<a name="Node.__init__"></a><div id="Node.__init__-def"><a name="L9"></a><tt class="py-lineno"> 9</tt> <a class="py-toggle" href="#" id="Node.__init__-toggle" onclick="return toggle('Node.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.utils.node_generator.Node-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">name</tt><tt class="py-op">,</tt> <tt class="py-param">shortName</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Node.__init__-collapsed" indent="++++++++" pad="++" style="display:none;"></div><div id="Node.__init__-expanded"><a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name" id="link-1" targets="Method mari.Palette.shortName()=mari.Palette-class.html#shortName"><a class="py-name" href="#" onclick="return doclink('link-1', 'shortName', 'link-1');" title="mari.Palette.shortName">shortName</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line">            <tt class="py-name" id="link-2"><a class="py-name" href="#" onclick="return doclink('link-2', 'shortName', 'link-1');" title="mari.Palette.shortName">shortName</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-3" targets="Method mari.Action.name()=mari.Action-class.html#name,Method mari.Camera.name()=mari.Camera-class.html#name,Method mari.Channel.name()=mari.Channel-class.html#name,Method mari.ChannelInfo.name()=mari.ChannelInfo-class.html#name,Method mari.GeoEntity.name()=mari.GeoEntity-class.html#name,Method mari.GeoEntityVersion.name()=mari.GeoEntityVersion-class.html#name,Method mari.GeoPatch.name()=mari.GeoPatch-class.html#name,Method mari.GeometryOperation.name()=mari.GeometryOperation-class.html#name,Method mari.ImageOperation.name()=mari.ImageOperation-class.html#name,Method mari.ImageSet.name()=mari.ImageSet-class.html#name,Method mari.Layer.name()=mari.Layer-class.html#name,Method mari.LayerStack.name()=mari.LayerStack-class.html#name,Method mari.Light.name()=mari.Light-class.html#name,Method mari.LocatorEntity.name()=mari.LocatorEntity-class.html#name,Method mari.Node.name()=mari.Node-class.html#name,Method mari.Palette.name()=mari.Palette-class.html#name,Method mari.ParticleOp.name()=mari.ParticleOp-class.html#name,Method mari.PostFilter.name()=mari.PostFilter-class.html#name,Method mari.PostFilterCollection.name()=mari.PostFilterCollection-class.html#name,Method mari.Project.name()=mari.Project-class.html#name,Method mari.ProjectInfo.name()=mari.ProjectInfo-class.html#name,Method mari.Projector.name()=mari.Projector-class.html#name,Method mari.SelectionGroup.name()=mari.SelectionGroup-class.html#name,Method mari.Shader.name()=mari.Shader-class.html#name,Method mari.Shelf.name()=mari.Shelf-class.html#name,Method mari.Snapshot.name()=mari.Snapshot-class.html#name,Method mari.Tool.name()=mari.Tool-class.html#name"><a class="py-name" href="#" onclick="return doclink('link-3', 'name', 'link-3');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">         </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name" id="link-4" targets="Method mari.Camera.setName()=mari.Camera-class.html#setName,Method mari.Channel.setName()=mari.Channel-class.html#setName,Method mari.ChannelInfo.setName()=mari.ChannelInfo-class.html#setName,Method mari.GeoEntity.setName()=mari.GeoEntity-class.html#setName,Method mari.GeoEntityVersion.setName()=mari.GeoEntityVersion-class.html#setName,Method mari.GeoPatch.setName()=mari.GeoPatch-class.html#setName,Method mari.ImageSet.setName()=mari.ImageSet-class.html#setName,Method mari.Layer.setName()=mari.Layer-class.html#setName,Method mari.LocatorEntity.setName()=mari.LocatorEntity-class.html#setName,Method mari.Node.setName()=mari.Node-class.html#setName,Method mari.Projector.setName()=mari.Projector-class.html#setName,Method mari.Shader.setName()=mari.Shader-class.html#setName,Method mari.Shelf.setName()=mari.Shelf-class.html#setName,Method mari.Snapshot.setName()=mari.Snapshot-class.html#setName,Method mari.system.megascans.Megascan.setName()=mari.system.megascans.Megascan-class.html#setName,Method mari.utils.node_generator.Node.setName()=mari.utils.node_generator.Node-class.html#setName"><a class="py-name" href="#" onclick="return doclink('link-4', 'setName', 'link-4');" title="mari.Camera.setName
+mari.Channel.setName
+mari.ChannelInfo.setName
+mari.GeoEntity.setName
+mari.GeoEntityVersion.setName
+mari.GeoPatch.setName
+mari.ImageSet.setName
+mari.Layer.setName
+mari.LocatorEntity.setName
+mari.Node.setName
+mari.Projector.setName
+mari.Shader.setName
+mari.Shelf.setName
+mari.Snapshot.setName
+mari.system.megascans.Megascan.setName
+mari.utils.node_generator.Node.setName">setName</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-5"><a class="py-name" href="#" onclick="return doclink('link-5', 'name', 'link-3');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">,</tt> <tt class="py-name" id="link-6"><a class="py-name" href="#" onclick="return doclink('link-6', 'shortName', 'link-1');" title="mari.Palette.shortName">shortName</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">inputs</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">attribGroups</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">glsl</tt> <tt class="py-op">=</tt> <tt class="py-string">""</tt> </tt>
+</div><a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">     </tt>
+<a name="Node.setName"></a><div id="Node.setName-def"><a name="L18"></a><tt class="py-lineno">18</tt> <a class="py-toggle" href="#" id="Node.setName-toggle" onclick="return toggle('Node.setName');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.utils.node_generator.Node-class.html#setName">setName</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">name</tt><tt class="py-op">,</tt> <tt class="py-param">shortName</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Node.setName-collapsed" indent="++++++++" pad="++" style="display:none;"></div><div id="Node.setName-expanded"><a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name" id="link-7"><a class="py-name" href="#" onclick="return doclink('link-7', 'name', 'link-3');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-8"><a class="py-name" href="#" onclick="return doclink('link-8', 'name', 'link-3');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name" id="link-9"><a class="py-name" href="#" onclick="return doclink('link-9', 'shortName', 'link-1');" title="mari.Palette.shortName">shortName</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-10"><a class="py-name" href="#" onclick="return doclink('link-10', 'shortName', 'link-1');" title="mari.Palette.shortName">shortName</a></tt> </tt>
+</div><a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">     </tt>
+<a name="Node.addInput"></a><div id="Node.addInput-def"><a name="L22"></a><tt class="py-lineno">22</tt> <a class="py-toggle" href="#" id="Node.addInput-toggle" onclick="return toggle('Node.addInput');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.utils.node_generator.Node-class.html#addInput">addInput</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">name</tt><tt class="py-op">,</tt> <tt class="py-param">pos</tt><tt class="py-op">,</tt> <tt class="py-param">defaultGlsl</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-number">1</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Node.addInput-collapsed" indent="++++++++" pad="++" style="display:none;"></div><div id="Node.addInput-expanded"><a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">inputs</tt><tt class="py-op">[</tt><tt class="py-name" id="link-11"><a class="py-name" href="#" onclick="return doclink('link-11', 'name', 'link-3');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">pos</tt><tt class="py-op">,</tt> <tt class="py-name">defaultGlsl</tt> </tt>
+</div><a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">     </tt>
+<a name="Node.addAttrib"></a><div id="Node.addAttrib-def"><a name="L25"></a><tt class="py-lineno">25</tt> <a class="py-toggle" href="#" id="Node.addAttrib-toggle" onclick="return toggle('Node.addAttrib');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.utils.node_generator.Node-class.html#addAttrib">addAttrib</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">name</tt><tt class="py-op">,</tt> <tt class="py-param">kind</tt><tt class="py-op">,</tt> <tt class="py-param">minimum</tt><tt class="py-op">,</tt> <tt class="py-param">maximum</tt><tt class="py-op">,</tt> <tt class="py-param">default</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">group</tt> <tt class="py-op">=</tt> <tt class="py-string">""</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Node.addAttrib-collapsed" indent="++++++++" pad="++" style="display:none;"></div><div id="Node.addAttrib-expanded"><a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">default</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">            <tt class="py-name">default</tt> <tt class="py-op">=</tt> <tt class="py-name">maximum</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">         </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">group</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">attribGroups</tt><tt class="py-op">:</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">attribGroups</tt><tt class="py-op">[</tt><tt class="py-name">group</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">         </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">attribGroups</tt><tt class="py-op">[</tt><tt class="py-name">group</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name" id="link-12" targets="Method mari.FileList.append()=mari.FileList-class.html#append"><a class="py-name" href="#" onclick="return doclink('link-12', 'append', 'link-12');" title="mari.FileList.append">append</a></tt><tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name" id="link-13"><a class="py-name" href="#" onclick="return doclink('link-13', 'name', 'link-3');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">,</tt> <tt class="py-name">kind</tt><tt class="py-op">,</tt> <tt class="py-name">minimum</tt><tt class="py-op">,</tt> <tt class="py-name">maximum</tt><tt class="py-op">,</tt> <tt class="py-name">default</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">     </tt>
+<a name="Node.setGlsl"></a><div id="Node.setGlsl-def"><a name="L34"></a><tt class="py-lineno">34</tt> <a class="py-toggle" href="#" id="Node.setGlsl-toggle" onclick="return toggle('Node.setGlsl');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.utils.node_generator.Node-class.html#setGlsl">setGlsl</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">code</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Node.setGlsl-collapsed" indent="++++++++" pad="++" style="display:none;"></div><div id="Node.setGlsl-expanded"><a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">glsl</tt> <tt class="py-op">=</tt> <tt class="py-name">code</tt> </tt>
+</div><a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">     </tt>
+<a name="Node.toString"></a><div id="Node.toString-def"><a name="L37"></a><tt class="py-lineno">37</tt> <a class="py-toggle" href="#" id="Node.toString-toggle" onclick="return toggle('Node.toString');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.utils.node_generator.Node-class.html#toString">toString</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Node.toString-collapsed" indent="++++++++" pad="++" style="display:none;"></div><div id="Node.toString-expanded"><a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">        <tt class="py-name" id="link-14" targets="Method mari.Color.s()=mari.Color-class.html#s"><a class="py-name" href="#" onclick="return doclink('link-14', 's', 'link-14');" title="mari.Color.s">s</a></tt> <tt class="py-op">=</tt> <tt class="py-string">""</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">        <tt class="py-name" id="link-15"><a class="py-name" href="#" onclick="return doclink('link-15', 's', 'link-14');" title="mari.Color.s">s</a></tt> <tt class="py-op">+=</tt> <tt class="py-string">"&lt;Node&gt;\n"</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">        <tt class="py-name" id="link-16"><a class="py-name" href="#" onclick="return doclink('link-16', 's', 'link-14');" title="mari.Color.s">s</a></tt> <tt class="py-op">+=</tt> <tt class="py-string">"    &lt;DefaultName&gt;{0}&lt;/DefaultName&gt;\n"</tt><tt class="py-op">.</tt><tt class="py-name" id="link-17" targets="Method mari.Projector.format()=mari.Projector-class.html#format"><a class="py-name" href="#" onclick="return doclink('link-17', 'format', 'link-17');" title="mari.Projector.format">format</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name" id="link-18"><a class="py-name" href="#" onclick="return doclink('link-18', 'shortName', 'link-1');" title="mari.Palette.shortName">shortName</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">        <tt class="py-name" id="link-19"><a class="py-name" href="#" onclick="return doclink('link-19', 's', 'link-14');" title="mari.Color.s">s</a></tt> <tt class="py-op">+=</tt> <tt class="py-string">"    &lt;Inputs&gt;\n"</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">inputItem</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">inputs</tt><tt class="py-op">.</tt><tt class="py-name">items</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">            <tt class="py-name" id="link-20"><a class="py-name" href="#" onclick="return doclink('link-20', 's', 'link-14');" title="mari.Color.s">s</a></tt> <tt class="py-op">+=</tt> <tt class="py-string">"        &lt;Input Name=\"{0[0]}\" Pos=\"{0[1][0][0]}, {0[1][0][1]}\" DefaultGLSL=\"vec4{0[1][1]}\"&gt;&lt;/Input&gt;\n"</tt><tt class="py-op">.</tt><tt class="py-name" id="link-21"><a class="py-name" href="#" onclick="return doclink('link-21', 'format', 'link-17');" title="mari.Projector.format">format</a></tt><tt class="py-op">(</tt><tt class="py-name">inputItem</tt><tt class="py-op">)</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">        <tt class="py-name" id="link-22"><a class="py-name" href="#" onclick="return doclink('link-22', 's', 'link-14');" title="mari.Color.s">s</a></tt> <tt class="py-op">+=</tt> <tt class="py-string">"    &lt;/Inputs&gt;\n"</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">        <tt class="py-name" id="link-23"><a class="py-name" href="#" onclick="return doclink('link-23', 's', 'link-14');" title="mari.Color.s">s</a></tt> <tt class="py-op">+=</tt> <tt class="py-string">"    &lt;Attributes&gt;\n"</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">group</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">attribGroups</tt><tt class="py-op">:</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">item</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">attribGroups</tt><tt class="py-op">[</tt><tt class="py-name">group</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">                <tt class="py-name" id="link-24"><a class="py-name" href="#" onclick="return doclink('link-24', 's', 'link-14');" title="mari.Color.s">s</a></tt> <tt class="py-op">+=</tt> <tt class="py-string">"        &lt;Attribute Name=\"{0[0]}\" Group=\"{1}\" Type=\"{0[1]}\" Min=\"{0[2]}\" Max=\"{0[3]}\"&gt;{0[4]}&lt;/Attribute&gt;\n"</tt><tt class="py-op">.</tt><tt class="py-name" id="link-25"><a class="py-name" href="#" onclick="return doclink('link-25', 'format', 'link-17');" title="mari.Projector.format">format</a></tt><tt class="py-op">(</tt><tt class="py-name">item</tt><tt class="py-op">,</tt> <tt class="py-name">group</tt><tt class="py-op">)</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">        <tt class="py-name" id="link-26"><a class="py-name" href="#" onclick="return doclink('link-26', 's', 'link-14');" title="mari.Color.s">s</a></tt> <tt class="py-op">+=</tt> <tt class="py-string">"    &lt;/Attributes&gt;\n"</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">        <tt class="py-name" id="link-27"><a class="py-name" href="#" onclick="return doclink('link-27', 's', 'link-14');" title="mari.Color.s">s</a></tt> <tt class="py-op">+=</tt> <tt class="py-string">"    &lt;GLSL&gt;&lt;![CDATA[{0}]]&gt;&lt;/GLSL&gt;\n"</tt><tt class="py-op">.</tt><tt class="py-name" id="link-28"><a class="py-name" href="#" onclick="return doclink('link-28', 'format', 'link-17');" title="mari.Projector.format">format</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">glsl</tt><tt class="py-op">)</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">        <tt class="py-name" id="link-29"><a class="py-name" href="#" onclick="return doclink('link-29', 's', 'link-14');" title="mari.Color.s">s</a></tt> <tt class="py-op">+=</tt> <tt class="py-string">"&lt;/Node&gt;\n"</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name" id="link-30"><a class="py-name" href="#" onclick="return doclink('link-30', 's', 'link-14');" title="mari.Color.s">s</a></tt> </tt>
+</div><a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">     </tt>
+<a name="Node.save"></a><div id="Node.save-def"><a name="L54"></a><tt class="py-lineno">54</tt> <a class="py-toggle" href="#" id="Node.save-toggle" onclick="return toggle('Node.save');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.utils.node_generator.Node-class.html#save">save</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">name</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Node.save-collapsed" indent="++++++++" pad="++" style="display:none;"></div><div id="Node.save-expanded"><a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name" id="link-31"><a class="py-name" href="#" onclick="return doclink('link-31', 'name', 'link-3');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line">            <tt class="py-name" id="link-32"><a class="py-name" href="#" onclick="return doclink('link-32', 'name', 'link-3');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name" id="link-33"><a class="py-name" href="#" onclick="return doclink('link-33', 'name', 'link-3');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line">         </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line">        <tt class="py-name">fname</tt> <tt class="py-op">=</tt> <tt class="py-string">"{0}{1}Nodes{1}Simple{1}{2}.xml"</tt><tt class="py-op">.</tt><tt class="py-name" id="link-34"><a class="py-name" href="#" onclick="return doclink('link-34', 'format', 'link-17');" title="mari.Projector.format">format</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-35"><a class="py-name" href="#" onclick="return doclink('link-35', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-36" targets="Variable mari.resources=mari-module.html#resources"><a class="py-name" href="#" onclick="return doclink('link-36', 'resources', 'link-36');" title="mari.resources">resources</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-37" targets="Method mari.Action.path()=mari.Action-class.html#path,Method mari.ChannelInfo.path()=mari.ChannelInfo-class.html#path,Method mari.GeoEntityVersion.path()=mari.GeoEntityVersion-class.html#path,Method mari.QuickProjector.path()=mari.QuickProjector-class.html#path,Method mari.ResourceInfo.path()=mari.ResourceInfo-class.html#path"><a class="py-name" href="#" onclick="return doclink('link-37', 'path', 'link-37');" title="mari.Action.path
+mari.ChannelInfo.path
+mari.GeoEntityVersion.path
+mari.QuickProjector.path
+mari.ResourceInfo.path">path</a></tt><tt class="py-op">(</tt><tt class="py-string">'MEDIA'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-38"><a class="py-name" href="#" onclick="return doclink('link-38', 'name', 'link-3');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-name">fname</tt> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line">         </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name" id="link-39"><a class="py-name" href="#" onclick="return doclink('link-39', 'path', 'link-37');" title="mari.Action.path
+mari.ChannelInfo.path
+mari.GeoEntityVersion.path
+mari.QuickProjector.path
+mari.ResourceInfo.path">path</a></tt><tt class="py-op">.</tt><tt class="py-name">exists</tt><tt class="py-op">(</tt><tt class="py-name">fname</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line">            <tt class="py-name">qmb</tt> <tt class="py-op">=</tt> <tt class="py-name">QtWidgets</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">(</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line">                <tt class="py-name">QtWidgets</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">Warning</tt><tt class="py-op">,</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line">                <tt class="py-string">"Node already exists"</tt><tt class="py-op">,</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line">                <tt class="py-string">"A node called {0} already exists, are you sure you want to overwrite it?"</tt><tt class="py-op">.</tt><tt class="py-name" id="link-40"><a class="py-name" href="#" onclick="return doclink('link-40', 'format', 'link-17');" title="mari.Projector.format">format</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name" id="link-41"><a class="py-name" href="#" onclick="return doclink('link-41', 'name', 'link-3');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line">                <tt class="py-name">QtWidgets</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">Ok</tt> <tt class="py-op">|</tt> <tt class="py-name">QtWidgets</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">Cancel</tt><tt class="py-op">)</tt> </tt>
+<a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line">             </tt>
+<a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line">            <tt class="py-name">choice</tt> <tt class="py-op">=</tt> <tt class="py-name">getattr</tt><tt class="py-op">(</tt><tt class="py-name">qmb</tt><tt class="py-op">,</tt> <tt class="py-string">'exec'</tt><tt class="py-op">)</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">choice</tt> <tt class="py-op">==</tt> <tt class="py-name">QtWidgets</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">Cancel</tt><tt class="py-op">:</tt> </tt>
+<a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L71"></a><tt class="py-lineno">71</tt>  <tt class="py-line">         </tt>
+<a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line">        <tt class="py-keyword">with</tt> <tt class="py-name" id="link-42" targets="Method mari.ImageManager.open()=mari.ImageManager-class.html#open,Method mari.ProjectInfo.open()=mari.ProjectInfo-class.html#open,Method mari.ProjectManager.open()=mari.ProjectManager-class.html#open"><a class="py-name" href="#" onclick="return doclink('link-42', 'open', 'link-42');" title="mari.ImageManager.open
+mari.ProjectInfo.open
+mari.ProjectManager.open">open</a></tt><tt class="py-op">(</tt><tt class="py-name">fname</tt><tt class="py-op">,</tt> <tt class="py-string">'w'</tt><tt class="py-op">)</tt> <tt class="py-keyword">as</tt> <tt class="py-name">f</tt><tt class="py-op">:</tt> </tt>
+<a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line">            <tt class="py-name">f</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name" id="link-43" targets="Method mari.Color.toString()=mari.Color-class.html#toString,Method mari.ColorspaceConfig.toString()=mari.ColorspaceConfig-class.html#toString,Method mari.utils.node_generator.Node.toString()=mari.utils.node_generator.Node-class.html#toString"><a class="py-name" href="#" onclick="return doclink('link-43', 'toString', 'link-43');" title="mari.Color.toString
+mari.ColorspaceConfig.toString
+mari.utils.node_generator.Node.toString">toString</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line">         </tt>
+<a name="L75"></a><tt class="py-lineno">75</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+</div></div><a name="L76"></a><tt class="py-lineno">76</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

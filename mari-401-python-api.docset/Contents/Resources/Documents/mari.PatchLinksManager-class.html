@@ -1,0 +1,4273 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.PatchLinksManager
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+        Class&nbsp;PatchLinksManager
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.PatchLinksManager-class.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS DESCRIPTION ==================== -->
+  <h1 class="epydoc">
+   Class PatchLinksManager
+  </h1>
+  <p class="nomargin-top">
+   <span class="codelink">
+    <a href="mari-pysrc.html#PatchLinksManager">
+     source&nbsp;code
+    </a>
+   </span>
+  </p>
+  <pre class="base-tree">
+object --+
+         |
+        <strong class="uidshort">PatchLinksManager</strong>
+</pre>
+  <hr/>
+  <p>
+   Handles patch image linking.
+  </p>
+  <p>
+   Using this manager, you can create and managed named groups of linked 
+  images. Linked patches share their underlying image contents, so if you 
+  paint on one linked patch, all other linked patches are updated.
+  </p>
+  <p>
+   Currently, the API restricts linkage to
+   <a class="link" href="mari.Image-class.html">
+    Image
+   </a>
+   objects on the same
+   <a class="link" href="mari.ImageSet-class.html">
+    ImageSet
+   </a>
+   . At some 
+  point in the future, which restriction will be removed. Some methods 
+  require an seemingly redundant
+   <a class="link" href="mari.ImageSet-class.html">
+    ImageSet
+   </a>
+   parameter to make provision for such a 
+  change.
+  </p>
+  <p>
+   <b>
+    Example Code
+   </b>
+  </p>
+  <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This example creates a patch link between 1001 and 1011</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>geo = mari.geo.current()
+<span class="py-prompt">&gt;&gt;&gt; </span>patch_1001 = geo.patch(0)
+<span class="py-prompt">&gt;&gt;&gt; </span>patch_1011 = geo.patch(10)
+<span class="py-prompt">&gt;&gt;&gt; </span>layer = geo.currentChannel().createPaintableLayer(<span class="py-string">"Test"</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>mari.patch_links.linkPatches([patch_1001,patch_1011],<span class="py-string">"Test Link"</span>,layer.imageSet())
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> mari.patch_links.groupNamesForImageSet(layer.imageSet())[0]
+<span class="py-output">Test Link</span></pre>
+  <!-- ==================== INSTANCE METHODS ==================== -->
+  <a name="section-InstanceMethods">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Instance Methods
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#canLinkImageInternals">
+          canLinkImageInternals
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Images
+         </span>
+         )
+        </span>
+        <br/>
+        Checks whether the input images can be linked based on their internal
+      structure.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.canLinkImageInternals">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#canLinkImages">
+          canLinkImages
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Images
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          GroupName
+         </span>
+         )
+        </span>
+        <br/>
+        Checks whether the input images can be linked into an existing/new 
+      group with the specified group name.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.canLinkImages">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#canLinkPatchInternals">
+          canLinkPatchInternals
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Patches
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          pImageSet
+         </span>
+         )
+        </span>
+        <br/>
+        Checks whether the input patches for the specified image set can be 
+      linked based on their underlying image's internal structure.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.canLinkPatchInternals">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#canLinkPatches">
+          canLinkPatches
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Patches
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          GroupName
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          pImageSet
+         </span>
+         )
+        </span>
+        <br/>
+        Checks whether the underlying images for the given patches on the 
+      specified image set can be linked into a new/existing group with the 
+      specified group name.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.canLinkPatches">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#generateUniqueGroupName">
+          generateUniqueGroupName
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Generates a unique name which hasn't yet been used to index a group 
+      of linked patches, which you can use to create a uniquely named group
+      of linked patches.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.generateUniqueGroupName">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#groupNames">
+          groupNames
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Gets the names of all existing link groups.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.groupNames">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#groupNamesForImageSet">
+          groupNamesForImageSet
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          pImageSet
+         </span>
+         )
+        </span>
+        <br/>
+        Gets the names of all link groups (if any) which link patch images on
+      the specified image set.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.groupNamesForImageSet">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#imageGroup">
+          imageGroup
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Img
+         </span>
+         )
+        </span>
+        <br/>
+        Gets the name of the link group, if any, containing the specified 
+      image.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.imageGroup">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of
+      <a class="link" href="mari.Image-class.html">
+       Image
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#images">
+          images
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          GroupName
+         </span>
+         )
+        </span>
+        <br/>
+        Gets the images which are part of the specified link group.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.images">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#isImageLinked">
+          isImageLinked
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Img
+         </span>
+         )
+        </span>
+        <br/>
+        Checks if the image is part of any link groups.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.isImageLinked">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#isPatchLinked">
+          isPatchLinked
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Patch
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          pImageSet
+         </span>
+         )
+        </span>
+        <br/>
+        Check if the image for the patch on the given image set has been 
+      linked.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.isPatchLinked">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#linkImages">
+          linkImages
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Images
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          GroupName
+         </span>
+         )
+        </span>
+        <br/>
+        Link the input images into a new/existing group with the specified 
+      group name.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.linkImages">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#linkPatches">
+          linkPatches
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Patches
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          GroupName
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          pImageSet
+         </span>
+         )
+        </span>
+        <br/>
+        Convenience function to link the images for the patches on the 
+      specified image set.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.linkPatches">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#linkSelectedPatches">
+          linkSelectedPatches
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          GroupName
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          pImageSet
+         </span>
+         )
+        </span>
+        <br/>
+        Convenience method to link the currently selected patches on the 
+      specified image set.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.linkSelectedPatches">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of
+      <a class="link" href="mari.Image-class.html">
+       Image
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#linkedImages">
+          linkedImages
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Img
+         </span>
+         )
+        </span>
+        <br/>
+        Gets the group of linked images of which the input image is part.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.linkedImages">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of
+      <a class="link" href="mari.GeoPatch-class.html">
+       GeoPatch
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#linkedPatches">
+          linkedPatches
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Patch
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          pImageSet
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         )
+        </span>
+        <br/>
+        Gets the group of linked patches of which the input patch is part.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.linkedPatches">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#patchGroup">
+          patchGroup
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Patch
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          pImageSet
+         </span>
+         )
+        </span>
+        <br/>
+        Gets the name of the link group, if any, containing the specified 
+      patch image on the specified image set.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.patchGroup">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of
+      <a class="link" href="mari.GeoPatch-class.html">
+       GeoPatch
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#patches">
+          patches
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          GroupName
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          pImageSet
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         )
+        </span>
+        <br/>
+        Gets the patches which are part of the specified link group on the 
+      specified or current image set.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.patches">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#removeGroup">
+          removeGroup
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          GroupName
+         </span>
+         )
+        </span>
+        <br/>
+        Removes a group of linked patch images.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.removeGroup">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#renameGroup">
+          renameGroup
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          OldName
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          NewName
+         </span>
+         )
+        </span>
+        <br/>
+        Renames a group of linked patch images.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.renameGroup">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#unlinkImage">
+          unlinkImage
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Img
+         </span>
+         )
+        </span>
+        <br/>
+        Unlinks the specified image from all other images.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.unlinkImage">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#unlinkPatch">
+          unlinkPatch
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Patch
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          pImageSet
+         </span>
+         )
+        </span>
+        <br/>
+        Unlinks the image for the patch on the specified image set from all 
+      other images.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.unlinkPatch">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#unlinkSelectedPatches">
+          unlinkSelectedPatches
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          pImageSet
+         </span>
+         )
+        </span>
+        <br/>
+        Unlinks the patch images for the selected patches on the specified 
+      image set.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.unlinkSelectedPatches">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __delattr__
+      </code>
+      ,
+      <code>
+       __format__
+      </code>
+      ,
+      <code>
+       __getattribute__
+      </code>
+      ,
+      <code>
+       __hash__
+      </code>
+      ,
+      <code>
+       __init__
+      </code>
+      ,
+      <code>
+       __new__
+      </code>
+      ,
+      <code>
+       __reduce__
+      </code>
+      ,
+      <code>
+       __reduce_ex__
+      </code>
+      ,
+      <code>
+       __repr__
+      </code>
+      ,
+      <code>
+       __setattr__
+      </code>
+      ,
+      <code>
+       __sizeof__
+      </code>
+      ,
+      <code>
+       __str__
+      </code>
+      ,
+      <code>
+       __subclasshook__
+      </code>
+     </p>
+    </td>
+   </tr>
+   <tr bgcolor="#e8f0f8">
+    <th class="group-header" colspan="2">
+     &nbsp;&nbsp;&nbsp;&nbsp;Signals
+    </th>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#groupAdded">
+          groupAdded
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          GroupName
+         </span>
+         )
+        </span>
+        <br/>
+        Emitted when a new link group has been added.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.groupAdded">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#groupRemoved">
+          groupRemoved
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          GroupName
+         </span>
+         )
+        </span>
+        <br/>
+        Emitted when a link group has been removed.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.groupRemoved">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#groupRenamed">
+          groupRenamed
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          OldName
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          NewName
+         </span>
+         )
+        </span>
+        <br/>
+        Emitted when a link group has been renamed.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.groupRenamed">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#imageUnlinked">
+          imageUnlinked
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Img
+         </span>
+         )
+        </span>
+        <br/>
+        Emitted when an
+        <a class="link" href="mari.Image-class.html">
+         Image
+        </a>
+        object has been unlinked.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.imageUnlinked">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.PatchLinksManager-class.html#imagesLinked">
+          imagesLinked
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Images
+         </span>
+         )
+        </span>
+        <br/>
+        Emitted when a set of
+        <code class="link">
+         Images
+        </code>
+        object have 
+      been linked.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#PatchLinksManager.imagesLinked">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== PROPERTIES ==================== -->
+  <a name="section-Properties">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Properties
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __class__
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== METHOD DETAILS ==================== -->
+  <a name="section-MethodDetails">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Method Details
+     </span>
+    </td>
+   </tr>
+  </table>
+  <a name="canLinkImageInternals">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            canLinkImageInternals
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Images
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.canLinkImageInternals">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Checks whether the input images can be linked based on their internal 
+  structure.
+      </p>
+      <p>
+       <code class="link">
+        Images
+       </code>
+       can be linked if
+      </p>
+      <ul>
+       <li>
+        they have the same dimensions,
+       </li>
+       <li>
+        they have the same pixel format,
+       </li>
+       <li>
+        they belong to the same
+        <a class="link" href="mari.ImageSet-class.html">
+         ImageSet
+        </a>
+        and
+       </li>
+       <li>
+        the image set is not a
+        <a class="link" href="mari.Ptex-class.html">
+         Ptex
+        </a>
+        image set.
+       </li>
+      </ul>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Images
+           </code>
+          </strong>
+          (list of
+          <a class="link" href="mari.Image-class.html">
+           Image
+          </a>
+          )
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: bool
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="canLinkImages">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            canLinkImages
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Images
+           </span>
+           ,
+           <span class="sig-arg">
+            GroupName
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.canLinkImages">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Checks whether the input images can be linked into an existing/new 
+  group with the specified group name.
+      </p>
+      <p>
+       This will check whether the input images, and any existing images 
+  linked in the group indexed by the specified groupname, can have their 
+  internals linked. It also checks whether any of the images are already 
+  part of other link groups, in which case they can not be linked, and this
+  method will return False.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Images
+           </code>
+          </strong>
+          (list of
+          <a class="link" href="mari.Image-class.html">
+           Image
+          </a>
+          ) - Container of input
+          <a class="link" href="mari.Image-class.html">
+           Image
+          </a>
+          objects.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            GroupName
+           </code>
+          </strong>
+          (str) - The name for the group in which the images need to be linked.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: bool
+       </dt>
+       <dd>
+        True if the images can be linked in a group with the specified 
+          group name, and False if not.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if any of the input images are not valid.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if GroupName is an empty string.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.PatchLinksManager-class.html#canLinkImageInternals">
+         canLinkImageInternals()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="canLinkPatchInternals">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            canLinkPatchInternals
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Patches
+           </span>
+           ,
+           <span class="sig-arg">
+            pImageSet
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.canLinkPatchInternals">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Checks whether the input patches for the specified image set can be 
+  linked based on their underlying image's internal structure.
+      </p>
+      <p>
+       This is a convenience function which will look up the underlying 
+  images for the patches (similar to what can be done by using method 
+  mari.GeoEntity.patchImage), and then checks whether the image internals 
+  can be linked.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Patches
+           </code>
+          </strong>
+          (list of
+          <a class="link" href="mari.GeoPatch-class.html">
+           GeoPatch
+          </a>
+          ) - Container of input
+          <a class="link" href="mari.GeoPatch-class.html">
+           GeoPatch
+          </a>
+          objects.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            pImageSet
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          ) - The
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          object containing the images for the patches.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: bool
+       </dt>
+       <dd>
+        True if the patches internals can be linked, or False if not.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if any of the input patches are not valid.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if pImageSet isn't a valid
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          .
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.PatchLinksManager-class.html#canLinkImageInternals">
+         canLinkImageInternals()
+        </a>
+        ,
+        <a class="link" href="mari.GeoEntity-class.html#patchImage">
+         mari.GeoEntity.patchImage()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="canLinkPatches">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            canLinkPatches
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Patches
+           </span>
+           ,
+           <span class="sig-arg">
+            GroupName
+           </span>
+           ,
+           <span class="sig-arg">
+            pImageSet
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.canLinkPatches">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Checks whether the underlying images for the given patches on the 
+  specified image set can be linked into a new/existing group with the 
+  specified group name.
+      </p>
+      <p>
+       This is a convenience function which will look up the underlying 
+  images for the given patch-image set combination, and then calls
+       <a class="link" href="mari.PatchLinksManager-class.html#canLinkImages">
+        canLinkImages()
+       </a>
+       .
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Patches
+           </code>
+          </strong>
+          (list of
+          <a class="link" href="mari.GeoPatch-class.html">
+           GeoPatch
+          </a>
+          ) - Container of input
+          <a class="link" href="mari.GeoPatch-class.html">
+           GeoPatch
+          </a>
+          objects.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            GroupName
+           </code>
+          </strong>
+          (str) - The name for the group in which the patches need to be linked.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            pImageSet
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          ) - The
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          object containing the images for the patches.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: bool
+       </dt>
+       <dd>
+        True if the underlying images for the patches can be linked in a 
+          group with the specified group name, or False if not.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if any of the input patches are not valid.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if GroupName is an empty string or if pImageSet isn't a 
+        valid
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          .
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.PatchLinksManager-class.html#canLinkImages">
+         canLinkImages()
+        </a>
+        ,
+        <a class="link" href="mari.GeoEntity-class.html#patchImage">
+         mari.GeoEntity.patchImage()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="generateUniqueGroupName">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            generateUniqueGroupName
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.generateUniqueGroupName">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Generates a unique name which hasn't yet been used to index a group of
+  linked patches, which you can use to create a uniquely named group of 
+  linked patches.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: str
+       </dt>
+       <dd>
+        String containing the unique name.
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="groupAdded">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            groupAdded
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            GroupName
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.groupAdded">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Emitted when a new link group has been added.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            GroupName
+           </code>
+          </strong>
+          (str) - String name of the group that was added.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="groupNames">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            groupNames
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.groupNames">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Gets the names of all existing link groups.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: list of str
+       </dt>
+       <dd>
+        Container of strings for the names.
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="groupNamesForImageSet">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            groupNamesForImageSet
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            pImageSet
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.groupNamesForImageSet">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Gets the names of all link groups (if any) which link patch images on 
+  the specified image set.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            pImageSet
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          ) -
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          object for which the lookup must be done.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: list of str
+       </dt>
+       <dd>
+        Container of string for the names.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if pImageSet isn't a valid
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          object.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="groupRemoved">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            groupRemoved
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            GroupName
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.groupRemoved">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Emitted when a link group has been removed.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            GroupName
+           </code>
+          </strong>
+          (str) - String name of the group that was renamed.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="groupRenamed">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            groupRenamed
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            OldName
+           </span>
+           ,
+           <span class="sig-arg">
+            NewName
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.groupRenamed">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Emitted when a link group has been renamed.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            OldName
+           </code>
+          </strong>
+          (str) - The previous name.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            NewName
+           </code>
+          </strong>
+          (str) - The new name.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="imageGroup">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            imageGroup
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Img
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.imageGroup">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Gets the name of the link group, if any, containing the specified 
+  image.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Img
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Image-class.html">
+           Image
+          </a>
+          ) -
+          <a class="link" href="mari.Image-class.html">
+           Image
+          </a>
+          object for
+          which the lookup must be done.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: str
+       </dt>
+       <dd>
+        String name for the group. If
+        <code class="link">
+         Img
+        </code>
+        is 
+          not part of any link groups, and empty string is returned.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if Img isn't a valid
+          <a class="link" href="mari.Image-class.html">
+           Image
+          </a>
+          object.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="imageUnlinked">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            imageUnlinked
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Img
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.imageUnlinked">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Emitted when an
+       <a class="link" href="mari.Image-class.html">
+        Image
+       </a>
+       object has been unlinked.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Img
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Image-class.html">
+           Image
+          </a>
+          ) -
+          <a class="link" href="mari.Image-class.html">
+           Image
+          </a>
+          object 
+          which was unlinked.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="images">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            images
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            GroupName
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.images">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Gets the images which are part of the specified link group.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            GroupName
+           </code>
+          </strong>
+          (str) - String name indexing the group which images will be returned.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: list of
+        <a class="link" href="mari.Image-class.html">
+         Image
+        </a>
+       </dt>
+       <dd>
+        Container of
+        <a class="link" href="mari.Image-class.html">
+         Image
+        </a>
+        objects which are part of the specified 
+          group. If no no such group exists, an empty container is 
+          returned.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if GroupName is an empty string.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="imagesLinked">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            imagesLinked
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Images
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.imagesLinked">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Emitted when a set of
+       <code class="link">
+        Images
+       </code>
+       object have 
+  been linked.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Images
+           </code>
+          </strong>
+          (list of
+          <a class="link" href="mari.Image-class.html">
+           Image
+          </a>
+          ) - Container of linked
+          <a class="link" href="mari.Image-class.html">
+           Image
+          </a>
+          objects.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="isImageLinked">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            isImageLinked
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Img
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.isImageLinked">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Checks if the image is part of any link groups.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Img
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Image-class.html">
+           Image
+          </a>
+          ) -
+          <a class="link" href="mari.Image-class.html">
+           Image
+          </a>
+          object 
+          which must be checked.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: bool
+       </dt>
+       <dd>
+        True if the image has been linked, and False if not.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if Img isn't a valid
+          <a class="link" href="mari.Image-class.html">
+           Image
+          </a>
+          .
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="isPatchLinked">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            isPatchLinked
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Patch
+           </span>
+           ,
+           <span class="sig-arg">
+            pImageSet
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.isPatchLinked">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Check if the image for the patch on the given image set has been 
+  linked.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Patch
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.GeoPatch-class.html">
+           GeoPatch
+          </a>
+          ) -
+          <a class="link" href="mari.GeoPatch-class.html">
+           GeoPatch
+          </a>
+          object which must be checked.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            pImageSet
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          ) -
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          object containing the image indicated by the
+          <code class="link">
+           Patch
+          </code>
+          .
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: bool
+       </dt>
+       <dd>
+        True if the patch image is linked, and False if not.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if Patch isn't a valid
+          <a class="link" href="mari.GeoPatch-class.html">
+           GeoPatch
+          </a>
+          or if pImageSet isn't a valid
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          .
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.GeoEntity-class.html#patchImage">
+         mari.GeoEntity.patchImage()
+        </a>
+        ,
+        <a class="link" href="mari.PatchLinksManager-class.html#isImageLinked">
+         isImageLinked()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="linkImages">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            linkImages
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Images
+           </span>
+           ,
+           <span class="sig-arg">
+            GroupName
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.linkImages">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Link the input images into a new/existing group with the specified 
+  group name.
+      </p>
+      <p>
+       This method will check the images are linkable by using
+       <a class="link" href="mari.PatchLinksManager-class.html#canLinkImages">
+        canLinkImages()
+       </a>
+       , and if so, it will link them. If the 
+  images are linked into an existing group, their contents will immediately
+  be updated to match that of other images in the link group.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Images
+           </code>
+          </strong>
+          (list of
+          <a class="link" href="mari.Image-class.html">
+           Image
+          </a>
+          ) - Container of
+          <a class="link" href="mari.Image-class.html">
+           Image
+          </a>
+          objects to be linked into an existing/new 
+          group.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            GroupName
+           </code>
+          </strong>
+          (str) - A name string indexing an existing group, or a name for a new 
+          group.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the images could not be linked.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if Images is not a list of valid image objects, or if 
+        GroupName is an empty string.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.PatchLinksManager-class.html#canLinkImages">
+         canLinkImages()
+        </a>
+        ,
+        <a class="link" href="mari.PatchLinksManager-class.html#generateUniqueGroupName">
+         generateUniqueGroupName()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="linkPatches">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            linkPatches
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Patches
+           </span>
+           ,
+           <span class="sig-arg">
+            GroupName
+           </span>
+           ,
+           <span class="sig-arg">
+            pImageSet
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.linkPatches">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Convenience function to link the images for the patches on the 
+  specified image set.
+      </p>
+      <p>
+       This essentially looks up the images for the patches, and then calls
+       <a class="link" href="mari.PatchLinksManager-class.html#linkImages">
+        linkImages()
+       </a>
+       .
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Patches
+           </code>
+          </strong>
+          (list of
+          <a class="link" href="mari.GeoPatch-class.html">
+           GeoPatch
+          </a>
+          ) - Container of input
+          <a class="link" href="mari.GeoPatch-class.html">
+           GeoPatch
+          </a>
+          objects.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            GroupName
+           </code>
+          </strong>
+          (str) - A name string indexing an existing group, or a name for a new 
+          group.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            pImageSet
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          ) -
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          object containing the images indicated by the patches.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the patch images could not be linked.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if Patches is not a container of valid patch objects, or if 
+        pImageSet isn't a valid
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          , or if GroupName is an empty string.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.PatchLinksManager-class.html#linkImages">
+         linkImages()
+        </a>
+        ,
+        <a class="link" href="mari.GeoEntity-class.html#patchImage">
+         mari.GeoEntity.patchImage()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="linkSelectedPatches">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            linkSelectedPatches
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            GroupName
+           </span>
+           ,
+           <span class="sig-arg">
+            pImageSet
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.linkSelectedPatches">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Convenience method to link the currently selected patches on the 
+  specified image set.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            GroupName
+           </code>
+          </strong>
+          (str) - String name indexing an existing group, or a name for a new 
+          group, into which the patch images must be linked.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            pImageSet
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          ) -
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          object containing the images which must be linked.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the selected patches could not be linked.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if GroupName is an empty string, or if pImageSet isn't a 
+        valid
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          object.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.PatchLinksManager-class.html#linkPatches">
+         linkPatches()
+        </a>
+        ,
+        <a class="link" href="mari.PatchLinksManager-class.html#linkImages">
+         linkImages()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="linkedImages">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            linkedImages
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Img
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.linkedImages">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Gets the group of linked images of which the input image is part.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Img
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Image-class.html">
+           Image
+          </a>
+          ) -
+          <a class="link" href="mari.Image-class.html">
+           Image
+          </a>
+          object for
+          which the lookup must be done.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: list of
+        <a class="link" href="mari.Image-class.html">
+         Image
+        </a>
+       </dt>
+       <dd>
+        Container of
+        <a class="link" href="mari.Image-class.html">
+         Image
+        </a>
+        objects. The container will be empty if no
+          images are linked against
+        <code class="link">
+         Img
+        </code>
+        .
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="linkedPatches">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            linkedPatches
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Patch
+           </span>
+           ,
+           <span class="sig-arg">
+            pImageSet
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.linkedPatches">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Gets the group of linked patches of which the input patch is part.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Patch
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.GeoPatch-class.html">
+           GeoPatch
+          </a>
+          ) -
+          <a class="link" href="mari.GeoPatch-class.html">
+           GeoPatch
+          </a>
+          object for which the lookup must be done.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            pImageSet
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          ) -
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          object which contains the underlying image objects. If
+          <code class="link">
+           pImageSet
+          </code>
+          is None, the current image set is 
+          used.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: list of
+        <a class="link" href="mari.GeoPatch-class.html">
+         GeoPatch
+        </a>
+       </dt>
+       <dd>
+        Container of
+        <a class="link" href="mari.Image-class.html">
+         Image
+        </a>
+        objects. The container will be empty if no
+          images are linked against Img.
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="patchGroup">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            patchGroup
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Patch
+           </span>
+           ,
+           <span class="sig-arg">
+            pImageSet
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.patchGroup">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Gets the name of the link group, if any, containing the specified 
+  patch image on the specified image set.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Patch
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.GeoPatch-class.html">
+           GeoPatch
+          </a>
+          ) -
+          <a class="link" href="mari.GeoPatch-class.html">
+           GeoPatch
+          </a>
+          object for which the lookup must be done.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            pImageSet
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          ) -
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          object containing the images.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: str
+       </dt>
+       <dd>
+        String name for the group. If
+        <code class="link">
+         Patch
+        </code>
+        is 
+          not part of any link groups, and empty string is returned.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if Patch isn't a valid
+          <a class="link" href="mari.GeoPatch-class.html">
+           GeoPatch
+          </a>
+          object, or if pImageSet isn't a valid
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          object.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="patches">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            patches
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            GroupName
+           </span>
+           ,
+           <span class="sig-arg">
+            pImageSet
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.patches">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Gets the patches which are part of the specified link group on the 
+  specified or current image set.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            GroupName
+           </code>
+          </strong>
+          (str) - String name indexing the link group for which pathces must be 
+          retrieved.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            pImageSet
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          ) -
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          object which contains the underlying
+          <a class="link" href="mari.Image-class.html">
+           Image
+          </a>
+          objects. If
+          <code class="link">
+           pImageSet
+          </code>
+          is None, the current image 
+          set is used for the lookup.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: list of
+        <a class="link" href="mari.GeoPatch-class.html">
+         GeoPatch
+        </a>
+       </dt>
+       <dd>
+        Container or
+        <a class="link" href="mari.GeoPatch-class.html">
+         GeoPatch
+        </a>
+        objects.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if GroupName is an empty string.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.PatchLinksManager-class.html#images">
+         images()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="removeGroup">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            removeGroup
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            GroupName
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.removeGroup">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Removes a group of linked patch images.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            GroupName
+           </code>
+          </strong>
+          (str) - String name indexing the group which must be removed.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if removing the named group failed.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if GroupName is an empty string.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="renameGroup">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            renameGroup
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            OldName
+           </span>
+           ,
+           <span class="sig-arg">
+            NewName
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.renameGroup">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Renames a group of linked patch images.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            OldName
+           </code>
+          </strong>
+          (str) - String specifying the name of the group.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            NewName
+           </code>
+          </strong>
+          (str) - String specifying the new name for the group.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the group does not exist, or if it could not be renamed.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if OldName or NewName are invalid strings.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="unlinkImage">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            unlinkImage
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Img
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.unlinkImage">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Unlinks the specified image from all other images.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Img
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Image-class.html">
+           Image
+          </a>
+          ) -
+          <a class="link" href="mari.Image-class.html">
+           Image
+          </a>
+          object to 
+          unlink.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the Img could not be unlinked.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if Img isn't a valid
+          <a class="link" href="mari.Image-class.html">
+           Image
+          </a>
+          object.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="unlinkPatch">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            unlinkPatch
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Patch
+           </span>
+           ,
+           <span class="sig-arg">
+            pImageSet
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.unlinkPatch">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Unlinks the image for the patch on the specified image set from all 
+  other images.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Patch
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.GeoPatch-class.html">
+           GeoPatch
+          </a>
+          ) - The
+          <a class="link" href="mari.GeoPatch-class.html">
+           GeoPatch
+          </a>
+          object specifying the image which must be unlinked.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            pImageSet
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          ) - The
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          object containing the image.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the Patch could not be unlinked in pImageSet.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if Patch isn't a valid
+          <a class="link" href="mari.GeoPatch-class.html">
+           GeoPatch
+          </a>
+          object, or if pImageSet isn't a valid
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          object.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.PatchLinksManager-class.html#unlinkImage">
+         unlinkImage()
+        </a>
+        ,
+        <a class="link" href="mari.GeoEntity-class.html#patchImage">
+         mari.GeoEntity.patchImage()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="unlinkSelectedPatches">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            unlinkSelectedPatches
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            pImageSet
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#PatchLinksManager.unlinkSelectedPatches">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Unlinks the patch images for the selected patches on the specified 
+  image set.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            pImageSet
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          ) -
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          object containing the images (corresponding to the selected 
+          patches) which must be unlinked.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if pImageSet isn't a valid
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          object.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

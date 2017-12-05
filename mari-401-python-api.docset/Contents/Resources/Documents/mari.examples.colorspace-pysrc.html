@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.examples.colorspace
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.examples-module.html">
+       Package&nbsp;examples
+      </a>
+      ::
+        Module&nbsp;colorspace
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.examples.colorspace-pysrc.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <h1 class="epydoc">
+   Source Code for
+   <a href="mari.examples.colorspace-module.html">
+    Module mari.examples.colorspace
+   </a>
+  </h1>
+  <pre class="py-src">
+&iuml;&raquo;&iquest;# ------------------------------------------------------------------------------
+# Channel usage examples
+# coding: utf-8
+# Copyright (c) 2016 The Foundry Visionmongers Ltd.  All Rights Reserved.
+# ------------------------------------------------------------------------------
+
+import mari
+
+# ------------------------------------------------------------------------------
+# Print All Colorspace Info:
+# ------------------------------------------------------------------------------
+
+def getColorspacePrettyName(colorspace_config, stage):
+    colorspace = colorspace_config.colorspace(stage)
+    actual_colorspace = colorspace_config.resolveColorspace(stage)
+    if colorspace == actual_colorspace:
+        return colorspace
+    return colorspace + ' (' + actual_colorspace + ')'
+
+# ------------------------------------------------------------------------------
+
+def showColorspaceConfigInfo(colorspace_config, indent_num_spaces):
+    "Prints out information about a colorspace config."
+
+    indent = ' ' * (indent_num_spaces - 1)
+    print indent, 'OCIO config :', colorspace_config.resolveFileName()
+    print indent, '     Native :', getColorspacePrettyName(colorspace_config, colorspace_config.COLORSPACE_STAGE_NATIVE)
+    print indent, '     Output :', getColorspacePrettyName(colorspace_config, colorspace_config.COLORSPACE_STAGE_OUTPUT)
+    print indent, '    Working :', getColorspacePrettyName(colorspace_config, colorspace_config.COLORSPACE_STAGE_WORKING)
+    print indent, '        Raw :', colorspace_config.raw()
+    print indent, '     Scalar :', colorspace_config.scalar()
+
+# ------------------------------------------------------------------------------
+
+def showProjectInfo():
+    "Prints out information about the global colorspaces of the project."
+
+    project = mari.projects.current()
+    if project is None:
+        return
+
+    print 'Project Defaults : %s' % project.name()
+
+    project_colorspaces = project.colorspaceDefaults()
+    print '         OCIO Config :', project_colorspaces.fileName()
+    print '          8 bit Data :', project_colorspaces.colorspace(mari.ColorspaceDefaults.COLORSPACE_TARGET_INT8)
+    print '         16 bit Data :', project_colorspaces.colorspace(mari.ColorspaceDefaults.COLORSPACE_TARGET_INT16)
+    print '        8 bit Scalar :', project_colorspaces.colorspace(mari.ColorspaceDefaults.COLORSPACE_TARGET_SCALAR8)
+    print '16/32 bit Float Data :', project_colorspaces.colorspace(mari.ColorspaceDefaults.COLORSPACE_TARGET_FLOAT)
+    print '             Working :', project_colorspaces.colorspace(mari.ColorspaceDefaults.COLORSPACE_TARGET_WORKING)
+    print '             Monitor :', project_colorspaces.colorspace(mari.ColorspaceDefaults.COLORSPACE_TARGET_MONITOR)
+    print '       Color Picking :', project_colorspaces.colorspace(mari.ColorspaceDefaults.COLORSPACE_TARGET_COLOR_PICKER)
+    print '            Blending :', project_colorspaces.colorspace(mari.ColorspaceDefaults.COLORSPACE_TARGET_BLENDING)
+    print ''
+
+# ------------------------------------------------------------------------------
+
+def showChannelInfo():
+    "Prints out the colorspace information of a channel."
+
+    for geo_index, geo in enumerate(mari.geo.list()):
+        print 'Geo %2d : %s' % (geo_index, geo.name())
+        for channel_index, channel in enumerate(geo.channelList()):
+            print '    Channel %2d : %s' % (channel_index, channel.name())
+            print '        Color Data :'
+            showColorspaceConfigInfo(channel.colorspaceConfig(), 12)
+            print '         Mask Data :'
+            showColorspaceConfigInfo(channel.scalarColorspaceConfig(), 12)
+            print ''
+
+# ------------------------------------------------------------------------------
+
+def showImageInfo():
+    "Prints out the colorspace information of all images in the image manager."
+
+    for image_index, image in enumerate(mari.images.list()):
+        print 'Image %2d : %s' % (image_index, image.filePath())
+        showColorspaceConfigInfo(image.colorspaceConfig(), 4)
+        print ''
+
+# ------------------------------------------------------------------------------
+
+def showProjectorInfo():
+    "Prints out the colorspace information of all projectors in the project."
+
+    for projector_index, projector in enumerate(mari.projectors.list()):
+        print 'Projector %2d : %s' % (projector_index, projector.name())
+        print '    Import :'
+        showColorspaceConfigInfo(projector.importColorspaceConfig(), 8)
+        print '    Export :'
+        showColorspaceConfigInfo(projector.exportColorspaceConfig(), 8)
+        print ''
+
+# ------------------------------------------------------------------------------
+
+def showAllColorspaces():
+    "Prints out all colorspace information in the project."
+
+    if mari.projects.current() is None:
+        mari.utils.message('Please open a project first')
+        return
+
+    showProjectInfo()
+    showChannelInfo()
+    showImageInfo()
+    showProjectorInfo()
+
+# ------------------------------------------------------------------------------
+# Enable Pre-Colorspace Project:
+# ------------------------------------------------------------------------------
+
+def disableRawOnChannels():
+    "Disables the raw option on all channels, in all geometry, in the project."
+
+    for geo in mari.geo.list():
+        for channel in geo.channelList():
+            colorspace_config = channel.colorspaceConfig()
+            colorspace_config.setRaw(False)
+            channel.setColorspaceConfig(colorspace_config)
+
+            colorspace_config = channel.scalarColorspaceConfig()
+            colorspace_config.setRaw(False)
+            channel.setScalarColorspaceConfig(colorspace_config)
+
+# ------------------------------------------------------------------------------
+
+def disableRawOnImages():
+    "Disables the raw option on all images in the image manager."
+
+    for image in mari.images.list():
+        colorspace_config = image.colorspaceConfig()
+        colorspace_config.setRaw(False)
+        image.setColorspaceConfig(colorspace_config)
+
+# ------------------------------------------------------------------------------
+
+def disableRawOnProjectors():
+    "Disables the raw option on all projectors in the project."
+
+    for projector in mari.projectors.list():
+        colorspace_config = projector.importColorspaceConfig()
+        colorspace_config.setRaw(False)
+        projector.setImportColorspaceConfig(colorspace_config)
+
+        colorspace_config = projector.exportColorspaceConfig()
+        colorspace_config.setRaw(False)
+        projector.setExportColorspaceConfig(colorspace_config)
+
+# ------------------------------------------------------------------------------
+
+def disableRawOnProject():
+    "Disables all raw options in the project."
+
+    if mari.projects.current() is None:
+        mari.utils.message('Please open a project first')
+        return
+
+    disableRawOnChannels()
+    disableRawOnImages()
+    disableRawOnProjectors()
+
+# ------------------------------------------------------------------------------
+# Enable Pre-Colorspace Project:
+# ------------------------------------------------------------------------------
+
+def enablePreColorspaceProject():
+    "Enables color management on the project."
+
+    project = mari.projects.current()
+    if project is None:
+        mari.utils.message('Please open a project first')
+        return
+
+    colorspace_defaults = project.colorspaceDefaults()
+    colorspace_defaults.setColorManagementEnabled(True)
+    project.setColorspaceDefaults(colorspace_defaults)
+
+# ------------------------------------------------------------------------------
+# Switch Colorspace On All:
+# ------------------------------------------------------------------------------
+
+def switchColorspaceOnProject(ocio_config, from_colorspace, to_colorspace):
+    "Switches all instances of a colorspace to another in the global defaults of the project."
+
+    project = mari.projects.current()
+    if project is None:
+        return
+
+    colorspace_defaults = project.colorspaceDefaults()
+    if colorspace_defaults.fileName() == ocio_config:
+        targets = [mari.ColorspaceDefaults.COLORSPACE_TARGET_INT8,
+                   mari.ColorspaceDefaults.COLORSPACE_TARGET_INT16,
+                   mari.ColorspaceDefaults.COLORSPACE_TARGET_SCALAR8,
+                   mari.ColorspaceDefaults.COLORSPACE_TARGET_FLOAT,
+                   mari.ColorspaceDefaults.COLORSPACE_TARGET_WORKING,
+                   mari.ColorspaceDefaults.COLORSPACE_TARGET_MONITOR,
+                   mari.ColorspaceDefaults.COLORSPACE_TARGET_COLOR_PICKER,
+                   mari.ColorspaceDefaults.COLORSPACE_TARGET_BLENDING]
+        for target in targets:
+            if colorspace_defaults.colorspace(target) == from_colorspace:
+                colorspace_defaults.setColorspace(target, to_colorspace)
+
+        project.setColorspaceDefaults(colorspace_defaults)
+
+# ------------------------------------------------------------------------------
+
+def switchColorspaceOnConfig(colorspace_config, ocio_config, from_colorspace, to_colorspace):
+    "Switches all instances of a colorspace to another in the colorspace config."
+
+    if colorspace_config.resolveFileName() == ocio_config:
+        stages = [mari.ColorspaceConfig.COLORSPACE_STAGE_NATIVE,
+                  mari.ColorspaceConfig.COLORSPACE_STAGE_OUTPUT,
+                  mari.ColorspaceConfig.COLORSPACE_STAGE_WORKING]
+        for stage in stages:
+            if colorspace_config.colorspace(stage) == from_colorspace:
+                colorspace_config.setColorspace(stage, to_colorspace)
+
+    return colorspace_config
+
+# ------------------------------------------------------------------------------
+
+def switchColorspaceOnChannels(ocio_config, from_colorspace, to_colorspace):
+    "Switches all instances of a colorspace to another on all channels, in all geometry, in the project."
+
+    for geo in mari.geo.list():
+        for channel in geo.channelList():
+            colorspace_config = channel.colorspaceConfig()
+            colorspace_config = switchColorspaceOnConfig(colorspace_config, ocio_config, from_colorspace, to_colorspace)
+            channel.setColorspaceConfig(colorspace_config)
+
+            colorspace_config = channel.scalarColorspaceConfig()
+            colorspace_config = switchColorspaceOnConfig(colorspace_config, ocio_config, from_colorspace, to_colorspace)
+            channel.setScalarColorspaceConfig(colorspace_config)
+
+# ------------------------------------------------------------------------------
+
+def switchColorspaceOnImages(ocio_config, from_colorspace, to_colorspace):
+    "Switches all instances of a colorspace to another on all images in the image manager."
+
+    for image in mari.images.list():
+        colorspace_config = image.colorspaceConfig()
+        colorspace_config = switchColorspaceOnConfig(colorspace_config, ocio_config, from_colorspace, to_colorspace)
+        image.setColorspaceConfig(colorspace_config)
+
+# ------------------------------------------------------------------------------
+
+def switchColorspaceOnProjectors(ocio_config, from_colorspace, to_colorspace):
+    "Switches all instances of a colorspace to another on all projectors in the project."
+
+    for projector in mari.projectors.list():
+        colorspace_config = projector.importColorspaceConfig()
+        colorspace_config = switchColorspaceOnConfig(colorspace_config, ocio_config, from_colorspace, to_colorspace)
+        projector.setImportColorspaceConfig(colorspace_config)
+
+        colorspace_config = projector.exportColorspaceConfig()
+        colorspace_config = switchColorspaceOnConfig(colorspace_config, ocio_config, from_colorspace, to_colorspace)
+        projector.setExportColorspaceConfig(colorspace_config)
+
+# ------------------------------------------------------------------------------
+
+def switchColorspaceOnAll(ocio_config, from_colorspace, to_colorspace):
+    "Switches all instances of a colorspace, within the project, to another. This doesn't change the underlying data"
+    "but rather instructs Mari to now treat the data as being in new colorspace."
+
+    if mari.projects.current() is None:
+        mari.utils.message('Please open a project first')
+        return
+
+    switchColorspaceOnProject(ocio_config, from_colorspace, to_colorspace)
+    switchColorspaceOnChannels(ocio_config, from_colorspace, to_colorspace)
+    switchColorspaceOnImages(ocio_config, from_colorspace, to_colorspace)
+    switchColorspaceOnProjectors(ocio_config, from_colorspace, to_colorspace)
+
+# ------------------------------------------------------------------------------
+# Convert Selected Images:
+# ------------------------------------------------------------------------------
+
+def convertSelectedImages(ocio_config, output_colorspace):
+    "Converts the currently selected images in the image manager to another colorspace. This changes the underlying"
+    "data in the image."
+
+    images = mari.images.selected()
+    if len(images) == 0:
+        mari.utils.message('Please select one or more images')
+        return
+
+    for image in images:
+        colorspace_config = image.colorspaceConfig()
+
+        if colorspace_config.resolveFileName() == ocio_config:
+            new_image = mari.ocio.transformImage(ocio_config,
+                                                 colorspace_config.resolveColorspace(colorspace_config.COLORSPACE_STAGE_NATIVE),
+                                                 output_colorspace,
+                                                 image)
+
+            colorspace_config.setColorspace(colorspace_config.COLORSPACE_STAGE_NATIVE, 'Automatic')
+            colorspace_config.setAutomaticColorspace(colorspace_config.COLORSPACE_STAGE_NATIVE, output_colorspace)
+            new_image.setColorspaceConfig(colorspace_config)
+
+            mari.images.add(new_image, image.filePath())
+
+# ------------------------------------------------------------------------------
+# Register Optimized "ACES" GLSL Shader Transforms:
+# ------------------------------------------------------------------------------
+
+def registerOptimizedTransforms():
+    "Registers opimized GLSL shader transform code for the 'aces' OCIO config. This method can not only significantly"
+    "improve the perfromance within Mari but can also improve the accuracy of the transform itself due to the ability"
+    "to remove the need for a LUT."
+
+    mari.ocio.setShaderTransformCode('aces',
+                                     'ACES - ACEScg',
+                                     'ACES - ACES2065-1',
+                                     '    mat3 ACES_AP1_TO_AP0 = mat3( 0.6954522414, 0.1406786965, 0.1638690622,\n'
+                                     '                                 0.0447945634, 0.8596711185, 0.0955343182,\n'
+                                     '                                -0.0055258826, 0.0040252103, 1.0015006723);\n'
+                                     '    vec3 v1 = #Input.rgb * ACES_AP1_TO_AP0;\n'
+                                     '    #Output = vec4(v1, #Input.a);\n')
+    mari.ocio.setShaderTransformCode('aces',
+                                     'ACES - ACES2065-1',
+                                     'ACES - ACEScg',
+                                     '    mat3 ACES_AP0_TO_AP1 = mat3( 1.4514393161, -0.2365107469, -0.2149285693,\n'
+                                     '                                -0.0765537734,  1.1762296998, -0.0996759264,\n'
+                                     '                                 0.0083161484, -0.0060324498,  0.9977163014);\n'
+                                     '    vec3 v1 = #Input.rgb * ACES_AP0_TO_AP1;\n'
+                                     '    #Output = vec4(v1, #Input.a);\n')
+
+    mari.ocio.setShaderTransformCode('aces',
+                                     'Utility - sRGB - Texture',
+                                     'ACES - ACES2065-1',
+                                     '    vec3 v1 = #Input.rgb;\n'
+                                     '    bvec3 mask = lessThan(v1, vec3(0.04045));\n'
+                                     '    vec3 v2 = v1 / 12.92;\n'
+                                     '    v1 = pow((v1 + vec3(0.055)) / 1.055, vec3(2.4));\n'
+                                     '    v1 = mix(v1, v2, mask);\n'
+                                     '\n'
+                                     '    mat3 ACES_Rec709_to_AP0 = mat3(0.4396467854, 0.3829813768, 0.1773715911,\n'
+                                     '                                   0.0897802147, 0.8134397885, 0.0967796810,\n'
+                                     '                                   0.0175446202, 0.1115570308, 0.8708982513);\n'
+                                     '    v1 = v1 * ACES_Rec709_to_AP0;\n'
+                                     '\n'
+                                     '    #Output = vec4(v1, #Input.a);\n')
+    mari.ocio.setShaderTransformCode('aces',
+                                     'ACES - ACES2065-1',
+                                     'Utility - sRGB - Texture',
+                                     '    mat3 ACES_AP0_TO_Rec709 = mat3( 2.5216061325, -1.1340673962, -0.3875385104,\n'
+                                     '                                   -0.2764821365,  1.3727177396, -0.0962352472,\n'
+                                     '                                   -0.0153830779, -0.1529909300,  1.1683740700);\n'
+                                     '    vec3 v1 = #Input.rgb * ACES_AP0_TO_Rec709;\n'
+                                     '\n'
+                                     '    bvec3 mask = lessThan(v1, vec3(0.04045 / 12.92));\n'
+                                     '    vec3 v2 = 12.92 * v1;\n'
+                                     '    v1 = 1.055 * pow(v1, vec3(1.0 / 2.4)) - vec3(0.055);\n'
+                                     '\n'
+                                     '    #Output = vec4(mix(v1, v2, mask), #Input.a);\n')
+
+    mari.ocio.setShaderTransformCode('aces',
+                                     'Utility - sRGB - Texture',
+                                     'ACES - ACEScg',
+                                     '    vec3 v1 = #Input.rgb;\n'
+                                     '    bvec3 mask = lessThan(v1, vec3(0.04045));\n'
+                                     '    vec3 v2 = v1 / 12.92;\n'
+                                     '    v1 = pow((v1 + vec3(0.055)) / 1.055, vec3(2.4));\n'
+                                     '    v1 = mix(v1, v2, mask);\n'
+                                     '\n'
+                                     '    mat3 ACES_Rec709_TO_AP1 = mat3(0.61311580, 0.33951018, 0.04737375,\n'
+                                     '                                   0.07019675, 0.91635382, 0.01344908,\n'
+                                     '                                   0.02061912, 0.10958016, 0.86980061);\n'
+                                     '    v1 = v1 * ACES_Rec709_TO_AP1;\n'
+                                     '\n'
+                                     '    #Output = vec4(v1, #Input.a);\n')
+    mari.ocio.setShaderTransformCode('aces',
+                                     'ACES - ACEScg',
+                                     'Utility - sRGB - Texture',
+                                     '    mat3 ACES_AP1_TO_Rec709 = mat3( 1.70499807, -0.62174865, -0.08324921,\n'
+                                     '                                   -0.13025803,  1.14080327, -0.01054488,\n'
+                                     '                                   -0.02400765, -0.12898300,  1.15299072);\n'
+                                     '    vec3 v1 = #Input.rgb * ACES_AP1_TO_Rec709;\n'
+                                     '\n'
+                                     '    bvec3 mask = lessThan(v1, vec3(0.04045 / 12.92));\n'
+                                     '    vec3 v2 = 12.92 * v1;\n'
+                                     '    v1 = 1.055 * pow(v1, vec3(1.0 / 2.4)) - vec3(0.055);\n'
+                                     '\n'
+                                     '    #Output = vec4(mix(v1, v2, mask), #Input.a);\n')
+
+# ------------------------------------------------------------------------------
+
+# Register new actions with the action manager, and add them to the menu.
+_colorspace_path = "MainWindow/P&amp;ython;/&amp;Examples;/Colorspace"
+mari.menus.addAction(mari.actions.create('Print All Colorspace Info', 'mari.examples.colorspace.showAllColorspaces()'), _colorspace_path)
+mari.menus.addAction(mari.actions.create('Disable Raw on Project', 'mari.examples.colorspace.disableRawOnProject()'), _colorspace_path)
+mari.menus.addAction(mari.actions.create('Enable Colorspace on Pre-3.0 Project', 'mari.examples.colorspace.enablePreColorspaceProject()'), _colorspace_path)
+mari.menus.addAction(mari.actions.create('Switch "sRGB" to "Gamma2.2"', 'mari.examples.colorspace.switchColorspaceOnAll(\'nuke-default\', \'sRGB\', \'Gamma2.2\')'), _colorspace_path)
+mari.menus.addAction(mari.actions.create('Convert Selected Images to "REDLog"', 'mari.examples.colorspace.convertSelectedImages(\'nuke-default\', \'REDLog\')'), _colorspace_path)
+mari.menus.addAction(mari.actions.create('Register Optimized "ACES" GLSL Transforms', 'mari.examples.colorspace.registerOptimizedTransforms()'), _colorspace_path)
+
+if mari.app.isRunning():
+    # We want to use the optimized transforms all the time and not just when the user executes the example. The action
+    # registered with the menu is really only there to make the user aware of the technique.
+    registerOptimizedTransforms()
+<script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

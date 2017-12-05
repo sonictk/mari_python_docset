@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.examples.vector_channel
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.examples-module.html">
+       Package&nbsp;examples
+      </a>
+      ::
+        Module&nbsp;vector_channel
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.examples.vector_channel-pysrc.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <h1 class="epydoc">
+   Source Code for
+   <a href="mari.examples.vector_channel-module.html">
+    Module mari.examples.vector_channel
+   </a>
+  </h1>
+  <pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"># Examples for creating a two channels ready for vector brushing</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-comment"># coding: utf-8</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-comment"># Copyright (c) 2012 The Foundry Visionmongers Ltd.  All Rights Reserved.</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name" id="link-0" targets="Package mari=mari-module.html"><a class="py-name" href="#" onclick="return doclink('link-0', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">,</tt> <tt class="py-name">PySide2</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-comment">#-----------------------------------------------------------------------------------------</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"> </tt>
+<a name="createVectorChannels"></a><div id="createVectorChannels-def"><a name="L11"></a><tt class="py-lineno">11</tt> <a class="py-toggle" href="#" id="createVectorChannels-toggle" onclick="return toggle('createVectorChannels');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.vector_channel-module.html#createVectorChannels">createVectorChannels</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="createVectorChannels-collapsed" indent="++++" pad="++" style="display:none;"></div><div id="createVectorChannels-expanded"><a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-1"><a class="py-name" href="#" onclick="return doclink('link-1', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-2" targets="Variable mari.projects=mari-module.html#projects"><a class="py-name" href="#" onclick="return doclink('link-2', 'projects', 'link-2');" title="mari.projects">projects</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-3" targets="Method mari.CanvasManager.current()=mari.CanvasManager-class.html#current,Method mari.GeoManager.current()=mari.GeoManager-class.html#current,Method mari.LightManager.current()=mari.LightManager-class.html#current,Method mari.ProjectManager.current()=mari.ProjectManager-class.html#current,Method mari.ProjectorManager.current()=mari.ProjectorManager-class.html#current,Method mari.SelectionGroupManager.current()=mari.SelectionGroupManager-class.html#current,Method mari.ToolManager.current()=mari.ToolManager-class.html#current,Package mari.current=mari.current-module.html"><a class="py-name" href="#" onclick="return doclink('link-3', 'current', 'link-3');" title="mari.CanvasManager.current
+mari.GeoManager.current
+mari.LightManager.current
+mari.ProjectManager.current
+mari.ProjectorManager.current
+mari.SelectionGroupManager.current
+mari.ToolManager.current
+mari.current">current</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt><tt class="py-op">(</tt> <tt class="py-string">"No Project Open"</tt><tt class="py-op">)</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">    <tt class="py-name" id="link-4" targets="Function mari.current.geo()=mari.current-module.html#geo,Variable mari.examples.c_api_channel_export.geo=mari.examples.c_api_channel_export-module.html#geo"><a class="py-name" href="#" onclick="return doclink('link-4', 'geo', 'link-4');" title="mari.current.geo
+mari.examples.c_api_channel_export.geo">geo</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-5"><a class="py-name" href="#" onclick="return doclink('link-5', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-6"><a class="py-name" href="#" onclick="return doclink('link-6', 'geo', 'link-4');" title="mari.current.geo
+mari.examples.c_api_channel_export.geo">geo</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-7"><a class="py-name" href="#" onclick="return doclink('link-7', 'current', 'link-3');" title="mari.CanvasManager.current
+mari.GeoManager.current
+mari.LightManager.current
+mari.ProjectManager.current
+mari.ProjectorManager.current
+mari.SelectionGroupManager.current
+mari.ToolManager.current
+mari.current">current</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-8"><a class="py-name" href="#" onclick="return doclink('link-8', 'geo', 'link-4');" title="mari.current.geo
+mari.examples.c_api_channel_export.geo">geo</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt><tt class="py-op">(</tt> <tt class="py-string">"No Geometry Entity selected"</tt><tt class="py-op">)</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">    <tt class="py-comment"># Create a channel ready for flow map painting. Mid-grey color corresponds to zero vector.</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">    <tt class="py-comment"># On import/export the Y direction of the vector will be flipped.</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">    <tt class="py-name">flow_channel</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-9"><a class="py-name" href="#" onclick="return doclink('link-9', 'geo', 'link-4');" title="mari.current.geo
+mari.examples.c_api_channel_export.geo">geo</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-10" targets="Method mari.GeoEntity.findChannel()=mari.GeoEntity-class.html#findChannel"><a class="py-name" href="#" onclick="return doclink('link-10', 'findChannel', 'link-10');" title="mari.GeoEntity.findChannel">findChannel</a></tt><tt class="py-op">(</tt><tt class="py-string">'Flow Map Painting Channel'</tt><tt class="py-op">)</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">flow_channel</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">        <tt class="py-name">flow_channel</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-11"><a class="py-name" href="#" onclick="return doclink('link-11', 'geo', 'link-4');" title="mari.current.geo
+mari.examples.c_api_channel_export.geo">geo</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-12" targets="Method mari.GeoEntity.createChannel()=mari.GeoEntity-class.html#createChannel"><a class="py-name" href="#" onclick="return doclink('link-12', 'createChannel', 'link-12');" title="mari.GeoEntity.createChannel">createChannel</a></tt><tt class="py-op">(</tt><tt class="py-string">"Flow Map Painting Channel"</tt><tt class="py-op">,</tt> <tt class="py-number">4096</tt><tt class="py-op">,</tt> <tt class="py-number">4096</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-13"><a class="py-name" href="#" onclick="return doclink('link-13', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-14" targets="Class mari.Image=mari.Image-class.html"><a class="py-name" href="#" onclick="return doclink('link-14', 'Image', 'link-14');" title="mari.Image">Image</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-15" targets="Variable mari.Image.DEPTH_HALF=mari.Image-class.html#DEPTH_HALF,Variable mari.Image.Depth.DEPTH_HALF=mari.Image.Depth-class.html#DEPTH_HALF,Variable mari.PaintBuffer.BufferDepth.DEPTH_HALF=mari.PaintBuffer.BufferDepth-class.html#DEPTH_HALF,Variable mari.PaintBuffer.DEPTH_HALF=mari.PaintBuffer-class.html#DEPTH_HALF,Variable mari.Projector.BitDepth.DEPTH_HALF=mari.Projector.BitDepth-class.html#DEPTH_HALF,Variable mari.Projector.DEPTH_HALF=mari.Projector-class.html#DEPTH_HALF,Variable mari.QuickProjector.BitDepth.DEPTH_HALF=mari.QuickProjector.BitDepth-class.html#DEPTH_HALF,Variable mari.QuickProjector.DEPTH_HALF=mari.QuickProjector-class.html#DEPTH_HALF"><a class="py-name" href="#" onclick="return doclink('link-15', 'DEPTH_HALF', 'link-15');" title="mari.Image.DEPTH_HALF
+mari.Image.Depth.DEPTH_HALF
+mari.PaintBuffer.BufferDepth.DEPTH_HALF
+mari.PaintBuffer.DEPTH_HALF
+mari.Projector.BitDepth.DEPTH_HALF
+mari.Projector.DEPTH_HALF
+mari.QuickProjector.BitDepth.DEPTH_HALF
+mari.QuickProjector.DEPTH_HALF">DEPTH_HALF</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">        <tt class="py-comment"># Change channel so on import/export the vectors in the channel will be scaled from [0,1] to [-1,+1]</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">        <tt class="py-name">flow_channel</tt><tt class="py-op">.</tt><tt class="py-name" id="link-16" targets="Method mari.Channel.setFileSpace()=mari.Channel-class.html#setFileSpace,Method mari.ChannelInfo.setFileSpace()=mari.ChannelInfo-class.html#setFileSpace,Method mari.Image.setFileSpace()=mari.Image-class.html#setFileSpace"><a class="py-name" href="#" onclick="return doclink('link-16', 'setFileSpace', 'link-16');" title="mari.Channel.setFileSpace
+mari.ChannelInfo.setFileSpace
+mari.Image.setFileSpace">setFileSpace</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-17"><a class="py-name" href="#" onclick="return doclink('link-17', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-18"><a class="py-name" href="#" onclick="return doclink('link-18', 'Image', 'link-14');" title="mari.Image">Image</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-19" targets="Variable mari.Image.FILESPACE_VECTOR=mari.Image-class.html#FILESPACE_VECTOR,Variable mari.Image.FileSpace.FILESPACE_VECTOR=mari.Image.FileSpace-class.html#FILESPACE_VECTOR"><a class="py-name" href="#" onclick="return doclink('link-19', 'FILESPACE_VECTOR', 'link-19');" title="mari.Image.FILESPACE_VECTOR
+mari.Image.FileSpace.FILESPACE_VECTOR">FILESPACE_VECTOR</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">        <tt class="py-name">flow_layer</tt> <tt class="py-op">=</tt> <tt class="py-name">flow_channel</tt><tt class="py-op">.</tt><tt class="py-name" id="link-20" targets="Method mari.LayerStack.findLayer()=mari.LayerStack-class.html#findLayer"><a class="py-name" href="#" onclick="return doclink('link-20', 'findLayer', 'link-20');" title="mari.LayerStack.findLayer">findLayer</a></tt><tt class="py-op">(</tt><tt class="py-string">"Flow Vectors"</tt><tt class="py-op">)</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">flow_layer</tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">            <tt class="py-name">flow_layer</tt> <tt class="py-op">=</tt> <tt class="py-name">flow_channel</tt><tt class="py-op">.</tt><tt class="py-name" id="link-21" targets="Method mari.LayerStack.createPaintableLayer()=mari.LayerStack-class.html#createPaintableLayer"><a class="py-name" href="#" onclick="return doclink('link-21', 'createPaintableLayer', 'link-21');" title="mari.LayerStack.createPaintableLayer">createPaintableLayer</a></tt><tt class="py-op">(</tt><tt class="py-string">"Flow Vectors"</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-22"><a class="py-name" href="#" onclick="return doclink('link-22', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-23" targets="Class mari.Color=mari.Color-class.html"><a class="py-name" href="#" onclick="return doclink('link-23', 'Color', 'link-23');" title="mari.Color">Color</a></tt><tt class="py-op">(</tt><tt class="py-number">0.5</tt><tt class="py-op">,</tt> <tt class="py-number">0.5</tt><tt class="py-op">,</tt> <tt class="py-number">0.5</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">    <tt class="py-comment"># Create a channel ready for flow map painting. Pure blue color corresponds to a vector</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">    <tt class="py-comment"># pointing directly away from an object's surface.</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">    <tt class="py-name">normal_channel</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-24"><a class="py-name" href="#" onclick="return doclink('link-24', 'geo', 'link-4');" title="mari.current.geo
+mari.examples.c_api_channel_export.geo">geo</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-25"><a class="py-name" href="#" onclick="return doclink('link-25', 'findChannel', 'link-10');" title="mari.GeoEntity.findChannel">findChannel</a></tt><tt class="py-op">(</tt><tt class="py-string">'Normal Map Painting Channel'</tt><tt class="py-op">)</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">normal_channel</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">        <tt class="py-name">normal_channel</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-26"><a class="py-name" href="#" onclick="return doclink('link-26', 'geo', 'link-4');" title="mari.current.geo
+mari.examples.c_api_channel_export.geo">geo</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-27"><a class="py-name" href="#" onclick="return doclink('link-27', 'createChannel', 'link-12');" title="mari.GeoEntity.createChannel">createChannel</a></tt><tt class="py-op">(</tt><tt class="py-string">"Normal Map Painting Channel"</tt><tt class="py-op">,</tt> <tt class="py-number">4096</tt><tt class="py-op">,</tt> <tt class="py-number">4096</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-28"><a class="py-name" href="#" onclick="return doclink('link-28', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-29"><a class="py-name" href="#" onclick="return doclink('link-29', 'Image', 'link-14');" title="mari.Image">Image</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-30" targets="Variable mari.Image.DEPTH_FLOAT=mari.Image-class.html#DEPTH_FLOAT,Variable mari.Image.Depth.DEPTH_FLOAT=mari.Image.Depth-class.html#DEPTH_FLOAT,Variable mari.PaintBuffer.BufferDepth.DEPTH_FLOAT=mari.PaintBuffer.BufferDepth-class.html#DEPTH_FLOAT,Variable mari.PaintBuffer.DEPTH_FLOAT=mari.PaintBuffer-class.html#DEPTH_FLOAT,Variable mari.Projector.BitDepth.DEPTH_FLOAT=mari.Projector.BitDepth-class.html#DEPTH_FLOAT,Variable mari.Projector.DEPTH_FLOAT=mari.Projector-class.html#DEPTH_FLOAT,Variable mari.QuickProjector.BitDepth.DEPTH_FLOAT=mari.QuickProjector.BitDepth-class.html#DEPTH_FLOAT,Variable mari.QuickProjector.DEPTH_FLOAT=mari.QuickProjector-class.html#DEPTH_FLOAT"><a class="py-name" href="#" onclick="return doclink('link-30', 'DEPTH_FLOAT', 'link-30');" title="mari.Image.DEPTH_FLOAT
+mari.Image.Depth.DEPTH_FLOAT
+mari.PaintBuffer.BufferDepth.DEPTH_FLOAT
+mari.PaintBuffer.DEPTH_FLOAT
+mari.Projector.BitDepth.DEPTH_FLOAT
+mari.Projector.DEPTH_FLOAT
+mari.QuickProjector.BitDepth.DEPTH_FLOAT
+mari.QuickProjector.DEPTH_FLOAT">DEPTH_FLOAT</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">        <tt class="py-comment"># Change channel so on import/export the vectors in the channel will be scaled from [0,1] to [-1,+1]</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">        <tt class="py-name">normal_channel</tt><tt class="py-op">.</tt><tt class="py-name" id="link-31"><a class="py-name" href="#" onclick="return doclink('link-31', 'setFileSpace', 'link-16');" title="mari.Channel.setFileSpace
+mari.ChannelInfo.setFileSpace
+mari.Image.setFileSpace">setFileSpace</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-32"><a class="py-name" href="#" onclick="return doclink('link-32', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-33"><a class="py-name" href="#" onclick="return doclink('link-33', 'Image', 'link-14');" title="mari.Image">Image</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-34"><a class="py-name" href="#" onclick="return doclink('link-34', 'FILESPACE_VECTOR', 'link-19');" title="mari.Image.FILESPACE_VECTOR
+mari.Image.FileSpace.FILESPACE_VECTOR">FILESPACE_VECTOR</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line"> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">        <tt class="py-name">normal_layer</tt> <tt class="py-op">=</tt> <tt class="py-name">normal_channel</tt><tt class="py-op">.</tt><tt class="py-name" id="link-35"><a class="py-name" href="#" onclick="return doclink('link-35', 'findLayer', 'link-20');" title="mari.LayerStack.findLayer">findLayer</a></tt><tt class="py-op">(</tt><tt class="py-string">"Normal Vectors"</tt><tt class="py-op">)</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">normal_layer</tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">            <tt class="py-name">normal_layer</tt> <tt class="py-op">=</tt> <tt class="py-name">normal_channel</tt><tt class="py-op">.</tt><tt class="py-name" id="link-36"><a class="py-name" href="#" onclick="return doclink('link-36', 'createPaintableLayer', 'link-21');" title="mari.LayerStack.createPaintableLayer">createPaintableLayer</a></tt><tt class="py-op">(</tt><tt class="py-string">"Normal Vectors"</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-37"><a class="py-name" href="#" onclick="return doclink('link-37', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-38"><a class="py-name" href="#" onclick="return doclink('link-38', 'Color', 'link-23');" title="mari.Color">Color</a></tt><tt class="py-op">(</tt><tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">1.0</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">     </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line"><tt class="py-comment"># register an action and automatically put it into the Shading menu on the main window</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line"><tt class="py-name" id="link-39"><a class="py-name" href="#" onclick="return doclink('link-39', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-40" targets="Variable mari.menus=mari-module.html#menus"><a class="py-name" href="#" onclick="return doclink('link-40', 'menus', 'link-40');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-41" targets="Method mari.MenuManager.addAction()=mari.MenuManager-class.html#addAction,Method mari.ToolBar.addAction()=mari.ToolBar-class.html#addAction,Function mari.examples.vector_brush.addAction()=mari.examples.vector_brush-module.html#addAction"><a class="py-name" href="#" onclick="return doclink('link-41', 'addAction', 'link-41');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-42"><a class="py-name" href="#" onclick="return doclink('link-42', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-43" targets="Method mari.MenuManager.actions()=mari.MenuManager-class.html#actions,Variable mari.actions=mari-module.html#actions"><a class="py-name" href="#" onclick="return doclink('link-43', 'actions', 'link-43');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-44" targets="Method mari.ActionManager.create()=mari.ActionManager-class.html#create,Method mari.PaletteManager.create()=mari.PaletteManager-class.html#create,Method mari.ProjectManager.create()=mari.ProjectManager-class.html#create,Method mari.ProjectorManager.create()=mari.ProjectorManager-class.html#create"><a class="py-name" href="#" onclick="return doclink('link-44', 'create', 'link-44');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt><tt class="py-string">'Create Vector Channels'</tt><tt class="py-op">,</tt> <tt class="py-string">'mari.examples.vector_channel.createVectorChannels()'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">"MainWindow/P&amp;ython/&amp;Examples"</tt><tt class="py-op">)</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

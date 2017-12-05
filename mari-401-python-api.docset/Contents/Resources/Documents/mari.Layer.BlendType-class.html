@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.Layer.BlendType
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.Layer-class.html">
+       Class&nbsp;Layer
+      </a>
+      ::
+        Class&nbsp;BlendType
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.Layer.BlendType-class.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS DESCRIPTION ==================== -->
+  <h1 class="epydoc">
+   Class BlendType
+  </h1>
+  <p class="nomargin-top">
+   <span class="codelink">
+    <a href="mari-pysrc.html#Layer.BlendType">
+     source&nbsp;code
+    </a>
+   </span>
+  </p>
+  <p>
+   Mari has two blenidng modes, Basic or Advanced.
+  </p>
+  <p>
+   Basic blending mode takes the RGBA from the current layer and from the
+  layer below and blends them using the chosen BlendMode to produce a 
+  result.
+  </p>
+  <p>
+   <code>
+    Out = blendMode( ThisLayer.RGBA, LayerBelow.RGBA, 
+  Opacity)
+   </code>
+  </p>
+  <p>
+   Advanced blending introduces two control curves that pull masks from 
+  the current layer and the layer below These curves are used to modulate 
+  the alpha component of the two input values.
+  </p>
+  <p>
+   <code>
+    Out = blendMode( ThisLayerCurve[ThisLayer.RGBA], 
+  LayerBelowCurve[LayerBelow.RGBA], Opacity)
+   </code>
+  </p>
+  <p>
+   Advanced blending gives fine grain control over how and where blending
+  occurs based on the incoming color values
+  </p>
+  <hr/>
+  <div class="fields">
+   <p>
+    <strong>
+     Note:
+    </strong>
+    These values are exposed in the parent class, but are also 
+        documented here for convenience.
+   </p>
+  </div>
+  <!-- ==================== CLASS VARIABLES ==================== -->
+  <a name="section-ClassVariables">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Class Variables
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="BASIC_BLEND">
+     </a>
+     <span class="summary-name">
+      BASIC_BLEND
+     </span>
+     =
+     <code title="0">
+      0
+     </code>
+     <br/>
+     Basic blending using only the opacity value.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="ADVANCED_BLEND">
+     </a>
+     <span class="summary-name">
+      ADVANCED_BLEND
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     Enable Advanced blending.
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

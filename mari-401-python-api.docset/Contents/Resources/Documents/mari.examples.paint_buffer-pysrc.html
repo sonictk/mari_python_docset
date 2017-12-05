@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.examples.paint_buffer
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.examples-module.html">
+       Package&nbsp;examples
+      </a>
+      ::
+        Module&nbsp;paint_buffer
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.examples.paint_buffer-pysrc.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <h1 class="epydoc">
+   Source Code for
+   <a href="mari.examples.paint_buffer-module.html">
+    Module mari.examples.paint_buffer
+   </a>
+  </h1>
+  <pre class="py-src">
+&iuml;&raquo;&iquest;# ------------------------------------------------------------------------------
+# Testing and examples for the paint buffer API bindings
+# coding: utf-8
+# Copyright (c) 2010 The Foundry Visionmongers Ltd.  All Rights Reserved.
+# ------------------------------------------------------------------------------
+
+import mari
+import PySide2
+
+gui = PySide2.QtGui
+core = PySide2.QtCore
+widgets = PySide2.QtWidgets
+
+# ------------------------------------------------------------------------------
+def bitDepthAsString(depth):
+    p = mari.canvases.paintBuffer()
+    if depth == p.DEPTH_BYTE:
+        return 'Byte - 8 Bit'
+    if depth == p.DEPTH_HALF:
+        return 'Half - 16 Bit'
+    if depth == p.DEPTH_FLOAT:
+        return 'Float - 32 Bit'
+
+# ------------------------------------------------------------------------------
+def drawSomePaint():
+    "Uses the QT drawing code to create some contents for the paint buffer."
+    # grab a handle to the paint buffer 
+    p = mari.canvases.paintBuffer()
+    # create a QImage the same size as the buffer
+    Img = p.getPaint() 
+    painter = gui.QPainter()
+    painter.begin(Img)
+    painter.setFont(gui.QFont("Arial", 30))
+    painter.drawText(Img.rect(), 0x80 | 0x04, "Mari") # gui.AlignCenter = 0x80 | 0x04 = Qt::AlignVCenter | Qt::AlignHCenter
+    p.setPaint(Img)
+  
+# ------------------------------------------------------------------------------
+def resizeBuffer(size_combo, size_label):
+    "Resizes the paint buffer based on the value in the combo box."
+    # grab a handle to the paint buffer 
+    p = mari.canvases.paintBuffer()
+    # get the required size out of the combobox
+    size = size_combo.itemData(size_combo.currentIndex())
+    # now try and resize the buffer
+    if p.setResolution(size):
+        # and if the resize works, update the size label
+        size_label.setText('%s x %s' % (size.width(), size.height()))
+
+# ------------------------------------------------------------------------------
+def getPaint(Label):
+    "Gets the contents of the paint buffer and show it in a dialog."
+    # grab a handle to the paint buffer 
+    p = mari.canvases.paintBuffer()
+    # get the contents of the paint buffer as an image
+    img = p.getPaint()
+    # set the pixmap for the label as the paint image returned from Mari
+    Label.setPixmap(gui.QPixmap.fromImage(img).scaled(256, 256))
+    # and freeup the buffer
+    #img.deleteLater()
+
+# ------------------------------------------------------------------------------
+def updatePaint():
+    "Updates the contents of the paint buffer from a QImage."
+    print "Calling update paint"
+    # grab a handle to the paint buffer 
+    p = mari.canvases.paintBuffer()
+    # get the contents of the paint buffer as an image
+    img = p.getPaint()
+    # clear the paint to a known color
+    img.fill(gui.QColor(255,0,0,255).rgba())
+    # and set the paint on the buffer
+    p.setPaint(img)
+    # and freeup the buffer
+    #img.deleteLater()
+    
+# ------------------------------------------------------------------------------
+def updateBuffer(depth_combo, depth_label):
+    "Changes the bit depth of the paint buffer based on the value in the combo box."
+    # grab a handle to the paint buffer 
+    p = mari.canvases.paintBuffer()
+    # find out the required depth
+    depth = depth_combo.itemData(depth_combo.currentIndex())
+    p.setDepth(mari.PaintBuffer.BufferDepth(depth))
+    depth_label.setText(bitDepthAsString(depth))
+
+# ------------------------------------------------------------------------------
+def updateRotation(rot):
+    # grab a handle to the paint buffer 
+    p = mari.canvases.paintBuffer()
+    # set the rotation
+    p.setRotation(rot.value())
+
+# ------------------------------------------------------------------------------
+def updateScale(x,y):
+    # grab a handle to the paint buffer 
+    p = mari.canvases.paintBuffer()
+    # set the scale
+    p.setScale(core.QSizeF(float(x.text()), float(y.text())))
+
+# ------------------------------------------------------------------------------
+def updateTranslate(x,y):
+    # grab a handle to the paint buffer 
+    p = mari.canvases.paintBuffer()
+    # set the scale
+    p.setTranslation(core.QPointF(float(x.text()), float(y.text())))
+
+# ------------------------------------------------------------------------------
+def setBold(widget):
+    "Makes the text in a widget bold."
+    f = widget.font()
+    f.setWeight(75)
+    widget.setFont(f)
+
+# ------------------------------------------------------------------------------
+def paintBufferTest():
+    # Check that we're starting from a state where testing the paint buffer is possible
+    if not mari.utils.checkProjectAndGeoValidity():
+        return
+    
+    # grab a handle to the paint buffer 
+    p = mari.canvases.paintBuffer()
+    
+    # Create a Dialog so we can play around with the paint buffer
+    dlg = widgets.QDialog()
+    dlg_layout = widgets.QVBoxLayout()
+    dlg.setLayout(dlg_layout)
+    dlg.setWindowTitle("Paint Buffer Control")
+    
+    # Basic layouts
+    objects_layout = widgets.QVBoxLayout()
+    button_layout = widgets.QVBoxLayout()
+    
+    dlg_layout.addLayout(objects_layout)
+    dlg_layout.addLayout(button_layout)
+
+    # Disable out some information about the paint buffer
+
+    # Show if the paint buffer is dirty or clean
+    dirty_label = widgets.QLabel("")
+
+    if p.isDirty():
+        dirty_label.setText('Buffer is dirty')
+    else:
+        dirty_label.setText('Buffer is clean')
+
+    setBold(dirty_label)
+
+    # and what size it is currently
+
+    image_label = widgets.QLabel()
+    image_label.setFixedWidth(256)
+    image_label.setFixedHeight(256)
+
+    size_label = widgets.QLabel('%s x %s' % (p.resolution().width(), p.resolution().height()))
+    setBold(size_label)
+
+    # and the bit dept of the buffer 
+    depth_label = widgets.QLabel(bitDepthAsString(p.depth()))
+    setBold(depth_label)
+
+    # and create a combobox that allows resizing of the paint buffer
+
+    size_layout = widgets.QHBoxLayout()
+
+    size_combo = widgets.QComboBox()
+    
+    for size in p.supportedResolutions():
+        size_combo.addItem('%s x %s' % (size.width(), size.height()), size)
+    size_combo.setCurrentIndex(size_combo.findData(p.resolution()))
+
+    size_layout.addWidget(size_combo)
+    
+    resize_button = widgets.QPushButton('Resize')
+    mari.utils.connect(resize_button.clicked, lambda: resizeBuffer(size_combo, size_label))
+    mari.utils.connect(resize_button.clicked, lambda: getPaint(image_label))
+
+    size_layout.addWidget(resize_button)
+
+    # make a combo and button that changes the bit depth of the buffer
+    depth_layout = widgets.QHBoxLayout()
+
+    depth_combo = widgets.QComboBox()
+    
+    depth_combo.addItem('Byte - 8 Bit', p.DEPTH_BYTE)
+    depth_combo.addItem('Half - 16 Bit', p.DEPTH_HALF)
+    depth_combo.addItem('FLoat - 32 Bit', p.DEPTH_FLOAT)
+
+    depth_layout.addWidget(depth_combo)
+    
+    update_button = widgets.QPushButton('Update')
+    mari.utils.connect(update_button.clicked, lambda: updateBuffer(depth_combo,depth_label))
+    mari.utils.connect(update_button.clicked, lambda: getPaint(image_label))
+    depth_layout.addWidget(update_button)
+    
+    # Add buttons to clear and bake the buffer
+    pb_clear = widgets.QPushButton("&amp;Clear;")
+    mari.utils.connect(pb_clear.clicked, lambda: p.clear())
+    mari.utils.connect(pb_clear.clicked, lambda: getPaint(image_label))
+
+    # Add a button to show a copy of the paint buffer in a new image
+    pb_getPaint = widgets.QPushButton("&amp;Get; Paint")
+    mari.utils.connect(pb_getPaint.clicked, lambda: getPaint(image_label))
+
+    # Add a button, than when pressed, paints something into the paint buffer
+    pb_paint = widgets.QPushButton("&amp;Paint;")
+    mari.utils.connect(pb_paint.clicked, lambda: updatePaint())
+    mari.utils.connect(pb_paint.clicked, lambda: getPaint(image_label))
+
+    pb_bake = widgets.QPushButton("&amp;Bake;")
+    mari.utils.connect(pb_bake.clicked, lambda: p.bake())
+    mari.utils.connect(pb_bake.clicked, lambda: getPaint(image_label))
+
+    # add a slider bar that controls the rotation of the paint buffer
+    rot_slider = widgets.QSlider()
+    rot_slider.setRange(0,360)
+    rot_label = widgets.QLabel('Rotation')
+    setBold(rot_label)
+    rot_layout = widgets.QHBoxLayout()
+    rot_layout.addWidget(rot_label)
+    rot_layout.addWidget(rot_slider)
+    mari.utils.connect(rot_slider.valueChanged, lambda: updateRotation(rot_slider))
+
+    scale_layout = widgets.QHBoxLayout()
+    scale_label = widgets.QLabel('Scale')
+    scale_x_box = widgets.QLineEdit(str(p.scale().width()))
+    scale_y_box = widgets.QLineEdit(str(p.scale().height()))
+    setBold(scale_label)
+    scale_layout.addWidget(scale_label)
+    scale_layout.addWidget(scale_x_box)
+    scale_layout.addWidget(scale_y_box)
+    scale_update_button = widgets.QPushButton("Go")
+    mari.utils.connect(scale_update_button.clicked, lambda: updateScale(scale_x_box, scale_y_box))
+    scale_layout.addWidget(scale_update_button)
+
+
+    translate_layout = widgets.QHBoxLayout()
+    translate_label = widgets.QLabel('Translate')
+    translate_x_box = widgets.QLineEdit(str(p.translation().x()))
+    translate_y_box = widgets.QLineEdit(str(p.translation().y()))
+    setBold(translate_label)
+    translate_layout.addWidget(translate_label)
+    translate_layout.addWidget(translate_x_box)
+    translate_layout.addWidget(translate_y_box)
+    translate_update_button = widgets.QPushButton("Go")
+    mari.utils.connect(translate_update_button.clicked, lambda: updateTranslate(translate_x_box, translate_y_box))
+    translate_layout.addWidget(translate_update_button)
+    
+    # Add all of the widgets to the main layout
+
+    getPaint(image_label)
+
+    objects_layout.addWidget(image_label)
+    objects_layout.addWidget(size_label)
+    objects_layout.addWidget(depth_label)
+    objects_layout.addWidget(dirty_label)
+    objects_layout.addLayout(depth_layout)
+    objects_layout.addLayout(size_layout)
+
+    objects_layout.addLayout(translate_layout)
+    objects_layout.addLayout(scale_layout)
+
+    objects_layout.addLayout(rot_layout)
+    objects_layout.addWidget(pb_getPaint)
+    objects_layout.addWidget(pb_paint)
+    objects_layout.addWidget(pb_clear)
+    objects_layout.addWidget(pb_bake)
+  
+    # Main buttons
+    pb_ok = widgets.QPushButton("OK")
+    mari.utils.connect(pb_ok.clicked, lambda: dlg.accept())
+    
+    button_layout.addWidget(pb_ok)
+    
+    # Display
+    dlg.show()
+
+# ------------------------------------------------------------------------------
+
+# register an action and automatically put it into the Shading menu on the main window
+mari.menus.addAction(mari.actions.create('&amp;Paint; Buffer', 'mari.examples.paint_buffer.paintBufferTest()'), "MainWindow/P&amp;ython;/&amp;Examples;")
+<script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

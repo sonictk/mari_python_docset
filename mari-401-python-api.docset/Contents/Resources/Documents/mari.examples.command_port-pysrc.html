@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.examples.command_port
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.examples-module.html">
+       Package&nbsp;examples
+      </a>
+      ::
+        Module&nbsp;command_port
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.examples.command_port-pysrc.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <h1 class="epydoc">
+   Source Code for
+   <a href="mari.examples.command_port-module.html">
+    Module mari.examples.command_port
+   </a>
+  </h1>
+  <pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"># Command port example</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-comment"># coding: utf-8</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-comment"># Copyright (c) 2011 The Foundry Visionmongers Ltd.  All Rights Reserved.</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name" id="link-0" targets="Package mari=mari-module.html"><a class="py-name" href="#" onclick="return doclink('link-0', 'mari', 'link-0');" title="mari">mari</a></tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">PySide2</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">socket</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-name">widgets</tt> <tt class="py-op">=</tt> <tt class="py-name">PySide2</tt><tt class="py-op">.</tt><tt class="py-name">QtWidgets</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="SendDialog"></a><div id="SendDialog-def"><a name="L14"></a><tt class="py-lineno">14</tt> <a class="py-toggle" href="#" id="SendDialog-toggle" onclick="return toggle('SendDialog');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="mari.examples.command_port.SendDialog-class.html">SendDialog</a><tt class="py-op">(</tt><tt class="py-base-class">widgets</tt><tt class="py-op">.</tt><tt class="py-base-class">QDialog</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SendDialog-collapsed" indent="++++" pad="++" style="display:none;"></div><div id="SendDialog-expanded"><a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">    <tt class="py-docstring">"""Sends simple one-line text commands to Mari's command port.</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt class="py-docstring">    You can send commands to be executed in Mari to its command port, as long as</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt class="py-docstring">    you have it enabled in the settings and know the port number to use.  Any</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-docstring">    Python command can be sent across using this method.</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-docstring">    This example is just to demonstrate how to use the command port, and of</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt class="py-docstring">    course is not a great deal of use on its own.</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt class="py-docstring">    @note: Make sure you terminate the commands to be send with a Ctrl+D</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"><tt class="py-docstring">    character (ASCII code 4).  This character instructs Mari to execute the</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"><tt class="py-docstring">    received commands.</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">    <tt class="py-name" id="link-1" targets="Variable mari.examples.command_port.SendDialog.instance=mari.examples.command_port.SendDialog-class.html#instance,Variable mari.examples.maya_export.ProgressDialog.instance=mari.examples.maya_export.ProgressDialog-class.html#instance"><a class="py-name" href="#" onclick="return doclink('link-1', 'instance', 'link-1');" title="mari.examples.command_port.SendDialog.instance
+mari.examples.maya_export.ProgressDialog.instance">instance</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">     </tt>
+<a name="SendDialog.__init__"></a><div id="SendDialog.__init__-def"><a name="L30"></a><tt class="py-lineno">30</tt> <a class="py-toggle" href="#" id="SendDialog.__init__-toggle" onclick="return toggle('SendDialog.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.command_port.SendDialog-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SendDialog.__init__-collapsed" indent="++++++++" pad="++" style="display:none;"></div><div id="SendDialog.__init__-expanded"><a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">        <tt class="py-name">super</tt><tt class="py-op">(</tt><tt class="py-name" id="link-2" targets="Class mari.examples.command_port.SendDialog=mari.examples.command_port.SendDialog-class.html"><a class="py-name" href="#" onclick="return doclink('link-2', 'SendDialog', 'link-2');" title="mari.examples.command_port.SendDialog">SendDialog</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name" id="link-3" targets="Method mari.ChannelInfo.__init__()=mari.ChannelInfo-class.html#__init__,Method mari.Color.__init__()=mari.Color-class.html#__init__,Method mari.ColorspaceConfig.__init__()=mari.ColorspaceConfig-class.html#__init__,Method mari.ColorspaceDefaults.__init__()=mari.ColorspaceDefaults-class.html#__init__,Method mari.FileList.__init__()=mari.FileList-class.html#__init__,Method mari.FloatSlider.__init__()=mari.FloatSlider-class.html#__init__,Method mari.IntSlider.__init__()=mari.IntSlider-class.html#__init__,Method mari.LineEdit.__init__()=mari.LineEdit-class.html#__init__,Method mari.LookUpTable.__init__()=mari.LookUpTable-class.html#__init__,Method mari.NodeContext.__init__()=mari.NodeContext-class.html#__init__,Method mari.Palette.__init__()=mari.Palette-class.html#__init__,Method mari.Ptex.__init__()=mari.Ptex-class.html#__init__,Method mari.Settings.__init__()=mari.Settings-class.html#__init__,Method mari.VectorN.__init__()=mari.VectorN-class.html#__init__,Method mari.examples.command_port.SendDialog.__init__()=mari.examples.command_port.SendDialog-class.html#__init__,Method mari.examples.export_dialog.DirBrowser.__init__()=mari.examples.export_dialog.DirBrowser-class.html#__init__,Method mari.examples.export_dialog.FormatsBox.__init__()=mari.examples.export_dialog.FormatsBox-class.html#__init__,Method mari.examples.export_dialog.OpList.__init__()=mari.examples.export_dialog.OpList-class.html#__init__,Method mari.examples.export_shelf.ExportShelfDialog.__init__()=mari.examples.export_shelf.ExportShelfDialog-class.html#__init__,Method mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers.__init__()=mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers-class.html#__init__,Method mari.examples.layered_channels_from_layered_shaders.CreateChannelLayers.__init__()=mari.examples.layered_channels_from_layered_shaders.CreateChannelLayers-class.html#__init__,Method mari.examples.maya_export.LayersToExportList.__init__()=mari.examples.maya_export.LayersToExportList-class.html#__init__,Method mari.examples.maya_export.ProgressDialog.__init__()=mari.examples.maya_export.ProgressDialog-class.html#__init__,Method mari.system._modo_session.BakeSetup.__init__()=mari.system._modo_session.BakeSetup-class.html#__init__,Method mari.system._modo_session.CancelNotification.__init__()=mari.system._modo_session.CancelNotification-class.html#__init__,Method mari.system._modo_session.ModoLaunchError.__init__()=mari.system._modo_session.ModoLaunchError-class.html#__init__,Method mari.system._modo_session.ModoSession.__init__()=mari.system._modo_session.ModoSession-class.html#__init__,Method mari.system._modo_session.ModoSockLogger.__init__()=mari.system._modo_session.ModoSockLogger-class.html#__init__,Method mari.system._modo_session.RenderSetup.__init__()=mari.system._modo_session.RenderSetup-class.html#__init__,Method mari.system._modo_ui.ChannelAssignmentAddDialog.__init__()=mari.system._modo_ui.ChannelAssignmentAddDialog-class.html#__init__,Method mari.system._modo_ui.ChannelAssignmentWidget.__init__()=mari.system._modo_ui.ChannelAssignmentWidget-class.html#__init__,Method mari.system._modo_ui.DepthCombobox.__init__()=mari.system._modo_ui.DepthCombobox-class.html#__init__,Method mari.system._modo_ui.FileLookupWidget.__init__()=mari.system._modo_ui.FileLookupWidget-class.html#__init__,Method mari.system._modo_ui.ModoBakeSettingsWidget.__init__()=mari.system._modo_ui.ModoBakeSettingsWidget-class.html#__init__,Method mari.system._modo_ui.ModoBakeSettingsWidgetItemDelegate.__init__()=mari.system._modo_ui.ModoBakeSettingsWidgetItemDelegate-class.html#__init__,Method mari.system._modo_ui.ModoControlWidget.__init__()=mari.system._modo_ui.ModoControlWidget-class.html#__init__,Method mari.system._modo_ui.ModoPreviewWidget.__init__()=mari.system._modo_ui.ModoPreviewWidget-class.html#__init__,Method mari.system._modo_ui.ModoRenderSettingsWidget.__init__()=mari.system._modo_ui.ModoRenderSettingsWidget-class.html#__init__,Method mari.system._modo_ui.ModoSettingsWidget.__init__()=mari.system._modo_ui.ModoSettingsWidget-class.html#__init__,Method mari.system._modo_ui.ProgressObject.__init__()=mari.system._modo_ui.ProgressObject-class.html#__init__,Method mari.system._modo_ui.ResolutionCombobox.__init__()=mari.system._modo_ui.ResolutionCombobox-class.html#__init__,Method mari.system._ocio_filter.OcioFilter.__init__()=mari.system._ocio_filter.OcioFilter-class.html#__init__,Method mari.system._ocio_toolbar.OcioToolBar.__init__()=mari.system._ocio_toolbar.OcioToolBar-class.html#__init__,Method mari.system._particle_channel_transfer.ChannelOptionsTab.__init__()=mari.system._particle_channel_transfer.ChannelOptionsTab-class.html#__init__,Method mari.system._particle_channel_transfer.ChannelTransferDialog.__init__()=mari.system._particle_channel_transfer.ChannelTransferDialog-class.html#__init__,Method mari.system._particle_channel_transfer.ChannelTransferListWidget.__init__()=mari.system._particle_channel_transfer.ChannelTransferListWidget-class.html#__init__,Method mari.system._particle_channel_transfer.ChannelTransferListWidgetItem.__init__()=mari.system._particle_channel_transfer.ChannelTransferListWidgetItem-class.html#__init__,Method mari.system._particle_layer_transfer.LayerOptionsTab.__init__()=mari.system._particle_layer_transfer.LayerOptionsTab-class.html#__init__,Method mari.system._particle_layer_transfer.LayerTransferDialog.__init__()=mari.system._particle_layer_transfer.LayerTransferDialog-class.html#__init__,Method mari.system._particle_layer_transfer.LayerTransferTreeWidget.__init__()=mari.system._particle_layer_transfer.LayerTransferTreeWidget-class.html#__init__,Method mari.system._particle_layer_transfer.LayerTransferTreeWidgetItem.__init__()=mari.system._particle_layer_transfer.LayerTransferTreeWidgetItem-class.html#__init__,Method mari.system._particle_ops.ParticleOpDialog.__init__()=mari.system._particle_ops.ParticleOpDialog-class.html#__init__,Method mari.system._particle_transfer.AdvancedTab.__init__()=mari.system._particle_transfer.AdvancedTab-class.html#__init__,Method mari.system._particle_transfer.EntityComboBox.__init__()=mari.system._particle_transfer.EntityComboBox-class.html#__init__,Method mari.system._particle_transfer.OptionsTab.__init__()=mari.system._particle_transfer.OptionsTab-class.html#__init__,Method mari.system._particle_transfer.PatchWidget.__init__()=mari.system._particle_transfer.PatchWidget-class.html#__init__,Method mari.system._particle_transfer.TransferDialog.__init__()=mari.system._particle_transfer.TransferDialog-class.html#__init__,Method mari.system.batch_export_dialog.AddExportItemDialog.__init__()=mari.system.batch_export_dialog.AddExportItemDialog-class.html#__init__,Method mari.system.batch_export_dialog.ComboBoxDelegate.__init__()=mari.system.batch_export_dialog.ComboBoxDelegate-class.html#__init__,Method mari.system.batch_export_dialog.ExportDialog.__init__()=mari.system.batch_export_dialog.ExportDialog-class.html#__init__,Method mari.system.batch_export_dialog.ExportItemModel.__init__()=mari.system.batch_export_dialog.ExportItemModel-class.html#__init__,Method mari.system.batch_export_dialog.ExportManagerView.__init__()=mari.system.batch_export_dialog.ExportManagerView-class.html#__init__,Method mari.system.batch_export_dialog.ExportWidget.__init__()=mari.system.batch_export_dialog.ExportWidget-class.html#__init__,Method mari.system.batch_export_dialog.FileOptionsDialog.__init__()=mari.system.batch_export_dialog.FileOptionsDialog-class.html#__init__,Method mari.system.batch_export_dialog.PushButton.__init__()=mari.system.batch_export_dialog.PushButton-class.html#__init__,Method mari.system.batch_export_dialog.PushButtonIconSetter.__init__()=mari.system.batch_export_dialog.PushButtonIconSetter-class.html#__init__,Method mari.system.megascans.EnterAwareComboBox.__init__()=mari.system.megascans.EnterAwareComboBox-class.html#__init__,Method mari.system.megascans.FlowingVerticalLayout.__init__()=mari.system.megascans.FlowingVerticalLayout-class.html#__init__,Method mari.system.megascans.HoverButton.__init__()=mari.system.megascans.HoverButton-class.html#__init__,Method mari.system.megascans.Megascan.__init__()=mari.system.megascans.Megascan-class.html#__init__,Method mari.system.megascans.MegascansViewerWidget.__init__()=mari.system.megascans.MegascansViewerWidget-class.html#__init__,Method mari.system.megascans.ThreadedParser.__init__()=mari.system.megascans.ThreadedParser-class.html#__init__,Method mari.system.megascans.ThumbnailProxyModel.__init__()=mari.system.megascans.ThumbnailProxyModel-class.html#__init__,Method mari.system.megascans.ThumbnailSourceModel.__init__()=mari.system.megascans.ThumbnailSourceModel-class.html#__init__,Method mari.system.nuke_bridge.FromNuke.__init__()=mari.system.nuke_bridge.FromNuke-class.html#__init__,Method mari.system.nuke_bridge.ProjectionSettingsUI.__init__()=mari.system.nuke_bridge.ProjectionSettingsUI-class.html#__init__,Method mari.system.snapshots.SnapshotUI.__init__()=mari.system.snapshots.SnapshotUI-class.html#__init__,Method mari.utils.node_generator.Node.__init__()=mari.utils.node_generator.Node-class.html#__init__,Method mari.utils.redirector.StreamRedirector.__init__()=mari.utils.redirector.StreamRedirector-class.html#__init__"><a class="py-name" href="#" onclick="return doclink('link-3', '__init__', 'link-3');" title="mari.ChannelInfo.__init__
+mari.Color.__init__
+mari.ColorspaceConfig.__init__
+mari.ColorspaceDefaults.__init__
+mari.FileList.__init__
+mari.FloatSlider.__init__
+mari.IntSlider.__init__
+mari.LineEdit.__init__
+mari.LookUpTable.__init__
+mari.NodeContext.__init__
+mari.Palette.__init__
+mari.Ptex.__init__
+mari.Settings.__init__
+mari.VectorN.__init__
+mari.examples.command_port.SendDialog.__init__
+mari.examples.export_dialog.DirBrowser.__init__
+mari.examples.export_dialog.FormatsBox.__init__
+mari.examples.export_dialog.OpList.__init__
+mari.examples.export_shelf.ExportShelfDialog.__init__
+mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers.__init__
+mari.examples.layered_channels_from_layered_shaders.CreateChannelLayers.__init__
+mari.examples.maya_export.LayersToExportList.__init__
+mari.examples.maya_export.ProgressDialog.__init__
+mari.system._modo_session.BakeSetup.__init__
+mari.system._modo_session.CancelNotification.__init__
+mari.system._modo_session.ModoLaunchError.__init__
+mari.system._modo_session.ModoSession.__init__
+mari.system._modo_session.ModoSockLogger.__init__
+mari.system._modo_session.RenderSetup.__init__
+mari.system._modo_ui.ChannelAssignmentAddDialog.__init__
+mari.system._modo_ui.ChannelAssignmentWidget.__init__
+mari.system._modo_ui.DepthCombobox.__init__
+mari.system._modo_ui.FileLookupWidget.__init__
+mari.system._modo_ui.ModoBakeSettingsWidget.__init__
+mari.system._modo_ui.ModoBakeSettingsWidgetItemDelegate.__init__
+mari.system._modo_ui.ModoControlWidget.__init__
+mari.system._modo_ui.ModoPreviewWidget.__init__
+mari.system._modo_ui.ModoRenderSettingsWidget.__init__
+mari.system._modo_ui.ModoSettingsWidget.__init__
+mari.system._modo_ui.ProgressObject.__init__
+mari.system._modo_ui.ResolutionCombobox.__init__
+mari.system._ocio_filter.OcioFilter.__init__
+mari.system._ocio_toolbar.OcioToolBar.__init__
+mari.system._particle_channel_transfer.ChannelOptionsTab.__init__
+mari.system._particle_channel_transfer.ChannelTransferDialog.__init__
+mari.system._particle_channel_transfer.ChannelTransferListWidget.__init__
+mari.system._particle_channel_transfer.ChannelTransferListWidgetItem.__init__
+mari.system._particle_layer_transfer.LayerOptionsTab.__init__
+mari.system._particle_layer_transfer.LayerTransferDialog.__init__
+mari.system._particle_layer_transfer.LayerTransferTreeWidget.__init__
+mari.system._particle_layer_transfer.LayerTransferTreeWidgetItem.__init__
+mari.system._particle_ops.ParticleOpDialog.__init__
+mari.system._particle_transfer.AdvancedTab.__init__
+mari.system._particle_transfer.EntityComboBox.__init__
+mari.system._particle_transfer.OptionsTab.__init__
+mari.system._particle_transfer.PatchWidget.__init__
+mari.system._particle_transfer.TransferDialog.__init__
+mari.system.batch_export_dialog.AddExportItemDialog.__init__
+mari.system.batch_export_dialog.ComboBoxDelegate.__init__
+mari.system.batch_export_dialog.ExportDialog.__init__
+mari.system.batch_export_dialog.ExportItemModel.__init__
+mari.system.batch_export_dialog.ExportManagerView.__init__
+mari.system.batch_export_dialog.ExportWidget.__init__
+mari.system.batch_export_dialog.FileOptionsDialog.__init__
+mari.system.batch_export_dialog.PushButton.__init__
+mari.system.batch_export_dialog.PushButtonIconSetter.__init__
+mari.system.megascans.EnterAwareComboBox.__init__
+mari.system.megascans.FlowingVerticalLayout.__init__
+mari.system.megascans.HoverButton.__init__
+mari.system.megascans.Megascan.__init__
+mari.system.megascans.MegascansViewerWidget.__init__
+mari.system.megascans.ThreadedParser.__init__
+mari.system.megascans.ThumbnailProxyModel.__init__
+mari.system.megascans.ThumbnailSourceModel.__init__
+mari.system.nuke_bridge.FromNuke.__init__
+mari.system.nuke_bridge.ProjectionSettingsUI.__init__
+mari.system.snapshots.SnapshotUI.__init__
+mari.utils.node_generator.Node.__init__
+mari.utils.redirector.StreamRedirector.__init__">__init__</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">setWindowTitle</tt><tt class="py-op">(</tt><tt class="py-string">'Command Port Test'</tt><tt class="py-op">)</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">         </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">        <tt class="py-name">vlayout</tt> <tt class="py-op">=</tt> <tt class="py-name">widgets</tt><tt class="py-op">.</tt><tt class="py-name">QVBoxLayout</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">setLayout</tt><tt class="py-op">(</tt><tt class="py-name">vlayout</tt><tt class="py-op">)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">         </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">        <tt class="py-name">cmd_layout</tt> <tt class="py-op">=</tt> <tt class="py-name">widgets</tt><tt class="py-op">.</tt><tt class="py-name">QHBoxLayout</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">        <tt class="py-name">vlayout</tt><tt class="py-op">.</tt><tt class="py-name">addLayout</tt><tt class="py-op">(</tt><tt class="py-name">cmd_layout</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">        <tt class="py-name">cmd_layout</tt><tt class="py-op">.</tt><tt class="py-name" id="link-4" targets="Method mari.ToolBar.addWidget()=mari.ToolBar-class.html#addWidget"><a class="py-name" href="#" onclick="return doclink('link-4', 'addWidget', 'link-4');" title="mari.ToolBar.addWidget">addWidget</a></tt><tt class="py-op">(</tt><tt class="py-name">widgets</tt><tt class="py-op">.</tt><tt class="py-name">QLabel</tt><tt class="py-op">(</tt><tt class="py-string">"Command to Send"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_command_edit</tt> <tt class="py-op">=</tt> <tt class="py-name">widgets</tt><tt class="py-op">.</tt><tt class="py-name">QLineEdit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_command_edit</tt><tt class="py-op">.</tt><tt class="py-name" id="link-5" targets="Method mari.Action.text()=mari.Action-class.html#text,Method mari.LineEdit.text()=mari.LineEdit-class.html#text,Method mari.system._modo_ui.FileLookupWidget.text()=mari.system._modo_ui.FileLookupWidget-class.html#text"><a class="py-name" href="#" onclick="return doclink('link-5', 'text', 'link-5');" title="mari.Action.text
+mari.LineEdit.text
+mari.system._modo_ui.FileLookupWidget.text">text</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'mari.utils.message("Hello!")'</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">        <tt class="py-name">cmd_layout</tt><tt class="py-op">.</tt><tt class="py-name" id="link-6"><a class="py-name" href="#" onclick="return doclink('link-6', 'addWidget', 'link-4');" title="mari.ToolBar.addWidget">addWidget</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_command_edit</tt><tt class="py-op">)</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">         </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">        <tt class="py-name">btn_layout</tt> <tt class="py-op">=</tt> <tt class="py-name">widgets</tt><tt class="py-op">.</tt><tt class="py-name">QHBoxLayout</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">        <tt class="py-name">vlayout</tt><tt class="py-op">.</tt><tt class="py-name">addLayout</tt><tt class="py-op">(</tt><tt class="py-name">btn_layout</tt><tt class="py-op">)</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">        <tt class="py-name">send_btn</tt> <tt class="py-op">=</tt> <tt class="py-name">widgets</tt><tt class="py-op">.</tt><tt class="py-name">QPushButton</tt><tt class="py-op">(</tt><tt class="py-string">"Send"</tt><tt class="py-op">)</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">        <tt class="py-name" id="link-7"><a class="py-name" href="#" onclick="return doclink('link-7', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-8" targets="Package mari.utils=mari.utils-module.html"><a class="py-name" href="#" onclick="return doclink('link-8', 'utils', 'link-8');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-9" targets="Function mari.utils.signal_helpers.connect()=mari.utils.signal_helpers-module.html#connect"><a class="py-name" href="#" onclick="return doclink('link-9', 'connect', 'link-9');" title="mari.utils.signal_helpers.connect">connect</a></tt><tt class="py-op">(</tt><tt class="py-name">send_btn</tt><tt class="py-op">.</tt><tt class="py-name">clicked</tt><tt class="py-op">,</tt> <tt class="py-keyword">lambda</tt><tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name" id="link-10" targets="Method mari.examples.command_port.SendDialog.sendCommand()=mari.examples.command_port.SendDialog-class.html#sendCommand"><a class="py-name" href="#" onclick="return doclink('link-10', 'sendCommand', 'link-10');" title="mari.examples.command_port.SendDialog.sendCommand">sendCommand</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">        <tt class="py-name">close_btn</tt> <tt class="py-op">=</tt> <tt class="py-name">widgets</tt><tt class="py-op">.</tt><tt class="py-name">QPushButton</tt><tt class="py-op">(</tt><tt class="py-string">"Close"</tt><tt class="py-op">)</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">        <tt class="py-name" id="link-11"><a class="py-name" href="#" onclick="return doclink('link-11', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-12"><a class="py-name" href="#" onclick="return doclink('link-12', 'utils', 'link-8');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-13"><a class="py-name" href="#" onclick="return doclink('link-13', 'connect', 'link-9');" title="mari.utils.signal_helpers.connect">connect</a></tt><tt class="py-op">(</tt><tt class="py-name">close_btn</tt><tt class="py-op">.</tt><tt class="py-name">clicked</tt><tt class="py-op">,</tt> <tt class="py-keyword">lambda</tt><tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name" id="link-14" targets="Method mari.Image.close()=mari.Image-class.html#close,Method mari.Layer.close()=mari.Layer-class.html#close,Method mari.Project.close()=mari.Project-class.html#close,Method mari.ProjectInfo.close()=mari.ProjectInfo-class.html#close,Method mari.ProjectManager.close()=mari.ProjectManager-class.html#close,Method mari.system._modo_session.ModoSockLogger.close()=mari.system._modo_session.ModoSockLogger-class.html#close,Method mari.utils.redirector.StreamRedirector.close()=mari.utils.redirector.StreamRedirector-class.html#close"><a class="py-name" href="#" onclick="return doclink('link-14', 'close', 'link-14');" title="mari.Image.close
+mari.Layer.close
+mari.Project.close
+mari.ProjectInfo.close
+mari.ProjectManager.close
+mari.system._modo_session.ModoSockLogger.close
+mari.utils.redirector.StreamRedirector.close">close</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">        <tt class="py-name">btn_layout</tt><tt class="py-op">.</tt><tt class="py-name">addStretch</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">        <tt class="py-name">btn_layout</tt><tt class="py-op">.</tt><tt class="py-name" id="link-15"><a class="py-name" href="#" onclick="return doclink('link-15', 'addWidget', 'link-4');" title="mari.ToolBar.addWidget">addWidget</a></tt><tt class="py-op">(</tt><tt class="py-name">send_btn</tt><tt class="py-op">)</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line">        <tt class="py-name">btn_layout</tt><tt class="py-op">.</tt><tt class="py-name">addStretch</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">        <tt class="py-name">btn_layout</tt><tt class="py-op">.</tt><tt class="py-name" id="link-16"><a class="py-name" href="#" onclick="return doclink('link-16', 'addWidget', 'link-4');" title="mari.ToolBar.addWidget">addWidget</a></tt><tt class="py-op">(</tt><tt class="py-name">close_btn</tt><tt class="py-op">)</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line">        <tt class="py-name">btn_layout</tt><tt class="py-op">.</tt><tt class="py-name">addStretch</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line">         </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name" id="link-17" targets="Method mari.Channel.resize()=mari.Channel-class.html#resize,Method mari.Image.resize()=mari.Image-class.html#resize,Method mari.ImageSet.resize()=mari.ImageSet-class.html#resize"><a class="py-name" href="#" onclick="return doclink('link-17', 'resize', 'link-17');" title="mari.Channel.resize
+mari.Image.resize
+mari.ImageSet.resize">resize</a></tt><tt class="py-op">(</tt><tt class="py-number">600</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name" id="link-18" targets="Method mari.system.megascans.FlowingVerticalLayout.sizeHint()=mari.system.megascans.FlowingVerticalLayout-class.html#sizeHint"><a class="py-name" href="#" onclick="return doclink('link-18', 'sizeHint', 'link-18');" title="mari.system.megascans.FlowingVerticalLayout.sizeHint">sizeHint</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name" id="link-19" targets="Method mari.Channel.height()=mari.Channel-class.html#height,Method mari.ChannelInfo.height()=mari.ChannelInfo-class.html#height,Method mari.Image.height()=mari.Image-class.html#height,Method mari.Projector.height()=mari.Projector-class.html#height,Method mari.QuickProjector.height()=mari.QuickProjector-class.html#height,Method mari.system._modo_ui.ResolutionCombobox.height()=mari.system._modo_ui.ResolutionCombobox-class.html#height"><a class="py-name" href="#" onclick="return doclink('link-19', 'height', 'link-19');" title="mari.Channel.height
+mari.ChannelInfo.height
+mari.Image.height
+mari.Projector.height
+mari.QuickProjector.height
+mari.system._modo_ui.ResolutionCombobox.height">height</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line">         </tt>
+<a name="SendDialog.sendCommand"></a><div id="SendDialog.sendCommand-def"><a name="L58"></a><tt class="py-lineno">58</tt> <a class="py-toggle" href="#" id="SendDialog.sendCommand-toggle" onclick="return toggle('SendDialog.sendCommand');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.command_port.SendDialog-class.html#sendCommand">sendCommand</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SendDialog.sendCommand-collapsed" indent="++++++++" pad="++" style="display:none;"></div><div id="SendDialog.sendCommand-expanded"><a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line">        <tt class="py-comment"># Check prefs</tt> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name" id="link-20"><a class="py-name" href="#" onclick="return doclink('link-20', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-21" targets="Variable mari.prefs=mari-module.html#prefs"><a class="py-name" href="#" onclick="return doclink('link-21', 'prefs', 'link-21');" title="mari.prefs">prefs</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-22" targets="Method mari.ActionManager.get()=mari.ActionManager-class.html#get,Method mari.GeoManager.get()=mari.GeoManager-class.html#get,Method mari.PaletteManager.get()=mari.PaletteManager-class.html#get,Method mari.Preferences.get()=mari.Preferences-class.html#get,Method mari.ProjectManager.get()=mari.ProjectManager-class.html#get,Method mari.ProjectorManager.get()=mari.ProjectorManager-class.html#get"><a class="py-name" href="#" onclick="return doclink('link-22', 'get', 'link-22');" title="mari.ActionManager.get
+mari.GeoManager.get
+mari.PaletteManager.get
+mari.Preferences.get
+mari.ProjectManager.get
+mari.ProjectorManager.get">get</a></tt><tt class="py-op">(</tt><tt class="py-string">'Scripts/Mari Command Port/enabled'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name" id="link-23" targets="Function mari.examples.command_port.criticalError()=mari.examples.command_port-module.html#criticalError"><a class="py-name" href="#" onclick="return doclink('link-23', 'criticalError', 'link-23');" title="mari.examples.command_port.criticalError">criticalError</a></tt><tt class="py-op">(</tt><tt class="py-string">"Command port is not enabled!"</tt><tt class="py-op">)</tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line">        <tt class="py-name">port</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-24"><a class="py-name" href="#" onclick="return doclink('link-24', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-25"><a class="py-name" href="#" onclick="return doclink('link-25', 'prefs', 'link-21');" title="mari.prefs">prefs</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-26"><a class="py-name" href="#" onclick="return doclink('link-26', 'get', 'link-22');" title="mari.ActionManager.get
+mari.GeoManager.get
+mari.PaletteManager.get
+mari.Preferences.get
+mari.ProjectManager.get
+mari.ProjectorManager.get">get</a></tt><tt class="py-op">(</tt><tt class="py-string">'Scripts/Mari Command Port/port'</tt><tt class="py-op">)</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line">         </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line">        <tt class="py-comment"># Connect</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line">        <tt class="py-name">skt</tt> <tt class="py-op">=</tt> <tt class="py-name">socket</tt><tt class="py-op">.</tt><tt class="py-name">socket</tt><tt class="py-op">(</tt><tt class="py-name">socket</tt><tt class="py-op">.</tt><tt class="py-name">AF_INET</tt><tt class="py-op">,</tt> <tt class="py-name">socket</tt><tt class="py-op">.</tt><tt class="py-name">SOCK_STREAM</tt><tt class="py-op">)</tt> </tt>
+<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line">            <tt class="py-name">skt</tt><tt class="py-op">.</tt><tt class="py-name" id="link-27"><a class="py-name" href="#" onclick="return doclink('link-27', 'connect', 'link-9');" title="mari.utils.signal_helpers.connect">connect</a></tt><tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-string">'localhost'</tt><tt class="py-op">,</tt> <tt class="py-name">port</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">socket</tt><tt class="py-op">.</tt><tt class="py-name">error</tt> <tt class="py-keyword">as</tt> <tt class="py-name">err</tt><tt class="py-op">:</tt> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name" id="link-28"><a class="py-name" href="#" onclick="return doclink('link-28', 'criticalError', 'link-23');" title="mari.examples.command_port.criticalError">criticalError</a></tt><tt class="py-op">(</tt><tt class="py-string">"Connection failed, with error: "</tt> <tt class="py-op">+</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">err</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line">         </tt>
+<a name="L71"></a><tt class="py-lineno">71</tt>  <tt class="py-line">        <tt class="py-comment"># Send command</tt> </tt>
+<a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line">            <tt class="py-comment"># Don't forget the Ctrl+D ('\x04') character, which says "execute now"</tt> </tt>
+<a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line">            <tt class="py-name">skt</tt><tt class="py-op">.</tt><tt class="py-name">send</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_command_edit</tt><tt class="py-op">.</tt><tt class="py-name" id="link-29"><a class="py-name" href="#" onclick="return doclink('link-29', 'text', 'link-5');" title="mari.Action.text
+mari.LineEdit.text
+mari.system._modo_ui.FileLookupWidget.text">text</a></tt> <tt class="py-op">+</tt> <tt class="py-string">'\x04'</tt><tt class="py-op">)</tt> </tt>
+<a name="L75"></a><tt class="py-lineno">75</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">socket</tt><tt class="py-op">.</tt><tt class="py-name">error</tt> <tt class="py-keyword">as</tt> <tt class="py-name">err</tt><tt class="py-op">:</tt> </tt>
+<a name="L76"></a><tt class="py-lineno">76</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name" id="link-30"><a class="py-name" href="#" onclick="return doclink('link-30', 'criticalError', 'link-23');" title="mari.examples.command_port.criticalError">criticalError</a></tt><tt class="py-op">(</tt><tt class="py-string">"Send failed, with error: "</tt> <tt class="py-op">+</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">err</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L77"></a><tt class="py-lineno">77</tt>  <tt class="py-line"> </tt>
+<a name="L78"></a><tt class="py-lineno">78</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="showDialog"></a><div id="showDialog-def"><a name="L79"></a><tt class="py-lineno">79</tt> <a class="py-toggle" href="#" id="showDialog-toggle" onclick="return toggle('showDialog');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.command_port-module.html#showDialog">showDialog</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="showDialog-collapsed" indent="++++" pad="++" style="display:none;"></div><div id="showDialog-expanded"><a name="L80"></a><tt class="py-lineno">80</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-31"><a class="py-name" href="#" onclick="return doclink('link-31', 'SendDialog', 'link-2');" title="mari.examples.command_port.SendDialog">SendDialog</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-32"><a class="py-name" href="#" onclick="return doclink('link-32', 'instance', 'link-1');" title="mari.examples.command_port.SendDialog.instance
+mari.examples.maya_export.ProgressDialog.instance">instance</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L81"></a><tt class="py-lineno">81</tt>  <tt class="py-line">        <tt class="py-name" id="link-33"><a class="py-name" href="#" onclick="return doclink('link-33', 'SendDialog', 'link-2');" title="mari.examples.command_port.SendDialog">SendDialog</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-34"><a class="py-name" href="#" onclick="return doclink('link-34', 'instance', 'link-1');" title="mari.examples.command_port.SendDialog.instance
+mari.examples.maya_export.ProgressDialog.instance">instance</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-35"><a class="py-name" href="#" onclick="return doclink('link-35', 'SendDialog', 'link-2');" title="mari.examples.command_port.SendDialog">SendDialog</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L82"></a><tt class="py-lineno">82</tt>  <tt class="py-line">    <tt class="py-name" id="link-36"><a class="py-name" href="#" onclick="return doclink('link-36', 'SendDialog', 'link-2');" title="mari.examples.command_port.SendDialog">SendDialog</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-37"><a class="py-name" href="#" onclick="return doclink('link-37', 'instance', 'link-1');" title="mari.examples.command_port.SendDialog.instance
+mari.examples.maya_export.ProgressDialog.instance">instance</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-38" targets="Method mari.Lockable.show()=mari.Lockable-class.html#show,Method mari.Palette.show()=mari.Palette-class.html#show,Method mari.ToolBar.show()=mari.ToolBar-class.html#show,Function mari.examples.convert_channel.show()=mari.examples.convert_channel-module.html#show,Function mari.examples.export_dialog.show()=mari.examples.export_dialog-module.html#show"><a class="py-name" href="#" onclick="return doclink('link-38', 'show', 'link-38');" title="mari.Lockable.show
+mari.Palette.show
+mari.ToolBar.show
+mari.examples.convert_channel.show
+mari.examples.export_dialog.show">show</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L83"></a><tt class="py-lineno">83</tt>  <tt class="py-line"> </tt>
+<a name="L84"></a><tt class="py-lineno">84</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="criticalError"></a><div id="criticalError-def"><a name="L85"></a><tt class="py-lineno">85</tt> <a class="py-toggle" href="#" id="criticalError-toggle" onclick="return toggle('criticalError');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.command_port-module.html#criticalError">criticalError</a><tt class="py-op">(</tt><tt class="py-param">msg</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="criticalError-collapsed" indent="++++" pad="++" style="display:none;"></div><div id="criticalError-expanded"><a name="L86"></a><tt class="py-lineno">86</tt>  <tt class="py-line">    <tt class="py-name" id="link-39"><a class="py-name" href="#" onclick="return doclink('link-39', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-40"><a class="py-name" href="#" onclick="return doclink('link-40', 'utils', 'link-8');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-41" targets="Function mari.utils.misc.message()=mari.utils.misc-module.html#message,Variable mari.utils.ocio.message=mari.utils.ocio-module.html#message"><a class="py-name" href="#" onclick="return doclink('link-41', 'message', 'link-41');" title="mari.utils.misc.message
+mari.utils.ocio.message">message</a></tt><tt class="py-op">(</tt><tt class="py-name">msg</tt><tt class="py-op">,</tt> <tt class="py-string">"Error"</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-42" targets="Method mari.Tool.icon()=mari.Tool-class.html#icon"><a class="py-name" href="#" onclick="return doclink('link-42', 'icon', 'link-42');" title="mari.Tool.icon">icon</a></tt><tt class="py-op">=</tt><tt class="py-name">widgets</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">Critical</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L87"></a><tt class="py-lineno">87</tt>  <tt class="py-line"> </tt>
+<a name="L88"></a><tt class="py-lineno">88</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L89"></a><tt class="py-lineno">89</tt>  <tt class="py-line"> </tt>
+<a name="L90"></a><tt class="py-lineno">90</tt>  <tt class="py-line"><tt class="py-name" id="link-43"><a class="py-name" href="#" onclick="return doclink('link-43', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-44" targets="Variable mari.menus=mari-module.html#menus"><a class="py-name" href="#" onclick="return doclink('link-44', 'menus', 'link-44');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-45" targets="Method mari.MenuManager.addAction()=mari.MenuManager-class.html#addAction,Method mari.ToolBar.addAction()=mari.ToolBar-class.html#addAction,Function mari.examples.vector_brush.addAction()=mari.examples.vector_brush-module.html#addAction"><a class="py-name" href="#" onclick="return doclink('link-45', 'addAction', 'link-45');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-46"><a class="py-name" href="#" onclick="return doclink('link-46', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-47" targets="Method mari.MenuManager.actions()=mari.MenuManager-class.html#actions,Variable mari.actions=mari-module.html#actions"><a class="py-name" href="#" onclick="return doclink('link-47', 'actions', 'link-47');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-48" targets="Method mari.ActionManager.create()=mari.ActionManager-class.html#create,Method mari.PaletteManager.create()=mari.PaletteManager-class.html#create,Method mari.ProjectManager.create()=mari.ProjectManager-class.html#create,Method mari.ProjectorManager.create()=mari.ProjectorManager-class.html#create"><a class="py-name" href="#" onclick="return doclink('link-48', 'create', 'link-48');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt><tt class="py-string">'Command Port'</tt><tt class="py-op">,</tt> <tt class="py-string">'mari.examples.command_port.showDialog()'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L91"></a><tt class="py-lineno">91</tt>  <tt class="py-line">                     <tt class="py-string">"MainWindow/P&amp;ython/&amp;Examples"</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno">92</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

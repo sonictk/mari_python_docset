@@ -1,0 +1,3876 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.NodeGraph
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+        Class&nbsp;NodeGraph
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.NodeGraph-class.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS DESCRIPTION ==================== -->
+  <h1 class="epydoc">
+   Class NodeGraph
+  </h1>
+  <p class="nomargin-top">
+   <span class="codelink">
+    <a href="mari-pysrc.html#NodeGraph">
+     source&nbsp;code
+    </a>
+   </span>
+  </p>
+  <pre class="base-tree">
+object --+    
+         |    
+  <a href="mari.Metadata-class.html">Metadata</a> --+
+             |
+            <strong class="uidshort">NodeGraph</strong>
+</pre>
+  <hr/>
+  <p>
+   Provides shader node graph functionality.
+  </p>
+  <p>
+   <b>
+    Example Code
+   </b>
+  </p>
+  <p>
+   This example creates a Perlin node and Merge node, connect them and 
+  sets a property
+  </p>
+  <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># obtain the root level node graph of the current geo entity</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>nodeGraph = mari.geo.current().nodeGraph()
+<span class="py-prompt">&gt;&gt;&gt;</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># Obtain the list of node types</span>
+<span class="py-prompt">&gt;&gt;&gt; </span>nodeTypeList = nodeGraph.typeList()
+<span class="py-prompt">&gt;&gt;&gt;</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># Create perlin noise node</span>
+<span class="py-prompt">&gt;&gt;&gt; </span>perlin = nodeGraph.createNode(<span class="py-string">"Procedural/Noise/Perlin"</span>)
+<span class="py-prompt">&gt;&gt;&gt;</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># Create a merge node</span>
+<span class="py-prompt">&gt;&gt;&gt; </span>merge = nodeGraph.createNode(<span class="py-string">"Layer/Merge"</span>)
+<span class="py-prompt">&gt;&gt;&gt;</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># Connect the perlin node to the Base input of the merge node</span>
+<span class="py-prompt">&gt;&gt;&gt; </span>merge.setInputNode(<span class="py-string">"Base"</span>,perlin)
+<span class="py-prompt">&gt;&gt;&gt;</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># Obtain parameters of the merge node</span>
+<span class="py-prompt">&gt;&gt;&gt; </span>parameterNames = merge.metadataNames()
+<span class="py-prompt">&gt;&gt;&gt;</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># Set the BlendAmount of merge node to 0.5</span>
+<span class="py-prompt">&gt;&gt;&gt; </span>merge.setMetadata(<span class="py-string">"Amount"</span>,0.5)</pre>
+  <p>
+   This example shows how to create a
+   <a class="link" href="mari.PaintNode-class.html">
+    PaintNode
+   </a>
+  </p>
+  <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>paintNode = nodeGraph.createPaintNode( 1024, 1024, 8, mari.Color(1.0,1.0,0.0,1.0) )</pre>
+  <!-- ==================== NESTED CLASSES ==================== -->
+  <a name="section-NestedClasses">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Nested Classes
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata.MetadataFlag-class.html">
+        MetadataFlag
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata.MetadataGroupHint-class.html">
+        MetadataGroupHint
+       </a>
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== INSTANCE METHODS ==================== -->
+  <a name="section-InstanceMethods">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Instance Methods
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.NodeGraph-class.html#addNode">
+          addNode
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          NodeToAdd
+         </span>
+         )
+        </span>
+        <br/>
+        Adds the given node to this node graph
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#NodeGraph.addNode">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="bakeEmptyAndUpdateOutOfDateBakePoints">
+         </a>
+         <span class="summary-sig-name">
+          bakeEmptyAndUpdateOutOfDateBakePoints
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Bake all empty bake point nodes and update any out of date bake point
+      nodes in the graph.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#NodeGraph.bakeEmptyAndUpdateOutOfDateBakePoints">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="bakeSelectedBakePoints">
+         </a>
+         <span class="summary-sig-name">
+          bakeSelectedBakePoints
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Bake all the selected bake point nodes in the graph, where we bake 
+      any of the selected nodes.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#NodeGraph.bakeSelectedBakePoints">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.BakePointNode-class.html">
+       BakePointNode
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.NodeGraph-class.html#createBakePointNode">
+          createBakePointNode
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Width
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Height
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Depth
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          FillColor
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         )
+        </span>
+        <br/>
+        Creates a
+        <a class="link" href="mari.BakePointNode-class.html">
+         BakePointNode
+        </a>
+        with given settings.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#NodeGraph.createBakePointNode">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Node-class.html">
+       Node
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.NodeGraph-class.html#createNode">
+          createNode
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Type
+         </span>
+         )
+        </span>
+        <br/>
+        Creates a node of the given type.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#NodeGraph.createNode">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.PaintNode-class.html">
+       PaintNode
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.NodeGraph-class.html#createPaintNode">
+          createPaintNode
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Width
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Height
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Depth
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          FillColor
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         )
+        </span>
+        <br/>
+        Creates a paintable node with given settings.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#NodeGraph.createPaintNode">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.NodeGraph-class.html#deleteNode">
+          deleteNode
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          NodeToDelete
+         </span>
+         )
+        </span>
+        <br/>
+        Deletes the given node.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#NodeGraph.deleteNode">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      QHash of  str, str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.NodeGraph-class.html#exportNodesAsArchive">
+          exportNodesAsArchive
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          DirPath
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Nodes
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          NoDataBlockCopy
+         </span>
+         =
+         <span class="summary-sig-default">
+          False
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          UVIndexList
+         </span>
+         =
+         <span class="summary-sig-default">
+          <code class="variable-group">
+           [
+          </code>
+          <code class="variable-group">
+           ]
+          </code>
+         </span>
+         )
+        </span>
+        <br/>
+        Saves the archive of the given nodes to the given location.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#NodeGraph.exportNodesAsArchive">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.GroupNode-class.html">
+       GroupNode
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.NodeGraph-class.html#groupNodes">
+          groupNodes
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Nodes
+         </span>
+         )
+        </span>
+        <br/>
+        Groups the given nodes and returns the resulting
+        <a class="link" href="mari.GroupNode-class.html">
+         GroupNode
+        </a>
+        .
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#NodeGraph.groupNodes">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of
+      <a class="link" href="mari.Node-class.html">
+       Node
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.NodeGraph-class.html#importNodesFromArchive">
+          importNodesFromArchive
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          DirPath
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          UuidsToLoad
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          UvIndexMap
+         </span>
+         )
+        </span>
+        <br/>
+        Loads nodes from the archive directory exported by 
+      exportNodesAsArchive.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#NodeGraph.importNodesFromArchive">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of
+      <a class="link" href="mari.Node-class.html">
+       Node
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.NodeGraph-class.html#load">
+          load
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          FilePath
+         </span>
+         )
+        </span>
+        <br/>
+        Loades the nodes in the file into this
+        <a class="link" href="mari.NodeGraph-class.html">
+         NodeGraph
+        </a>
+        and 
+      returns the loaded nodes.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#NodeGraph.load">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of
+      <a class="link" href="mari.Node-class.html">
+       Node
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.NodeGraph-class.html#nodeList">
+          nodeList
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a list of the nodes in this node graph.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#NodeGraph.nodeList">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of
+      <a class="link" href="mari.Node-class.html">
+       Node
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.NodeGraph-class.html#nodesFromString">
+          nodesFromString
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          String
+         </span>
+         )
+        </span>
+        <br/>
+        Loads and returns the nodes in the string into this
+        <a class="link" href="mari.NodeGraph-class.html">
+         NodeGraph
+        </a>
+        .
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#NodeGraph.nodesFromString">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.NodeGraph-class.html#nodesToString">
+          nodesToString
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Nodes
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the string representation of the given nodes.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#NodeGraph.nodesToString">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of
+      <a class="link" href="mari.Node-class.html">
+       Node
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.NodeGraph-class.html#nodesWithTag">
+          nodesWithTag
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Tag
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the list of nodes having the given
+        <code class="link">
+         Tag
+        </code>
+        .
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#NodeGraph.nodesWithTag">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.GeoEntity-class.html">
+       GeoEntity
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.NodeGraph-class.html#parentGeoEntity">
+          parentGeoEntity
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Return the
+        <a class="link" href="mari.GeoEntity-class.html">
+         GeoEntity
+        </a>
+        this
+        <a class="link" href="mari.NodeGraph-class.html">
+         NodeGraph
+        </a>
+        belongs to if this
+        <a class="link" href="mari.NodeGraph-class.html">
+         NodeGraph
+        </a>
+        is not 
+      the root level network (i.e.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#NodeGraph.parentGeoEntity">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.GroupNode-class.html">
+       GroupNode
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.NodeGraph-class.html#parentGroupNode">
+          parentGroupNode
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the parent
+        <a class="link" href="mari.GroupNode-class.html">
+         GroupNode
+        </a>
+        if this
+        <a class="link" href="mari.NodeGraph-class.html">
+         NodeGraph
+        </a>
+        is the 
+      child node graph of the
+        <a class="link" href="mari.GroupNode-class.html">
+         GroupNode
+        </a>
+        .
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#NodeGraph.parentGroupNode">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.NodeGraph-class.html#removeNode">
+          removeNode
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          NodeToRemove
+         </span>
+         )
+        </span>
+        <br/>
+        Removes the given node from this node graph
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#NodeGraph.removeNode">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.NodeGraph-class.html#save">
+          save
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          FilePath
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Nodes
+         </span>
+         )
+        </span>
+        <br/>
+        Saves the given node to the specified file.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#NodeGraph.save">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of
+      <a class="link" href="mari.Node-class.html">
+       Node
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.NodeGraph-class.html#selectedNodeList">
+          selectedNodeList
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a list of selected nodes in this node graph.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#NodeGraph.selectedNodeList">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.NodeGraph-class.html#setActiveViewerInput">
+          setActiveViewerInput
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          InputNumber
+         </span>
+         )
+        </span>
+        <br/>
+        Changes the active Viewer node's input.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#NodeGraph.setActiveViewerInput">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.NodeGraph-class.html#typeList">
+          typeList
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a list of the types of nodes that can be created.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#NodeGraph.typeList">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="updateSelectedBakePoints">
+         </a>
+         <span class="summary-sig-name">
+          updateSelectedBakePoints
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Update all the selected bake point nodes in the graph, where we 
+      re-bake any of the out of date bake point nodes.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#NodeGraph.updateSelectedBakePoints">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Node-class.html">
+       Node
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.NodeGraph-class.html#viewerNode">
+          viewerNode
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the viewer node of the node graph.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#NodeGraph.viewerNode">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata-class.html#hasMetadata">
+        hasMetadata
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadata">
+        metadata
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataAsImage">
+        metadataAsImage
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataDefault">
+        metadataDefault
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataDescription">
+        metadataDescription
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataDisplayName">
+        metadataDisplayName
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataFlags">
+        metadataFlags
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataIsEnabled">
+        metadataIsEnabled
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataItemList">
+        metadataItemList
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataMax">
+        metadataMax
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataMin">
+        metadataMin
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataNames">
+        metadataNames
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataStep">
+        metadataStep
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#removeMetadata">
+        removeMetadata
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadata">
+        setMetadata
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataDefault">
+        setMetadataDefault
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataDescription">
+        setMetadataDescription
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataDisplayName">
+        setMetadataDisplayName
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataEnabled">
+        setMetadataEnabled
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataFlags">
+        setMetadataFlags
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataGroupHints">
+        setMetadataGroupHints
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataItemList">
+        setMetadataItemList
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataRange">
+        setMetadataRange
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataStep">
+        setMetadataStep
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#uuid">
+        uuid
+       </a>
+      </code>
+     </p>
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __delattr__
+      </code>
+      ,
+      <code>
+       __format__
+      </code>
+      ,
+      <code>
+       __getattribute__
+      </code>
+      ,
+      <code>
+       __hash__
+      </code>
+      ,
+      <code>
+       __init__
+      </code>
+      ,
+      <code>
+       __new__
+      </code>
+      ,
+      <code>
+       __reduce__
+      </code>
+      ,
+      <code>
+       __reduce_ex__
+      </code>
+      ,
+      <code>
+       __repr__
+      </code>
+      ,
+      <code>
+       __setattr__
+      </code>
+      ,
+      <code>
+       __sizeof__
+      </code>
+      ,
+      <code>
+       __str__
+      </code>
+      ,
+      <code>
+       __subclasshook__
+      </code>
+     </p>
+    </td>
+   </tr>
+   <tr bgcolor="#e8f0f8">
+    <th class="group-header" colspan="2">
+     &nbsp;&nbsp;&nbsp;&nbsp;Signals
+    </th>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata-class.html#metadataCreated">
+        metadataCreated
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataRemoved">
+        metadataRemoved
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataValueChanged">
+        metadataValueChanged
+       </a>
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== STATIC METHODS ==================== -->
+  <a name="section-StaticMethods">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Static Methods
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of
+      <a class="link" href="mari.Node-class.html">
+       Node
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.NodeGraph-class.html#getUpstreamNodes">
+          getUpstreamNodes
+         </a>
+         (
+         <span class="summary-sig-arg">
+          DestNode
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the list of nodes in the upstream of the given node.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#NodeGraph.getUpstreamNodes">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of
+      <a class="link" href="mari.Node-class.html">
+       Node
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.NodeGraph-class.html#topologicalSortTo">
+          topologicalSortTo
+         </a>
+         (
+         <span class="summary-sig-arg">
+          DestNode
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          ReverseOrder
+         </span>
+         =
+         <span class="summary-sig-default">
+          False
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the topologically sorted list of nodes towards the
+        <code class="link">
+         DestNode
+        </code>
+        .
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#NodeGraph.topologicalSortTo">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.NodeGraph-class.html#wouldConnectionBreakDAG">
+          wouldConnectionBreakDAG
+         </a>
+         (
+         <span class="summary-sig-arg">
+          SourceNode
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          DestNode
+         </span>
+         )
+        </span>
+        <br/>
+        Returns whether the given connection would break directed acyclic 
+      graph (DAG).
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#NodeGraph.wouldConnectionBreakDAG">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata-class.html#isSupportedMetadataType">
+        isSupportedMetadataType
+       </a>
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS VARIABLES ==================== -->
+  <a name="section-ClassVariables">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Class Variables
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_EDITABLE">
+        METADATA_EDITABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_GROUP_HINT_DISPLAY">
+        METADATA_GROUP_HINT_DISPLAY
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_GROUP_HINT_SORTABLE">
+        METADATA_GROUP_HINT_SORTABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_REMOVABLE">
+        METADATA_REMOVABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_REMOVEABLE">
+        METADATA_REMOVEABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_SAVED">
+        METADATA_SAVED
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_UNDOABLE">
+        METADATA_UNDOABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_VISIBLE">
+        METADATA_VISIBLE
+       </a>
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== PROPERTIES ==================== -->
+  <a name="section-Properties">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Properties
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __class__
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== METHOD DETAILS ==================== -->
+  <a name="section-MethodDetails">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Method Details
+     </span>
+    </td>
+   </tr>
+  </table>
+  <a name="addNode">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            addNode
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            NodeToAdd
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#NodeGraph.addNode">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Adds the given node to this node graph
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            NodeToAdd
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Node-class.html">
+           Node
+          </a>
+          ) - The
+          <a class="link" href="mari.Node-class.html">
+           Node
+          </a>
+          to be 
+          added.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="createBakePointNode">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            createBakePointNode
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Width
+           </span>
+           ,
+           <span class="sig-arg">
+            Height
+           </span>
+           ,
+           <span class="sig-arg">
+            Depth
+           </span>
+           ,
+           <span class="sig-arg">
+            FillColor
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#NodeGraph.createBakePointNode">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Creates a
+       <a class="link" href="mari.BakePointNode-class.html">
+        BakePointNode
+       </a>
+       with given settings.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Width
+           </code>
+          </strong>
+          (int) - The default width of the
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          (ignored for
+          <a class="link" href="mari.Ptex-class.html">
+           Ptex
+          </a>
+          ) to bake into
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Height
+           </code>
+          </strong>
+          (int) - The default height of the (ignored for
+          <a class="link" href="mari.Ptex-class.html">
+           Ptex
+          </a>
+          ) to bake into
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Depth
+           </code>
+          </strong>
+          (int) - The default bit depth of the
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          to bake into
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            FillColor
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Color-class.html">
+           Color
+          </a>
+          ) - The color to fill the initial
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          to bake into
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.BakePointNode-class.html">
+         BakePointNode
+        </a>
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the
+          <a class="link" href="mari.PaintNode-class.html">
+           PaintNode
+          </a>
+          could not be created
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="createNode">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            createNode
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Type
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#NodeGraph.createNode">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Creates a node of the given type.
+      </p>
+      <p>
+       <b>
+        Example Code
+       </b>
+      </p>
+      <p>
+       This example creates a tri planar node.
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># obtain the root level node graph of the current geo entity</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>nodeGraph = mari.geo.current().nodeGraph()
+<span class="py-prompt">&gt;&gt;&gt;</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># Create a tri planar node "Projection/Tri Planar Projection"</span>
+<span class="py-prompt">&gt;&gt;&gt; </span>nodeGraph.createNode(<span class="py-string">"Projection/Tri Planar Projection"</span>)
+<span class="py-prompt">&gt;&gt;&gt;</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># Create a tri planar node using the deprecated key "Environment/Tri Planar Projection"</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This should give you a deprecation warning on your console</span>
+<span class="py-prompt">&gt;&gt;&gt; </span>nodeGraph.createNode(<span class="py-string">"Environment/Tri Planar Projection"</span>)</pre>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Type
+           </code>
+          </strong>
+          (str) - The type of the node to be created.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.Node-class.html">
+         Node
+        </a>
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the given type is not valid.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="createPaintNode">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            createPaintNode
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Width
+           </span>
+           ,
+           <span class="sig-arg">
+            Height
+           </span>
+           ,
+           <span class="sig-arg">
+            Depth
+           </span>
+           ,
+           <span class="sig-arg">
+            FillColor
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#NodeGraph.createPaintNode">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Creates a paintable node with given settings.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Width
+           </code>
+          </strong>
+          (int) - The default width of the
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          (ignored for
+          <a class="link" href="mari.Ptex-class.html">
+           Ptex
+          </a>
+          )
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Height
+           </code>
+          </strong>
+          (int) - The default height of the (ignored for
+          <a class="link" href="mari.Ptex-class.html">
+           Ptex
+          </a>
+          )
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Depth
+           </code>
+          </strong>
+          (int) - The default bit depth of the
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            FillColor
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Color-class.html">
+           Color
+          </a>
+          ) - The color to fill the initial
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          in.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.PaintNode-class.html">
+         PaintNode
+        </a>
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the
+          <a class="link" href="mari.PaintNode-class.html">
+           PaintNode
+          </a>
+          could not be created
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="deleteNode">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            deleteNode
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            NodeToDelete
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#NodeGraph.deleteNode">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Deletes the given node.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            NodeToDelete
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Node-class.html">
+           Node
+          </a>
+          ) - The
+          <a class="link" href="mari.Node-class.html">
+           Node
+          </a>
+          to be 
+          deleted.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the given node does not belong to this node graph.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="exportNodesAsArchive">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            exportNodesAsArchive
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            DirPath
+           </span>
+           ,
+           <span class="sig-arg">
+            Nodes
+           </span>
+           ,
+           <span class="sig-arg">
+            NoDataBlockCopy
+           </span>
+           =
+           <span class="sig-default">
+            False
+           </span>
+           ,
+           <span class="sig-arg">
+            UVIndexList
+           </span>
+           =
+           <span class="sig-default">
+            <code class="variable-group">
+             [
+            </code>
+            <code class="variable-group">
+             ]
+            </code>
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#NodeGraph.exportNodesAsArchive">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Saves the archive of the given nodes to the given location.
+      </p>
+      <p>
+       This saves the given nodes in an XML format and saves all dependencies
+  into the given directory If the given location does not exist, it is 
+  created. If there are any exising files and directories, they will be 
+  deleted.
+      </p>
+      <p>
+       The nodes saved in the XML file as part of the archive are assigned 
+  with new unique UUIDs for sanity. The map returned by this function 
+  contains the mapping of the original node UUIDs to the unique UUIDs of 
+  the nodes in the XML file. A partial list of the new unique UUIDs can be 
+  given as an optional argument to
+       <a class="link" href="mari.NodeGraph-class.html#importNodesFromArchive">
+        importNodesFromArchive()
+       </a>
+       to load a partial set of nodes 
+  from the archive.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            DirPath
+           </code>
+          </strong>
+          (str) - The directory path to save the nodes archive to.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Nodes
+           </code>
+          </strong>
+          (list of
+          <a class="link" href="mari.Node-class.html">
+           Node
+          </a>
+          ) - The list of nodes to save as archive.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            NoDataBlockCopy
+           </code>
+          </strong>
+          (bool) - Whether to skip copying data blocks. If True, the images are 
+          copied only as template, but without texture data. This is False 
+          by default.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            UVIndexList
+           </code>
+          </strong>
+          (list of  int) - Pass in a list of zero-based UV indices if desired to specify the
+          patches to export images for. If not specified or empty, images 
+          will be exported for all indices. The UDIM for a patch is the 
+          zero-based UV index plus 1001.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: QHash of  str, str
+       </dt>
+       <dd>
+        Returns the map of original node UUIDs to the new unique UUIDs 
+          stored in the node XML file of the archive.
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="getUpstreamNodes">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            getUpstreamNodes
+           </span>
+           (
+           <span class="sig-arg">
+            DestNode
+           </span>
+           )
+          </span>
+          <br/>
+          <em class="fname">
+           Static Method
+          </em>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#NodeGraph.getUpstreamNodes">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the list of nodes in the upstream of the given node.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            DestNode
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Node-class.html">
+           Node
+          </a>
+          ) - The destination node from which this function returns the 
+          upstream nodes.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: list of
+        <a class="link" href="mari.Node-class.html">
+         Node
+        </a>
+       </dt>
+       <dd>
+        The list of nodes in the upstream of
+        <code class="link">
+         DestNode
+        </code>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="groupNodes">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            groupNodes
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Nodes
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#NodeGraph.groupNodes">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Groups the given nodes and returns the resulting
+       <a class="link" href="mari.GroupNode-class.html">
+        GroupNode
+       </a>
+       .
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Nodes
+           </code>
+          </strong>
+          (list of
+          <a class="link" href="mari.Node-class.html">
+           Node
+          </a>
+          ) - the list of nodes to group.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.GroupNode-class.html">
+         GroupNode
+        </a>
+       </dt>
+       <dd>
+        The new
+        <a class="link" href="mari.GroupNode-class.html">
+         GroupNode
+        </a>
+        containing the given nodes.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if any of the Nodes does not belong to this
+          <a class="link" href="mari.NodeGraph-class.html">
+           NodeGraph
+          </a>
+          .
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="importNodesFromArchive">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            importNodesFromArchive
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            DirPath
+           </span>
+           ,
+           <span class="sig-arg">
+            UuidsToLoad
+           </span>
+           ,
+           <span class="sig-arg">
+            UvIndexMap
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#NodeGraph.importNodesFromArchive">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Loads nodes from the archive directory exported by 
+  exportNodesAsArchive.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            DirPath
+           </code>
+          </strong>
+          (str) - The directory path to the node archive
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            UuidsToLoad
+           </code>
+          </strong>
+          (list of str) - The list of UUID of nodes to partially load from the archive. If 
+          empty, all the nodes in the archive are loaded.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            UvIndexMap
+           </code>
+          </strong>
+          (QHash of  int, list of  int) - Map to specify remapping of patches based on UvIndex. E.g. 
+          provide {0:[1,2],3:[]} to copy UV patch 0 to 1 and 2, then remove
+          UV patch 3. If this argument is non-empty. It should be all 
+          inclusive. Patches not included in this map will be discarded.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: list of
+        <a class="link" href="mari.Node-class.html">
+         Node
+        </a>
+       </dt>
+       <dd>
+        Returns the list of nodes imported from the archive
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="load">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            load
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            FilePath
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#NodeGraph.load">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Loades the nodes in the file into this
+       <a class="link" href="mari.NodeGraph-class.html">
+        NodeGraph
+       </a>
+       and returns 
+  the loaded nodes.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            FilePath
+           </code>
+          </strong>
+          (str) - The file path from which the nodes areloaded.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: list of
+        <a class="link" href="mari.Node-class.html">
+         Node
+        </a>
+       </dt>
+       <dd>
+        The loaded nodes.
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="nodeList">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            nodeList
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#NodeGraph.nodeList">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns a list of the nodes in this node graph.
+      </p>
+      <p>
+       <b>
+        Example Code
+       </b>
+      </p>
+      <p>
+       This example returns a list of nodes in the root nodegraph of the 
+  currently-selected geoentity.
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># obtain the root level node graph of the current geo entity</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>nodeGraph = mari.geo.current().nodeGraph()
+<span class="py-prompt">&gt;&gt;&gt;</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># Obtain the list of node types</span>
+<span class="py-prompt">&gt;&gt;&gt; </span>nodeList = nodeGraph.nodeList()
+<span class="py-prompt">&gt;&gt;&gt;</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># Print the count of nodes</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span>(<span class="py-string">"+ %d nodes found"</span> % (len(nodeList))</pre>
+      <dl class="fields">
+       <dt>
+        Returns: list of
+        <a class="link" href="mari.Node-class.html">
+         Node
+        </a>
+       </dt>
+       <dd>
+        A list of the nodes in this node graph.
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="nodesFromString">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            nodesFromString
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            String
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#NodeGraph.nodesFromString">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Loads and returns the nodes in the string into this
+       <a class="link" href="mari.NodeGraph-class.html">
+        NodeGraph
+       </a>
+       .
+      </p>
+      <p>
+       This takes in the string returnd by
+       <a class="link" href="mari.NodeGraph-class.html#nodesToString">
+        nodesToString()
+       </a>
+       and loads the nodes into this
+       <a class="link" href="mari.NodeGraph-class.html">
+        NodeGraph
+       </a>
+       .
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            String
+           </code>
+          </strong>
+          (str) - The string in which nodes are contained.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: list of
+        <a class="link" href="mari.Node-class.html">
+         Node
+        </a>
+       </dt>
+       <dd>
+        Returns the nodes loaded.
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="nodesToString">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            nodesToString
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Nodes
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#NodeGraph.nodesToString">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the string representation of the given nodes.
+      </p>
+      <p>
+       The returned string can be useful for copy&amp;paste purpose.
+       <a class="link" href="mari.NodeGraph-class.html#save">
+        save()
+       </a>
+       will save 
+  this string into the resulting file.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Nodes
+           </code>
+          </strong>
+          (list of
+          <a class="link" href="mari.Node-class.html">
+           Node
+          </a>
+          ) - The nodes to represent in the string.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: str
+       </dt>
+       <dd>
+        The string represending the
+        <code class="link">
+         Nodes
+        </code>
+        .
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if any of the Nodes does not belong to this
+          <a class="link" href="mari.NodeGraph-class.html">
+           NodeGraph
+          </a>
+          .
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="nodesWithTag">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            nodesWithTag
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Tag
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#NodeGraph.nodesWithTag">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the list of nodes having the given
+       <code class="link">
+        Tag
+       </code>
+       .
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Tag
+           </code>
+          </strong>
+          (str) - The tag of the nodes to be returned.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: list of
+        <a class="link" href="mari.Node-class.html">
+         Node
+        </a>
+       </dt>
+       <dd>
+        The list of nodes having the given
+        <code class="link">
+         Tag
+        </code>
+        .
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="parentGeoEntity">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            parentGeoEntity
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#NodeGraph.parentGeoEntity">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Return the
+       <a class="link" href="mari.GeoEntity-class.html">
+        GeoEntity
+       </a>
+       this
+       <a class="link" href="mari.NodeGraph-class.html">
+        NodeGraph
+       </a>
+       belongs to if this
+       <a class="link" href="mari.NodeGraph-class.html">
+        NodeGraph
+       </a>
+       is not the 
+  root level network (i.e.
+      </p>
+      <p>
+       does not belong to a
+       <a class="link" href="mari.GroupNode-class.html">
+        GroupNode
+       </a>
+       ).
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns:
+        <a class="link" href="mari.GeoEntity-class.html">
+         GeoEntity
+        </a>
+       </dt>
+       <dd>
+        The
+        <a class="link" href="mari.GeoEntity-class.html">
+         GeoEntity
+        </a>
+        this
+        <a class="link" href="mari.NodeGraph-class.html">
+         NodeGraph
+        </a>
+        belongs to.
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="parentGroupNode">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            parentGroupNode
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#NodeGraph.parentGroupNode">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the parent
+       <a class="link" href="mari.GroupNode-class.html">
+        GroupNode
+       </a>
+       if this
+       <a class="link" href="mari.NodeGraph-class.html">
+        NodeGraph
+       </a>
+       is the child node graph of the
+       <a class="link" href="mari.GroupNode-class.html">
+        GroupNode
+       </a>
+       .
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns:
+        <a class="link" href="mari.GroupNode-class.html">
+         GroupNode
+        </a>
+       </dt>
+       <dd>
+        The parent
+        <a class="link" href="mari.GroupNode-class.html">
+         GroupNode
+        </a>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="removeNode">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            removeNode
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            NodeToRemove
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#NodeGraph.removeNode">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Removes the given node from this node graph
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            NodeToRemove
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Node-class.html">
+           Node
+          </a>
+          ) - The
+          <a class="link" href="mari.Node-class.html">
+           Node
+          </a>
+          to be 
+          removed.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="save">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            save
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            FilePath
+           </span>
+           ,
+           <span class="sig-arg">
+            Nodes
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#NodeGraph.save">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Saves the given node to the specified file.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            FilePath
+           </code>
+          </strong>
+          (str) - The file path to save the given nodes to.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Nodes
+           </code>
+          </strong>
+          (list of
+          <a class="link" href="mari.Node-class.html">
+           Node
+          </a>
+          ) - The nodes to save to the given file path.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if any of the Nodes does not belong to this
+          <a class="link" href="mari.NodeGraph-class.html">
+           NodeGraph
+          </a>
+          .
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="selectedNodeList">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            selectedNodeList
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#NodeGraph.selectedNodeList">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns a list of selected nodes in this node graph.
+      </p>
+      <p>
+       <b>
+        Example Code
+       </b>
+      </p>
+      <p>
+       This example returns the list of selected nodes in the root nodegraph 
+  of the currently-selected geoentity.
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># obtain the root level node graph of the current geo entity</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>nodeGraph = mari.geo.current().nodeGraph()
+<span class="py-prompt">&gt;&gt;&gt;</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># Get the selected nodes</span>
+<span class="py-prompt">&gt;&gt;&gt; </span>selectedNodeList = nodeGraph.selectedNodeList()
+<span class="py-prompt">&gt;&gt;&gt;</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># Print the count of nodes</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span>(<span class="py-string">"+ %d selected nodes found"</span> % (len(selectedNodeList))</pre>
+      <dl class="fields">
+       <dt>
+        Returns: list of
+        <a class="link" href="mari.Node-class.html">
+         Node
+        </a>
+       </dt>
+       <dd>
+        A list of the selected nodes in this node graph.
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setActiveViewerInput">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setActiveViewerInput
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            InputNumber
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#NodeGraph.setActiveViewerInput">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Changes the active Viewer node's input.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            InputNumber
+           </code>
+          </strong>
+          (int) - Number of the new active Viewer node's input. It should be in a 
+          range from 0 to 9.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="topologicalSortTo">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            topologicalSortTo
+           </span>
+           (
+           <span class="sig-arg">
+            DestNode
+           </span>
+           ,
+           <span class="sig-arg">
+            ReverseOrder
+           </span>
+           =
+           <span class="sig-default">
+            False
+           </span>
+           )
+          </span>
+          <br/>
+          <em class="fname">
+           Static Method
+          </em>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#NodeGraph.topologicalSortTo">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the topologically sorted list of nodes towards the
+       <code class="link">
+        DestNode
+       </code>
+       .
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            DestNode
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Node-class.html">
+           Node
+          </a>
+          ) - The destination node to topological sort nodes towards.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            ReverseOrder
+           </code>
+          </strong>
+          (bool) - If True, the returned list will be in the reverse order.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: list of
+        <a class="link" href="mari.Node-class.html">
+         Node
+        </a>
+       </dt>
+       <dd>
+        The topologically sorted list of nodes.
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="typeList">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            typeList
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#NodeGraph.typeList">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns a list of the types of nodes that can be created.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: list of str
+       </dt>
+       <dd>
+        A list of the types of nodes that can be created.
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="viewerNode">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            viewerNode
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#NodeGraph.viewerNode">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the viewer node of the node graph.
+      </p>
+      <p>
+       Mari's viewport shows the result of all the node graph processing up 
+  to the viewer node. The viewer node is a node to specify which node to 
+  view the node graph processing.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns:
+        <a class="link" href="mari.Node-class.html">
+         Node
+        </a>
+       </dt>
+       <dd>
+        The viewer node of the node graph.
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="wouldConnectionBreakDAG">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            wouldConnectionBreakDAG
+           </span>
+           (
+           <span class="sig-arg">
+            SourceNode
+           </span>
+           ,
+           <span class="sig-arg">
+            DestNode
+           </span>
+           )
+          </span>
+          <br/>
+          <em class="fname">
+           Static Method
+          </em>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#NodeGraph.wouldConnectionBreakDAG">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns whether the given connection would break directed acyclic 
+  graph (DAG).
+      </p>
+      <p>
+       This function tests whether making the connection between
+       <code class="link">
+        SourceNode
+       </code>
+       and DesNode would break directed acyclic 
+  graph.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            SourceNode
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Node-class.html">
+           Node
+          </a>
+          ) - The source node of potential connection to test the DAG breakage.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            DestNode
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Node-class.html">
+           Node
+          </a>
+          ) - The destination node of potential connection to test the DAG 
+          breakage.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: bool
+       </dt>
+       <dd>
+        Whether the connection would break DAG.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the two inputs do not belong to the same node graph.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

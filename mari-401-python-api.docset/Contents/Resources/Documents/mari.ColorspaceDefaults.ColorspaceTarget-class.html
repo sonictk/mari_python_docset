@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.ColorspaceDefaults.ColorspaceTarget
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.ColorspaceDefaults-class.html">
+       Class&nbsp;ColorspaceDefaults
+      </a>
+      ::
+        Class&nbsp;ColorspaceTarget
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.ColorspaceDefaults.ColorspaceTarget-class.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS DESCRIPTION ==================== -->
+  <h1 class="epydoc">
+   Class ColorspaceTarget
+  </h1>
+  <p class="nomargin-top">
+   <span class="codelink">
+    <a href="mari-pysrc.html#ColorspaceDefaults.ColorspaceTarget">
+     source&nbsp;code
+    </a>
+   </span>
+  </p>
+  <p>
+   These are used to define the default colorspace of a data type or 
+  device.
+  </p>
+  <hr/>
+  <div class="fields">
+   <p>
+    <strong>
+     Note:
+    </strong>
+    These values are exposed in the parent class, but are also 
+        documented here for convenience.
+   </p>
+  </div>
+  <!-- ==================== CLASS VARIABLES ==================== -->
+  <a name="section-ClassVariables">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Class Variables
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="COLORSPACE_TARGET_INT8">
+     </a>
+     <span class="summary-name">
+      COLORSPACE_TARGET_INT8
+     </span>
+     =
+     <code title="0">
+      0
+     </code>
+     <br/>
+     Default for channels and, reading and writing image files containing 
+      8 bit integer data.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="COLORSPACE_TARGET_INT16">
+     </a>
+     <span class="summary-name">
+      COLORSPACE_TARGET_INT16
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     Default for reading image files containing integer data more than 8 
+      bits (not half float).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="COLORSPACE_TARGET_SCALAR8">
+     </a>
+     <span class="summary-name">
+      COLORSPACE_TARGET_SCALAR8
+     </span>
+     =
+     <code title="2">
+      2
+     </code>
+     <br/>
+     Default for masks, heights, normals, depths, and other non-color 
+      images containing 8 bit data.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="COLORSPACE_TARGET_FLOAT">
+     </a>
+     <span class="summary-name">
+      COLORSPACE_TARGET_FLOAT
+     </span>
+     =
+     <code title="3">
+      3
+     </code>
+     <br/>
+     Default for channels and, reading and writing image files containing 
+      floating-point data.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ColorspaceDefaults.ColorspaceTarget-class.html#COLORSPACE_TARGET_WORKING">
+      COLORSPACE_TARGET_WORKING
+     </a>
+     =
+     <code title="4">
+      4
+     </code>
+     <br/>
+     Default for painting, lighting, applying filters, and other such 
+      operations.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ColorspaceDefaults.ColorspaceTarget-class.html#COLORSPACE_TARGET_MONITOR">
+      COLORSPACE_TARGET_MONITOR
+     </a>
+     =
+     <code title="5">
+      5
+     </code>
+     <br/>
+     Default for thumbnails.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ColorspaceDefaults.ColorspaceTarget-class.html#COLORSPACE_TARGET_COLOR_PICKER">
+      COLORSPACE_TARGET_COLOR_PICKER
+     </a>
+     =
+     <code title="6">
+      6
+     </code>
+     <br/>
+     Default for color pickers and swatches.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.ColorspaceDefaults.ColorspaceTarget-class.html#COLORSPACE_TARGET_BLENDING">
+      COLORSPACE_TARGET_BLENDING
+     </a>
+     =
+     <code title="7">
+      7
+     </code>
+     <br/>
+     Default for applying blending operations such as, comp of the paint 
+      buffer and the current paint target, blending between layers, and 
+      combining inputs in a merge node.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="COLORSPACE_TARGET_COUNT">
+     </a>
+     <span class="summary-name">
+      COLORSPACE_TARGET_COUNT
+     </span>
+     =
+     <code title="8">
+      8
+     </code>
+     <br/>
+     Total number of colorspace targets.
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS VARIABLE DETAILS ==================== -->
+  <a name="section-ClassVariableDetails">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Class Variable Details
+     </span>
+    </td>
+   </tr>
+  </table>
+  <a name="COLORSPACE_TARGET_WORKING">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       COLORSPACE_TARGET_WORKING
+      </h3>
+      <p>
+       Default for painting, lighting, applying filters, and other such 
+  operations. You will typically want to select the \"Linear\" 
+  colorspace to get accurate results.
+      </p>
+      <dl class="fields">
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+4
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="COLORSPACE_TARGET_MONITOR">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       COLORSPACE_TARGET_MONITOR
+      </h3>
+      <p>
+       Default for thumbnails. You will typically want to select the same 
+  colorspace as the viewer.
+      </p>
+      <dl class="fields">
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+5
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="COLORSPACE_TARGET_COLOR_PICKER">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       COLORSPACE_TARGET_COLOR_PICKER
+      </h3>
+      <p>
+       Default for color pickers and swatches. You will typically want to 
+  select the same colorspace as the current channel.
+      </p>
+      <dl class="fields">
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+6
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="COLORSPACE_TARGET_BLENDING">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       COLORSPACE_TARGET_BLENDING
+      </h3>
+      <p>
+       Default for applying blending operations such as, comp of the paint 
+  buffer and the current paint target, blending between layers, and 
+  combining inputs in a merge node. You will typically want to select the 
+  \"Default\" colorspace to get the same results as painting 
+  prior to Mari 3.0, and to get less banding artifacts when painting 8-bit 
+  channels and images.
+      </p>
+      <dl class="fields">
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+7
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

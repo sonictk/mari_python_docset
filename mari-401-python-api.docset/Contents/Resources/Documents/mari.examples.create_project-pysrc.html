@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.examples.create_project
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.examples-module.html">
+       Package&nbsp;examples
+      </a>
+      ::
+        Module&nbsp;create_project
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.examples.create_project-pysrc.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <h1 class="epydoc">
+   Source Code for
+   <a href="mari.examples.create_project-module.html">
+    Module mari.examples.create_project
+   </a>
+  </h1>
+  <pre class="py-src">
+&iuml;&raquo;&iquest;# ------------------------------------------------------------------------------
+# Sample project creation function
+# coding: utf-8
+# Copyright (c) 2010 The Foundry Visionmongers Ltd.  All Rights Reserved.
+# ------------------------------------------------------------------------------
+
+from PySide2.QtWidgets import QFileDialog
+import os
+import mari
+
+# ------------------------------------------------------------------------------
+def createBasic():
+    "This creates a project with a set of default options."
+    mari.projects.close()
+
+    obj_name = QFileDialog.getOpenFileName(None, "Select a .obj file", "/", "*.obj")
+    if type(obj_name) is tuple and len(obj_name)&gt;0:
+        # PySide's getOpenFileName returns a tuple of file name and the used filter
+        obj_name = obj_name[0]
+
+    if os.path.exists(obj_name):
+        # default settings
+        color_channel = mari.ChannelInfo('color')
+
+        # small blue RGBA
+        blue_channel = mari.ChannelInfo('blue', 512, 512, mari.Image.DEPTH_HALF, mari.Color(0, 0, 0.5))
+
+        channel_colorspaces = mari.ColorspaceConfig('Automatic')
+        channel_colorspaces.setColorspace(mari.ColorspaceConfig.COLORSPACE_STAGE_NATIVE, 'REDLog')
+        channel_colorspaces.setColorspace(mari.ColorspaceConfig.COLORSPACE_STAGE_OUTPUT, 'Same As Native')
+        channel_colorspaces.setColorspace(mari.ColorspaceConfig.COLORSPACE_STAGE_WORKING, 'linear')
+        blue_channel.setColorspaceConfig(channel_colorspaces)
+
+        channel_scalar_colorspaces = mari.ColorspaceConfig('Automatic')
+        channel_scalar_colorspaces.setScalar(True)
+        channel_scalar_colorspaces.setColorspace(mari.ColorspaceConfig.COLORSPACE_STAGE_NATIVE, 'linear')
+        channel_scalar_colorspaces.setColorspace(mari.ColorspaceConfig.COLORSPACE_STAGE_OUTPUT, 'Same As Native')
+        channel_scalar_colorspaces.setColorspace(mari.ColorspaceConfig.COLORSPACE_STAGE_WORKING, 'linear')
+        blue_channel.setScalarColorspaceConfig(channel_scalar_colorspaces)
+
+        project_colorspaces = mari.ColorspaceDefaults('nuke-default')
+        project_colorspaces.setColorspace(mari.ColorspaceDefaults.COLORSPACE_TARGET_INT8, 'Gamma2.2')
+        project_colorspaces.setColorspace(mari.ColorspaceDefaults.COLORSPACE_TARGET_INT16, 'Gamma2.2')
+        project_colorspaces.setColorspace(mari.ColorspaceDefaults.COLORSPACE_TARGET_SCALAR8, 'linear')
+        project_colorspaces.setColorspace(mari.ColorspaceDefaults.COLORSPACE_TARGET_FLOAT, 'linear')
+        project_colorspaces.setColorspace(mari.ColorspaceDefaults.COLORSPACE_TARGET_WORKING, 'linear')
+        project_colorspaces.setColorspace(mari.ColorspaceDefaults.COLORSPACE_TARGET_MONITOR, 'rec709')
+        project_colorspaces.setColorspace(mari.ColorspaceDefaults.COLORSPACE_TARGET_COLOR_PICKER, 'sRGB')
+        project_colorspaces.setColorspace(mari.ColorspaceDefaults.COLORSPACE_TARGET_BLENDING, 'Gamma2.2')
+
+        mari.projects.create("default_example",
+                             obj_name,       # you can supply a list or a string (function overloads don't work in docs yet)
+                             [color_channel, blue_channel],
+                             [],
+                             None,
+                             None,
+                             project_colorspaces)
+
+# ------------------------------------------------------------------------------
+def createAndImport():
+    "This creates a project with a set of default options, and imports an image file."
+    mari.projects.close()
+    obj_name = QFileDialog.getOpenFileName(None, "Select an .obj file", "/", "*.obj")
+    if type(obj_name) is tuple and len(obj_name) &gt; 0:
+        # PySide's getOpenFileName returns a tuple of file name and the used filter
+        obj_name = obj_name[0]
+    if not os.path.exists(obj_name):
+        return
+
+    tex_name = QFileDialog.getOpenFileName(None, "Select an image file", "/", "*.jpg; *.tif")
+    if type(tex_name) is tuple and len(tex_name) &gt; 0:
+        # PySide's getOpenFileName returns a tuple of file name and the used filter
+        tex_name = tex_name[0]
+    if not os.path.exists(tex_name):
+        return
+
+    import_channel = mari.ChannelInfo('color')
+    path = os.path.split(tex_name)
+    import_channel.setPath(path[0])
+    # Normally the file template would be something like "$PATH/$ENTITY_$CHANNEL_$UDIM.tif", but we're just using
+    # one file here for simplicity
+    import_channel.setFileTemplate("$PATH/" + path[1])
+
+    channel_colorspaces = mari.ColorspaceConfig('Automatic')
+    channel_colorspaces.setColorspace(mari.ColorspaceConfig.COLORSPACE_STAGE_NATIVE, 'linear')
+    channel_colorspaces.setColorspace(mari.ColorspaceConfig.COLORSPACE_STAGE_OUTPUT, 'Same As Native')
+    channel_colorspaces.setColorspace(mari.ColorspaceConfig.COLORSPACE_STAGE_WORKING, 'Same As Native')
+
+    channel_scalar_colorspaces = mari.ColorspaceConfig('Automatic')
+    channel_scalar_colorspaces.setScalar(True)
+    channel_scalar_colorspaces.setColorspace(mari.ColorspaceConfig.COLORSPACE_STAGE_NATIVE, 'linear')
+    channel_scalar_colorspaces.setColorspace(mari.ColorspaceConfig.COLORSPACE_STAGE_OUTPUT, 'Same As Native')
+    channel_scalar_colorspaces.setColorspace(mari.ColorspaceConfig.COLORSPACE_STAGE_WORKING, 'linear')
+
+    other_channel = mari.ChannelInfo('other',
+                                     512,
+                                     512,
+                                     mari.Image.DEPTH_BYTE,
+                                     mari.Color(0, 0, 0, 1),
+                                     mari.Image.FILESPACE_NORMAL,
+                                     channel_colorspaces,
+                                     channel_scalar_colorspaces)
+
+    project_colorspaces = mari.ColorspaceDefaults('nuke-default')
+    project_colorspaces.setColorspace(mari.ColorspaceDefaults.COLORSPACE_TARGET_INT8, 'Gamma2.2')
+    project_colorspaces.setColorspace(mari.ColorspaceDefaults.COLORSPACE_TARGET_INT16, 'Gamma2.2')
+    project_colorspaces.setColorspace(mari.ColorspaceDefaults.COLORSPACE_TARGET_SCALAR8, 'linear')
+    project_colorspaces.setColorspace(mari.ColorspaceDefaults.COLORSPACE_TARGET_FLOAT, 'linear')
+    project_colorspaces.setColorspace(mari.ColorspaceDefaults.COLORSPACE_TARGET_WORKING, 'linear')
+    project_colorspaces.setColorspace(mari.ColorspaceDefaults.COLORSPACE_TARGET_MONITOR, 'rec709')
+    project_colorspaces.setColorspace(mari.ColorspaceDefaults.COLORSPACE_TARGET_COLOR_PICKER, 'sRGB')
+    project_colorspaces.setColorspace(mari.ColorspaceDefaults.COLORSPACE_TARGET_BLENDING, 'Gamma2.2')
+
+    mari.projects.create("import_example",
+                         obj_name,
+                         [other_channel],
+                         [import_channel],
+                         None,
+                         None,
+                         project_colorspaces)
+
+    # Show the color channel so we can see something on the model
+    obj = mari.geo.current()
+    obj.setCurrentChannel(obj.channel('color'))
+
+# ------------------------------------------------------------------------------
+
+# Register new actions with the action manager, and add them to a Python menu
+mari.menus.addAction(mari.actions.create('Create Project', 'mari.examples.create_project.createBasic()'), "MainWindow/P&amp;ython;/&amp;Examples;")
+mari.menus.addAction(mari.actions.create('Create Project And Import', 'mari.examples.create_project.createAndImport()'), "MainWindow/P&amp;ython;/&amp;Examples;")
+<script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

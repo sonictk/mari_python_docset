@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.examples.action_manager
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.examples-module.html">
+       Package&nbsp;examples
+      </a>
+      ::
+        Module&nbsp;action_manager
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.examples.action_manager-pysrc.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <h1 class="epydoc">
+   Source Code for
+   <a href="mari.examples.action_manager-module.html">
+    Module mari.examples.action_manager
+   </a>
+  </h1>
+  <pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"># Action Manager Examples</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-comment"># coding: utf-8</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-comment"># Copyright (c) 2010 The Foundry Visionmongers Ltd.  All Rights Reserved.</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name" id="link-0" targets="Package mari=mari-module.html"><a class="py-name" href="#" onclick="return doclink('link-0', 'mari', 'link-0');" title="mari">mari</a></tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="makeToolMenu"></a><div id="makeToolMenu-def"><a name="L10"></a><tt class="py-lineno">10</tt> <a class="py-toggle" href="#" id="makeToolMenu-toggle" onclick="return toggle('makeToolMenu');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.action_manager-module.html#makeToolMenu">makeToolMenu</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="makeToolMenu-collapsed" indent="++++" pad="++" style="display:none;"></div><div id="makeToolMenu-expanded"><a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line">    <tt class="py-docstring">"Makes a submenu containing all of the tool activations actions."</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">    <tt class="py-comment"># Get a list of all of the tool activation actions. These all live at the</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">    <tt class="py-comment"># /Mari/Tools/General part of the tree</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">    <tt class="py-name">tool_actions</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-1"><a class="py-name" href="#" onclick="return doclink('link-1', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-2" targets="Method mari.MenuManager.actions()=mari.MenuManager-class.html#actions,Variable mari.actions=mari-module.html#actions"><a class="py-name" href="#" onclick="return doclink('link-2', 'actions', 'link-2');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-3" targets="Method mari.ActionManager.list()=mari.ActionManager-class.html#list,Method mari.CanvasManager.list()=mari.CanvasManager-class.html#list,Method mari.GeoManager.list()=mari.GeoManager-class.html#list,Method mari.ImageManager.list()=mari.ImageManager-class.html#list,Method mari.LightManager.list()=mari.LightManager-class.html#list,Method mari.PaletteManager.list()=mari.PaletteManager-class.html#list,Method mari.Preferences.list()=mari.Preferences-class.html#list,Method mari.ProjectManager.list()=mari.ProjectManager-class.html#list,Method mari.ProjectorManager.list()=mari.ProjectorManager-class.html#list,Method mari.SelectionGroupManager.list()=mari.SelectionGroupManager-class.html#list,Method mari.ShelfManager.list()=mari.ShelfManager-class.html#list"><a class="py-name" href="#" onclick="return doclink('link-3', 'list', 'link-3');" title="mari.ActionManager.list
+mari.CanvasManager.list
+mari.GeoManager.list
+mari.ImageManager.list
+mari.LightManager.list
+mari.PaletteManager.list
+mari.Preferences.list
+mari.ProjectManager.list
+mari.ProjectorManager.list
+mari.SelectionGroupManager.list
+mari.ShelfManager.list">list</a></tt><tt class="py-op">(</tt><tt class="py-string">'/Mari/Tools/General'</tt><tt class="py-op">)</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">    <tt class="py-comment"># now we add each of the these actions to a submenu in the python menu</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name" id="link-4" targets="Variable mari.system.batch_export_dialog.action=mari.system.batch_export_dialog-module.html#action"><a class="py-name" href="#" onclick="return doclink('link-4', 'action', 'link-4');" title="mari.system.batch_export_dialog.action">action</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">tool_actions</tt><tt class="py-op">:</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">        <tt class="py-comment"># we iterate over all of the actions found, find them in the action manager</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">        <tt class="py-comment"># and add them to a sub menu of the main python menu</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">        <tt class="py-name" id="link-5"><a class="py-name" href="#" onclick="return doclink('link-5', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-6" targets="Variable mari.menus=mari-module.html#menus"><a class="py-name" href="#" onclick="return doclink('link-6', 'menus', 'link-6');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-7" targets="Method mari.MenuManager.addAction()=mari.MenuManager-class.html#addAction,Method mari.ToolBar.addAction()=mari.ToolBar-class.html#addAction,Function mari.examples.vector_brush.addAction()=mari.examples.vector_brush-module.html#addAction"><a class="py-name" href="#" onclick="return doclink('link-7', 'addAction', 'link-7');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-8"><a class="py-name" href="#" onclick="return doclink('link-8', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-9"><a class="py-name" href="#" onclick="return doclink('link-9', 'actions', 'link-2');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-10" targets="Method mari.ActionManager.find()=mari.ActionManager-class.html#find,Method mari.GeoManager.find()=mari.GeoManager-class.html#find,Method mari.PaletteManager.find()=mari.PaletteManager-class.html#find,Method mari.PostFilterCollection.find()=mari.PostFilterCollection-class.html#find,Method mari.ProjectManager.find()=mari.ProjectManager-class.html#find,Method mari.ProjectorManager.find()=mari.ProjectorManager-class.html#find,Method mari.ShelfManager.find()=mari.ShelfManager-class.html#find"><a class="py-name" href="#" onclick="return doclink('link-10', 'find', 'link-10');" title="mari.ActionManager.find
+mari.GeoManager.find
+mari.PaletteManager.find
+mari.PostFilterCollection.find
+mari.ProjectManager.find
+mari.ProjectorManager.find
+mari.ShelfManager.find">find</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-11"><a class="py-name" href="#" onclick="return doclink('link-11', 'action', 'link-4');" title="mari.system.batch_export_dialog.action">action</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">"MainWindow/P&amp;ython/&amp;Tools"</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"><tt class="py-comment"># Register a new action with the action manager, and add it to a Python Menu</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt class="py-name" id="link-12"><a class="py-name" href="#" onclick="return doclink('link-12', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-13"><a class="py-name" href="#" onclick="return doclink('link-13', 'menus', 'link-6');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-14"><a class="py-name" href="#" onclick="return doclink('link-14', 'addAction', 'link-7');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-15"><a class="py-name" href="#" onclick="return doclink('link-15', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-16"><a class="py-name" href="#" onclick="return doclink('link-16', 'actions', 'link-2');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-17" targets="Method mari.ActionManager.create()=mari.ActionManager-class.html#create,Method mari.PaletteManager.create()=mari.PaletteManager-class.html#create,Method mari.ProjectManager.create()=mari.ProjectManager-class.html#create,Method mari.ProjectorManager.create()=mari.ProjectorManager-class.html#create"><a class="py-name" href="#" onclick="return doclink('link-17', 'create', 'link-17');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt><tt class="py-string">'Make Tools Menu'</tt><tt class="py-op">,</tt> <tt class="py-string">'mari.examples.action_manager.makeToolMenu()'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">"MainWindow/P&amp;ython/&amp;Examples"</tt><tt class="py-op">)</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

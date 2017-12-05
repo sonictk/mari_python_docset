@@ -1,0 +1,6211 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.LayerStack
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+        Class&nbsp;LayerStack
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.LayerStack-class.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS DESCRIPTION ==================== -->
+  <h1 class="epydoc">
+   Class LayerStack
+  </h1>
+  <p class="nomargin-top">
+   <span class="codelink">
+    <a href="mari-pysrc.html#LayerStack">
+     source&nbsp;code
+    </a>
+   </span>
+  </p>
+  <pre class="base-tree">
+object --+    
+         |    
+  <a href="mari.Metadata-class.html">Metadata</a> --+
+             |
+            <strong class="uidshort">LayerStack</strong>
+</pre>
+  <dl>
+   <dt>
+    Known Subclasses:
+   </dt>
+   <dd>
+    <ul class="subclass-list">
+     <li>
+      <a href="mari.Channel-class.html">
+       Channel
+      </a>
+     </li>
+    </ul>
+   </dd>
+  </dl>
+  <hr/>
+  <p>
+   This is the interface for creating, traversing and destroying layers 
+  on any part of the layer system that has layer stacks.
+  </p>
+  <p>
+   This is the interface for creating, traversing and destroying layers 
+  on any part of the layer system that has layer stacks. Obtain these using
+  methods on the relevant interfaces that return
+   <a class="link" href="mari.LayerStack-class.html">
+    LayerStack
+   </a>
+   . For 
+  example:
+   <code>
+    layer.makeMaskStack()
+   </code>
+   <b>
+    Example Code
+   </b>
+  </p>
+  <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This example creates a mask stack and returns the mask stack</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>current_layer = mari.geo.current().currentChannel().currentLayer()
+<span class="py-prompt">&gt;&gt;&gt; </span>mask_stack = current_layer.makeMaskStack()</pre>
+  <!-- ==================== NESTED CLASSES ==================== -->
+  <a name="section-NestedClasses">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Nested Classes
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.LayerStack.ClearSelectionFlag-class.html">
+      ClearSelectionFlag
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.LayerStack.LayerCreateFlag-class.html">
+      LayerCreateFlag
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.LayerStack.LayerImportOption-class.html">
+      LayerImportOption
+     </a>
+     <br/>
+     These options determine how to handle importing layers with names 
+        that match existing ones.
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata.MetadataFlag-class.html">
+        MetadataFlag
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata.MetadataGroupHint-class.html">
+        MetadataGroupHint
+       </a>
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== INSTANCE METHODS ==================== -->
+  <a name="section-InstanceMethods">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Instance Methods
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#clearSelection">
+          clearSelection
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Flags
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         )
+        </span>
+        <br/>
+        Deselects all currently selected layers in the hierarchy of the 
+      stack.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.clearSelection">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Layer-class.html">
+       Layer
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#createAdjustmentLayer">
+          createAdjustmentLayer
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          LayerName
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          PrimaryAdjustmentKey
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          RefLayer
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Flags
+         </span>
+         =
+         <span class="summary-sig-default">
+          1
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a new adjustment layer that has been created on layer stack.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.createAdjustmentLayer">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Layer-class.html">
+       Layer
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#createBakePointLayer">
+          createBakePointLayer
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          LayerName
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          RefLayer
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Flags
+         </span>
+         =
+         <span class="summary-sig-default">
+          1
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a new bake point layer that has been created on layer stack.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.createBakePointLayer">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Layer-class.html">
+       Layer
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#createChannelLayer">
+          createChannelLayer
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          LayerName
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          TargetChannel
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          RefLayer
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Flags
+         </span>
+         =
+         <span class="summary-sig-default">
+          1
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a new channel layer that has been created on layer stack.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.createChannelLayer">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Layer-class.html">
+       Layer
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#createGraphLayer">
+          createGraphLayer
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          LayerName
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          RefLayer
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Flags
+         </span>
+         =
+         <span class="summary-sig-default">
+          1
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a new graph layer that has been created on layer stack.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.createGraphLayer">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Layer-class.html">
+       Layer
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#createGroupLayer">
+          createGroupLayer
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          LayerName
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          RefLayer
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Flags
+         </span>
+         =
+         <span class="summary-sig-default">
+          1
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a new group layer that has been created on layer stack.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.createGroupLayer">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Layer-class.html">
+       Layer
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#createPaintableLayer">
+          createPaintableLayer
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          LayerName
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          RefLayer
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          FillColor
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Flags
+         </span>
+         =
+         <span class="summary-sig-default">
+          1
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a new paintable layer that has been created on layer stack.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.createPaintableLayer">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Layer-class.html">
+       Layer
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#createProceduralLayer">
+          createProceduralLayer
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          LayerName
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          ProceduralKey
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          RefLayer
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Flags
+         </span>
+         =
+         <span class="summary-sig-default">
+          1
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a new procedural layer that has been created on layer stack.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.createProceduralLayer">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Layer-class.html">
+       Layer
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#createShaderLayer">
+          createShaderLayer
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          LayerName
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          TargetShader
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          RefLayer
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Flags
+         </span>
+         =
+         <span class="summary-sig-default">
+          1
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a new shader layer that has been created on layer stack.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.createShaderLayer">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of
+      <a class="link" href="mari.Layer-class.html">
+       Layer
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#duplicateLayers">
+          duplicateLayers
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          LayersToDuplicate
+         </span>
+         =
+         <span class="summary-sig-default">
+          <code class="variable-group">
+           [
+          </code>
+          <code class="variable-group">
+           ]
+          </code>
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          RefLayer
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Flags
+         </span>
+         =
+         <span class="summary-sig-default">
+          1
+         </span>
+         )
+        </span>
+        <br/>
+        Creates copies of the given layers within the layer stack.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.duplicateLayers">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#exportImages">
+          exportImages
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          PathAndTemplate
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Options
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          UVIndexList
+         </span>
+         =
+         <span class="summary-sig-default">
+          <code class="variable-group">
+           [
+          </code>
+          <code class="variable-group">
+           ]
+          </code>
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          FileOptions
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         )
+        </span>
+        <br/>
+        Exports a set of images from the layer stack.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.exportImages">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#exportImagesFlattened">
+          exportImagesFlattened
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          PathAndTemplate
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Options
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          UVIndexList
+         </span>
+         =
+         <span class="summary-sig-default">
+          <code class="variable-group">
+           [
+          </code>
+          <code class="variable-group">
+           ]
+          </code>
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          FileOptions
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         )
+        </span>
+        <br/>
+        Exports a set of images from the flattened contents of the layer 
+      stack.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.exportImagesFlattened">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#exportSelectedPatches">
+          exportSelectedPatches
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          PathAndTemplate
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Options
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          FileOptions
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         )
+        </span>
+        <br/>
+        Exports images from the selected patches.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.exportSelectedPatches">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#exportSelectedPatchesFlattened">
+          exportSelectedPatchesFlattened
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          PathAndTemplate
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Options
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          FileOptions
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         )
+        </span>
+        <br/>
+        Exports the selected patches with the layer stack flattened.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.exportSelectedPatchesFlattened">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Layer-class.html">
+       Layer
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#findLayer">
+          findLayer
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          LayerName
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the layer with the given name.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.findLayer">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Layer-class.html">
+       Layer
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#groupLayers">
+          groupLayers
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          LayersToGroup
+         </span>
+         =
+         <span class="summary-sig-default">
+          <code class="variable-group">
+           [
+          </code>
+          <code class="variable-group">
+           ]
+          </code>
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          RefLayer
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          LayerName
+         </span>
+         =
+         <span class="summary-sig-default">
+          <code class="variable-quote">
+           '
+          </code>
+          <code class="variable-string">
+          </code>
+          <code class="variable-quote">
+           '
+          </code>
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Flags
+         </span>
+         =
+         <span class="summary-sig-default">
+          1
+         </span>
+         )
+        </span>
+        <br/>
+        Creates a new group layer on the layer stack and adds the given 
+      layers to it.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.groupLayers">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#hash">
+          hash
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          UVIndex
+         </span>
+         =
+         <span class="summary-sig-default">
+          -1
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a unique identifier for this layer stack.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.hash">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#imageHash">
+          imageHash
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          UVIndex
+         </span>
+         =
+         <span class="summary-sig-default">
+          -1
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a unique identifier for this layer stack's image data.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.imageHash">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#importImages">
+          importImages
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          PathAndTemplate
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          ScaleOption
+         </span>
+         =
+         <span class="summary-sig-default">
+          1
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          MatchingLayersOption
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          MismatchingLayersOption
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          UVIndexList
+         </span>
+         =
+         <span class="summary-sig-default">
+          <code class="variable-group">
+           [
+          </code>
+          <code class="variable-group">
+           ]
+          </code>
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          RemoveAlpha
+         </span>
+         =
+         <span class="summary-sig-default">
+          False
+         </span>
+         )
+        </span>
+        <br/>
+        Imports a set of images into the layer stack.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.importImages">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Layer-class.html">
+       Layer
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#layer">
+          layer
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          LayerName
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the layer with the given name.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.layer">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of
+      <a class="link" href="mari.Layer-class.html">
+       Layer
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#layerList">
+          layerList
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the list of layers that make up this objects layer stack.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.layerList">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Layer-class.html">
+       Layer
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#mergeLayers">
+          mergeLayers
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          LayersToMerge
+         </span>
+         =
+         <span class="summary-sig-default">
+          <code class="variable-group">
+           [
+          </code>
+          <code class="variable-group">
+           ]
+          </code>
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          RefLayer
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Flags
+         </span>
+         =
+         <span class="summary-sig-default">
+          1
+         </span>
+         )
+        </span>
+        <br/>
+        Merges the given layers within the layer stack into a single 
+      paintable layer.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.mergeLayers">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#moveLayer">
+          moveLayer
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          LayerToMove
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          RefLayer
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         )
+        </span>
+        <br/>
+        Moves the layer from its current layer stack position to this stack 
+      and position.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.moveLayer">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#moveLayerBelow">
+          moveLayerBelow
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          LayerToMove
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          RefLayer
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         )
+        </span>
+        <br/>
+        Moves the layer from its current layer stack position to this stack 
+      and position.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.moveLayerBelow">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#name">
+          name
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the name of the object.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.name">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#removeLayers">
+          removeLayers
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          LayersToRemove
+         </span>
+         =
+         <span class="summary-sig-default">
+          <code class="variable-group">
+           [
+          </code>
+          <code class="variable-group">
+           ]
+          </code>
+         </span>
+         )
+        </span>
+        <br/>
+        Removes the given layers within the layer stack.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.removeLayers">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Layer-class.html">
+       Layer
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#shareLayer">
+          shareLayer
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          LayerToShare
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          RefLayer
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Flags
+         </span>
+         =
+         <span class="summary-sig-default">
+          1
+         </span>
+         )
+        </span>
+        <br/>
+        Shares the layer from its current layer stack position to this stack 
+      and position.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.shareLayer">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#ungroupLayers">
+          ungroupLayers
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          GroupLayersToUngroup
+         </span>
+         =
+         <span class="summary-sig-default">
+          <code class="variable-group">
+           [
+          </code>
+          <code class="variable-group">
+           ]
+          </code>
+         </span>
+         )
+        </span>
+        <br/>
+        Removes the group layers specified and inserts the deleted group's 
+      layer stack in its place in the layer stack.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.ungroupLayers">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata-class.html#hasMetadata">
+        hasMetadata
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadata">
+        metadata
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataAsImage">
+        metadataAsImage
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataDefault">
+        metadataDefault
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataDescription">
+        metadataDescription
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataDisplayName">
+        metadataDisplayName
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataFlags">
+        metadataFlags
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataIsEnabled">
+        metadataIsEnabled
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataItemList">
+        metadataItemList
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataMax">
+        metadataMax
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataMin">
+        metadataMin
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataNames">
+        metadataNames
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataStep">
+        metadataStep
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#removeMetadata">
+        removeMetadata
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadata">
+        setMetadata
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataDefault">
+        setMetadataDefault
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataDescription">
+        setMetadataDescription
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataDisplayName">
+        setMetadataDisplayName
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataEnabled">
+        setMetadataEnabled
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataFlags">
+        setMetadataFlags
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataGroupHints">
+        setMetadataGroupHints
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataItemList">
+        setMetadataItemList
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataRange">
+        setMetadataRange
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#setMetadataStep">
+        setMetadataStep
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#uuid">
+        uuid
+       </a>
+      </code>
+     </p>
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __delattr__
+      </code>
+      ,
+      <code>
+       __format__
+      </code>
+      ,
+      <code>
+       __getattribute__
+      </code>
+      ,
+      <code>
+       __hash__
+      </code>
+      ,
+      <code>
+       __init__
+      </code>
+      ,
+      <code>
+       __new__
+      </code>
+      ,
+      <code>
+       __reduce__
+      </code>
+      ,
+      <code>
+       __reduce_ex__
+      </code>
+      ,
+      <code>
+       __repr__
+      </code>
+      ,
+      <code>
+       __setattr__
+      </code>
+      ,
+      <code>
+       __sizeof__
+      </code>
+      ,
+      <code>
+       __str__
+      </code>
+      ,
+      <code>
+       __subclasshook__
+      </code>
+     </p>
+    </td>
+   </tr>
+   <tr bgcolor="#e8f0f8">
+    <th class="group-header" colspan="2">
+     &nbsp;&nbsp;&nbsp;&nbsp;Signals
+    </th>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata-class.html#metadataCreated">
+        metadataCreated
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataRemoved">
+        metadataRemoved
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#metadataValueChanged">
+        metadataValueChanged
+       </a>
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== STATIC METHODS ==================== -->
+  <a name="section-StaticMethods">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Static Methods
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#adjustmentLayerTypeList">
+          adjustmentLayerTypeList
+         </a>
+         ()
+        </span>
+        <br/>
+        Returns a list of adjustment layer types that can be created.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.adjustmentLayerTypeList">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.LayerStack-class.html#proceduralLayerTypeList">
+          proceduralLayerTypeList
+         </a>
+         ()
+        </span>
+        <br/>
+        Returns a list of procedural layer types that can be created.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#LayerStack.proceduralLayerTypeList">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata-class.html#isSupportedMetadataType">
+        isSupportedMetadataType
+       </a>
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS VARIABLES ==================== -->
+  <a name="section-ClassVariables">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Class Variables
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="DEFAULT_CLEAR_SELECTION_FLAGS">
+     </a>
+     <span class="summary-name">
+      DEFAULT_CLEAR_SELECTION_FLAGS
+     </span>
+     =
+     <code title="0">
+      0
+     </code>
+     <br/>
+     All other options are turned off.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="CLEAR_GROUPS">
+     </a>
+     <span class="summary-name">
+      CLEAR_GROUPS
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     Recursively unselects the sub-layers of any child group layers.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="CLEAR_ADJUSTMENT_STACKS">
+     </a>
+     <span class="summary-name">
+      CLEAR_ADJUSTMENT_STACKS
+     </span>
+     =
+     <code title="2">
+      2
+     </code>
+     <br/>
+     Recursively unselects the sub-layers of any child adjustment stacks.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="CLEAR_MASK_STACKS">
+     </a>
+     <span class="summary-name">
+      CLEAR_MASK_STACKS
+     </span>
+     =
+     <code title="4">
+      4
+     </code>
+     <br/>
+     Recursively unselects the sub-layers of any child mask stacks.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="DEFAULT_LAYER_CREATE_FLAGS">
+     </a>
+     <span class="summary-name">
+      DEFAULT_LAYER_CREATE_FLAGS
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     All other options are turned off.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="CLEAR_CURRENT_LAYER_SELECTION">
+     </a>
+     <span class="summary-name">
+      CLEAR_CURRENT_LAYER_SELECTION
+     </span>
+     =
+     <code title="2">
+      2
+     </code>
+     <br/>
+     Deselect all layers presently selected in this stack.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="SELECT_NEW_LAYERS">
+     </a>
+     <span class="summary-name">
+      SELECT_NEW_LAYERS
+     </span>
+     =
+     <code title="4">
+      4
+     </code>
+     <br/>
+     Select the newly created layers.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="MAKE_NEW_LAYER_CURRENT">
+     </a>
+     <span class="summary-name">
+      MAKE_NEW_LAYER_CURRENT
+     </span>
+     =
+     <code title="8">
+      8
+     </code>
+     <br/>
+     Set the newly created layer as the current layer.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="INSERT_NEW_LAYER_ABOVE_SELECTION">
+     </a>
+     <span class="summary-name">
+      INSERT_NEW_LAYER_ABOVE_SELECTION
+     </span>
+     =
+     <code title="16">
+      16
+     </code>
+     <br/>
+     Inserts the newly created layer above the top-most selected layer in 
+      the stack.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="INSERT_NEW_LAYER_BELOW_REF_LAYER">
+     </a>
+     <span class="summary-name">
+      INSERT_NEW_LAYER_BELOW_REF_LAYER
+     </span>
+     =
+     <code title="32">
+      32
+     </code>
+     <br/>
+     Inserts the newly created layer below the given RefLayer in the 
+      stack.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="OPTION_NOT_SPECIFIED">
+     </a>
+     <span class="summary-name">
+      OPTION_NOT_SPECIFIED
+     </span>
+     =
+     <code title="0">
+      0
+     </code>
+     <br/>
+     Use a default option.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="UPDATE_LAYERS">
+     </a>
+     <span class="summary-name">
+      UPDATE_LAYERS
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     Update (overwrite) existing layers with new data from the imported 
+      files.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="CREATE_NEW_LAYERS">
+     </a>
+     <span class="summary-name">
+      CREATE_NEW_LAYERS
+     </span>
+     =
+     <code title="2">
+      2
+     </code>
+     <br/>
+     Always create new layers and do not update any existing ones.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="SKIP_LAYERS">
+     </a>
+     <span class="summary-name">
+      SKIP_LAYERS
+     </span>
+     =
+     <code title="3">
+      3
+     </code>
+     <br/>
+     Ignore any layers being imported that match existing layers.
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        <a href="mari.Metadata-class.html">
+         Metadata
+        </a>
+       </code>
+      </b>
+      :
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_EDITABLE">
+        METADATA_EDITABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_GROUP_HINT_DISPLAY">
+        METADATA_GROUP_HINT_DISPLAY
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_GROUP_HINT_SORTABLE">
+        METADATA_GROUP_HINT_SORTABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_REMOVABLE">
+        METADATA_REMOVABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_REMOVEABLE">
+        METADATA_REMOVEABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_SAVED">
+        METADATA_SAVED
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_UNDOABLE">
+        METADATA_UNDOABLE
+       </a>
+      </code>
+      ,
+      <code>
+       <a href="mari.Metadata-class.html#METADATA_VISIBLE">
+        METADATA_VISIBLE
+       </a>
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== PROPERTIES ==================== -->
+  <a name="section-Properties">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Properties
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __class__
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== METHOD DETAILS ==================== -->
+  <a name="section-MethodDetails">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Method Details
+     </span>
+    </td>
+   </tr>
+  </table>
+  <a name="clearSelection">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            clearSelection
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Flags
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.clearSelection">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Deselects all currently selected layers in the hierarchy of the 
+  stack.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Flags
+           </code>
+          </strong>
+          (int) - Values of
+          <a class="link" href="mari.LayerStack.ClearSelectionFlag-class.html">
+           ClearSelectionFlag
+          </a>
+          or'ed together.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="createAdjustmentLayer">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            createAdjustmentLayer
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            LayerName
+           </span>
+           ,
+           <span class="sig-arg">
+            PrimaryAdjustmentKey
+           </span>
+           ,
+           <span class="sig-arg">
+            RefLayer
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            Flags
+           </span>
+           =
+           <span class="sig-default">
+            1
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.createAdjustmentLayer">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns a new adjustment layer that has been created on layer 
+  stack.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            LayerName
+           </code>
+          </strong>
+          (str) - the name of the layer to create.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            PrimaryAdjustmentKey
+           </code>
+          </strong>
+          (str) - The path key of the type of the primary adjustment to create.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            RefLayer
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Layer-class.html">
+           Layer
+          </a>
+          ) - The layer to create the new layer above. If None then the new 
+          layer is created at the top of the layer stack.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Flags
+           </code>
+          </strong>
+          (int) - Optional layer creation flags. Values of
+          <a class="link" href="mari.LayerStack.LayerCreateFlag-class.html">
+           LayerCreateFlag
+          </a>
+          or'ed together.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.Layer-class.html">
+         Layer
+        </a>
+       </dt>
+       <dd>
+        The newly created adjustment layer.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if adjustment key parameter does not match any valid value. 
+        Or if the reference layer is not in this stack.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="createBakePointLayer">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            createBakePointLayer
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            LayerName
+           </span>
+           ,
+           <span class="sig-arg">
+            RefLayer
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            Flags
+           </span>
+           =
+           <span class="sig-default">
+            1
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.createBakePointLayer">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns a new bake point layer that has been created on layer 
+  stack.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            LayerName
+           </code>
+          </strong>
+          (str) - The name of the layer to create.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            RefLayer
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Layer-class.html">
+           Layer
+          </a>
+          ) - The layer to create the new layer above. If None then the new 
+          layer is created at the top of the layer stack.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Flags
+           </code>
+          </strong>
+          (int) - Optional layer creation flags. Values of
+          <a class="link" href="mari.LayerStack.LayerCreateFlag-class.html">
+           LayerCreateFlag
+          </a>
+          or'ed together.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.Layer-class.html">
+         Layer
+        </a>
+       </dt>
+       <dd>
+        The newly created bake point layer.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the reference layer is not in this stack.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the experimental bake point layer feature is not enabled.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="createChannelLayer">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            createChannelLayer
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            LayerName
+           </span>
+           ,
+           <span class="sig-arg">
+            TargetChannel
+           </span>
+           ,
+           <span class="sig-arg">
+            RefLayer
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            Flags
+           </span>
+           =
+           <span class="sig-default">
+            1
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.createChannelLayer">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns a new channel layer that has been created on layer stack.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            LayerName
+           </code>
+          </strong>
+          (str) - the name of the layer to create.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            TargetChannel
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Channel-class.html">
+           Channel
+          </a>
+          ) - The channel to use.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            RefLayer
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Layer-class.html">
+           Layer
+          </a>
+          ) - The layer to create the new layer above. If None then the new 
+          layer is created at the top of the layer stack.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Flags
+           </code>
+          </strong>
+          (int) - Optional layer creation flags. Values of
+          <a class="link" href="mari.LayerStack.LayerCreateFlag-class.html">
+           LayerCreateFlag
+          </a>
+          or'ed together.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.Layer-class.html">
+         Layer
+        </a>
+       </dt>
+       <dd>
+        The newly-created channel layer.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if channel parameter is not valid, or if the reference layer
+        is not in this stack.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="createGraphLayer">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            createGraphLayer
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            LayerName
+           </span>
+           ,
+           <span class="sig-arg">
+            RefLayer
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            Flags
+           </span>
+           =
+           <span class="sig-default">
+            1
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.createGraphLayer">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns a new graph layer that has been created on layer stack.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            LayerName
+           </code>
+          </strong>
+          (str) - The name of the layer to create.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            RefLayer
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Layer-class.html">
+           Layer
+          </a>
+          ) - The layer to create the new layer above. If None then the new 
+          layer is created at the top of the layer stack.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Flags
+           </code>
+          </strong>
+          (int) - Optional layer creation flags. Values of
+          <a class="link" href="mari.LayerStack.LayerCreateFlag-class.html">
+           LayerCreateFlag
+          </a>
+          or'ed together.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.Layer-class.html">
+         Layer
+        </a>
+       </dt>
+       <dd>
+        The newly created graph layer.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the reference layer is not in this stack.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="createGroupLayer">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            createGroupLayer
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            LayerName
+           </span>
+           ,
+           <span class="sig-arg">
+            RefLayer
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            Flags
+           </span>
+           =
+           <span class="sig-default">
+            1
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.createGroupLayer">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns a new group layer that has been created on layer stack.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            LayerName
+           </code>
+          </strong>
+          (str) - The name of the layer to create.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            RefLayer
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Layer-class.html">
+           Layer
+          </a>
+          ) - The layer to create the new layer above. If None then the new 
+          layer is created at the top of the layer stack.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Flags
+           </code>
+          </strong>
+          (int) - Optional layer creation flags. Values of
+          <a class="link" href="mari.LayerStack.LayerCreateFlag-class.html">
+           LayerCreateFlag
+          </a>
+          or'ed together.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.Layer-class.html">
+         Layer
+        </a>
+       </dt>
+       <dd>
+        The newly created group layer.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the reference layer is not in this stack.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="createPaintableLayer">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            createPaintableLayer
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            LayerName
+           </span>
+           ,
+           <span class="sig-arg">
+            RefLayer
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            FillColor
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            Flags
+           </span>
+           =
+           <span class="sig-default">
+            1
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.createPaintableLayer">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns a new paintable layer that has been created on layer 
+  stack.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            LayerName
+           </code>
+          </strong>
+          (str) - The name of the layer to create.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            RefLayer
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Layer-class.html">
+           Layer
+          </a>
+          ) - The layer to create the new layer above. If None then the new 
+          layer is created at the top of the layer stack
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            FillColor
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Color-class.html">
+           Color
+          </a>
+          ) - The color the layer is initially set to.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Flags
+           </code>
+          </strong>
+          (int) - Optional layer creation flags. Values of
+          <a class="link" href="mari.LayerStack.LayerCreateFlag-class.html">
+           LayerCreateFlag
+          </a>
+          or'ed together.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.Layer-class.html">
+         Layer
+        </a>
+       </dt>
+       <dd>
+        The newly created paintable layer.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the reference layer is not in this stack.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="createProceduralLayer">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            createProceduralLayer
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            LayerName
+           </span>
+           ,
+           <span class="sig-arg">
+            ProceduralKey
+           </span>
+           ,
+           <span class="sig-arg">
+            RefLayer
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            Flags
+           </span>
+           =
+           <span class="sig-default">
+            1
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.createProceduralLayer">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns a new procedural layer that has been created on layer 
+  stack.
+      </p>
+      <p>
+       To get a list of the available types of procedural layers to create, 
+  call
+       <a class="link" href="mari.LayerStack-class.html#proceduralLayerTypeList">
+        Channel.proceduralLayerTypeList()
+       </a>
+       .
+      </p>
+      <p>
+       For example:
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>channel = mari.geo.current().currentChannel()
+<span class="py-prompt">&gt;&gt;&gt; </span>procedural_layer_type_list =  channel.proceduralLayerTypeList()</pre>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            LayerName
+           </code>
+          </strong>
+          (str) - The name of the layer to create.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            ProceduralKey
+           </code>
+          </strong>
+          (str) - The path key of the type of the procedural to create
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            RefLayer
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Layer-class.html">
+           Layer
+          </a>
+          ) - The layer to create the new layer above. If None then the new 
+          layer is created at the top of the layer stack.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Flags
+           </code>
+          </strong>
+          (int) - Optional layer creation flags. Values of
+          <a class="link" href="mari.LayerStack.LayerCreateFlag-class.html">
+           LayerCreateFlag
+          </a>
+          or'ed together.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.Layer-class.html">
+         Layer
+        </a>
+       </dt>
+       <dd>
+        The newly created procedural layer.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if procedural key parameter does not match any valid value. 
+        Or if the reference layer is not in this stack.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="createShaderLayer">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            createShaderLayer
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            LayerName
+           </span>
+           ,
+           <span class="sig-arg">
+            TargetShader
+           </span>
+           ,
+           <span class="sig-arg">
+            RefLayer
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            Flags
+           </span>
+           =
+           <span class="sig-default">
+            1
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.createShaderLayer">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns a new shader layer that has been created on layer stack.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            LayerName
+           </code>
+          </strong>
+          (str) - the name of the layer to create.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            TargetShader
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Shader-class.html">
+           Shader
+          </a>
+          ) - The shader to use.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            RefLayer
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Layer-class.html">
+           Layer
+          </a>
+          ) - The layer to create the new layer above. If None then the new 
+          layer is created at the top of the layer stack.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Flags
+           </code>
+          </strong>
+          (int) - Optional layer creation flags. Values of
+          <a class="link" href="mari.LayerStack.LayerCreateFlag-class.html">
+           LayerCreateFlag
+          </a>
+          or'ed together.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.Layer-class.html">
+         Layer
+        </a>
+       </dt>
+       <dd>
+        The newly-created channel layer.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if channel parameter is not valid, or if the reference layer
+        is not in this stack.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.GeoEntity-class.html#createDiffuseSpecularShader">
+         GeoEntity.createDiffuseSpecularShader()
+        </a>
+        ,
+        <a class="link" href="mari.GeoEntity-class.html#createLayeredShader">
+         GeoEntity.createLayeredShader()
+        </a>
+        ,
+        <a class="link" href="mari.examples.shaderstacks-module.html#createShaderStacks">
+         mari.examples.shaderstacks.createShaderStacks()
+        </a>
+        ,
+        <a class="link" href="mari.GeoEntity-class.html#createStandaloneShader">
+         GeoEntity.createStandaloneShader()
+        </a>
+        ,
+        <a class="link" href="mari.GeoEntity-class.html#createShader">
+         GeoEntity.createShader()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="duplicateLayers">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            duplicateLayers
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            LayersToDuplicate
+           </span>
+           =
+           <span class="sig-default">
+            <code class="variable-group">
+             [
+            </code>
+            <code class="variable-group">
+             ]
+            </code>
+           </span>
+           ,
+           <span class="sig-arg">
+            RefLayer
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            Flags
+           </span>
+           =
+           <span class="sig-default">
+            1
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.duplicateLayers">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Creates copies of the given layers within the layer stack.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            LayersToDuplicate
+           </code>
+          </strong>
+          (list of
+          <a class="link" href="mari.Layer-class.html">
+           Layer
+          </a>
+          ) - The list of layers to create copies of. If empty all currently 
+          selected layers will be used.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            RefLayer
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Layer-class.html">
+           Layer
+          </a>
+          ) - The reference layer, above which the new layer is created. If 
+          None then the layers are added to the top of this stack.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Flags
+           </code>
+          </strong>
+          (int) - Optional layer creation flags. Values of
+          <a class="link" href="mari.LayerStack.LayerCreateFlag-class.html">
+           LayerCreateFlag
+          </a>
+          or'ed together.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: list of
+        <a class="link" href="mari.Layer-class.html">
+         Layer
+        </a>
+       </dt>
+       <dd>
+        The newly created layer copies.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the layers to duplicate or the reference layer are not in
+        this stack.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="exportImages">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            exportImages
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            PathAndTemplate
+           </span>
+           ,
+           <span class="sig-arg">
+            Options
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           ,
+           <span class="sig-arg">
+            UVIndexList
+           </span>
+           =
+           <span class="sig-default">
+            <code class="variable-group">
+             [
+            </code>
+            <code class="variable-group">
+             ]
+            </code>
+           </span>
+           ,
+           <span class="sig-arg">
+            FileOptions
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.exportImages">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Exports a set of images from the layer stack.
+      </p>
+      <p>
+       This is the same as selecting "Export All Layers" from the 
+  GUI within the given layer stack. To export an individual layer, call
+       <a class="link" href="mari.PaintableLayer-class.html#exportImages">
+        PaintableLayer.exportImages()
+       </a>
+       or
+       <a class="link" href="mari.ProceduralLayer-class.html#exportImages">
+        ProceduralLayer.exportImages()
+       </a>
+       .
+      </p>
+      <p>
+       Pass in the path and template to export the files to - for 
+  example:
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>channel = mari.geo.current().currentChannel()
+<span class="py-prompt">&gt;&gt;&gt; </span>channel.exportImages(<span class="py-string">'/tmp/$CHANNEL.$LAYER.$UDIM.tif'</span>)</pre>
+      <p>
+       Pass in the path and template to export the files to and two options -
+  for example:
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>channel = mari.geo.current().currentChannel()
+<span class="py-prompt">&gt;&gt;&gt; </span>channel.exportImages(<span class="py-string">'/tmp/$CHANNEL.$LAYER.$UDIM.tif'</span>, 0, [], {<span class="py-string">'A'</span> : <span class="py-string">'B'</span>, <span class="py-string">'C'</span> : <span class="py-string">'D'</span>})</pre>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            PathAndTemplate
+           </code>
+          </strong>
+          (str) - The target path for the export and the template to export the 
+          files to, in a single string.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Options
+           </code>
+          </strong>
+          (int) - Pass in a value other than the default to turn on an option, such
+          as disabling "small uniforms". See
+          <a class="link" href="mari.Image.SaveOptions-class.html">
+           Image.SaveOptions
+          </a>
+          .
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            UVIndexList
+           </code>
+          </strong>
+          (list of  int) - Pass in a list of zero-based UV indices if desired to specify the
+          patches to export images for. If not specified or empty, images 
+          will be exported for all indices. The UDIM for a patch is the 
+          zero-based UV index plus 1001.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            FileOptions
+           </code>
+          </strong>
+          (variant) - This is a key/value map of optional parameters passed to the file
+          writer plugin
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the path and template parameter was empty, or if an 
+        invalid UV index was specified.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the stack contains multiple layers, but the export was 
+        not to a layered format and the template did not contain $LAYER. 
+        This would otherwise write the same file multiple times.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            IOError
+           </strong>
+          </code>
+          - Raised if an error occurred with the export process.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.LayerStack-class.html#exportImagesFlattened">
+         exportImagesFlattened()
+        </a>
+        ,
+        <a class="link" href="mari.PaintableLayer-class.html#exportImages">
+         PaintableLayer.exportImages()
+        </a>
+        ,
+        <a class="link" href="mari.ProceduralLayer-class.html#exportImages">
+         ProceduralLayer.exportImages()
+        </a>
+        ,
+        <a class="link" href="mari.LayerStack-class.html#importImages">
+         importImages()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="exportImagesFlattened">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            exportImagesFlattened
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            PathAndTemplate
+           </span>
+           ,
+           <span class="sig-arg">
+            Options
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           ,
+           <span class="sig-arg">
+            UVIndexList
+           </span>
+           =
+           <span class="sig-default">
+            <code class="variable-group">
+             [
+            </code>
+            <code class="variable-group">
+             ]
+            </code>
+           </span>
+           ,
+           <span class="sig-arg">
+            FileOptions
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.exportImagesFlattened">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Exports a set of images from the flattened contents of the layer 
+  stack.
+      </p>
+      <p>
+       This is the same as selecting "Export All Layers Flattened" 
+  from the GUI within the given layer stack. It bakes the contents of the 
+  layer stack into a single temporary image for each patch, and then 
+  exports those.
+      </p>
+      <p>
+       Pass in the path and template to export the files to - for 
+  example:
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>channel = mari.geo.current().currentChannel()
+<span class="py-prompt">&gt;&gt;&gt; </span>channel.exportImagesFlattened(<span class="py-string">'/tmp/$CHANNEL.$UDIM.tif'</span>)</pre>
+      <p>
+       Some file specific options can be passed via FilOptions - for example 
+  :
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>channel = mari.geo.current().currentChannel()
+<span class="py-prompt">&gt;&gt;&gt; </span>channel.exportImagesFlattened(<span class="py-string">'/tmp/$CHANNEL.$UDIM.exr'</span>,0,[],{<span class="py-string">"compression"</span>:<span class="py-string">"zip"</span>})</pre>
+      <p>
+       For OpenEXR files,
+       <code class="link">
+        FileOptions
+       </code>
+       uses the 
+  "compression" method as an option for selecting which 
+  compression type is used. The following values are accepted as OpenEXR 
+  "compression" options.
+      </p>
+      <ul>
+       <li>
+        'none' : 'none'
+       </li>
+       <li>
+        'Zip (1 scanline)' : 'zips'
+       </li>
+       <li>
+        'Zip (16 scanlines)' : 'zip'
+       </li>
+       <li>
+        'PIZ Wavelet (32 scanlines)' :'piz'
+       </li>
+       <li>
+        'RLE' : 'rle'
+       </li>
+       <li>
+        'B44': 'b44'
+       </li>
+       <li>
+        'B44A': 'b44a'
+       </li>
+       <li>
+        'DWAA': 'dwaa'
+       </li>
+       <li>
+        'DWAB': 'dwab'
+       </li>
+      </ul>
+      <p>
+       Note that both the long and short names for the compression method are
+  accepted. Either of the following lines will set the compression type to 
+  Zip (16 scanlines).
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>channel.exportImagesFlattened(<span class="py-string">'/tmp/$CHANNEL.$UDIM.exr'</span>,0,[],{<span class="py-string">"compression"</span>:<span class="py-string">"zip"</span>})</pre>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>channel.exportImagesFlattened(<span class="py-string">'/tmp/$CHANNEL.$UDIM.exr'</span>,0,[],{<span class="py-string">"compression"</span>:<span class="py-string">"Zip (16 scanlines)"</span>})</pre>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            PathAndTemplate
+           </code>
+          </strong>
+          (str) - The target path for the export and the template to export the 
+          files to, in a single string.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Options
+           </code>
+          </strong>
+          (int) - Pass in a value other than the default to turn on an option, such
+          as disabling "small uniforms". See
+          <a class="link" href="mari.Image.SaveOptions-class.html">
+           Image.SaveOptions
+          </a>
+          .
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            UVIndexList
+           </code>
+          </strong>
+          (list of  int) - Pass in a list of zero-based UV indices if desired to specify the
+          patches to export images for. If not specified or empty, images 
+          will be exported for all indices. The UDIM for a patch is the 
+          zero-based UV index plus 1001.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            FileOptions
+           </code>
+          </strong>
+          (variant) - This is a key/value map of optional parameters passed to the file
+          writer plugin
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the path and template parameter was empty, or if an 
+        invalid UV index was specified.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            IOError
+           </strong>
+          </code>
+          - Raised if an error occurred with the export process.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.LayerStack-class.html#exportSelectedPatches">
+         exportSelectedPatches()
+        </a>
+        ,
+        <a class="link" href="mari.LayerStack-class.html#exportImages">
+         exportImages()
+        </a>
+        ,
+        <a class="link" href="mari.LayerStack-class.html#importImages">
+         importImages()
+        </a>
+        ,
+        <a class="link" href="mari.LayerStack-class.html#exportSelectedPatchesFlattened">
+         exportSelectedPatchesFlattened()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="exportSelectedPatches">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            exportSelectedPatches
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            PathAndTemplate
+           </span>
+           ,
+           <span class="sig-arg">
+            Options
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           ,
+           <span class="sig-arg">
+            FileOptions
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.exportSelectedPatches">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Exports images from the selected patches.
+      </p>
+      <p>
+       This is the same as selecting "Export All Layers" from the 
+  GUI within the given layer stack. To export an individual layer, call
+       <a class="link" href="mari.PaintableLayer-class.html#exportImages">
+        PaintableLayer.exportImages()
+       </a>
+       or
+       <a class="link" href="mari.ProceduralLayer-class.html#exportImages">
+        ProceduralLayer.exportImages()
+       </a>
+       . Images will only be 
+  exported for patches that are currently selected.
+      </p>
+      <p>
+       Pass in the path and template to export the files to - for 
+  example:
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>channel.exportSelectedPatches(<span class="py-string">'/tmp/$CHANNEL.$LAYER.$UDIM.tif'</span>)</pre>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            PathAndTemplate
+           </code>
+          </strong>
+          (str) - The target path for the export and the template to export the 
+          files to, in a single string.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Options
+           </code>
+          </strong>
+          (int) - Pass in a value other than the default to turn on an option, such
+          as disabling "small uniforms". See
+          <a class="link" href="mari.Image.SaveOptions-class.html">
+           Image.SaveOptions
+          </a>
+          .
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            FileOptions
+           </code>
+          </strong>
+          (variant) - This is a key/value map of optional parameters passed to the file
+          writer plugin
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the path and template parameter was empty, or if an 
+        invalid UV index was specified.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the stack contains multiple layers, but the export was 
+        not to a layered format and the template did not contain $LAYER. 
+        This would otherwise write the same file multiple times.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            IOError
+           </strong>
+          </code>
+          - Raised if an error occurred with the export process.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.LayerStack-class.html#exportImagesFlattened">
+         exportImagesFlattened()
+        </a>
+        ,
+        <a class="link" href="mari.ProceduralLayer-class.html#exportImages">
+         ProceduralLayer.exportImages()
+        </a>
+        , 
+        exportPaintableLayer.exportImages(),
+        <a class="link" href="mari.LayerStack-class.html#importImages">
+         importImages()
+        </a>
+        ,
+        <a class="link" href="mari.LayerStack-class.html#exportSelectedPatchesFlattened">
+         exportSelectedPatchesFlattened()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="exportSelectedPatchesFlattened">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            exportSelectedPatchesFlattened
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            PathAndTemplate
+           </span>
+           ,
+           <span class="sig-arg">
+            Options
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           ,
+           <span class="sig-arg">
+            FileOptions
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.exportSelectedPatchesFlattened">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Exports the selected patches with the layer stack flattened.
+      </p>
+      <p>
+       This is the same as selecting "Export All Layers Flattened" 
+  from the GUI within the given layer stack. It bakes the contents of the 
+  layer stack into a single temporary image for each selected patch, and 
+  then exports those.
+      </p>
+      <p>
+       Pass in the path and template to export the files to - for 
+  example:
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>channel.exportSelectedPatchesFlattened(<span class="py-string">'/tmp/$CHANNEL.$UDIM.tif'</span>)</pre>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            PathAndTemplate
+           </code>
+          </strong>
+          (str) - The target path for the export and the template to export the 
+          files to, in a single string.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Options
+           </code>
+          </strong>
+          (int) - Pass in a value other than the default to turn on an option, such
+          as disabling "small uniforms". See
+          <a class="link" href="mari.Image.SaveOptions-class.html">
+           Image.SaveOptions
+          </a>
+          .
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            FileOptions
+           </code>
+          </strong>
+          (variant) - This is a key/value map of optional parameters passed to the file
+          writer plugin
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the path and template parameter was empty, or if an 
+        invalid UV index was specified.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            IOError
+           </strong>
+          </code>
+          - Raised if an error occurred with the export process.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.LayerStack-class.html#exportSelectedPatches">
+         exportSelectedPatches()
+        </a>
+        ,
+        <a class="link" href="mari.LayerStack-class.html#exportImages">
+         exportImages()
+        </a>
+        ,
+        <a class="link" href="mari.LayerStack-class.html#importImages">
+         importImages()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="findLayer">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            findLayer
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            LayerName
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.findLayer">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the layer with the given name.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            LayerName
+           </code>
+          </strong>
+          (str)
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.Layer-class.html">
+         Layer
+        </a>
+       </dt>
+       <dd>
+        The requested layer. Return None is not found.
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="groupLayers">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            groupLayers
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            LayersToGroup
+           </span>
+           =
+           <span class="sig-default">
+            <code class="variable-group">
+             [
+            </code>
+            <code class="variable-group">
+             ]
+            </code>
+           </span>
+           ,
+           <span class="sig-arg">
+            RefLayer
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            LayerName
+           </span>
+           =
+           <span class="sig-default">
+            <code class="variable-quote">
+             '
+            </code>
+            <code class="variable-string">
+            </code>
+            <code class="variable-quote">
+             '
+            </code>
+           </span>
+           ,
+           <span class="sig-arg">
+            Flags
+           </span>
+           =
+           <span class="sig-default">
+            1
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.groupLayers">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Creates a new group layer on the layer stack and adds the given layers
+  to it.
+      </p>
+      <p>
+       If an empty layer list is given then a new group layer won't be 
+  created.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            LayersToGroup
+           </code>
+          </strong>
+          (list of
+          <a class="link" href="mari.Layer-class.html">
+           Layer
+          </a>
+          ) - The list of layers to add to the new group. If empty all 
+          currently selected layers will be used.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            RefLayer
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Layer-class.html">
+           Layer
+          </a>
+          ) - The reference layer, above which the new layer is created. If 
+          None then the layer is added to the top of this stack.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            LayerName
+           </code>
+          </strong>
+          (str) - The name of the layer to create. If empty a unique name will be 
+          auto-generated for the layer.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Flags
+           </code>
+          </strong>
+          (int) - Optional layer creation flags. Values of
+          <a class="link" href="mari.LayerStack.LayerCreateFlag-class.html">
+           LayerCreateFlag
+          </a>
+          or'ed together.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.Layer-class.html">
+         Layer
+        </a>
+       </dt>
+       <dd>
+        The newly created group layer.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the layers to group or the reference layer are not in 
+        this stack.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="hash">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            hash
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            UVIndex
+           </span>
+           =
+           <span class="sig-default">
+            -1
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.hash">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns a unique identifier for this layer stack.
+      </p>
+      <p>
+       This hash is assumed to be universally unique (256bit skein hash). 
+  This can be used to determine if a layer stack or its children have 
+  changedsince some given checkpoint. A different hash means a different 
+  layer or children. This hash is based on image data, blend mode, 
+  parameters and anything that might effect the pixel output. Use this to 
+  detect any changes to the layers.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            UVIndex
+           </code>
+          </strong>
+          (int) - The UV index of the patch to return the hash of, or -1 to return 
+          the hash of all the patches.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: str
+       </dt>
+       <dd>
+        A hash string that uniquely identifies this version of this layer
+          stack and its childrens, or an empty string on failure.
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.LayerStack-class.html#imageHash">
+         imageHash()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="imageHash">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            imageHash
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            UVIndex
+           </span>
+           =
+           <span class="sig-default">
+            -1
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.imageHash">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns a unique identifier for this layer stack's image data.
+      </p>
+      <p>
+       This hash is assumed to be universally unique (256bit skein hash). 
+  This can be used to determine if a layer stack or its children have 
+  changed their image data since some given checkpoint. A different hash 
+  means a different layer or children. This hash is only based on image 
+  data and can be used to detect changes in the images.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            UVIndex
+           </code>
+          </strong>
+          (int) - The UV index of the patch to return the hash of, or -1 to return 
+          the hash of all the patches.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: str
+       </dt>
+       <dd>
+        A hash string that uniquely identifies this version of this layer
+          stack and its childrens image data, or an empty string on 
+          failure.
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.LayerStack-class.html#hash">
+         hash()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="importImages">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            importImages
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            PathAndTemplate
+           </span>
+           ,
+           <span class="sig-arg">
+            ScaleOption
+           </span>
+           =
+           <span class="sig-default">
+            1
+           </span>
+           ,
+           <span class="sig-arg">
+            MatchingLayersOption
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           ,
+           <span class="sig-arg">
+            MismatchingLayersOption
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           ,
+           <span class="sig-arg">
+            UVIndexList
+           </span>
+           =
+           <span class="sig-default">
+            <code class="variable-group">
+             [
+            </code>
+            <code class="variable-group">
+             ]
+            </code>
+           </span>
+           ,
+           <span class="sig-arg">
+            RemoveAlpha
+           </span>
+           =
+           <span class="sig-default">
+            False
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.importImages">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Imports a set of images into the layer stack.
+      </p>
+      <p>
+       This is the same as selecting "Import into Layer Stack" from
+  the GUI. To import into an individual layer, call
+       <a class="link" href="mari.PaintableLayer-class.html#importImages">
+        PaintableLayer.importImages()
+       </a>
+       .
+      </p>
+      <p>
+       Pass in the path to the files and the template to import them from - 
+  for example:
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>channel.importImages(<span class="py-string">'/tmp/$CHANNEL.$UDIM.psd'</span>)</pre>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            PathAndTemplate
+           </code>
+          </strong>
+          (str) - The path to the files and the template to import them from, in a 
+          single string.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            ScaleOption
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.ImageSet.ScaleChoice-class.html">
+           ImageSet.ScaleChoice
+          </a>
+          ) - When the existing patch and the image in the file to import are 
+          of different sizes, this indicates which of the two to rescale to
+          match the other
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            MatchingLayersOption
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.LayerStack.LayerImportOption-class.html">
+           LayerImportOption
+          </a>
+          ) - Determines what to do when the current layer stack and the layers
+          being imported contain matching layer names, where the types of 
+          both layers match. This is the most common case. The default is 
+          to update the existing layers.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            MismatchingLayersOption
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.LayerStack.LayerImportOption-class.html">
+           LayerImportOption
+          </a>
+          ) - Determines what to do when the current layer stack and the layers
+          being imported contain matching layer names, where the types of 
+          the existing layers and those being imported do not match. This 
+          can happen when an exported file contains procedural layers baked
+          as paintable, for example. The default is to skip the mismatching
+          layers.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            UVIndexList
+           </code>
+          </strong>
+          (list of  int) - Pass in a list of zero-based UV indices if desired to specify the
+          patches to export images for. If not specified or empty, images 
+          will be exported for all indices. The UDIM for a patch is the 
+          zero-based UV index plus 1001.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            RemoveAlpha
+           </code>
+          </strong>
+          (bool) - Remove the alpha channel (convert RGBA to RGB).
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the path and template parameter was empty, or if one or 
+        both of the matching and mismatching layers options was invalid.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            IOError
+           </strong>
+          </code>
+          - Raised if an error occurred with the import process.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.LayerStack-class.html#exportImages">
+         exportImages()
+        </a>
+        ,
+        <a class="link" href="mari.PaintableLayer-class.html#importImages">
+         PaintableLayer.importImages()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="layer">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            layer
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            LayerName
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.layer">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the layer with the given name.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            LayerName
+           </code>
+          </strong>
+          (str) - The name of the layer to retrieve
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.Layer-class.html">
+         Layer
+        </a>
+       </dt>
+       <dd>
+        The requested layer.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the given layer name was not found on the object.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="layerList">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            layerList
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.layerList">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the list of layers that make up this objects layer stack.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: list of
+        <a class="link" href="mari.Layer-class.html">
+         Layer
+        </a>
+       </dt>
+       <dd>
+        The list of layers for this object's layer stack
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="mergeLayers">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            mergeLayers
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            LayersToMerge
+           </span>
+           =
+           <span class="sig-default">
+            <code class="variable-group">
+             [
+            </code>
+            <code class="variable-group">
+             ]
+            </code>
+           </span>
+           ,
+           <span class="sig-arg">
+            RefLayer
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            Flags
+           </span>
+           =
+           <span class="sig-default">
+            1
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.mergeLayers">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Merges the given layers within the layer stack into a single paintable
+  layer.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            LayersToMerge
+           </code>
+          </strong>
+          (list of
+          <a class="link" href="mari.Layer-class.html">
+           Layer
+          </a>
+          ) - The list of layers to merge. If empty all currently selected 
+          layers will be used.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            RefLayer
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Layer-class.html">
+           Layer
+          </a>
+          ) - The reference layer, above which the merge result is added. If 
+          None then the new layer is added to the top of this stack.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Flags
+           </code>
+          </strong>
+          (int) - Optional layer creation flags. Values of
+          <a class="link" href="mari.LayerStack.LayerCreateFlag-class.html">
+           LayerCreateFlag
+          </a>
+          or'ed together.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.Layer-class.html">
+         Layer
+        </a>
+       </dt>
+       <dd>
+        The newly created merged layer
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the layers to merge or the reference layer are not in 
+        this stack.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="moveLayer">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            moveLayer
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            LayerToMove
+           </span>
+           ,
+           <span class="sig-arg">
+            RefLayer
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.moveLayer">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Moves the layer from its current layer stack position to this stack 
+  and position.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            LayerToMove
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Layer-class.html">
+           Layer
+          </a>
+          ) - The layer that is to be moved.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            RefLayer
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Layer-class.html">
+           Layer
+          </a>
+          ) - The reference layer to move the layer above. If None then the 
+          layer is moved to the top of this stack.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the reference layer is not in this stack.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="moveLayerBelow">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            moveLayerBelow
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            LayerToMove
+           </span>
+           ,
+           <span class="sig-arg">
+            RefLayer
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.moveLayerBelow">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Moves the layer from its current layer stack position to this stack 
+  and position.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            LayerToMove
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Layer-class.html">
+           Layer
+          </a>
+          ) - The layer that is to be moved.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            RefLayer
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Layer-class.html">
+           Layer
+          </a>
+          ) - The reference layer to move the layer below. If None then the 
+          layer is moved to the top of this stack.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the reference layer is not in this stack.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="name">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            name
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.name">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the name of the object.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: str
+       </dt>
+       <dd>
+        The name of this object
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="removeLayers">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            removeLayers
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            LayersToRemove
+           </span>
+           =
+           <span class="sig-default">
+            <code class="variable-group">
+             [
+            </code>
+            <code class="variable-group">
+             ]
+            </code>
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.removeLayers">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Removes the given layers within the layer stack.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            LayersToRemove
+           </code>
+          </strong>
+          (list of
+          <a class="link" href="mari.Layer-class.html">
+           Layer
+          </a>
+          ) - The list of layers to remove. If empty all currently selected 
+          layers will be used.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the layers to remove are not in this stack.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="shareLayer">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            shareLayer
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            LayerToShare
+           </span>
+           ,
+           <span class="sig-arg">
+            RefLayer
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            Flags
+           </span>
+           =
+           <span class="sig-default">
+            1
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.shareLayer">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Shares the layer from its current layer stack position to this stack 
+  and position.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            LayerToShare
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Layer-class.html">
+           Layer
+          </a>
+          ) - The layer that is to be shared.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            RefLayer
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Layer-class.html">
+           Layer
+          </a>
+          ) - The reference layer to move the layer above. If None then the 
+          layer is moved to the top of this stack.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Flags
+           </code>
+          </strong>
+          (int) - Optional layer creation flags. Values of
+          <a class="link" href="mari.LayerStack.LayerCreateFlag-class.html">
+           LayerCreateFlag
+          </a>
+          or'ed together.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.Layer-class.html">
+         Layer
+        </a>
+       </dt>
+       <dd>
+        The newly-shared layer.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the reference layer is not in this stack.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="ungroupLayers">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            ungroupLayers
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            GroupLayersToUngroup
+           </span>
+           =
+           <span class="sig-default">
+            <code class="variable-group">
+             [
+            </code>
+            <code class="variable-group">
+             ]
+            </code>
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.ungroupLayers">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Removes the group layers specified and inserts the deleted group's 
+  layer stack in its place in the layer stack.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            GroupLayersToUngroup
+           </code>
+          </strong>
+          (list of
+          <a class="link" href="mari.Layer-class.html">
+           Layer
+          </a>
+          ) - The list of group layers to ungroup. If empty all currently 
+          selected layers will be used.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the layers to ungroup are not in this stack.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="adjustmentLayerTypeList">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            adjustmentLayerTypeList
+           </span>
+           ()
+          </span>
+          <br/>
+          <em class="fname">
+           Static Method
+          </em>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.adjustmentLayerTypeList">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns a list of adjustment layer types that can be created.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: list of str
+       </dt>
+       <dd>
+        A list of adjustment layer types
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="proceduralLayerTypeList">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            proceduralLayerTypeList
+           </span>
+           ()
+          </span>
+          <br/>
+          <em class="fname">
+           Static Method
+          </em>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#LayerStack.proceduralLayerTypeList">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns a list of procedural layer types that can be created.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: list of str
+       </dt>
+       <dd>
+        A list of procedural layer types
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

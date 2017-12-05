@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.utils.ocio
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.utils-module.html">
+       Package&nbsp;utils
+      </a>
+      ::
+        Module&nbsp;ocio
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.utils.ocio-pysrc.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <h1 class="epydoc">
+   Source Code for
+   <a href="mari.utils.ocio-module.html">
+    Module mari.utils.ocio
+   </a>
+  </h1>
+  <pre class="py-src">
+&iuml;&raquo;&iquest;#-------------------------------------------------------------------------------
+# OpenColorIO (color management) related Mari scripts
+# coding: utf-8
+# Copyright (c) 2011 The Foundry Visionmongers Ltd.  All Rights Reserved.
+#-------------------------------------------------------------------------------
+
+import mari, time, PySide2, os, math
+
+from signal_helpers import connect, disconnect
+
+##############################################################################################
+
+# Enable to output extended debugging messages.
+VERBOSE_ENABLED = False
+
+# Message type identifiers.
+class MessageType:
+    DEBUG   = 1
+    INFO    = 2
+    WARNING = 3
+    ERROR   = 4
+
+def printMessage(type, message):
+    if type == MessageType.DEBUG:
+        if VERBOSE_ENABLED:
+            mari.app.log('[ OpenColorIO ] %s' % message)
+    elif type == MessageType.INFO:
+        mari.app.log('[ OpenColorIO ] %s' % message)
+    elif type == MessageType.WARNING:
+        mari.app.log('[ OpenColorIO ] [ WARNING ] %s' % message)
+    elif type == MessageType.ERROR:
+        mari.app.log('[ OpenColorIO ] [ ERROR ] %s' % message)
+
+##############################################################################################
+
+def configFileFilter():
+    return 'OpenColorIO Configuration (*.ocio)'
+
+#---------------------------------------------------------------------------------------------
+
+def lutFileFilter():
+    result  = 'All LUT Files (*.3dl *.ccc *.cc *.csp *.cub *.cube *.hdl *.m3d *.mga *.spi1d *.spi3d *.spimtx *.vf);;'
+    result += 'Autodesk LUT (*.3dl);;'
+    result += 'ASC CDL Color Correction Collection LUT (*.ccc);;'
+    result += 'ASC CDL Color Correction LUT (*.cc);;'
+    result += 'Cinespace LUT (*.csp);;'
+    result += 'Truelight LUT (*.cub);;'
+    result += 'Iridas LUT (*.cube);;'
+    result += 'Houdini LUT (*.hdl);;'
+    result += 'Pandora LUT (*.m3d *.mga);;'
+    result += 'Imageworks LUT (*.spi1d *.spi3d *.spimtx);;'
+    result += 'Inventor LUT (*.vf)'
+    return result
+
+##############################################################################################
+
+# Make sure the OpenColorIO python bindings are okay.
+try:
+    import PyOpenColorIO
+    if PyOpenColorIO is not None:
+        printMessage(MessageType.INFO, 'Loaded Python bindings \'%s\' successfully' % PyOpenColorIO.__file__)
+    else:               # this can sometimes happen due to our custom importer
+        printMessage(MessageType.ERROR, 'Failed to load Python bindings')
+except ImportError, e:
+    PyOpenColorIO = None
+    printMessage(MessageType.ERROR, 'Failed to load Python bindings \'%s\'' % e)
+
+LUT_PATH_DEFAULT = ''
+LUT_FILE_LIST_DEFAULT = mari.FileList(mari.FileList.TYPE_SINGLE_FILE)
+LUT_FILE_LIST_DEFAULT.setAcceptNonExisting(True)
+LUT_FILE_LIST_DEFAULT.setFilter(lutFileFilter())
+
+if mari.app.isRunning():
+    CONFIG_PATH_DEFAULT = mari.resources.path(mari.resources.COLOR) + '/OpenColorIO/nuke-default/config.ocio'
+else:
+    CONFIG_PATH_DEFAULT = '/OpenColorIO/nuke-default/config.ocio'
+CONFIG_FILE_LIST_RESET = mari.FileList(mari.FileList.TYPE_SINGLE_FILE)
+CONFIG_FILE_LIST_RESET.append(CONFIG_PATH_DEFAULT)
+CONFIG_FILE_LIST_RESET.setPickedFile(CONFIG_FILE_LIST_RESET.at(0))
+CONFIG_FILE_LIST_RESET.setAcceptNonExisting(True)
+CONFIG_FILE_LIST_RESET.setFilter(configFileFilter())
+CONFIG_FILE_LIST_DEFAULT = mari.FileList(CONFIG_FILE_LIST_RESET)
+
+SQRT_TWO                 = math.sqrt(2.0)
+
+EXTRAPOLATE_DEFAULT      = True
+
+ENABLED_RESET            = True
+ENABLED_DEFAULT          = ENABLED_RESET
+
+PROFILE_RESET            = 'Colorspace'
+PROFILE_DEFAULT          = PROFILE_RESET
+
+SWIZZLE_TYPES            = ['Luminance', 'RGB', 'R', 'G', 'B', 'A']
+SWIZZLE_VALUES           = {'Luminance': ( True,  True,  True, False),
+                                  'RGB': ( True,  True,  True,  True),
+                                    'R': ( True, False, False, False),
+                                    'G': (False,  True, False, False),
+                                    'B': (False, False,  True, False),
+                                    'A': (False, False, False,  True)}
+SWIZZLE_DEFAULT          = SWIZZLE_TYPES[1]
+
+FSTOP_STEP_SIZE          = 0.5
+FSTOP_CENTER_MIN         = 1.0
+FSTOP_CENTER_MAX         = 64.0
+FSTOP_CENTER_STEP_SIZE   = 0.001
+FSTOP_CENTER_RESET       = 8.0
+FSTOP_CENTER             = FSTOP_CENTER_RESET
+_FSTOP_CENTER_FUNCTIONS  = []
+
+EXPOSURE_MIN             = -6.0
+EXPOSURE_MAX             = +6.0
+EXPOSURE_DELTA           = EXPOSURE_MAX - EXPOSURE_MIN
+EXPOSURE_STEP_SIZE       = 0.1
+
+GAIN_DEFAULT             = 1.0
+GAIN_MIN                 = 2.0 ** EXPOSURE_MIN
+GAIN_MAX                 = 2.0 ** EXPOSURE_MAX
+GAIN_STEP_SIZE           = 0.000001
+GAIN_PRECISION           = 6
+
+GAMMA_DEFAULT            = 1.0
+GAMMA_MIN                = 0.0
+GAMMA_MAX                = 4.0
+GAMMA_STEP_SIZE          = 0.01
+GAMMA_PRECISION          = 2
+
+CONFIG_DEFAULT           = None
+INPUT_COLORSPACE_DEFAULT = 'linear'
+DISPLAY_DEFAULT          = 'default'
+VIEW_DEFAULT             = 'sRGB'
+
+OCIO_ENV_VAR_SET         = False
+
+##############################################################################################
+
+def registerFStopCenterChanged(function):
+    global _FSTOP_CENTER_FUNCTIONS
+    _FSTOP_CENTER_FUNCTIONS.append(function)
+
+#---------------------------------------------------------------------------------------------
+
+def _profileDefaultChanged():
+    global PROFILE_DEFAULT
+    PROFILE_DEFAULT = mari.prefs.get('/Color/Color Management Defaults/colorProfileDefault')
+    _savePreferences()
+
+#---------------------------------------------------------------------------------------------
+
+def _postFilterCollectionAdded(filter_collection):
+    mari.prefs.setItemList('/Color/Color Management Defaults/colorProfileDefault', mari.gl_render.postFilterCollectionNames())
+
+#---------------------------------------------------------------------------------------------
+
+def _postFilterCollectionRemoved(name):
+    collection_names = mari.gl_render.postFilterCollectionNames()
+    mari.prefs.setItemList('/Color/Color Management Defaults/colorProfileDefault', collection_names)
+
+    global PROFILE_RESET
+    if name == PROFILE_RESET:
+        PROFILE_RESET = collection_names[0]
+        mari.prefs.setDefault('/Color/Color Management Defaults/colorProfileDefault', PROFILE_RESET)
+
+    global PROFILE_DEFAULT
+    if name == PROFILE_DEFAULT:
+        PROFILE_DEFAULT = PROFILE_RESET
+        mari.prefs.set('/Color/Color Management Defaults/colorProfileDefault', PROFILE_DEFAULT)
+        _savePreferences()
+
+#---------------------------------------------------------------------------------------------
+
+def _fstopCenterChanged():
+    global FSTOP_CENTER
+    global _FSTOP_CENTER_FUNCTIONS
+    FSTOP_CENTER = mari.prefs.get('/Color/Display/displayFStopCenter')
+    _savePreferences()
+    for function in _FSTOP_CENTER_FUNCTIONS:
+        function()
+
+#---------------------------------------------------------------------------------------------
+
+def _registerPreferences():
+    global PROFILE_DEFAULT
+    mari.prefs.set('/Color/Color Management Defaults/colorProfileDefault', PROFILE_DEFAULT)
+    mari.prefs.setChangedScript('/Color/Color Management Defaults/colorProfileDefault', 'mari.utils.ocio._profileDefaultChanged()')
+    mari.prefs.setDisplayName('/Color/Color Management Defaults/colorProfileDefault', 'Color Profile')
+    mari.prefs.setDefault('/Color/Color Management Defaults/colorProfileDefault', PROFILE_RESET)
+    mari.prefs.setItemList('/Color/Color Management Defaults/colorProfileDefault', mari.gl_render.postFilterCollectionNames())
+
+    global FSTOP_CENTER
+    mari.prefs.set('/Color/Display/displayFStopCenter', FSTOP_CENTER)
+    mari.prefs.setChangedScript('/Color/Display/displayFStopCenter', 'mari.utils.ocio._fstopCenterChanged()')
+    mari.prefs.setDisplayName('/Color/Display/displayFStopCenter', 'Center F-Stop')
+    mari.prefs.setDefault('/Color/Display/displayFStopCenter', FSTOP_CENTER_RESET)
+    mari.prefs.setRange('/Color/Display/displayFStopCenter', FSTOP_CENTER_MIN, FSTOP_CENTER_MAX)
+    mari.prefs.setStep('/Color/Display/displayFStopCenter', FSTOP_CENTER_STEP_SIZE)
+
+    # Attach ourselves to the appropriate project signals so we can update widgets.
+    connect(mari.gl_render.postFilterCollectionAdded, _postFilterCollectionAdded)
+    connect(mari.gl_render.postFilterCollectionRemoved, _postFilterCollectionRemoved)
+
+#---------------------------------------------------------------------------------------------
+
+def _loadPreferences():
+    settings = mari.Settings()
+    settings.beginGroup('OpenColorIO')
+
+    try:
+        global PROFILE_DEFAULT
+        global FSTOP_CENTER
+
+        PROFILE_DEFAULT = str(settings.value('profileDefault', PROFILE_RESET))
+        FSTOP_CENTER    = max(min(float(settings.value('fstopCenter', FSTOP_CENTER_RESET)), FSTOP_CENTER_MAX), FSTOP_CENTER_MIN)
+
+    except ValueError, e:
+        printMessage(MessageType.ERROR, 'Failed to load preferences \'%s\'' % e)
+
+    settings.endGroup()
+
+    _printPreferences(MessageType.DEBUG, 'Loaded Preferences:')
+
+#---------------------------------------------------------------------------------------------
+
+def _savePreferences():
+    settings = mari.Settings()
+    settings.beginGroup('OpenColorIO')
+
+    global PROFILE_DEFAULT
+    global FSTOP_CENTER
+
+    settings.setValue('profileDefault', PROFILE_DEFAULT)
+    settings.setValue(   'fstopCenter', FSTOP_CENTER)
+
+    settings.endGroup()
+
+    _printPreferences(MessageType.DEBUG, 'Saved Preferences:')
+
+#---------------------------------------------------------------------------------------------
+
+def _printPreferences(type, title):
+    global PROFILE_DEFAULT
+    global LUT_PATH_DEFAULT
+    global EXTRAPOLATE_DEFAULT
+    global CONFIG_PATH_DEFAULT
+    global INPUT_COLORSPACE_DEFAULT
+    global DISPLAY_DEFAULT
+    global VIEW_DEFAULT
+    global SWIZZLE_DEFAULT
+    global GAIN_DEFAULT
+    global FSTOP_CENTER
+    global GAMMA_DEFAULT
+
+    printMessage(type, '==============================================================')
+    printMessage(type, title)
+    printMessage(type, '==============================================================')
+    printMessage(type, '          Profile: %s'             % PROFILE_DEFAULT)
+    printMessage(type, '      Config Path: %s'             % CONFIG_PATH_DEFAULT)
+    printMessage(type, ' Input Colorspace: %s'             % INPUT_COLORSPACE_DEFAULT)
+    printMessage(type, '         LUT Path: %s'             % LUT_PATH_DEFAULT)
+    printMessage(type, '      Extrapolate: %s'             % EXTRAPOLATE_DEFAULT)
+    printMessage(type, '          Display: %s'             % DISPLAY_DEFAULT)
+    printMessage(type, '             View: %s'             % VIEW_DEFAULT)
+    printMessage(type, '          Swizzle: %s'             % SWIZZLE_DEFAULT)
+    printMessage(type, '           F-Stop: %f; Center: %f' % (convertGainToFStop(GAIN_DEFAULT), FSTOP_CENTER))
+    printMessage(type, '             Gain: %f'             % GAIN_DEFAULT)
+    printMessage(type, '            Gamma: %f'             % GAMMA_DEFAULT)
+    printMessage(type, '==============================================================')
+
+##############################################################################################
+
+def convertExposureToGain(exposure):
+    return 2.0 ** exposure
+
+#---------------------------------------------------------------------------------------------
+
+def convertGainToExposure(gain):
+    return math.log(gain, 2.0)
+
+#---------------------------------------------------------------------------------------------
+
+def convertExposureToFStop(exposure):
+    global FSTOP_CENTER
+    exposure_center = math.log(FSTOP_CENTER, SQRT_TWO)
+    return math.pow(SQRT_TWO, exposure_center - exposure)
+
+#---------------------------------------------------------------------------------------------
+
+def convertGainToFStop(gain):
+    exposure = convertGainToExposure(gain)
+    return convertExposureToFStop(exposure)
+
+#---------------------------------------------------------------------------------------------
+
+def buildEmptyFilter(filter):
+    printMessage(MessageType.DEBUG, 'Creating empty GLSL filter...')
+
+    filter.setDefinitionsSnippet('')
+    filter.setBodySnippet('')
+
+#---------------------------------------------------------------------------------------------
+
+def buildProcessorFilter(processor, filter, filter_cache_id, texture_cache_id, lut_size = 32, extrapolate = False, force_shader_build = False):
+    # Create a name, using the filter's name, that can be used in uniquely naming parameters and functions.
+    name = filter.name()
+    name = name.lower()
+    name = name.replace(' ', '_')
+
+    sampler_name  = 'ocio_' + name + '_lut_$ID_'
+    function_name = 'ocio_' + name + '_$ID_'
+
+    shader_desc = {    'language': PyOpenColorIO.Constants.GPU_LANGUAGE_GLSL_1_3,
+                   'functionName': function_name,
+                   'lut3DEdgeLen': lut_size}
+
+    cache_id = processor.getGpuShaderTextCacheID(shader_desc)
+    if cache_id != filter_cache_id or force_shader_build:
+        filter_cache_id = cache_id
+        printMessage(MessageType.DEBUG, 'Creating new GLSL filter...')
+
+        desc  = 'uniform sampler3D ' + sampler_name + ';\n'
+        
+        # Get OCIO shader text and 'convert' it to OGL 3.2
+        ocio_desc = processor.getGpuShaderText(shader_desc)
+        ocio_desc = ocio_desc.replace( "texture3D(", "texture(" )
+        desc += ocio_desc
+
+        body  = ''
+        if extrapolate:
+            # The following code was taken from Nuke's 'LUT3D::Extrapolate' functionality. It attempts to estimate what
+            # the corresponding color value would be when the incoming color value is outside the normal range of [0-1],
+            # such as the case with HDR images.
+            rcp_lut_edge_length = 1.0 / float(lut_size)
+
+            body += '{\n'
+            body += '    if( 1.0 &lt; Out.r || 1.0 &lt; Out.g || 1.0 &lt; Out.b )\n'
+            body += '    {\n'
+            body += '        vec4 closest;\n'
+            body += '        closest.rgb = clamp(Out.rgb, vec3(0.0), vec3(1.0));\n'
+            body += '        closest.a = Out.a;\n'
+            body += '\n'
+            body += '        vec3 offset = Out.rgb - closest.rgb;\n'
+            body += '        float offset_distance = length(offset);\n'
+            body += '        offset = normalize(offset);\n'
+            body += '\n'
+            body += '        vec4 nbr_position;\n'
+            body += '        nbr_position.rgb = closest.rgb - %f * offset;\n' % rcp_lut_edge_length
+            body += '        nbr_position.a = Out.a;\n'
+            body += '\n'
+            body += '        Out = ' + function_name + '(closest, ' + sampler_name + ');\n'
+            body += '        Out.rgb += (Out.rgb - ' + function_name + '(nbr_position, ' + sampler_name + ').rgb) / %f * offset_distance;\n' % rcp_lut_edge_length
+            body += '    }\n'
+            body += '    else\n'
+            body += '    {\n'
+            body += '        Out = ' + function_name + '(Out, ' + sampler_name + ');\n'
+            body += '    }\n'
+            body += '}\n'
+        else:
+            body += '{ Out = ' + function_name + '(Out, ' + sampler_name + '); }\n'
+
+        filter.setDefinitionsSnippet(desc)
+        filter.setBodySnippet(body)
+    else:
+        printMessage(MessageType.DEBUG, 'No GLSL filter update required')
+
+    cache_id = processor.getGpuLut3DCacheID(shader_desc)
+    if cache_id != texture_cache_id:
+        lut = processor.getGpuLut3D(shader_desc)
+
+        printMessage(MessageType.DEBUG, 'Updating LUT...')
+
+        if texture_cache_id is None:
+            filter.setTexture3D(sampler_name,
+                                lut_size,
+                                lut_size,
+                                lut_size,
+                                filter.FORMAT_RGB,
+                                lut)
+        else:
+            filter.updateTexture3D(sampler_name, lut)
+
+        texture_cache_id = cache_id
+    else:
+        printMessage(MessageType.DEBUG, 'No LUT update required')
+
+    return (filter_cache_id, texture_cache_id, sampler_name)
+
+#---------------------------------------------------------------------------------------------
+
+def loadConfig(path, display_message_box = True):
+    try:
+        # On OSX if we pass in a path that uses back slashes as the directory seperator OpenColorIO will treat it as
+        # invalid and fail to load the config. We were seeing this when an archive created on Windows was opened on OSX.
+        # To get around the issue we just swap any back slashes for forward slashes as all the operating systems,
+        # including Windows will handle it correctly.
+        path = path.replace('\\', '/')
+
+        config = PyOpenColorIO.Config.CreateFromFile(path)
+        return config
+
+    except Exception, e:
+        message = 'Failed to load configuration file \'%s\' due to \'%s\'' % (path, e)
+        printMessage(MessageType.ERROR, '%s' % message)
+        if display_message_box and not mari.app.inTerminalMode():
+            mari.utils.misc.message(message, 'Colorspace', 1024, 2)
+
+        return None
+
+#---------------------------------------------------------------------------------------------
+
+# This converts a path into a form which can be shared among different platforms and installations.
+def buildSavePath(path):
+    result = path.replace(mari.resources.path(mari.resources.COLOR), '$MARI_COLOR_PATH', 1)
+    return result
+
+#---------------------------------------------------------------------------------------------
+
+# This converts a path saved out to disk back into a form which can used by the application.
+def buildLoadPath(path):
+    result = path.replace('$MARI_COLOR_PATH', mari.resources.path(mari.resources.COLOR), 1)
+    return result
+
+##############################################################################################
+
+if mari.app.isRunning() and PyOpenColorIO is not None:
+    # 1. Attempt to load the config specified by the OCIO environment variable.
+    config_path = os.getenv('OCIO')
+    printMessage(MessageType.INFO, 'OCIO environment variable: \'%s\'' % '' if config_path is None else config_path)
+    if config_path is not None:
+        OCIO_ENV_VAR_SET = True
+        CONFIG_DEFAULT = loadConfig(config_path, False)
+        if CONFIG_DEFAULT is not None:
+            CONFIG_PATH_DEFAULT = config_path
+            CONFIG_FILE_LIST_DEFAULT.clear()
+            CONFIG_FILE_LIST_DEFAULT.append(config_path)
+            CONFIG_FILE_LIST_DEFAULT.setPickedFile(CONFIG_FILE_LIST_DEFAULT.at(0))
+        else:
+            message = 'OCIO environment variable does not specify a working configuration file!'
+            printMessage(MessageType.ERROR, message)
+            if not mari.app.inTerminalMode():
+                PySide2.QtWidgets.QMessageBox.critical(None, 'Colorspace', message)
+    else:
+        OCIO_ENV_VAR_SET = False
+
+    # 2. Attempt to load the default config shipped with Mari i.e. 'nuke-default'.
+    if CONFIG_DEFAULT is None:
+        CONFIG_DEFAULT = loadConfig(CONFIG_PATH_DEFAULT, False)
+
+    if CONFIG_DEFAULT is not None:
+        # Use the linear role as the default color-space.
+        input_colorspace = CONFIG_DEFAULT.getColorSpace(PyOpenColorIO.Constants.ROLE_SCENE_LINEAR)
+        INPUT_COLORSPACE_DEFAULT = '' if input_colorspace is None else input_colorspace.getName()
+
+        # Use the defaults specified in the config file.
+        DISPLAY_DEFAULT = CONFIG_DEFAULT.getDefaultDisplay()
+        for display in CONFIG_DEFAULT.getDisplays():
+                if display == "mari":
+                    DISPLAY_DEFAULT = display
+        VIEW_DEFAULT    = CONFIG_DEFAULT.getDefaultView(DISPLAY_DEFAULT)
+
+        _loadPreferences()
+        _registerPreferences()
+        _savePreferences()
+
+    else:
+        message = 'Failed to find a working configuration file. Colorspace will be disabled!'
+        printMessage(MessageType.ERROR, message)
+        if not mari.app.inTerminalMode():
+            PySide2.QtWidgets.QMessageBox.critical(None, 'Colorspace', message, 1024)
+<script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

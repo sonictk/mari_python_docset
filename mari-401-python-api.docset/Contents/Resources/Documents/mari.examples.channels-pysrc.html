@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.examples.channels
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.examples-module.html">
+       Package&nbsp;examples
+      </a>
+      ::
+        Module&nbsp;channels
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.examples.channels-pysrc.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <h1 class="epydoc">
+   Source Code for
+   <a href="mari.examples.channels-module.html">
+    Module mari.examples.channels
+   </a>
+  </h1>
+  <pre class="py-src">
+&iuml;&raquo;&iquest;# ------------------------------------------------------------------------------
+# Channel usage examples
+# coding: utf-8
+# Copyright (c) 2016 The Foundry Visionmongers Ltd.  All Rights Reserved.
+# ------------------------------------------------------------------------------
+
+import mari
+
+PRINT_IMAGE_SET_INFO = False
+
+# ------------------------------------------------------------------------------
+def showGeoPatchImageInfo(obj):
+    """Prints out information about the patches of a geoentity."""
+
+    patches = obj.patchList()
+    mari.utils.messageAndLog("Geo: %s, found %d patches" % (obj.name(), len(patches)), "", False)
+
+    for channel in obj.channelList():
+        mari.utils.messageAndLog("  Channel: %s, %d layers" % (channel.name(), len(channel.layerList())), "", False)
+        for layer in channel.layerList():
+            mari.utils.messageAndLog("    Layer: %s" % (layer.name()), "", False)
+            if not layer.isPaintableLayer():
+                continue
+            imgset = layer.imageSet()
+            for patch in patches:
+                img = imgset.image(patch.uvIndex())
+                if img is None:
+                    continue
+                mari.utils.messageAndLog("      Patch: '%s' - %s" % (patch.name(), img.mostRelevantPath()), "", False)
+
+# ------------------------------------------------------------------------------
+def showAllGeoPatchImageInfo():
+    """Prints out information about all the geo/channels/patches/images combinations."""
+    if not mari.utils.checkProjectAndGeoValidity():
+        return
+
+    mari.utils.messageAndLog("[showAllGeoPatchImageInfo] Found %d geo entities to print patch info for" % (len(mari.geo.list())), "", False)
+    for obj in mari.geo.list():
+        showGeoPatchImageInfo(obj)
+
+# ------------------------------------------------------------------------------
+def showLayerStackInfo(stack, indent_num_spaces=4):
+    """Prints out information about the layers in a stack."""
+    for layer_index, layer in enumerate(stack.layerList()):
+        indent = ' ' * (indent_num_spaces - 1)
+        mari.utils.messageAndLog("%sLayer %2d:          %s" % (indent, layer_index, layer.name()), "", False)
+        mari.utils.messageAndLog("%sType:             %s" % (indent, type(layer).__name__), "", False)
+        mari.utils.messageAndLog("%sVisible:          %d" % (indent, layer.isVisible()), "", False)
+        mari.utils.messageAndLog("%sLocked:           %d" % (indent, layer.isLocked()), "", False)
+        mari.utils.messageAndLog("%sModifiable:       %d" % (indent, layer.isModifiable()), "", False)
+        mari.utils.messageAndLog("%sSelected:         %d" % (indent, layer.isSelected()), "", False)
+        mari.utils.messageAndLog("%sShared:           %d" % (indent, layer.isShared()), "", False)
+        mari.utils.messageAndLog("%sCached:           %d" % (indent, layer.isLayerCached()), "", False)
+        mari.utils.messageAndLog("%sCached up to here:%d" % (indent, layer.isCachedUpToHere()), "", False)
+        mari.utils.messageAndLog("%sColor tag:        %s" % (indent, layer.colorTag()), "", False)
+        mari.utils.messageAndLog("%sBlend:             %s, %.1f" % (indent, layer.blendModeStr(), layer.blendAmount()), "", False)
+        mari.utils.messageAndLog("%sMask:             %s" % (indent, 'None' if not layer.hasMask() else \
+                                             ('Image set' if not layer.hasMaskStack() else 'Stack')), "", False)
+        
+        if layer.isAdjustableLayer():
+            mari.utils.messageAndLog("%sAdjustment stack: %d" % (indent, layer.hasAdjustmentStack()), "", False)
+        
+        if layer.isPaintableLayer():
+            imgset = layer.imageSet()
+            mari.utils.messageAndLog("%sImages:           %d" % (indent, imgset.imageCount()), "", False)
+            mari.utils.messageAndLog("%sAnimated:         %d" % (indent, imgset.isAnimated()), "", False)
+            
+            if PRINT_IMAGE_SET_INFO:
+                big_indent = ' ' * (indent_num_spaces + 4 - 1)
+                for img_index, img in enumerate(imgset.imageList()):
+                    mari.utils.messageAndLog("%sImage index:       %d" % (big_indent, img_index), "", False)
+                    mari.utils.messageAndLog("%sHeight:            %d" % (big_indent, img.height()), "", False)
+                    mari.utils.messageAndLog("%sWidth:             %d" % (big_indent, img.width()), "", False)
+                    pmari.utils.messageAndLog("%sUniform:           %d" % (big_indent, img.isUniform()), "", False)
+                    mari.utils.messageAndLog("%sLast imported from:%s" % (big_indent, img.lastImportPath()), "", False)
+                    mari.utils.messageAndLog("%sLast import date:  %s" % (big_indent, img.lastImportTime().toString()), "", False)
+                    mari.utils.messageAndLog("%sLast exported to:  %s" % (big_indent, img.lastExportPath()), "", False)
+                    mari.utils.messageAndLog("%sLast exported date:%s" % (big_indent, img.lastExportTime().toString()), "", False)
+                    mari.utils.messageAndLog("%sRevert path:       %s" % (big_indent, img.mostRelevantPath()), "", False)
+                    mari.utils.messageAndLog("", "", False)
+        
+        elif layer.isProceduralLayer():
+            mari.utils.messageAndLog("%sProcedural name:  %s" % (big_indent, layer.proceduralName()), "", False)
+        
+        elif layer.isGroupLayer():
+            mari.utils.messageAndLog("%sGroup contents:" % (indent), "", False)
+            showLayerStackInfo(layer.layerStack(), indent_num_spaces + 4)
+        
+        mari.utils.messageAndLog("", "", False)
+
+# ------------------------------------------------------------------------------
+def getColorspacePrettyName(colorspace_config, stage):
+    """Builds human friendly color space name for a given color space and stage."""
+
+    colorspace = colorspace_config.colorspace(stage)
+    actual_colorspace = colorspace_config.resolveColorspace(stage)
+    if colorspace == actual_colorspace:
+        return colorspace
+    return colorspace + ' (' + actual_colorspace + ')'
+
+# ------------------------------------------------------------------------------
+def showChannelInfo(channel):
+    """Prints out information about an individual channel."""
+    
+    mari.utils.messageAndLog("Channel name:     %s" % (channel.name()), "", False)
+    mari.utils.messageAndLog("Default size:     %dx%d" % (channel.width(), channel.height()), "", False)
+    mari.utils.messageAndLog("Default bit depth:%d" % (channel.depth()), "", False)
+
+    colorspace_config = channel.colorspaceConfig()
+    mari.utils.messageAndLog("    Color colorspace config:", "", False)
+    mari.utils.messageAndLog("        OCIO config:   %s" % (colorspace_config.resolveFileName()), "", False)
+    mari.utils.messageAndLog("        Native:        %s" % (getColorspacePrettyName(colorspace_config, colorspace_config.COLORSPACE_STAGE_NATIVE)), "", False)
+    mari.utils.messageAndLog("        Output:        %s" % (getColorspacePrettyName(colorspace_config, colorspace_config.COLORSPACE_STAGE_OUTPUT)), "", False)
+    mari.utils.messageAndLog("        Working:       %s" % (getColorspacePrettyName(colorspace_config, colorspace_config.COLORSPACE_STAGE_WORKING)), "", False)
+    mari.utils.messageAndLog("        Raw:           %d" % (colorspace_config.raw()), "", False)
+    mari.utils.messageAndLog("        Scalar:        %d" % (colorspace_config.scalar()), "", False)
+
+    colorspace_config = channel.scalarColorspaceConfig()
+    mari.utils.messageAndLog("    Mask colorspace config:", "", False)
+    mari.utils.messageAndLog("        OCIO config:   %s" % (colorspace_config.resolveFileName()), "", False)
+    mari.utils.messageAndLog("        Native:        %s" % (getColorspacePrettyName(colorspace_config, colorspace_config.COLORSPACE_STAGE_NATIVE)), "", False)
+    mari.utils.messageAndLog("        Output:        %s" % (getColorspacePrettyName(colorspace_config, colorspace_config.COLORSPACE_STAGE_OUTPUT)), "", False)
+    mari.utils.messageAndLog("        Working:       %s" % (getColorspacePrettyName(colorspace_config, colorspace_config.COLORSPACE_STAGE_WORKING)), "", False)
+    mari.utils.messageAndLog("        Raw:           %d" % (colorspace_config.raw()), "", False)
+    mari.utils.messageAndLog("        Scalar:        %d" % (colorspace_config.scalar()), "", False)
+
+    showLayerStackInfo(channel)
+
+# ------------------------------------------------------------------------------
+def showAllChannels():
+    """Prints out information about all channels."""
+    if not mari.utils.checkProjectAndGeoValidity():
+        return
+
+    mari.utils.messageAndLog("[showAllChannels] Found %d channels for the current Geo Entity" % (len(mari.geo.current().channelList())), "", False)
+    for chan in mari.geo.current().channelList():
+        showChannelInfo(chan)
+  
+# ------------------------------------------------------------------------------
+def reimportImageSetPatches(imgset, patches):
+    """Re-imports a list of given patches for a given imageset."""
+
+    import_image_paths = dict()
+
+    mari.utils.messageAndLog("[reimportImageSetPatches] %d patches to reimport" % (len(patches)), "", False)
+    for patch in patches:
+        img = imgset.image(patch.uvIndex())
+        if img is None:
+            continue
+
+        file_name = img.lastImportPath()
+        if file_name == "":
+            continue
+
+        mari.utils.messageAndLog("    Patch: '%s' - %s" % (patch.name(), file_name), "", False)
+
+        import_image_paths[img] = file_name
+
+    if not import_image_paths:
+        mari.utils.messageAndLog("[[reimportImageSetPatches]] No image import information available", "", False)
+        return
+    
+    mari.utils.messageAndLog("[reimportImageSetPatches] About to import the files onto the given imageset\n%s" % ("\n".join(import_image_paths)), "", False)
+    imgset.importImages(import_image_paths, imgset.SCALE_THE_IMAGE)
+
+# ------------------------------------------------------------------------------
+def reimportCurrentPaintableLayer():
+    """Sets up Mari to link current channel changes on all objects."""
+    if not mari.utils.checkProjectAndGeoValidity():
+        return
+
+    obj = mari.geo.current()
+    if obj is None:
+        mari.utils.messageAndLog("Please select an object", "Invalid selection")
+        return
+
+    channel = obj.currentChannel()
+    if channel is None:
+        mari.utils.messageAndLog("Please select a channel", "Invalid selection")
+        return
+    
+    layer = channel.currentLayer()
+    if layer is None or not layer.isPaintableLayer():
+        mari.utils.messageAndLog("Please select a paintable layer", "Invalid selection")
+        return
+
+    mari.utils.messageAndLog("[reimportCurrentPaintableLayer] About to reimport current paint layer for Geo '%s', Channel '%s', Layer '%s'" % (obj.name(), channel.name(), layer.name()), "", False)
+    reimportImageSetPatches(layer.imageSet(), obj.patchList())
+
+# ------------------------------------------------------------------------------
+def linkCurrentChannels():
+    """Sets up Mari to link current channel changes on all objects.
+    
+    For example, if you have two objects with the same channel names, changing the channel
+    on one of them will change to the same channel on the other.
+    
+    The signal is only triggered when the channel actually changes, so in this case there is
+    no danger of an infinite loop of channels continuously changing.
+    """
+    if not mari.utils.checkProjectAndGeoValidity():
+        return
+    
+    def changeChannels(channel):
+        for obj in mari.geo.list():
+            try:
+                obj.setCurrentImageSet(channel.name())
+            except ValueError:
+                pass    # no channel with that name on the object
+    
+    def connectObject(obj):
+        mari.utils.messageAndLog("[linkCurrentChannels] About to connect signal 'imageSetMadeCurrent' of Geo '%s' to function 'changeChannels'" % (obj.name()), "", False)
+        mari.utils.connect(obj.imageSetMadeCurrent, changeChannels)
+
+    [connectObject(obj) for obj in mari.geo.list()]
+    mari.utils.messageAndLog("[linkCurrentChannels] About to connect signal 'entityAdded' of the Geo Manager to function 'connectObject'", "", False)
+    mari.utils.connect(mari.geo.entityAdded, connectObject)
+
+# ------------------------------------------------------------------------------
+
+# Register new actions with the action manager, and add them to the menu
+_channels_path = "MainWindow/P&amp;ython;/&amp;Examples;/&amp;Channels;"
+mari.menus.addAction(mari.actions.create('Print All C&amp;hannel; Info', 'mari.examples.channels.showAllChannels()'), _channels_path)
+mari.menus.addAction(mari.actions.create('Reimport Current Paintable Layer', 'mari.examples.channels.reimportCurrentPaintableLayer()'), _channels_path)
+mari.menus.addAction(mari.actions.create('Show All Geo Images', 'mari.examples.channels.showAllGeoPatchImageInfo()'), _channels_path)
+mari.menus.addAction(mari.actions.create('Link Channel Changes', 'mari.examples.channels.linkCurrentChannels()'), _channels_path)
+<script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

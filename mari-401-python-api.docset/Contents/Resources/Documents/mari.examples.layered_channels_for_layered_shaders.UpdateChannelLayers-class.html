@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.examples-module.html">
+       Package&nbsp;examples
+      </a>
+      ::
+      <a href="mari.examples.layered_channels_for_layered_shaders-module.html">
+       Module&nbsp;layered_channels_for_layered_shaders
+      </a>
+      ::
+        Class&nbsp;UpdateChannelLayers
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers-class.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS DESCRIPTION ==================== -->
+  <h1 class="epydoc">
+   Class UpdateChannelLayers
+  </h1>
+  <p class="nomargin-top">
+   <span class="codelink">
+    <a href="mari.examples.layered_channels_for_layered_shaders-pysrc.html#UpdateChannelLayers">
+     source&nbsp;code
+    </a>
+   </span>
+  </p>
+  <p>
+   This example class uses the supplied LayerShader's post-shader 
+  compositing setup to update the used Channels to have matching pre-shader
+  compositing. The layer arragment in the layered shader will be mirrored 
+  in each of the input channels. Rerunning the script will update as much 
+  of the used channels as possible.
+  </p>
+  <p>
+   This is a simple example and has the following limitations:
+  </p>
+  <ul>
+   <li>
+    <b>
+     Layer Order
+    </b>
+    <p>
+     The order of the top level layers in a channel must match the 
+      shader order in the layered shader. If you reorder the layers in 
+      channels things will fail.
+    </p>
+   </li>
+   <li>
+    <b>
+     Shader Order
+    </b>
+    <p>
+     The order of the top level layers in a channel must match the 
+      shader order in the layered shader. If you reorder the shader layers 
+      in the layered shader things will fail. If a new shader layer is 
+      required add it to the bottom of the layer stack.
+    </p>
+   </li>
+   <li>
+    <b>
+     Changing Masks
+    </b>
+    <p>
+     If you change a layer shader's mask from a paintable to an mask 
+      stack the channel layers will not be updated. To resolve this, 
+      manually delete the masks from the channel layers.
+    </p>
+   </li>
+   <li>
+    <b>
+     Convert Paint Layer to Group Layer
+    </b>
+    <p>
+     The script will use the layers that are already in the channels. 
+      If a layer is a paintable layer and it has already been assigned a 
+      mask and you would like it converted to a group do the following:
+    </p>
+    <ul>
+     <li>
+      Create a group in the same place.
+     </li>
+     <li>
+      Drag the paintable layer into the group.
+     </li>
+     <li>
+      Remove the mask from the paitable layer.
+     </li>
+     <li>
+      Rerun the script.
+     </li>
+    </ul>
+   </li>
+  </ul>
+  <p>
+   To use this script, use the following basic steps:
+  </p>
+  <ul>
+   <li>
+    Create a new project
+   </li>
+   <li>
+    Create a layered shader (click on the plus button on the shaders 
+      widget and choose "Layered")
+   </li>
+   <li>
+    Go to the "Shader Layers" tab and create any 3 shaders 
+      (click on the plus button and choose from the list)
+   </li>
+   <li>
+    then run this script via Python &gt; Shaders &gt; Update Layered 
+      Channels
+   </li>
+  </ul>
+  <!-- ==================== INSTANCE METHODS ==================== -->
+  <a name="section-InstanceMethods">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Instance Methods
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="__init__">
+         </a>
+         <span class="summary-sig-name">
+          __init__
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          shader_parent
+         </span>
+         )
+        </span>
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari.examples.layered_channels_for_layered_shaders-pysrc.html#UpdateChannelLayers.__init__">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="collectShaders">
+         </a>
+         <span class="summary-sig-name">
+          collectShaders
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari.examples.layered_channels_for_layered_shaders-pysrc.html#UpdateChannelLayers.collectShaders">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="collectInputs">
+         </a>
+         <span class="summary-sig-name">
+          collectInputs
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari.examples.layered_channels_for_layered_shaders-pysrc.html#UpdateChannelLayers.collectInputs">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="assignInputs">
+         </a>
+         <span class="summary-sig-name">
+          assignInputs
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari.examples.layered_channels_for_layered_shaders-pysrc.html#UpdateChannelLayers.assignInputs">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="createLayerGroups_SetMaskStack">
+         </a>
+         <span class="summary-sig-name">
+          createLayerGroups_SetMaskStack
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          layer
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          mask
+         </span>
+         )
+        </span>
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari.examples.layered_channels_for_layered_shaders-pysrc.html#UpdateChannelLayers.createLayerGroups_SetMaskStack">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="createLayerGroups_SetMask">
+         </a>
+         <span class="summary-sig-name">
+          createLayerGroups_SetMask
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          layer
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          mask
+         </span>
+         )
+        </span>
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari.examples.layered_channels_for_layered_shaders-pysrc.html#UpdateChannelLayers.createLayerGroups_SetMask">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="createLayerGroups">
+         </a>
+         <span class="summary-sig-name">
+          createLayerGroups
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari.examples.layered_channels_for_layered_shaders-pysrc.html#UpdateChannelLayers.createLayerGroups">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="update">
+         </a>
+         <span class="summary-sig-name">
+          update
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari.examples.layered_channels_for_layered_shaders-pysrc.html#UpdateChannelLayers.update">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

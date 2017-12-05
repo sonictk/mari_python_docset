@@ -1,0 +1,1406 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.examples.layered_channels_for_layered_shaders
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.examples-module.html">
+       Package&nbsp;examples
+      </a>
+      ::
+        Module&nbsp;layered_channels_for_layered_shaders
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.examples.layered_channels_for_layered_shaders-pysrc.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <h1 class="epydoc">
+   Source Code for
+   <a href="mari.examples.layered_channels_for_layered_shaders-module.html">
+    Module mari.examples.layered_channels_for_layered_shaders
+   </a>
+  </h1>
+  <pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"># Simple example of duplicating a Layered Shader's post-shader compisiting to create and control pre-shader blending.</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment"># coding: utf-8</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment"># Copyright (c) 2016 The Foundry Visionmongers Ltd.  All Rights Reserved.</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name" id="link-0" targets="Package mari=mari-module.html"><a class="py-name" href="#" onclick="return doclink('link-0', 'mari', 'link-0');" title="mari">mari</a></tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"> </tt>
+<a name="UpdateChannelLayers"></a><div id="UpdateChannelLayers-def"><a name="L9"></a><tt class="py-lineno">  9</tt> <a class="py-toggle" href="#" id="UpdateChannelLayers-toggle" onclick="return toggle('UpdateChannelLayers');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers-class.html">UpdateChannelLayers</a><tt class="py-op">(</tt> <tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="UpdateChannelLayers-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="UpdateChannelLayers-expanded"><a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line">    <tt class="py-docstring">'''</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-docstring">    This example class uses the supplied LayerShader's post-shader compositing setup to update the used Channels to have matching pre-shader compositing.</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-docstring">    The layer arragment in the layered shader will be mirrored in each of the input channels.</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-docstring">    Rerunning the script will update as much of the used channels as possible.</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-docstring">    This is a simple example and has the following limitations:</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-docstring">      - B{Layer Order}</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-docstring">        The order of the top level layers in a channel must match the shader order in the layered shader.</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-docstring">        If you reorder the layers in channels things will fail.</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-docstring">      - B{Shader Order}</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-docstring">        The order of the top level layers in a channel must match the shader order in the layered shader.</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-docstring">        If you reorder the shader layers in the layered shader things will fail.</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-docstring">        If a new shader layer is required add it to the bottom of the layer stack.</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-docstring">      - B{Changing Masks}</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-docstring">        If you change a layer shader's mask from a paintable to an mask stack the channel layers will not be updated.</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-docstring">        To resolve this, manually delete the masks from the channel layers.</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-docstring">      - B{Convert Paint Layer to Group Layer}</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-docstring">        The script will use the layers that are already in the channels.</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-docstring">        If a layer is a paintable layer and it has already been assigned a mask and you would like it converted to a group do the following:</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-docstring">          - Create a group in the same place.</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt class="py-docstring">          - Drag the paintable layer into the group.</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"><tt class="py-docstring">          - Remove the mask from the paitable layer.</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-docstring">          - Rerun the script.</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"><tt class="py-docstring">    To use this script, use the following basic steps:</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"><tt class="py-docstring">      - Create a new project</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"><tt class="py-docstring">      - Create a layered shader (click on the plus button on the shaders widget and choose "Layered")</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"><tt class="py-docstring">      - Go to the "Shader Layers" tab and create any 3 shaders (click on the plus button and choose from the list)</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"><tt class="py-docstring">      - then run this script via Python &gt; Shaders &gt; Update Layered Channels</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt class="py-docstring">    '''</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"> </tt>
+<a name="UpdateChannelLayers.__init__"></a><div id="UpdateChannelLayers.__init__-def"><a name="L50"></a><tt class="py-lineno"> 50</tt> <a class="py-toggle" href="#" id="UpdateChannelLayers.__init__-toggle" onclick="return toggle('UpdateChannelLayers.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers-class.html#__init__">__init__</a><tt class="py-op">(</tt> <tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">shader_parent</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="UpdateChannelLayers.__init__-collapsed" indent="++++++++" pad="+++" style="display:none;"></div><div id="UpdateChannelLayers.__init__-expanded"><a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">shader_parent</tt> <tt class="py-op">=</tt> <tt class="py-name">shader_parent</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name" id="link-1" targets="Module mari.examples.shaders=mari.examples.shaders-module.html"><a class="py-name" href="#" onclick="return doclink('link-1', 'shaders', 'link-1');" title="mari.examples.shaders">shaders</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">shaders_mask</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">input_channels</tt> <tt class="py-op">=</tt> <tt class="py-name">dict</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"> </tt>
+<a name="UpdateChannelLayers.collectShaders"></a><div id="UpdateChannelLayers.collectShaders-def"><a name="L56"></a><tt class="py-lineno"> 56</tt> <a class="py-toggle" href="#" id="UpdateChannelLayers.collectShaders-toggle" onclick="return toggle('UpdateChannelLayers.collectShaders');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers-class.html#collectShaders">collectShaders</a><tt class="py-op">(</tt> <tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="UpdateChannelLayers.collectShaders-collapsed" indent="++++++++" pad="+++" style="display:none;"></div><div id="UpdateChannelLayers.collectShaders-expanded"><a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name" id="link-2"><a class="py-name" href="#" onclick="return doclink('link-2', 'shaders', 'link-1');" title="mari.examples.shaders">shaders</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">        <tt class="py-name" id="link-3"><a class="py-name" href="#" onclick="return doclink('link-3', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-4" targets="Package mari.utils=mari.utils-module.html"><a class="py-name" href="#" onclick="return doclink('link-4', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-5" targets="Function mari.utils.misc.messageAndLog()=mari.utils.misc-module.html#messageAndLog"><a class="py-name" href="#" onclick="return doclink('link-5', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[collectShaders] Layered shader '%s' has %d inputs"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">shader_parent</tt><tt class="py-op">.</tt><tt class="py-name" id="link-6" targets="Method mari.Action.name()=mari.Action-class.html#name,Method mari.Camera.name()=mari.Camera-class.html#name,Method mari.Channel.name()=mari.Channel-class.html#name,Method mari.ChannelInfo.name()=mari.ChannelInfo-class.html#name,Method mari.GeoEntity.name()=mari.GeoEntity-class.html#name,Method mari.GeoEntityVersion.name()=mari.GeoEntityVersion-class.html#name,Method mari.GeoPatch.name()=mari.GeoPatch-class.html#name,Method mari.GeometryOperation.name()=mari.GeometryOperation-class.html#name,Method mari.ImageOperation.name()=mari.ImageOperation-class.html#name,Method mari.ImageSet.name()=mari.ImageSet-class.html#name,Method mari.Layer.name()=mari.Layer-class.html#name,Method mari.LayerStack.name()=mari.LayerStack-class.html#name,Method mari.Light.name()=mari.Light-class.html#name,Method mari.LocatorEntity.name()=mari.LocatorEntity-class.html#name,Method mari.Node.name()=mari.Node-class.html#name,Method mari.Palette.name()=mari.Palette-class.html#name,Method mari.ParticleOp.name()=mari.ParticleOp-class.html#name,Method mari.PostFilter.name()=mari.PostFilter-class.html#name,Method mari.PostFilterCollection.name()=mari.PostFilterCollection-class.html#name,Method mari.Project.name()=mari.Project-class.html#name,Method mari.ProjectInfo.name()=mari.ProjectInfo-class.html#name,Method mari.Projector.name()=mari.Projector-class.html#name,Method mari.SelectionGroup.name()=mari.SelectionGroup-class.html#name,Method mari.Shader.name()=mari.Shader-class.html#name,Method mari.Shelf.name()=mari.Shelf-class.html#name,Method mari.Snapshot.name()=mari.Snapshot-class.html#name,Method mari.Tool.name()=mari.Tool-class.html#name"><a class="py-name" href="#" onclick="return doclink('link-6', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">shader_parent</tt><tt class="py-op">.</tt><tt class="py-name" id="link-7" targets="Method mari.Shader.inputList()=mari.Shader-class.html#inputList"><a class="py-name" href="#" onclick="return doclink('link-7', 'inputList', 'link-7');" title="mari.Shader.inputList">inputList</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">input</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">shader_parent</tt><tt class="py-op">.</tt><tt class="py-name" id="link-8"><a class="py-name" href="#" onclick="return doclink('link-8', 'inputList', 'link-7');" title="mari.Shader.inputList">inputList</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">            <tt class="py-name">input_name</tt> <tt class="py-op">=</tt> <tt class="py-name">input</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">shader_parent</tt><tt class="py-op">.</tt><tt class="py-name" id="link-9" targets="Method mari.Shader.isInputForShaderStacks()=mari.Shader-class.html#isInputForShaderStacks"><a class="py-name" href="#" onclick="return doclink('link-9', 'isInputForShaderStacks', 'link-9');" title="mari.Shader.isInputForShaderStacks">isInputForShaderStacks</a></tt><tt class="py-op">(</tt> <tt class="py-name">input_name</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">                <tt class="py-name" id="link-10"><a class="py-name" href="#" onclick="return doclink('link-10', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-11"><a class="py-name" href="#" onclick="return doclink('link-11', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-12"><a class="py-name" href="#" onclick="return doclink('link-12', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"  [Input '%s'] &gt; Is not connected to anything"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">input_name</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">                <tt class="py-keyword">continue</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">            <tt class="py-name">layer_stack</tt> <tt class="py-op">=</tt> <tt class="py-name">input</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">            <tt class="py-name" id="link-13"><a class="py-name" href="#" onclick="return doclink('link-13', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-14"><a class="py-name" href="#" onclick="return doclink('link-14', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-15"><a class="py-name" href="#" onclick="return doclink('link-15', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"  [Input '%s'] Connected to channel '%s' with %d layers"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">input_name</tt><tt class="py-op">,</tt> <tt class="py-name">layer_stack</tt><tt class="py-op">.</tt><tt class="py-name" id="link-16"><a class="py-name" href="#" onclick="return doclink('link-16', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">layer_stack</tt><tt class="py-op">.</tt><tt class="py-name" id="link-17" targets="Method mari.LayerStack.layerList()=mari.LayerStack-class.html#layerList"><a class="py-name" href="#" onclick="return doclink('link-17', 'layerList', 'link-17');" title="mari.LayerStack.layerList">layerList</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name" id="link-18" targets="Method mari.LayerStack.layer()=mari.LayerStack-class.html#layer,Function mari.current.layer()=mari.current-module.html#layer"><a class="py-name" href="#" onclick="return doclink('link-18', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">layer_stack</tt><tt class="py-op">.</tt><tt class="py-name" id="link-19"><a class="py-name" href="#" onclick="return doclink('link-19', 'layerList', 'link-17');" title="mari.LayerStack.layerList">layerList</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name" id="link-20"><a class="py-name" href="#" onclick="return doclink('link-20', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-21" targets="Method mari.Layer.isShaderLayer()=mari.Layer-class.html#isShaderLayer"><a class="py-name" href="#" onclick="return doclink('link-21', 'isShaderLayer', 'link-21');" title="mari.Layer.isShaderLayer">isShaderLayer</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">                    <tt class="py-name" id="link-22"><a class="py-name" href="#" onclick="return doclink('link-22', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-23"><a class="py-name" href="#" onclick="return doclink('link-23', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-24"><a class="py-name" href="#" onclick="return doclink('link-24', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"    [Layer '%s'] Not a shader layer"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-25"><a class="py-name" href="#" onclick="return doclink('link-25', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-26"><a class="py-name" href="#" onclick="return doclink('link-26', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">                    <tt class="py-keyword">continue</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name" id="link-27"><a class="py-name" href="#" onclick="return doclink('link-27', 'shaders', 'link-1');" title="mari.examples.shaders">shaders</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-28" targets="Method mari.FileList.append()=mari.FileList-class.html#append"><a class="py-name" href="#" onclick="return doclink('link-28', 'append', 'link-28');" title="mari.FileList.append">append</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-29"><a class="py-name" href="#" onclick="return doclink('link-29', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-30" targets="Method mari.ChannelInfo.shader()=mari.ChannelInfo-class.html#shader,Method mari.GeoEntity.shader()=mari.GeoEntity-class.html#shader,Method mari.ShaderLayer.shader()=mari.ShaderLayer-class.html#shader,Function mari.current.shader()=mari.current-module.html#shader"><a class="py-name" href="#" onclick="return doclink('link-30', 'shader', 'link-30');" title="mari.ChannelInfo.shader
+mari.GeoEntity.shader
+mari.ShaderLayer.shader
+mari.current.shader">shader</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">                <tt class="py-name" id="link-31"><a class="py-name" href="#" onclick="return doclink('link-31', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-32"><a class="py-name" href="#" onclick="return doclink('link-32', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-33"><a class="py-name" href="#" onclick="return doclink('link-33', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"    [Layer '%s'] Added layer to our list"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-34"><a class="py-name" href="#" onclick="return doclink('link-34', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-35"><a class="py-name" href="#" onclick="return doclink('link-35', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name" id="link-36"><a class="py-name" href="#" onclick="return doclink('link-36', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-37" targets="Method mari.Layer.hasMaskStack()=mari.Layer-class.html#hasMaskStack"><a class="py-name" href="#" onclick="return doclink('link-37', 'hasMaskStack', 'link-37');" title="mari.Layer.hasMaskStack">hasMaskStack</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">                    <tt class="py-name" id="link-38"><a class="py-name" href="#" onclick="return doclink('link-38', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-39"><a class="py-name" href="#" onclick="return doclink('link-39', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-40"><a class="py-name" href="#" onclick="return doclink('link-40', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"        Has mask stack '%s'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-41"><a class="py-name" href="#" onclick="return doclink('link-41', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-42" targets="Method mari.Layer.maskStack()=mari.Layer-class.html#maskStack"><a class="py-name" href="#" onclick="return doclink('link-42', 'maskStack', 'link-42');" title="mari.Layer.maskStack">maskStack</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name" id="link-43"><a class="py-name" href="#" onclick="return doclink('link-43', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">                    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">shaders_mask</tt><tt class="py-op">.</tt><tt class="py-name" id="link-44"><a class="py-name" href="#" onclick="return doclink('link-44', 'append', 'link-28');" title="mari.FileList.append">append</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-45"><a class="py-name" href="#" onclick="return doclink('link-45', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-46"><a class="py-name" href="#" onclick="return doclink('link-46', 'maskStack', 'link-42');" title="mari.Layer.maskStack">maskStack</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">                <tt class="py-keyword">elif</tt> <tt class="py-name" id="link-47"><a class="py-name" href="#" onclick="return doclink('link-47', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-48" targets="Method mari.Layer.hasMask()=mari.Layer-class.html#hasMask"><a class="py-name" href="#" onclick="return doclink('link-48', 'hasMask', 'link-48');" title="mari.Layer.hasMask">hasMask</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">                    <tt class="py-name" id="link-49"><a class="py-name" href="#" onclick="return doclink('link-49', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-50"><a class="py-name" href="#" onclick="return doclink('link-50', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-51"><a class="py-name" href="#" onclick="return doclink('link-51', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"        Has mask '%s'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-52"><a class="py-name" href="#" onclick="return doclink('link-52', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-53" targets="Method mari.Layer.maskImageSet()=mari.Layer-class.html#maskImageSet"><a class="py-name" href="#" onclick="return doclink('link-53', 'maskImageSet', 'link-53');" title="mari.Layer.maskImageSet">maskImageSet</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name" id="link-54"><a class="py-name" href="#" onclick="return doclink('link-54', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">                    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">shaders_mask</tt><tt class="py-op">.</tt><tt class="py-name" id="link-55"><a class="py-name" href="#" onclick="return doclink('link-55', 'append', 'link-28');" title="mari.FileList.append">append</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-56"><a class="py-name" href="#" onclick="return doclink('link-56', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-57"><a class="py-name" href="#" onclick="return doclink('link-57', 'maskImageSet', 'link-53');" title="mari.Layer.maskImageSet">maskImageSet</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">                    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">shaders_mask</tt><tt class="py-op">.</tt><tt class="py-name" id="link-58"><a class="py-name" href="#" onclick="return doclink('link-58', 'append', 'link-28');" title="mari.FileList.append">append</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-59"><a class="py-name" href="#" onclick="return doclink('link-59', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-60" targets="Method mari.Layer.makeMaskStack()=mari.Layer-class.html#makeMaskStack"><a class="py-name" href="#" onclick="return doclink('link-60', 'makeMaskStack', 'link-60');" title="mari.Layer.makeMaskStack">makeMaskStack</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">                    <tt class="py-name" id="link-61"><a class="py-name" href="#" onclick="return doclink('link-61', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-62"><a class="py-name" href="#" onclick="return doclink('link-62', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-63"><a class="py-name" href="#" onclick="return doclink('link-63', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"        Created a mask stack '%s' on layer"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-64"><a class="py-name" href="#" onclick="return doclink('link-64', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-65"><a class="py-name" href="#" onclick="return doclink('link-65', 'maskStack', 'link-42');" title="mari.Layer.maskStack">maskStack</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name" id="link-66"><a class="py-name" href="#" onclick="return doclink('link-66', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"> </tt>
+<a name="UpdateChannelLayers.collectInputs"></a><div id="UpdateChannelLayers.collectInputs-def"><a name="L85"></a><tt class="py-lineno"> 85</tt> <a class="py-toggle" href="#" id="UpdateChannelLayers.collectInputs-toggle" onclick="return toggle('UpdateChannelLayers.collectInputs');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers-class.html#collectInputs">collectInputs</a><tt class="py-op">(</tt> <tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="UpdateChannelLayers.collectInputs-collapsed" indent="++++++++" pad="+++" style="display:none;"></div><div id="UpdateChannelLayers.collectInputs-expanded"><a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">input_channels</tt> <tt class="py-op">=</tt> <tt class="py-name">dict</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">        <tt class="py-name" id="link-67"><a class="py-name" href="#" onclick="return doclink('link-67', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-68"><a class="py-name" href="#" onclick="return doclink('link-68', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-69"><a class="py-name" href="#" onclick="return doclink('link-69', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[collectInputs] Found %d shaders in layered shader"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name" id="link-70"><a class="py-name" href="#" onclick="return doclink('link-70', 'shaders', 'link-1');" title="mari.examples.shaders">shaders</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name" id="link-71"><a class="py-name" href="#" onclick="return doclink('link-71', 'shader', 'link-30');" title="mari.ChannelInfo.shader
+mari.GeoEntity.shader
+mari.ShaderLayer.shader
+mari.current.shader">shader</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name" id="link-72"><a class="py-name" href="#" onclick="return doclink('link-72', 'shaders', 'link-1');" title="mari.examples.shaders">shaders</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">            <tt class="py-name" id="link-73"><a class="py-name" href="#" onclick="return doclink('link-73', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-74"><a class="py-name" href="#" onclick="return doclink('link-74', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-75"><a class="py-name" href="#" onclick="return doclink('link-75', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"  [Shader '%s'] Has %d inputs"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-76"><a class="py-name" href="#" onclick="return doclink('link-76', 'shader', 'link-30');" title="mari.ChannelInfo.shader
+mari.GeoEntity.shader
+mari.ShaderLayer.shader
+mari.current.shader">shader</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-77"><a class="py-name" href="#" onclick="return doclink('link-77', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name" id="link-78"><a class="py-name" href="#" onclick="return doclink('link-78', 'shader', 'link-30');" title="mari.ChannelInfo.shader
+mari.GeoEntity.shader
+mari.ShaderLayer.shader
+mari.current.shader">shader</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-79"><a class="py-name" href="#" onclick="return doclink('link-79', 'inputList', 'link-7');" title="mari.Shader.inputList">inputList</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">input</tt> <tt class="py-keyword">in</tt> <tt class="py-name" id="link-80"><a class="py-name" href="#" onclick="return doclink('link-80', 'shader', 'link-30');" title="mari.ChannelInfo.shader
+mari.GeoEntity.shader
+mari.ShaderLayer.shader
+mari.current.shader">shader</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-81"><a class="py-name" href="#" onclick="return doclink('link-81', 'inputList', 'link-7');" title="mari.Shader.inputList">inputList</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">                <tt class="py-name">input_name</tt> <tt class="py-op">=</tt> <tt class="py-name">input</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">                <tt class="py-name">layer_stack</tt> <tt class="py-op">=</tt> <tt class="py-name">input</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">input_name</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">input_channels</tt><tt class="py-op">:</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">                    <tt class="py-name" id="link-82"><a class="py-name" href="#" onclick="return doclink('link-82', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-83"><a class="py-name" href="#" onclick="return doclink('link-83', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-84"><a class="py-name" href="#" onclick="return doclink('link-84', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"    [Shader '%s'] Adding input_name '%s' to our input channel list"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-85"><a class="py-name" href="#" onclick="return doclink('link-85', 'shader', 'link-30');" title="mari.ChannelInfo.shader
+mari.GeoEntity.shader
+mari.ShaderLayer.shader
+mari.current.shader">shader</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-86"><a class="py-name" href="#" onclick="return doclink('link-86', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">input_name</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">                    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">input_channels</tt><tt class="py-op">[</tt> <tt class="py-name">input_name</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">layer_stack</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">                    <tt class="py-keyword">continue</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">layer_stack</tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">                    <tt class="py-keyword">continue</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">                <tt class="py-name" id="link-87"><a class="py-name" href="#" onclick="return doclink('link-87', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-88"><a class="py-name" href="#" onclick="return doclink('link-88', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-89"><a class="py-name" href="#" onclick="return doclink('link-89', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"    [Shader '%s'] Has channel '%s' connected at input '%s'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-90"><a class="py-name" href="#" onclick="return doclink('link-90', 'shader', 'link-30');" title="mari.ChannelInfo.shader
+mari.GeoEntity.shader
+mari.ShaderLayer.shader
+mari.current.shader">shader</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-91"><a class="py-name" href="#" onclick="return doclink('link-91', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">layer_stack</tt><tt class="py-op">.</tt><tt class="py-name" id="link-92"><a class="py-name" href="#" onclick="return doclink('link-92', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">input_name</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">                <tt class="py-name">input_layer_stack</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">input_channels</tt><tt class="py-op">[</tt> <tt class="py-name">input_name</tt><tt class="py-op">]</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">input_layer_stack</tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">                    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">input_channels</tt><tt class="py-op">[</tt> <tt class="py-name">input_name</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">layer_stack</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">                    <tt class="py-keyword">continue</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">                <tt class="py-name" id="link-93"><a class="py-name" href="#" onclick="return doclink('link-93', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-94"><a class="py-name" href="#" onclick="return doclink('link-94', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-95"><a class="py-name" href="#" onclick="return doclink('link-95', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"    [Shader '%s'] input_name '%s', input_layer_stack '%s'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-96"><a class="py-name" href="#" onclick="return doclink('link-96', 'shader', 'link-30');" title="mari.ChannelInfo.shader
+mari.GeoEntity.shader
+mari.ShaderLayer.shader
+mari.current.shader">shader</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-97"><a class="py-name" href="#" onclick="return doclink('link-97', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">input_name</tt><tt class="py-op">,</tt> <tt class="py-name">input_layer_stack</tt><tt class="py-op">.</tt><tt class="py-name" id="link-98"><a class="py-name" href="#" onclick="return doclink('link-98', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">input_layer_stack</tt> <tt class="py-op">!=</tt> <tt class="py-name">layer_stack</tt><tt class="py-op">:</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">                    <tt class="py-name" id="link-99"><a class="py-name" href="#" onclick="return doclink('link-99', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-100"><a class="py-name" href="#" onclick="return doclink('link-100', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-101"><a class="py-name" href="#" onclick="return doclink('link-101', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"    [Shader '%s'] ERROR: Channel Missmatch '%s' Input '%s' is using '%s' Common Channel is already '%s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-102"><a class="py-name" href="#" onclick="return doclink('link-102', 'shader', 'link-30');" title="mari.ChannelInfo.shader
+mari.GeoEntity.shader
+mari.ShaderLayer.shader
+mari.current.shader">shader</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-103"><a class="py-name" href="#" onclick="return doclink('link-103', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name" id="link-104"><a class="py-name" href="#" onclick="return doclink('link-104', 'shader', 'link-30');" title="mari.ChannelInfo.shader
+mari.GeoEntity.shader
+mari.ShaderLayer.shader
+mari.current.shader">shader</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-105"><a class="py-name" href="#" onclick="return doclink('link-105', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name">input_name</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name">layer_stack</tt><tt class="py-op">)</tt><tt class="py-op">,</tt>  <tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name">input_layer_stack</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">                    <tt class="py-keyword">raise</tt> <tt class="py-name">Exception</tt><tt class="py-op">(</tt> <tt class="py-string">"Channel Missmatch"</tt><tt class="py-op">)</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line"> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">        <tt class="py-name" id="link-106"><a class="py-name" href="#" onclick="return doclink('link-106', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-107"><a class="py-name" href="#" onclick="return doclink('link-107', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-108"><a class="py-name" href="#" onclick="return doclink('link-108', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[collectInputs] Found %d input_channels"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">input_channels</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">input_name</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">input_channels</tt><tt class="py-op">:</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">            <tt class="py-name">input_layer_stack</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">input_channels</tt><tt class="py-op">[</tt> <tt class="py-name">input_name</tt><tt class="py-op">]</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">            <tt class="py-name">input_channel_name</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt><tt class="py-op">;</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">input_layer_stack</tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">                <tt class="py-keyword">continue</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">            <tt class="py-name">input_channel_name</tt> <tt class="py-op">=</tt> <tt class="py-name">input_layer_stack</tt><tt class="py-op">.</tt><tt class="py-name" id="link-109"><a class="py-name" href="#" onclick="return doclink('link-109', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">            <tt class="py-name" id="link-110"><a class="py-name" href="#" onclick="return doclink('link-110', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-111"><a class="py-name" href="#" onclick="return doclink('link-111', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-112"><a class="py-name" href="#" onclick="return doclink('link-112', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"  Input: '%s', connected channel: '%s'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name">input_name</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name">input_channel_name</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"> </tt>
+<a name="UpdateChannelLayers.assignInputs"></a><div id="UpdateChannelLayers.assignInputs-def"><a name="L121"></a><tt class="py-lineno">121</tt> <a class="py-toggle" href="#" id="UpdateChannelLayers.assignInputs-toggle" onclick="return toggle('UpdateChannelLayers.assignInputs');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers-class.html#assignInputs">assignInputs</a><tt class="py-op">(</tt> <tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="UpdateChannelLayers.assignInputs-collapsed" indent="++++++++" pad="+++" style="display:none;"></div><div id="UpdateChannelLayers.assignInputs-expanded"><a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">        <tt class="py-name" id="link-113"><a class="py-name" href="#" onclick="return doclink('link-113', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-114"><a class="py-name" href="#" onclick="return doclink('link-114', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-115"><a class="py-name" href="#" onclick="return doclink('link-115', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[assignInputs] Found %d shaders"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name" id="link-116"><a class="py-name" href="#" onclick="return doclink('link-116', 'shaders', 'link-1');" title="mari.examples.shaders">shaders</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name" id="link-117"><a class="py-name" href="#" onclick="return doclink('link-117', 'shader', 'link-30');" title="mari.ChannelInfo.shader
+mari.GeoEntity.shader
+mari.ShaderLayer.shader
+mari.current.shader">shader</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name" id="link-118"><a class="py-name" href="#" onclick="return doclink('link-118', 'shaders', 'link-1');" title="mari.examples.shaders">shaders</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">            <tt class="py-name" id="link-119"><a class="py-name" href="#" onclick="return doclink('link-119', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-120"><a class="py-name" href="#" onclick="return doclink('link-120', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-121"><a class="py-name" href="#" onclick="return doclink('link-121', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"  [Shader '%s'] Has %d inputs"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-122"><a class="py-name" href="#" onclick="return doclink('link-122', 'shader', 'link-30');" title="mari.ChannelInfo.shader
+mari.GeoEntity.shader
+mari.ShaderLayer.shader
+mari.current.shader">shader</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-123"><a class="py-name" href="#" onclick="return doclink('link-123', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name" id="link-124"><a class="py-name" href="#" onclick="return doclink('link-124', 'shader', 'link-30');" title="mari.ChannelInfo.shader
+mari.GeoEntity.shader
+mari.ShaderLayer.shader
+mari.current.shader">shader</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-125"><a class="py-name" href="#" onclick="return doclink('link-125', 'inputList', 'link-7');" title="mari.Shader.inputList">inputList</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">shader_input</tt> <tt class="py-keyword">in</tt> <tt class="py-name" id="link-126"><a class="py-name" href="#" onclick="return doclink('link-126', 'shader', 'link-30');" title="mari.ChannelInfo.shader
+mari.GeoEntity.shader
+mari.ShaderLayer.shader
+mari.current.shader">shader</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-127"><a class="py-name" href="#" onclick="return doclink('link-127', 'inputList', 'link-7');" title="mari.Shader.inputList">inputList</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">                <tt class="py-name">input_name</tt> <tt class="py-op">=</tt> <tt class="py-name">shader_input</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">                <tt class="py-name">shader_layer_stack</tt> <tt class="py-op">=</tt> <tt class="py-name">shader_input</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">                <tt class="py-name" id="link-128"><a class="py-name" href="#" onclick="return doclink('link-128', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-129"><a class="py-name" href="#" onclick="return doclink('link-129', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-130"><a class="py-name" href="#" onclick="return doclink('link-130', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"    [input '%s'] layer stack '%s' (%s)"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">input_name</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">shader_layer_stack</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">shader_layer_stack</tt><tt class="py-op">.</tt><tt class="py-name" id="link-131"><a class="py-name" href="#" onclick="return doclink('link-131', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-keyword">if</tt> <tt class="py-name">shader_layer_stack</tt> <tt class="py-keyword">else</tt> <tt class="py-string">""</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line"> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">                <tt class="py-name">common_layer_stack</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">input_channels</tt><tt class="py-op">[</tt> <tt class="py-name">input_name</tt><tt class="py-op">]</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">common_layer_stack</tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">                    <tt class="py-keyword">continue</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line"> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">common_layer_stack</tt> <tt class="py-op">==</tt> <tt class="py-name">shader_layer_stack</tt><tt class="py-op">:</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">                    <tt class="py-name" id="link-132"><a class="py-name" href="#" onclick="return doclink('link-132', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-133"><a class="py-name" href="#" onclick="return doclink('link-133', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-134"><a class="py-name" href="#" onclick="return doclink('link-134', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"      &gt; Common layer stack '%s' ('%s') is already set"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">common_layer_stack</tt><tt class="py-op">.</tt><tt class="py-name" id="link-135"><a class="py-name" href="#" onclick="return doclink('link-135', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">common_layer_stack</tt><tt class="py-op">.</tt><tt class="py-name" id="link-136"><a class="py-name" href="#" onclick="return doclink('link-136', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">                    <tt class="py-keyword">continue</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">                <tt class="py-name" id="link-137"><a class="py-name" href="#" onclick="return doclink('link-137', 'shader', 'link-30');" title="mari.ChannelInfo.shader
+mari.GeoEntity.shader
+mari.ShaderLayer.shader
+mari.current.shader">shader</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-138" targets="Method mari.Shader.setInput()=mari.Shader-class.html#setInput"><a class="py-name" href="#" onclick="return doclink('link-138', 'setInput', 'link-138');" title="mari.Shader.setInput">setInput</a></tt><tt class="py-op">(</tt> <tt class="py-name">input_name</tt><tt class="py-op">,</tt> <tt class="py-name">common_layer_stack</tt><tt class="py-op">)</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">                <tt class="py-name" id="link-139"><a class="py-name" href="#" onclick="return doclink('link-139', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-140"><a class="py-name" href="#" onclick="return doclink('link-140', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-141"><a class="py-name" href="#" onclick="return doclink('link-141', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"      &gt; Connect input '%s' to common layer stack '%s' ('%s')"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">input_name</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">common_layer_stack</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">common_layer_stack</tt><tt class="py-op">.</tt><tt class="py-name" id="link-142"><a class="py-name" href="#" onclick="return doclink('link-142', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line"> </tt>
+<a name="UpdateChannelLayers.createLayerGroups_SetMaskStack"></a><div id="UpdateChannelLayers.createLayerGroups_SetMaskStack-def"><a name="L141"></a><tt class="py-lineno">141</tt> <a class="py-toggle" href="#" id="UpdateChannelLayers.createLayerGroups_SetMaskStack-toggle" onclick="return toggle('UpdateChannelLayers.createLayerGroups_SetMaskStack');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers-class.html#createLayerGroups_SetMaskStack">createLayerGroups_SetMaskStack</a><tt class="py-op">(</tt> <tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">layer</tt><tt class="py-op">,</tt> <tt class="py-param">mask</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="UpdateChannelLayers.createLayerGroups_SetMaskStack-collapsed" indent="++++++++" pad="+++" style="display:none;"></div><div id="UpdateChannelLayers.createLayerGroups_SetMaskStack-expanded"><a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">        <tt class="py-comment">#try:</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">        <tt class="py-comment">#    # detect LayerStack</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">        <tt class="py-comment">#    pass</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">        <tt class="py-comment">#except:</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">        <tt class="py-comment">#    return False</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">        <tt class="py-comment">#if not layer.hasMask() and not layer.hasMaskStack():</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line"> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">        <tt class="py-comment">#if layer.hasMaskStack():</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">        <tt class="py-comment">#    if layer.maskStack() == mask:</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">        <tt class="py-comment">#        return True</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">        <tt class="py-comment">#    raise Exception( "Unable to Assign MaskStack as has other MaskStack")</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line"> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name" id="link-143"><a class="py-name" href="#" onclick="return doclink('link-143', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-144"><a class="py-name" href="#" onclick="return doclink('link-144', 'hasMask', 'link-48');" title="mari.Layer.hasMask">hasMask</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> <tt class="py-keyword">not</tt> <tt class="py-name" id="link-145"><a class="py-name" href="#" onclick="return doclink('link-145', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-146"><a class="py-name" href="#" onclick="return doclink('link-146', 'hasMaskStack', 'link-37');" title="mari.Layer.hasMaskStack">hasMaskStack</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt class="py-name">Exception</tt><tt class="py-op">(</tt> <tt class="py-string">"Unable to Assign MaskStack as has Mask"</tt><tt class="py-op">)</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line"> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name" id="link-147"><a class="py-name" href="#" onclick="return doclink('link-147', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-148"><a class="py-name" href="#" onclick="return doclink('link-148', 'hasMaskStack', 'link-37');" title="mari.Layer.hasMaskStack">hasMaskStack</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name" id="link-149"><a class="py-name" href="#" onclick="return doclink('link-149', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-150"><a class="py-name" href="#" onclick="return doclink('link-150', 'maskStack', 'link-42');" title="mari.Layer.maskStack">maskStack</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-name">mask</tt><tt class="py-op">:</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt class="py-name">Exception</tt><tt class="py-op">(</tt> <tt class="py-string">"Unable to Assign MaskStack as has other MaskStack"</tt><tt class="py-op">)</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line"> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">        <tt class="py-name" id="link-151"><a class="py-name" href="#" onclick="return doclink('link-151', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-152"><a class="py-name" href="#" onclick="return doclink('link-152', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-153"><a class="py-name" href="#" onclick="return doclink('link-153', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"       Set mask stack '%s' on layer '%s'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">mask</tt><tt class="py-op">.</tt><tt class="py-name" id="link-154"><a class="py-name" href="#" onclick="return doclink('link-154', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-155"><a class="py-name" href="#" onclick="return doclink('link-155', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-156"><a class="py-name" href="#" onclick="return doclink('link-156', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">        <tt class="py-name" id="link-157"><a class="py-name" href="#" onclick="return doclink('link-157', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-158" targets="Method mari.Layer.setMaskStack()=mari.Layer-class.html#setMaskStack"><a class="py-name" href="#" onclick="return doclink('link-158', 'setMaskStack', 'link-158');" title="mari.Layer.setMaskStack">setMaskStack</a></tt><tt class="py-op">(</tt> <tt class="py-name">mask</tt><tt class="py-op">)</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+</div><a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line"> </tt>
+<a name="UpdateChannelLayers.createLayerGroups_SetMask"></a><div id="UpdateChannelLayers.createLayerGroups_SetMask-def"><a name="L167"></a><tt class="py-lineno">167</tt> <a class="py-toggle" href="#" id="UpdateChannelLayers.createLayerGroups_SetMask-toggle" onclick="return toggle('UpdateChannelLayers.createLayerGroups_SetMask');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers-class.html#createLayerGroups_SetMask">createLayerGroups_SetMask</a><tt class="py-op">(</tt> <tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">layer</tt><tt class="py-op">,</tt> <tt class="py-param">mask</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="UpdateChannelLayers.createLayerGroups_SetMask-collapsed" indent="++++++++" pad="+++" style="display:none;"></div><div id="UpdateChannelLayers.createLayerGroups_SetMask-expanded"><a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">            <tt class="py-comment"># detect ImageSet</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">            <tt class="py-name">mask</tt><tt class="py-op">.</tt><tt class="py-name" id="link-159" targets="Method mari.Channel.isPtex()=mari.Channel-class.html#isPtex,Method mari.GeoEntity.isPtex()=mari.GeoEntity-class.html#isPtex,Method mari.ImageSet.isPtex()=mari.ImageSet-class.html#isPtex"><a class="py-name" href="#" onclick="return doclink('link-159', 'isPtex', 'link-159');" title="mari.Channel.isPtex
+mari.GeoEntity.isPtex
+mari.ImageSet.isPtex">isPtex</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line"> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name" id="link-160"><a class="py-name" href="#" onclick="return doclink('link-160', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-161"><a class="py-name" href="#" onclick="return doclink('link-161', 'hasMask', 'link-48');" title="mari.Layer.hasMask">hasMask</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name" id="link-162"><a class="py-name" href="#" onclick="return doclink('link-162', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-163"><a class="py-name" href="#" onclick="return doclink('link-163', 'maskImageSet', 'link-53');" title="mari.Layer.maskImageSet">maskImageSet</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-name">mask</tt><tt class="py-op">:</tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt class="py-name">Exception</tt><tt class="py-op">(</tt> <tt class="py-string">"Unable to Assign Mask"</tt><tt class="py-op">)</tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line"> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name" id="link-164"><a class="py-name" href="#" onclick="return doclink('link-164', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-165"><a class="py-name" href="#" onclick="return doclink('link-165', 'hasMaskStack', 'link-37');" title="mari.Layer.hasMaskStack">hasMaskStack</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt class="py-name">Exception</tt><tt class="py-op">(</tt> <tt class="py-string">"Unable to Assign Mask"</tt><tt class="py-op">)</tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line"> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line">        <tt class="py-comment"># TODO - Missing LayerStack::setMask()</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line">        <tt class="py-name" id="link-166"><a class="py-name" href="#" onclick="return doclink('link-166', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-167"><a class="py-name" href="#" onclick="return doclink('link-167', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-168"><a class="py-name" href="#" onclick="return doclink('link-168', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"       Set mask '%s' on layer '%s'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">mask</tt><tt class="py-op">.</tt><tt class="py-name" id="link-169"><a class="py-name" href="#" onclick="return doclink('link-169', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-170"><a class="py-name" href="#" onclick="return doclink('link-170', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-171"><a class="py-name" href="#" onclick="return doclink('link-171', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line">        <tt class="py-name" id="link-172"><a class="py-name" href="#" onclick="return doclink('link-172', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-173" targets="Method mari.Layer.setMaskImageSet()=mari.Layer-class.html#setMaskImageSet"><a class="py-name" href="#" onclick="return doclink('link-173', 'setMaskImageSet', 'link-173');" title="mari.Layer.setMaskImageSet">setMaskImageSet</a></tt><tt class="py-op">(</tt> <tt class="py-name">mask</tt><tt class="py-op">)</tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+</div><a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line"> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line"> </tt>
+<a name="UpdateChannelLayers.createLayerGroups"></a><div id="UpdateChannelLayers.createLayerGroups-def"><a name="L188"></a><tt class="py-lineno">188</tt> <a class="py-toggle" href="#" id="UpdateChannelLayers.createLayerGroups-toggle" onclick="return toggle('UpdateChannelLayers.createLayerGroups');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers-class.html#createLayerGroups">createLayerGroups</a><tt class="py-op">(</tt> <tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="UpdateChannelLayers.createLayerGroups-collapsed" indent="++++++++" pad="+++" style="display:none;"></div><div id="UpdateChannelLayers.createLayerGroups-expanded"><a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line">        <tt class="py-name" id="link-174"><a class="py-name" href="#" onclick="return doclink('link-174', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-175"><a class="py-name" href="#" onclick="return doclink('link-175', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-176"><a class="py-name" href="#" onclick="return doclink('link-176', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[createLayerGroups] Found %d input_channels"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">input_channels</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">input_name</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">input_channels</tt><tt class="py-op">:</tt> </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line">            <tt class="py-name">input_layer_stack</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">input_channels</tt><tt class="py-op">[</tt> <tt class="py-name">input_name</tt><tt class="py-op">]</tt> </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">input_layer_stack</tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line">                <tt class="py-keyword">continue</tt> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line">            <tt class="py-name" id="link-177"><a class="py-name" href="#" onclick="return doclink('link-177', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-178"><a class="py-name" href="#" onclick="return doclink('link-178', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-179"><a class="py-name" href="#" onclick="return doclink('link-179', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"  [input '%s'] layer stack '%s'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name">input_name</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name">input_layer_stack</tt><tt class="py-op">.</tt><tt class="py-name" id="link-180"><a class="py-name" href="#" onclick="return doclink('link-180', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line"> </tt>
+<a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line">            <tt class="py-name" id="link-181" targets="Module mari.examples.layers=mari.examples.layers-module.html"><a class="py-name" href="#" onclick="return doclink('link-181', 'layers', 'link-181');" title="mari.examples.layers">layers</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-182" targets="Method mari.ActionManager.list()=mari.ActionManager-class.html#list,Method mari.CanvasManager.list()=mari.CanvasManager-class.html#list,Method mari.GeoManager.list()=mari.GeoManager-class.html#list,Method mari.ImageManager.list()=mari.ImageManager-class.html#list,Method mari.LightManager.list()=mari.LightManager-class.html#list,Method mari.PaletteManager.list()=mari.PaletteManager-class.html#list,Method mari.Preferences.list()=mari.Preferences-class.html#list,Method mari.ProjectManager.list()=mari.ProjectManager-class.html#list,Method mari.ProjectorManager.list()=mari.ProjectorManager-class.html#list,Method mari.SelectionGroupManager.list()=mari.SelectionGroupManager-class.html#list,Method mari.ShelfManager.list()=mari.ShelfManager-class.html#list"><a class="py-name" href="#" onclick="return doclink('link-182', 'list', 'link-182');" title="mari.ActionManager.list
+mari.CanvasManager.list
+mari.GeoManager.list
+mari.ImageManager.list
+mari.LightManager.list
+mari.PaletteManager.list
+mari.Preferences.list
+mari.ProjectManager.list
+mari.ProjectorManager.list
+mari.SelectionGroupManager.list
+mari.ShelfManager.list">list</a></tt><tt class="py-op">(</tt> <tt class="py-name">input_layer_stack</tt><tt class="py-op">.</tt><tt class="py-name" id="link-183"><a class="py-name" href="#" onclick="return doclink('link-183', 'layerList', 'link-17');" title="mari.LayerStack.layerList">layerList</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line">            <tt class="py-name" id="link-184"><a class="py-name" href="#" onclick="return doclink('link-184', 'shaders', 'link-1');" title="mari.examples.shaders">shaders</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-185"><a class="py-name" href="#" onclick="return doclink('link-185', 'list', 'link-182');" title="mari.ActionManager.list
+mari.CanvasManager.list
+mari.GeoManager.list
+mari.ImageManager.list
+mari.LightManager.list
+mari.PaletteManager.list
+mari.Preferences.list
+mari.ProjectManager.list
+mari.ProjectorManager.list
+mari.SelectionGroupManager.list
+mari.ShelfManager.list">list</a></tt><tt class="py-op">(</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name" id="link-186"><a class="py-name" href="#" onclick="return doclink('link-186', 'shaders', 'link-1');" title="mari.examples.shaders">shaders</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line">            <tt class="py-name">masks</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-187"><a class="py-name" href="#" onclick="return doclink('link-187', 'list', 'link-182');" title="mari.ActionManager.list
+mari.CanvasManager.list
+mari.GeoManager.list
+mari.ImageManager.list
+mari.LightManager.list
+mari.PaletteManager.list
+mari.Preferences.list
+mari.ProjectManager.list
+mari.ProjectorManager.list
+mari.SelectionGroupManager.list
+mari.ShelfManager.list">list</a></tt><tt class="py-op">(</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">shaders_mask</tt><tt class="py-op">)</tt> </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line">            <tt class="py-name" id="link-188"><a class="py-name" href="#" onclick="return doclink('link-188', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-189"><a class="py-name" href="#" onclick="return doclink('link-189', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-190"><a class="py-name" href="#" onclick="return doclink('link-190', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"    &gt; Found %d layers"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name" id="link-191"><a class="py-name" href="#" onclick="return doclink('link-191', 'layers', 'link-181');" title="mari.examples.layers">layers</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line">            <tt class="py-name" id="link-192"><a class="py-name" href="#" onclick="return doclink('link-192', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-193"><a class="py-name" href="#" onclick="return doclink('link-193', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-194"><a class="py-name" href="#" onclick="return doclink('link-194', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"    &gt; Found %d shaders"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name" id="link-195"><a class="py-name" href="#" onclick="return doclink('link-195', 'shaders', 'link-1');" title="mari.examples.shaders">shaders</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line">            <tt class="py-name" id="link-196"><a class="py-name" href="#" onclick="return doclink('link-196', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-197"><a class="py-name" href="#" onclick="return doclink('link-197', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-198"><a class="py-name" href="#" onclick="return doclink('link-198', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"    &gt; Found %d masks"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">masks</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line"> </tt>
+<a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line">            <tt class="py-name">layer_insert</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line">            <tt class="py-keyword">while</tt> <tt class="py-number">0</tt> <tt class="py-op">&lt;</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt> <tt class="py-name" id="link-199"><a class="py-name" href="#" onclick="return doclink('link-199', 'shaders', 'link-1');" title="mari.examples.shaders">shaders</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line">                <tt class="py-name" id="link-200"><a class="py-name" href="#" onclick="return doclink('link-200', 'shader', 'link-30');" title="mari.ChannelInfo.shader
+mari.GeoEntity.shader
+mari.ShaderLayer.shader
+mari.current.shader">shader</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-201"><a class="py-name" href="#" onclick="return doclink('link-201', 'shaders', 'link-1');" title="mari.examples.shaders">shaders</a></tt><tt class="py-op">.</tt><tt class="py-name">pop</tt><tt class="py-op">(</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line">                <tt class="py-name">mask</tt> <tt class="py-op">=</tt> <tt class="py-name">masks</tt><tt class="py-op">.</tt><tt class="py-name">pop</tt><tt class="py-op">(</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name" id="link-202"><a class="py-name" href="#" onclick="return doclink('link-202', 'layers', 'link-181');" title="mari.examples.layers">layers</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line">                    <tt class="py-name" id="link-203"><a class="py-name" href="#" onclick="return doclink('link-203', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt> <tt class="py-op">=</tt> <tt class="py-name">input_layer_stack</tt><tt class="py-op">.</tt><tt class="py-name" id="link-204" targets="Method mari.LayerStack.createGroupLayer()=mari.LayerStack-class.html#createGroupLayer"><a class="py-name" href="#" onclick="return doclink('link-204', 'createGroupLayer', 'link-204');" title="mari.LayerStack.createGroupLayer">createGroupLayer</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-205"><a class="py-name" href="#" onclick="return doclink('link-205', 'shader', 'link-30');" title="mari.ChannelInfo.shader
+mari.GeoEntity.shader
+mari.ShaderLayer.shader
+mari.current.shader">shader</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-206"><a class="py-name" href="#" onclick="return doclink('link-206', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">layer_insert</tt><tt class="py-op">,</tt> <tt class="py-name">input_layer_stack</tt><tt class="py-op">.</tt><tt class="py-name" id="link-207" targets="Variable mari.LayerStack.INSERT_NEW_LAYER_BELOW_REF_LAYER=mari.LayerStack-class.html#INSERT_NEW_LAYER_BELOW_REF_LAYER,Variable mari.LayerStack.LayerCreateFlag.INSERT_NEW_LAYER_BELOW_REF_LAYER=mari.LayerStack.LayerCreateFlag-class.html#INSERT_NEW_LAYER_BELOW_REF_LAYER"><a class="py-name" href="#" onclick="return doclink('link-207', 'INSERT_NEW_LAYER_BELOW_REF_LAYER', 'link-207');" title="mari.LayerStack.INSERT_NEW_LAYER_BELOW_REF_LAYER
+mari.LayerStack.LayerCreateFlag.INSERT_NEW_LAYER_BELOW_REF_LAYER">INSERT_NEW_LAYER_BELOW_REF_LAYER</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line">                    <tt class="py-name" id="link-208"><a class="py-name" href="#" onclick="return doclink('link-208', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-209"><a class="py-name" href="#" onclick="return doclink('link-209', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-210"><a class="py-name" href="#" onclick="return doclink('link-210', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"    Created group layer '%s' on layer stack '%s'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-211"><a class="py-name" href="#" onclick="return doclink('link-211', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-212"><a class="py-name" href="#" onclick="return doclink('link-212', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">input_layer_stack</tt><tt class="py-op">.</tt><tt class="py-name" id="link-213"><a class="py-name" href="#" onclick="return doclink('link-213', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line">                    <tt class="py-name" id="link-214"><a class="py-name" href="#" onclick="return doclink('link-214', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-215"><a class="py-name" href="#" onclick="return doclink('link-215', 'layers', 'link-181');" title="mari.examples.layers">layers</a></tt><tt class="py-op">.</tt><tt class="py-name">pop</tt><tt class="py-op">(</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line"> </tt>
+<a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line">                <tt class="py-name">layer_insert</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-216"><a class="py-name" href="#" onclick="return doclink('link-216', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt> </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line"> </tt>
+<a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line">                <tt class="py-name" id="link-217"><a class="py-name" href="#" onclick="return doclink('link-217', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-218"><a class="py-name" href="#" onclick="return doclink('link-218', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-219"><a class="py-name" href="#" onclick="return doclink('link-219', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"    shader: '%s' (%s), mask: '%s' (%s), layer: '%s' (%s)"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name" id="link-220"><a class="py-name" href="#" onclick="return doclink('link-220', 'shader', 'link-30');" title="mari.ChannelInfo.shader
+mari.GeoEntity.shader
+mari.ShaderLayer.shader
+mari.current.shader">shader</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-221"><a class="py-name" href="#" onclick="return doclink('link-221', 'shader', 'link-30');" title="mari.ChannelInfo.shader
+mari.GeoEntity.shader
+mari.ShaderLayer.shader
+mari.current.shader">shader</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-222"><a class="py-name" href="#" onclick="return doclink('link-222', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-keyword">if</tt> <tt class="py-name" id="link-223"><a class="py-name" href="#" onclick="return doclink('link-223', 'shader', 'link-30');" title="mari.ChannelInfo.shader
+mari.GeoEntity.shader
+mari.ShaderLayer.shader
+mari.current.shader">shader</a></tt> <tt class="py-keyword">else</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name">mask</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">mask</tt><tt class="py-op">.</tt><tt class="py-name" id="link-224"><a class="py-name" href="#" onclick="return doclink('link-224', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-keyword">if</tt> <tt class="py-name">mask</tt> <tt class="py-keyword">else</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name" id="link-225"><a class="py-name" href="#" onclick="return doclink('link-225', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-226"><a class="py-name" href="#" onclick="return doclink('link-226', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-227"><a class="py-name" href="#" onclick="return doclink('link-227', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-keyword">if</tt> <tt class="py-name" id="link-228"><a class="py-name" href="#" onclick="return doclink('link-228', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt> <tt class="py-keyword">else</tt> <tt class="py-string">""</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L216"></a><tt class="py-lineno">216</tt>  <tt class="py-line"> </tt>
+<a name="L217"></a><tt class="py-lineno">217</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name" id="link-229" targets="Method mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers.createLayerGroups_SetMask()=mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers-class.html#createLayerGroups_SetMask"><a class="py-name" href="#" onclick="return doclink('link-229', 'createLayerGroups_SetMask', 'link-229');" title="mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers.createLayerGroups_SetMask">createLayerGroups_SetMask</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-230"><a class="py-name" href="#" onclick="return doclink('link-230', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">,</tt> <tt class="py-name">mask</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line">                    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name" id="link-231" targets="Method mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers.createLayerGroups_SetMaskStack()=mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers-class.html#createLayerGroups_SetMaskStack"><a class="py-name" href="#" onclick="return doclink('link-231', 'createLayerGroups_SetMaskStack', 'link-231');" title="mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers.createLayerGroups_SetMaskStack">createLayerGroups_SetMaskStack</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-232"><a class="py-name" href="#" onclick="return doclink('link-232', 'layer', 'link-18');" title="mari.LayerStack.layer
+mari.current.layer">layer</a></tt><tt class="py-op">,</tt> <tt class="py-name">mask</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line">                        <tt class="py-keyword">raise</tt> <tt class="py-name">Exception</tt><tt class="py-op">(</tt> <tt class="py-string">"Unable to Assign Mask"</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line"> </tt>
+<a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line"> </tt>
+<a name="UpdateChannelLayers.update"></a><div id="UpdateChannelLayers.update-def"><a name="L222"></a><tt class="py-lineno">222</tt> <a class="py-toggle" href="#" id="UpdateChannelLayers.update-toggle" onclick="return toggle('UpdateChannelLayers.update');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers-class.html#update">update</a><tt class="py-op">(</tt> <tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="UpdateChannelLayers.update-collapsed" indent="++++++++" pad="+++" style="display:none;"></div><div id="UpdateChannelLayers.update-expanded"><a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line">        <tt class="py-name" id="link-233"><a class="py-name" href="#" onclick="return doclink('link-233', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-234"><a class="py-name" href="#" onclick="return doclink('link-234', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-235"><a class="py-name" href="#" onclick="return doclink('link-235', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[UpdateChannelLayers::update] About to gather info about the shaders"</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name" id="link-236" targets="Method mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers.collectShaders()=mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers-class.html#collectShaders,Method mari.examples.layered_channels_from_layered_shaders.CreateChannelLayers.collectShaders()=mari.examples.layered_channels_from_layered_shaders.CreateChannelLayers-class.html#collectShaders"><a class="py-name" href="#" onclick="return doclink('link-236', 'collectShaders', 'link-236');" title="mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers.collectShaders
+mari.examples.layered_channels_from_layered_shaders.CreateChannelLayers.collectShaders">collectShaders</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line"> </tt>
+<a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line">        <tt class="py-name" id="link-237"><a class="py-name" href="#" onclick="return doclink('link-237', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-238"><a class="py-name" href="#" onclick="return doclink('link-238', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-239"><a class="py-name" href="#" onclick="return doclink('link-239', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[UpdateChannelLayers::update] About to gather info about the shader inputs"</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name" id="link-240" targets="Method mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers.collectInputs()=mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers-class.html#collectInputs,Method mari.examples.layered_channels_from_layered_shaders.CreateChannelLayers.collectInputs()=mari.examples.layered_channels_from_layered_shaders.CreateChannelLayers-class.html#collectInputs"><a class="py-name" href="#" onclick="return doclink('link-240', 'collectInputs', 'link-240');" title="mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers.collectInputs
+mari.examples.layered_channels_from_layered_shaders.CreateChannelLayers.collectInputs">collectInputs</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line"> </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line">        <tt class="py-name" id="link-241"><a class="py-name" href="#" onclick="return doclink('link-241', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-242"><a class="py-name" href="#" onclick="return doclink('link-242', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-243"><a class="py-name" href="#" onclick="return doclink('link-243', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[UpdateChannelLayers::update] Assign inputs"</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name" id="link-244" targets="Method mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers.assignInputs()=mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers-class.html#assignInputs"><a class="py-name" href="#" onclick="return doclink('link-244', 'assignInputs', 'link-244');" title="mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers.assignInputs">assignInputs</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line"> </tt>
+<a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line">        <tt class="py-name" id="link-245"><a class="py-name" href="#" onclick="return doclink('link-245', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-246"><a class="py-name" href="#" onclick="return doclink('link-246', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-247"><a class="py-name" href="#" onclick="return doclink('link-247', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[UpdateChannelLayers::update] About to create layer groups"</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L233"></a><tt class="py-lineno">233</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name" id="link-248" targets="Method mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers.createLayerGroups()=mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers-class.html#createLayerGroups"><a class="py-name" href="#" onclick="return doclink('link-248', 'createLayerGroups', 'link-248');" title="mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers.createLayerGroups">createLayerGroups</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L234"></a><tt class="py-lineno">234</tt>  <tt class="py-line"> </tt>
+<a name="L235"></a><tt class="py-lineno">235</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L236"></a><tt class="py-lineno">236</tt>  <tt class="py-line"> </tt>
+<a name="update"></a><div id="update-def"><a name="L237"></a><tt class="py-lineno">237</tt> <a class="py-toggle" href="#" id="update-toggle" onclick="return toggle('update');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.layered_channels_for_layered_shaders-module.html#update">update</a><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">:</tt> </tt>
+</div><div id="update-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="update-expanded"><a name="L238"></a><tt class="py-lineno">238</tt>  <tt class="py-line">    <tt class="py-docstring">""" Get the current object's current layer shader and use it to control the pre-shader compisiting."""</tt> </tt>
+<a name="L239"></a><tt class="py-lineno">239</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name" id="link-249"><a class="py-name" href="#" onclick="return doclink('link-249', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-250"><a class="py-name" href="#" onclick="return doclink('link-250', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-251" targets="Function mari.utils.misc.checkProjectAndGeoValidity()=mari.utils.misc-module.html#checkProjectAndGeoValidity"><a class="py-name" href="#" onclick="return doclink('link-251', 'checkProjectAndGeoValidity', 'link-251');" title="mari.utils.misc.checkProjectAndGeoValidity">checkProjectAndGeoValidity</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L240"></a><tt class="py-lineno">240</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L241"></a><tt class="py-lineno">241</tt>  <tt class="py-line"> </tt>
+<a name="L242"></a><tt class="py-lineno">242</tt>  <tt class="py-line">    <tt class="py-name">obj</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-252"><a class="py-name" href="#" onclick="return doclink('link-252', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-253" targets="Function mari.current.geo()=mari.current-module.html#geo,Variable mari.examples.c_api_channel_export.geo=mari.examples.c_api_channel_export-module.html#geo"><a class="py-name" href="#" onclick="return doclink('link-253', 'geo', 'link-253');" title="mari.current.geo
+mari.examples.c_api_channel_export.geo">geo</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-254" targets="Method mari.CanvasManager.current()=mari.CanvasManager-class.html#current,Method mari.GeoManager.current()=mari.GeoManager-class.html#current,Method mari.LightManager.current()=mari.LightManager-class.html#current,Method mari.ProjectManager.current()=mari.ProjectManager-class.html#current,Method mari.ProjectorManager.current()=mari.ProjectorManager-class.html#current,Method mari.SelectionGroupManager.current()=mari.SelectionGroupManager-class.html#current,Method mari.ToolManager.current()=mari.ToolManager-class.html#current,Package mari.current=mari.current-module.html"><a class="py-name" href="#" onclick="return doclink('link-254', 'current', 'link-254');" title="mari.CanvasManager.current
+mari.GeoManager.current
+mari.LightManager.current
+mari.ProjectManager.current
+mari.ProjectorManager.current
+mari.SelectionGroupManager.current
+mari.ToolManager.current
+mari.current">current</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L243"></a><tt class="py-lineno">243</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">obj</tt><tt class="py-op">:</tt> </tt>
+<a name="L244"></a><tt class="py-lineno">244</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L245"></a><tt class="py-lineno">245</tt>  <tt class="py-line">    <tt class="py-name" id="link-255"><a class="py-name" href="#" onclick="return doclink('link-255', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-256"><a class="py-name" href="#" onclick="return doclink('link-256', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-257"><a class="py-name" href="#" onclick="return doclink('link-257', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"Found Geo entity : '%s'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">obj</tt><tt class="py-op">.</tt><tt class="py-name" id="link-258"><a class="py-name" href="#" onclick="return doclink('link-258', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L246"></a><tt class="py-lineno">246</tt>  <tt class="py-line"> </tt>
+<a name="L247"></a><tt class="py-lineno">247</tt>  <tt class="py-line">    <tt class="py-name">shader_layered</tt> <tt class="py-op">=</tt> <tt class="py-name">obj</tt><tt class="py-op">.</tt><tt class="py-name" id="link-259" targets="Method mari.GeoEntity.currentShader()=mari.GeoEntity-class.html#currentShader"><a class="py-name" href="#" onclick="return doclink('link-259', 'currentShader', 'link-259');" title="mari.GeoEntity.currentShader">currentShader</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L248"></a><tt class="py-lineno">248</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">shader_layered</tt><tt class="py-op">:</tt> </tt>
+<a name="L249"></a><tt class="py-lineno">249</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L250"></a><tt class="py-lineno">250</tt>  <tt class="py-line"> </tt>
+<a name="L251"></a><tt class="py-lineno">251</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">shader_layered</tt><tt class="py-op">.</tt><tt class="py-name" id="link-260" targets="Method mari.Shader.isLayeredShader()=mari.Shader-class.html#isLayeredShader"><a class="py-name" href="#" onclick="return doclink('link-260', 'isLayeredShader', 'link-260');" title="mari.Shader.isLayeredShader">isLayeredShader</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L252"></a><tt class="py-lineno">252</tt>  <tt class="py-line">        <tt class="py-name" id="link-261"><a class="py-name" href="#" onclick="return doclink('link-261', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-262"><a class="py-name" href="#" onclick="return doclink('link-262', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-263"><a class="py-name" href="#" onclick="return doclink('link-263', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"Shader '%s' is not a layered shader, ignoring"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">shader_layered</tt><tt class="py-op">.</tt><tt class="py-name" id="link-264"><a class="py-name" href="#" onclick="return doclink('link-264', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L253"></a><tt class="py-lineno">253</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L254"></a><tt class="py-lineno">254</tt>  <tt class="py-line"> </tt>
+<a name="L255"></a><tt class="py-lineno">255</tt>  <tt class="py-line">    <tt class="py-comment"># Update the channels using shader_layered</tt> </tt>
+<a name="L256"></a><tt class="py-lineno">256</tt>  <tt class="py-line">    <tt class="py-name" id="link-265"><a class="py-name" href="#" onclick="return doclink('link-265', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-266"><a class="py-name" href="#" onclick="return doclink('link-266', 'utils', 'link-4');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-267"><a class="py-name" href="#" onclick="return doclink('link-267', 'messageAndLog', 'link-5');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"Found layered shader : '%s'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">shader_layered</tt><tt class="py-op">.</tt><tt class="py-name" id="link-268"><a class="py-name" href="#" onclick="return doclink('link-268', 'name', 'link-6');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L257"></a><tt class="py-lineno">257</tt>  <tt class="py-line">    <tt class="py-name">updater</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-269" targets="Class mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers=mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers-class.html"><a class="py-name" href="#" onclick="return doclink('link-269', 'UpdateChannelLayers', 'link-269');" title="mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers">UpdateChannelLayers</a></tt><tt class="py-op">(</tt> <tt class="py-name">shader_layered</tt><tt class="py-op">)</tt> </tt>
+<a name="L258"></a><tt class="py-lineno">258</tt>  <tt class="py-line">    <tt class="py-name">updater</tt><tt class="py-op">.</tt><tt class="py-name" id="link-270" targets="Method mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers.update()=mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers-class.html#update,Function mari.examples.layered_channels_for_layered_shaders.update()=mari.examples.layered_channels_for_layered_shaders-module.html#update,Method mari.examples.layered_channels_from_layered_shaders.CreateChannelLayers.update()=mari.examples.layered_channels_from_layered_shaders.CreateChannelLayers-class.html#update,Function mari.examples.layered_channels_from_layered_shaders.update()=mari.examples.layered_channels_from_layered_shaders-module.html#update"><a class="py-name" href="#" onclick="return doclink('link-270', 'update', 'link-270');" title="mari.examples.layered_channels_for_layered_shaders.UpdateChannelLayers.update
+mari.examples.layered_channels_for_layered_shaders.update
+mari.examples.layered_channels_from_layered_shaders.CreateChannelLayers.update
+mari.examples.layered_channels_from_layered_shaders.update">update</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L259"></a><tt class="py-lineno">259</tt>  <tt class="py-line"> </tt>
+<a name="L260"></a><tt class="py-lineno">260</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L261"></a><tt class="py-lineno">261</tt>  <tt class="py-line"> </tt>
+<a name="L262"></a><tt class="py-lineno">262</tt>  <tt class="py-line"><tt class="py-comment"># Register new actions with the action manager, and add them to the menu</tt> </tt>
+<a name="L263"></a><tt class="py-lineno">263</tt>  <tt class="py-line"><tt class="py-name" id="link-271" targets="Variable mari.examples.layered_channels_for_layered_shaders._shaders_path=mari.examples.layered_channels_for_layered_shaders-module.html#_shaders_path,Variable mari.examples.layered_channels_from_layered_shaders._shaders_path=mari.examples.layered_channels_from_layered_shaders-module.html#_shaders_path,Variable mari.examples.shaders._shaders_path=mari.examples.shaders-module.html#_shaders_path,Variable mari.examples.shaderstacks._shaders_path=mari.examples.shaderstacks-module.html#_shaders_path"><a class="py-name" href="#" onclick="return doclink('link-271', '_shaders_path', 'link-271');" title="mari.examples.layered_channels_for_layered_shaders._shaders_path
+mari.examples.layered_channels_from_layered_shaders._shaders_path
+mari.examples.shaders._shaders_path
+mari.examples.shaderstacks._shaders_path">_shaders_path</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"MainWindow/P&amp;ython/&amp;Examples/&amp;Shaders"</tt> </tt>
+<a name="L264"></a><tt class="py-lineno">264</tt>  <tt class="py-line"><tt class="py-name" id="link-272"><a class="py-name" href="#" onclick="return doclink('link-272', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-273" targets="Variable mari.menus=mari-module.html#menus"><a class="py-name" href="#" onclick="return doclink('link-273', 'menus', 'link-273');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-274" targets="Method mari.MenuManager.addAction()=mari.MenuManager-class.html#addAction,Method mari.ToolBar.addAction()=mari.ToolBar-class.html#addAction,Function mari.examples.vector_brush.addAction()=mari.examples.vector_brush-module.html#addAction"><a class="py-name" href="#" onclick="return doclink('link-274', 'addAction', 'link-274');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-275"><a class="py-name" href="#" onclick="return doclink('link-275', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-276" targets="Method mari.MenuManager.actions()=mari.MenuManager-class.html#actions,Variable mari.actions=mari-module.html#actions"><a class="py-name" href="#" onclick="return doclink('link-276', 'actions', 'link-276');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-277" targets="Method mari.ActionManager.create()=mari.ActionManager-class.html#create,Method mari.PaletteManager.create()=mari.PaletteManager-class.html#create,Method mari.ProjectManager.create()=mari.ProjectManager-class.html#create,Method mari.ProjectorManager.create()=mari.ProjectorManager-class.html#create"><a class="py-name" href="#" onclick="return doclink('link-277', 'create', 'link-277');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt> <tt class="py-string">'Update Layered Channels'</tt><tt class="py-op">,</tt> <tt class="py-string">'mari.examples.layered_channels_for_layered_shaders.update()'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-278"><a class="py-name" href="#" onclick="return doclink('link-278', '_shaders_path', 'link-271');" title="mari.examples.layered_channels_for_layered_shaders._shaders_path
+mari.examples.layered_channels_from_layered_shaders._shaders_path
+mari.examples.shaders._shaders_path
+mari.examples.shaderstacks._shaders_path">_shaders_path</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L265"></a><tt class="py-lineno">265</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

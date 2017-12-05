@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.system.nuke_bridge.FromNuke
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.system-module.html">
+       Package&nbsp;system
+      </a>
+      ::
+      <a href="mari.system.nuke_bridge-module.html">
+       Module&nbsp;nuke_bridge
+      </a>
+      ::
+        Class&nbsp;FromNuke
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.system.nuke_bridge.FromNuke-class.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS DESCRIPTION ==================== -->
+  <h1 class="epydoc">
+   Class FromNuke
+  </h1>
+  <p class="nomargin-top">
+   <span class="codelink">
+    <a href="mari.system.nuke_bridge-pysrc.html#FromNuke">
+     source&nbsp;code
+    </a>
+   </span>
+  </p>
+  <p>
+   Nuke data receiver class.
+  </p>
+  <!-- ==================== INSTANCE METHODS ==================== -->
+  <a name="section-InstanceMethods">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Instance Methods
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.system.nuke_bridge.FromNuke-class.html#__init__">
+          __init__
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          data_src
+         </span>
+         )
+        </span>
+        <br/>
+        Imports projection data from Nuke and does stuff with it in Mari.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari.system.nuke_bridge-pysrc.html#FromNuke.__init__">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.system.nuke_bridge.FromNuke-class.html#startNewProject">
+          startNewProject
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          channel_desc
+         </span>
+         =
+         <span class="summary-sig-default">
+          <code class="variable-group">
+           {
+          </code>
+          <code class="variable-quote">
+           '
+          </code>
+          <code class="variable-string">
+           height
+          </code>
+          <code class="variable-quote">
+           '
+          </code>
+          <code class="variable-op">
+           :
+          </code>
+          4096
+          <code class="variable-op">
+           ,
+          </code>
+          <code class="variable-quote">
+           '
+          </code>
+          <code class="variable-string">
+           name
+          </code>
+          <code class="variable-quote">
+           '
+          </code>
+          <code class="variable-op">
+           :
+          </code>
+          <code class="variable-quote">
+           '
+          </code>
+          <code class="variable-string">
+           color
+          </code>
+          <code class="variable-quote">
+           '
+          </code>
+          <code class="variable-op">
+           ,
+          </code>
+          <code class="variable-quote">
+           '
+          </code>
+          <code class="variable-string">
+           width
+          </code>
+          <code class="variable-quote">
+           '
+          </code>
+          <code class="variable-op">
+           :
+          </code>
+          4096
+          <code class="variable-group">
+           }
+          </code>
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          meta_options
+         </span>
+         =
+         <span class="summary-sig-default">
+          <code class="variable-group">
+           {
+          </code>
+          <code class="variable-group">
+           }
+          </code>
+         </span>
+         )
+        </span>
+        <br/>
+        Closes a currently open project and starts a new one with the given 
+      values.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari.system.nuke_bridge-pysrc.html#FromNuke.startNewProject">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="createProjectors">
+         </a>
+         <span class="summary-sig-name">
+          createProjectors
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Creates projectors based on data sent from Nuke.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari.system.nuke_bridge-pysrc.html#FromNuke.createProjectors">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== STATIC METHODS ==================== -->
+  <a name="section-StaticMethods">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Static Methods
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="getDefaultProjectorSize">
+         </a>
+         <span class="summary-sig-name">
+          getDefaultProjectorSize
+         </span>
+         (
+         <span class="summary-sig-arg">
+          image_data
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the smallest projector resolution that can contain the given 
+      image size.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari.system.nuke_bridge-pysrc.html#FromNuke.getDefaultProjectorSize">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== METHOD DETAILS ==================== -->
+  <a name="section-MethodDetails">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Method Details
+     </span>
+    </td>
+   </tr>
+  </table>
+  <a name="__init__">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            __init__
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            data_src
+           </span>
+           )
+          </span>
+          <br/>
+          <em class="fname">
+           (Constructor)
+          </em>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari.system.nuke_bridge-pysrc.html#FromNuke.__init__">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Imports projection data from Nuke and does stuff with it in Mari.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            data_src
+           </code>
+          </strong>
+          - A data dictionary as created by
+          <code>
+           mari_bridge.ToMari
+          </code>
+          in Nuke. It can also be a file path pointing to a pickled version
+          of the above
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="startNewProject">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            startNewProject
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            channel_desc
+           </span>
+           =
+           <span class="sig-default">
+            <code class="variable-group">
+             {
+            </code>
+            <code class="variable-quote">
+             '
+            </code>
+            <code class="variable-string">
+             height
+            </code>
+            <code class="variable-quote">
+             '
+            </code>
+            <code class="variable-op">
+             :
+            </code>
+            4096
+            <code class="variable-op">
+             ,
+            </code>
+            <code class="variable-quote">
+             '
+            </code>
+            <code class="variable-string">
+             name
+            </code>
+            <code class="variable-quote">
+             '
+            </code>
+            <code class="variable-op">
+             :
+            </code>
+            <code class="variable-quote">
+             '
+            </code>
+            <code class="variable-string">
+             color
+            </code>
+            <code class="variable-quote">
+             '
+            </code>
+            <code class="variable-op">
+             ,
+            </code>
+            <code class="variable-quote">
+             '
+            </code>
+            <code class="variable-string">
+             width
+            </code>
+            <code class="variable-quote">
+             '
+            </code>
+            <code class="variable-op">
+             :
+            </code>
+            4096
+            <code class="variable-group">
+             }
+            </code>
+           </span>
+           ,
+           <span class="sig-arg">
+            meta_options
+           </span>
+           =
+           <span class="sig-default">
+            <code class="variable-group">
+             {
+            </code>
+            <code class="variable-group">
+             }
+            </code>
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari.system.nuke_bridge-pysrc.html#FromNuke.startNewProject">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Closes a currently open project and starts a new one with the given 
+  values.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            channel_desc
+           </code>
+          </strong>
+          (dict) - A dictionary containing properties of channel to create
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            meta_options
+           </code>
+          </strong>
+          (dict) - A dictionary of project creation meta options
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

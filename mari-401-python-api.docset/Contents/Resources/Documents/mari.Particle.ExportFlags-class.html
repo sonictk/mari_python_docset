@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.Particle.ExportFlags
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.Particle-class.html">
+       Class&nbsp;Particle
+      </a>
+      ::
+        Class&nbsp;ExportFlags
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.Particle.ExportFlags-class.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS DESCRIPTION ==================== -->
+  <h1 class="epydoc">
+   Class ExportFlags
+  </h1>
+  <p class="nomargin-top">
+   <span class="codelink">
+    <a href="mari-pysrc.html#Particle.ExportFlags">
+     source&nbsp;code
+    </a>
+   </span>
+  </p>
+  <p>
+   Specifies options for use in exporting.
+  </p>
+  <hr/>
+  <div class="fields">
+   <p>
+    <strong>
+     Note:
+    </strong>
+    These values are exposed in the parent class, but are also 
+        documented here for convenience.
+   </p>
+  </div>
+  <!-- ==================== CLASS VARIABLES ==================== -->
+  <a name="section-ClassVariables">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Class Variables
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_CENTER_POSITIONS">
+     </a>
+     <span class="summary-name">
+      EXPORT_CENTER_POSITIONS
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     Subtracts the object's center position from each of the particle 
+      positions.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_GEOMETRY_ID">
+     </a>
+     <span class="summary-name">
+      EXPORT_GEOMETRY_ID
+     </span>
+     =
+     <code title="2">
+      2
+     </code>
+     <br/>
+     Include attribute to identify which object the particle belongs to 
+      (name = geometryId, type = indexed string).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_PATCH_ID">
+     </a>
+     <span class="summary-name">
+      EXPORT_PATCH_ID
+     </span>
+     =
+     <code title="4">
+      4
+     </code>
+     <br/>
+     Include attribute to identify which patch the particle belongs to 
+      (name = patchId, type = int).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_PARTICLE_ID">
+     </a>
+     <span class="summary-name">
+      EXPORT_PARTICLE_ID
+     </span>
+     =
+     <code title="8">
+      8
+     </code>
+     <br/>
+     Include attribute to uniquely identify the particle (name = id, type 
+      = int).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_PIXEL_COORDINATE">
+     </a>
+     <span class="summary-name">
+      EXPORT_PIXEL_COORDINATE
+     </span>
+     =
+     <code title="16">
+      16
+     </code>
+     <br/>
+     Include attribute to identify the pixel within the patch that the 
+      particle belongs to (name = pixelCoordinate, type = int[2]).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_UV">
+     </a>
+     <span class="summary-name">
+      EXPORT_UV
+     </span>
+     =
+     <code title="32">
+      32
+     </code>
+     <br/>
+     Include attribute for the object's texture coordinates at the 
+      particle position (name = uv, type = float[2]).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_NORMAL">
+     </a>
+     <span class="summary-name">
+      EXPORT_NORMAL
+     </span>
+     =
+     <code title="64">
+      64
+     </code>
+     <br/>
+     Include attribute for the object's world-space normal at the particle
+      position (name = normal, type = vector).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_TANGENT">
+     </a>
+     <span class="summary-name">
+      EXPORT_TANGENT
+     </span>
+     =
+     <code title="128">
+      128
+     </code>
+     <br/>
+     Include attribute for the object's world-space tangent at the 
+      particle position (name = tangent, type = vector).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_BITANGENT">
+     </a>
+     <span class="summary-name">
+      EXPORT_BITANGENT
+     </span>
+     =
+     <code title="256">
+      256
+     </code>
+     <br/>
+     Include attribute for the object's world-space bitangent at the 
+      particle position (name = bitangent, type = vector).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_ALPHA">
+     </a>
+     <span class="summary-name">
+      EXPORT_ALPHA
+     </span>
+     =
+     <code title="512">
+      512
+     </code>
+     <br/>
+     Include alpha channel of all image set attributes.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_AMBIENT_OCCLUSION">
+     </a>
+     <span class="summary-name">
+      EXPORT_AMBIENT_OCCLUSION
+     </span>
+     =
+     <code title="1024">
+      1024
+     </code>
+     <br/>
+     Include ambient occlusion attribute at the particle position (name = 
+      ambientOcclusion, type = float).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_IGNORE_MEMORY_REQUIREMENT">
+     </a>
+     <span class="summary-name">
+      EXPORT_IGNORE_MEMORY_REQUIREMENT
+     </span>
+     =
+     <code title="2048">
+      2048
+     </code>
+     <br/>
+     The operation will still continue even if the system doesn't have 
+      enough memory available.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_RADIUS">
+     </a>
+     <span class="summary-name">
+      EXPORT_RADIUS
+     </span>
+     =
+     <code title="4096">
+      4096
+     </code>
+     <br/>
+     Include attribute for the radius that encompasses the particle's 
+      immediate neighbours (name = radius, type = float).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_IGNORE_HIDDEN">
+     </a>
+     <span class="summary-name">
+      EXPORT_IGNORE_HIDDEN
+     </span>
+     =
+     <code title="8192">
+      8192
+     </code>
+     <br/>
+     The operation ignores hidden parts of the geometry.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_IGNORE_UNSELECTED">
+     </a>
+     <span class="summary-name">
+      EXPORT_IGNORE_UNSELECTED
+     </span>
+     =
+     <code title="16384">
+      16384
+     </code>
+     <br/>
+     The operation ignores unselected parts of the geometry.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_MATCH_IMPORT">
+     </a>
+     <span class="summary-name">
+      EXPORT_MATCH_IMPORT
+     </span>
+     =
+     <code title="32768">
+      32768
+     </code>
+     <br/>
+     This is a special option only used in the transfer functions that 
+      makes the export options match the given import options.
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

@@ -1,0 +1,1969 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.Event
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+        Class&nbsp;Event
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.Event-class.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS DESCRIPTION ==================== -->
+  <h1 class="epydoc">
+   Class Event
+  </h1>
+  <p class="nomargin-top">
+   <span class="codelink">
+    <a href="mari-pysrc.html#Event">
+     source&nbsp;code
+    </a>
+   </span>
+  </p>
+  <pre class="base-tree">
+object --+
+         |
+        <strong class="uidshort">Event</strong>
+</pre>
+  <hr/>
+  <p>
+   Provides a method for sending events to the system.
+  </p>
+  <p>
+   <b>
+    Example Code
+   </b>
+  </p>
+  <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment">#This example sends "B" key to the canvas, which bakes the paint by default</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> PySide
+<span class="py-prompt">&gt;&gt;&gt; </span>mari.event.sendKeyEvent(mari.event.KEY_PRESS,PySide.QtCore.Qt.Key_B,0,False)</pre>
+  <!-- ==================== NESTED CLASSES ==================== -->
+  <a name="section-NestedClasses">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Nested Classes
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Event.EventCoordinateSpace-class.html">
+      EventCoordinateSpace
+     </a>
+     <br/>
+     This enum defines which coordinate space the position of an event 
+        is in.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Event.EventType-class.html">
+      EventType
+     </a>
+     <br/>
+     This enum type defines the valid event types.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Event.KeyboardModifier-class.html">
+      KeyboardModifier
+     </a>
+     <br/>
+     This enum describes the modifier keys.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Event.MouseButton-class.html">
+      MouseButton
+     </a>
+     <br/>
+     This enum type describes the different mouse buttons.
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== INSTANCE METHODS ==================== -->
+  <a name="section-InstanceMethods">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Instance Methods
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Event-class.html#isPlaying">
+          isPlaying
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns whether or not any events are currently queued for playback.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Event.isPlaying">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="recordPlay">
+         </a>
+         <span class="summary-sig-name">
+          recordPlay
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Playback all the events currently recorded.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Event.recordPlay">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Event-class.html#recordStart">
+          recordStart
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Space
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Normalized
+         </span>
+         =
+         <span class="summary-sig-default">
+          False
+         </span>
+         )
+        </span>
+        <br/>
+        Called to begin recording of the events sent to the receiver.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Event.recordStart">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="recordStop">
+         </a>
+         <span class="summary-sig-name">
+          recordStop
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Called to end recording triggered by a previous call to 
+      'recordStart'.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Event.recordStop">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Event-class.html#recordString">
+          recordString
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the commands required to playback the events currently 
+      recorded.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Event.recordString">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Event-class.html#sendKeyEvent">
+          sendKeyEvent
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Type
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Key
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Modifiers
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          AutoRepeat
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Msecs
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         )
+        </span>
+        <br/>
+        Triggers a key event directly in the receiver.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Event.sendKeyEvent">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Event-class.html#sendMouseEvent">
+          sendMouseEvent
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Type
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Pos
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Button
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Buttons
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Modifiers
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Space
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Normalized
+         </span>
+         =
+         <span class="summary-sig-default">
+          False
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Msecs
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         )
+        </span>
+        <br/>
+        Triggers a mouse event directly in the receiver.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Event.sendMouseEvent">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Event-class.html#sendTabletEvent">
+          sendTabletEvent
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Type
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Pos
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Pressure
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Modifiers
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Space
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Normalized
+         </span>
+         =
+         <span class="summary-sig-default">
+          False
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Msecs
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         )
+        </span>
+        <br/>
+        Triggers a tablet event directly in the receiver.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Event.sendTabletEvent">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __delattr__
+      </code>
+      ,
+      <code>
+       __format__
+      </code>
+      ,
+      <code>
+       __getattribute__
+      </code>
+      ,
+      <code>
+       __hash__
+      </code>
+      ,
+      <code>
+       __init__
+      </code>
+      ,
+      <code>
+       __new__
+      </code>
+      ,
+      <code>
+       __reduce__
+      </code>
+      ,
+      <code>
+       __reduce_ex__
+      </code>
+      ,
+      <code>
+       __repr__
+      </code>
+      ,
+      <code>
+       __setattr__
+      </code>
+      ,
+      <code>
+       __sizeof__
+      </code>
+      ,
+      <code>
+       __str__
+      </code>
+      ,
+      <code>
+       __subclasshook__
+      </code>
+     </p>
+    </td>
+   </tr>
+   <tr bgcolor="#e8f0f8">
+    <th class="group-header" colspan="2">
+     &nbsp;&nbsp;&nbsp;&nbsp;Signals
+    </th>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="playbackComplete">
+         </a>
+         <span class="summary-sig-name">
+          playbackComplete
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        This is emitted after the event queue has finished playing any events
+      it had queued.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Event.playbackComplete">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS VARIABLES ==================== -->
+  <a name="section-ClassVariables">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Class Variables
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="CANVAS_SPACE">
+     </a>
+     <span class="summary-name">
+      CANVAS_SPACE
+     </span>
+     =
+     <code title="0">
+      0
+     </code>
+     <br/>
+     Origin is at the top-left pixel of the currently active canvas.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="APPLICATION_SPACE">
+     </a>
+     <span class="summary-name">
+      APPLICATION_SPACE
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     Origin is at the top-left pixel of the main window.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="DESKTOP_SPACE">
+     </a>
+     <span class="summary-name">
+      DESKTOP_SPACE
+     </span>
+     =
+     <code title="2">
+      2
+     </code>
+     <br/>
+     Origin is at the top-left pixel of the desktop.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="KEY_PRESS">
+     </a>
+     <span class="summary-name">
+      KEY_PRESS
+     </span>
+     =
+     <code title="6">
+      6
+     </code>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="KEY_RELEASE">
+     </a>
+     <span class="summary-name">
+      KEY_RELEASE
+     </span>
+     =
+     <code title="7">
+      7
+     </code>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="MOUSE_DOUBLE_CLICK">
+     </a>
+     <span class="summary-name">
+      MOUSE_DOUBLE_CLICK
+     </span>
+     =
+     <code title="4">
+      4
+     </code>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="MOUSE_PRESS">
+     </a>
+     <span class="summary-name">
+      MOUSE_PRESS
+     </span>
+     =
+     <code title="2">
+      2
+     </code>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="MOUSE_RELEASE">
+     </a>
+     <span class="summary-name">
+      MOUSE_RELEASE
+     </span>
+     =
+     <code title="3">
+      3
+     </code>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="MOUSE_MOVE">
+     </a>
+     <span class="summary-name">
+      MOUSE_MOVE
+     </span>
+     =
+     <code title="5">
+      5
+     </code>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="TABLET_MOVE">
+     </a>
+     <span class="summary-name">
+      TABLET_MOVE
+     </span>
+     =
+     <code title="87">
+      87
+     </code>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="TABLET_PRESS">
+     </a>
+     <span class="summary-name">
+      TABLET_PRESS
+     </span>
+     =
+     <code title="92">
+      92
+     </code>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="TABLET_RELEASE">
+     </a>
+     <span class="summary-name">
+      TABLET_RELEASE
+     </span>
+     =
+     <code title="93">
+      93
+     </code>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="TABLET_ENTER_PROXIMITY">
+     </a>
+     <span class="summary-name">
+      TABLET_ENTER_PROXIMITY
+     </span>
+     =
+     <code title="171">
+      171
+     </code>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="TABLET_LEAVE_PROXIMITY">
+     </a>
+     <span class="summary-name">
+      TABLET_LEAVE_PROXIMITY
+     </span>
+     =
+     <code title="172">
+      172
+     </code>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="NO_MODIFIER">
+     </a>
+     <span class="summary-name">
+      NO_MODIFIER
+     </span>
+     =
+     <code title="0">
+      0
+     </code>
+     <br/>
+     No modifier key is pressed.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="SHIFT_MODIFIER">
+     </a>
+     <span class="summary-name">
+      SHIFT_MODIFIER
+     </span>
+     =
+     <code title="33554432">
+      33554432
+     </code>
+     <br/>
+     A Shift key on the keyboard is pressed.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="CONTROL_MODIFIER">
+     </a>
+     <span class="summary-name">
+      CONTROL_MODIFIER
+     </span>
+     =
+     <code title="67108864">
+      67108864
+     </code>
+     <br/>
+     A Ctrl key on the keyboard is pressed.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="ALT_MODIFIER">
+     </a>
+     <span class="summary-name">
+      ALT_MODIFIER
+     </span>
+     =
+     <code title="134217728">
+      134217728
+     </code>
+     <br/>
+     An Alt key on the keyboard is pressed.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="META_MODIFIER">
+     </a>
+     <span class="summary-name">
+      META_MODIFIER
+     </span>
+     =
+     <code title="268435456">
+      268435456
+     </code>
+     <br/>
+     A Meta key on the keyboard is pressed.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="KEYPAD_MODIFIER">
+     </a>
+     <span class="summary-name">
+      KEYPAD_MODIFIER
+     </span>
+     =
+     <code title="536870912">
+      536870912
+     </code>
+     <br/>
+     A keypad button is pressed.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Event-class.html#GROUP_SWITCH_MODIFIER">
+      GROUP_SWITCH_MODIFIER
+     </a>
+     =
+     <code title="1073741824">
+      1073741824
+     </code>
+     <br/>
+     X11 only.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="NO_BUTTON">
+     </a>
+     <span class="summary-name">
+      NO_BUTTON
+     </span>
+     =
+     <code title="0">
+      0
+     </code>
+     <br/>
+     The button state does not refer to any button.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Event-class.html#LEFT_BUTTON">
+      LEFT_BUTTON
+     </a>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     The left button is pressed, or an event refers to the left button.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="RIGHT_BUTTON">
+     </a>
+     <span class="summary-name">
+      RIGHT_BUTTON
+     </span>
+     =
+     <code title="2">
+      2
+     </code>
+     <br/>
+     The right button.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="MIDDLE_BUTTON">
+     </a>
+     <span class="summary-name">
+      MIDDLE_BUTTON
+     </span>
+     =
+     <code title="4">
+      4
+     </code>
+     <br/>
+     The middle button.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="X_BUTTON_1">
+     </a>
+     <span class="summary-name">
+      X_BUTTON_1
+     </span>
+     =
+     <code title="8">
+      8
+     </code>
+     <br/>
+     The first X button.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="X_BUTTON_2">
+     </a>
+     <span class="summary-name">
+      X_BUTTON_2
+     </span>
+     =
+     <code title="16">
+      16
+     </code>
+     <br/>
+     The second X button.
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== PROPERTIES ==================== -->
+  <a name="section-Properties">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Properties
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __class__
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== METHOD DETAILS ==================== -->
+  <a name="section-MethodDetails">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Method Details
+     </span>
+    </td>
+   </tr>
+  </table>
+  <a name="isPlaying">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            isPlaying
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Event.isPlaying">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns whether or not any events are currently queued for 
+  playback.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: bool
+       </dt>
+       <dd>
+        True one or more events are in the event queue.
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="recordStart">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            recordStart
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Space
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           ,
+           <span class="sig-arg">
+            Normalized
+           </span>
+           =
+           <span class="sig-default">
+            False
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Event.recordStart">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Called to begin recording of the events sent to the receiver.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Space
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Event.EventCoordinateSpace-class.html">
+           EventCoordinateSpace
+          </a>
+          ) - The coordinate space to use for any mouse and/or tablet events.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Normalized
+           </code>
+          </strong>
+          (bool) - Whether recorded positions should be specified in normalised 
+          device coordinates(0.0 - 1.0) or pixels.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="recordString">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            recordString
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Event.recordString">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the commands required to playback the events currently 
+  recorded.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: str
+       </dt>
+       <dd>
+        The playback commands.
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="sendKeyEvent">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            sendKeyEvent
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Type
+           </span>
+           ,
+           <span class="sig-arg">
+            Key
+           </span>
+           ,
+           <span class="sig-arg">
+            Modifiers
+           </span>
+           ,
+           <span class="sig-arg">
+            AutoRepeat
+           </span>
+           ,
+           <span class="sig-arg">
+            Msecs
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Event.sendKeyEvent">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Triggers a key event directly in the receiver.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Type
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Event.EventType-class.html">
+           EventType
+          </a>
+          ) - The type of key event to trigger.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Key
+           </code>
+          </strong>
+          (int) - The key code that triggers the event.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Modifiers
+           </code>
+          </strong>
+          (int) - The keyboard modifier flags that existed immediately before the 
+          event occurred.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            AutoRepeat
+           </code>
+          </strong>
+          (bool) - True if this event comes from an auto-repeating key; False if it 
+          comes from an initial key press.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Msecs
+           </code>
+          </strong>
+          (int) - How many milliseconds to wait before sending the event.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="sendMouseEvent">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            sendMouseEvent
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Type
+           </span>
+           ,
+           <span class="sig-arg">
+            Pos
+           </span>
+           ,
+           <span class="sig-arg">
+            Button
+           </span>
+           ,
+           <span class="sig-arg">
+            Buttons
+           </span>
+           ,
+           <span class="sig-arg">
+            Modifiers
+           </span>
+           ,
+           <span class="sig-arg">
+            Space
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           ,
+           <span class="sig-arg">
+            Normalized
+           </span>
+           =
+           <span class="sig-default">
+            False
+           </span>
+           ,
+           <span class="sig-arg">
+            Msecs
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Event.sendMouseEvent">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Triggers a mouse event directly in the receiver.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Type
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Event.EventType-class.html">
+           EventType
+          </a>
+          ) - The type of mouse event to trigger.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Pos
+           </code>
+          </strong>
+          (QPointF) - The mouse cursor's position relative to the receiver.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Button
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Event.MouseButton-class.html">
+           MouseButton
+          </a>
+          ) - The button that triggers the event.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Buttons
+           </code>
+          </strong>
+          (int) - Returns the button state when the event was generated. The button
+          state is a combination of 'MouseButton' values.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Modifiers
+           </code>
+          </strong>
+          (int) - The keyboard modifier flags that existed immediately before the 
+          event occurred.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Space
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Event.EventCoordinateSpace-class.html">
+           EventCoordinateSpace
+          </a>
+          ) - The coordinate space of the given position 'Pos'.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Normalized
+           </code>
+          </strong>
+          (bool) - Whether the given position 'Pos' is specified in normalized 
+          device coordinates(0.0 - 1.0) or pixels.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Msecs
+           </code>
+          </strong>
+          (int) - How many milliseconds to wait before sending the event.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="sendTabletEvent">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            sendTabletEvent
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Type
+           </span>
+           ,
+           <span class="sig-arg">
+            Pos
+           </span>
+           ,
+           <span class="sig-arg">
+            Pressure
+           </span>
+           ,
+           <span class="sig-arg">
+            Modifiers
+           </span>
+           ,
+           <span class="sig-arg">
+            Space
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           ,
+           <span class="sig-arg">
+            Normalized
+           </span>
+           =
+           <span class="sig-default">
+            False
+           </span>
+           ,
+           <span class="sig-arg">
+            Msecs
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Event.sendTabletEvent">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Triggers a tablet event directly in the receiver.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Type
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Event.EventType-class.html">
+           EventType
+          </a>
+          ) - The type of tablet event to trigger.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Pos
+           </code>
+          </strong>
+          (QPointF) - The mouse cursor's position relative to the receiver.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Pressure
+           </code>
+          </strong>
+          (qreal) - The pressure for the device. 0.0 indicates that the stylus is not
+          on the tablet, 1.0 indicates the maximum amount of pressure for 
+          the stylus.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Modifiers
+           </code>
+          </strong>
+          (int) - The keyboard modifier flags that existed immediately before the 
+          event occurred.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Space
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Event.EventCoordinateSpace-class.html">
+           EventCoordinateSpace
+          </a>
+          ) - The coordinate space of the given position 'Pos'.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Normalized
+           </code>
+          </strong>
+          (bool) - Whether the given position 'Pos' is specified in normalised 
+          device coordinates(0.0 - 1.0) or pixels.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Msecs
+           </code>
+          </strong>
+          (int) - How many milliseconds to wait before sending the event.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <br/>
+  <!-- ==================== CLASS VARIABLE DETAILS ==================== -->
+  <a name="section-ClassVariableDetails">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Class Variable Details
+     </span>
+    </td>
+   </tr>
+  </table>
+  <a name="GROUP_SWITCH_MODIFIER">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       GROUP_SWITCH_MODIFIER
+      </h3>
+      <p>
+       X11 only. A Mode_switch key on the keyboard is pressed.
+      </p>
+      <dl class="fields">
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+1073741824
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="LEFT_BUTTON">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       LEFT_BUTTON
+      </h3>
+      <p>
+       The left button is pressed, or an event refers to the left button. 
+  (The left button may be the right button on left-handed mice.).
+      </p>
+      <dl class="fields">
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+1
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

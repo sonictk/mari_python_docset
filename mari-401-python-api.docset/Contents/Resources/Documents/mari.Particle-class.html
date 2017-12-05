@@ -1,0 +1,3639 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.Particle
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+        Class&nbsp;Particle
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.Particle-class.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS DESCRIPTION ==================== -->
+  <h1 class="epydoc">
+   Class Particle
+  </h1>
+  <p class="nomargin-top">
+   <span class="codelink">
+    <a href="mari-pysrc.html#Particle">
+     source&nbsp;code
+    </a>
+   </span>
+  </p>
+  <pre class="base-tree">
+object --+
+         |
+        <strong class="uidshort">Particle</strong>
+</pre>
+  <hr/>
+  <p>
+   Provides
+   <a class="link" href="mari.Particle-class.html">
+    Particle
+   </a>
+   scripting.
+  </p>
+  <!-- ==================== NESTED CLASSES ==================== -->
+  <a name="section-NestedClasses">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Nested Classes
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Particle.ExportFlags-class.html">
+      ExportFlags
+     </a>
+     <br/>
+     Specifies options for use in exporting.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Particle.ImportFlags-class.html">
+      ImportFlags
+     </a>
+     <br/>
+     Specifies options for use in importing.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Particle.InterpolationMethod-class.html">
+      InterpolationMethod
+     </a>
+     <br/>
+     The method of interpolation to use when calculating the final value
+        from the closest particles on import.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Particle.RangeUnits-class.html">
+      RangeUnits
+     </a>
+     <br/>
+     The units of measure for a given search range.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Particle.SearchMethod-class.html">
+      SearchMethod
+     </a>
+     <br/>
+     The method used to search the particle cloud with from each of 
+        destination points.
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== INSTANCE METHODS ==================== -->
+  <a name="section-InstanceMethods">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Instance Methods
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="availableOps">
+         </a>
+         <span class="summary-sig-name">
+          availableOps
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a list all the available operations chains.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Particle.availableOps">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Particle-class.html#exportGeo">
+          exportGeo
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          FileName
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Object
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          UVImageSizes
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Flags
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Frame
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          GeoVersion
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         )
+        </span>
+        <br/>
+        Exports a predefined set of attributes to a particle file on disk.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Particle.exportGeo">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Particle-class.html#exportImageSets">
+          exportImageSets
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          FileName
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          ImageSets
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Flags
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Frame
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          UVIndices
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          GeoVersion
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         )
+        </span>
+        <br/>
+        Exports a set of image sets to a particle file on disk.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Particle.exportImageSets">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.ParticleOp-class.html">
+       ParticleOp
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Particle-class.html#findOp">
+          findOp
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the operations chain of the given name.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Particle.findOp">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Particle-class.html#importImageSets">
+          importImageSets
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          FileName
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          ImageSets
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Interpolation
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Flags
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Frame
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          UVIndices
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          GeoVersion
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SearchRange
+         </span>
+         =
+         <span class="summary-sig-default">
+          1.0
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SearchUnits
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Search
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SampleCount
+         </span>
+         =
+         <span class="summary-sig-default">
+          16
+         </span>
+         )
+        </span>
+        <br/>
+        Imports into a set of image sets from a particle file on disk.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Particle.importImageSets">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      variant
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="interpolationMethods">
+         </a>
+         <span class="summary-sig-name">
+          interpolationMethods
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a dictionary of user-friendly names to their associated enum 
+      value, for all the supported interpolation methods.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Particle.interpolationMethods">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      variant
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="rangeUnits">
+         </a>
+         <span class="summary-sig-name">
+          rangeUnits
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a dictionary of user-friendly names to their associated enum 
+      value, for all the supported search range units.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Particle.rangeUnits">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      variant
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="searchMethods">
+         </a>
+         <span class="summary-sig-name">
+          searchMethods
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a dictionary of user-friendly names to their associated enum 
+      value, for all the supported search methods.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Particle.searchMethods">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="supportedFileFormats">
+         </a>
+         <span class="summary-sig-name">
+          supportedFileFormats
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns a list of all the supported particle file formats.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Particle.supportedFileFormats">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      <a class="link" href="mari.Channel-class.html">
+       Channel
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Particle-class.html#transferChannel">
+          transferChannel
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SourceChannel
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SourceFrame
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SourceUVIndices
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          DestinationObject
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          DestinationFrame
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          DestinationUVIndices
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Interpolation
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          DestinationFlags
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SourceGeoVersion
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          DestinationGeoVersion
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SearchRange
+         </span>
+         =
+         <span class="summary-sig-default">
+          1.0
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SearchUnits
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          FillColor
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Search
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SampleCount
+         </span>
+         =
+         <span class="summary-sig-default">
+          16
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SourceFlags
+         </span>
+         =
+         <span class="summary-sig-default">
+          32768
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          DestinationSize
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         )
+        </span>
+        <br/>
+        Copies a single channel from one object to another.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Particle.transferChannel">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      bool
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Particle-class.html#transferImageSets">
+          transferImageSets
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SourceImageSets
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SourceFrame
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SourceUVIndices
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          DestinationImageSets
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          DestinationFrame
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          DestinationUVIndices
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Interpolation
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          DestinationFlags
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SourceGeoVersion
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          DestinationGeoVersion
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SearchRange
+         </span>
+         =
+         <span class="summary-sig-default">
+          1.0
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SearchUnits
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Search
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SampleCount
+         </span>
+         =
+         <span class="summary-sig-default">
+          16
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SourceFlags
+         </span>
+         =
+         <span class="summary-sig-default">
+          32768
+         </span>
+         )
+        </span>
+        <br/>
+        Copies image data from one image set to another.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Particle.transferImageSets">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of
+      <a class="link" href="mari.Layer-class.html">
+       Layer
+      </a>
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.Particle-class.html#transferLayers">
+          transferLayers
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SourceLayers
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SourceFrame
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SourceUVIndices
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          DestinationStack
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          DestinationFrame
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          DestinationUVIndices
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Interpolation
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          DestinationFlags
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SourceGeoVersion
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          DestinationGeoVersion
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SearchRange
+         </span>
+         =
+         <span class="summary-sig-default">
+          1.0
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SearchUnits
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          FillColor
+         </span>
+         =
+         <span class="summary-sig-default">
+          None
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Search
+         </span>
+         =
+         <span class="summary-sig-default">
+          0
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SampleCount
+         </span>
+         =
+         <span class="summary-sig-default">
+          16
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          SourceFlags
+         </span>
+         =
+         <span class="summary-sig-default">
+          32768
+         </span>
+         )
+        </span>
+        <br/>
+        Copies layers from one object to another.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#Particle.transferLayers">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __delattr__
+      </code>
+      ,
+      <code>
+       __format__
+      </code>
+      ,
+      <code>
+       __getattribute__
+      </code>
+      ,
+      <code>
+       __hash__
+      </code>
+      ,
+      <code>
+       __init__
+      </code>
+      ,
+      <code>
+       __new__
+      </code>
+      ,
+      <code>
+       __reduce__
+      </code>
+      ,
+      <code>
+       __reduce_ex__
+      </code>
+      ,
+      <code>
+       __repr__
+      </code>
+      ,
+      <code>
+       __setattr__
+      </code>
+      ,
+      <code>
+       __sizeof__
+      </code>
+      ,
+      <code>
+       __str__
+      </code>
+      ,
+      <code>
+       __subclasshook__
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS VARIABLES ==================== -->
+  <a name="section-ClassVariables">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Class Variables
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_CENTER_POSITIONS">
+     </a>
+     <span class="summary-name">
+      EXPORT_CENTER_POSITIONS
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     Subtracts the object's center position from each of the particle 
+      positions.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_GEOMETRY_ID">
+     </a>
+     <span class="summary-name">
+      EXPORT_GEOMETRY_ID
+     </span>
+     =
+     <code title="2">
+      2
+     </code>
+     <br/>
+     Include attribute to identify which object the particle belongs to 
+      (name = geometryId, type = indexed string).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_PATCH_ID">
+     </a>
+     <span class="summary-name">
+      EXPORT_PATCH_ID
+     </span>
+     =
+     <code title="4">
+      4
+     </code>
+     <br/>
+     Include attribute to identify which patch the particle belongs to 
+      (name = patchId, type = int).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_PARTICLE_ID">
+     </a>
+     <span class="summary-name">
+      EXPORT_PARTICLE_ID
+     </span>
+     =
+     <code title="8">
+      8
+     </code>
+     <br/>
+     Include attribute to uniquely identify the particle (name = id, type 
+      = int).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_PIXEL_COORDINATE">
+     </a>
+     <span class="summary-name">
+      EXPORT_PIXEL_COORDINATE
+     </span>
+     =
+     <code title="16">
+      16
+     </code>
+     <br/>
+     Include attribute to identify the pixel within the patch that the 
+      particle belongs to (name = pixelCoordinate, type = int[2]).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_UV">
+     </a>
+     <span class="summary-name">
+      EXPORT_UV
+     </span>
+     =
+     <code title="32">
+      32
+     </code>
+     <br/>
+     Include attribute for the object's texture coordinates at the 
+      particle position (name = uv, type = float[2]).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_NORMAL">
+     </a>
+     <span class="summary-name">
+      EXPORT_NORMAL
+     </span>
+     =
+     <code title="64">
+      64
+     </code>
+     <br/>
+     Include attribute for the object's world-space normal at the particle
+      position (name = normal, type = vector).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_TANGENT">
+     </a>
+     <span class="summary-name">
+      EXPORT_TANGENT
+     </span>
+     =
+     <code title="128">
+      128
+     </code>
+     <br/>
+     Include attribute for the object's world-space tangent at the 
+      particle position (name = tangent, type = vector).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_BITANGENT">
+     </a>
+     <span class="summary-name">
+      EXPORT_BITANGENT
+     </span>
+     =
+     <code title="256">
+      256
+     </code>
+     <br/>
+     Include attribute for the object's world-space bitangent at the 
+      particle position (name = bitangent, type = vector).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_ALPHA">
+     </a>
+     <span class="summary-name">
+      EXPORT_ALPHA
+     </span>
+     =
+     <code title="512">
+      512
+     </code>
+     <br/>
+     Include alpha channel of all image set attributes.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_AMBIENT_OCCLUSION">
+     </a>
+     <span class="summary-name">
+      EXPORT_AMBIENT_OCCLUSION
+     </span>
+     =
+     <code title="1024">
+      1024
+     </code>
+     <br/>
+     Include ambient occlusion attribute at the particle position (name = 
+      ambientOcclusion, type = float).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_IGNORE_MEMORY_REQUIREMENT">
+     </a>
+     <span class="summary-name">
+      EXPORT_IGNORE_MEMORY_REQUIREMENT
+     </span>
+     =
+     <code title="2048">
+      2048
+     </code>
+     <br/>
+     The operation will still continue even if the system doesn't have 
+      enough memory available.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_RADIUS">
+     </a>
+     <span class="summary-name">
+      EXPORT_RADIUS
+     </span>
+     =
+     <code title="4096">
+      4096
+     </code>
+     <br/>
+     Include attribute for the radius that encompasses the particle's 
+      immediate neighbours (name = radius, type = float).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_IGNORE_HIDDEN">
+     </a>
+     <span class="summary-name">
+      EXPORT_IGNORE_HIDDEN
+     </span>
+     =
+     <code title="8192">
+      8192
+     </code>
+     <br/>
+     The operation ignores hidden parts of the geometry.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_IGNORE_UNSELECTED">
+     </a>
+     <span class="summary-name">
+      EXPORT_IGNORE_UNSELECTED
+     </span>
+     =
+     <code title="16384">
+      16384
+     </code>
+     <br/>
+     The operation ignores unselected parts of the geometry.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXPORT_MATCH_IMPORT">
+     </a>
+     <span class="summary-name">
+      EXPORT_MATCH_IMPORT
+     </span>
+     =
+     <code title="32768">
+      32768
+     </code>
+     <br/>
+     This is a special option only used in the transfer functions that 
+      makes the export options match the given import options.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="IMPORT_CENTER_POSITIONS">
+     </a>
+     <span class="summary-name">
+      IMPORT_CENTER_POSITIONS
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     Subtracts the object's center position from each of the particle 
+      positions.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="IMPORT_BLEED_EDGES">
+     </a>
+     <span class="summary-name">
+      IMPORT_BLEED_EDGES
+     </span>
+     =
+     <code title="2">
+      2
+     </code>
+     <br/>
+     Turns on "full texture bleed" (full patch texture bleed is 
+      generated).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="IMPORT_FLATTEN">
+     </a>
+     <span class="summary-name">
+      IMPORT_FLATTEN
+     </span>
+     =
+     <code title="4">
+      4
+     </code>
+     <br/>
+     The source layers/channel is flattened into a single image set prior 
+      to transfer (
+     <a class="link" href="mari.Layer-class.html">
+      Layer
+     </a>
+     &amp; channel transfer ONLY).
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="IMPORT_IGNORE_HIDDEN">
+     </a>
+     <span class="summary-name">
+      IMPORT_IGNORE_HIDDEN
+     </span>
+     =
+     <code title="8">
+      8
+     </code>
+     <br/>
+     The operation ignores hidden parts of the geometry.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="IMPORT_IGNORE_UNSELECTED">
+     </a>
+     <span class="summary-name">
+      IMPORT_IGNORE_UNSELECTED
+     </span>
+     =
+     <code title="16">
+      16
+     </code>
+     <br/>
+     The operation ignores unselected parts of the geometry.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="INTERPOLATION_NEAREST_NEIGHBOR">
+     </a>
+     <span class="summary-name">
+      INTERPOLATION_NEAREST_NEIGHBOR
+     </span>
+     =
+     <code title="0">
+      0
+     </code>
+     <br/>
+     The value of the closest particle.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="INTERPOLATION_INVERSE_DISTANCE_WEIGHTED">
+     </a>
+     <span class="summary-name">
+      INTERPOLATION_INVERSE_DISTANCE_WEIGHTED
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     The final value is the weighted average of the closest particles.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Particle-class.html#INTERPOLATION_INVERSE_DISTANCE_WEIGHTED_SMOOTHER">
+      INTERPOLATION_INVERSE_DISTANCE_WEIGHTED_SMOOTHER
+     </a>
+     =
+     <code title="2">
+      2
+     </code>
+     <br/>
+     The final value is the weighted average, with a smoother falloff, of 
+      the closest particles.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a class="summary-name" href="mari.Particle-class.html#INTERPOLATION_INVERSE_DISTANCE_WEIGHTED_SHARPER">
+      INTERPOLATION_INVERSE_DISTANCE_WEIGHTED_SHARPER
+     </a>
+     =
+     <code title="3">
+      3
+     </code>
+     <br/>
+     The final value is the weighted average, with a sharper falloff, of 
+      the closest particles.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="RANGE_INFINITE">
+     </a>
+     <span class="summary-name">
+      RANGE_INFINITE
+     </span>
+     =
+     <code title="0">
+      0
+     </code>
+     <br/>
+     Ignore search range restrictions.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="RANGE_WORLD_SPACE_UNITS">
+     </a>
+     <span class="summary-name">
+      RANGE_WORLD_SPACE_UNITS
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     Units are in world-space coordinates.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="RANGE_GEO_SIZE_PERCENTAGE">
+     </a>
+     <span class="summary-name">
+      RANGE_GEO_SIZE_PERCENTAGE
+     </span>
+     =
+     <code title="2">
+      2
+     </code>
+     <br/>
+     Units are a percentage of the world-space size of the geo being 
+      imported into.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="SEARCH_RADIAL">
+     </a>
+     <span class="summary-name">
+      SEARCH_RADIAL
+     </span>
+     =
+     <code title="0">
+      0
+     </code>
+     <br/>
+     Search equally in all directions.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="SEARCH_BIDIRECTIONAL">
+     </a>
+     <span class="summary-name">
+      SEARCH_BIDIRECTIONAL
+     </span>
+     =
+     <code title="1">
+      1
+     </code>
+     <br/>
+     Search in the direction and opposite direction of the surface normal.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="SEARCH_FORWARD">
+     </a>
+     <span class="summary-name">
+      SEARCH_FORWARD
+     </span>
+     =
+     <code title="2">
+      2
+     </code>
+     <br/>
+     Search in the direction of the surface normal.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="SEARCH_BACKWARD">
+     </a>
+     <span class="summary-name">
+      SEARCH_BACKWARD
+     </span>
+     =
+     <code title="3">
+      3
+     </code>
+     <br/>
+     Search in the opposite direction of the surface normal.
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== PROPERTIES ==================== -->
+  <a name="section-Properties">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Properties
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __class__
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== METHOD DETAILS ==================== -->
+  <a name="section-MethodDetails">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Method Details
+     </span>
+    </td>
+   </tr>
+  </table>
+  <a name="exportGeo">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            exportGeo
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            FileName
+           </span>
+           ,
+           <span class="sig-arg">
+            Object
+           </span>
+           ,
+           <span class="sig-arg">
+            UVImageSizes
+           </span>
+           ,
+           <span class="sig-arg">
+            Flags
+           </span>
+           ,
+           <span class="sig-arg">
+            Frame
+           </span>
+           ,
+           <span class="sig-arg">
+            GeoVersion
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Particle.exportGeo">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Exports a predefined set of attributes to a particle file on disk.
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>geo_entity = mari.geo.current()
+<span class="py-prompt">&gt;&gt;&gt; </span>mari.particle.exportGeo(<span class="py-string">'/tmp/filename.bgeo'</span>, geo_entity, {0: 256, 10: 512 },
+<span class="py-more">... </span>                        mari.particle.EXPORT_NORMAL, 0)</pre>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            FileName
+           </code>
+          </strong>
+          (str) - The name of the file to export to. Any existing file will be 
+          overwritten.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Object
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.GeoEntity-class.html">
+           GeoEntity
+          </a>
+          ) - The object to export attributes for.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            UVImageSizes
+           </code>
+          </strong>
+          (variant) - A dictionary that maps integer patch indices to sizes to export 
+          at. Only patch indices specified in the dictionary will be 
+          exported.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Flags
+           </code>
+          </strong>
+          (int) - The options to export with. See
+          <a class="link" href="mari.Particle.ExportFlags-class.html">
+           ExportFlags
+          </a>
+          .
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Frame
+           </code>
+          </strong>
+          (int) - The animated frame number to export for.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            GeoVersion
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.GeoEntityVersion-class.html">
+           GeoEntityVersion
+          </a>
+          ) - The geometry version to export for. If None then the current 
+          geometry version is used.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: bool
+       </dt>
+       <dd>
+        True if the export completed successfully, or False otherwise.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            TypeError
+           </strong>
+          </code>
+          - Raised if the patch sizes dictionary was in the wrong format.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if no object was given, no patch sizes are given, the patch 
+        indices are invalid, the patch sizes are invalid.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="exportImageSets">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            exportImageSets
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            FileName
+           </span>
+           ,
+           <span class="sig-arg">
+            ImageSets
+           </span>
+           ,
+           <span class="sig-arg">
+            Flags
+           </span>
+           ,
+           <span class="sig-arg">
+            Frame
+           </span>
+           ,
+           <span class="sig-arg">
+            UVIndices
+           </span>
+           ,
+           <span class="sig-arg">
+            GeoVersion
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Particle.exportImageSets">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Exports a set of image sets to a particle file on disk.
+      </p>
+      <p>
+       The image sets must belong to the same object and have the same width 
+  and height. &gt;&gt;&gt; geo_entity = mari.geo.current() &gt;&gt;&gt; 
+  image_set = geo_entity.currentImageSet() &gt;&gt;&gt; 
+  mari.particle.exportImageSets('/tmp/filename.bgeo', {'color' : 
+  image_set}, mari.particle.EXPORT_ALPHA, ...
+  0, [0, 1])
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            FileName
+           </code>
+          </strong>
+          (str) - The name of the file to export to. Any existing file will be 
+          overwritten.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            ImageSets
+           </code>
+          </strong>
+          (variant) - A dictionary that maps string particle attribute names, to export
+          to, to image sets, to export from.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Flags
+           </code>
+          </strong>
+          (int) - The options to export with. See
+          <a class="link" href="mari.Particle.ExportFlags-class.html">
+           ExportFlags
+          </a>
+          .
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Frame
+           </code>
+          </strong>
+          (int) - The animated frame number to export for.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            UVIndices
+           </code>
+          </strong>
+          (list of  int) - Which patches to export for. Passing in an empty list will cause 
+          all patches to be exported.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            GeoVersion
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.GeoEntityVersion-class.html">
+           GeoEntityVersion
+          </a>
+          ) - The geometry version to export for. If None then the current 
+          geometry version is used.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: bool
+       </dt>
+       <dd>
+        True if the export completed successfully, or False otherwise.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if no image sets are given, the image sets are invalid, the 
+        patch indices are invalid, the patch sizes don't match or they 
+        don't belong to the same object.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="findOp">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            findOp
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Name
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Particle.findOp">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the operations chain of the given name.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The name of the operations chain to find.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.ParticleOp-class.html">
+         ParticleOp
+        </a>
+       </dt>
+       <dd>
+        The operations chain, or None if no operations chain exists for 
+          the given name.
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="importImageSets">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            importImageSets
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            FileName
+           </span>
+           ,
+           <span class="sig-arg">
+            ImageSets
+           </span>
+           ,
+           <span class="sig-arg">
+            Interpolation
+           </span>
+           ,
+           <span class="sig-arg">
+            Flags
+           </span>
+           ,
+           <span class="sig-arg">
+            Frame
+           </span>
+           ,
+           <span class="sig-arg">
+            UVIndices
+           </span>
+           ,
+           <span class="sig-arg">
+            GeoVersion
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            SearchRange
+           </span>
+           =
+           <span class="sig-default">
+            1.0
+           </span>
+           ,
+           <span class="sig-arg">
+            SearchUnits
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           ,
+           <span class="sig-arg">
+            Search
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           ,
+           <span class="sig-arg">
+            SampleCount
+           </span>
+           =
+           <span class="sig-default">
+            16
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Particle.importImageSets">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Imports into a set of image sets from a particle file on disk.
+      </p>
+      <p>
+       The image sets must belong to the same object and have the same width 
+  and height. &gt;&gt;&gt; geo_entity = mari.geo.current() &gt;&gt;&gt; 
+  image_set = geo_entity.currentImageSet() &gt;&gt;&gt; 
+  mari.particle.importImageSets('/tmp/filename.bgeo', {'color' : 
+  image_set}, ...                               
+  mari.particle.INTERPOLATION_INVERSE_DISTANCE_WEIGHTED, ...
+  mari.particle.IMPORT_BLEED_EDGES, 0, [0, 1])
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            FileName
+           </code>
+          </strong>
+          (str) - The name of the file to import to.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            ImageSets
+           </code>
+          </strong>
+          (variant) - A dictionary that maps string particle attribute names, to import
+          from, to image sets, to import into.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Interpolation
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Particle.InterpolationMethod-class.html">
+           InterpolationMethod
+          </a>
+          ) - Which method of interpolation to use when calculating the final 
+          color value from the closest particles.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Flags
+           </code>
+          </strong>
+          (int) - The options to import with. See
+          <a class="link" href="mari.Particle.ImportFlags-class.html">
+           ImportFlags
+          </a>
+          .
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Frame
+           </code>
+          </strong>
+          (int) - The animated frame number to import to.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            UVIndices
+           </code>
+          </strong>
+          (list of  int) - Which patches to import into. Passing in an empty list will cause
+          all patches to be imported.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            GeoVersion
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.GeoEntityVersion-class.html">
+           GeoEntityVersion
+          </a>
+          ) - The geometry version to import to. If None then the current 
+          geometry version is used.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            SearchRange
+           </code>
+          </strong>
+          (float) - The maximum distance allowed to be searched.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            SearchUnits
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Particle.RangeUnits-class.html">
+           RangeUnits
+          </a>
+          ) - The units of measure for the search range.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Search
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Particle.SearchMethod-class.html">
+           SearchMethod
+          </a>
+          ) - The method used to search the particle cloud with from each of 
+          destination points.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            SampleCount
+           </code>
+          </strong>
+          (int) - The number of samples to search for and interpolate together to 
+          produce the final color.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: bool
+       </dt>
+       <dd>
+        True if the import completed successfully, or False otherwise.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            IOError
+           </strong>
+          </code>
+          - Raised if the file was invalid; if the file was missing data; if 
+        any of the file data was in the wrong format.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            TypeError
+           </strong>
+          </code>
+          - Raised if the image set dictionary was in the wrong format.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if no image sets were supplied; if any of the image sets was
+        invalid; if the image sets belong to different objects; if any of 
+        the patch indices was invalid; if any of the patch sizes didn't 
+        match between image sets.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="transferChannel">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            transferChannel
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            SourceChannel
+           </span>
+           ,
+           <span class="sig-arg">
+            SourceFrame
+           </span>
+           ,
+           <span class="sig-arg">
+            SourceUVIndices
+           </span>
+           ,
+           <span class="sig-arg">
+            DestinationObject
+           </span>
+           ,
+           <span class="sig-arg">
+            DestinationFrame
+           </span>
+           ,
+           <span class="sig-arg">
+            DestinationUVIndices
+           </span>
+           ,
+           <span class="sig-arg">
+            Interpolation
+           </span>
+           ,
+           <span class="sig-arg">
+            DestinationFlags
+           </span>
+           ,
+           <span class="sig-arg">
+            SourceGeoVersion
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            DestinationGeoVersion
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            SearchRange
+           </span>
+           =
+           <span class="sig-default">
+            1.0
+           </span>
+           ,
+           <span class="sig-arg">
+            SearchUnits
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           ,
+           <span class="sig-arg">
+            FillColor
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            Search
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           ,
+           <span class="sig-arg">
+            SampleCount
+           </span>
+           =
+           <span class="sig-default">
+            16
+           </span>
+           ,
+           <span class="sig-arg">
+            SourceFlags
+           </span>
+           =
+           <span class="sig-default">
+            32768
+           </span>
+           ,
+           <span class="sig-arg">
+            DestinationSize
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Particle.transferChannel">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Copies a single channel from one object to another.
+      </p>
+      <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>src_geo_entity = mari.geo.get(<span class="py-string">'Head1'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>src_channel = src_geo_entity.channel(<span class="py-string">'diffuse'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>dst_geo_entity = mari.geo.get(<span class="py-string">'Head2'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>mari.particle.transferChannel(src_channel, 0, [], dst_geo_entity, 0, [],
+<span class="py-more">... </span>                              mari.particle.INTERPOLATION_INVERSE_DISTANCE_WEIGHTED,
+<span class="py-more">... </span>                              mari.particle.IMPORT_BLEED_EDGES | mari.particle.IMPORT_FLATTEN)</pre>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            SourceChannel
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Channel-class.html">
+           Channel
+          </a>
+          ) - The source channel to read from.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            SourceFrame
+           </code>
+          </strong>
+          (int) - The animated frame number to read from.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            SourceUVIndices
+           </code>
+          </strong>
+          (list of  int) - Which patches in the source to read from. Passing in an empty 
+          list will cause all source patches to be read from.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            DestinationObject
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.GeoEntity-class.html">
+           GeoEntity
+          </a>
+          ) - The destination object to write into.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            DestinationFrame
+           </code>
+          </strong>
+          (int) - The animated frame number to write to.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            DestinationUVIndices
+           </code>
+          </strong>
+          (list of  int) - Which patches in the destination to write to. Passing in an empty
+          list will cause all destination patches to be written to.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Interpolation
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Particle.InterpolationMethod-class.html">
+           InterpolationMethod
+          </a>
+          ) - Which method of interpolation to use when calculating the final 
+          color value from the closest particles.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            DestinationFlags
+           </code>
+          </strong>
+          (int) - The options used in writing. See
+          <a class="link" href="mari.Particle.ImportFlags-class.html">
+           ImportFlags
+          </a>
+          .
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            SourceGeoVersion
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.GeoEntityVersion-class.html">
+           GeoEntityVersion
+          </a>
+          ) - The source geometry version to read from. If None then the 
+          current geometry version is used.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            DestinationGeoVersion
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.GeoEntityVersion-class.html">
+           GeoEntityVersion
+          </a>
+          ) - The destination geometry version to write into. If None then the 
+          current geometry version is used.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            SearchRange
+           </code>
+          </strong>
+          (float) - The maximum distance allowed to be searched.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            SearchUnits
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Particle.RangeUnits-class.html">
+           RangeUnits
+          </a>
+          ) - The units of measure for the search range.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            FillColor
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Color-class.html">
+           Color
+          </a>
+          ) - The color used to fill the newly created destination image sets 
+          with.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Search
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Particle.SearchMethod-class.html">
+           SearchMethod
+          </a>
+          ) - The method used to search the particle cloud with from each of 
+          destination points.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            SampleCount
+           </code>
+          </strong>
+          (int) - The number of samples to search for and interpolate together to 
+          produce the final color.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            SourceFlags
+           </code>
+          </strong>
+          (int) - The options used in reading. See
+          <a class="link" href="mari.Particle.ExportFlags-class.html">
+           ExportFlags
+          </a>
+          .
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            DestinationSize
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.ImageSet.Size-class.html">
+           ImageSet.Size
+          </a>
+          ) - Used to specified the image size for all uv indices in the 
+          destination channel. If a size is not given then the size will 
+          match the source.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns:
+        <a class="link" href="mari.Channel-class.html">
+         Channel
+        </a>
+       </dt>
+       <dd>
+        A destination channel if the transfer completed successfully, or 
+          None otherwise.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if no channel was supplied; if any of the patch indices was 
+        invalid; if no destination object was supplied.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="transferImageSets">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            transferImageSets
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            SourceImageSets
+           </span>
+           ,
+           <span class="sig-arg">
+            SourceFrame
+           </span>
+           ,
+           <span class="sig-arg">
+            SourceUVIndices
+           </span>
+           ,
+           <span class="sig-arg">
+            DestinationImageSets
+           </span>
+           ,
+           <span class="sig-arg">
+            DestinationFrame
+           </span>
+           ,
+           <span class="sig-arg">
+            DestinationUVIndices
+           </span>
+           ,
+           <span class="sig-arg">
+            Interpolation
+           </span>
+           ,
+           <span class="sig-arg">
+            DestinationFlags
+           </span>
+           ,
+           <span class="sig-arg">
+            SourceGeoVersion
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            DestinationGeoVersion
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            SearchRange
+           </span>
+           =
+           <span class="sig-default">
+            1.0
+           </span>
+           ,
+           <span class="sig-arg">
+            SearchUnits
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           ,
+           <span class="sig-arg">
+            Search
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           ,
+           <span class="sig-arg">
+            SampleCount
+           </span>
+           =
+           <span class="sig-default">
+            16
+           </span>
+           ,
+           <span class="sig-arg">
+            SourceFlags
+           </span>
+           =
+           <span class="sig-default">
+            32768
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Particle.transferImageSets">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Copies image data from one image set to another.
+      </p>
+      <p>
+       The image sets in the source list must belong to the same object and 
+  have the same width and height. This also applies to the destination 
+  list. &gt;&gt;&gt; src_geo_entity = mari.geo.get('Head1') &gt;&gt;&gt; 
+  src_image_set = src_geo_entity.currentImageSet() &gt;&gt;&gt; 
+  dst_geo_entity = mari.geo.get('Head2') &gt;&gt;&gt; dst_image_set = 
+  dst_geo_entity.currentImageSet() &gt;&gt;&gt; 
+  mari.particle.transferImageSets([src_image_set], 0, [0, 1], 
+  [dst_image_set], 0, [0, 1], ...                                 
+  mari.particle.INTERPOLATION_INVERSE_DISTANCE_WEIGHTED, ...
+  mari.particle.IMPORT_BLEED_EDGES)
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            SourceImageSets
+           </code>
+          </strong>
+          (list of
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          ) - A list of source image sets to read from.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            SourceFrame
+           </code>
+          </strong>
+          (int) - The animated frame number to read from.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            SourceUVIndices
+           </code>
+          </strong>
+          (list of  int) - Which patches in the source to read from. Passing in an empty 
+          list will cause all source patches to be read from.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            DestinationImageSets
+           </code>
+          </strong>
+          (list of
+          <a class="link" href="mari.ImageSet-class.html">
+           ImageSet
+          </a>
+          ) - A list of destination image sets to write into.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            DestinationFrame
+           </code>
+          </strong>
+          (int) - The animated frame number to write to.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            DestinationUVIndices
+           </code>
+          </strong>
+          (list of  int) - Which patches in the destination to write to. Passing in an empty
+          list will cause all destination patches to be written to.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Interpolation
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Particle.InterpolationMethod-class.html">
+           InterpolationMethod
+          </a>
+          ) - Which method of interpolation to use when calculating the final 
+          color value from the closest particles.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            DestinationFlags
+           </code>
+          </strong>
+          (int) - The options used in writing. See
+          <a class="link" href="mari.Particle.ImportFlags-class.html">
+           ImportFlags
+          </a>
+          .
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            SourceGeoVersion
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.GeoEntityVersion-class.html">
+           GeoEntityVersion
+          </a>
+          ) - The source geometry version to read from. If None then the 
+          current geometry version is used.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            DestinationGeoVersion
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.GeoEntityVersion-class.html">
+           GeoEntityVersion
+          </a>
+          ) - The destination geometry version to write into. If None then the 
+          current geometry version is used.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            SearchRange
+           </code>
+          </strong>
+          (float) - The maximum distance allowed to be searched.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            SearchUnits
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Particle.RangeUnits-class.html">
+           RangeUnits
+          </a>
+          ) - The units of measure for the search range.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Search
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Particle.SearchMethod-class.html">
+           SearchMethod
+          </a>
+          ) - The method used to search the particle cloud with from each of 
+          destination points.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            SampleCount
+           </code>
+          </strong>
+          (int) - The number of samples to search for and interpolate together to 
+          produce the final color.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            SourceFlags
+           </code>
+          </strong>
+          (int) - The options used in reading. See
+          <a class="link" href="mari.Particle.ExportFlags-class.html">
+           ExportFlags
+          </a>
+          .
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: bool
+       </dt>
+       <dd>
+        True if the transfer completed successfully, or False otherwise.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if no image sets were supplied; the number of source image 
+        sets doesn't match the number of destination image sets; if any of 
+        the image sets was invalid; if the image sets belong to different 
+        objects; if any of the patch indices was invalid; if any of the 
+        patch sizes didn't match between image sets.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="transferLayers">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            transferLayers
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            SourceLayers
+           </span>
+           ,
+           <span class="sig-arg">
+            SourceFrame
+           </span>
+           ,
+           <span class="sig-arg">
+            SourceUVIndices
+           </span>
+           ,
+           <span class="sig-arg">
+            DestinationStack
+           </span>
+           ,
+           <span class="sig-arg">
+            DestinationFrame
+           </span>
+           ,
+           <span class="sig-arg">
+            DestinationUVIndices
+           </span>
+           ,
+           <span class="sig-arg">
+            Interpolation
+           </span>
+           ,
+           <span class="sig-arg">
+            DestinationFlags
+           </span>
+           ,
+           <span class="sig-arg">
+            SourceGeoVersion
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            DestinationGeoVersion
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            SearchRange
+           </span>
+           =
+           <span class="sig-default">
+            1.0
+           </span>
+           ,
+           <span class="sig-arg">
+            SearchUnits
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           ,
+           <span class="sig-arg">
+            FillColor
+           </span>
+           =
+           <span class="sig-default">
+            None
+           </span>
+           ,
+           <span class="sig-arg">
+            Search
+           </span>
+           =
+           <span class="sig-default">
+            0
+           </span>
+           ,
+           <span class="sig-arg">
+            SampleCount
+           </span>
+           =
+           <span class="sig-default">
+            16
+           </span>
+           ,
+           <span class="sig-arg">
+            SourceFlags
+           </span>
+           =
+           <span class="sig-default">
+            32768
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#Particle.transferLayers">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Copies layers from one object to another.
+      </p>
+      <p>
+       The layers in the source list must belong to the same object. 
+  &gt;&gt;&gt; src_geo_entity = mari.geo.get('Head1') &gt;&gt;&gt; 
+  src_channel = src_geo_entity.channel('diffuse') &gt;&gt;&gt; src_layer = 
+  src_channel.layer('color') &gt;&gt;&gt; dst_geo_entity = 
+  mari.geo.get('Head2') &gt;&gt;&gt; dst_channel = 
+  dst_geo_entity.channel('diffuse') &gt;&gt;&gt; 
+  mari.particle.transferLayers([src_layer], 0, [], dst_channel, 0, [], ...
+  mari.particle.INTERPOLATION_INVERSE_DISTANCE_WEIGHTED, ...
+  mari.particle.IMPORT_BLEED_EDGES | mari.particle.IMPORT_FLATTEN)
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            SourceLayers
+           </code>
+          </strong>
+          (list of
+          <a class="link" href="mari.Layer-class.html">
+           Layer
+          </a>
+          ) - A list of source layers to read from.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            SourceFrame
+           </code>
+          </strong>
+          (int) - The animated frame number to read from.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            SourceUVIndices
+           </code>
+          </strong>
+          (list of  int) - Which patches in the source to read from. Passing in an empty 
+          list will cause all source patches to be read from.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            DestinationStack
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.LayerStack-class.html">
+           LayerStack
+          </a>
+          ) - The destination layer stack to write into.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            DestinationFrame
+           </code>
+          </strong>
+          (int) - The animated frame number to write to.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            DestinationUVIndices
+           </code>
+          </strong>
+          (list of  int) - Which patches in the destination to write to. Passing in an empty
+          list will cause all destination patches to be written to.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Interpolation
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Particle.InterpolationMethod-class.html">
+           InterpolationMethod
+          </a>
+          ) - Which method of interpolation to use when calculating the final 
+          color value from the closest particles.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            DestinationFlags
+           </code>
+          </strong>
+          (int) - The options used in writing. See
+          <a class="link" href="mari.Particle.ImportFlags-class.html">
+           ImportFlags
+          </a>
+          .
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            SourceGeoVersion
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.GeoEntityVersion-class.html">
+           GeoEntityVersion
+          </a>
+          ) - The source geometry version to read from. If None then the 
+          current geometry version is used.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            DestinationGeoVersion
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.GeoEntityVersion-class.html">
+           GeoEntityVersion
+          </a>
+          ) - The destination geometry version to write into. If None then the 
+          current geometry version is used.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            SearchRange
+           </code>
+          </strong>
+          (float) - The maximum distance allowed to be searched.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            SearchUnits
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Particle.RangeUnits-class.html">
+           RangeUnits
+          </a>
+          ) - The units of measure for the search range.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            FillColor
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Color-class.html">
+           Color
+          </a>
+          ) - The color used to fill the newly created destination image sets 
+          with.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            Search
+           </code>
+          </strong>
+          (
+          <a class="link" href="mari.Particle.SearchMethod-class.html">
+           SearchMethod
+          </a>
+          ) - The method used to search the particle cloud with from each of 
+          destination points.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            SampleCount
+           </code>
+          </strong>
+          (int) - The number of samples to search for and interpolate together to 
+          produce the final color.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            SourceFlags
+           </code>
+          </strong>
+          (int) - The options used in reading. See
+          <a class="link" href="mari.Particle.ExportFlags-class.html">
+           ExportFlags
+          </a>
+          .
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: list of
+        <a class="link" href="mari.Layer-class.html">
+         Layer
+        </a>
+       </dt>
+       <dd>
+        A list of destination layers if the transfer completed 
+          successfully, or an empty list otherwise.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if no layers were supplied; if any of the layers was 
+        invalid; if the layers belong to different objects; if any of the 
+        patch indices was invalid; if no destination layer stack was 
+        supplied.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <br/>
+  <!-- ==================== CLASS VARIABLE DETAILS ==================== -->
+  <a name="section-ClassVariableDetails">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Class Variable Details
+     </span>
+    </td>
+   </tr>
+  </table>
+  <a name="INTERPOLATION_INVERSE_DISTANCE_WEIGHTED_SMOOTHER">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       INTERPOLATION_INVERSE_DISTANCE_WEIGHTED_SMOOTHER
+      </h3>
+      <p>
+       The final value is the weighted average, with a smoother falloff, of 
+  the closest particles. This produces a more blurry result.
+      </p>
+      <dl class="fields">
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+2
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="INTERPOLATION_INVERSE_DISTANCE_WEIGHTED_SHARPER">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <h3 class="epydoc">
+       INTERPOLATION_INVERSE_DISTANCE_WEIGHTED_SHARPER
+      </h3>
+      <p>
+       The final value is the weighted average, with a sharper falloff, of 
+  the closest particles. This produces a more sharp result.
+      </p>
+      <dl class="fields">
+      </dl>
+      <dl class="fields">
+       <dt>
+        Value:
+       </dt>
+       <dd>
+        <table>
+         <tr>
+          <td>
+           <pre class="variable">
+3
+</pre>
+          </td>
+         </tr>
+        </table>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

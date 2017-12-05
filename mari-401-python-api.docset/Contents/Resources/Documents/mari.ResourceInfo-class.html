@@ -1,0 +1,3556 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.ResourceInfo
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+        Class&nbsp;ResourceInfo
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.ResourceInfo-class.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS DESCRIPTION ==================== -->
+  <h1 class="epydoc">
+   Class ResourceInfo
+  </h1>
+  <p class="nomargin-top">
+   <span class="codelink">
+    <a href="mari-pysrc.html#ResourceInfo">
+     source&nbsp;code
+    </a>
+   </span>
+  </p>
+  <pre class="base-tree">
+object --+
+         |
+        <strong class="uidshort">ResourceInfo</strong>
+</pre>
+  <hr/>
+  <p>
+   This provides access to Mari's resource paths and some related system 
+  functions.
+  </p>
+  <p>
+   The paths supplied should be accessed using a string identifier 
+  returned from one of the appropriate functions. Note that new paths 
+  cannot currently be registered through scripting.
+  </p>
+  <p>
+   The current value of a path can be accessed with code like the 
+  following:
+   <code>
+    mari.resources.path(mari.resources.USER_SCRIPTS)
+   </code>
+  </p>
+  <p>
+   Many paths can be overridden by environment variables that match their
+  string identifiers. For example,
+   <code>
+    mari.resources.USER_SCRIPTS
+   </code>
+   is set to the string "MARI_SCRIPT_PATH", and if an environment 
+  variable with that name is found when Mari launches, the user scripts 
+  path will be set to its contents.
+  </p>
+  <p>
+   The paths that can be modified by users will generally have string 
+  identifiers that begin with "MARI_", which also makes the 
+  environment variables clearer. Alternatively, an individual path can be 
+  checked for modifiability by calling
+   <code>
+    mari.scripts.setPath()
+   </code>
+   on it; the function will raise an exception if the path is not 
+  user-modifiable.
+  </p>
+  <p>
+   <b>
+    Example Code
+   </b>
+  </p>
+  <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># This example shows how to obtain the path to example directory</span>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> mari
+<span class="py-prompt">&gt;&gt;&gt; </span>example_dir_path = mari.resources.path(mari.resources.EXAMPLES)</pre>
+  <hr/>
+  <div class="fields">
+   <p>
+    <strong>
+     See Also:
+    </strong>
+    <a class="link" href="mari.examples.resource_info-module.html">
+     examples.resource_info
+    </a>
+   </p>
+  </div>
+  <!-- ==================== INSTANCE METHODS ==================== -->
+  <a name="section-InstanceMethods">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Instance Methods
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      QIcon
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ResourceInfo-class.html#createIcon">
+          createIcon
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          IconFileName
+         </span>
+         )
+        </span>
+        <br/>
+        Constructs a QIcon for the given file name from Mari's stock icon 
+      library.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ResourceInfo.createIcon">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="customPluginPaths">
+         </a>
+         <span class="summary-sig-name">
+          customPluginPaths
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the list of plugin paths specified by environment variable 
+      MARI_CUSTOM_PLUGINS_PATH.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ResourceInfo.customPluginPaths">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a name="disableEnviromentKeyValues">
+         </a>
+         <span class="summary-sig-name">
+          disableEnviromentKeyValues
+         </span>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Refreshes all environment paths to mari default values, instead of 
+      reading from the environment.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ResourceInfo.disableEnviromentKeyValues">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ResourceInfo-class.html#flattenedSequenceTemplate">
+          flattenedSequenceTemplate
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the default template used for flattened image sequences.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ResourceInfo.flattenedSequenceTemplate">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ResourceInfo-class.html#path">
+          path
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Key
+         </span>
+         )
+        </span>
+        <br/>
+        Retrieves the value of a registered path as a single string.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ResourceInfo.path">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      list of str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ResourceInfo-class.html#pathList">
+          pathList
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Key
+         </span>
+         )
+        </span>
+        <br/>
+        Retrieves the value of a registered path as a list of strings.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ResourceInfo.pathList">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ResourceInfo-class.html#ptexFlattenedSequenceTemplate">
+          ptexFlattenedSequenceTemplate
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the default template used for flattened
+        <a class="link" href="mari.Ptex-class.html">
+         Ptex
+        </a>
+        image sequences.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ResourceInfo.ptexFlattenedSequenceTemplate">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ResourceInfo-class.html#ptexSequenceTemplate">
+          ptexSequenceTemplate
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the default template used for
+        <a class="link" href="mari.Ptex-class.html">
+         Ptex
+        </a>
+        image sequences.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ResourceInfo.ptexSequenceTemplate">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ResourceInfo-class.html#refreshAllPaths">
+          refreshAllPaths
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Refreshes all paths from environment variables to account for any 
+      changes.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ResourceInfo.refreshAllPaths">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ResourceInfo-class.html#refreshPath">
+          refreshPath
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Key
+         </span>
+         )
+        </span>
+        <br/>
+        Refreshes the given path from its environment variable, in case of 
+      any changes.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ResourceInfo.refreshPath">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ResourceInfo-class.html#sequenceTemplate">
+          sequenceTemplate
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the default template used for image sequences.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ResourceInfo.sequenceTemplate">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ResourceInfo-class.html#sequenceToken">
+          sequenceToken
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the token that should be used to identity sequences of 
+      images.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ResourceInfo.sequenceToken">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ResourceInfo-class.html#setFlattenedSequenceTemplate">
+          setFlattenedSequenceTemplate
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         )
+        </span>
+        <br/>
+        Sets the default template used for flattened image sequences.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ResourceInfo.setFlattenedSequenceTemplate">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ResourceInfo-class.html#setPath">
+          setPath
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Key
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          NewPath
+         </span>
+         )
+        </span>
+        <br/>
+        Sets the value of a registered path to a single string.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ResourceInfo.setPath">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ResourceInfo-class.html#setPathList">
+          setPathList
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Key
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          NewPathList
+         </span>
+         )
+        </span>
+        <br/>
+        Sets the value of a registered path to a list of strings.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ResourceInfo.setPathList">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ResourceInfo-class.html#setPtexFlattenedSequenceTemplate">
+          setPtexFlattenedSequenceTemplate
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         )
+        </span>
+        <br/>
+        Sets the default template used for flattened
+        <a class="link" href="mari.Ptex-class.html">
+         Ptex
+        </a>
+        image sequences.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ResourceInfo.setPtexFlattenedSequenceTemplate">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ResourceInfo-class.html#setPtexSequenceTemplate">
+          setPtexSequenceTemplate
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         )
+        </span>
+        <br/>
+        Sets the default template used for
+        <a class="link" href="mari.Ptex-class.html">
+         Ptex
+        </a>
+        image sequences.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ResourceInfo.setPtexSequenceTemplate">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ResourceInfo-class.html#setSequenceTemplate">
+          setSequenceTemplate
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         )
+        </span>
+        <br/>
+        Sets the default template used for image sequences.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ResourceInfo.setSequenceTemplate">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ResourceInfo-class.html#setSequenceToken">
+          setSequenceToken
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Token
+         </span>
+         )
+        </span>
+        <br/>
+        Sets the sequence token to be used to replace the number in a 
+      sequence of images.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ResourceInfo.setSequenceToken">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      str
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ResourceInfo-class.html#settingsFilePath">
+          settingsFilePath
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Name
+         </span>
+         )
+        </span>
+        <br/>
+        Returns the path to the given settings file.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ResourceInfo.settingsFilePath">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ResourceInfo-class.html#showPDF">
+          showPDF
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Path
+         </span>
+         )
+        </span>
+        <br/>
+        Displays a PDF file in the system's default viewer.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ResourceInfo.showPDF">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      None
+     </span>
+    </td>
+    <td class="summary">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <span class="summary-sig">
+         <a class="summary-sig-name" href="mari.ResourceInfo-class.html#showURL">
+          showURL
+         </a>
+         (
+         <span class="summary-sig-arg">
+          self
+         </span>
+         ,
+         <span class="summary-sig-arg">
+          Url
+         </span>
+         )
+        </span>
+        <br/>
+        Displays a URL in the system's default web browser.
+       </td>
+       <td align="right" valign="top">
+        <span class="codelink">
+         <a href="mari-pysrc.html#ResourceInfo.showURL">
+          source&nbsp;code
+         </a>
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __delattr__
+      </code>
+      ,
+      <code>
+       __format__
+      </code>
+      ,
+      <code>
+       __getattribute__
+      </code>
+      ,
+      <code>
+       __hash__
+      </code>
+      ,
+      <code>
+       __init__
+      </code>
+      ,
+      <code>
+       __new__
+      </code>
+      ,
+      <code>
+       __reduce__
+      </code>
+      ,
+      <code>
+       __reduce_ex__
+      </code>
+      ,
+      <code>
+       __repr__
+      </code>
+      ,
+      <code>
+       __setattr__
+      </code>
+      ,
+      <code>
+       __sizeof__
+      </code>
+      ,
+      <code>
+       __str__
+      </code>
+      ,
+      <code>
+       __subclasshook__
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== CLASS VARIABLES ==================== -->
+  <a name="section-ClassVariables">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Class Variables
+     </span>
+    </td>
+   </tr>
+   <tr bgcolor="#e8f0f8">
+    <th class="group-header" colspan="2">
+     &nbsp;&nbsp;&nbsp;&nbsp;System Paths
+    </th>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="CAPI_EXAMPLES">
+     </a>
+     <span class="summary-name">
+      CAPI_EXAMPLES
+     </span>
+     =
+     <code title="'CAPI_EXAMPLES'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       CAPI_EXAMPLES
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     C API Examples.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="CERTIFICATES">
+     </a>
+     <span class="summary-name">
+      CERTIFICATES
+     </span>
+     =
+     <code title="'CERTIFICATES'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       CERTIFICATES
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     Security certificates.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="COLOR">
+     </a>
+     <span class="summary-name">
+      COLOR
+     </span>
+     =
+     <code title="'COLOR'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       COLOR
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     <a class="link" href="mari.Color-class.html">
+      Color
+     </a>
+     data.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="C_API_DOCS">
+     </a>
+     <span class="summary-name">
+      C_API_DOCS
+     </span>
+     =
+     <code title="'C_API_DOCS'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       C_API_DOCS
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     C API documentation.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="EXAMPLES">
+     </a>
+     <span class="summary-name">
+      EXAMPLES
+     </span>
+     =
+     <code title="'EXAMPLES'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       EXAMPLES
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     Example data assets.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="GRADIENTS">
+     </a>
+     <span class="summary-name">
+      GRADIENTS
+     </span>
+     =
+     <code title="'GRADIENTS'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       GRADIENTS
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     Brush gradients.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="HELP">
+     </a>
+     <span class="summary-name">
+      HELP
+     </span>
+     =
+     <code title="'HELP'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       HELP
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     Help documentation resources.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="ICONS">
+     </a>
+     <span class="summary-name">
+      ICONS
+     </span>
+     =
+     <code title="'ICONS'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       ICONS
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     <a class="link" href="mari.Tool-class.html">
+      Tool
+     </a>
+     bar and menu 
+      item icons.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="IMAGES">
+     </a>
+     <span class="summary-name">
+      IMAGES
+     </span>
+     =
+     <code title="'IMAGES'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       IMAGES
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     General system images.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="LOGOS">
+     </a>
+     <span class="summary-name">
+      LOGOS
+     </span>
+     =
+     <code title="'LOGOS'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       LOGOS
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     Logo images for the application.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="LUTS">
+     </a>
+     <span class="summary-name">
+      LUTS
+     </span>
+     =
+     <code title="'LUTS'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       LUTS
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     LUT data.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="MEDIA">
+     </a>
+     <span class="summary-name">
+      MEDIA
+     </span>
+     =
+     <code title="'MEDIA'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       MEDIA
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     Top level media directory.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="MISC">
+     </a>
+     <span class="summary-name">
+      MISC
+     </span>
+     =
+     <code title="'MISC'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       MISC
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     Other miscellaneous data.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="QT_PLUGINS">
+     </a>
+     <span class="summary-name">
+      QT_PLUGINS
+     </span>
+     =
+     <code title="'QT_PLUGINS'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       QT_PLUGINS
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     Qt plug-ins.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="SCRIPT_DOCS">
+     </a>
+     <span class="summary-name">
+      SCRIPT_DOCS
+     </span>
+     =
+     <code title="'SCRIPT_DOCS'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       SCRIPT_DOCS
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     Python documentation.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="SETTINGS">
+     </a>
+     <span class="summary-name">
+      SETTINGS
+     </span>
+     =
+     <code title="'SETTINGS'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       SETTINGS
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     Default settings.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="SHADERS">
+     </a>
+     <span class="summary-name">
+      SHADERS
+     </span>
+     =
+     <code title="'SHADERS'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       SHADERS
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     Built-in shader code.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="SYSTEM_SCRIPTS">
+     </a>
+     <span class="summary-name">
+      SYSTEM_SCRIPTS
+     </span>
+     =
+     <code title="'SCRIPTS'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       SCRIPTS
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     Built-in Python scripts - AppDir/Media/Scripts.
+    </td>
+   </tr>
+   <tr bgcolor="#e8f0f8">
+    <th class="group-header" colspan="2">
+     &nbsp;&nbsp;&nbsp;&nbsp;User Paths
+    </th>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="DEFAULT_ARCHIVE">
+     </a>
+     <span class="summary-name">
+      DEFAULT_ARCHIVE
+     </span>
+     =
+     <code title="'MARI_DEFAULT_ARCHIVE_PATH'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       MARI_DEFAULT_ARCHIVE_PATH
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     The default path to load and save project archives.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="DEFAULT_CAMERA">
+     </a>
+     <span class="summary-name">
+      DEFAULT_CAMERA
+     </span>
+     =
+     <code title="'MARI_DEFAULT_CAMERA_PATH'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       MARI_DEFAULT_CAMERA_PATH
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     The default path to load and save cameras and projectors.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="DEFAULT_EXPORT">
+     </a>
+     <span class="summary-name">
+      DEFAULT_EXPORT
+     </span>
+     =
+     <code title="'MARI_DEFAULT_EXPORT_PATH'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       MARI_DEFAULT_EXPORT_PATH
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     The default path to export textures to.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="DEFAULT_GEO">
+     </a>
+     <span class="summary-name">
+      DEFAULT_GEO
+     </span>
+     =
+     <code title="'MARI_DEFAULT_GEOMETRY_PATH'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       MARI_DEFAULT_GEOMETRY_PATH
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     The default path to load geometry from.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="DEFAULT_IMAGE">
+     </a>
+     <span class="summary-name">
+      DEFAULT_IMAGE
+     </span>
+     =
+     <code title="'MARI_DEFAULT_IMAGE_PATH'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       MARI_DEFAULT_IMAGE_PATH
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     The default path to load and save reference images.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="DEFAULT_IMPORT">
+     </a>
+     <span class="summary-name">
+      DEFAULT_IMPORT
+     </span>
+     =
+     <code title="'MARI_DEFAULT_IMPORT_PATH'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       MARI_DEFAULT_IMPORT_PATH
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     The default path to import textures from.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="DEFAULT_RENDER">
+     </a>
+     <span class="summary-name">
+      DEFAULT_RENDER
+     </span>
+     =
+     <code title="'MARI_DEFAULT_RENDER_PATH'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       MARI_DEFAULT_RENDER_PATH
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     The default path to save renders such as turntables.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="DEFAULT_SHELF">
+     </a>
+     <span class="summary-name">
+      DEFAULT_SHELF
+     </span>
+     =
+     <code title="'MARI_DEFAULT_SHELF_PATH'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       MARI_DEFAULT_SHELF_PATH
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     The default path to load and save shelf files.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="USER">
+     </a>
+     <span class="summary-name">
+      USER
+     </span>
+     =
+     <code title="'MARI_USER_PATH'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       MARI_USER_PATH
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     Root of the default user path - default: ~/Mari.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="USER_PLUGINS">
+     </a>
+     <span class="summary-name">
+      USER_PLUGINS
+     </span>
+     =
+     <code title="'MARI_PLUGINS_PATH'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       MARI_PLUGINS_PATH
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     A list of paths to load custom user plug-ins from - default: 
+      ~/Mari/Plugins.
+    </td>
+   </tr>
+   <tr>
+    <td align="right" class="summary" valign="top" width="15%">
+     <span class="summary-type">
+      &nbsp;
+     </span>
+    </td>
+    <td class="summary">
+     <a name="USER_SCRIPTS">
+     </a>
+     <span class="summary-name">
+      USER_SCRIPTS
+     </span>
+     =
+     <code title="'MARI_SCRIPT_PATH'">
+      <code class="variable-quote">
+       '
+      </code>
+      <code class="variable-string">
+       MARI_SCRIPT_PATH
+      </code>
+      <code class="variable-quote">
+       '
+      </code>
+     </code>
+     <br/>
+     A list of paths to run scripts from - default: ~/Mari/Scripts.
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== PROPERTIES ==================== -->
+  <a name="section-Properties">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="summary" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Properties
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td class="summary" colspan="2">
+     <p class="indent-wrapped-lines">
+      <b>
+       Inherited from
+       <code>
+        object
+       </code>
+      </b>
+      :
+      <code>
+       __class__
+      </code>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <!-- ==================== METHOD DETAILS ==================== -->
+  <a name="section-MethodDetails">
+  </a>
+  <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+   <tr bgcolor="#70b0f0" class="table-header">
+    <td align="left" class="table-header" colspan="2">
+     <span class="table-header">
+      Method Details
+     </span>
+    </td>
+   </tr>
+  </table>
+  <a name="createIcon">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            createIcon
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            IconFileName
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ResourceInfo.createIcon">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Constructs a QIcon for the given file name from Mari's stock icon 
+  library.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            IconFileName
+           </code>
+          </strong>
+          (str) - The file name of the icon in Mari's stock icon library
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: QIcon
+       </dt>
+       <dd>
+        object for the given icon file name
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="flattenedSequenceTemplate">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            flattenedSequenceTemplate
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ResourceInfo.flattenedSequenceTemplate">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the default template used for flattened image sequences.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: str
+       </dt>
+       <dd>
+        The default template used for flattened image sequences
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ResourceInfo-class.html#setFlattenedSequenceTemplate">
+         setFlattenedSequenceTemplate()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="path">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            path
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Key
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ResourceInfo.path">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Retrieves the value of a registered path as a single string.
+      </p>
+      <p>
+       The available registered paths are listed in the
+       <i>
+        System Paths
+       </i>
+       and
+       <i>
+        User Paths
+       </i>
+       sections above.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Key
+           </code>
+          </strong>
+          (str) - The string identifier of the path.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: str
+       </dt>
+       <dd>
+        The value of the path.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            AttributeError
+           </strong>
+          </code>
+          - Raised if the supplied key does not match a path entry.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ResourceInfo-class.html#pathList">
+         pathList()
+        </a>
+        ,
+        <a class="link" href="mari.ResourceInfo-class.html#setPath">
+         setPath()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="pathList">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            pathList
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Key
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ResourceInfo.pathList">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Retrieves the value of a registered path as a list of strings.
+      </p>
+      <p>
+       The available registered paths are listed in the
+       <i>
+        System Paths
+       </i>
+       and
+       <i>
+        User Paths
+       </i>
+       sections above.
+      </p>
+      <p>
+       The strings are combined into a single one by joining with instances 
+  of the standard path specifier - ':' on Linux/OS X, and ';' on 
+  Windows.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Key
+           </code>
+          </strong>
+          (str) - The string identifier of the path.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: list of str
+       </dt>
+       <dd>
+        A list of the values in the path.
+       </dd>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            AttributeError
+           </strong>
+          </code>
+          - Raised if the supplied key does not match a path entry.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ResourceInfo-class.html#setPathList">
+         setPathList()
+        </a>
+        ,
+        <a class="link" href="mari.ResourceInfo-class.html#path">
+         path()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="ptexFlattenedSequenceTemplate">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            ptexFlattenedSequenceTemplate
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ResourceInfo.ptexFlattenedSequenceTemplate">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the default template used for flattened
+       <a class="link" href="mari.Ptex-class.html">
+        Ptex
+       </a>
+       image sequences.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: str
+       </dt>
+       <dd>
+        The default template used for flattened
+        <a class="link" href="mari.Ptex-class.html">
+         Ptex
+        </a>
+        image sequences
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ResourceInfo-class.html#setPtexFlattenedSequenceTemplate">
+         setPtexFlattenedSequenceTemplate()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="ptexSequenceTemplate">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            ptexSequenceTemplate
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ResourceInfo.ptexSequenceTemplate">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the default template used for
+       <a class="link" href="mari.Ptex-class.html">
+        Ptex
+       </a>
+       image sequences.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: str
+       </dt>
+       <dd>
+        The default template used for
+        <a class="link" href="mari.Ptex-class.html">
+         Ptex
+        </a>
+        image sequences
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ResourceInfo-class.html#setPtexSequenceTemplate">
+         setPtexSequenceTemplate()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="refreshAllPaths">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            refreshAllPaths
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ResourceInfo.refreshAllPaths">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Refreshes all paths from environment variables to account for any 
+  changes.
+      </p>
+      <p>
+       This calls
+       <a class="link" href="mari.ResourceInfo-class.html#refreshPath">
+        refreshPath()
+       </a>
+       for all available paths.
+      </p>
+      <p>
+       This is used to take into account any path modifications applied by 
+  environment variable changes on start up. The standard start up process 
+  calls this function when setting up the 'mari' module so that users can 
+  set up their environment variables for paths using Python's
+       <code>
+        sitecustomize.py
+       </code>
+       if desired.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="refreshPath">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            refreshPath
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Key
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ResourceInfo.refreshPath">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Refreshes the given path from its environment variable, in case of any
+  changes.
+      </p>
+      <p>
+       If the specified path is read from an environment variable (see
+       <a class="link" href="mari.ResourceInfo-class.html">
+        ResourceInfo
+       </a>
+       for 
+  details), this will look for the variable, and if found and non-empty, it
+  will set the path to the corresponding value.
+      </p>
+      <p>
+       For paths that are not read from environment variables, or not 
+  modifiable by the user, this operation will do nothing.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Key
+           </code>
+          </strong>
+          (str)
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            AttributeError
+           </strong>
+          </code>
+          - Raised if the supplied key does not match a path entry.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="sequenceTemplate">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            sequenceTemplate
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ResourceInfo.sequenceTemplate">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the default template used for image sequences.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: str
+       </dt>
+       <dd>
+        The default template used for image sequences
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ResourceInfo-class.html#setSequenceTemplate">
+         setSequenceTemplate()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="sequenceToken">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            sequenceToken
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ResourceInfo.sequenceToken">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the token that should be used to identity sequences of 
+  images.
+      </p>
+      <dl class="fields">
+       <dt>
+        Returns: str
+       </dt>
+       <dd>
+        The token to identify image sequences
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ResourceInfo-class.html#setSequenceToken">
+         setSequenceToken()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setFlattenedSequenceTemplate">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setFlattenedSequenceTemplate
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Name
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ResourceInfo.setFlattenedSequenceTemplate">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Sets the default template used for flattened image sequences.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The new default template to use for flattened image sequences
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ResourceInfo-class.html#flattenedSequenceTemplate">
+         flattenedSequenceTemplate()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setPath">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setPath
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Key
+           </span>
+           ,
+           <span class="sig-arg">
+            NewPath
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ResourceInfo.setPath">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Sets the value of a registered path to a single string.
+      </p>
+      <p>
+       The available registered paths are listed in the
+       <i>
+        System Paths
+       </i>
+       and
+       <i>
+        User Paths
+       </i>
+       sections above.
+      </p>
+      <p>
+       Note that no new paths can be registered through scripting at this 
+  stage.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Key
+           </code>
+          </strong>
+          (str) - The string identifier of the path.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            NewPath
+           </code>
+          </strong>
+          (str) - The new value for the path. This must not be empty.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            AttributeError
+           </strong>
+          </code>
+          - Raised if the supplied key does not match a path entry.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the new path is empty.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the path is not user-modifiable.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ResourceInfo-class.html#setPathList">
+         setPathList()
+        </a>
+        ,
+        <a class="link" href="mari.ResourceInfo-class.html#path">
+         path()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setPathList">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setPathList
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Key
+           </span>
+           ,
+           <span class="sig-arg">
+            NewPathList
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ResourceInfo.setPathList">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Sets the value of a registered path to a list of strings.
+      </p>
+      <p>
+       The strings are combined into a single one by joining with instances 
+  of the standard path specifier - ':' on Linux/OS X, and ';' on 
+  Windows.
+      </p>
+      <p>
+       The available registered paths are listed in the
+       <i>
+        System Paths
+       </i>
+       and
+       <i>
+        User Paths
+       </i>
+       sections above.
+      </p>
+      <p>
+       Note that no new paths can be registered through scripting at this 
+  stage.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Key
+           </code>
+          </strong>
+          (str) - The string identifier of the path.
+         </li>
+         <li>
+          <strong class="pname">
+           <code>
+            NewPathList
+           </code>
+          </strong>
+          (list of str) - The new value for the path. If this is empty, the path is not 
+          changed.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            AttributeError
+           </strong>
+          </code>
+          - Raised if the supplied key does not match a path entry.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if NewPathList is empty.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the path is not user-modifiable.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ResourceInfo-class.html#pathList">
+         pathList()
+        </a>
+        ,
+        <a class="link" href="mari.ResourceInfo-class.html#setPath">
+         setPath()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setPtexFlattenedSequenceTemplate">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setPtexFlattenedSequenceTemplate
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Name
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ResourceInfo.setPtexFlattenedSequenceTemplate">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Sets the default template used for flattened
+       <a class="link" href="mari.Ptex-class.html">
+        Ptex
+       </a>
+       image sequences.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The new default template to use for flattened
+          <a class="link" href="mari.Ptex-class.html">
+           Ptex
+          </a>
+          image sequences
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ResourceInfo-class.html#ptexFlattenedSequenceTemplate">
+         ptexFlattenedSequenceTemplate()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setPtexSequenceTemplate">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setPtexSequenceTemplate
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Name
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ResourceInfo.setPtexSequenceTemplate">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Sets the default template used for
+       <a class="link" href="mari.Ptex-class.html">
+        Ptex
+       </a>
+       image sequences.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The new default template to use for
+          <a class="link" href="mari.Ptex-class.html">
+           Ptex
+          </a>
+          image sequences
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ResourceInfo-class.html#ptexSequenceTemplate">
+         ptexSequenceTemplate()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setSequenceTemplate">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setSequenceTemplate
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Name
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ResourceInfo.setSequenceTemplate">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Sets the default template used for image sequences.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The new default template to use for image sequences
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ResourceInfo-class.html#sequenceTemplate">
+         sequenceTemplate()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="setSequenceToken">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            setSequenceToken
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Token
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ResourceInfo.setSequenceToken">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Sets the sequence token to be used to replace the number in a sequence
+  of images.
+      </p>
+      <p>
+       By default, this is "$INDEX". Other examples are: $UDIM 
+  (WETA), @, ####
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Token
+           </code>
+          </strong>
+          (str) - The new sequence token to use.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+      <div class="fields">
+       <p>
+        <strong>
+         See Also:
+        </strong>
+        <a class="link" href="mari.ResourceInfo-class.html#sequenceToken">
+         sequenceToken()
+        </a>
+       </p>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="settingsFilePath">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            settingsFilePath
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Name
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ResourceInfo.settingsFilePath">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Returns the path to the given settings file.
+      </p>
+      <p>
+       This allows a settings file to be overridden in a local settings 
+  folder.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Name
+           </code>
+          </strong>
+          (str) - The file name of the settings file to retrieve the path for
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: str
+       </dt>
+       <dd>
+        The resolved file path. This is not guaranteed to exist.
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="showPDF">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            showPDF
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Path
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ResourceInfo.showPDF">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Displays a PDF file in the system's default viewer.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Path
+           </code>
+          </strong>
+          (str) - The file path of the PDF to view
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="showURL">
+  </a>
+  <div>
+   <table bgcolor="white" border="1" cellpadding="3" cellspacing="0" class="details" width="100%">
+    <tr>
+     <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+       <tr valign="top">
+        <td>
+         <h3 class="epydoc">
+          <span class="sig">
+           <span class="sig-name">
+            showURL
+           </span>
+           (
+           <span class="sig-arg">
+            self
+           </span>
+           ,
+           <span class="sig-arg">
+            Url
+           </span>
+           )
+          </span>
+         </h3>
+        </td>
+        <td align="right" valign="top">
+         <span class="codelink">
+          <a href="mari-pysrc.html#ResourceInfo.showURL">
+           source&nbsp;code
+          </a>
+         </span>
+         &nbsp;
+        </td>
+       </tr>
+      </table>
+      <p>
+       Displays a URL in the system's default web browser.
+      </p>
+      <dl class="fields">
+       <dt>
+        Parameters:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <strong class="pname">
+           <code>
+            Url
+           </code>
+          </strong>
+          (str) - The URL of the web site to display.
+         </li>
+        </ul>
+       </dd>
+       <dt>
+        Returns: None
+       </dt>
+       <dt>
+        Raises:
+       </dt>
+       <dd>
+        <ul class="nomargin-top">
+         <li>
+          <code>
+           <strong class="fraise">
+            ValueError
+           </strong>
+          </code>
+          - Raised if the URL is invalid.
+         </li>
+         <li>
+          <code>
+           <strong class="fraise">
+            RuntimeError
+           </strong>
+          </code>
+          - Raised if the external browser could not be successfully launched.
+         </li>
+        </ul>
+       </dd>
+      </dl>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

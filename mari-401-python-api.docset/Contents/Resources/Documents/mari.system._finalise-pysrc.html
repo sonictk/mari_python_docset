@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.system._finalise
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.system-module.html">
+       Package&nbsp;system
+      </a>
+      ::
+        Module&nbsp;_finalise
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.system._finalise-pysrc.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <h1 class="epydoc">
+   Source Code for
+   <a href="mari.system._finalise-module.html" onclick="show_private();">
+    Module mari.system._finalise
+   </a>
+  </h1>
+  <pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment">#-------------------------------------------------------------------------------</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"># Script to finalise set up of initial Python system configuration</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-comment"># coding: utf-8</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-comment"># Copyright (c) 2011 The Foundry Visionmongers Ltd.  All Rights Reserved.</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-comment">#-------------------------------------------------------------------------------</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name" id="link-0" targets="Package mari=mari-module.html"><a class="py-name" href="#" onclick="return doclink('link-0', 'mari', 'link-0');" title="mari">mari</a></tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-comment">#-------------------------------------------------------------------------------</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name" id="link-1"><a class="py-name" href="#" onclick="return doclink('link-1', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-2" targets="Variable mari.app=mari-module.html#app"><a class="py-name" href="#" onclick="return doclink('link-2', 'app', 'link-2');" title="mari.app">app</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-3" targets="Method mari.Application.isRunning()=mari.Application-class.html#isRunning"><a class="py-name" href="#" onclick="return doclink('link-3', 'isRunning', 'link-3');" title="mari.Application.isRunning">isRunning</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">    <tt class="py-comment"># This action set is only enabled when a project is open</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">    <tt class="py-name" id="link-4" targets="Variable mari.system._finalise.project_set_name=mari.system._finalise-module.html#project_set_name"><a class="py-name" href="#" onclick="return doclink('link-4', 'project_set_name', 'link-4');" title="mari.system._finalise.project_set_name">project_set_name</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"RequiresProject"</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">    <tt class="py-name" id="link-5"><a class="py-name" href="#" onclick="return doclink('link-5', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-6" targets="Method mari.MenuManager.actions()=mari.MenuManager-class.html#actions,Variable mari.actions=mari-module.html#actions"><a class="py-name" href="#" onclick="return doclink('link-6', 'actions', 'link-6');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-7" targets="Method mari.ActionManager.disableSet()=mari.ActionManager-class.html#disableSet"><a class="py-name" href="#" onclick="return doclink('link-7', 'disableSet', 'link-7');" title="mari.ActionManager.disableSet">disableSet</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-8"><a class="py-name" href="#" onclick="return doclink('link-8', 'project_set_name', 'link-4');" title="mari.system._finalise.project_set_name">project_set_name</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">    <tt class="py-name" id="link-9"><a class="py-name" href="#" onclick="return doclink('link-9', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-10" targets="Package mari.utils=mari.utils-module.html"><a class="py-name" href="#" onclick="return doclink('link-10', 'utils', 'link-10');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-11" targets="Function mari.utils.signal_helpers.connect()=mari.utils.signal_helpers-module.html#connect"><a class="py-name" href="#" onclick="return doclink('link-11', 'connect', 'link-11');" title="mari.utils.signal_helpers.connect">connect</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-12"><a class="py-name" href="#" onclick="return doclink('link-12', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-13" targets="Variable mari.projects=mari-module.html#projects"><a class="py-name" href="#" onclick="return doclink('link-13', 'projects', 'link-13');" title="mari.projects">projects</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-14" targets="Method mari.ProjectManager.openedProject()=mari.ProjectManager-class.html#openedProject"><a class="py-name" href="#" onclick="return doclink('link-14', 'openedProject', 'link-14');" title="mari.ProjectManager.openedProject">openedProject</a></tt><tt class="py-op">,</tt>       <tt class="py-keyword">lambda</tt><tt class="py-op">:</tt> <tt class="py-name" id="link-15"><a class="py-name" href="#" onclick="return doclink('link-15', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-16"><a class="py-name" href="#" onclick="return doclink('link-16', 'actions', 'link-6');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-17" targets="Method mari.ActionManager.enableSet()=mari.ActionManager-class.html#enableSet"><a class="py-name" href="#" onclick="return doclink('link-17', 'enableSet', 'link-17');" title="mari.ActionManager.enableSet">enableSet</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-18"><a class="py-name" href="#" onclick="return doclink('link-18', 'project_set_name', 'link-4');" title="mari.system._finalise.project_set_name">project_set_name</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">    <tt class="py-name" id="link-19"><a class="py-name" href="#" onclick="return doclink('link-19', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-20"><a class="py-name" href="#" onclick="return doclink('link-20', 'utils', 'link-10');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-21"><a class="py-name" href="#" onclick="return doclink('link-21', 'connect', 'link-11');" title="mari.utils.signal_helpers.connect">connect</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-22"><a class="py-name" href="#" onclick="return doclink('link-22', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-23"><a class="py-name" href="#" onclick="return doclink('link-23', 'projects', 'link-13');" title="mari.projects">projects</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-24" targets="Method mari.ProjectManager.aboutToCloseProject()=mari.ProjectManager-class.html#aboutToCloseProject"><a class="py-name" href="#" onclick="return doclink('link-24', 'aboutToCloseProject', 'link-24');" title="mari.ProjectManager.aboutToCloseProject">aboutToCloseProject</a></tt><tt class="py-op">,</tt> <tt class="py-keyword">lambda</tt><tt class="py-op">:</tt> <tt class="py-name" id="link-25"><a class="py-name" href="#" onclick="return doclink('link-25', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-26"><a class="py-name" href="#" onclick="return doclink('link-26', 'actions', 'link-6');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-27"><a class="py-name" href="#" onclick="return doclink('link-27', 'disableSet', 'link-7');" title="mari.ActionManager.disableSet">disableSet</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-28"><a class="py-name" href="#" onclick="return doclink('link-28', 'project_set_name', 'link-4');" title="mari.system._finalise.project_set_name">project_set_name</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>

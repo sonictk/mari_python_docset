@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   mari.examples.lights
+  </title>
+  <link href="epydoc.css" rel="stylesheet" type="text/css"/>
+  <script src="epydoc.js" type="text/javascript">
+  </script>
+ </head>
+ <body alink="#204080" bgcolor="white" link="blue" text="black" vlink="#204080">
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table cellpadding="0" cellspacing="0" width="100%">
+   <tr valign="top">
+    <td width="100%">
+     <span class="breadcrumbs">
+      <a href="mari-module.html">
+       Package&nbsp;mari
+      </a>
+      ::
+      <a href="mari.examples-module.html">
+       Package&nbsp;examples
+      </a>
+      ::
+        Module&nbsp;lights
+     </span>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <!-- hide/show private -->
+      <tr>
+       <td align="right">
+        <span class="options">
+         [
+         <a href="frames.html" target="_top">
+          frames
+         </a>
+         ]&nbsp;|&nbsp;
+         <a href="mari.examples.lights-pysrc.html" target="_top">
+          no&nbsp;frames
+         </a>
+         ]
+        </span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <h1 class="epydoc">
+   Source Code for
+   <a href="mari.examples.lights-module.html">
+    Module mari.examples.lights
+   </a>
+  </h1>
+  <pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"># Light Examples</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment"># coding: utf-8</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment"># Copyright (c) 2016 The Foundry Visionmongers Ltd.  All Rights Reserved.</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name" id="link-0" targets="Package mari=mari-module.html"><a class="py-name" href="#" onclick="return doclink('link-0', 'mari', 'link-0');" title="mari">mari</a></tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"> </tt>
+<a name="setupEnvironmentLightInfo"></a><div id="setupEnvironmentLightInfo-def"><a name="L11"></a><tt class="py-lineno"> 11</tt> <a class="py-toggle" href="#" id="setupEnvironmentLightInfo-toggle" onclick="return toggle('setupEnvironmentLightInfo');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.lights-module.html#setupEnvironmentLightInfo">setupEnvironmentLightInfo</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="setupEnvironmentLightInfo-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="setupEnvironmentLightInfo-expanded"><a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line">    <tt class="py-docstring">""" Setup an example environment light."""</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name" id="link-1"><a class="py-name" href="#" onclick="return doclink('link-1', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-2" targets="Package mari.utils=mari.utils-module.html"><a class="py-name" href="#" onclick="return doclink('link-2', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-3" targets="Function mari.utils.misc.checkProjectAndGeoValidity()=mari.utils.misc-module.html#checkProjectAndGeoValidity"><a class="py-name" href="#" onclick="return doclink('link-3', 'checkProjectAndGeoValidity', 'link-3');" title="mari.utils.misc.checkProjectAndGeoValidity">checkProjectAndGeoValidity</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name" id="link-4" targets="Function mari.current.light()=mari.current-module.html#light"><a class="py-name" href="#" onclick="return doclink('link-4', 'light', 'link-4');" title="mari.current.light">light</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name" id="link-5"><a class="py-name" href="#" onclick="return doclink('link-5', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-6" targets="Module mari.examples.lights=mari.examples.lights-module.html"><a class="py-name" href="#" onclick="return doclink('link-6', 'lights', 'link-6');" title="mari.examples.lights">lights</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-7" targets="Method mari.ActionManager.list()=mari.ActionManager-class.html#list,Method mari.CanvasManager.list()=mari.CanvasManager-class.html#list,Method mari.GeoManager.list()=mari.GeoManager-class.html#list,Method mari.ImageManager.list()=mari.ImageManager-class.html#list,Method mari.LightManager.list()=mari.LightManager-class.html#list,Method mari.PaletteManager.list()=mari.PaletteManager-class.html#list,Method mari.Preferences.list()=mari.Preferences-class.html#list,Method mari.ProjectManager.list()=mari.ProjectManager-class.html#list,Method mari.ProjectorManager.list()=mari.ProjectorManager-class.html#list,Method mari.SelectionGroupManager.list()=mari.SelectionGroupManager-class.html#list,Method mari.ShelfManager.list()=mari.ShelfManager-class.html#list"><a class="py-name" href="#" onclick="return doclink('link-7', 'list', 'link-7');" title="mari.ActionManager.list
+mari.CanvasManager.list
+mari.GeoManager.list
+mari.ImageManager.list
+mari.LightManager.list
+mari.PaletteManager.list
+mari.Preferences.list
+mari.ProjectManager.list
+mari.ProjectorManager.list
+mari.SelectionGroupManager.list
+mari.ShelfManager.list">list</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name" id="link-8"><a class="py-name" href="#" onclick="return doclink('link-8', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line">            <tt class="py-keyword">continue</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name" id="link-9"><a class="py-name" href="#" onclick="return doclink('link-9', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-10" targets="Method mari.Light.isEnvironmentLight()=mari.Light-class.html#isEnvironmentLight"><a class="py-name" href="#" onclick="return doclink('link-10', 'isEnvironmentLight', 'link-10');" title="mari.Light.isEnvironmentLight">isEnvironmentLight</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line">            <tt class="py-keyword">continue</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">        <tt class="py-name" id="link-11"><a class="py-name" href="#" onclick="return doclink('link-11', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-12"><a class="py-name" href="#" onclick="return doclink('link-12', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-13" targets="Function mari.utils.misc.messageAndLog()=mari.utils.misc-module.html#messageAndLog"><a class="py-name" href="#" onclick="return doclink('link-13', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[setupEnvironmentLightInfo] Found the environment light '%s'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-14"><a class="py-name" href="#" onclick="return doclink('link-14', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-15" targets="Method mari.Action.name()=mari.Action-class.html#name,Method mari.Camera.name()=mari.Camera-class.html#name,Method mari.Channel.name()=mari.Channel-class.html#name,Method mari.ChannelInfo.name()=mari.ChannelInfo-class.html#name,Method mari.GeoEntity.name()=mari.GeoEntity-class.html#name,Method mari.GeoEntityVersion.name()=mari.GeoEntityVersion-class.html#name,Method mari.GeoPatch.name()=mari.GeoPatch-class.html#name,Method mari.GeometryOperation.name()=mari.GeometryOperation-class.html#name,Method mari.ImageOperation.name()=mari.ImageOperation-class.html#name,Method mari.ImageSet.name()=mari.ImageSet-class.html#name,Method mari.Layer.name()=mari.Layer-class.html#name,Method mari.LayerStack.name()=mari.LayerStack-class.html#name,Method mari.Light.name()=mari.Light-class.html#name,Method mari.LocatorEntity.name()=mari.LocatorEntity-class.html#name,Method mari.Node.name()=mari.Node-class.html#name,Method mari.Palette.name()=mari.Palette-class.html#name,Method mari.ParticleOp.name()=mari.ParticleOp-class.html#name,Method mari.PostFilter.name()=mari.PostFilter-class.html#name,Method mari.PostFilterCollection.name()=mari.PostFilterCollection-class.html#name,Method mari.Project.name()=mari.Project-class.html#name,Method mari.ProjectInfo.name()=mari.ProjectInfo-class.html#name,Method mari.Projector.name()=mari.Projector-class.html#name,Method mari.SelectionGroup.name()=mari.SelectionGroup-class.html#name,Method mari.Shader.name()=mari.Shader-class.html#name,Method mari.Shelf.name()=mari.Shelf-class.html#name,Method mari.Snapshot.name()=mari.Snapshot-class.html#name,Method mari.Tool.name()=mari.Tool-class.html#name"><a class="py-name" href="#" onclick="return doclink('link-15', 'name', 'link-15');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">        <tt class="py-name" id="link-16" targets="Method mari.ImageSet.image()=mari.ImageSet-class.html#image"><a class="py-name" href="#" onclick="return doclink('link-16', 'image', 'link-16');" title="mari.ImageSet.image">image</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">        <tt class="py-comment"># Try to obtain an image from the image manager</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">            <tt class="py-name" id="link-17"><a class="py-name" href="#" onclick="return doclink('link-17', 'image', 'link-16');" title="mari.ImageSet.image">image</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-18"><a class="py-name" href="#" onclick="return doclink('link-18', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-19" targets="Method mari.PatchLinksManager.images()=mari.PatchLinksManager-class.html#images,Variable mari.examples.c_api_channel_export.images=mari.examples.c_api_channel_export-module.html#images"><a class="py-name" href="#" onclick="return doclink('link-19', 'images', 'link-19');" title="mari.PatchLinksManager.images
+mari.examples.c_api_channel_export.images">images</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-20"><a class="py-name" href="#" onclick="return doclink('link-20', 'list', 'link-7');" title="mari.ActionManager.list
+mari.CanvasManager.list
+mari.GeoManager.list
+mari.ImageManager.list
+mari.LightManager.list
+mari.PaletteManager.list
+mari.Preferences.list
+mari.ProjectManager.list
+mari.ProjectorManager.list
+mari.SelectionGroupManager.list
+mari.ShelfManager.list">list</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">            <tt class="py-name" id="link-21"><a class="py-name" href="#" onclick="return doclink('link-21', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-22"><a class="py-name" href="#" onclick="return doclink('link-22', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-23"><a class="py-name" href="#" onclick="return doclink('link-23', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[setupEnvironmentLightInfo] Found image '%s' from the image manager"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name" id="link-24"><a class="py-name" href="#" onclick="return doclink('link-24', 'image', 'link-16');" title="mari.ImageSet.image">image</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">            <tt class="py-keyword">pass</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">        <tt class="py-comment"># If no image, set the parameter to a string</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name" id="link-25"><a class="py-name" href="#" onclick="return doclink('link-25', 'image', 'link-16');" title="mari.ImageSet.image">image</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">            <tt class="py-name" id="link-26"><a class="py-name" href="#" onclick="return doclink('link-26', 'image', 'link-16');" title="mari.ImageSet.image">image</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-27"><a class="py-name" href="#" onclick="return doclink('link-27', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-28" targets="Variable mari.resources=mari-module.html#resources"><a class="py-name" href="#" onclick="return doclink('link-28', 'resources', 'link-28');" title="mari.resources">resources</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-29" targets="Method mari.Action.path()=mari.Action-class.html#path,Method mari.ChannelInfo.path()=mari.ChannelInfo-class.html#path,Method mari.GeoEntityVersion.path()=mari.GeoEntityVersion-class.html#path,Method mari.QuickProjector.path()=mari.QuickProjector-class.html#path,Method mari.ResourceInfo.path()=mari.ResourceInfo-class.html#path"><a class="py-name" href="#" onclick="return doclink('link-29', 'path', 'link-29');" title="mari.Action.path
+mari.ChannelInfo.path
+mari.GeoEntityVersion.path
+mari.QuickProjector.path
+mari.ResourceInfo.path">path</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-30"><a class="py-name" href="#" onclick="return doclink('link-30', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-31"><a class="py-name" href="#" onclick="return doclink('link-31', 'resources', 'link-28');" title="mari.resources">resources</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-32" targets="Variable mari.ResourceInfo.MEDIA=mari.ResourceInfo-class.html#MEDIA"><a class="py-name" href="#" onclick="return doclink('link-32', 'MEDIA', 'link-32');" title="mari.ResourceInfo.MEDIA">MEDIA</a></tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">"/Environments/Hdrs/Kitchen.exr"</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">            <tt class="py-name" id="link-33"><a class="py-name" href="#" onclick="return doclink('link-33', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-34"><a class="py-name" href="#" onclick="return doclink('link-34', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-35"><a class="py-name" href="#" onclick="return doclink('link-35', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[setupEnvironmentLightInfo] No image found from the image manager, will load image '%s'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-36"><a class="py-name" href="#" onclick="return doclink('link-36', 'image', 'link-16');" title="mari.ImageSet.image">image</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">        <tt class="py-name" id="link-37"><a class="py-name" href="#" onclick="return doclink('link-37', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-38" targets="Method mari.EnvironmentLight.setCubeImage()=mari.EnvironmentLight-class.html#setCubeImage"><a class="py-name" href="#" onclick="return doclink('link-38', 'setCubeImage', 'link-38');" title="mari.EnvironmentLight.setCubeImage">setCubeImage</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-39"><a class="py-name" href="#" onclick="return doclink('link-39', 'image', 'link-16');" title="mari.ImageSet.image">image</a></tt><tt class="py-op">,</tt> <tt class="py-name" id="link-40"><a class="py-name" href="#" onclick="return doclink('link-40', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-41" targets="Variable mari.EnvironmentLight.CubeImageType.TYPE_GUESS=mari.EnvironmentLight.CubeImageType-class.html#TYPE_GUESS,Variable mari.EnvironmentLight.TYPE_GUESS=mari.EnvironmentLight-class.html#TYPE_GUESS"><a class="py-name" href="#" onclick="return doclink('link-41', 'TYPE_GUESS', 'link-41');" title="mari.EnvironmentLight.CubeImageType.TYPE_GUESS
+mari.EnvironmentLight.TYPE_GUESS">TYPE_GUESS</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">        <tt class="py-name" id="link-42"><a class="py-name" href="#" onclick="return doclink('link-42', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-43"><a class="py-name" href="#" onclick="return doclink('link-43', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-44"><a class="py-name" href="#" onclick="return doclink('link-44', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[setupEnvironmentLightInfo] Set cube image on light '%s'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-45"><a class="py-name" href="#" onclick="return doclink('link-45', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-46"><a class="py-name" href="#" onclick="return doclink('link-46', 'name', 'link-15');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">        <tt class="py-name" id="link-47"><a class="py-name" href="#" onclick="return doclink('link-47', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-48" targets="Method mari.EnvironmentLight.setCanvasDisplay()=mari.EnvironmentLight-class.html#setCanvasDisplay"><a class="py-name" href="#" onclick="return doclink('link-48', 'setCanvasDisplay', 'link-48');" title="mari.EnvironmentLight.setCanvasDisplay">setCanvasDisplay</a></tt><tt class="py-op">(</tt> <tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">        <tt class="py-name" id="link-49"><a class="py-name" href="#" onclick="return doclink('link-49', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-50"><a class="py-name" href="#" onclick="return doclink('link-50', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-51"><a class="py-name" href="#" onclick="return doclink('link-51', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[setupEnvironmentLightInfo] Set display canvas to True on light '%s'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-52"><a class="py-name" href="#" onclick="return doclink('link-52', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-53"><a class="py-name" href="#" onclick="return doclink('link-53', 'name', 'link-15');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">        <tt class="py-name" id="link-54"><a class="py-name" href="#" onclick="return doclink('link-54', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-55" targets="Method mari.EnvironmentLight.setIntensity()=mari.EnvironmentLight-class.html#setIntensity"><a class="py-name" href="#" onclick="return doclink('link-55', 'setIntensity', 'link-55');" title="mari.EnvironmentLight.setIntensity">setIntensity</a></tt><tt class="py-op">(</tt> <tt class="py-number">0.5</tt><tt class="py-op">)</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">        <tt class="py-name" id="link-56"><a class="py-name" href="#" onclick="return doclink('link-56', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-57"><a class="py-name" href="#" onclick="return doclink('link-57', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-58"><a class="py-name" href="#" onclick="return doclink('link-58', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[setupEnvironmentLightInfo] Set intensity to 0.5 on light '%s'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-59"><a class="py-name" href="#" onclick="return doclink('link-59', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-60"><a class="py-name" href="#" onclick="return doclink('link-60', 'name', 'link-15');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">    <tt class="py-name" id="link-61"><a class="py-name" href="#" onclick="return doclink('link-61', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-62"><a class="py-name" href="#" onclick="return doclink('link-62', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-63"><a class="py-name" href="#" onclick="return doclink('link-63', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[setupEnvironmentLightInfo] No Environment light found."</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"> </tt>
+<a name="printEnvironmentLightInfo"></a><div id="printEnvironmentLightInfo-def"><a name="L50"></a><tt class="py-lineno"> 50</tt> <a class="py-toggle" href="#" id="printEnvironmentLightInfo-toggle" onclick="return toggle('printEnvironmentLightInfo');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.lights-module.html#printEnvironmentLightInfo">printEnvironmentLightInfo</a><tt class="py-op">(</tt><tt class="py-param">light</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="printEnvironmentLightInfo-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="printEnvironmentLightInfo-expanded"><a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">    <tt class="py-docstring">""" Print info about an environment light."""</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-64"><a class="py-name" href="#" onclick="return doclink('link-64', 'light', 'link-4');" title="mari.current.light">light</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name" id="link-65"><a class="py-name" href="#" onclick="return doclink('link-65', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-66"><a class="py-name" href="#" onclick="return doclink('link-66', 'isEnvironmentLight', 'link-10');" title="mari.Light.isEnvironmentLight">isEnvironmentLight</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">:</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">        <tt class="py-name" id="link-67"><a class="py-name" href="#" onclick="return doclink('link-67', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-68"><a class="py-name" href="#" onclick="return doclink('link-68', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-69"><a class="py-name" href="#" onclick="return doclink('link-69', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"Light '%s' is not an environment light"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-70"><a class="py-name" href="#" onclick="return doclink('link-70', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-71"><a class="py-name" href="#" onclick="return doclink('link-71', 'name', 'link-15');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">    <tt class="py-name" id="link-72"><a class="py-name" href="#" onclick="return doclink('link-72', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-73"><a class="py-name" href="#" onclick="return doclink('link-73', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-74"><a class="py-name" href="#" onclick="return doclink('link-74', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"       Fix To : %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name" id="link-75"><a class="py-name" href="#" onclick="return doclink('link-75', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-76" targets="Method mari.EnvironmentLight.fixedTo()=mari.EnvironmentLight-class.html#fixedTo,Method mari.PointLight.fixedTo()=mari.PointLight-class.html#fixedTo"><a class="py-name" href="#" onclick="return doclink('link-76', 'fixedTo', 'link-76');" title="mari.EnvironmentLight.fixedTo
+mari.PointLight.fixedTo">fixedTo</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">    <tt class="py-name" id="link-77"><a class="py-name" href="#" onclick="return doclink('link-77', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-78"><a class="py-name" href="#" onclick="return doclink('link-78', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-79"><a class="py-name" href="#" onclick="return doclink('link-79', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"    Intensity : %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name" id="link-80"><a class="py-name" href="#" onclick="return doclink('link-80', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-81" targets="Method mari.EnvironmentLight.intensity()=mari.EnvironmentLight-class.html#intensity"><a class="py-name" href="#" onclick="return doclink('link-81', 'intensity', 'link-81');" title="mari.EnvironmentLight.intensity">intensity</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">    <tt class="py-name" id="link-82"><a class="py-name" href="#" onclick="return doclink('link-82', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-83"><a class="py-name" href="#" onclick="return doclink('link-83', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-84"><a class="py-name" href="#" onclick="return doclink('link-84', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"      Display : %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name" id="link-85"><a class="py-name" href="#" onclick="return doclink('link-85', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-86" targets="Method mari.EnvironmentLight.canvasDisplay()=mari.EnvironmentLight-class.html#canvasDisplay"><a class="py-name" href="#" onclick="return doclink('link-86', 'canvasDisplay', 'link-86');" title="mari.EnvironmentLight.canvasDisplay">canvasDisplay</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">    <tt class="py-name" id="link-87"><a class="py-name" href="#" onclick="return doclink('link-87', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-88"><a class="py-name" href="#" onclick="return doclink('link-88', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-89"><a class="py-name" href="#" onclick="return doclink('link-89', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"  Canvas Blur : %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name" id="link-90"><a class="py-name" href="#" onclick="return doclink('link-90', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-91" targets="Method mari.EnvironmentLight.canvasBlur()=mari.EnvironmentLight-class.html#canvasBlur"><a class="py-name" href="#" onclick="return doclink('link-91', 'canvasBlur', 'link-91');" title="mari.EnvironmentLight.canvasBlur">canvasBlur</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">    <tt class="py-name" id="link-92"><a class="py-name" href="#" onclick="return doclink('link-92', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-93"><a class="py-name" href="#" onclick="return doclink('link-93', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-94"><a class="py-name" href="#" onclick="return doclink('link-94', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"     Rotation : %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name" id="link-95"><a class="py-name" href="#" onclick="return doclink('link-95', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-96" targets="Method mari.EnvironmentLight.rotationUp()=mari.EnvironmentLight-class.html#rotationUp"><a class="py-name" href="#" onclick="return doclink('link-96', 'rotationUp', 'link-96');" title="mari.EnvironmentLight.rotationUp">rotationUp</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-97"><a class="py-name" href="#" onclick="return doclink('link-97', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-98" targets="Method mari.EnvironmentLight.rotationUpMode()=mari.EnvironmentLight-class.html#rotationUpMode"><a class="py-name" href="#" onclick="return doclink('link-98', 'rotationUpMode', 'link-98');" title="mari.EnvironmentLight.rotationUpMode">rotationUpMode</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">!=</tt> <tt class="py-name" id="link-99"><a class="py-name" href="#" onclick="return doclink('link-99', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-100" targets="Variable mari.EnvironmentLight.MODE_STATIC=mari.EnvironmentLight-class.html#MODE_STATIC,Variable mari.EnvironmentLight.RotationMode.MODE_STATIC=mari.EnvironmentLight.RotationMode-class.html#MODE_STATIC"><a class="py-name" href="#" onclick="return doclink('link-100', 'MODE_STATIC', 'link-100');" title="mari.EnvironmentLight.MODE_STATIC
+mari.EnvironmentLight.RotationMode.MODE_STATIC">MODE_STATIC</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">        <tt class="py-name" id="link-101"><a class="py-name" href="#" onclick="return doclink('link-101', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-102"><a class="py-name" href="#" onclick="return doclink('link-102', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-103"><a class="py-name" href="#" onclick="return doclink('link-103', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"         Mode : %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name" id="link-104"><a class="py-name" href="#" onclick="return doclink('link-104', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-105"><a class="py-name" href="#" onclick="return doclink('link-105', 'rotationUpMode', 'link-98');" title="mari.EnvironmentLight.rotationUpMode">rotationUpMode</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">        <tt class="py-name" id="link-106"><a class="py-name" href="#" onclick="return doclink('link-106', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-107"><a class="py-name" href="#" onclick="return doclink('link-107', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-108"><a class="py-name" href="#" onclick="return doclink('link-108', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"        Speed : %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name" id="link-109"><a class="py-name" href="#" onclick="return doclink('link-109', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-110" targets="Method mari.EnvironmentLight.rotationUpSpeed()=mari.EnvironmentLight-class.html#rotationUpSpeed"><a class="py-name" href="#" onclick="return doclink('link-110', 'rotationUpSpeed', 'link-110');" title="mari.EnvironmentLight.rotationUpSpeed">rotationUpSpeed</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">    <tt class="py-name" id="link-111"><a class="py-name" href="#" onclick="return doclink('link-111', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-112"><a class="py-name" href="#" onclick="return doclink('link-112', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-113"><a class="py-name" href="#" onclick="return doclink('link-113', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"        Image : '%s' (%s)"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-114"><a class="py-name" href="#" onclick="return doclink('link-114', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-115" targets="Method mari.EnvironmentLight.cubeImageFilename()=mari.EnvironmentLight-class.html#cubeImageFilename"><a class="py-name" href="#" onclick="return doclink('link-115', 'cubeImageFilename', 'link-115');" title="mari.EnvironmentLight.cubeImageFilename">cubeImageFilename</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name" id="link-116"><a class="py-name" href="#" onclick="return doclink('link-116', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-117" targets="Method mari.EnvironmentLight.cubeImageType()=mari.EnvironmentLight-class.html#cubeImageType"><a class="py-name" href="#" onclick="return doclink('link-117', 'cubeImageType', 'link-117');" title="mari.EnvironmentLight.cubeImageType">cubeImageType</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">    <tt class="py-name" id="link-118"><a class="py-name" href="#" onclick="return doclink('link-118', 'image', 'link-16');" title="mari.ImageSet.image">image</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-119"><a class="py-name" href="#" onclick="return doclink('link-119', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-120" targets="Method mari.EnvironmentLight.cubeImage()=mari.EnvironmentLight-class.html#cubeImage"><a class="py-name" href="#" onclick="return doclink('link-120', 'cubeImage', 'link-120');" title="mari.EnvironmentLight.cubeImage">cubeImage</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">;</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-121"><a class="py-name" href="#" onclick="return doclink('link-121', 'image', 'link-16');" title="mari.ImageSet.image">image</a></tt> <tt class="py-op">:</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">        <tt class="py-name" id="link-122"><a class="py-name" href="#" onclick="return doclink('link-122', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-123"><a class="py-name" href="#" onclick="return doclink('link-123', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-124"><a class="py-name" href="#" onclick="return doclink('link-124', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"        Image : (%dx%d)"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-125"><a class="py-name" href="#" onclick="return doclink('link-125', 'image', 'link-16');" title="mari.ImageSet.image">image</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-126" targets="Method mari.Channel.width()=mari.Channel-class.html#width,Method mari.ChannelInfo.width()=mari.ChannelInfo-class.html#width,Method mari.Image.width()=mari.Image-class.html#width,Method mari.Projector.width()=mari.Projector-class.html#width,Method mari.QuickProjector.width()=mari.QuickProjector-class.html#width,Method mari.system._modo_ui.ResolutionCombobox.width()=mari.system._modo_ui.ResolutionCombobox-class.html#width"><a class="py-name" href="#" onclick="return doclink('link-126', 'width', 'link-126');" title="mari.Channel.width
+mari.ChannelInfo.width
+mari.Image.width
+mari.Projector.width
+mari.QuickProjector.width
+mari.system._modo_ui.ResolutionCombobox.width">width</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-127"><a class="py-name" href="#" onclick="return doclink('link-127', 'image', 'link-16');" title="mari.ImageSet.image">image</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-128" targets="Method mari.Channel.height()=mari.Channel-class.html#height,Method mari.ChannelInfo.height()=mari.ChannelInfo-class.html#height,Method mari.Image.height()=mari.Image-class.html#height,Method mari.Projector.height()=mari.Projector-class.html#height,Method mari.QuickProjector.height()=mari.QuickProjector-class.html#height,Method mari.system._modo_ui.ResolutionCombobox.height()=mari.system._modo_ui.ResolutionCombobox-class.html#height"><a class="py-name" href="#" onclick="return doclink('link-128', 'height', 'link-128');" title="mari.Channel.height
+mari.ChannelInfo.height
+mari.Image.height
+mari.Projector.height
+mari.QuickProjector.height
+mari.system._modo_ui.ResolutionCombobox.height">height</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">        <tt class="py-name" id="link-129" targets="Method mari.Channel.colorspaceConfig()=mari.Channel-class.html#colorspaceConfig,Method mari.ChannelInfo.colorspaceConfig()=mari.ChannelInfo-class.html#colorspaceConfig,Method mari.Image.colorspaceConfig()=mari.Image-class.html#colorspaceConfig"><a class="py-name" href="#" onclick="return doclink('link-129', 'colorspaceConfig', 'link-129');" title="mari.Channel.colorspaceConfig
+mari.ChannelInfo.colorspaceConfig
+mari.Image.colorspaceConfig">colorspaceConfig</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-130"><a class="py-name" href="#" onclick="return doclink('link-130', 'image', 'link-16');" title="mari.ImageSet.image">image</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-131"><a class="py-name" href="#" onclick="return doclink('link-131', 'colorspaceConfig', 'link-129');" title="mari.Channel.colorspaceConfig
+mari.ChannelInfo.colorspaceConfig
+mari.Image.colorspaceConfig">colorspaceConfig</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">        <tt class="py-name" id="link-132"><a class="py-name" href="#" onclick="return doclink('link-132', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-133"><a class="py-name" href="#" onclick="return doclink('link-133', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-134"><a class="py-name" href="#" onclick="return doclink('link-134', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"  OCIO Config : '%s'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-135"><a class="py-name" href="#" onclick="return doclink('link-135', 'colorspaceConfig', 'link-129');" title="mari.Channel.colorspaceConfig
+mari.ChannelInfo.colorspaceConfig
+mari.Image.colorspaceConfig">colorspaceConfig</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-136" targets="Method mari.ColorspaceConfig.resolveFileName()=mari.ColorspaceConfig-class.html#resolveFileName"><a class="py-name" href="#" onclick="return doclink('link-136', 'resolveFileName', 'link-136');" title="mari.ColorspaceConfig.resolveFileName">resolveFileName</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">        <tt class="py-name" id="link-137"><a class="py-name" href="#" onclick="return doclink('link-137', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-138"><a class="py-name" href="#" onclick="return doclink('link-138', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-139"><a class="py-name" href="#" onclick="return doclink('link-139', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"   Colorspace : '%s'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-140"><a class="py-name" href="#" onclick="return doclink('link-140', 'colorspaceConfig', 'link-129');" title="mari.Channel.colorspaceConfig
+mari.ChannelInfo.colorspaceConfig
+mari.Image.colorspaceConfig">colorspaceConfig</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-141" targets="Method mari.ColorspaceConfig.resolveColorspace()=mari.ColorspaceConfig-class.html#resolveColorspace"><a class="py-name" href="#" onclick="return doclink('link-141', 'resolveColorspace', 'link-141');" title="mari.ColorspaceConfig.resolveColorspace">resolveColorspace</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-142"><a class="py-name" href="#" onclick="return doclink('link-142', 'colorspaceConfig', 'link-129');" title="mari.Channel.colorspaceConfig
+mari.ChannelInfo.colorspaceConfig
+mari.Image.colorspaceConfig">colorspaceConfig</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-143" targets="Variable mari.ColorspaceConfig.COLORSPACE_STAGE_NATIVE=mari.ColorspaceConfig-class.html#COLORSPACE_STAGE_NATIVE,Variable mari.ColorspaceConfig.ColorspaceStage.COLORSPACE_STAGE_NATIVE=mari.ColorspaceConfig.ColorspaceStage-class.html#COLORSPACE_STAGE_NATIVE"><a class="py-name" href="#" onclick="return doclink('link-143', 'COLORSPACE_STAGE_NATIVE', 'link-143');" title="mari.ColorspaceConfig.COLORSPACE_STAGE_NATIVE
+mari.ColorspaceConfig.ColorspaceStage.COLORSPACE_STAGE_NATIVE">COLORSPACE_STAGE_NATIVE</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">    <tt class="py-name" id="link-144"><a class="py-name" href="#" onclick="return doclink('link-144', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-145"><a class="py-name" href="#" onclick="return doclink('link-145', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-146"><a class="py-name" href="#" onclick="return doclink('link-146', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"         Axis : %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name" id="link-147"><a class="py-name" href="#" onclick="return doclink('link-147', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-148" targets="Method mari.EnvironmentLight.cubeImageUpAxis()=mari.EnvironmentLight-class.html#cubeImageUpAxis"><a class="py-name" href="#" onclick="return doclink('link-148', 'cubeImageUpAxis', 'link-148');" title="mari.EnvironmentLight.cubeImageUpAxis">cubeImageUpAxis</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">    <tt class="py-name">cubeImageRes</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-149"><a class="py-name" href="#" onclick="return doclink('link-149', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-150" targets="Method mari.EnvironmentLight.cubeImageResolution()=mari.EnvironmentLight-class.html#cubeImageResolution"><a class="py-name" href="#" onclick="return doclink('link-150', 'cubeImageResolution', 'link-150');" title="mari.EnvironmentLight.cubeImageResolution">cubeImageResolution</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">    <tt class="py-name" id="link-151"><a class="py-name" href="#" onclick="return doclink('link-151', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-152"><a class="py-name" href="#" onclick="return doclink('link-152', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-153"><a class="py-name" href="#" onclick="return doclink('link-153', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"   Resolution : (%d, %d, %d)"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">cubeImageRes</tt><tt class="py-op">,</tt> <tt class="py-name">cubeImageRes</tt><tt class="py-op">,</tt> <tt class="py-name">cubeImageRes</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"> </tt>
+<a name="printPointLightInfo"></a><div id="printPointLightInfo-def"><a name="L80"></a><tt class="py-lineno"> 80</tt> <a class="py-toggle" href="#" id="printPointLightInfo-toggle" onclick="return toggle('printPointLightInfo');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.lights-module.html#printPointLightInfo">printPointLightInfo</a><tt class="py-op">(</tt><tt class="py-param">light</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="printPointLightInfo-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="printPointLightInfo-expanded"><a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">    <tt class="py-docstring">""" Print info about a point light."""</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-154"><a class="py-name" href="#" onclick="return doclink('link-154', 'light', 'link-4');" title="mari.current.light">light</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name" id="link-155"><a class="py-name" href="#" onclick="return doclink('link-155', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-156" targets="Method mari.Light.isPointLight()=mari.Light-class.html#isPointLight"><a class="py-name" href="#" onclick="return doclink('link-156', 'isPointLight', 'link-156');" title="mari.Light.isPointLight">isPointLight</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">:</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">        <tt class="py-name" id="link-157"><a class="py-name" href="#" onclick="return doclink('link-157', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-158"><a class="py-name" href="#" onclick="return doclink('link-158', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-159"><a class="py-name" href="#" onclick="return doclink('link-159', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"Light '%s' is not a point light"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-160"><a class="py-name" href="#" onclick="return doclink('link-160', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-161"><a class="py-name" href="#" onclick="return doclink('link-161', 'name', 'link-15');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">    <tt class="py-name" id="link-162"><a class="py-name" href="#" onclick="return doclink('link-162', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-163"><a class="py-name" href="#" onclick="return doclink('link-163', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-164"><a class="py-name" href="#" onclick="return doclink('link-164', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"       FixTo : %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name" id="link-165"><a class="py-name" href="#" onclick="return doclink('link-165', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-166"><a class="py-name" href="#" onclick="return doclink('link-166', 'fixedTo', 'link-76');" title="mari.EnvironmentLight.fixedTo
+mari.PointLight.fixedTo">fixedTo</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">    <tt class="py-name" id="link-167" targets="Method mari.PointLight.position()=mari.PointLight-class.html#position"><a class="py-name" href="#" onclick="return doclink('link-167', 'position', 'link-167');" title="mari.PointLight.position">position</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-168"><a class="py-name" href="#" onclick="return doclink('link-168', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-169"><a class="py-name" href="#" onclick="return doclink('link-169', 'position', 'link-167');" title="mari.PointLight.position">position</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">    <tt class="py-name" id="link-170"><a class="py-name" href="#" onclick="return doclink('link-170', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-171"><a class="py-name" href="#" onclick="return doclink('link-171', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-172"><a class="py-name" href="#" onclick="return doclink('link-172', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"    Position : (%f, %f, %f)"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-173"><a class="py-name" href="#" onclick="return doclink('link-173', 'position', 'link-167');" title="mari.PointLight.position">position</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-174" targets="Method mari.VectorN.x()=mari.VectorN-class.html#x"><a class="py-name" href="#" onclick="return doclink('link-174', 'x', 'link-174');" title="mari.VectorN.x">x</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-175"><a class="py-name" href="#" onclick="return doclink('link-175', 'position', 'link-167');" title="mari.PointLight.position">position</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-176" targets="Method mari.VectorN.y()=mari.VectorN-class.html#y"><a class="py-name" href="#" onclick="return doclink('link-176', 'y', 'link-176');" title="mari.VectorN.y">y</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name" id="link-177"><a class="py-name" href="#" onclick="return doclink('link-177', 'position', 'link-167');" title="mari.PointLight.position">position</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-178" targets="Method mari.VectorN.z()=mari.VectorN-class.html#z"><a class="py-name" href="#" onclick="return doclink('link-178', 'z', 'link-178');" title="mari.VectorN.z">z</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">    <tt class="py-name" id="link-179"><a class="py-name" href="#" onclick="return doclink('link-179', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-180"><a class="py-name" href="#" onclick="return doclink('link-180', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-181"><a class="py-name" href="#" onclick="return doclink('link-181', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"    Diffuse  : %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-182"><a class="py-name" href="#" onclick="return doclink('link-182', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-183" targets="Method mari.PointLight.diffuse()=mari.PointLight-class.html#diffuse"><a class="py-name" href="#" onclick="return doclink('link-183', 'diffuse', 'link-183');" title="mari.PointLight.diffuse">diffuse</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name" id="link-184" targets="Method mari.Color.toString()=mari.Color-class.html#toString,Method mari.ColorspaceConfig.toString()=mari.ColorspaceConfig-class.html#toString,Method mari.utils.node_generator.Node.toString()=mari.utils.node_generator.Node-class.html#toString"><a class="py-name" href="#" onclick="return doclink('link-184', 'toString', 'link-184');" title="mari.Color.toString
+mari.ColorspaceConfig.toString
+mari.utils.node_generator.Node.toString">toString</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">    <tt class="py-name" id="link-185"><a class="py-name" href="#" onclick="return doclink('link-185', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-186"><a class="py-name" href="#" onclick="return doclink('link-186', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-187"><a class="py-name" href="#" onclick="return doclink('link-187', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"    Specular : %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-188"><a class="py-name" href="#" onclick="return doclink('link-188', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-189" targets="Method mari.PointLight.specular()=mari.PointLight-class.html#specular"><a class="py-name" href="#" onclick="return doclink('link-189', 'specular', 'link-189');" title="mari.PointLight.specular">specular</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name" id="link-190"><a class="py-name" href="#" onclick="return doclink('link-190', 'toString', 'link-184');" title="mari.Color.toString
+mari.ColorspaceConfig.toString
+mari.utils.node_generator.Node.toString">toString</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">    <tt class="py-name" id="link-191"><a class="py-name" href="#" onclick="return doclink('link-191', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-192"><a class="py-name" href="#" onclick="return doclink('link-192', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-193"><a class="py-name" href="#" onclick="return doclink('link-193', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"    Ambient  : %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-194"><a class="py-name" href="#" onclick="return doclink('link-194', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-195" targets="Method mari.PointLight.ambient()=mari.PointLight-class.html#ambient"><a class="py-name" href="#" onclick="return doclink('link-195', 'ambient', 'link-195');" title="mari.PointLight.ambient">ambient</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name" id="link-196"><a class="py-name" href="#" onclick="return doclink('link-196', 'toString', 'link-184');" title="mari.Color.toString
+mari.ColorspaceConfig.toString
+mari.utils.node_generator.Node.toString">toString</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"> </tt>
+<a name="printLightInfo"></a><div id="printLightInfo-def"><a name="L98"></a><tt class="py-lineno"> 98</tt> <a class="py-toggle" href="#" id="printLightInfo-toggle" onclick="return toggle('printLightInfo');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.lights-module.html#printLightInfo">printLightInfo</a><tt class="py-op">(</tt><tt class="py-param">light</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="printLightInfo-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="printLightInfo-expanded"><a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">    <tt class="py-docstring">""" Print info about the given light."""</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-197"><a class="py-name" href="#" onclick="return doclink('link-197', 'light', 'link-4');" title="mari.current.light">light</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">    <tt class="py-name">Info</tt> <tt class="py-op">=</tt> <tt class="py-string">""</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name" id="link-198"><a class="py-name" href="#" onclick="return doclink('link-198', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-199" targets="Method mari.Light.isOn()=mari.Light-class.html#isOn"><a class="py-name" href="#" onclick="return doclink('link-199', 'isOn', 'link-199');" title="mari.Light.isOn">isOn</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">:</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">        <tt class="py-name">Info</tt> <tt class="py-op">+=</tt> <tt class="py-string">" OFF"</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">    <tt class="py-name" id="link-200"><a class="py-name" href="#" onclick="return doclink('link-200', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-201"><a class="py-name" href="#" onclick="return doclink('link-201', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-202"><a class="py-name" href="#" onclick="return doclink('link-202', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"Light: '%s' %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name" id="link-203"><a class="py-name" href="#" onclick="return doclink('link-203', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-204"><a class="py-name" href="#" onclick="return doclink('link-204', 'name', 'link-15');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">Info</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line"> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">    <tt class="py-name" id="link-205" targets="Function mari.examples.lights.printPointLightInfo()=mari.examples.lights-module.html#printPointLightInfo"><a class="py-name" href="#" onclick="return doclink('link-205', 'printPointLightInfo', 'link-205');" title="mari.examples.lights.printPointLightInfo">printPointLightInfo</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-206"><a class="py-name" href="#" onclick="return doclink('link-206', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">    <tt class="py-name" id="link-207" targets="Function mari.examples.lights.printEnvironmentLightInfo()=mari.examples.lights-module.html#printEnvironmentLightInfo"><a class="py-name" href="#" onclick="return doclink('link-207', 'printEnvironmentLightInfo', 'link-207');" title="mari.examples.lights.printEnvironmentLightInfo">printEnvironmentLightInfo</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-208"><a class="py-name" href="#" onclick="return doclink('link-208', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line"> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="printCurrentLightInfo"></a><div id="printCurrentLightInfo-def"><a name="L113"></a><tt class="py-lineno">113</tt> <a class="py-toggle" href="#" id="printCurrentLightInfo-toggle" onclick="return toggle('printCurrentLightInfo');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.lights-module.html#printCurrentLightInfo">printCurrentLightInfo</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="printCurrentLightInfo-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="printCurrentLightInfo-expanded"><a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">    <tt class="py-docstring">""" Print info about the currently selected light."""</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name" id="link-209"><a class="py-name" href="#" onclick="return doclink('link-209', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-210"><a class="py-name" href="#" onclick="return doclink('link-210', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-211"><a class="py-name" href="#" onclick="return doclink('link-211', 'checkProjectAndGeoValidity', 'link-3');" title="mari.utils.misc.checkProjectAndGeoValidity">checkProjectAndGeoValidity</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">    <tt class="py-name" id="link-212"><a class="py-name" href="#" onclick="return doclink('link-212', 'light', 'link-4');" title="mari.current.light">light</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-213"><a class="py-name" href="#" onclick="return doclink('link-213', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-214"><a class="py-name" href="#" onclick="return doclink('link-214', 'lights', 'link-6');" title="mari.examples.lights">lights</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-215" targets="Method mari.CanvasManager.current()=mari.CanvasManager-class.html#current,Method mari.GeoManager.current()=mari.GeoManager-class.html#current,Method mari.LightManager.current()=mari.LightManager-class.html#current,Method mari.ProjectManager.current()=mari.ProjectManager-class.html#current,Method mari.ProjectorManager.current()=mari.ProjectorManager-class.html#current,Method mari.SelectionGroupManager.current()=mari.SelectionGroupManager-class.html#current,Method mari.ToolManager.current()=mari.ToolManager-class.html#current,Package mari.current=mari.current-module.html"><a class="py-name" href="#" onclick="return doclink('link-215', 'current', 'link-215');" title="mari.CanvasManager.current
+mari.GeoManager.current
+mari.LightManager.current
+mari.ProjectManager.current
+mari.ProjectorManager.current
+mari.SelectionGroupManager.current
+mari.ToolManager.current
+mari.current">current</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-216"><a class="py-name" href="#" onclick="return doclink('link-216', 'light', 'link-4');" title="mari.current.light">light</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">        <tt class="py-name" id="link-217"><a class="py-name" href="#" onclick="return doclink('link-217', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-218"><a class="py-name" href="#" onclick="return doclink('link-218', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-219"><a class="py-name" href="#" onclick="return doclink('link-219', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[printCurrentLightInfo] No light selected"</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">    <tt class="py-name" id="link-220"><a class="py-name" href="#" onclick="return doclink('link-220', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-221"><a class="py-name" href="#" onclick="return doclink('link-221', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-222"><a class="py-name" href="#" onclick="return doclink('link-222', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[printCurrentLightInfo] About to print info about light '%s'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-223"><a class="py-name" href="#" onclick="return doclink('link-223', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-224"><a class="py-name" href="#" onclick="return doclink('link-224', 'name', 'link-15');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">    <tt class="py-name" id="link-225" targets="Function mari.examples.lights.printLightInfo()=mari.examples.lights-module.html#printLightInfo"><a class="py-name" href="#" onclick="return doclink('link-225', 'printLightInfo', 'link-225');" title="mari.examples.lights.printLightInfo">printLightInfo</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-226"><a class="py-name" href="#" onclick="return doclink('link-226', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="printAllLightsInfo"></a><div id="printAllLightsInfo-def"><a name="L127"></a><tt class="py-lineno">127</tt> <a class="py-toggle" href="#" id="printAllLightsInfo-toggle" onclick="return toggle('printAllLightsInfo');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.lights-module.html#printAllLightsInfo">printAllLightsInfo</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="printAllLightsInfo-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="printAllLightsInfo-expanded"><a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">    <tt class="py-docstring">""" Print info about all the lights."""</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name" id="link-227"><a class="py-name" href="#" onclick="return doclink('link-227', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-228"><a class="py-name" href="#" onclick="return doclink('link-228', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-229"><a class="py-name" href="#" onclick="return doclink('link-229', 'checkProjectAndGeoValidity', 'link-3');" title="mari.utils.misc.checkProjectAndGeoValidity">checkProjectAndGeoValidity</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">    <tt class="py-name" id="link-230"><a class="py-name" href="#" onclick="return doclink('link-230', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-231"><a class="py-name" href="#" onclick="return doclink('link-231', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-232"><a class="py-name" href="#" onclick="return doclink('link-232', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[printAllLightsInfo] Found %d lights"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name" id="link-233"><a class="py-name" href="#" onclick="return doclink('link-233', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-234"><a class="py-name" href="#" onclick="return doclink('link-234', 'lights', 'link-6');" title="mari.examples.lights">lights</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-235"><a class="py-name" href="#" onclick="return doclink('link-235', 'list', 'link-7');" title="mari.ActionManager.list
+mari.CanvasManager.list
+mari.GeoManager.list
+mari.ImageManager.list
+mari.LightManager.list
+mari.PaletteManager.list
+mari.Preferences.list
+mari.ProjectManager.list
+mari.ProjectorManager.list
+mari.SelectionGroupManager.list
+mari.ShelfManager.list">list</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name" id="link-236"><a class="py-name" href="#" onclick="return doclink('link-236', 'light', 'link-4');" title="mari.current.light">light</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name" id="link-237"><a class="py-name" href="#" onclick="return doclink('link-237', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-238"><a class="py-name" href="#" onclick="return doclink('link-238', 'lights', 'link-6');" title="mari.examples.lights">lights</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-239"><a class="py-name" href="#" onclick="return doclink('link-239', 'list', 'link-7');" title="mari.ActionManager.list
+mari.CanvasManager.list
+mari.GeoManager.list
+mari.ImageManager.list
+mari.LightManager.list
+mari.PaletteManager.list
+mari.Preferences.list
+mari.ProjectManager.list
+mari.ProjectorManager.list
+mari.SelectionGroupManager.list
+mari.ShelfManager.list">list</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">        <tt class="py-name" id="link-240"><a class="py-name" href="#" onclick="return doclink('link-240', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-241"><a class="py-name" href="#" onclick="return doclink('link-241', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-242"><a class="py-name" href="#" onclick="return doclink('link-242', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[printAllLightsInfo] About to print info about light '%s'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-243"><a class="py-name" href="#" onclick="return doclink('link-243', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-244"><a class="py-name" href="#" onclick="return doclink('link-244', 'name', 'link-15');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">        <tt class="py-name" id="link-245"><a class="py-name" href="#" onclick="return doclink('link-245', 'printLightInfo', 'link-225');" title="mari.examples.lights.printLightInfo">printLightInfo</a></tt><tt class="py-op">(</tt> <tt class="py-name" id="link-246"><a class="py-name" href="#" onclick="return doclink('link-246', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line"> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="moveToCameraPosition"></a><div id="moveToCameraPosition-def"><a name="L138"></a><tt class="py-lineno">138</tt> <a class="py-toggle" href="#" id="moveToCameraPosition-toggle" onclick="return toggle('moveToCameraPosition');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.lights-module.html#moveToCameraPosition">moveToCameraPosition</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="moveToCameraPosition-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="moveToCameraPosition-expanded"><a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">    <tt class="py-docstring">""" Print info about all the lights."""</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name" id="link-247"><a class="py-name" href="#" onclick="return doclink('link-247', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-248"><a class="py-name" href="#" onclick="return doclink('link-248', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-249"><a class="py-name" href="#" onclick="return doclink('link-249', 'checkProjectAndGeoValidity', 'link-3');" title="mari.utils.misc.checkProjectAndGeoValidity">checkProjectAndGeoValidity</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line"> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">    <tt class="py-name">pos</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-250"><a class="py-name" href="#" onclick="return doclink('link-250', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-251" targets="Variable mari.canvases=mari-module.html#canvases"><a class="py-name" href="#" onclick="return doclink('link-251', 'canvases', 'link-251');" title="mari.canvases">canvases</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-252"><a class="py-name" href="#" onclick="return doclink('link-252', 'current', 'link-215');" title="mari.CanvasManager.current
+mari.GeoManager.current
+mari.LightManager.current
+mari.ProjectManager.current
+mari.ProjectorManager.current
+mari.SelectionGroupManager.current
+mari.ToolManager.current
+mari.current">current</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name" id="link-253" targets="Method mari.Canvas.camera()=mari.Canvas-class.html#camera,Method mari.Projector.camera()=mari.Projector-class.html#camera"><a class="py-name" href="#" onclick="return doclink('link-253', 'camera', 'link-253');" title="mari.Canvas.camera
+mari.Projector.camera">camera</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name" id="link-254" targets="Method mari.Camera.translation()=mari.Camera-class.html#translation,Method mari.GeoEntity.translation()=mari.GeoEntity-class.html#translation,Method mari.LocatorEntity.translation()=mari.LocatorEntity-class.html#translation,Method mari.PaintBuffer.translation()=mari.PaintBuffer-class.html#translation,Method mari.Projector.translation()=mari.Projector-class.html#translation"><a class="py-name" href="#" onclick="return doclink('link-254', 'translation', 'link-254');" title="mari.Camera.translation
+mari.GeoEntity.translation
+mari.LocatorEntity.translation
+mari.PaintBuffer.translation
+mari.Projector.translation">translation</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">    <tt class="py-name" id="link-255"><a class="py-name" href="#" onclick="return doclink('link-255', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-256"><a class="py-name" href="#" onclick="return doclink('link-256', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-257"><a class="py-name" href="#" onclick="return doclink('link-257', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[moveToCameraPosition] Found translation (%f, %f, %f) vector on current canvas camera"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">pos</tt><tt class="py-op">.</tt><tt class="py-name" id="link-258"><a class="py-name" href="#" onclick="return doclink('link-258', 'x', 'link-174');" title="mari.VectorN.x">x</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">pos</tt><tt class="py-op">.</tt><tt class="py-name" id="link-259"><a class="py-name" href="#" onclick="return doclink('link-259', 'y', 'link-176');" title="mari.VectorN.y">y</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">pos</tt><tt class="py-op">.</tt><tt class="py-name" id="link-260"><a class="py-name" href="#" onclick="return doclink('link-260', 'z', 'link-178');" title="mari.VectorN.z">z</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">    <tt class="py-name" id="link-261"><a class="py-name" href="#" onclick="return doclink('link-261', 'light', 'link-4');" title="mari.current.light">light</a></tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-262"><a class="py-name" href="#" onclick="return doclink('link-262', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-263"><a class="py-name" href="#" onclick="return doclink('link-263', 'lights', 'link-6');" title="mari.examples.lights">lights</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-264"><a class="py-name" href="#" onclick="return doclink('link-264', 'current', 'link-215');" title="mari.CanvasManager.current
+mari.GeoManager.current
+mari.LightManager.current
+mari.ProjectManager.current
+mari.ProjectorManager.current
+mari.SelectionGroupManager.current
+mari.ToolManager.current
+mari.current">current</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name" id="link-265"><a class="py-name" href="#" onclick="return doclink('link-265', 'light', 'link-4');" title="mari.current.light">light</a></tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">        <tt class="py-name" id="link-266"><a class="py-name" href="#" onclick="return doclink('link-266', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-267"><a class="py-name" href="#" onclick="return doclink('link-267', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-268"><a class="py-name" href="#" onclick="return doclink('link-268', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[moveToCameraPosition] About to set position on current light '%s' to '(%f, %f, %f)'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name" id="link-269"><a class="py-name" href="#" onclick="return doclink('link-269', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-270"><a class="py-name" href="#" onclick="return doclink('link-270', 'name', 'link-15');" title="mari.Action.name
+mari.Camera.name
+mari.Channel.name
+mari.ChannelInfo.name
+mari.GeoEntity.name
+mari.GeoEntityVersion.name
+mari.GeoPatch.name
+mari.GeometryOperation.name
+mari.ImageOperation.name
+mari.ImageSet.name
+mari.Layer.name
+mari.LayerStack.name
+mari.Light.name
+mari.LocatorEntity.name
+mari.Node.name
+mari.Palette.name
+mari.ParticleOp.name
+mari.PostFilter.name
+mari.PostFilterCollection.name
+mari.Project.name
+mari.ProjectInfo.name
+mari.Projector.name
+mari.SelectionGroup.name
+mari.Shader.name
+mari.Shelf.name
+mari.Snapshot.name
+mari.Tool.name">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">pos</tt><tt class="py-op">.</tt><tt class="py-name" id="link-271"><a class="py-name" href="#" onclick="return doclink('link-271', 'x', 'link-174');" title="mari.VectorN.x">x</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">pos</tt><tt class="py-op">.</tt><tt class="py-name" id="link-272"><a class="py-name" href="#" onclick="return doclink('link-272', 'y', 'link-176');" title="mari.VectorN.y">y</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">pos</tt><tt class="py-op">.</tt><tt class="py-name" id="link-273"><a class="py-name" href="#" onclick="return doclink('link-273', 'z', 'link-178');" title="mari.VectorN.z">z</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">        <tt class="py-name" id="link-274"><a class="py-name" href="#" onclick="return doclink('link-274', 'light', 'link-4');" title="mari.current.light">light</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-275" targets="Method mari.PointLight.setPosition()=mari.PointLight-class.html#setPosition"><a class="py-name" href="#" onclick="return doclink('link-275', 'setPosition', 'link-275');" title="mari.PointLight.setPosition">setPosition</a></tt><tt class="py-op">(</tt><tt class="py-name">pos</tt><tt class="py-op">)</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">        <tt class="py-name" id="link-276"><a class="py-name" href="#" onclick="return doclink('link-276', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-277"><a class="py-name" href="#" onclick="return doclink('link-277', 'utils', 'link-2');" title="mari.utils">utils</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-278"><a class="py-name" href="#" onclick="return doclink('link-278', 'messageAndLog', 'link-13');" title="mari.utils.misc.messageAndLog">messageAndLog</a></tt><tt class="py-op">(</tt><tt class="py-string">"[moveToCameraPosition] No light is currently selected."</tt><tt class="py-op">,</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line"> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="registerActions"></a><div id="registerActions-def"><a name="L153"></a><tt class="py-lineno">153</tt> <a class="py-toggle" href="#" id="registerActions-toggle" onclick="return toggle('registerActions');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mari.examples.lights-module.html#registerActions">registerActions</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="registerActions-collapsed" indent="++++" pad="+++" style="display:none;"></div><div id="registerActions-expanded"><a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">    <tt class="py-comment"># Register new actions with the action manager, and add them to a Python Menu</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">    <tt class="py-name" id="link-279"><a class="py-name" href="#" onclick="return doclink('link-279', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-280" targets="Variable mari.menus=mari-module.html#menus"><a class="py-name" href="#" onclick="return doclink('link-280', 'menus', 'link-280');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-281" targets="Method mari.MenuManager.addAction()=mari.MenuManager-class.html#addAction,Method mari.ToolBar.addAction()=mari.ToolBar-class.html#addAction,Function mari.examples.vector_brush.addAction()=mari.examples.vector_brush-module.html#addAction"><a class="py-name" href="#" onclick="return doclink('link-281', 'addAction', 'link-281');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-282"><a class="py-name" href="#" onclick="return doclink('link-282', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-283" targets="Method mari.MenuManager.actions()=mari.MenuManager-class.html#actions,Variable mari.actions=mari-module.html#actions"><a class="py-name" href="#" onclick="return doclink('link-283', 'actions', 'link-283');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-284" targets="Method mari.ActionManager.create()=mari.ActionManager-class.html#create,Method mari.PaletteManager.create()=mari.PaletteManager-class.html#create,Method mari.ProjectManager.create()=mari.ProjectManager-class.html#create,Method mari.ProjectorManager.create()=mari.ProjectorManager-class.html#create"><a class="py-name" href="#" onclick="return doclink('link-284', 'create', 'link-284');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt><tt class="py-string">'Print Current Light Info'</tt><tt class="py-op">,</tt> <tt class="py-string">'mari.examples.lights.printCurrentLightInfo()'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">"MainWindow/P&amp;ython/&amp;Examples/&amp;Lights"</tt><tt class="py-op">)</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">    <tt class="py-name" id="link-285"><a class="py-name" href="#" onclick="return doclink('link-285', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-286"><a class="py-name" href="#" onclick="return doclink('link-286', 'menus', 'link-280');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-287"><a class="py-name" href="#" onclick="return doclink('link-287', 'addAction', 'link-281');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-288"><a class="py-name" href="#" onclick="return doclink('link-288', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-289"><a class="py-name" href="#" onclick="return doclink('link-289', 'actions', 'link-283');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-290"><a class="py-name" href="#" onclick="return doclink('link-290', 'create', 'link-284');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt><tt class="py-string">'Print All Lights Info'</tt><tt class="py-op">,</tt> <tt class="py-string">'mari.examples.lights.printAllLightsInfo()'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">"MainWindow/P&amp;ython/&amp;Examples/&amp;Lights"</tt><tt class="py-op">)</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">    <tt class="py-name" id="link-291"><a class="py-name" href="#" onclick="return doclink('link-291', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-292"><a class="py-name" href="#" onclick="return doclink('link-292', 'menus', 'link-280');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-293"><a class="py-name" href="#" onclick="return doclink('link-293', 'addAction', 'link-281');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-294"><a class="py-name" href="#" onclick="return doclink('link-294', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-295"><a class="py-name" href="#" onclick="return doclink('link-295', 'actions', 'link-283');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-296"><a class="py-name" href="#" onclick="return doclink('link-296', 'create', 'link-284');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt><tt class="py-string">'Setup Environment Light'</tt><tt class="py-op">,</tt> <tt class="py-string">'mari.examples.lights.setupEnvironmentLightInfo()'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">"MainWindow/P&amp;ython/&amp;Examples/&amp;Lights"</tt><tt class="py-op">)</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">     </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">    <tt class="py-comment"># Action to move a light to the camera position: register on the Lights palette in the panel and the item context menu</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">    <tt class="py-name">_move_to_camera_pos_action</tt> <tt class="py-op">=</tt> <tt class="py-name" id="link-297"><a class="py-name" href="#" onclick="return doclink('link-297', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-298"><a class="py-name" href="#" onclick="return doclink('link-298', 'actions', 'link-283');" title="mari.MenuManager.actions
+mari.actions">actions</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-299"><a class="py-name" href="#" onclick="return doclink('link-299', 'create', 'link-284');" title="mari.ActionManager.create
+mari.PaletteManager.create
+mari.ProjectManager.create
+mari.ProjectorManager.create">create</a></tt><tt class="py-op">(</tt><tt class="py-string">'Move to Camera Position'</tt><tt class="py-op">,</tt> <tt class="py-string">'mari.examples.lights.moveToCameraPosition()'</tt><tt class="py-op">)</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">    <tt class="py-name">_move_to_camera_pos_action</tt><tt class="py-op">.</tt><tt class="py-name" id="link-300" targets="Method mari.Action.setIconPath()=mari.Action-class.html#setIconPath"><a class="py-name" href="#" onclick="return doclink('link-300', 'setIconPath', 'link-300');" title="mari.Action.setIconPath">setIconPath</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-301"><a class="py-name" href="#" onclick="return doclink('link-301', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-302"><a class="py-name" href="#" onclick="return doclink('link-302', 'resources', 'link-28');" title="mari.resources">resources</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-303"><a class="py-name" href="#" onclick="return doclink('link-303', 'path', 'link-29');" title="mari.Action.path
+mari.ChannelInfo.path
+mari.GeoEntityVersion.path
+mari.QuickProjector.path
+mari.ResourceInfo.path">path</a></tt><tt class="py-op">(</tt><tt class="py-name" id="link-304"><a class="py-name" href="#" onclick="return doclink('link-304', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-305"><a class="py-name" href="#" onclick="return doclink('link-305', 'resources', 'link-28');" title="mari.resources">resources</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-306" targets="Variable mari.ResourceInfo.ICONS=mari.ResourceInfo-class.html#ICONS"><a class="py-name" href="#" onclick="return doclink('link-306', 'ICONS', 'link-306');" title="mari.ResourceInfo.ICONS">ICONS</a></tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">'/MoveToCamera.png'</tt><tt class="py-op">)</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">    <tt class="py-name" id="link-307"><a class="py-name" href="#" onclick="return doclink('link-307', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-308"><a class="py-name" href="#" onclick="return doclink('link-308', 'menus', 'link-280');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-309"><a class="py-name" href="#" onclick="return doclink('link-309', 'addAction', 'link-281');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name">_move_to_camera_pos_action</tt><tt class="py-op">,</tt> <tt class="py-string">"MriGeoLight/ItemContext"</tt><tt class="py-op">)</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">    <tt class="py-name" id="link-310"><a class="py-name" href="#" onclick="return doclink('link-310', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-311"><a class="py-name" href="#" onclick="return doclink('link-311', 'menus', 'link-280');" title="mari.menus">menus</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-312"><a class="py-name" href="#" onclick="return doclink('link-312', 'addAction', 'link-281');" title="mari.MenuManager.addAction
+mari.ToolBar.addAction
+mari.examples.vector_brush.addAction">addAction</a></tt><tt class="py-op">(</tt><tt class="py-name">_move_to_camera_pos_action</tt><tt class="py-op">,</tt> <tt class="py-string">"MriGeoLight/Panel"</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line"> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">     </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line"><tt class="py-comment"># ------------------------------------------------------------------------------</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line"> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name" id="link-313"><a class="py-name" href="#" onclick="return doclink('link-313', 'mari', 'link-0');" title="mari">mari</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-314" targets="Variable mari.app=mari-module.html#app"><a class="py-name" href="#" onclick="return doclink('link-314', 'app', 'link-314');" title="mari.app">app</a></tt><tt class="py-op">.</tt><tt class="py-name" id="link-315" targets="Method mari.Application.isRunning()=mari.Application-class.html#isRunning"><a class="py-name" href="#" onclick="return doclink('link-315', 'isRunning', 'link-315');" title="mari.Application.isRunning">isRunning</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">    <tt class="py-name" id="link-316" targets="Function mari.examples.lights.registerActions()=mari.examples.lights-module.html#registerActions,Function mari.examples.nodes.registerActions()=mari.examples.nodes-module.html#registerActions,Function mari.examples.selection_groups.registerActions()=mari.examples.selection_groups-module.html#registerActions"><a class="py-name" href="#" onclick="return doclink('link-316', 'registerActions', 'link-316');" title="mari.examples.lights.registerActions
+mari.examples.nodes.registerActions
+mari.examples.selection_groups.registerActions">registerActions</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+  <br/>
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%%">
+   <tr>
+   </tr>
+  </table>
+  <script type="text/javascript">
+   <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+  </script>
+ </body>
+</html>
