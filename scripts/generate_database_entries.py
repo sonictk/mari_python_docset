@@ -1,7 +1,3 @@
-import sys
-sys.path.append('/home/yliangsiew/bin/pycharm/pycharm-2017.2.3/debug-eggs/pycharm-debug.egg')
-import pydevd
-pydevd.settrace('localhost', port=3319, stdoutToServer=True, stderrToServer=True, suspend=False)
 #!/usr/bin/env python
 """
 This module is a command-line utility that writes to the SQLite database that
