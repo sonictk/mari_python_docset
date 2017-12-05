@@ -1,3 +1,7 @@
+import sys
+sys.path.append('/home/yliangsiew/bin/pycharm/pycharm-2017.2.3/debug-eggs/pycharm-debug.egg')
+import pydevd
+pydevd.settrace('localhost', port=3319, stdoutToServer=True, stderrToServer=True, suspend=False)
 #!/usr/bin/env python
 """
 This module is a command-line utility that writes to the SQLite database that
@@ -40,6 +44,21 @@ def write_entry_for_class(cur, class_name, path, docs_root, maya_version):
     # additional entries for
     html = open(os.path.join(docs_root, path)).read()
     soup = BeautifulSoup(html, 'html.parser')
+
+    for span in soup.find_all('span'):
+        if span.contents and 'Instance Methods' in span.contents[0]:
+            for a in span.parent.parent.parent.find_all('a', attrs={'class' : 'summary-sig-name'}):
+                if not a.contents:
+                    continue
+                method_name = '{0}.{1}'.format(class_name, a.contents[0].replace(' ', '').replace('\n', ''))
+                method_url = a.get('href')
+                if not method_name or not method_url:
+                    continue
+
+                cur.execute('INSERT OR IGNORE INTO searchIndex(name, type, path)'
+                        ' VALUES (\'{name}\', \'Method\', \'{path}\')'
+                        .format(name=method_name, path=method_url))
+
 
     # for h2 in soup.find_all('h2', {'class': 'groupheader'}):
     #     # Now find all public types defined in the class and create
@@ -152,7 +171,7 @@ def write_entries(database_file_path,
             class_name = '{0}'.format(f.split('mari.')[-1].split('-class')[0])
             # NOTE: (yliangsiew) This handles files like ``mari.utils.node_generator.Node-class.html``
             if '.' in class_name:
-                class_name = class_name.split('.')[-1]
+                class_name = '.'.join(class_name.split('.'))
             write_entry_for_class(cur, class_name, f, docs_root, mari_version)
 
         elif f.startswith('mari.examples.'):
@@ -170,7 +189,7 @@ def write_entries(database_file_path,
         conn.close()
 
 
-def main(mari_version=DEFAULT_MARI_VERSION):
+def main(mari_version=DEFAULT_MARI_VERSION, multiThread=False):
     """This is the main entry point of the program."""
 
     logger = logging.getLogger(__name__)
@@ -199,15 +218,20 @@ def main(mari_version=DEFAULT_MARI_VERSION):
     all_files = os.listdir(docs_root)
     logger.debug('Total number of files to process: {0}'.format(len(all_files)))
 
-    jobs = []
-    for s in chunk(all_files, 250):
-        job = multiprocessing.Process(target=write_entries,
-                args=(database_file_path, s, docs_root, mari_version))
-        jobs.append(job)
+    if multiThread:
+        jobs = []
+        for s in chunk(all_files, 250):
+            job = multiprocessing.Process(target=write_entries,
+                    args=(database_file_path, s, docs_root, mari_version))
+            jobs.append(job)
 
-    logger.debug('Num. of jobs scheduled: {0}'.format(len(jobs)))
-    [j.start() for j in jobs]
-    logger.info('Jobs submitted, please wait for them to complete!')
+        logger.debug('Num. of jobs scheduled: {0}'.format(len(jobs)))
+        [j.start() for j in jobs]
+        logger.info('Jobs submitted, please wait for them to complete!')
+    else:
+        write_entries(database_file_path, all_files, docs_root, mari_version)
+        logger.info('Complete!')
+
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG)
@@ -216,5 +240,11 @@ if __name__ == '__main__':
                         '--mariVersion',
                         default=DEFAULT_MARI_VERSION,
                         help='The Mari version to generate the docset for.')
+
+    parser.add_argument('-mt',
+                        '--multiThread',
+                        default=False,
+                        help='Make use of multi-threading to speed up the generation of the database.')
     args = parser.parse_args()
-    main(args.mariVersion)
+
+    main(args.mariVersion, args.multiThread)
