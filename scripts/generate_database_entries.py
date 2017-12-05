@@ -33,6 +33,8 @@ def clean_database(database_file_path):
 
 
 def write_entry_for_class(cur, class_name, path, docs_root, maya_version):
+    if class_name.startswith('examples.'):
+        return
     cur.execute('INSERT OR IGNORE INTO searchIndex(name, type, path)'
             ' VALUES (\'{name}\', \'Class\', \'{path}\')'.format(name=class_name, path=path))
 
@@ -54,96 +56,6 @@ def write_entry_for_class(cur, class_name, path, docs_root, maya_version):
                 cur.execute('INSERT OR IGNORE INTO searchIndex(name, type, path)'
                         ' VALUES (\'{name}\', \'Method\', \'{path}\')'
                         .format(name=method_name, path=method_url))
-
-
-    # for h2 in soup.find_all('h2', {'class': 'groupheader'}):
-    #     # Now find all public types defined in the class and create
-    #     # links to them
-    #     if h2.a and h2.a.get('name') == 'pub-types':
-    #         items = h2.parent.parent.parent.find_all(
-    #             'td',
-    #             {'class' : 'memItemRight'}
-    #         )
-    #         # Do not consider inherited types
-    #         for pub_type_item in items:
-    #             if 'el' not in pub_type_item.a.get('class'):
-    #                 continue
-    #             if 'inherit' in pub_type_item.parent.get('class'):
-    #                 continue
-    #             type_name = pub_type_item.a.string
-    #             type_url = pub_type_item.a.get('href')
-
-    #             # NOTE: For Maya 2017, it seems the URL is
-    #             # formatted differently
-    #             if maya_version == '2017':
-    #                 type_url = type_url.replace('#!/url=./cpp_ref/', '')
-    #             if type_name and type_url:
-    #                 cur.execute('INSERT OR IGNORE INTO searchIndex(name, type, path)'
-    #                         ' VALUES (\'{class_name}::{type_name}\', \'Type\', \'{path}\')'
-    #                         .format(class_name=class_name, type_name=type_name, path=type_url))
-    #     elif h2.a and h2.a.get('name') == 'pub-methods':
-    #         pub_methods = h2.parent.parent.parent.find_all(
-    #             'td',
-    #             {'class' : 'memItemRight'}
-    #         )
-    #         # Do not consider inherited functions
-    #         for m in pub_methods:
-    #             if 'el' not in m.a.get('class'):
-    #                 continue
-    #             if 'inherit' in m.parent.get('class'):
-    #                 continue
-    #             method_name = m.a.string
-    #             method_url = m.a.get('href')
-    #             # NOTE: For Maya 2017, it seems the URL is
-    #             # formatted differently
-    #             if maya_version == '2017':
-    #                 method_url = method_url.replace('#!/url=./cpp_ref/', '')
-    #             if method_name and method_url:
-    #                 cur.execute('INSERT OR IGNORE INTO searchIndex(name, type, path)'
-    #                         ' VALUES (\'{class_name}::{method_name}\', \'Method\', \'{path}\')'
-    #                         .format(class_name=class_name,
-    #                                 method_name=method_name,
-    #                                 path=method_url))
-    #     elif h2.a and h2.a.get('name') == 'pub-static-methods':
-    #         pub_methods = h2.parent.parent.parent.find_all(
-    #             'td',
-    #             {'class' : 'memItemRight'}
-    #         )
-    #         # Do not consider inherited functions
-    #         for m in pub_methods:
-    #             if 'el' not in m.a.get('class'):
-    #                 continue
-    #             if 'inherit' in m.parent.get('class'):
-    #                 continue
-    #             method_name = m.a.string
-    #             method_url = m.a.get('href')
-    #             # NOTE: For Maya 2017, it seems the URL is
-    #             # formatted differently
-    #             if maya_version == '2017':
-    #                 method_url = method_url.replace('#!/url=./cpp_ref/', '')
-    #             if method_name and method_url:
-    #                 cur.execute('INSERT OR IGNORE INTO searchIndex(name, type, path)'
-    #                         ' VALUES (\'{class_name}::{method_name}\', \'Function\', \'{path}\')'
-    #                         .format(class_name=class_name,
-    #                                 method_name=method_name,
-    #                                 path=method_url))
-    #     elif h2.a and h2.a.get('name') == 'pro-methods':
-    #         pub_methods = h2.parent.parent.parent.find_all(
-    #             'td',
-    #             {'class' : 'memItemRight'}
-    #         )
-    #         # Do not consider inherited functions
-    #         for m in pub_methods:
-    #             if 'el' not in m.a.get('class'):
-    #                 continue
-    #             method_name = m.a.string
-    #             method_url = m.a.get('href')
-    #             if method_name and method_url:
-    #                 cur.execute('INSERT OR IGNORE INTO searchIndex(name, type, path)'
-    #                         ' VALUES (\'{class_name}::{method_name}\', \'Method\', \'{path}\')'
-    #                         .format(class_name=class_name,
-    #                                 method_name=method_name,
-    #                                 path=method_url))
 
 
 def write_entries(database_file_path,
